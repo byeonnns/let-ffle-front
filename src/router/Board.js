@@ -3,6 +3,7 @@ import Write from '../views/Board/Write.vue'
 import Announcement from '../views/Board/Announcement.vue'
 import BoardDetail from '../views/Board/BoardDetail.vue'
 import BoardComment from '../views/Board/BoardComment.vue'
+import BoardNavbar from '../views/Board/BoardNavbar.vue'
 const routes = [
     {
         path: '/Board/Announcement',
@@ -23,6 +24,10 @@ const routes = [
     {
         path: '/Board/BoardComment',
         component: () => import(/* webpackChunkName: "Board" */ '@/views/Board/BoardComment')
+    },
+    {
+        path: '/Board/BoardNavbar',
+        component: () => import(/* webpackChunkName: "Board" */ '@/views/Board/BoardNavbar')
     },
 
 ];

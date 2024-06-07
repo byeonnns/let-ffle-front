@@ -32,7 +32,7 @@
                             </RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink to="/Board/Write" class="nav-link">
+                            <RouterLink to="/Board/Write" class="nav-link">                  
                                 5.게시물 쓰기
                             </RouterLink>
                         </li>
@@ -56,6 +56,7 @@
                                 9.게시물 공지사항
                             </RouterLink>
                         </li>
+                      
                         <li class="nav-item">
                             <RouterLink to="/Member/Mypage/MypageNavBar" class="nav-link">
                                 10.마이 페이지 네브바
