@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import Raffle from './Raffle';
 import Admin from './Admin';
 import Board from './Board';
+import Member from './Member';
 
 const routes = [
   {
@@ -12,7 +13,8 @@ const routes = [
   },
   ...Raffle,
   ...Admin,
-  ...Board
+  ...Board,
+  ...Member
 ]
 
 const router = createRouter({
