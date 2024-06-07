@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Raffle from './Raffle';
 import Admin from './Admin';
+import Board from './Board';
 
 const routes = [
   {
@@ -10,7 +11,8 @@ const routes = [
     component: HomeView
   },
   ...Raffle,
-  ...Admin
+  ...Admin,
+  ...Board
 ]
 
 const router = createRouter({

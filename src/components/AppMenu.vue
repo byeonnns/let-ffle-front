@@ -31,6 +31,31 @@
                                 4. 관리자 래플 등록 페이지
                             </RouterLink>
                         </li>
+                        <li class="nav-item">
+                            <RouterLink to="/Board/Write" class="nav-link">
+                                5.게시물 쓰기
+                            </RouterLink>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink to="/Board/BoardList" class="nav-link">
+                                6.전체 페이지
+                            </RouterLink>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink to="/Board/BoardDetail" class="nav-link">
+                                7.게시물 상세페이지
+                            </RouterLink>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink to="/Board/BoardComment" class="nav-link">
+                                8.게시물 댓글입력
+                            </RouterLink>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink to="/Board/Announcement" class="nav-link">
+                                9.게시물 공지사항
+                            </RouterLink>
+                        </li>
                     </ul>
                 </div>
             </div>
