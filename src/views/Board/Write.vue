@@ -1,24 +1,7 @@
 <template>
-  <!-- <div>
-    <div class="container" style="width: 100%; height:50px; border-bottom:1px solid black; margin-bottom: 10px;">
-      <h3 style="text-align: center;">게시글쓰기</h3>
-    </div>
-   
-    <div class="container" style="width: 100%; height:500px; border:1px solid black;">
-      <form style="border-bottom:1px solid black; height:50px;">
-        <h3>제목</h3>
-      </form>
-      <div>
-        <h3 style="margin-top: 40px;">내용</h3>
-      </div>
-
-    </div>
-    <button class="btn btn-success btn-sm me-2" style="margin-top: 10px;">목록</button>
-    <button class="btn btn-dark btn-sm " style="margin-top: 10px;">등록</button>
-  </div> -->
 
   <div class="container" style="width: 100%; height:50px; border-bottom:3px solid orange; margin-bottom: 10px;">
-      <h3 style="text-align: center;">게시글쓰기</h3>
+      <h3 style="text-align: center;color: white">게시글쓰기</h3>
     </div>
    
     <div class="container" style="width: 100%; height:500px; ">

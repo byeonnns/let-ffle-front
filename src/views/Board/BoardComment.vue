@@ -1,7 +1,7 @@
 <template>
 
     <div class="container" style="width: 100%; height:50px; border-bottom:3px solid orange; margin-bottom: 10px;">
-        <h3 style="text-align: center;">글상세 보기</h3>
+        <h3 style="text-align: center; color: white">글상세 보기</h3>
     </div>
 
     <div class="container" style="width: 100%; height:500px; ">
