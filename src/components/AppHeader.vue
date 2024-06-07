@@ -1,20 +1,67 @@
 <template>
-    <nav class="navbar justify-content-between bg-dark text-white">
-        <div class="ms-2">
-            <img src="@/assets/logo.png" width="30" height="30"/>
-            <span class="ms-2 text-white">Vue.js</span>
+    <div>
+        <div class="container-lg">
+            <div class="d-flex d-none d-lg-block text-end">
+                <RouterLink to="/join" class="me-3"><span class="d-none d-md-inline-block">회원가입</span></RouterLink>
+                <RouterLink to="/login" class="me-3"><span class="d-none d-md-inline-block">로그인</span></RouterLink>
+                <a href="#" class="me-3"><span class="d-none d-md-inline-block">주문조회</span></a>
+                <a href="#" class="me-3"><span class="d-none d-md-inline-block">고객센터</span></a>
+            </div>
+            <nav class="navbar navbar-expand-lg bg-body-white">
+                <div class="container-fluid">
+                    <RouterLink to="/"><a class="fw-bold fst-italic h3">Let-FFle</a></RouterLink>
+                    <div class="navbar-toggler bi bi-bell fs-3 border-0" @click="clickCheck">
+                    </div>
+                    <div class="d-none d-lg-inline-block">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">STYLE</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">SHOP</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div v-if="nowPath === '/'">
+                <nav class="navbar navbar-expand bg-body-white">
+                    <ul class="navbar-nav nav-underline">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">STYLE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">SHOP</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-
-        <div class="me-2">
-            <button class="btn btn-success btn-sm">로그인</button>
-        </div>
-    </nav>
+    </div>
 </template>
 
 <script setup>
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 
+function clickCheck() {
+    console.log("클릭 체크");
+    console.log(nowPath.value);
+}
+
+const router = useRouter();
+const nowPath = computed(() => router.currentRoute.value.path);
 </script>
 
 <style scoped>
-
+a {
+    text-decoration-line : none;
+    color: #000000;
+}
 </style>

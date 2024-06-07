@@ -5,12 +5,15 @@ import Admin from './Admin';
 import Board from './Board';
 import Member from './Member';
 
+import Main from './Main';
+
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
   },
+  ...Main,
   ...Raffle,
   ...Admin,
   ...Board,

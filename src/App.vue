@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-column vh-100">
-    <AppHeader />
+    <AppHeader class="sticky-top bg-white"/>
     <div class="flex-grow-1 container-fluid">
       <div class="row h-100">
         <div class="col-md-6 col-lg-1 bg-dark px-2">
@@ -19,12 +19,20 @@
         </div>
       </div>
     </div>
+    <!-- 
+      <AppFooter/> 
+      Todo : 나중에 App vue 레이아웃 정리되면 추가해줄것
+      루트 div 속성 수정 필요
+    -->
+    <FooterNav class="d-lg-none sticky-bottom"/>
   </div>
 </template>
 
 <script setup>
 import AppHeader from '@/components/AppHeader.vue';
 import AppMenu from '@/components/AppMenu.vue';
+import AppFooter from "@/components/AppFooter.vue";
+import FooterNav from "@/components/FooterNav.vue";
 </script>
 
 <style scoped>
