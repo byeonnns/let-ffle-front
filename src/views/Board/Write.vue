@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container" style="width: 100%; height:50px; border-bottom:3px solid orange; margin-bottom: 10px; ">
+  <div class="container" style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; ">
       <h3 style="text-align: center; margin-top: 30px">게시글쓰기</h3>
     </div>
    
@@ -31,7 +31,9 @@
           <div class="form-group row">
             <div class="col-sm-12 d-flex justify-content-end" >
               <input type="submit" class="btn btn-dark btn-sm me-2"  value="추가" />
-              <input type="button" class="btn btn-success btn-sm" value="취소" />
+              <RouterLink to="/Board/BoardList">
+                <input type="button" class="btn btn-success btn-sm" value="취소" />
+              </RouterLink>
             </div>
           </div>
         </form>

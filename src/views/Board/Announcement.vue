@@ -1,10 +1,11 @@
 <template>
     <div class="board-list">
-            
+
         <div>
-            <BoardNavbar/>
+            <BoardNavbar />
         </div>
-        <div class="container" style="width: 100%; height:50px; border-bottom:3px solid orange; margin-bottom: 10px; margin-top: 30px">
+        <div class="container"
+            style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 30px">
             <h3 style="margin-right: 80%;">공지사항</h3>
         </div>
         <div class="container" style="width: 100%; height:60px;">
@@ -21,48 +22,57 @@
             <!-- border:1px solid black; -->
             <table class="table table-bordered">
                 <thead>
+                </thead>
                 <tbody>
-                    <td>
-                        <button class="btn btn-outline-dark btn-sm" style="width: 100%; border: none;outline:none;">전체
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-dark btn-sm"
-                            style="width: 100%; border: none;outline:none; ">서비스</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-dark btn-sm"
-                            style="width: 100%;  border: none;outline:none; ">이벤트</button>
-                    </td>
+                    <tr>
+                        <td>
+                            <RouterLink to="/Board/BoardList">
+                                <button class="btn btn-outline-dark w-100" style="border: none;">전체
+                                </button>
+                            </RouterLink>
+                        </td>
+                        <td>
+                            <RouterLink to="/Board/BoardDetail">
+                                <button class="btn btn-outline-dark w-100" style="border: none;" @click="sdfs">서비스</button>
+                            </RouterLink>
+                        </td>
+                        <td>
+                            <RouterLink to="/Board/BoardComment">
+                                <button class="btn btn-outline-dark w-100"
+                                    style="width: 100%;  border: none;outline:none; ">이벤트</button>
+                            </RouterLink>
+                        </td>
+                    </tr>
                     <tr>
 
                         <td>
-                            <button class="btn btn-outline-dark btn-sm"
+                            <button class="btn btn-outline-dark w-100"
                                 style="width: 100%;  border: none;outline:none;">공지</button>
                         </td>
                         <td>
-                            <button class="btn btn-outline-dark btn-sm"
-                                style="width: 100%; border: none;outline:none; ">기타</button>
-                        </td>
-                        <td>
-                            <button class="btn btn-outline-dark btn-sm"
-                                style="width: 100%;  border: none;outline:none; ">글쓰기</button>
+
+                            <button class="btn btn-outline-dark w-100"
+                                style="width: 100%; border: none;outline:none;">기타</button>
                         </td>
                     </tr>
+
                 </tbody>
-                </thead>
             </table>
         </div>
-
-
 
         <div class="container" style="width: 100%; height:500px;">
             <!--  border:1px solid black; -->
 
+            <div class="text-end" style="width: 100%; height: 30px;">
+                <RouterLink to="/Board/Write">
+                    <button class="btn btn-success btn-sm"> 글쓰기</button>
+                </RouterLink>
+            </div>
+
             <div style="width: 100%; height:500px; ">
                 <!-- border:1px solid black; -->
-                 <table class="table table-bordered mt-2">
-     
+                <table class="table table-bordered mt-2">
+
                     <tbody>
                         <tr>
                             <td class="text-center">공지</td>
@@ -91,7 +101,7 @@
                         </tr>
                         <tr>
                             <td class="text-center">공지</td>
-                            <td>우리조는 야삐</td>
+                            <td>최근에 대한 불편사항 해결 안내</td>
                         </tr>
 
                         <tr>
