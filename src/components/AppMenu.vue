@@ -4,11 +4,11 @@
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapse9" aria-expanded="true" aria-controls="collapse9">
+                    data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
                     프로젝트 렛필
                 </button>
             </h2>
-            <div id="collapse9" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div id="collapse9" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <ul class="nav flex-column">
                         <li class="nav-item">
