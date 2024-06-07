@@ -127,6 +127,7 @@
 
 <script setup>
 import AdminSidebar from '../Sidebar';
+
 </script>
 
 <style scoped>

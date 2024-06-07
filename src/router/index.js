@@ -4,6 +4,7 @@ import Raffle from './Raffle';
 import Admin from './Admin';
 import Board from './Board';
 import Member from './Member';
+import Notice from './Notice';
 
 import Main from './Main';
 
@@ -17,6 +18,7 @@ const routes = [
   ...Raffle,
   ...Admin,
   ...Board,
+  ...Notice,
   ...Member
 ]
 

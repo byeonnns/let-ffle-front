@@ -5,13 +5,13 @@
             <div class="d-flex container">
                 <div class="raffle-list">
                     <div class="raffle">
-                        <a href="#" class="go-to-raffle">
+                        <RouterLink to="/Raffle/Detail" class="go-to-raffle">
                             <div class="img-wrap">
                                 <img src="@/assets/img1.jpg" class="thumb-nail">
                             </div>
                             <p class="raffle-title">지용킴 x 삼성 뮤직 프레임</p>
                             <p class="raffle-description">LET-FFLE에서만 단독 발매</p>
-                        </a>
+                        </RouterLink>
                     </div>
                     <div class="raffle">
                         <a href="#" class="go-to-raffle">

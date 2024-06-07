@@ -5,7 +5,7 @@
                 <i class="lni lni-grid-alt"></i>
             </button>
             <div class="sidebar-logo">
-                <a href="${pageContext.request.contextPath}/admin">LIFILL</a>
+                <a href="${pageContext.request.contextPath}/admin">LET-FFLE</a>
             </div>
         </div>
 
@@ -49,8 +49,7 @@
                         <a href="${pageContext.request.contextPath}/admin/item/dashboard" class="sidebar-link">대시보드</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="${pageContext.request.contextPath}/admin/item/createItemForm" class="sidebar-link">상품
-                            등록</a>
+                        <RouterLink to="/admin/CreateRaffle" class="sidebar-link">래플 등록</RouterLink>
                     </li>
                     <li class="sidebar-item">
                         <a href="${pageContext.request.contextPath}/admin/item/itemList" class="sidebar-link">전체 상품
@@ -64,14 +63,14 @@
                 <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
                     data-bs-target="#order" aria-expanded="false" aria-controls="order">
                     <i class="lni lni-delivery"></i>
-                    <span>주문 관리</span>
+                    <span>당첨자 관리</span>
                 </a>
                 <ul id="order" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
                         <a href="${pageContext.request.contextPath}/admin/order/dashboard" class="sidebar-link">대시보드</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="${pageContext.request.contextPath}/admin/order/orderList" class="sidebar-link">전체 주문
+                        <a href="${pageContext.request.contextPath}/admin/order/orderList" class="sidebar-link">전체 당첨자
                             조회</a>
                     </li>
                 </ul>
@@ -162,7 +161,7 @@ body {
 	transition: all .25s ease-in-out;
 	display: flex;
 	flex-direction: column;
-	background-color: #0e223e;
+	background-color: #F37551;
 }
 
 #sidebar.expand {
@@ -230,7 +229,7 @@ a.sidebar-link:hover {
 	position: absolute;
 	top: 0;
 	left: 70px;
-	background-color: #0e2238;
+	background-color: #F37551;
 	padding: 0;
 	min-width: 15rem;
 	display: none;

@@ -6,6 +6,7 @@
                 <RouterLink to="/login" class="me-3"><span class="d-none d-md-inline-block">로그인</span></RouterLink>
                 <a href="#" class="me-3"><span class="d-none d-md-inline-block">주문조회</span></a>
                 <a href="#" class="me-3"><span class="d-none d-md-inline-block">고객센터</span></a>
+                <RouterLink to="/admin/Main" class="me-3"><span class="d-none d-md-inline-block">관리자</span></RouterLink>
             </div>
             <nav class="navbar navbar-expand-lg bg-body-white">
                 <div class="container-fluid">
@@ -15,30 +16,37 @@
                     <div class="d-none d-lg-inline-block">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                                <RouterLink to="/" class="nav-item me-3">HOME</RouterLink>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">STYLE</a>
+                                <RouterLink to="/Raffle/Main" class="nav-item me-3">RAFFLE</RouterLink>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">SHOP</a>
+                                <RouterLink to="/Notice/BoardList" class="nav-item me-3">NOTICE</RouterLink>
+                            </li>
+                            <li class="nav-item">
+                                <RouterLink to="/Board/BoardList" class="nav-item me-3">COMUNNITY</RouterLink>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-            <div v-if="nowPath === '/'">
+            <div v-if="nowPath !== '/login' && nowPath !== '/join'">
                 <nav class="navbar navbar-expand bg-body-white">
                     <ul class="navbar-nav nav-underline">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                            <RouterLink to="/" class="nav-item">HOME</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">STYLE</a>
+                            <RouterLink to="/Raffle/Sports" class="nav-item">SPORTS</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">SHOP</a>
+                            <RouterLink to="/Raffle/Art" class="nav-item">ART</RouterLink>
                         </li>
+                        <li class="nav-item">
+                            <RouterLink to="/Raffle/Fashion" class="nav-item">FASHION</RouterLink>
+                        </li>
+                        
                     </ul>
                 </nav>
             </div>
@@ -63,5 +71,9 @@ const nowPath = computed(() => router.currentRoute.value.path);
 a {
     text-decoration-line : none;
     color: #000000;
+}
+
+.router-link-active {
+  color: #FF5C35; 
 }
 </style>

@@ -11,8 +11,8 @@
             </nav>
         </div>
             
-        <div class="container" style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px;">
-            <h3 style="margin-right: 80%; color: white">전체 게시판</h3>
+        <div class="container" style="width: 100%; height:50px; border-bottom:3px solid orange; margin-bottom: 10px;">
+            <h3 style="margin-right: 80%; color: white">공지사항</h3>
         </div>
         <div class="container" style="width: 100%; height:60px;">
             <!-- border:1px solid black; -->
@@ -83,7 +83,7 @@
                             <td>6월 공휴일 휴무에 따른 거래 및 정산일정안내</td>
                         </tr>
                         <tr>
-                            <td class="text-center">이벤트</td>
+                            <td class="text-center">공지</td>
                             <td>[안내] Draq-시엔느 응모</td>
                         </tr>
                         <tr>
