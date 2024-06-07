@@ -1,7 +1,11 @@
+
 <template>
 
-    <div class="container" style="width: 100%; height:50px; border-bottom:3px solid orange; margin-bottom: 10px;">
-        <h3 style="text-align: center; color: white">글상세 보기</h3>
+    <div class="mt-4">
+        <BoardNavbar/>
+    </div>
+    <div class="container" style="width: 100%; height:50px; border-bottom:3px solid orange; margin-bottom: 10px;margin-top: 30px">
+        <h3 style="text-align: center;">글상세 보기</h3>
     </div>
 
     <div class="container" style="width: 100%; height:500px; ">
@@ -57,5 +61,10 @@
     </div>
 
 </template>
+
+
+<script setup>
+import BoardNavbar from './BoardNavbar.vue';
+</script>
 
 <style scoped></style>

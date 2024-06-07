@@ -1,18 +1,11 @@
 <template>
     <div class="board-list">
-        <div class="container" style="border:1px solid black; width: 10%;">
-            <nav>
-                <h5>게시판</h5>
-                <ul>
-                    <li>공지사항</li>
-                    <li>질문</li>
-                    <li>검수기준</li>
-                </ul>
-            </nav>
-        </div>
             
-        <div class="container" style="width: 100%; height:50px; border-bottom:3px solid orange; margin-bottom: 10px;">
-            <h3 style="margin-right: 80%; color: white">공지사항</h3>
+        <div>
+            <BoardNavbar/>
+        </div>
+        <div class="container" style="width: 100%; height:50px; border-bottom:3px solid orange; margin-bottom: 10px; margin-top: 30px">
+            <h3 style="margin-right: 80%;">공지사항</h3>
         </div>
         <div class="container" style="width: 100%; height:60px;">
             <!-- border:1px solid black; -->
@@ -69,14 +62,7 @@
             <div style="width: 100%; height:500px; ">
                 <!-- border:1px solid black; -->
                  <table class="table table-bordered mt-2">
-                      <!-- <thead>
-                         <th class="text-center" style="width:70px">번호</th>
-                        <th class="text-center">제목</th> 
-                         <th class="text-center" style="width:90px">글쓴이</th>
-                                <th class="text-center" style="width:120px">날짜</th>
-                                <th class="text-center" style="width:70px">조회수</th> 
-
-                    </thead>    -->
+     
                     <tbody>
                         <tr>
                             <td class="text-center">공지</td>
@@ -126,9 +112,6 @@
 
 
 
-                <!-- <div style="margin-left: 55%">
-                    <button class="btn btn-success btn-sm mt-2">글쓰기</button>
-                </div> -->
             </div>
 
         </div>
@@ -144,6 +127,7 @@
 
 
 <script setup>
+import BoardNavbar from "./BoardNavbar.vue"
 </script>
 
 
