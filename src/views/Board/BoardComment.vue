@@ -15,24 +15,24 @@
                     <tbody>
                         <tr>
                             <th class="table-active" style="border-bottom:1px solid white ">글유형</th>
-                            <td>공지</td>
+                            <td>자유 게시판</td>
                             <td class="table-active" style="border-bottom:1px solid white; ">등록일</td>
-                            <td>2024-06-04</td>
+                            <td>2024-06-05</td>
                         </tr>
                         <tr>
                             <th class="table-active" style="border-bottom:1px solid white; ">제목</th>
-                            <td>공지사항 제목입니다.</td>
+                            <td>현재 이런 상황에 대한 반응들</td>
                             <td class="table-active" style="border-bottom:1px solid white; ">조회</td>
-                            <td>0</td>
+                            <td>4</td>
                         </tr>
                         <tr>
                             <th class="table-active" style="border-bottom:1px solid white; ">이름</th>
-                            <td colspan="3">릭재원</td>
+                            <td colspan="3">매번 긍정일순 없어</td>
 
                         </tr>
                         <tr>
                             <th class="table-active" style="border-bottom:1px solid white; ">내용</th>
-                            <td colspan="3">야삐</td>
+                            <td colspan="3">현재 이런상황에 대해 나는 아무런 할말이 없구만유...</td>
 
                         </tr>
                     </tbody>

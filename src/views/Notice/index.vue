@@ -26,34 +26,33 @@
                 <tbody>
                     <tr>
                         <td>
-                            <RouterLink to="/Board/BoardList">
-                                <button class="btn btn-outline-dark w-100" style="border: none;">전체
-                                </button>
+                            <RouterLink to="/Board/BoardList?category=service">
+                                <span class="spanded">전체</span>
                             </RouterLink>
                         </td>
                         <td>
                             <RouterLink to="/Notice/BoardDetail">
-                                <button class="btn btn-outline-dark w-100" style="border: none;"
-                                    @click="sdfs">서비스</button>
+                                <span class="spanded">서비스</span>
                             </RouterLink>
                         </td>
                         <td>
                             <RouterLink to="/Board/BoardComment">
-                                <button class="btn btn-outline-dark w-100"
-                                    style="width: 100%;  border: none;outline:none; ">이벤트</button>
+                                <span class="spanded">이벤트</span>
                             </RouterLink>
                         </td>
                     </tr>
                     <tr>
 
                         <td>
-                            <button class="btn btn-outline-dark w-100"
-                                style="width: 100%;  border: none;outline:none;">공지</button>
+                            <RouterLink to="/Board/BoardComment">
+                                <span class="spanded">공지</span>
+                            </RouterLink>
                         </td>
                         <td>
 
-                            <button class="btn btn-outline-dark w-100"
-                                style="width: 100%; border: none;outline:none;">기타</button>
+                            <RouterLink to="/Board/BoardComment">
+                                <span class="spanded">기타</span>
+                            </RouterLink>
                         </td>
                     </tr>
 
@@ -63,18 +62,22 @@
 
 
 
-        <div class="container" style="width: 100%; height:100%; margin-top: 30px; ">
+        <div class="container" style="width: 100%; height:100%; margin-top: 10px; ">
             <!--  border:1px solid black; -->
 
 
-            <div style="width: 100%; height:500px; ">
-                
-                
-                <table class="table table-bordered mt-2">
-                           <tbody>
+            <div style="width: 100%; height:100%; ">
+
+                <table class="table mt-2 linebd">
+
+                    <tbody>
                         <tr>
                             <td class="text-center">공지</td>
-                            <td><RouterLink to="/Notice/BoardDetail">월 공휴일 휴무에 따른 거래 및 정산일정안내</RouterLink></td>
+                            <td>
+                                <RouterLink to="/Notice/BoardDetail" style="text-decoration: none; color: black">6월 공휴일
+                                    휴무에 따른 거래 및
+                                    정산일정안내</RouterLink>
+                            </td>
                         </tr>
                         <tr>
                             <td class="text-center">공지</td>
@@ -117,7 +120,7 @@
 
                 </table>
 
-            </div> 
+            </div>
 
         </div>
 
@@ -136,4 +139,21 @@ import BoardNavbar from '../Board/BoardNavbar.vue';
 </script>
 
 
-<style scoped></style>
+<style scoped>
+.table th,
+.table tr {
+    text-align: center;
+
+}
+
+.linebd th,
+.linebd td {
+    padding: 15px 5px;
+}
+.spanded{
+    align-items: center;
+    
+    height: 100%;
+
+}
+</style>
