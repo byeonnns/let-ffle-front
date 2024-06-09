@@ -1,18 +1,12 @@
 <template>
     <div class="board-list">
-        <div class="container" style="border:1px solid black; width: 10%;">
-            <nav>
-                <h5>게시판</h5>
-                <ul>
-                    <li>공지사항</li>
-                    <li>질문</li>
-                    <li>검수기준</li>
-                </ul>
-            </nav>
+
+        <div>
+            <BoardNavbar />
         </div>
-            
-        <div class="container" style="width: 100%; height:50px; border-bottom:3px solid orange; margin-bottom: 10px;">
-            <h3 style="margin-right: 80%; color: white">공지사항</h3>
+        <div class="container"
+            style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 30px">
+            <h3 style="margin-right: 80%;">공지사항</h3>
         </div>
         <div class="container" style="width: 100%; height:60px;">
             <!-- border:1px solid black; -->
@@ -28,59 +22,59 @@
             <!-- border:1px solid black; -->
             <table class="table table-bordered">
                 <thead>
+                </thead>
                 <tbody>
-                    <td>
-                        <button class="btn btn-outline-dark btn-sm" style="width: 100%; border: none;outline:none;">전체
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-dark btn-sm"
-                            style="width: 100%; border: none;outline:none; ">서비스</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-dark btn-sm"
-                            style="width: 100%;  border: none;outline:none; ">이벤트</button>
-                    </td>
+                    <tr>
+                        <td>
+                            <RouterLink to="/Board/BoardList">
+                                <button class="btn btn-outline-dark w-100" style="border: none;">전체
+                                </button>
+                            </RouterLink>
+                        </td>
+                        <td>
+                            <RouterLink to="/Notice/BoardDetail">
+                                <button class="btn btn-outline-dark w-100" style="border: none;"
+                                    @click="sdfs">서비스</button>
+                            </RouterLink>
+                        </td>
+                        <td>
+                            <RouterLink to="/Board/BoardComment">
+                                <button class="btn btn-outline-dark w-100"
+                                    style="width: 100%;  border: none;outline:none; ">이벤트</button>
+                            </RouterLink>
+                        </td>
+                    </tr>
                     <tr>
 
                         <td>
-                            <button class="btn btn-outline-dark btn-sm"
+                            <button class="btn btn-outline-dark w-100"
                                 style="width: 100%;  border: none;outline:none;">공지</button>
                         </td>
                         <td>
-                            <button class="btn btn-outline-dark btn-sm"
-                                style="width: 100%; border: none;outline:none; ">기타</button>
-                        </td>
-                        <td>
-                            <button class="btn btn-outline-dark btn-sm"
-                                style="width: 100%;  border: none;outline:none; ">글쓰기</button>
+
+                            <button class="btn btn-outline-dark w-100"
+                                style="width: 100%; border: none;outline:none;">기타</button>
                         </td>
                     </tr>
+
                 </tbody>
-                </thead>
             </table>
         </div>
 
 
 
-        <div class="container" style="width: 100%; height:500px;">
+        <div class="container" style="width: 100%; height:100%; margin-top: 30px; ">
             <!--  border:1px solid black; -->
 
-            <div style="width: 100%; height:500px; ">
-                <!-- border:1px solid black; -->
-                 <table class="table table-bordered mt-2">
-                      <!-- <thead>
-                         <th class="text-center" style="width:70px">번호</th>
-                        <th class="text-center">제목</th> 
-                         <th class="text-center" style="width:90px">글쓴이</th>
-                                <th class="text-center" style="width:120px">날짜</th>
-                                <th class="text-center" style="width:70px">조회수</th> 
 
-                    </thead>    -->
-                    <tbody>
+            <div style="width: 100%; height:500px; ">
+                
+                
+                <table class="table table-bordered mt-2">
+                           <tbody>
                         <tr>
                             <td class="text-center">공지</td>
-                            <td>6월 공휴일 휴무에 따른 거래 및 정산일정안내</td>
+                            <td><RouterLink to="/Notice/BoardDetail">월 공휴일 휴무에 따른 거래 및 정산일정안내</RouterLink></td>
                         </tr>
                         <tr>
                             <td class="text-center">공지</td>
@@ -123,13 +117,7 @@
 
                 </table>
 
-
-
-
-                <!-- <div style="margin-left: 55%">
-                    <button class="btn btn-success btn-sm mt-2">글쓰기</button>
-                </div> -->
-            </div>
+            </div> 
 
         </div>
 
@@ -144,6 +132,7 @@
 
 
 <script setup>
+import BoardNavbar from '../Board/BoardNavbar.vue';
 </script>
 
 

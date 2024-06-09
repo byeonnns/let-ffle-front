@@ -22,7 +22,7 @@
                                 <RouterLink to="/Raffle/Main" class="nav-item me-3">RAFFLE</RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Notice/BoardList" class="nav-item me-3">NOTICE</RouterLink>
+                                <RouterLink to="/Notice" class="nav-item me-3">NOTICE</RouterLink>
                             </li>
                             <li class="nav-item">
                                 <RouterLink to="/Board/BoardList" class="nav-item me-3">COMUNNITY</RouterLink>

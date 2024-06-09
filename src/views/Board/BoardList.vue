@@ -1,9 +1,7 @@
 <template>
     <div class="board-list">
 
-        <div>
-            <BoardNavbar />
-        </div>
+ 
         <!--네비바 -->
 
         <!-- / -->
