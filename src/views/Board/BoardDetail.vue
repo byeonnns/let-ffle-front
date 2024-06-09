@@ -1,8 +1,6 @@
 <template>
 
-    <div class="mt-5">
-        <BoardNavbar/>
-    </div>
+
 
     <div class="container"
         style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px;margin-top: 30px ">
@@ -43,7 +41,6 @@
 </template>
 
 <script setup>
-import BoardNavbar from './BoardNavbar.vue';
 import {useRouter} from 'vue-router';
 const router =useRouter();
 

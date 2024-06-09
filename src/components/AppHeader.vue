@@ -4,13 +4,14 @@
             <div class="d-flex d-none d-lg-block text-end">
                 <RouterLink to="/join" class="me-3"><span class="d-none d-md-inline-block">회원가입</span></RouterLink>
                 <RouterLink to="/login" class="me-3"><span class="d-none d-md-inline-block">로그인</span></RouterLink>
+                <RouterLink to="/Member/Mypage" class="me-3"><span class="d-none d-md-inline-block">마이페이지</span></RouterLink>
                 <a href="#" class="me-3"><span class="d-none d-md-inline-block">주문조회</span></a>
                 <a href="#" class="me-3"><span class="d-none d-md-inline-block">고객센터</span></a>
                 <RouterLink to="/admin/Main" class="me-3"><span class="d-none d-md-inline-block">관리자</span></RouterLink>
             </div>
             <nav class="navbar navbar-expand-lg bg-body-white">
                 <div class="container-fluid">
-                    <RouterLink to="/"><a class="fw-bold fst-italic h3">Let-FFle</a></RouterLink>
+                    <RouterLink to="/"><a class="fw-bold fst-italic h3">Let-<span style="color:#FF5C35">FFle</span></a></RouterLink>
                     <div class="navbar-toggler bi bi-bell fs-3 border-0" @click="clickCheck">
                     </div>
                     <div class="d-none d-lg-inline-block">
@@ -22,7 +23,7 @@
                                 <RouterLink to="/Raffle/Main" class="nav-item me-3">RAFFLE</RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Notice/BoardList" class="nav-item me-3">NOTICE</RouterLink>
+                                <RouterLink to="/Notice" class="nav-item me-3">NOTICE</RouterLink>
                             </li>
                             <li class="nav-item">
                                 <RouterLink to="/Board/BoardList" class="nav-item me-3">COMUNNITY</RouterLink>

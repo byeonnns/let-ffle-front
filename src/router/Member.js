@@ -32,8 +32,6 @@ const routes = [
                 path: 'WatchList',
                 component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage/WatchList.vue')
             },
-
-            
         ]
     },
     {
@@ -85,11 +83,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage/MypageNavBar.vue')
     },
     {
-        path: '/Member/Mypage/MyPage',
+        path: '/Member/Mypage',
         component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage')
     },
-    
-   
+
+
 ];
 
 export default routes;

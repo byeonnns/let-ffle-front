@@ -5,7 +5,7 @@ import Admin from './Admin';
 import Board from './Board';
 import Member from './Member';
 import Notice from './Notice';
-
+import Faq from './Faq';
 import Main from './Main';
 
 const routes = [
@@ -19,7 +19,8 @@ const routes = [
   ...Admin,
   ...Board,
   ...Notice,
-  ...Member
+  ...Member,
+  ...Faq,
 ]
 
 const router = createRouter({
