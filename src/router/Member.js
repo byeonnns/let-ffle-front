@@ -84,6 +84,10 @@ const routes = [
         path: '/Member/Mypage/MypageNavBar',
         component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage/MypageNavBar.vue')
     },
+    {
+        path: '/Member/Mypage/MyPage',
+        component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage/index.vue')
+    },
     
    
 ];

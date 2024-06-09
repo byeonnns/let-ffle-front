@@ -3,12 +3,12 @@
         <div class="d-flex flex-column" style="height: 100%;">
             <div class="d-flex flex-column">
                 <div class="border">
-                    <h5 class="border fw-bold">마이 페이지</h5>
+                    <h5 class="border fw-bold ps-5">마이 페이지</h5>
                 </div>
                 <nav class="border">
                     <ul class="nav d-flex flex-column">
                         <li class="nav-item fw-bold">
-                            <div class="nav-link active align-items-left mt-3" style="font-size: 18px;">응모 정보
+                            <div class="nav-link active align-items-left" style="font-size: 18px;">응모 정보
                             </div>
                         </li>
                         <li class="nav-item">
@@ -25,7 +25,7 @@
                 <nav class="border">
                     <ul class="nav d-flex flex-column">
                         <li class="nav-item fw-bold">
-                            <div class="nav-link active align-items-left mt-3" style="font-size: 18px;">내 정보</div>
+                            <div class="nav-link active align-items-left" style="font-size: 18px;">내 정보</div>
                         </li>
                         <li class="nav-item">
                             <RouterLink to="/Member/Mypage/LoginInformation" class="nav-link active">로그인 정보</RouterLink>

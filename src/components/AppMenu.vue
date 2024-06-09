@@ -56,70 +56,9 @@
                                 9.게시물 공지사항
                             </RouterLink>
                         </li>
-                      
                         <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/MypageNavBar" class="nav-link">
-                                10.마이 페이지 네브바
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/MypageProFile" class="nav-link">
-                                10.마이 페이지 프로필1
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/MypageProFile2" class="nav-link">
-                                10.마이 페이지 프로필2
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/MypageProFile3" class="nav-link">
-                                10.마이 페이지 프로필3
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/MypageProFile4" class="nav-link">
-                                10.마이 페이지 프로필4
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/ProfileManagement" class="nav-link">
-                                11.마이 페이지 프로필 관리
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/LoginInformation" class="nav-link">
-                                12.마이 페이지 로그인 정보
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/ApplicationDetails" class="nav-link">
-                                13.마이 페이지 상세보기
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/WinningDetails" class="nav-link">
-                                14.마이 페이지 당첨내역 
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/WatchList" class="nav-link">
-                                15.마이 페이지 관심목록
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/CreateInquiry" class="nav-link">
-                                16.마이 페이지 문의 작성하기
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/ToInquiry" class="nav-link">
-                                17.마이 페이지 문의 조회
-                            </RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Member/Mypage/ToInquiry" class="nav-link">
-                                18.마이 페이지 문의 조회
+                            <RouterLink to="/Member/Mypage/MyPage" class="nav-link">
+                                10.마이 페이지 기본화면
                             </RouterLink>
                         </li>
                     </ul>

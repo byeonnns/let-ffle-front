@@ -78,7 +78,7 @@
                     <hr class="p-0 m-0 w-100 mt-3" style="position: absolute; bottom: 0;">
                 </div>
                 <div class="mt-5">
-                    <RouterLink style="font-size: 13px; color: black;">회원탈퇴</RouterLink>
+                    <RouterLink to="#" style="font-size: 13px; color: black;">회원탈퇴</RouterLink>
                 </div>
             </div>
         </div>

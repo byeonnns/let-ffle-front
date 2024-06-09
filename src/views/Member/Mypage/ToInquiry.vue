@@ -3,7 +3,7 @@
         <div class="d-flex mt-2">
             <MypageNavBar style="width:250px" />
             <!-- <div class="flex-grow-1 d-flex flex-column"></div> -->
-            <div class="" style="width: 100%; height: 500px; border:1px solid black">
+            <div class="" style="width: 75%; height: 560px; border:1px solid black">
                 <h1 class="fw-bold mb-5">문의하기</h1>
                 <table class="table mb-0">
                     <thead>

@@ -2,15 +2,13 @@
     <div>
         <div class="d-flex">
             <MypageNavBar style="width: 180px;"/>
-            <div class="flex-grow-1 d-flex flex-column mb-2">
+            <div class="flex-grow-1 d-flex flex-column">
                 <div class="mb-2">
                     <h4 class="fw-bold">프로필 관리</h4>
                 </div>
                 <div class="fw-bold border-bottom border-3 border-black mb-5"></div>
                 <div class="d-flex">
                     <div class="circle-border">
-                        <img src="/images/photos/4.png" alt="photo" class="img-circle"
-                            style="width: 90px; height: 90px;" />
                     </div>
                     <div class="mt-1 ms-3">
                         <div class="mb-3">
@@ -18,7 +16,7 @@
                         </div>
                         <div class="mb-5">
                             <button class="btn btn-white btn-lg border rounded-3"
-                                style="font-size: 10px; margin-right: 8px;">이미지 변경</button>
+                                style="font-size: 10px; margin-right: 8px;">정보 변경</button>
                             <button class="btn btn-white btn-lg border rounded-3" style="font-size: 10px;">삭제</button>
                         </div>
                     </div>
