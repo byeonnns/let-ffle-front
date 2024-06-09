@@ -2,7 +2,7 @@
   <div>
     <AppHeader class="sticky-top bg-white" />
     <router-view />
-    <AppFooter />
+    <AppFooter v-if="!$route.path.startsWith('/Admin')"/>
     <FooterNav class="d-lg-none sticky-bottom" />
   </div>
 </template>
@@ -26,6 +26,10 @@ import FooterNav from "@/components/FooterNav.vue";
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
 
 nav {
   padding: 30px;

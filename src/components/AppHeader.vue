@@ -7,7 +7,7 @@
                 <RouterLink to="/Member/Mypage" class="me-3"><span class="d-none d-md-inline-block">마이페이지</span></RouterLink>
                 <a href="#" class="me-3"><span class="d-none d-md-inline-block">주문조회</span></a>
                 <a href="#" class="me-3"><span class="d-none d-md-inline-block">고객센터</span></a>
-                <RouterLink to="/admin/Main" class="me-3"><span class="d-none d-md-inline-block">관리자</span></RouterLink>
+                <RouterLink to="/Admin/Main" class="me-3"><span class="d-none d-md-inline-block">관리자</span></RouterLink>
             </div>
             <nav class="navbar navbar-expand-lg bg-body-white">
                 <div class="container-fluid">

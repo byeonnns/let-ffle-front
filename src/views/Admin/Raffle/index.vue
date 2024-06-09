@@ -123,7 +123,6 @@
 
 <script setup>
 import AdminSidebar from '@/views/Admin/Sidebar';
-
 </script>
 
 <style scoped>

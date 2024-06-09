@@ -1,13 +1,12 @@
 <template>
-
-    <div class="card">
-        <div class="card-header">관리자 래플 등록 페이지</div>
-        <div class="card-body">
-            <div class="wrapper">
+    <div class="d-flex">
+        <AdminSidebar/>
+        <div class="w-100">
+            <div>
                 <!-- contents -->
                 <div class="main p-3">
                     <div class="item-section mt-2 mb-2" style="font-size: 12px">래플 관리 > 래플 등록</div>
-
+    
                     <div class="headingArea">
                         <div class="title">
                             <h1 id="itemTitle">래플 등록</h1>
@@ -27,7 +26,7 @@
                                             </div>
                                         </button>
                                     </h2>
-                                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse show"
                                         data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
                                             <div class="contents">
@@ -43,10 +42,19 @@
                                                         </div>
                                                         <div class="tr">
                                                             <div class="th">
+                                                                <p class="form_label">래플 설명</p>
+                                                            </div>
+                                                            <div class="td">
+                                                                <input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tr">
+                                                            <div class="th">
                                                                 <p class="form_label">대분류</p>
                                                             </div>
                                                             <div class="td">
-                                                                <input type="text" id="selboxDirect" name="" placeholder="스포츠, 예술, 패션 등">
+                                                                <input type="text" id="selboxDirect" name=""
+                                                                    placeholder="스포츠, 예술, 패션 등">
                                                             </div>
                                                         </div>
                                                         <div class="tr">
@@ -54,7 +62,8 @@
                                                                 <p class="form_label">소분류</p>
                                                             </div>
                                                             <div class="td">
-                                                                <input type="text" id="selboxDirect" name="" placeholder="야구, 축구, 연극, 의류, 신발 등">
+                                                                <input type="text" id="selboxDirect" name=""
+                                                                    placeholder="야구, 축구, 연극, 의류, 신발 등">
                                                             </div>
                                                         </div>
                                                         <div class="tr">
@@ -67,10 +76,10 @@
                                                                         <div class="img_box d-flex">
                                                                             <div id="defaultImg">item</div>
                                                                         </div>
-
+    
                                                                         <div class="item_edit">
                                                                             <p class="tit">래플의 대표 이미지를 등록해주세요.</p>
-
+    
                                                                             <div class="attach_wrap">
                                                                                 <div class="attach_top">
                                                                                     <label class="attach_img"
@@ -100,10 +109,10 @@
                                                                         <div class="img_box d-flex">
                                                                             <div id="defaultImg">detail</div>
                                                                         </div>
-
+    
                                                                         <div class="item_edit">
-                                                                            <p class="tit">상품의 상세 이미지를 등록해주세요. 몇 개???</p>
-
+                                                                            <p class="tit">상품의 상세 이미지를 등록해주세요.</p>
+    
                                                                             <div class="attach_wrap">
                                                                                 <div class="attach_top">
                                                                                     <label class="attach_img"
@@ -139,12 +148,57 @@
                                                         </div>
                                                         <div class="tr">
                                                             <div class="th">
+                                                                <p class="form_label">미션</p>
+                                                            </div>
+                                                            <div class="td">
+                                                                <input type="text" id="selboxDirect" name=""
+                                                                    placeholder="퀴즈 등">
+                                                            </div>
+                                                        </div>
+                                                        <div class="tr">
+                                                            <div class="th">
+                                                                <p class="form_label">퀴즈 내용</p>
+                                                            </div>
+                                                            <div class="td">
+                                                                <textarea
+                                                                    style="width: 50%;">류현진 선수가 KBO의 한화 이글스로 돌아왔습니다. 그렇다면 류현진 선수가 메이저 리그에 있을 때, 가장 최근 소속팀은 어디일까요?</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tr">
+                                                            <div class="th">
+                                                                <p class="form_label">퀴즈 보기 (정답 체크)</p>
+                                                            </div>
+                                                            <div class="td">
+                                                                <input type="radio" id="opt1" name="fav_language"
+                                                                    value="HTML">
+                                                                <label for="opt1" class="ms-1 me-3">
+                                                                    <input>
+                                                                </label>
+                                                                <input type="radio" id="opt2" name="fav_language"
+                                                                    value="HTML">
+                                                                <label for="opt2" class="ms-1 me-3">
+                                                                    <input>
+                                                                </label>
+                                                                <input type="radio" id="opt3" name="fav_language"
+                                                                    value="HTML">
+                                                                <label for="opt3" class="ms-1 me-3">
+                                                                    <input>
+                                                                </label>
+                                                                <input type="radio" id="opt4" name="fav_language"
+                                                                    value="HTML">
+                                                                <label for="opt4" class="ms-1 me-3">
+                                                                    <input>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tr">
+                                                            <div class="th">
                                                                 <p class="form_label">당첨자 수</p>
                                                             </div>
                                                             <div class="td">
                                                                 <div class="input_clear sm">
                                                                     <input type="text" id="prdbrand" name="prdbrand"
-                                                                        placeholder="예시) 종근당">
+                                                                        placeholder="숫자만 입력하세요.">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -168,6 +222,7 @@
 </template>
 
 <script setup>
+import AdminSidebar from '@/views/Admin/Sidebar';
 </script>
 
 <style scoped>
@@ -630,4 +685,5 @@
     flex: 0 0 200px;
     margin-left: 10px;
 }
+
 </style>
