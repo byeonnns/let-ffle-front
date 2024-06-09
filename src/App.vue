@@ -1,10 +1,9 @@
 <template>
   <div>
-    <AppHeader class="sticky-top bg-white"/>
-    <AppMenu/>
+    <AppHeader class="sticky-top bg-white" />
     <router-view />
-    <AppFooter/> 
-    <FooterNav class="d-lg-none sticky-bottom"/>
+    <AppFooter />
+    <FooterNav class="d-lg-none sticky-bottom" />
   </div>
 </template>
 
@@ -36,5 +35,4 @@ nav a {
   font-weight: bold;
   color: #2c3e50;
 }
-
 </style>
