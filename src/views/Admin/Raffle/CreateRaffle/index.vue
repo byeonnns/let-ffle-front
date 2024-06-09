@@ -210,7 +210,7 @@
                                 </div>
                             </div>
                             <div class="btn_big_wrap btn_size_fix mt60">
-                                <button type="button" onclick="goMypage();" class="white btn_cancle">취소</button>
+                                <button type="button" class="white btn_cancle">취소</button>
                                 <button type="submit" class="btn_submit">등록</button>
                             </div>
                         </form>
@@ -676,7 +676,7 @@ import AdminSidebar from '@/views/Admin/Sidebar';
     cursor: pointer;
     color: white;
     font-size: 16px;
-    background-color: black;
+    background-color: #F37551;
     height: 52px;
     line-height: 50px;
     text-align: center;

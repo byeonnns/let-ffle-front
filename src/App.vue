@@ -26,9 +26,9 @@ import FooterNav from "@/components/FooterNav.vue";
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  text-decoration: none;
+#app a {
   color: black;
+  text-decoration: none;
 }
 
 nav {

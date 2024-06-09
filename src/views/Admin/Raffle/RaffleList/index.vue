@@ -1,15 +1,80 @@
 <template>
     <div class="d-flex">
-        <AdminSidebar/>
-        <div>
-            현재 등록된 래플
+        <AdminSidebar />
+        <div class="w-100 ms-5">
+            <div>
+                <!-- contents -->
+                <div class="main p-3">
+                    <div class="mt-2 mb-2" style="font-size: 12px">래플 관리 > 래플 등록</div>
+                    <div class="heading-area">
+                        <h1>래플 목록</h1>
+                    </div>
+                    <div class="content-area">
+                        <div id="order_list_div" class="section_block">
+                            <div class="no_data type4">
+                                <table class="table table-col">
+                                    <colgroup>
+                                        <col style="width: 14.2%">
+                                        <col style="width: 14.2%">
+                                        <col style="width: 14.2%">
+                                        <col style="width: 10.2%">
+                                        <col style="width: 11%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">래플 이름</th>
+                                            <th scope="col">응모 기간</th>
+                                            <th scope="col">당첨자</th>
+                                            <th scope="col">수정</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="ordtable-tbody">
+                                        <tr>
+                                            <td>
+                                                <div class="n-prd-row">
+                                                    <RouterLink to="/">래플1</RouterLink>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <fmt:formatDate value="" pattern="yyyy-MM-dd" />2024-06-04 ~ 2024-06-10
+                                            </td>
+                                            <td>
+                                                발표 예정
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-warning update-raffle-btn" @click="updateRaffle">수정</button>
+                                                <button class="btn btn-danger delete-raffle-btn ms-3" @click="deleteRaffle">삭제</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
 import AdminSidebar from '@/views/Admin/Sidebar';
+function updateRaffle() {
+
+}
+
+function deleteRaffle() {
+
+}
 </script>
 
 <style scoped>
+.heading-area {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.content-area {
+    margin-top: 30px;
+}
+
 </style>
