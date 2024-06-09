@@ -4,7 +4,10 @@
             <div class="d-flex flex-column" style="width: 180px;">
                 <div class="d-flex flex-column">
                     <div class="border">
-                        <h5 class="border fw-bold ps-5">마이 페이지</h5>
+                        <h5 class="border fw-bold ps-5">
+                            <RouterLink to="/Member/Mypage/MyPage" style="color: black; text-decoration: none;">마이 페이지
+                            </RouterLink>
+                        </h5>
                     </div>
                     <nav class="border">
                         <ul class="nav d-flex flex-column">
@@ -53,9 +56,7 @@
                 <div class="card w-50 ms-5 w-75 rounded-3">
                     <div class="card-body mt-3 ms-3 flex-column">
                         <div class="d-flex">
-                            <div class="circle-border">
-                                <img src="/images/photos/1.png" alt="" class="img-circle" />
-                            </div>
+
                             <div class="mt-1 ms-3">
                                 <div>
                                     <strong>gekx0m</strong>
@@ -72,57 +73,57 @@
                     </div>
                 </div>
                 <div>
-                    <div class="d-flex">
-                        <div class="card w-50 mt-4 ms-5 w-75 rounded-3">
+
+                    <div class="card w-50 mt-4 ms-5 w-75 rounded-3">
+                        <div class="card-body mt-3 ms-3 flex-column pb-4">
+                            <div class="d-flex justify-content-between">
+                                <span><button>쿠폰</button></span>
+                                <span><button>친구초대</button></span>
+                                <span><button>공지사항</button></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+
+                    <div class="w-50 mt-4 ms-5 w-75 rounded-3">
+                        <div class="d-flex justify-content-between">
+                            <span class="fw-bold mb-3" style="font-size: 18px;">응모 내역</span>
+                            <span><button class="btn border-0 bg-white" style="font-size: 13px;">더보기
+                                    ></button></span>
+                        </div>
+                        <div class="card">
                             <div class="card-body mt-3 ms-3 flex-column pb-4">
                                 <div class="d-flex justify-content-between">
-                                    <span><button>쿠폰</button></span>
-                                    <span><button>친구초대</button></span>
-                                    <span><button>공지사항</button></span>
+                                    <span>전체</span>
+                                    <span>진행중</span>
+                                    <span>종료</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div>
-                    <div class="d-flex">
-                        <div class="w-50 mt-4 ms-5 w-75 rounded-3">
-                            <div class="d-flex justify-content-between">
-                                <span class="fw-bold mb-3" style="font-size: 18px;">응모 내역</span>
-                                <span><button class="btn border-0 bg-white" style="font-size: 13px;">더보기
-                                        ></button></span>
-                            </div>
-                            <div class="card">
-                                <div class="card-body mt-3 ms-3 flex-column pb-4">
-                                    <div class="d-flex justify-content-between">
-                                        <span>전체</span>
-                                        <span>진행중</span>
-                                        <span>종료</span>
-                                    </div>
-                                </div>
-                            </div>
+
+                    <div class="w-50 mt-5 ms-5 w-75 rounded-3">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="fw-bold mb-3" style="font-size: 18px;">관심 상품</h5>
+                            <h5><button class="btn border-0 bg-white" style="font-size: 13px;">더보기 ></button></h5>
+                        </div>
+                        <div class="card" style="width: 16rem;">
+                            <img src="/images/photos/2.png" class="card-img-top" alt="..." />
+                        </div>
+                        <div class="ms-1">
+                            <div class="card-text fw-bold" style="font-size: 13px;">Nike</div>
+                            <div class="card-texts">Nike Air Force 1'07 First Use White Te</div>
+                            <div class="card-texts mb-2">am Red</div>
+                            <div class="fw-bold">330,000원</div>
+                            <h5 style="font-size: 11px;" class="mt-1">즉시구매가</h5>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <div class="d-flex">
-                        <div class="w-50 mt-5 ms-5 w-75 rounded-3">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="fw-bold mb-3" style="font-size: 18px;">관심 상품</h5>
-                                <h5><button class="btn border-0 bg-white" style="font-size: 13px;">더보기 ></button></h5>
-                            </div>
-                            <div class="card" style="width: 16rem;">
-                                <img src="/images/photos/2.png" class="card-img-top" alt="..." />
-                            </div>
-                            <div class="ms-1">
-                                <div class="card-text fw-bold" style="font-size: 13px;">Nike</div>
-                                <div class="card-texts">Nike Air Force 1'07 First Use White Te</div>
-                                <div class="card-texts mb-2">am Red</div>
-                                <div class="fw-bold">330,000원</div>
-                                <h5 style="font-size: 11px;" class="mt-1">즉시구매가</h5>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -168,5 +169,4 @@
 .ms-1 .fw-bold {
     font-size: 14px;
 }
-
 </style>
