@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div class="d-flex">
+        <div class="d-flex ms-5">
             <MypageNavBar style="width: 180px;"/>
-            <div class="flex-grow-1 d-flex flex-column">
-                <div class="mb-2">
-                    <h4 class="fw-bold">프로필 관리</h4>
+            <div class="d-flex flex-column ms-5 container">
+                <div class="">
+                    <h4>프로필 관리</h4>
+                    <hr style="border-width: 3px; color: #F37551; height: 20px;"/>
                 </div>
-                <div class="fw-bold border-bottom border-3 border-black mb-5"></div>
                 <div class="d-flex">
                     <div class="circle-border">
                     </div>
@@ -14,10 +14,10 @@
                         <div class="mb-3">
                             <strong>gekx0m</strong>
                         </div>
-                        <div class="mb-5">
+                        <div class="mb-3">
                             <button class="btn btn-white btn-lg border rounded-3"
-                                style="font-size: 10px; margin-right: 8px;">정보 변경</button>
-                            <button class="btn btn-white btn-lg border rounded-3" style="font-size: 10px;">삭제</button>
+                                style="font-size: 12px; margin-right: 8px;">정보 변경</button>
+                            <button class="btn btn-white btn-lg border rounded-3" style="font-size: 12px;">삭제</button>
                         </div>
                     </div>
                 </div>

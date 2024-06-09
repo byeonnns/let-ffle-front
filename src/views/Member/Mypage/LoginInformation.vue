@@ -1,13 +1,13 @@
 <template>
 
     <div>
-        <div class="d-flex">
-            <MypageNavBar style="width:180px"/>
-            <div class="flex-grow-1 d-flex flex-column">
-                <div class="mb-2">
+        <div class="d-flex ms-5">
+            <MypageNavBar style="width:180px" />
+            <div class="d-flex flex-column ms-5 container">
+                <div class="">
                     <h4>로그인 정보</h4>
+                    <hr style="border-width: 3px; color: #F37551; height: 20px;" />
                 </div>
-                <div class="fw-bold border-bottom border-3 border-black mb-5"></div>
                 <div class="d-flex justify-content-between mb-3" style="width: 100%;">
                     <span style="font-size: 18px;" class="fw-bold mb-3">내 계정</span>
                 </div>

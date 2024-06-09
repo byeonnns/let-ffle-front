@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="d-flex mt-5">
+        <div class="d-flex ms-5">
             <MypageNavBar style="width:180px" />
             <!-- <div class="flex-grow-1 d-flex flex-column"></div> -->
-            <div class="ms-4" style="border:1px solid black; width: 75%; height:" >
-                <h4 class="fw-bold mb-4">문의 작성하기</h4>
+            <div class="ms-5 d-flex flex-column ms-5 container border">
+                <h4>문의 작성하기</h4>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">이름(필수)</label>
                     <div class="col-sm-10">

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="d-flex">
-            <div class="card w-50 mt-5 ms-5 w-75 rounded-3">
+        <div class="d-flex ms-5 mb-4">
+            <div class="card rounded-3 w-100">
                 <div class="card-body mt-3 ms-3 flex-column pb-4">
                     <div class="d-flex justify-content-between">
                         <span><button>쿠폰</button></span>

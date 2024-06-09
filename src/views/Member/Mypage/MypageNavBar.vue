@@ -3,51 +3,53 @@
         <div class="d-flex">
             <div class="d-flex flex-column" style="width: 180px;">
                 <div class="d-flex flex-column">
-                    <div class="border">
-                        <h5 class="border fw-bold ps-5">
-                            <RouterLink to="/Member/Mypage/MyPage" style="color: black; text-decoration: none;">마이 페이지</RouterLink>
+                    <div class="">
+                        <h5 class=" fw-bold ps-5">
+                            <RouterLink to="/Member/Mypage" style="color: black; text-decoration: none;">마이 페이지</RouterLink>
                         </h5>
                     </div>
-                    <nav class="border">
-                        <ul class="nav d-flex flex-column">
-                            <li class="nav-item fw-bold">
-                                <div class="nav-link active align-items-left" style="font-size: 18px;">응모 정보
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <RouterLink to="/Member/Mypage/ApplicationDetails"
-                                    class="nav-link active align-items-left">응모 내역</RouterLink>
-                            </li>
-                            <li class="nav-item">
-                                <RouterLink to="/Member/Mypage/WatchList" class="nav-link active align-items-left">찜 목록
-                                </RouterLink>
-                            </li>
-                            <li class="nav-item">
-                                <RouterLink to="/Member/Mypage/WinningDetails"
-                                    class="nav-link active align-items-left mb-3">당첨 내역</RouterLink>
-                            </li>
-                        </ul>
+                    <nav class="">
+                        <div>
+                            <div class=" align-items-left ps-3 fw-bold" style="font-size: 18px;">응모 정보
+                            </div>
+                            <ul class="nav d-flex flex-column">
+                                
+                                <li class="nav-item">
+                                    <RouterLink to="/Member/Mypage/ApplicationDetails"
+                                        class="nav-link active align-items-left">응모 내역</RouterLink>
+                                </li>
+                                <li class="nav-item">
+                                    <RouterLink to="/Member/Mypage/WatchList" class="nav-link active align-items-left">찜 목록
+                                    </RouterLink>
+                                </li>
+                                <li class="nav-item">
+                                    <RouterLink to="/Member/Mypage/WinningDetails"
+                                        class="nav-link active align-items-left mb-3">당첨 내역</RouterLink>
+                                </li>
+                            </ul>
+                        </div>
                     </nav>
-                    <nav class="border">
-                        <ul class="nav d-flex flex-column">
-                            <li class="nav-item fw-bold">
-                                <div class="nav-link active align-items-left" style="font-size: 18px;">내 정보</div>
-                            </li>
-                            <li class="nav-item">
-                                <RouterLink to="/Member/Mypage/LoginInformation" class="nav-link active">로그인 정보
-                                </RouterLink>
-                            </li>
-                            <li class="nav-item">
-                                <RouterLink to="/Member/Mypage/ProfileManagement" class="nav-link active">프로필 관리
-                                </RouterLink>
-                            </li>
-                            <li class="nav-item">
-                                <RouterLink to="/Member/Mypage/CreateInquiry" class="nav-link active">문의 작성</RouterLink>
-                            </li>
-                            <li class="nav-item">
-                                <RouterLink to="/Member/Mypage/ToInquiry" class="nav-link active">문의 조회</RouterLink>
-                            </li>
-                        </ul>
+                    <nav class="">
+                        <div>
+                            <div class="nav-link align-items-left ps-3 fw-bold" style="font-size: 18px;">내 정보</div>
+                            <ul class="nav d-flex flex-column">
+                                <li class="nav-item">
+                                    <RouterLink to="/Member/Mypage/LoginInformation" class="nav-link active">로그인 정보
+                                    </RouterLink>
+                                </li>
+                                <li class="nav-item">
+                                    <RouterLink to="/Member/Mypage/ProfileManagement" class="nav-link active">프로필 관리
+                                    </RouterLink>
+                                </li>
+                                <li class="nav-item">
+                                    <RouterLink to="/Member/Mypage/CreateInquiry" class="nav-link active">문의 작성</RouterLink>
+                                </li>
+                                <li class="nav-item">
+                                    <RouterLink to="/Member/Mypage/ToInquiry" class="nav-link active">문의 조회</RouterLink>
+                                </li>
+                            </ul>
+
+                        </div>
                     </nav>
                 </div>
             </div>
@@ -58,11 +60,27 @@
 </template>
 
 <script setup>
+
+
 </script>
 
 <style scoped>
-.nav-item>.nav-link {
+/* .nav-item>.nav-link {
     color: black;
     font-size: 15px;
+} */
+
+.router-link-active {
+  color: #FF5C35; 
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #FF5C35;
+}
+
 </style>

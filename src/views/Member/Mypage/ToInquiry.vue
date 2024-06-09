@@ -1,13 +1,13 @@
 <template>
     <div >
-        <div class="d-flex mt-2">
-            <MypageNavBar style="width:250px" />
+        <div class="d-flex ms-5">
+            <MypageNavBar style="width:180px;" />
             <!-- <div class="flex-grow-1 d-flex flex-column"></div> -->
-            <div class="" style="width: 75%; height: 560px; border:1px solid black">
-                <h1 class="fw-bold mb-5">문의하기</h1>
+            <div class="d-flex flex-column ms-5 container">
+                <h4>문의하기</h4>
+                <hr style="border-width: 3px; color: #F37551; height: 20px;"/>
                 <table class="table mb-0">
                     <thead>
-                        <hr />
                         <tr class="d-none d-md-table-row text-center">
                             <th class="d-none d-md-table-cell" style="width: 4em;"><span>번호</span></th>
                             <th><span>제목</span></th>
@@ -40,10 +40,6 @@ import MypageNavBar from './MypageNavBar';
 </script>
 
 <style scoped>
-hr {
-    border: 2px solid black;
-}
-
 td {
     text-align: center;
 }

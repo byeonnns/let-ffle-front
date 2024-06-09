@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="d-flex">
+        <div class="d-flex ms-5">
             <MypageNavBar style="width: 180px;" />
-            <div class="border d-flex flex-column" style="min-width: calc(100% - 180px);">
-                <h3>응모 내역</h3>
-                <div class="content_area my-page-content flex-grow-1">
+            <div class="d-flex flex-column ms-5 container">
+                <h4>응모 내역</h4>
+                <div class="content_area my-page-content">
                     <div class="my_purchase">
                         <div class="v-portal" style="display: none;"></div>
                         <div class="purchase_list_tab detail_tab flex-container">
@@ -54,7 +54,7 @@
                                         </li>
                                         <li class="month_item">
                                             <a href="#" class="month_link"
-                                                style="color: white; background-color: darkgray">조회</a>
+                                                style="color: white; background-color: #F37551;">조회</a>
                                         </li>
                                     </span>
                                 </ul>
@@ -158,6 +158,5 @@ import MypageNavBar from './MypageNavBar';
 .Status {
     display: flex;
 }
-
 
 </style>
