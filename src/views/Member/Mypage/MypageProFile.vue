@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="d-flex ms-5 mb-4">
-            <div class="card rounded-3 w-100" style="height: 150px;">
+            <div class="card rounded-3" style="height: 150px; width: 100%; margin-left: 150px;" >
                 <div class="card-body mt-3 ms-3 flex-column">
                     <div class="d-flex">
                         <div class="mt-3 ms-3">

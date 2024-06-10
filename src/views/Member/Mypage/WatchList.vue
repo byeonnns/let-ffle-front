@@ -2,15 +2,13 @@
     <div>
         <div class="d-flex ms-5 mt-4">
             <MypageNavBar style="width: 180px;" />
-            <div class="d-flex flex-column ms-5 container">
-                <div class="">
+            <div class="d-flex flex-column" style="width: 100%; margin-left: 150px; margin-right: 250px;">
+                <div style="border-bottom: 3px solid #F37551;" class="mb-3">
                     <h4>관심</h4>
-                    <hr style="border-width: 3px; color: #F37551; height: 20px;"/>
                 </div>
                 
                 <div class="d-flex justify-content-between mb-3" style="width: 100%;">
                     <span style="font-size: 13px;">전체 n</span>
-                    <span style="font-size: 13px;">관심 등록순</span>
                 </div>
                 <div class="d-flex justify-content-between">
                     <div class="d-flex">

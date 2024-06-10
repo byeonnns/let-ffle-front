@@ -2,8 +2,10 @@
     <div>
         <div class="d-flex ms-5 mt-4">
             <MypageNavBar style="width: 180px;" />
-            <div class=" d-flex flex-column ms-5 container">
-                <h4>당첨 내역</h4>
+            <div class="d-flex flex-column" style="width: 100%; margin-left: 150px; margin-right: 250px;">
+                <div style="border-bottom: 3px solid #F37551;" class="mb-3">
+                    <h4>당첨 내역</h4>
+                </div>
                 <div class="content_area my-page-content">
                     <div class="my_purchase">
                         <div class="v-portal" style="display: none;"></div>
@@ -11,24 +13,24 @@
                             <div class="tab_item total">
                                 <a href="#" class="tab_link">
                                     <dl class="tab_box">
-                                        <dt class="title">전체</dt>
-                                        <dd class="count">0</dd>
+                                        <dt class="title" style="height: 50px;">전체</dt>
+                                        <dd class="count">1</dd>
                                     </dl>
                                 </a>
                             </div>
                             <div class="tab_item">
                                 <a href="#" class="tab_link">
                                     <dl class="tab_box">
-                                        <dt class="title">진행 중</dt>
-                                        <dd class="count">0</dd>
+                                        <dt class="title" style="height: 50px;">진행 중</dt>
+                                        <dd class="count">1</dd>
                                     </dl>
                                 </a>
                             </div>
                             <div class="tab_item">
                                 <a href="#" class="tab_link">
                                     <dl class="tab_box">
-                                        <dt class="title">종료</dt>
-                                        <dd class="count">0</dd>
+                                        <dt class="title" style="height: 50px;">당첨된 응모</dt>
+                                        <dd class="count">1</dd>
                                     </dl>
                                 </a>
                             </div>
@@ -36,6 +38,9 @@
                         <div class="period_search">
                             <div class="period_month border mt-2">
                                 <ul class="month_list container d-flex justify-content-center">
+                                    <li class="month_item">
+                                        <a href="#" class="month_link">전체</a>
+                                    </li>
                                     <li class="month_item">
                                         <a href="#" class="month_link">최근 2개월</a>
                                     </li>
@@ -63,16 +68,26 @@
                         <div class="mb-4 mt-2">
                             <p style="color: gray; font-size: 15px;">●한 번에 조회 가능한 기간은 최대 6개월입니다.</p>
                         </div>
-                        <div class="Status d-flex justify-content-between">
-                            <button class="btn btn-white btn-sm border">전체</button>
-                            <a href="#" class="Status_link">
-                                <span class="mt-2 me-2" style="font-size: 15px; color: gray;">상태</span>
-                            </a>
-                        </div>
-                        <hr class="mb-5" />
+                        <hr class="mb-3" />
                         <div class="text-center">
-                            <p style="color: darkgray;">응모내역이 없습니다.</p>
-                            <button class="btn btn-white btn-sm border">응모하러 가기</button>
+                            <table class="table mb-4">
+                                <thead>
+                                    <tr class="d-none d-md-table-row text-center">
+                                        <th class="d-none d-md-table-cell" style="width: 4em;"><span>레플 이름</span></th>
+                                        <th class="d-none d-md-table-cell" style="width: 11em;"><span>당첨 일자</span></th>
+                                        <th class="d-none d-md-table-cell" style="width: 8em;"><span>당첨자</span></th>
+                                        <th class="d-none d-md-table-cell" style="width: 4em;"><span>응모 상품</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>레플 1번</td>
+                                        <td>2024.06.10</td>
+                                        <td>XXX</td>
+                                        <td>류현진 싸인 유니폼</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
 
 
@@ -94,7 +109,6 @@ import MypageNavBar from './MypageNavBar';
 }
 
 .title h3 {
-    color: #333;
     font-size: 24px;
 }
 
@@ -106,14 +120,10 @@ import MypageNavBar from './MypageNavBar';
     flex: 1;
     text-align: center;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
 }
 
 .tab_link {
     text-decoration: none;
-    color: rgb(100, 100, 100);
 }
 
 .tab_box {
@@ -143,7 +153,6 @@ import MypageNavBar from './MypageNavBar';
     padding: 5px 10px;
     margin-top: 15px;
     font-size: 13px;
-    color: rgb(125, 124, 124);
 }
 
 .btn {
@@ -151,8 +160,6 @@ import MypageNavBar from './MypageNavBar';
     height: 40px;
     text-align: center;
     border-radius: 10px;
-    color: rgb(104, 104, 104);
-
 }
 
 .Status {
