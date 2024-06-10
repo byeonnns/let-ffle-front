@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="carouselExampleIndicators" class="carousel slide container">
+    <div id="carouselExampleIndicators" class="carousel slide container mb-4">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
           aria-current="true" aria-label="Slide 1"></button>
@@ -31,46 +31,13 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    <div class="container-lg">
-      <div class="row">
-        <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-center">
-          <div class="card mx-1 my-2 border-0">
-            <img src="@/assets/tempImage/test1.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">테스트 렛플<br>대충 설명</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-center">
-          <div class="card mx-1 my-2 border-0">
-            <img src="@/assets/tempImage/test1.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">테스트 렛플<br>대충 설명</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-center">
-          <div class="card mx-1 my-2 border-0">
-            <img src="@/assets/tempImage/test1.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">테스트 렛플<br>대충 설명</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-center">
-          <div class="card mx-1 my-2 border-0">
-            <img src="@/assets/tempImage/test1.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">테스트 렛플<br>대충 설명</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <RaffleMain/>
+    <!-- Todo : 임시로 해놓음 컴포넌트화 할 것인지? -->
   </div>
 </template>
 
 <script setup>
+import RaffleMain from "./Raffle/Main"
 </script>
 
 <style scoped></style>
