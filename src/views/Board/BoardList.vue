@@ -2,7 +2,7 @@
     <div class="board-list">
 
 
-        <!--네비바 -->
+        
 
         <!-- / -->
         <div class="container"

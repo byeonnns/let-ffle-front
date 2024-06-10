@@ -1,9 +1,7 @@
 <template>
     <div>
         <div class="d-flex container">
-            <!-- <div class="p-3 mt-3" style="width:180px">
-                <BoardNavbar />
-            </div> -->
+
             <div class="d-flex flex-column flex-grow-1">
                 <div
                     style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 10px">
@@ -139,7 +137,7 @@
 
 
 <script setup>
-import BoardNavbar from '../Board/BoardNavbar.vue';
+
 </script>
 
 
