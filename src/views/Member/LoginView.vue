@@ -3,16 +3,16 @@
         <div class="d-flex justify-content-center">
             <!--아이디(이메일), 비밀번호, 이름, 주민번호, 전화번호, 주소를 입력받는다.-->
             <div class="d-flex flex-column" :style="responsiveSize">
-                <p class="text-center fst-italic m-5" style="font-size:50px; font-weight: 900">Let'FFle</p>
-                <label for="memail">이메일 주소*</label>
-                <input id="memail" type="email" class="border-0 border-bottom" placeholder="예) letfle@let.fle">
-                <label for="mpassword" class="mt-5">비밀번호*</label>
+                <p class="text-center fst-italic m-5" style="font-size:50px; font-weight: 900">Let-<span style="color:#FF5C35">FFle</span></p>
+                <label for="memail" class="mb-2">이메일 주소</label>
+                <input id="memail" type="email" class="border-0 border-bottom">
+                <label for="mpassword" class="mt-5 mb-2">비밀번호</label>
                 <input id="mpassword" type="password" class="border-0 border-bottom">
-                <button class="btn btn-dark btn-lg mt-5">로그인</button>
+                <button class="btn text-white btn-lg mt-5">로그인</button>
                 <div class="row mt-3 text-center">
-                    <div class="col-4 border-end">이메일 가입</div>
-                    <div class="col-4">이메일 찾기</div>
-                    <div class="col-4 border-start">비밀번호 찾기</div>
+                    <div class="col-4 border-end"><RouterLink to="/???">이메일 가입</RouterLink></div>
+                    <div class="col-4"><RouterLink to="/???">이메일 찾기</RouterLink></div>
+                    <div class="col-4 border-start"><RouterLink to="/???">비밀번호 찾기</RouterLink></div>
                 </div>
             </div>
         </div>
@@ -38,5 +38,4 @@ window.addEventListener('resize', handleResize);
 </script>
 
 <style scoped>
-
 </style>

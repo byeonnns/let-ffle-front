@@ -3,12 +3,12 @@
     <AppHeader class="sticky-top bg-white" />
     <router-view />
     <AppFooter v-if="!$route.path.startsWith('/Admin')"/>
-    <FooterNav class="d-lg-none sticky-bottom" />
+    <FooterNav class="d-lg-none sticky-bottom container-fluid" />
   </div>
 </template>
 
 <script setup>
-import AppHeader from '@/components/AppHeader.vue';
+import AppHeader from '@/components/AppHeader';
 import AppMenu from '@/components/AppMenu.vue';
 import AppFooter from "@/components/AppFooter.vue";
 import FooterNav from "@/components/FooterNav.vue";
@@ -31,11 +31,25 @@ import FooterNav from "@/components/FooterNav.vue";
   text-decoration: none;
 }
 
+#app a:hover {
+    color:#FF5C35;
+    transition: all 0.15s;
+}
+
 #app .router-link-exact-active {
   color: #FF5C35; 
 }
 
 #app .nav-link {
   font-weight: bold;
+}
+
+#app .btn {
+    background-color:#FF5C35;
+}
+#app .btn:hover {
+    background-color:#FF5C35;
+    opacity: 65%;
+    transition: all 0.15s;
 }
 </style>
