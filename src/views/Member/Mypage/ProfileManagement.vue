@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="d-flex ms-5 mt-4">
+        <div class="d-flex">
             <div class="d-flex flex-column ms-5 container">
                 <div class="mb-3" style="border-bottom: 3px solid #F37551;">
                     <h4>프로필 관리</h4>
@@ -83,7 +83,6 @@
 </template>
 
 <script setup>
-import MypageNavBar from './MypageNavBar';
 </script>
 
 <style scoped>

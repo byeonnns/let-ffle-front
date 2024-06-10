@@ -39,7 +39,6 @@
 </template>
 
 <script setup>
-import MypageNavBar from './MypageNavBar';
 </script>
 
 <style scoped>

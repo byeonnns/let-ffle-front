@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="container">
-            <div class="d-flex">
+        <div class="container ms-5">
+            <div class="d-flex mb-5">
                 <div class="card rounded-3" style="height: 150px; width: 100%;">
                     <div class="card-body mt-3 ms-3 flex-column">
                         <div class="d-flex">
@@ -12,7 +12,7 @@
                                 <p>asd@naver.com</p>
                             </div>
                             <div class="position-absolute top-50 end-0 translate-middle-y me-4">
-                                <RouterLink to="/Member/Mypage/ProfileManagement"><button
+                                <RouterLink to="/Member/Mypage/LoginInformation"><button
                                         class="btn btn-lg border rounded-3" style="font-size: 12px;">내 정보 수정</button>
                                 </RouterLink>
                             </div>

@@ -4,7 +4,7 @@
             <div class="d-flex flex-column" style="width: 180px;">
                 <div class="d-flex flex-column">
                     <div class="mb-4 ms-3">
-                        <h2>마이 페이지</h2>
+                        <RouterLink to="/Member/Mypage"><h2>마이 페이지</h2></RouterLink>
                     </div>
                     <nav class="">
                         <ul class="nav d-flex flex-column ms-3">
@@ -47,11 +47,6 @@
 </script>
 
 <style scoped>
-/* .nav-item>.nav-link {
-    color: black;
-    font-size: 15px;
-} */
-
 .router-link-active {
     color: #FF5C35;
 }

@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="d-flex ms-5">
+        <div class="d-flex">
             <!-- <div class="flex-grow-1 d-flex flex-column"></div> -->
-            <div class="ms-5 d-flex flex-column ms-5 container">
+            <div class="d-flex flex-column ms-5 container">
                 <div style="border-bottom: 3px solid #F37551;" class="mb-3">
                     <h4>문의 작성하기</h4>
                 </div>
@@ -38,7 +38,6 @@
 </template>
 
 <script setup>
-import MypageNavBar from './MypageNavBar';
 </script>
 
 <style scoped>

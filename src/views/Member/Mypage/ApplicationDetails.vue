@@ -2,8 +2,8 @@
     <div>
         <div class="container">
             <div class="d-flex">
-                <div class="d-flex flex-column" style="width: 100%;">
-                    <div style="border-bottom: 3px solid #F37551;" class="">
+                <div class="d-flex flex-column ms-5" style="width: 100%;">
+                    <div style="border-bottom: 3px solid #F37551;" class="mb-3">
                         <h4>응모 내역</h4>
                     </div>
                     <div class="content_area my-page-content">
@@ -99,7 +99,6 @@
 </template>
 
 <script setup>
-import MypageNavBar from './MypageNavBar';
 </script>
 
 <style scoped>

@@ -2,8 +2,8 @@
     <div>
         <div class="container"> 
             <div class="d-flex">
-                <div class="d-flex flex-column" style="width: 100%;">
-                    <div style="border-bottom: 3px solid #F37551;" class="">
+                <div class="d-flex flex-column ms-5" style="width: 100%;">
+                    <div style="border-bottom: 3px solid #F37551;">
                         <h4>찜 목록</h4>
                     </div>
                     <div class="mb-3">
@@ -21,7 +21,6 @@
                             <button class="btn btm-sm me-2" style="background-color: #F37551">응모</button>
                             <button class="btn btm-sm"
                                 style="background-color: white; color:black; border: 1px solid black;">삭제</button>
-
                         </div>
                     </div>
                     <hr />
@@ -41,4 +40,5 @@
 .router {
     color: black;
 }
+
 </style>
