@@ -1,13 +1,12 @@
 <template>
-
     <div>
         <div class="container">
-            <div class="d-flex ms-5 mt-4">
-                <div class="d-flex flex-column container ms-5" style="width: 100%;">
+            <div class="d-flex">
+                <div class="d-flex flex-column ms-5" style="width: 100%;">
                     <div style="border-bottom: 3px solid #F37551;" class="mb-3">
-                        <h4>로그인 정보</h4>
+                        <h4>회원 정보 수정</h4>
                     </div>
-                    <div class="d-flex justify-content-center flex-column align-items-center">
+                    <div class="d-flex justify-content-center flex-column align-items-center mt-4">
                         <div class="mb-3" style="width: 50%;">
                             <span style="font-size: 22px;" class="fw-bold mb-3">내 계정</span>
                         </div>
@@ -48,46 +47,9 @@
                             <button class="btn btn-white btn-sm mb-5"
                                 style="position: absolute; bottom: 0; right: 0;">변경</button>
                         </div>
-                        <div style="width: 50%;">
-                            <h5 style="font-size: 13px;">신발 사이즈</h5>
-                        </div>
                         <div class="w-50 position-relative">
-                            <div style="align-content: end;">
-                                <input type="email" placeholder="260" class="input w-50">
-                            </div>
-                            <hr class="p-0 m-0 w-100 mt-3">
-                            <button class="btn btn-white btn-sm"
-                                style="position: absolute; bottom: 0; right: 0;">변경</button>
-                        </div>
-
-                        <div class="mb-3 mt-4" style="width: 50%;">
-                            <span style="font-size: 18px;" class="fw-bold mb-3 mt-5">광고성 정보 수신</span>
-                        </div>
-                        <div class="w-50 position-relative">
-                            <div class="d-flex justify-content-between">
-                                <p>문자 메세지</p>
-                                <div>
-                                    <label for="radioButton">수신동의</label>
-                                    <input type="checkbox" id="radioButton1" placeholder="라디오 버튼" class="input me-2">
-                                    <label for="radioButton">수신거부</label>
-                                    <input type="checkbox" id="radioButton2" placeholder="라디오 버튼" class="input">
-                                </div>
-                            </div>
-                            <hr class="p-0 m-0 w-100 mt-3" style="position: absolute; bottom: 0;">
-                        </div>
-                        <div class="w-50 position-relative">
-                            <div class="d-flex justify-content-between mt-4">
-                                <p>이메일</p>
-                                <div>
-                                    <label for="radioButton">수신동의</label>
-                                    <input type="checkbox" id="radioButton3" placeholder="라디오 버튼" class="input me-2">
-                                    <label for="radioButton">수신거부</label>
-                                    <input type="checkbox" id="radioButton4" placeholder="라디오 버튼" class="input">
-                                </div>
-                            </div>
-                            <hr class="p-0 m-0 w-100">
                             <div class="mt-3 d-flex justify-content-end">
-                                <RouterLink to="#"><button class="btn btn-lg" style="font-size: 14px;">회원탈퇴</button>
+                                <RouterLink to="#"><button class="btn btn-sm" style="font-size: 12px; color: black; background-color: white; text-decoration: underline;">회원탈퇴</button>
                                 </RouterLink>
                             </div>
                         </div>
@@ -99,7 +61,6 @@
 </template>
 
 <script setup>
-import MypageNavBar from './MypageNavBar';
 </script>
 
 <style scoped>

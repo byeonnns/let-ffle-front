@@ -1,19 +1,18 @@
 <template>
     <div>
         <div class="container"> 
-            <div class="d-flex ms-5 mt-4">
-                <div class="d-flex flex-column ms-5" style="width: 100%;">
-                    <div style="border-bottom: 3px solid #F37551;" class="mb-3">
-                        <h4>관심</h4>
+            <div class="d-flex">
+                <div class="d-flex flex-column" style="width: 100%;">
+                    <div style="border-bottom: 3px solid #F37551;" class="">
+                        <h4>찜 목록</h4>
                     </div>
-
-                    <div class="d-flex justify-content-between mb-3" style="width: 100%;">
+                    <div class="mb-3">
                         <span style="font-size: 13px;">전체 n</span>
                     </div>
                     <div class="d-flex justify-content-between">
                         <div class="d-flex">
                             <div style="width: 6rem; height: 85px;">
-                                <img src="/images/photos/2.png" class="card-img-top" alt="..."
+                                <img src="" class="card-img-top" alt="..."
                                     style="max-width: 100%; height: auto;">
                             </div>
                             <div class="align-content-center">Nike<br>Nike Air Force 1'07First Use White Team Red</div>
@@ -36,7 +35,6 @@
 </template>
 
 <script setup>
-import MypageNavBar from './MypageNavBar';
 </script>
 
 <style scoped>

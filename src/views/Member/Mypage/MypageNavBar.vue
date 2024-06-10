@@ -7,39 +7,31 @@
                         <h2>마이 페이지</h2>
                     </div>
                     <nav class="">
-                        <div>
-                            <div class=" align-items-left ps-3 fw-bold" style="font-size: 22px;">응모 정보
-                            </div>
-                            <ul class="nav d-flex flex-column ms-3">
-                                <li class="nav-item">
-                                    <RouterLink to="/Member/Mypage/ApplicationDetails"
-                                        class="nav-link active align-items-left">응모 내역</RouterLink>
-                                </li>
-                                <li class="nav-item">
-                                    <RouterLink to="/Member/Mypage/WatchList" class="nav-link active align-items-left">찜 목록
-                                    </RouterLink>
-                                </li>
-                                <li class="nav-item">
-                                    <RouterLink to="/Member/Mypage/WinningDetails"
-                                        class="nav-link active align-items-left mb-3">당첨 내역</RouterLink>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="nav d-flex flex-column ms-3">
+                            <li class="nav-item">
+                                <RouterLink to="/Member/Mypage/ApplicationDetails"
+                                    class="nav-link active align-items-left">응모 내역</RouterLink>
+                            </li>
+                            <li class="nav-item">
+                                <RouterLink to="/Member/Mypage/WatchList" class="nav-link active align-items-left">찜 목록
+                                </RouterLink>
+                            </li>
+                            <li class="nav-item">
+                                <RouterLink to="/Member/Mypage/WinningDetails" class="nav-link active align-items-left">
+                                    당첨 내역</RouterLink>
+                            </li>
+                        </ul>
                     </nav>
                     <nav class="">
-                        <div>
-                            <div class="nav-link align-items-left ps-3 fw-bold" style="font-size: 22px;">내 정보</div>
-                            <ul class="nav d-flex flex-column ms-3">
-                                <li class="nav-item">
-                                    <RouterLink to="/Member/Mypage/LoginInformation" class="nav-link active">로그인 정보
-                                    </RouterLink>
-                                </li>
-                                <li class="nav-item">
-                                    <RouterLink to="/Member/Mypage/ToInquiry" class="nav-link active">내 문의</RouterLink>
-                                </li>
-                            </ul>
-
-                        </div>
+                        <ul class="nav d-flex flex-column ms-3">
+                            <li class="nav-item">
+                                <RouterLink to="/Member/Mypage/LoginInformation" class="nav-link active">회원 정보 수정
+                                </RouterLink>
+                            </li>
+                            <li class="nav-item">
+                                <RouterLink to="/Member/Mypage/ToInquiry" class="nav-link active">문의 내역</RouterLink>
+                            </li>
+                        </ul>
                     </nav>
                 </div>
             </div>
@@ -61,7 +53,7 @@
 } */
 
 .router-link-active {
-  color: #FF5C35; 
+    color: #FF5C35;
 }
 
 a {
@@ -73,4 +65,7 @@ a:hover {
     color: #FF5C35;
 }
 
+.nav-item>.nav-link {
+    font-size: 20px;
+}
 </style>

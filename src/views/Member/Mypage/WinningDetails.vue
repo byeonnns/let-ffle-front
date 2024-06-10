@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container">
-            <div class="d-flex ms-5 mt-4">
+            <div class="d-flex ms-5">
                 <div class="d-flex flex-column ms-5" style="width: 100%;">
                     <div style="border-bottom: 3px solid #F37551;" class="mb-3">
                         <h4>당첨 내역</h4>
