@@ -1,9 +1,13 @@
 import MypageNavBar from '@/views/Member/Mypage/MypageNavBar';
 const routes = [
     {
-        path: '/Member/Mypage/MypageNavBar',
-        component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage/MypageNavBar.vue'),
+        path: '/Member/Mypage',
+        component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage'),
         children: [
+            {
+                path: '',
+                component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage/MypageProfiles.vue')
+            },
             {
                 path: 'LoginInformation',
                 component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage/LoginInformation.vue')

@@ -1,8 +1,10 @@
 <template>
-    <div class="d-flex ms-5 mt-4">
-        <MypageNavBar/>
-        <div class="w-75">
-            <RouterView/>
+    <div>
+        <div class="d-flex container">
+            <MypageNavBar />
+            <div class="flex-grow-1">
+                <RouterView />
+            </div> 
         </div>
     </div>
 </template>
@@ -10,10 +12,6 @@
 <script setup>
 import { RouterView } from 'vue-router';
 import MypageNavBar from './MypageNavBar.vue';
-import MypageProFile from './MypageProFile.vue';
-import MypageProFile2 from './MypageProFile2.vue';
-import MypageProFile3 from './MypageProFile3.vue';
-import MypageProFile4 from './MypageProFile4.vue';
 
 
 </script>
@@ -56,7 +54,7 @@ import MypageProFile4 from './MypageProFile4.vue';
 }
 
 .router-link-active {
-  color: #FF5C35; 
+    color: #FF5C35;
 }
 
 a {

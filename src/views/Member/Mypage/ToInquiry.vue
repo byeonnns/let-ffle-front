@@ -2,7 +2,6 @@
     <div>
         <div class="container">
             <div class="d-flex ms-5 mt-4">
-                <MypageNavBar style="width:180px;" />
                 <!-- <div class="flex-grow-1 d-flex flex-column"></div> -->
                 <div class="d-flex flex-column ms-5" style="width: 100%;">
                     <div style="border-bottom: 3px solid #F37551;" class="mb-3">
