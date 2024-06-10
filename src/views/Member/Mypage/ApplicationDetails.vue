@@ -4,6 +4,7 @@
             <MypageNavBar style="width: 180px;" />
             <div class="d-flex flex-column ms-5 container">
                 <h4>응모 내역</h4>
+                <hr style="border-width: 3px; color: #F37551; height: 20px;" />
                 <div class="content_area my-page-content">
                     <div class="my_purchase">
                         <div class="v-portal" style="display: none;"></div>
@@ -11,23 +12,23 @@
                             <div class="tab_item total">
                                 <a href="#" class="tab_link">
                                     <dl class="tab_box">
-                                        <dt class="title">전체</dt>
-                                        <dd class="count">0</dd>
+                                        <dt class="title" style="height: 50px;">전체</dt>
+                                        <dd class="count">1</dd>
                                     </dl>
                                 </a>
                             </div>
                             <div class="tab_item">
                                 <a href="#" class="tab_link">
                                     <dl class="tab_box">
-                                        <dt class="title">진행 중</dt>
-                                        <dd class="count">0</dd>
+                                        <dt class="title" style="height: 50px;">진행 중</dt>
+                                        <dd class="count">1</dd>
                                     </dl>
                                 </a>
                             </div>
                             <div class="tab_item">
                                 <a href="#" class="tab_link">
                                     <dl class="tab_box">
-                                        <dt class="title">종료</dt>
+                                        <dt class="title" style="height: 50px;">종료</dt>
                                         <dd class="count">0</dd>
                                     </dl>
                                 </a>
@@ -69,9 +70,24 @@
                                 <span class="mt-2 me-2" style="font-size: 15px; color: gray;">상태</span>
                             </a>
                         </div>
-                        <hr class="mb-5" />
+                        <hr class="mb-3" />
                         <div class="text-center">
-                            <p style="color: darkgray;">응모내역이 없습니다.</p>
+                            <table class="table mb-4">
+                                <thead>
+                                    <tr class="d-none d-md-table-row text-center">
+                                        <th class="d-none d-md-table-cell" style="width: 4em;"><span>레플 이름</span></th>
+                                        <th class="d-none d-md-table-cell" style="width: 11em;"><span>응모 기간</span></th>
+                                        <th class="d-none d-md-table-cell" style="width: 8em;"><span>종료일</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>레플 1번</td>
+                                        <td>2024.06.10~2024.06.22</td>
+                                        <td>2024.06.23</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             <button class="btn btn-white btn-sm border">응모하러 가기</button>
                         </div>
 
@@ -106,8 +122,6 @@ import MypageNavBar from './MypageNavBar';
     flex: 1;
     text-align: center;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     background-color: #fff;
 }
 
@@ -158,5 +172,4 @@ import MypageNavBar from './MypageNavBar';
 .Status {
     display: flex;
 }
-
 </style>

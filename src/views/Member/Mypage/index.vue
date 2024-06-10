@@ -3,9 +3,7 @@
         <MypageNavBar/>
         <div class="w-75">
             <MypageProFile/>
-            <MypageProFile2/>
             <MypageProFile3/>
-            <MypageProFile4/>
         </div>
     </div>
 </template>
