@@ -2,6 +2,7 @@
     <div style="height: 140px;">
         <div class="container-lg">
             <div class="d-flex d-none d-lg-block text-end">
+                <span class="d-none d-md-inline-block me-3"><img src="@/assets/berry-icon.png" class="me-1" height="20px">300</span>
                 <RouterLink to="/join" class="me-3"><span class="d-none d-md-inline-block">회원가입</span></RouterLink>
                 <RouterLink to="/login" class="me-3"><span class="d-none d-md-inline-block">로그인</span></RouterLink>
                 <RouterLink to="/Member/Mypage" class="me-3"><span class="d-none d-md-inline-block">마이페이지</span>
@@ -12,8 +13,7 @@
             </div>
             <nav class="navbar navbar-expand-lg bg-body-white">
                 <div class="container-fluid">
-                    <RouterLink to="/"><a class="fw-bold fst-italic h3">Let-<span style="color:#FF5C35">FFle</span></a>
-                    </RouterLink>
+                    <RouterLink to="/" class="fw-bold fst-italic h3 non-this">Let-<span style="color:#FF5C35">FFle</span></RouterLink>
                     <div class="navbar-toggler bi bi-bell fs-3 border-0" @click="clickCheck">
                     </div>
                     <div class="d-none d-lg-inline-block">

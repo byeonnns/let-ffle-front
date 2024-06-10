@@ -36,6 +36,10 @@ import FooterNav from "@/components/FooterNav.vue";
     transition: all 0.15s;
 }
 
+#app a.non-this {
+    color: initial;
+}
+
 #app .router-link-exact-active {
   color: #FF5C35; 
 }
