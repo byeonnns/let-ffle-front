@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="d-flex container mt-4">
+        <div class="d-flex container ">
 
             <div class="p-3 mt-3" style="width:180px">
                 <BoardNavbar />
@@ -13,12 +13,6 @@
                     <h3 style="margin-right: 80%;">자주 묻는 질문</h3>
                 </div>
                 <div style="width: 100%; height:60px;">
-                    <!-- border:1px solid black; -->
-                    <!-- <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="search" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                <button class="btn btn-success" type="button" id="button-addon2">검색</button>
-            </div> -->
 
                 </div>
 
