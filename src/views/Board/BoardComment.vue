@@ -38,11 +38,11 @@
                     </tbody>
                 </table>
                 <RouterLink to="/Board/Write">
-                    <input type="submit" class="btn btn-outline-dark btn-sm me-2" value="수정" />
+                    <input type="submit" class="btn btn-outline-light btn-sm me-2" value="수정" />
                 </RouterLink>
-                <input type="button" class="btn btn-outline-success btn-sm me-2" value="삭제" />
+                <input type="button" class="btn btn-outline-light btn-sm me-2" value="삭제" />
                 <RouterLink to="/Board/BoardList">
-                    <input type="button" class="btn btn-outline-success btn-sm" value="뒤로" />
+                    <input type="button" class="btn btn-outline-light btn-sm" value="뒤로" />
                 </RouterLink>
             </div>
         </div>
@@ -54,7 +54,7 @@
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <input id="btitle" type="text" class="form-control" placeholder="작성자" style="width: 30%;" />
-            <button class="btn btn-outline-success btn-sm">댓글작성</button>
+            <button class="btn btn-outline-light btn-sm">댓글작성</button>
         </div>
 
 

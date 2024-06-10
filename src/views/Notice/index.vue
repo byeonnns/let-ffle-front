@@ -13,7 +13,7 @@
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="search" aria-label="Recipient's username"
                             aria-describedby="button-addon2">
-                        <button class="btn btn-success" type="button" id="button-addon2">검색</button>
+                        <button class="btn btn-outline-light" type="button" id="button-addon2">검색</button>
                     </div>
 
                 </div>
@@ -109,11 +109,11 @@
 
                                 <tr>
                                     <td colspan="5" class="text-end">
-                                        <button class="btn btn-outline-warning btn-sm me-1">처음</button>
-                                        <button class="btn btn-outline-dark btn-sm me-1">이전</button>
-                                        <button class="btn btn-sm me-1">1,2,3,4,5 </button>
-                                        <button class="btn btn-outline-dark btn-sm me-1">다음</button>
-                                        <button class="btn btn-outline-warning btn-sm">맨끝</button>
+                                        <button class="btn btn-outline-light btn-sm me-1">처음</button>
+                                        <button class="btn btn-outline-light btn-sm me-1">이전</button>
+                                        <button class="btn btn-outline-light btn-sm me-1">1,2,3,4,5 </button>
+                                        <button class="btn btn-outline-light btn-sm me-1">다음</button>
+                                        <button class="btn btn-outline-light btn-sm">맨끝</button>
                                     </td>
 
 

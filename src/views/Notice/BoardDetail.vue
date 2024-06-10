@@ -10,27 +10,26 @@
     <div class="container " style="width: 100%;  height:500px;">
         <!-- border:1px solid black  -->
 
-        <div class="border border-dark border-2 rounded-3" style="width: 100%;">
+        <div style="width: 100%;">
             <!-- border:1px solid black -->
-            <div class="card">
-                <div class="card-header">
-                    <p>공지 6월 공휴일 고객센터 운영 안내</p>
-                </div>
-                <div class="card-body">
-                    <p class="mt-3"> 안녕하세요 크림입니다 </p>
-                    <p>6월 공휴일 고객센터 운영시간 안내해 드립니다.</p>
-                    <p>휴무 | 2024년 6월 6일 (목)</p>
-                    <p>*휴무 기간 남겨주신 문의는 익일부터 순차적으로 답변 드릴 예정입니다.</p>
-                    <p>감사합니둥.</p>
+            <div class="mt-4" style="border-bottom:1px solid #ebebeb ;">
+                <h2>공지</h2>
+                <p>6월 공휴일 휴무에 따른 거래 및 정산일정안내</p>
+            </div>
+            <div style=" background-color: #FAFAFA;">
+                <p class="mt-3"> 안녕하세요 LET-FFle입니다 </p>
+                <p>휴무 | 2024년 6월 6일 (목)</p>
+                <p>*휴무 기간 남겨주신 문의는 익일부터 순차적으로 답변 드릴 예정입니다.*</p>
+                <p>감사합니다.</p>
 
-                    <!-- <div style="width: 100%; border:1px solid black; height:100px;"> -->
-                    <button class="btn btn-success btn-sm" style="margin-top: 40px;" @click="AnnouncementHandle()">목록
+
+                <div class="text-center">
+                    <button class="btn btn-outline-light btn-sm" style="margin-top: 40px;" @click="AnnouncementHandle()">목록
                         보기</button>
                 </div>
             </div>
         </div>
     </div>
-
 
 
 

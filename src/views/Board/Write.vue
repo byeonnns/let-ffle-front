@@ -30,9 +30,9 @@
           </div>
           <div class="form-group row">
             <div class="col-sm-12 d-flex justify-content-end" >
-              <input type="submit" class="btn btn-dark btn-sm me-2"  value="추가" />
+              <input type="submit" class="btn btn-outline-light btn-sm me-2"  value="추가" />
               <RouterLink to="/Board/BoardList">
-                <input type="button" class="btn btn-success btn-sm" value="취소" />
+                <input type="button" class="btn btn-outline-light btn-sm" value="취소" />
               </RouterLink>
             </div>
           </div>
