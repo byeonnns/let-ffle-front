@@ -11,7 +11,7 @@
 
                 <div class="section_block">
                     <div class="sub w-100">
-                        <div class="col-sm-8" style="background-color: #FF3C35;">
+                        <div class="col-sm-8" style="background-color: #F37551;">
                             <div class="sub1 ms-4 mt-2">
                                 <h5 class="subheading">래플 현황</h5>
                             </div>
@@ -49,7 +49,7 @@
                             <span>128</span>
                         </div>
                         <div class="col-sm-2 info">
-                            <button type="button" class="btn btn-outline-secondary" onclick="location.href='#'">
+                            <button type="button" class="btn btn-outline-light" onclick="location.href='#'">
                                 래플 바로가기
                             </button>
                         </div>
@@ -66,7 +66,7 @@
                             <span>62</span>
                         </div>
                         <div class="col-sm-2 info">
-                            <button type="button" class="btn btn-outline-secondary" onclick="location.href='#'">
+                            <button type="button" class="btn btn-outline-light" onclick="location.href='#'">
                                 래플 바로가기
                             </button>
                         </div>
@@ -83,7 +83,7 @@
                             <span>307</span>
                         </div>
                         <div class="col-sm-2 info">
-                            <button type="button" class="btn btn-info" onclick="location.href='#'">
+                            <button type="button" class="btn btn-outline-light" onclick="location.href='#'">
                                 래플 바로가기
                             </button>
                         </div>
@@ -100,7 +100,7 @@
                             <span>90</span>
                         </div>
                         <div class="col-sm-2 info">
-                            <button type="button" class="btn btn-outline-secondary" onclick="location.href='#'">
+                            <button type="button" class="btn btn-outline-light" onclick="location.href='#'">
                                 래플 바로가기
                             </button>
                         </div>

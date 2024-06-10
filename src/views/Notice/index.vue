@@ -106,11 +106,11 @@
 
                             <tr>
                                 <td colspan="5" class="text-end">
-                                    <button class="btn btn-outline-light btn-sm me-1"><i class="bi bi-chevron-double-left"></i></button>
-                                    <button class="btn btn-outline-light btn-sm me-1"><i class="bi bi-chevron-left"></i></button>
+                                    <button class="btn btn-outline-light btn-sm me-1">처음</button>
+                                    <button class="btn btn-outline-light btn-sm me-1">이전</button>
                                     <button class="btn btn-outline-light btn-sm me-1">1,2,3,4,5 </button>
-                                    <button class="btn btn-outline-light btn-sm me-1"> <i class="bi bi-chevron-right"></i></button>
-                                    <button class="btn btn-outline-light btn-sm"><i class="bi bi-chevron-double-right"></i></button>
+                                    <button class="btn btn-outline-light btn-sm me-1"> 다음</button>
+                                    <button class="btn btn-outline-light btn-sm">맨끝</button>
                                 </td>
 
 
