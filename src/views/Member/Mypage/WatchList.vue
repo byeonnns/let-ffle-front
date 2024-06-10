@@ -21,10 +21,9 @@
                         <div class="align-content-center">Nike<br>Nike Air Force 1'07First Use White Team Red</div>
                     </div>
                     <div class="align-content-center">
-                        <button class="btn btm-sm" style="color: white">응모</button>
-                        <div class="d-flex justify-content-end" style="font-size: 11px;">
-                            <RouterLink to="#" class="router">삭제</RouterLink>
-                        </div>
+                        <button class="btn btm-sm me-2" style="background-color: #F37551">응모</button>
+                        <button class="btn btm-sm" style="background-color: white; color:black; border: 1px solid black;">삭제</button>
+                        
                     </div>
                 </div>
                 <hr />
@@ -45,9 +44,4 @@ import MypageNavBar from './MypageNavBar';
     color: black;
 }
 
-.btn {
-    height: 50px;
-    width: 100px;
-    background-color: #F37551
-}
 </style>

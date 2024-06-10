@@ -1,20 +1,17 @@
 <template>
     <div>
         <div class="d-flex ms-5 mb-4">
-            <div class="card rounded-3 w-100">
+            <div class="card rounded-3 w-100" style="height: 150px;">
                 <div class="card-body mt-3 ms-3 flex-column">
                     <div class="d-flex">
-                        <div class="mt-1 ms-3">
+                        <div class="mt-3 ms-3">
                             <div>
                                 <strong>gekx0m</strong>
                             </div>
                             <p>asd@naver.com</p>
                         </div>
                         <div class="position-absolute top-50 end-0 translate-middle-y me-4">
-                            <button class="btn btn-white btn-lg border rounded-3" style="font-size: 12px;">프로필
-                                변경</button>
-                            <button class="btn btn-white btn-lg border rounded-3" style="font-size: 12px;">응모
-                                내역</button>
+                            <RouterLink to="/Member/Mypage/ProfileManagement"><button class="btn btn-lg border rounded-3" style="font-size: 12px;">내 정보 수정</button></RouterLink>
                         </div>
                     </div>
                 </div>
@@ -44,5 +41,10 @@
 .position-absolute>.btn {
     margin-right: 10px;
 
+}
+
+.btn {
+    background-color: #F37551;
+    color: white;
 }
 </style>
