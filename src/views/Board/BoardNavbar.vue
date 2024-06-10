@@ -7,17 +7,18 @@
                     <p> 게시판 </p>
                 </h3>
                 <ul>
+                    <RouterLink to="./Notice" style="text-decoration: none;">
+                        <li>
+                            <p>공지사항</p>
+                        </li>
+                    </RouterLink>
+                    
                     <RouterLink to="./Faq" style="text-decoration: none;">
                         <li>
                             <p>자주 묻는 질문</p>
                         </li>
                     </RouterLink>
 
-                    <RouterLink to="./Notice" style="text-decoration: none;">
-                        <li>
-                            <p>공지사항</p>
-                        </li>
-                    </RouterLink>
                 </ul>
             </nav>
         </div>

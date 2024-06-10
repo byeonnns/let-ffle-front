@@ -2,14 +2,14 @@
     <div>
         <div class="d-flex container ">
 
-            <div class="p-3 mt-3" style="width:180px">
+            <!-- <div class="p-3 mt-3" style="width:180px">
                 <BoardNavbar />
-            </div>
+            </div> -->
 
             <div class="d-flex flex-column flex-grow-1">
 
                 <div class="header"
-                    style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 30px">
+                    style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 10px">
                     <h3 style="margin-right: 80%;">자주 묻는 질문</h3>
                 </div>
                 <div style="width: 100%; height:60px;">
@@ -74,15 +74,15 @@
                                     <p class="custom-text">패널티 정책</p>
                                 </button>
                             </h3>
-                            <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div id="collapse1" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="container "
-                                        style="width: 100%;  height:500px; background-color: #FAFAFA;">
+                                        style="width: 100%;  height:500px; background-color: #FAFAFA; padding: 30px;">
                                         <!-- border:1px solid black  -->
 
-                                        <div style="width: 100%;">
+                                        <div style="width: 100%; ">
                                             <!-- border:1px solid black -->
-                                            <p class="mt-3"> 안녕하세요 크림입니다 </p>
+                                            <p> 안녕하세요 크림입니다 </p>
                                             <h3>
                                                 <p>패널티 감면 기준</p>
                                             </h3>
@@ -92,6 +92,7 @@
                                             <li>서비 차원은 우리가 아직 미숙입니다</li>
                                             <li>그렇지만 저는 완숙입니다</li>
                                             <li>하지만 저는 완숙이 좋은걸요..?</li>
+
                                         </div>
                                     </div>
                                 </div>
@@ -110,14 +111,15 @@
                             <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="container "
-                                        style="width: 100%;  height:500px; background-color: #FAFAFA;">
+                                        style="width: 100%;  height:500px; background-color: #FAFAFA; padding: 30px;">
                                         <!-- border:1px solid black  -->
 
                                         <div style="width: 100%;">
                                             <!-- border:1px solid black -->
                                             <p class="mt-3"> 아래에 해당하는 경우, 이용약관 제 7조(이용제한 등), 21조(부적절 행위)에 따라 일시정지나
-                                                영구이용정지 조치됩니다. 
-                                               <br> 허위사실 유포 관련 고의성이 확인될 시, 유관부서로 이관되어 처리될 수 있습니다.</p>
+                                                영구이용정지 조치됩니다.
+                                                <br> 허위사실 유포 관련 고의성이 확인될 시, 유관부서로 이관되어 처리될 수 있습니다.
+                                            </p>
 
                                             <h3>
                                                 <p>금지!</p>
@@ -136,8 +138,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        
 
+                    </div>
                 </div>
             </div>
         </div>

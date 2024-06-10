@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="d-flex container">
-            <div class="p-3 mt-3" style="width:180px">
+            <!-- <div class="p-3 mt-3" style="width:180px">
                 <BoardNavbar />
-            </div>
+            </div> -->
             <div class="d-flex flex-column flex-grow-1">
                 <div
-                    style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 30px">
+                    style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 10px">
                     <h3 style="margin-right: 80%;">공지사항</h3>
                 </div>
                 <div style="width: 100%; height:60px;">
@@ -33,12 +33,12 @@
                                 </td>
                                 <td>
                                     <RouterLink to="/Notice/BoardDetail">
-                                        <span class="spanded">서비스</span>
+                                        <span class="spanded">일반</span>
                                     </RouterLink>
                                 </td>
                                 <td>
                                     <RouterLink to="/Board/BoardComment">
-                                        <span class="spanded">이벤트</span>
+                                        <span class="spanded">야삐</span>
                                     </RouterLink>
                                 </td>
                             </tr>
@@ -109,11 +109,11 @@
 
                             <tr>
                                 <td colspan="5" class="text-end">
-                                    <button class="btn btn-outline-light btn-sm me-1">처음</button>
-                                    <button class="btn btn-outline-light btn-sm me-1">이전</button>
+                                    <button class="btn btn-outline-light btn-sm me-1"><i class="bi bi-chevron-double-left"></i></button>
+                                    <button class="btn btn-outline-light btn-sm me-1"><i class="bi bi-chevron-left"></i></button>
                                     <button class="btn btn-outline-light btn-sm me-1">1,2,3,4,5 </button>
-                                    <button class="btn btn-outline-light btn-sm me-1">다음</button>
-                                    <button class="btn btn-outline-light btn-sm">맨끝</button>
+                                    <button class="btn btn-outline-light btn-sm me-1"> <i class="bi bi-chevron-right"></i></button>
+                                    <button class="btn btn-outline-light btn-sm"><i class="bi bi-chevron-double-right"></i></button>
                                 </td>
 
 
