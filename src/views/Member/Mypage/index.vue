@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex ms-5">
+    <div class="d-flex ms-5 mt-4">
         <MypageNavBar/>
         <div class="w-75">
             <MypageProFile/>

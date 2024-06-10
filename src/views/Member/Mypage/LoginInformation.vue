@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <div class="d-flex ms-5">
+        <div class="d-flex ms-5 mt-4">
             <MypageNavBar style="width:180px" />
             <div class="d-flex flex-column ms-5 container">
                 <div class="">
@@ -58,9 +58,9 @@
                         <p>문자 메세지</p>
                         <div>
                             <label for="radioButton">수신동의</label>
-                            <input type="radio" id="radioButton" placeholder="라디오 버튼" class="input">
+                            <input type="checkbox" id="radioButton1" placeholder="라디오 버튼" class="input me-2">
                             <label for="radioButton">수신거부</label>
-                            <input type="radio" id="radioButton" placeholder="라디오 버튼" class="input">
+                            <input type="checkbox" id="radioButton2" placeholder="라디오 버튼" class="input">
                         </div>
                     </div>
                     <hr class="p-0 m-0 w-100 mt-3" style="position: absolute; bottom: 0;">
@@ -70,9 +70,9 @@
                         <p>이메일</p>
                         <div>
                             <label for="radioButton">수신동의</label>
-                            <input type="radio" id="radioButton" placeholder="라디오 버튼" class="input">
+                            <input type="checkbox" id="radioButton3" placeholder="라디오 버튼" class="input me-2">
                             <label for="radioButton">수신거부</label>
-                            <input type="radio" id="radioButton" placeholder="라디오 버튼" class="input">
+                            <input type="checkbox" id="radioButton4" placeholder="라디오 버튼" class="input">
                         </div>
                     </div>
                     <hr class="p-0 m-0 w-100 mt-3" style="position: absolute; bottom: 0;">
