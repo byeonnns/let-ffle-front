@@ -3,38 +3,12 @@
         <div class="container">
             <div class="d-flex">
                 <div class="d-flex flex-column ms-5" style="width: 100%;">
-                    <div style="border-bottom: 3px solid #F37551;" class="mb-3">
+                    <div style="border-bottom: 3px solid #F37551;" class="mb-4">
                         <h4>당첨 내역</h4>
                     </div>
                     <div class="content_area my-page-content">
                         <div class="my_purchase">
                             <div class="v-portal" style="display: none;"></div>
-                            <div class="purchase_list_tab detail_tab flex-container">
-                                <div class="tab_item total">
-                                    <a href="#" class="tab_link">
-                                        <dl class="tab_box">
-                                            <dt class="title" style="height: 50px;">전체</dt>
-                                            <dd class="count">1</dd>
-                                        </dl>
-                                    </a>
-                                </div>
-                                <div class="tab_item">
-                                    <a href="#" class="tab_link">
-                                        <dl class="tab_box">
-                                            <dt class="title" style="height: 50px;">진행 중</dt>
-                                            <dd class="count">1</dd>
-                                        </dl>
-                                    </a>
-                                </div>
-                                <div class="tab_item">
-                                    <a href="#" class="tab_link">
-                                        <dl class="tab_box">
-                                            <dt class="title" style="height: 50px;">당첨된 응모</dt>
-                                            <dd class="count">1</dd>
-                                        </dl>
-                                    </a>
-                                </div>
-                            </div>
                             <div class="period_search">
                                 <div class="period_month border mt-2">
                                     <ul class="month_list container d-flex justify-content-center">
@@ -65,7 +39,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="mb-4 mt-2">
+                            <div class="mb-5 mt-2">
                                 <p style="color: gray; font-size: 15px;">●한 번에 조회 가능한 기간은 최대 6개월입니다.</p>
                             </div>
                             <hr class="mb-3" />

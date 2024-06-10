@@ -12,8 +12,8 @@
                     <div class="d-flex justify-content-between">
                         <div class="d-flex">
                             <div style="width: 6rem; height: 85px;">
-                                <img src="" class="card-img-top" alt="..."
-                                    style="max-width: 100%; height: auto;">
+                                <img src="@/assets/shoes.png" class="card-img-top" alt="..."
+                                    style="max-width: 100%; height: auto;;">
                             </div>
                             <div class="align-content-center">Nike<br>Nike Air Force 1'07First Use White Team Red</div>
                         </div>
