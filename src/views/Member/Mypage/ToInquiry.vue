@@ -20,7 +20,7 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>안녕하세요</td>
+                                <td><RouterLink to="/Member/Mypage/InquiryDetails">안녕하세요</RouterLink></td>
                                 <td>김작가</td>
                                 <td>2013-05-21</td>
                                 <td>진행중</td>

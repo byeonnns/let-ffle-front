@@ -1,4 +1,4 @@
-import MypageNavBar from '@/views/Member/Mypage/MypageNavBar';
+
 const routes = [
     {
         path: '/Member/Mypage',
@@ -89,6 +89,10 @@ const routes = [
     {
         path: '/Member/Mypage',
         component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage')
+    },
+    {
+        path: '/Member/Mypage/InquiryDetails',
+        component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage/InquiryDetails.vue')
     },
 
 
