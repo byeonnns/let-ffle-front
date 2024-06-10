@@ -11,36 +11,8 @@
                 <input id="mpassword" type="password" class="border-0 border-bottom">
                 <label for="mname" class="mt-5">이름</label>
                 <input id="mname" type="text" class="border-0 border-bottom">
-                <label for="mrrn1" class="mt-5">주민번호</label>
-                <div class="row">
-                    <div class="col-5">
-                        <input id="mrrn1" type="text" class="border-0 border-bottom w-100 text-center">
-                    </div>
-                    <div class="col align-content-center">
-                        <hr class="m-0 text-dark border-3 opacity-100"/>
-                    </div>
-                    <div class="col-6">
-                        <input id="mrrn2" type="text" class="border-0 border-bottom w-100 text-center">
-                    </div>
-                </div>
-                <label for="mtel" class="mt-5">전화번호</label>
-                <div class="row">
-                    <div class="col-3">
-                        <input id="mtel1" type="text" class="border-0 border-bottom w-100 text-center">
-                    </div>
-                    <div class="col align-content-center">
-                        <hr class="m-0 text-dark border-3 opacity-100"/>
-                    </div>
-                    <div class="col-3">
-                        <input id="mtel2" type="text" class="border-0 border-bottom w-100 text-center">
-                    </div>
-                    <div class="col align-content-center">
-                        <hr class="m-0 text-dark border-3 opacity-100"/>
-                    </div>
-                    <div class="col-3">
-                        <input id="mtel3" type="text" class="border-0 border-bottom w-100 text-center">
-                    </div>
-                </div>
+                <label for="mte" class="mt-5">전화번호</label>
+                <input id="mtel" type="text" class="border-0 border-bottom" v-model="tel" @keyup="previousTel()" @input="telHyphen()">
                 <label for="maddress" class="mt-5">주소</label>
                 <div class="d-flex justify-content-between">
                     <input id="maddress" type="text" class="border-0 border-bottom text-center" placeholder="우편번호">
@@ -55,7 +27,25 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
+
+/* 전화번호 하이픈 자동 추가 JS(미완성)
+const tel = ref("");
+let preTel;
+function previousTel() {
+    preTel = tel.value.length;
+}
+function telHyphen() {
+    // 사용자가 입력 값을 지우는 경우
+    if (preTel === 5 && tel.value.length === 4 || preTel === 10 && tel.value.length === 9) {
+        tel.value = tel.value.slice(0, tel.value.length - 1);
+    }
+
+    // 사용자가 숫자를 입력하는 경우
+    if (tel.value.length === 3 || tel.value.length === 8) {
+        tel.value += '-';
+    }
+}*/
 
 const responsiveSize = reactive({
     width: window.innerWidth >= 992 ? '400px' : '100%'

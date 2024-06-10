@@ -31,12 +31,11 @@ import FooterNav from "@/components/FooterNav.vue";
   text-decoration: none;
 }
 
-nav {
-  padding: 30px;
+#app .router-link-exact-active {
+  color: #FF5C35; 
 }
 
-nav a {
+#app .nav-link {
   font-weight: bold;
-  color: #2c3e50;
 }
 </style>

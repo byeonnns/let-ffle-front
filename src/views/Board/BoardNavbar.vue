@@ -1,6 +1,6 @@
 <template>
-    <div class="">
-        <div class="container " style=" width: 30%; height: 250px; margin-top: 40px">
+    <div>
+        <div>
             <!-- style=" width: 30%; height: 250px; margin-top: 40px" -->
             <nav>
                 <h5 class="title">

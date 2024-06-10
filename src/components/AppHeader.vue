@@ -15,18 +15,18 @@
                     <div class="navbar-toggler bi bi-bell fs-3 border-0" @click="clickCheck">
                     </div>
                     <div class="d-none d-lg-inline-block">
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav nav-underline">
                             <li class="nav-item">
-                                <RouterLink to="/" class="nav-item me-3">HOME</RouterLink>
+                                <RouterLink to="/" class="nav-link me-3">HOME</RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Raffle/Main" class="nav-item me-3">RAFFLE</RouterLink>
+                                <RouterLink to="/Raffle/Main" class="nav-link me-3">RAFFLE</RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Notice" class="nav-item me-3">NOTICE</RouterLink>
+                                <RouterLink to="/Notice" class="nav-link me-3">NOTICE</RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Board/BoardList" class="nav-item me-3">COMUNNITY</RouterLink>
+                                <RouterLink to="/Board/BoardList" class="nav-link me-3">COMUNNITY</RouterLink>
                             </li>
                         </ul>
                     </div>
@@ -36,16 +36,16 @@
                 <nav class="navbar navbar-expand bg-body-white">
                     <ul class="navbar-nav nav-underline">
                         <li class="nav-item">
-                            <RouterLink to="/" class="nav-item">HOME</RouterLink>
+                            <RouterLink to="/" class="nav-link">HOME</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink to="/Raffle/Sports" class="nav-item">SPORTS</RouterLink>
+                            <RouterLink to="/Raffle/Sports" class="nav-link">SPORTS</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink to="/Raffle/Art" class="nav-item">ART</RouterLink>
+                            <RouterLink to="/Raffle/Art" class="nav-link">ART</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink to="/Raffle/Fashion" class="nav-item">FASHION</RouterLink>
+                            <RouterLink to="/Raffle/Fashion" class="nav-link">FASHION</RouterLink>
                         </li>
                         
                     </ul>
@@ -69,12 +69,4 @@ const nowPath = computed(() => router.currentRoute.value.path);
 </script>
 
 <style scoped>
-a {
-    text-decoration-line : none;
-    color: #000000;
-}
-
-.router-link-active {
-  color: #FF5C35; 
-}
 </style>
