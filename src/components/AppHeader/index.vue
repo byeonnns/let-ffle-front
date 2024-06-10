@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="height: 140px;">
         <div class="container-lg">
             <div class="d-flex d-none d-lg-block text-end">
                 <RouterLink to="/join" class="me-3"><span class="d-none d-md-inline-block">회원가입</span></RouterLink>

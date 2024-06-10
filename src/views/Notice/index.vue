@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="d-flex container">
-            <div class="p-3 mt-3" style="width:180px">
+            <!-- <div class="p-3 mt-3" style="width:180px">
                 <BoardNavbar />
-            </div>
+            </div> -->
             <div class="d-flex flex-column flex-grow-1">
                 <div
-                    style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 30px">
+                    style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 10px">
                     <h3 style="margin-right: 80%;">공지사항</h3>
                 </div>
                 <div style="width: 100%; height:60px;">
