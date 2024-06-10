@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div>
-            <div class="footer-div d-lg-flex flex-row-reverse justify-content-between mb-5">
+            <div class="footer-div d-lg-flex flex-row-reverse justify-content-between">
                 <div class="">
                     <div>
                         <strong>고객센터</strong>
