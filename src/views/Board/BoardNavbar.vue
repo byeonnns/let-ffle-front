@@ -3,9 +3,9 @@
         <div>
             <!-- style=" width: 30%; height: 250px; margin-top: 40px" -->
             <nav>
-                <h5 class="title">
-                    <p>게시판</p>
-                </h5>
+                <h3 class="title">
+                    <p> 게시판 </p>
+                </h3>
                 <ul>
                     <RouterLink to="./Faq" style="text-decoration: none;">
                         <li>
@@ -13,8 +13,7 @@
                         </li>
                     </RouterLink>
 
-                    <RouterLink to="./Notice" style="text-decoration: none;"
-                        >
+                    <RouterLink to="./Notice" style="text-decoration: none;">
                         <li>
                             <p>공지사항</p>
                         </li>
@@ -35,12 +34,11 @@
     position: absolute
 }
 
-.title {
+/* .title {
     color: #F37551;
-}
+} */
+
 .router-link-active {
-  color: #FF5C35; 
+    color: #FF5C35;
 }
-
-
 </style>
