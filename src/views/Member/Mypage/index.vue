@@ -2,13 +2,13 @@
     <div class="d-flex ms-5 mt-4">
         <MypageNavBar/>
         <div class="w-75">
-            <MypageProFile/>
-            <MypageProFile3/>
+            <RouterView/>
         </div>
     </div>
 </template>
 
 <script setup>
+import { RouterView } from 'vue-router';
 import MypageNavBar from './MypageNavBar.vue';
 import MypageProFile from './MypageProFile.vue';
 import MypageProFile2 from './MypageProFile2.vue';

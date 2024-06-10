@@ -3,14 +3,14 @@
         <div class="d-flex">
             <div class="d-flex flex-column" style="width: 180px;">
                 <div class="d-flex flex-column">
-                    <div class="">
+                    <div class="mb-4 ms-3">
+                        <h2>마이 페이지</h2>
                     </div>
                     <nav class="">
                         <div>
-                            <div class=" align-items-left ps-3 fw-bold" style="font-size: 20px;">응모 정보
+                            <div class=" align-items-left ps-3 fw-bold" style="font-size: 22px;">응모 정보
                             </div>
-                            <ul class="nav d-flex flex-column ms-1">
-                                
+                            <ul class="nav d-flex flex-column ms-3">
                                 <li class="nav-item">
                                     <RouterLink to="/Member/Mypage/ApplicationDetails"
                                         class="nav-link active align-items-left">응모 내역</RouterLink>
@@ -28,21 +28,21 @@
                     </nav>
                     <nav class="">
                         <div>
-                            <div class="nav-link align-items-left ps-3 fw-bold" style="font-size: 20px;">내 정보</div>
-                            <ul class="nav d-flex flex-column ms-1">
+                            <div class="nav-link align-items-left ps-3 fw-bold" style="font-size: 22px;">내 정보</div>
+                            <ul class="nav d-flex flex-column ms-3">
                                 <li class="nav-item">
                                     <RouterLink to="/Member/Mypage/LoginInformation" class="nav-link active">로그인 정보
                                     </RouterLink>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <RouterLink to="/Member/Mypage/ProfileManagement" class="nav-link active">프로필 관리
                                     </RouterLink>
-                                </li>
+                                </li> -->
                                 <!-- <li class="nav-item">
                                     <RouterLink to="/Member/Mypage/CreateInquiry" class="nav-link active">문의 작성</RouterLink>
                                 </li> -->
                                 <li class="nav-item">
-                                    <RouterLink to="/Member/Mypage/ToInquiry" class="nav-link active">문의 조회</RouterLink>
+                                    <RouterLink to="/Member/Mypage/ToInquiry" class="nav-link active">내 문의</RouterLink>
                                 </li>
                             </ul>
 

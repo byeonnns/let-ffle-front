@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="d-flex ms-5 mb-4">
-            <div class="rounded-3 w-100">
+            <div class="rounded-3" style="width: 100%; margin-left: 150px;">
                 <div class="d-flex justify-content-between">
                     <span class="fw-bold mb-3" style="font-size: 18px;">응모 내역</span>
                     <RouterLink to="/Member/Mypage/ApplicationDetails"><span><button class="btn border-0 bg-white" style="font-size: 13px;">더보기 ></button></span></RouterLink>
