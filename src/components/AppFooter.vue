@@ -6,8 +6,8 @@
                     <div>
                         <strong>고객센터</strong>
                         <ul class="list-group">
-                            <li class="list-group-item"><button class="btn p-0">문의하기</button></li>
-                            <li class="list-group-item"><button class="btn p-0">자주 묻는 질문</button></li>
+                            <li class="list-group-item">문의하기</li>
+                            <li class="list-group-item">자주 묻는 질문</li>
                         </ul>
                     </div>
                 </div>

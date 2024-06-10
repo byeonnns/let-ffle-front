@@ -3,10 +3,10 @@
         <div class="position-absolute w-100 bottom-0 bg-white row">
             <ul class="d-flex list-unstyled text-center align-content-center my-1">
                 <RouterLink to="/" class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-house-door d-block"></i>HOME</li></RouterLink>
-                <a class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-2-circle d-block"></i>RAFFLE</li></a>
-                <a class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-3-circle d-block"></i>NOTICE</li></a>
-                <a class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-4-circle d-block"></i>COMMUNITY</li></a>
-                <RouterLink to="/login" class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-5-circle d-block"></i>MY</li></RouterLink>
+                <RouterLink to="/Raffle/Main" class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-box2-heart d-block"></i>RAFFLE</li></RouterLink>
+                <RouterLink to="/Notice" class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-star d-block"></i>NOTICE</li></RouterLink>
+                <RouterLink to="/Board/BoardList" class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-people d-block"></i>COMMUNITY</li></RouterLink>
+                <RouterLink to="/Member/Mypage" class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-person-standing d-block"></i>MY</li></RouterLink>
             </ul>
         </div>
     </div>
@@ -16,11 +16,6 @@
 </script>
 
 <style scoped>
-a {
-    text-decoration-line : none;
-    color: #000000;
-}
-
 .bi {
     font-size : 1.5rem;
 }
