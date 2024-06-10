@@ -6,10 +6,10 @@
         <h3 style="text-align: center;">글상세 보기</h3>
     </div>
 
-    <div class="container" style="width: 100%; height:500px; ">
-        <div class="card">
+    <div class="container" style="width: 100%; height:100%; ">
+       
          
-            <div class="card-body">
+            
                 <table class="table table-bordered">
 
                     <tbody>
@@ -26,12 +26,12 @@
                             <td>4</td>
                         </tr>
                         <tr>
-                            <th class="table-active" style="border-bottom:1px solid white; ">이름</th>
+                            <th class="table-active" style="border-bottom:1px solid white; ">작성자</th>
                             <td colspan="3">매번 긍정일순 없어</td>
 
                         </tr>
-                        <tr>
-                            <th class="table-active" style="border-bottom:1px solid white; ">내용</th>
+                        <tr style="height: 300px;">
+                            <th class="table-active" style="border-bottom:1px solid white;">내용</th>
                             <td colspan="3">현재 이런상황에 대해 나는 아무런 할말이 없구만유...</td>
 
                         </tr>
@@ -44,8 +44,8 @@
                 <RouterLink to="/Board/BoardList">
                     <input type="button" class="btn btn-outline-light btn-sm" value="뒤로" />
                 </RouterLink>
-            </div>
-        </div>
+            
+        
         <div class="form-group row mt-5">
             <div style="margin-bottom: 30px">
                 <textarea id="bcontent" type="text" class="form-control" placeholder="댓글을 입력하세요."
@@ -66,7 +66,12 @@
 
 
 <script setup>
-import BoardNavbar from './BoardNavbar.vue';
+
 </script>
 
-<style scoped></style>
+<style scoped>
+/* .table-active{
+    background-color:#F37551 ;
+    color: white;
+} */
+</style>

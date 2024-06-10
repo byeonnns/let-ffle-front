@@ -34,13 +34,6 @@
                                     <RouterLink to="/Member/Mypage/LoginInformation" class="nav-link active">로그인 정보
                                     </RouterLink>
                                 </li>
-                                <!-- <li class="nav-item">
-                                    <RouterLink to="/Member/Mypage/ProfileManagement" class="nav-link active">프로필 관리
-                                    </RouterLink>
-                                </li> -->
-                                <!-- <li class="nav-item">
-                                    <RouterLink to="/Member/Mypage/CreateInquiry" class="nav-link active">문의 작성</RouterLink>
-                                </li> -->
                                 <li class="nav-item">
                                     <RouterLink to="/Member/Mypage/ToInquiry" class="nav-link active">내 문의</RouterLink>
                                 </li>

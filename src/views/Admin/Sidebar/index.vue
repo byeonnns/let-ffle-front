@@ -1,26 +1,17 @@
 <template>
     <aside id="sidebar">
-        <div class="d-flex">
-            <button id="toggle-btn" type="button">
-                <i class="lni lni-grid-alt"></i>
-            </button>
-            <div class="sidebar-logo">
-                <RouterLink to="/Admin">LET-FFLE</RouterLink>
-            </div>
-        </div>
-
         <ul class="sidebar-nav">
             <!-- 회원 관리 (회원 조회, 회원정보 수정 및 탈퇴) -->
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
                     data-bs-target="#member" aria-expanded="false" aria-controls="member">
-                    <i class="lni lni-users"></i>
+                    <i class="bi bi-person" style="color:white;"></i>
                     <span>회원 관리</span>
                 </a>
 
                 <ul id="member" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/memberList" class="sidebar-link">전체 회원 조회</RouterLink>
+                        <RouterLink to="/Admin/memberList" class="sidebar-link" style="color: white;">전체 회원 조회</RouterLink>
                     </li>
                 </ul>
             </li>
@@ -29,18 +20,18 @@
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
                     data-bs-target="#product" aria-expanded="false" aria-controls="product">
-                    <i class="lni lni-cart"></i>
+                    <i class="bi bi-dice-5" style="color:white;"></i>
                     <span>래플 관리</span>
                 </a>
                 <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/Raffle" class="sidebar-link">대시보드</RouterLink>
+                        <RouterLink to="/Admin/Raffle" class="sidebar-link" style="color: white;">대시보드</RouterLink>
                     </li>
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/Raffle/CreateRaffle" class="sidebar-link">래플 등록</RouterLink>
+                        <RouterLink to="/Admin/Raffle/CreateRaffle" class="sidebar-link" style="color: white;">래플 등록</RouterLink>
                     </li>
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/Raffle/RaffleList" class="sidebar-link">래플 목록</RouterLink>
+                        <RouterLink to="/Admin/Raffle/RaffleList" class="sidebar-link" style="color: white;">래플 목록</RouterLink>
                     </li>
                 </ul>
             </li>
@@ -49,15 +40,15 @@
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
                     data-bs-target="#order" aria-expanded="false" aria-controls="order">
-                    <i class="lni lni-delivery"></i>
+                    <i class="bi bi-gift" style="color:white;"></i>
                     <span>당첨자 관리</span>
                 </a>
                 <ul id="order" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="${pageContext.request.contextPath}/admin/order/dashboard" class="sidebar-link">대시보드</a>
+                        <a href="${pageContext.request.contextPath}/admin/order/dashboard" class="sidebar-link" style="color: white;">대시보드</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="${pageContext.request.contextPath}/admin/order/orderList" class="sidebar-link">전체 당첨자
+                        <a href="${pageContext.request.contextPath}/admin/order/orderList" class="sidebar-link" style="color: white;">전체 당첨자
                             조회</a>
                     </li>
                 </ul>
@@ -67,18 +58,18 @@
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
                     data-bs-target="#board" aria-expanded="false" aria-controls="board">
-                    <i class="lni lni-clipboard"></i>
+                    <i class="bi bi-megaphone" style="color: white;"></i>
                     <span>고객센터</span>
                 </a>
                 <ul id="board" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/Inquiry/createNotice" class="sidebar-link">공지사항 등록</RouterLink>
+                        <RouterLink to="/Admin/Inquiry/createNotice" class="sidebar-link" style="color: white;">공지사항 등록</RouterLink>
                     </li>
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/Inquiry/createFaq" class="sidebar-link">자주묻는질문 등록</RouterLink>
+                        <RouterLink to="/Admin/Inquiry/createFaq" class="sidebar-link" style="color: white;">자주묻는질문 등록</RouterLink>
                     </li>
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/Inquiry" class="sidebar-link">1:1 문의 관리</RouterLink>
+                        <RouterLink to="/Admin/Inquiry" class="sidebar-link" style="color: white;">1:1 문의 관리</RouterLink>
                     </li>
                 </ul>
             </li>
@@ -202,7 +193,7 @@ a.sidebar-link {
 
 a.sidebar-link:hover {
     background-color: rgba(255, 255, 255, .075);
-    border-left: 3px solid #37cbe9;
+    border-left: 3px solid #FFFFFF;
 }
 
 .sidebar-item {

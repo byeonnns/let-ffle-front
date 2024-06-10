@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="d-flex container mt-4">
+        <div class="d-flex container ">
 
             <div class="p-3 mt-3" style="width:180px">
                 <BoardNavbar />
@@ -13,12 +13,6 @@
                     <h3 style="margin-right: 80%;">자주 묻는 질문</h3>
                 </div>
                 <div style="width: 100%; height:60px;">
-                    <!-- border:1px solid black; -->
-                    <!-- <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="search" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                <button class="btn btn-success" type="button" id="button-addon2">검색</button>
-            </div> -->
 
                 </div>
 
@@ -122,7 +116,8 @@
                                         <div style="width: 100%;">
                                             <!-- border:1px solid black -->
                                             <p class="mt-3"> 아래에 해당하는 경우, 이용약관 제 7조(이용제한 등), 21조(부적절 행위)에 따라 일시정지나
-                                                영구이용정지 조치됩니다. 허위사실 유포 관련 고의성이 확인될 시, 유관부서로 이관되어 처리될 수 있습니다.</p>
+                                                영구이용정지 조치됩니다. 
+                                               <br> 허위사실 유포 관련 고의성이 확인될 시, 유관부서로 이관되어 처리될 수 있습니다.</p>
 
                                             <h3>
                                                 <p>금지!</p>

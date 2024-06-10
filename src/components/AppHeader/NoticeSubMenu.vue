@@ -1,10 +1,10 @@
 <template>
     <SubMenuTemplate>
         <template v-slot:menu1>
-            <RouterLink to="/Faq" class="nav-link">자주 묻는 질문</RouterLink>
+            <RouterLink to="/Notice" class="nav-link">공지사항</RouterLink>
         </template>
         <template v-slot:menu2>
-            <RouterLink to="/Notice" class="nav-link">공지사항</RouterLink>
+            <RouterLink to="/Faq" class="nav-link">자주 묻는 질문</RouterLink>
         </template>
     </SubMenuTemplate>
 </template>

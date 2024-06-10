@@ -8,6 +8,10 @@ const routes = [
         component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Sidebar')
     },
     {
+        path: '/Admin/Dashboard',
+        component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Dashboard')
+    },
+    {
         path: '/Admin/Raffle',
         component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Raffle')
     },
