@@ -6,7 +6,7 @@
 
         <!-- / -->
         <div class="container"
-            style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 30px">
+            style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 10px">
             <h3 style="margin-right: 80%;">자유 게시판</h3>
         </div>
         <div class="container" style="width: 100%; height:60px;">
