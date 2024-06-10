@@ -72,7 +72,7 @@
                             <tr>
                                 <td class="text-center">공지</td>
                                 <td>
-                                    <RouterLink to="/Notice/BoardDetail" style="text-decoration: none; color: black">6월
+                                    <RouterLink to="/Notice/NoticeDetail" style="text-decoration: none; color: black">6월
                                         공휴일
                                         휴무에 따른 거래 및
                                         정산일정안내</RouterLink>

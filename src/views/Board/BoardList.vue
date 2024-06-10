@@ -38,7 +38,7 @@
                             <!--class="text-center"  -->
                             <tr>
                                 <td>21560</td>
-                                <RouterLink to="./BoardComment" style="text-decoration: none;">
+                                <RouterLink to="./BoardDetail" style="text-decoration: none;">
                                     <td>현재 이런 상황에 대한 반응들</td>
                                 </RouterLink>
                                 <td>매번 긍정일순 없어</td>

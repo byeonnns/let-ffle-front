@@ -1,6 +1,6 @@
 import BoardList from '../views/Board/BoardList.vue'
 import Write from '../views/Board/Write.vue'
-import BoardComment from '../views/Board/BoardComment.vue'
+import BoardComment from '../views/Board/BoardDetail.vue'
 
 const routes = [
     {
@@ -12,8 +12,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "Board" */ '@/views/Board/BoardList')
     },
     {
-        path: '/Board/BoardComment',
-        component: () => import(/* webpackChunkName: "Board" */ '@/views/Board/BoardComment')
+        path: '/Board/BoardDetail',
+        component: () => import(/* webpackChunkName: "Board" */ '@/views/Board/BoardDetail')
     },
 
 

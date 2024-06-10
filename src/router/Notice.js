@@ -1,8 +1,8 @@
 
 import Write from '../views/Notice/Write.vue'
 import Announcement from '../views/Notice/index.vue'
-import BoardDetail from '../views/Notice/BoardDetail.vue'
-import BoardComment from '../views/Notice/BoardComment.vue'
+import BoardDetail from '../views/Notice/NoticeDetail.vue'
+
 const routes = [
     {
         path: '/Notice',
@@ -13,13 +13,10 @@ const routes = [
         component: () => import(/* webpackChunkName: "Notice" */ '@/views/Notice/Write')
     },
     {
-        path: '/Notice/BoardDetail',
-        component: () => import(/* webpackChunkName: "Notice" */ '@/views/Notice/BoardDetail')
+        path: '/Notice/NoticeDetail',
+        component: () => import(/* webpackChunkName: "Notice" */ '@/views/Notice/NoticeDetail')
     },
-    {
-        path: '/Notice/BoardComment',
-        component: () => import(/* webpackChunkName: "Notice" */ '@/views/Notice/BoardComment')
-    },
+
 
 ];
 
