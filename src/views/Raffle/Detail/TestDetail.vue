@@ -9,12 +9,6 @@
         <template v-slot:detailContent>
             글 내용 글 내용
         </template>
-        <template v-slot:detailBtn1>
-            버튼1 버튼1
-        </template>
-        <template v-slot:detailBtn2>
-            버튼2 버튼2
-        </template>
     </DetailTemplate>
 </template>
 

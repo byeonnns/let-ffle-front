@@ -19,7 +19,7 @@
                     <button class="btn text-white btn-outline-light btn-sm">중복 확인</button>
                 </div>
                 <label for="mte" class="mt-5 mb-2">전화번호</label>
-                <input id="mtel" type="text" class="border-0 border-bottom" v-model="tel" @keyup="previousTel()" @input="telHyphen()">
+                <input id="mtel" type="text" class="border-0 border-bottom" v-model="tel">
                 <label for="maddress" class="mt-5 mb-2">주소</label>
                 <div class="d-flex justify-content-between">
                     <input id="maddress" type="text" class="border-0 border-bottom text-center flex-grow-1" placeholder="우편번호">

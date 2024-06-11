@@ -48,7 +48,7 @@ import FooterNav from "@/components/FooterNav.vue";
   font-weight: bold;
 }
 
-#app .btn {
+/* #app .btn {
     background-color:#FF5C35;
     color:white;
 }
@@ -56,5 +56,5 @@ import FooterNav from "@/components/FooterNav.vue";
     background-color:#FF5C35;
     opacity: 65%;
     transition: all 0.15s;
-}
+} */
 </style>
