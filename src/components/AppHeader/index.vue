@@ -38,25 +38,6 @@
                 </div>
             </nav>
             <component :is="currentComponent"></component>
-            <!-- <div v-if="nowPath !== '/login' && nowPath !== '/join'">
-                <nav class="navbar navbar-expand bg-body-white">
-                    <ul class="navbar-nav nav-underline">
-                        <li class="nav-item">
-                            <RouterLink to="/" class="nav-link" :class="{ 'active': nowPath === '/' }">HOME</RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Raffle/Sports" class="nav-link" :class="{ 'active': nowPath === '/Raffle/Sports' }">SPORTS</RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Raffle/Art" class="nav-link" :class="{ 'active': nowPath === '/Raffle/Art' }">ART</RouterLink>
-                        </li>
-                        <li class="nav-item">
-                            <RouterLink to="/Raffle/Fashion" class="nav-link" :class="{ 'active': nowPath === '/Raffle/Fashion' }">FASHION</RouterLink>
-                        </li>
-                        
-                    </ul>
-                </nav>
-            </div> -->
         </div>
     </div>
 </template>
