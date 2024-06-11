@@ -157,6 +157,20 @@
                                                         </div>
                                                         <div class="tr">
                                                             <div class="th">
+                                                                <p class="form_label">핫타임</p>
+                                                            </div>
+                                                            <div class="td">
+                                                                <div class="form_set">
+                                                                    <div class="input_clear sm">
+                                                                        <input type="date" id="prdname" name="prdname">
+                                                                        <span class="ms-2 mt-3">~</span>
+                                                                        <input type="date" id="prdname" name="prdname">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tr">
+                                                            <div class="th">
                                                                 <p class="form_label">퀴즈 내용</p>
                                                             </div>
                                                             <div class="td">

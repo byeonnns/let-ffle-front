@@ -1,12 +1,11 @@
 <template>
     <aside id="sidebar">
         <ul class="sidebar-nav">
-            <!-- 회원 관리 (회원 조회, 회원정보 수정 및 탈퇴) -->
+            <!-- 회원 관리 (회원 조회) -->
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
                     data-bs-target="#member" aria-expanded="false" aria-controls="member">
                     <i class="bi bi-person" style="color:white;"></i>
-                    <span>회원 관리</span>
                 </a>
 
                 <ul id="member" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -21,12 +20,8 @@
                 <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
                     data-bs-target="#product" aria-expanded="false" aria-controls="product">
                     <i class="bi bi-dice-5" style="color:white;"></i>
-                    <span>래플 관리</span>
                 </a>
                 <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item">
-                        <RouterLink to="/Admin/Raffle" class="sidebar-link" style="color: white;">대시보드</RouterLink>
-                    </li>
                     <li class="sidebar-item">
                         <RouterLink to="/Admin/Raffle/CreateRaffle" class="sidebar-link" style="color: white;">래플 등록</RouterLink>
                     </li>
@@ -36,30 +31,25 @@
                 </ul>
             </li>
 
-            <!-- 주문 관리 (주문 조회, 수정 및 삭제) -->
+            <!-- 당첨자 관리 (당첨자 조회 (내부 : 배송지 및 연락처 확인)) -->
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
                     data-bs-target="#order" aria-expanded="false" aria-controls="order">
                     <i class="bi bi-gift" style="color:white;"></i>
-                    <span>당첨자 관리</span>
                 </a>
                 <ul id="order" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="${pageContext.request.contextPath}/admin/order/dashboard" class="sidebar-link" style="color: white;">대시보드</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="${pageContext.request.contextPath}/admin/order/orderList" class="sidebar-link" style="color: white;">전체 당첨자
+                        <a href="${pageContext.request.contextPath}/admin/order/orderList" class="sidebar-link" style="color: white;">당첨자
                             조회</a>
                     </li>
                 </ul>
             </li>
 
-            <!-- 게시판 관리 (공지사항, 고객문의, Q&A) -->
+            <!-- 고객센터 관리 (공지사항, 고객문의, Q&A) -->
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
                     data-bs-target="#board" aria-expanded="false" aria-controls="board">
                     <i class="bi bi-megaphone" style="color: white;"></i>
-                    <span>고객센터</span>
                 </a>
                 <ul id="board" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
