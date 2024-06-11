@@ -73,7 +73,7 @@
                                 <table class="table mb-4">
                                     <thead>
                                         <tr class="d-none d-md-table-row text-center">
-                                            <th class="d-none d-md-table-cell" style="width: 4em;"><span>레플 이름</span>
+                                            <th class="d-none d-md-table-cell" style="width: 4em;"><span>래플 이름</span>
                                             </th>
                                             <th class="d-none d-md-table-cell" style="width: 11em;"><span>응모 기간</span>
                                             </th>
@@ -82,7 +82,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>레플 1번</td>
+                                            <td>래플 1번</td>
                                             <td>2024.06.10~2024.06.22</td>
                                             <td>2024.06.23</td>
                                         </tr>

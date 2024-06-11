@@ -47,7 +47,7 @@
                                 <table class="table mb-4">
                                     <thead>
                                         <tr class="d-none d-md-table-row text-center">
-                                            <th class="d-none d-md-table-cell" style="width: 4em;"><span>레플 이름</span>
+                                            <th class="d-none d-md-table-cell" style="width: 4em;"><span>래플 이름</span>
                                             </th>
                                             <th class="d-none d-md-table-cell" style="width: 11em;"><span>당첨 일자</span>
                                             </th>
@@ -58,7 +58,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>레플 1번</td>
+                                            <td>래플 1번</td>
                                             <td>2024.06.10</td>
                                             <td>XXX</td>
                                             <td>류현진 싸인 유니폼</td>

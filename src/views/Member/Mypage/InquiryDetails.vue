@@ -17,14 +17,19 @@
                 <tr style="height: 300px;">
                     <th class="table-active" style="border-bottom:1px solid white;">내용</th>
                     <td colspan="3">안녕하세요.</td>
-
-                </tr>
-                <tr style="height: 300px;">
-                    <th class="table-active" style="border-bottom:1px solid white;">답변</th>
-                    <td colspan="3">답변이 등록되면 보여지는 영역</td>
                 </tr>
             </tbody>
         </table>
+        <div>
+            <table class="table table-bordered;">
+                <tbody>
+                    <tr style="height: 100px;">
+                    <th class="table-active" style="width: 455px;">답변</th>
+                    <td colspan="3" style="border: 1px solid #ebebeb;">답변이 등록되면 보여지는 영역</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="text-center">
             <RouterLink to="/Member/Mypage/ToInquiry"><button class="btn btn-outline-light btn-sm">목록</button></RouterLink>
         </div>
@@ -39,4 +44,5 @@
     width: 80px;
     height: 40px;
 }
+
 </style>
