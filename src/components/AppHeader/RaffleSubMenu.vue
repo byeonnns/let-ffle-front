@@ -1,11 +1,10 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand bg-body-white">
+        <nav class="navbar navbar-expand bg-body-white p-0">
             <ul class="navbar-nav nav-underline">
-                <li class="nav-item dropend" @mouseenter="sideOn('sportsHover')" @mouseleave="sideOff('sportsHover')">
-                    <RouterLink to="/Raffle/Sports" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false" :class="{ 'active': nowPath === '/Raffle/Sports' }">SPORTS</RouterLink>
-                    <ul class="dropdown-menu border-0 m-0 p-0 ps-2" :class="{ show: sportsHover }" data-bs-popper="static">
+                <li class="nav-item dropdown" @mouseenter="sideOn('sportsHover')" @mouseleave="sideOff('sportsHover')">
+                    <RouterLink to="/Raffle/Sports" class="nav-link dropdown-toggle" :class="{ 'active': nowPath === '/Raffle/Sports' }">SPORTS</RouterLink>
+                    <ul class="dropdown-menu rounded-0 border-0 m-0 p-0 ps-2" :class="{ show: sportsHover }" data-bs-popper="static">
                         <div class="d-flex">
                             <li><a class="nav-link me-2" style="padding: 8px;">Soccer</a></li>
                             <li><a class="nav-link me-2" style="padding: 8px;">Baseball</a></li>
@@ -13,9 +12,8 @@
                         </div>
                     </ul>
                 </li>
-                <li class="nav-item dropend" @mouseenter="sideOn('artsHover')" @mouseleave="sideOff('artsHover')">
-                    <RouterLink to="/Raffle/Art" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false" :class="{ 'active': nowPath === '/Raffle/Art' }">ARTS</RouterLink>
+                <li class="nav-item dropdown" @mouseenter="sideOn('artsHover')" @mouseleave="sideOff('artsHover')">
+                    <RouterLink to="/Raffle/Art" class="nav-link dropdown-toggle" :class="{ 'active': nowPath === '/Raffle/Art' }">ARTS</RouterLink>
                     <ul class="dropdown-menu border-0 m-0 p-0 ps-2" :class="{ show: artsHover }" data-bs-popper="static">
                         <div class="d-flex">
                             <li><a class="nav-link me-2" style="padding: 8px;">Movie</a></li>
@@ -24,9 +22,9 @@
                         </div>
                     </ul>
                 </li>
-                <li class="nav-item dropend" @mouseenter="sideOn('fashionHover')" @mouseleave="sideOff('fashionHover')">
-                    <RouterLink to="/Raffle/Fashion" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false" :class="{ 'active': nowPath === '/Raffle/Fashion' }">FASHION</RouterLink>
+                <li class="nav-item dropdown" @mouseenter="sideOn('fashionHover')" @mouseleave="sideOff('fashionHover')">
+                    <!-- 클릭 기능 제거 data-bs-toggle="dropdown" aria-expanded="false" -->
+                    <RouterLink to="/Raffle/Fashion" class="nav-link dropdown-toggle" :class="{ 'active': nowPath === '/Raffle/Fashion' }">FASHION</RouterLink>
                     <ul class="dropdown-menu border-0 m-0 p-0 ps-2" :class="{ show: fashionHover }" data-bs-popper="static">
                         <div class="d-flex">
                             <li><a class="nav-link me-2" style="padding: 8px;">Top</a></li>

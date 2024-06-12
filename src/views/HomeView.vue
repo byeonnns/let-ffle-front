@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="carouselExampleIndicators" class="carousel slide container mb-4">
+    <div id="carouselExampleIndicators" class="carousel slide container mb-4 d-none d-lg-block">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
           aria-current="true" aria-label="Slide 1"></button>
@@ -9,7 +9,7 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
           aria-label="Slide 3"></button>
       </div>
-      <div class="carousel-inner d-none d-lg-block mb-3">
+      <div class="carousel-inner mb-3">
         <div class="carousel-item active">
           <img src="@/assets/tempImage/Kith.webp" class="d-block w-100" alt="...">
         </div>

@@ -1,8 +1,9 @@
 <template>
-    <div style="height: 140px;">
+    <div>
         <div class="container-lg">
             <div class="d-flex d-none d-lg-block text-end">
-                <span class="d-none d-md-inline-block me-3"><img src="@/assets/berry-icon.png" class="me-1" height="20px">300</span>
+                <span class="d-none d-md-inline-block me-3"><img src="@/assets/berry-icon.png" class="me-1"
+                        height="20px">300</span>
                 <RouterLink to="/join" class="me-3"><span class="d-none d-md-inline-block">회원가입</span></RouterLink>
                 <RouterLink to="/login" class="me-3"><span class="d-none d-md-inline-block">로그인</span></RouterLink>
                 <RouterLink to="/Member/Mypage" class="me-3"><span class="d-none d-md-inline-block">마이페이지</span>
@@ -12,7 +13,8 @@
             </div>
             <nav class="navbar navbar-expand-lg bg-body-white">
                 <div class="container-fluid">
-                    <RouterLink to="/" class="fw-bold fst-italic h3 non-this">Let-<span style="color:#FF5C35">FFle</span></RouterLink>
+                    <RouterLink to="/" class="fw-bold fst-italic non-this" style="font-size:28px">Let-<span
+                            style="color:#FF5C35">FFle</span></RouterLink>
                     <div class="navbar-toggler bi bi-bell fs-3 border-0" @click="clickCheck">
                     </div>
                     <div class="d-none d-lg-inline-block">
@@ -26,7 +28,8 @@
                                     :class="{ 'active': nowPath === '/Raffle/Main' }">RAFFLE</RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Notice" class="nav-link" :class="{ 'active': nowPath === '/Notice' || nowPath === '/Faq', 'router-link-exact-active':nowPath === '/Faq'}">
+                                <RouterLink to="/Notice" class="nav-link"
+                                    :class="{ 'active': nowPath === '/Notice' || nowPath === '/Faq', 'router-link-exact-active': nowPath === '/Faq' }">
                                     NOTICE</RouterLink>
                             </li>
                             <li class="nav-item">
@@ -47,10 +50,15 @@ import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import RaffleSubMenu from './RaffleSubMenu.vue';
 import NoticeSubMenu from './NoticeSubMenu.vue';
-import BoardSubMenu from './BoardSubMenu.vue';
+import NullSubMenu from './NullSubMenu.vue';
 
 const router = useRouter();
 const nowPath = computed(() => router.currentRoute.value.path);
+
+const CustomComponent = {
+  template: '<div style="height:42px">zz</div>'
+};
+
 
 const currentComponent = computed(() => {
     // 현재 경로에 따라 다른 컴포넌트를 반환
@@ -60,10 +68,8 @@ const currentComponent = computed(() => {
         return NoticeSubMenu;
     } else if (nowPath.value.startsWith('/Faq')) {
         return NoticeSubMenu;
-    }/* else if (nowPath.value.startsWith('/Board')) {
-        return BoardSubMenu;
-    }*/ else {
-        return null;
+    } else {
+        return NullSubMenu;
     }
 });
 
