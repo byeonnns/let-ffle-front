@@ -4,20 +4,20 @@
             <div class="d-flex flex-column" style="width: 180px;">
                 <div class="d-flex flex-column">
                     <div class="mb-4 ms-3">
-                        <RouterLink to="/Member/Mypage"><h2>마이 페이지</h2></RouterLink>
+                        <RouterLink to="/Member"><h2>마이 페이지</h2></RouterLink>
                     </div>
                     <nav class="">
                         <ul class="nav d-flex flex-column ms-3">
                             <li class="nav-item">
-                                <RouterLink to="/Member/Mypage/ApplicationDetails"
+                                <RouterLink to="/Member/MyEntryList"
                                     class="nav-link active align-items-left">응모 내역</RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Member/Mypage/WatchList" class="nav-link active align-items-left">찜 목록
+                                <RouterLink to="/Member/LikeList" class="nav-link active align-items-left">찜 목록
                                 </RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Member/Mypage/WinningDetails" class="nav-link active align-items-left">
+                                <RouterLink to="/Member/WinningList" class="nav-link active align-items-left">
                                     당첨 내역</RouterLink>
                             </li>
                         </ul>
@@ -25,11 +25,11 @@
                     <nav class="">
                         <ul class="nav d-flex flex-column ms-3">
                             <li class="nav-item">
-                                <RouterLink to="/Member/Mypage/LoginInformation" class="nav-link active">회원 정보 수정
+                                <RouterLink to="/Member/UpdateMember" class="nav-link active">회원 정보 수정
                                 </RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Member/Mypage/ToInquiry" class="nav-link active">문의 내역</RouterLink>
+                                <RouterLink to="/Member/InquiryList" class="nav-link active">문의 내역</RouterLink>
                             </li>
                         </ul>
                     </nav>

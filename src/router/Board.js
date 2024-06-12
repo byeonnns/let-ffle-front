@@ -4,8 +4,8 @@ import BoardComment from '../views/Board/BoardDetail.vue'
 
 const routes = [
     {
-        path: '/Board/WriteForm',
-        component: () => import(/* webpackChunkName: "Board" */ '@/components/WriteForm.vue')
+        path: '/Board/WriteBoard',
+        component: () => import(/* webpackChunkName: "Board" */ '@/views/Board/WriteBoardView.vue')
     },
     {
         path: '/Board/BoardList',

@@ -1,15 +1,11 @@
 const routes = [
     {
-        path: '/Admin/Main',
-        component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Main')
+        path: '/Admin',
+        component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin')
     },
     {
         path: '/Admin/Sidebar',
         component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Sidebar')
-    },
-    {
-        path: '/Admin/Dashboard',
-        component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Dashboard')
     },
     {
         path: '/Admin/Raffle',
@@ -38,6 +34,10 @@ const routes = [
     {
         path: '/Admin/Inquiry/Reply',
         component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Inquiry/Reply.vue')
+    },
+    {
+        path: '/Admin/MemberList',
+        component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/MemberListView.vue')
     }
 ];
 

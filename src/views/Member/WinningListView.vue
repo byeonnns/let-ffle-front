@@ -9,7 +9,7 @@
                     <div class="content_area my-page-content">
                         <div class="my_purchase">
                             <div class="v-portal" style="display: none;"></div>
-                            <div class="period_search">
+                            <!-- <div class="period_search">
                                 <div class="period_month border mt-2">
                                     <ul class="month_list container d-flex justify-content-center">
                                         <li class="month_item">
@@ -41,18 +41,45 @@
                             </div>
                             <div class="mb-5 mt-2">
                                 <p style="color: gray; font-size: 15px;">●한 번에 조회 가능한 기간은 최대 6개월입니다.</p>
-                            </div>
+                            </div> -->
+                            <SerachPeriod>
+
+                            </SerachPeriod>
                             <hr class="mb-3" />
                             <div class="text-center">
                             </div>
-                            <MypageTableTemplate>
-                                <template v-slot:head2>당첨 날짜</template>
-                                <template v-slot:head3>당첨 상품</template>
-                                <template v-slot:body1>아이폰 뿌리는 이벤트</template>
-                                <template v-slot:body2>2024.02.02</template>
-                                <template v-slot:body3>아이폰 15Pro</template>
-                                <template v-slot:body4><button class="btn w-50">테스트 버튼</button></template>
-                            </MypageTableTemplate>
+                            <div>
+                                <table class="w-100 text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>래플 이름</th>
+                                            <th>
+                                                응모 기간
+                                            </th>
+                                            <th>
+                                                응모 상품
+                                            </th>
+                                            <th>바로가기</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                아이폰 뿌리는 이벤트
+                                            </td>
+                                            <td>
+                                                2024.01.01 ~ 2024.02.02
+                                            </td>
+                                            <td>
+                                                아이폰 11Pro
+                                            </td>
+                                            <td>
+                                                <button class="btn w-50">테스트 버튼</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -62,7 +89,8 @@
 </template>
 
 <script setup>
-import MypageTableTemplate from './MypageTableTemplate.vue';
+import SerachPeriod from './Components/SerachPeriod.vue';
+
 </script>
 
 <style scoped>
@@ -123,7 +151,7 @@ import MypageTableTemplate from './MypageTableTemplate.vue';
     height: 40px;
     text-align: center;
     border-radius: 10px;
-    background-color:  #F37551;
+    background-color: #F37551;
     color: white;
 }
 
