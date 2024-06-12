@@ -2,14 +2,37 @@
     <div>
         <div class="container-lg">
             <div class="d-flex d-none d-lg-block text-end">
-                <span class="d-none d-md-inline-block me-3"><img src="@/assets/berry-icon.png" class="me-1"
-                        height="20px">300</span>
-                <RouterLink to="/join" class="me-3"><span class="d-none d-md-inline-block">회원가입</span></RouterLink>
-                <RouterLink to="/login" class="me-3"><span class="d-none d-md-inline-block">로그인</span></RouterLink>
-                <RouterLink to="/Member" class="me-3"><span class="d-none d-md-inline-block">마이페이지</span>
+                <div class="d-inline-block">
+                    <Popper :show="showPopper" :placement="'left'">
+                        <span class="me-3"><img src="@/assets/berry-icon.png" class="me-1" height="20px"
+                                @click="popper">300</span>
+                        <template #content>
+                            <div class="d-flex flex-column bg-white border">
+                                <p class="text-center">베리 변동 내역</p>
+                                <table class="p-0 table-bordered">
+                                    <tr>
+                                        <td class="pe-2">06-12 20:45</td>
+                                        <td>획득</td>
+                                        <td class="pe-2">+1</td>
+                                        <td>미션 성공</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-2">06-13 17:30</td>
+                                        <td>소비</td>
+                                        <td class="pe-2">-1</td>
+                                        <td>확률 상승</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </template>
+                    </Popper>
+                </div>
+                <RouterLink to="/join" class="me-3"><span class="d-inline-block">회원가입</span></RouterLink>
+                <RouterLink to="/login" class="me-3"><span class="d-inline-block">로그인</span></RouterLink>
+                <RouterLink to="/Member" class="me-3"><span class="d-inline-block">마이페이지</span>
                 </RouterLink>
-                <RouterLink to="/Notice" class="me-3"><span class="d-none d-md-inline-block">고객센터</span></RouterLink>
-                <RouterLink to="/Admin" class="me-3"><span class="d-none d-md-inline-block">관리자</span></RouterLink>
+                <RouterLink to="/Notice" class="me-3"><span class="d-inline-block">고객센터</span></RouterLink>
+                <RouterLink to="/Admin" class="me-3"><span class="d-inline-block">관리자</span></RouterLink>
             </div>
             <nav class="navbar navbar-expand-lg bg-body-white">
                 <div class="container-fluid">
@@ -24,8 +47,8 @@
                                 </RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Raffle" class="nav-link"
-                                    :class="{ 'active': nowPath === '/Raffle' }">RAFFLE</RouterLink>
+                                <RouterLink to="/Raffle" class="nav-link" :class="{ 'active': nowPath === '/Raffle' }">
+                                    RAFFLE</RouterLink>
                             </li>
                             <li class="nav-item">
                                 <RouterLink to="/Notice" class="nav-link"
@@ -46,11 +69,12 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import RaffleSubMenu from './RaffleSubMenu.vue';
 import NoticeSubMenu from './NoticeSubMenu.vue';
 import NullSubMenu from './NullSubMenu.vue';
+import Popper from "vue3-popper";
 
 const router = useRouter();
 const nowPath = computed(() => router.currentRoute.value.path);
@@ -66,6 +90,10 @@ const currentComponent = computed(() => {
     } else {
         return NullSubMenu;
     }
+});
+
+const popper = () => ({
+    showPopper: true
 });
 
 </script>
