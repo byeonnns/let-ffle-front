@@ -40,7 +40,7 @@
                     </div>
                 </div>
             </nav>
-            <component :is="currentComponent"></component>
+            <component :is="currentComponent" :nowPath="nowPath"></component>
         </div>
     </div>
 </template>
@@ -54,11 +54,6 @@ import NullSubMenu from './NullSubMenu.vue';
 
 const router = useRouter();
 const nowPath = computed(() => router.currentRoute.value.path);
-
-const CustomComponent = {
-  template: '<div style="height:42px">zz</div>'
-};
-
 
 const currentComponent = computed(() => {
     // 현재 경로에 따라 다른 컴포넌트를 반환
