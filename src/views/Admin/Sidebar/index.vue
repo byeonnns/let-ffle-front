@@ -81,12 +81,12 @@
 /* font ------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
-::after,
+/* ::after,
 ::before {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+} */
 
 a {
     text-decoration: none;
@@ -101,9 +101,9 @@ h1 {
     font-size: 1.5rem;
 }
 
-body {
+/* body {
     font-family: 'Noto Sans KR', sans-serif;
-}
+} */
 
 /*----------------------------------------------------------------*/
 .wrapper {

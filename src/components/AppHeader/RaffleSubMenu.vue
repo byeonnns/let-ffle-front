@@ -1,20 +1,80 @@
 <template>
-    <SubMenuTemplate>
-        <template v-slot:menu1>
-            <RouterLink to="/Raffle/Sports" class="nav-link" :class="{ 'active': nowPath === '/Raffle/Sports' }">SPORTS</RouterLink>
-        </template>
-        <template v-slot:menu2>
-            <RouterLink to="/Raffle/Art" class="nav-link" :class="{ 'active': nowPath === '/Raffle/Art' }">ART</RouterLink>
-        </template>
-        <template v-slot:menu3>
-            <RouterLink to="/Raffle/Fashion" class="nav-link" :class="{ 'active': nowPath === '/Raffle/Fashion' }">FASHION</RouterLink>
-        </template>
-    </SubMenuTemplate>
+    <div>
+        <nav class="navbar navbar-expand bg-body-white">
+            <ul class="navbar-nav nav-underline">
+                <li class="nav-item dropend" @mouseenter="sideOn('sportsHover')" @mouseleave="sideOff('sportsHover')">
+                    <RouterLink to="/Raffle/Sports" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false" :class="{ 'active': nowPath === '/Raffle/Sports' }">SPORTS</RouterLink>
+                    <ul class="dropdown-menu border-0 m-0 p-0 ps-2" :class="{ show: sportsHover }" data-bs-popper="static">
+                        <div class="d-flex">
+                            <li><a class="nav-link me-2" style="padding: 8px;">Soccer</a></li>
+                            <li><a class="nav-link me-2" style="padding: 8px;">Baseball</a></li>
+                            <li><a class="nav-link me-2" style="padding: 8px;">Basketball</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li class="nav-item dropend" @mouseenter="sideOn('artsHover')" @mouseleave="sideOff('artsHover')">
+                    <RouterLink to="/Raffle/Art" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false" :class="{ 'active': nowPath === '/Raffle/Art' }">ARTS</RouterLink>
+                    <ul class="dropdown-menu border-0 m-0 p-0 ps-2" :class="{ show: artsHover }" data-bs-popper="static">
+                        <div class="d-flex">
+                            <li><a class="nav-link me-2" style="padding: 8px;">Movie</a></li>
+                            <li><a class="nav-link me-2" style="padding: 8px;">Musical</a></li>
+                            <li><a class="nav-link me-2" style="padding: 8px;">Concert</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li class="nav-item dropend" @mouseenter="sideOn('fashionHover')" @mouseleave="sideOff('fashionHover')">
+                    <RouterLink to="/Raffle/Fashion" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false" :class="{ 'active': nowPath === '/Raffle/Fashion' }">FASHION</RouterLink>
+                    <ul class="dropdown-menu border-0 m-0 p-0 ps-2" :class="{ show: fashionHover }" data-bs-popper="static">
+                        <div class="d-flex">
+                            <li><a class="nav-link me-2" style="padding: 8px;">Top</a></li>
+                            <li><a class="nav-link me-2" style="padding: 8px;">Bottom</a></li>
+                            <li><a class="nav-link me-2" style="padding: 8px;">Foot</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <slot name="menu3"></slot>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </template>
 
 <script setup>
-    import SubMenuTemplate from "./SubMenuTemplate.vue";
+
+import { ref } from 'vue';
+
+const sportsHover = ref(false);
+const artsHover = ref(false);
+const fashionHover = ref(false);
+
+function sideOn(type) {
+          if (type === 'sportsHover') {
+            sportsHover.value = true;
+          } else if (type === 'artsHover') {
+            artsHover.value = true;
+          } else if (type === 'fashionHover') {
+            fashionHover.value = true;
+          }
+        }
+
+        function sideOff(type) {
+          if (type === 'sportsHover') {
+            sportsHover.value = false;
+          } else if (type === 'artsHover') {
+            artsHover.value = false;
+          } else if (type === 'fashionHover') {
+            fashionHover.value = false;
+          }
+        }
+
 </script>
 
 <style scoped>
+.dropdown-toggle::after {
+    display: none !important;
+}
 </style>
