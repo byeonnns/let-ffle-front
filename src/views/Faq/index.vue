@@ -78,7 +78,7 @@
 
                                         <div style="width: 100%; ">
                                             <!-- border:1px solid black -->
-                                            <p> 안녕하세요 크림입니다 </p>
+                                            <p>안녕하세요 LET-FFle입니다</p>
                                             <h3>
                                                 <p>패널티 감면 기준</p>
                                             </h3>

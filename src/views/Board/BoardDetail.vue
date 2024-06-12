@@ -65,7 +65,9 @@
 
             <div class="mt-3">
                 <p class="custom-title me-3">릭재원</p>
-                <p class="custom-text">2024-06-11 11:58:37121</p>
+                <p class="custom-text">2024-06-11</p>
+                <RouterLink to="/">
+                <button class="my_btn btn-outline-light btn-sm m-2"><i class="bi bi-x-square" ></i></button></RouterLink>
             </div>
             <div style=" background-color: #FAFAFA; height: 100px; padding: 5px">
                 <p class="mt-3">이거 좀 재미있는 상황인 거 같음 </p>
@@ -94,4 +96,13 @@
     /* 인라인 요소로 변경하여 같은 줄에 표시 */
 }
 
+.my_btn {
+  background-color:white;
+  color: #F37551;
+  border: none;
+  border-radius: 5px;
+  width: 20px;
+  height: 30px;
+  
+}
 </style>

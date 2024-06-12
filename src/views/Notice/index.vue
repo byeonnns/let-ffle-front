@@ -49,7 +49,7 @@
                                 <td>
 
                                     <RouterLink to="/Board/BoardComment">
-                                        <span class="spanded">기타</span>
+                                        <span class="spanded">기타</span>     
                                     </RouterLink>
                                 </td>
                             </tr>
@@ -77,31 +77,38 @@
                                         휴무에 따른 거래 및
                                         정산일정안내</RouterLink>
                                 </td>
+                                <td>2024-06-11</td>
                             </tr>
                             <tr>
                                 <td class="text-center">공지</td>
                                 <td>[안내] Draq-시엔느 응모</td>
+                                <td>2024-06-11</td>
                             </tr>
                             <tr>
                                 <td class="text-center">공지</td>
                                 <td>보관안내</td>
+                                <td>2024-06-11</td>
                             </tr>
                             <tr>
                                 <td class="text-center">공지</td>
                                 <td>검수 지연안내</td>
+                                <td>2024-06-11</td>
                             </tr>
                             <tr>
                                 <td class="text-center">공지</td>
                                 <td>보관 판매 신청 재개 안내</td>
+                                <td>2024-06-11</td>
                             </tr>
 
                             <tr>
                                 <td class="text-center">공지</td>
                                 <td>보관판매 불가능</td>
+                                <td>2024-06-11</td>
                             </tr>
                             <tr>
                                 <td class="text-center">공지</td>
                                 <td>우리조는 야삐</td>
+                                <td>2024-06-11</td>
                             </tr>
 
                             <tr>
