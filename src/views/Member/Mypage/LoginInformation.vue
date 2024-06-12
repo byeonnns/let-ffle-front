@@ -18,8 +18,6 @@
                                 <input type="email" placeholder="as***naver.com" class="input w-50">
                             </div>
                             <hr class="p-0 m-0 w-100 mb-4 mt-3">
-                            <button class="btn btn-white btn-sm mb-5"
-                                style="position: absolute; bottom: 0; right: 0;">변경</button>
                         </div>
                         <div style="width: 50%;">
                             <h5 style="font-size: 13px;" class="mt-1">비밀번호</h5>
@@ -45,7 +43,7 @@
                         </div>
                         <div class="w-50 position-relative">
                             <div class="mt-1 d-flex justify-content-end">
-                                <RouterLink to="#"><button class="btn btn-sm" style="font-size: 12px; color: black; background-color: white; text-decoration: underline;">회원탈퇴</button>
+                                <RouterLink to="#"><button class="btn btn-sm" style="font-size: 14px; color: black; background-color: white; text-decoration: underline;">회원탈퇴</button>
                                 </RouterLink>
                             </div>
                         </div>
@@ -73,6 +71,8 @@
     padding-top: 10px;
     padding-bottom: 6px;
     text-align: center;
+    background-color: #F37551;
+    color: white;
 }
 
 .input {

@@ -10,11 +10,13 @@
                     <table class="table mb-0">
                         <thead>
                             <tr class="d-none d-md-table-row text-center">
+
                                 <th class="d-none d-md-table-cell" style="width: 4em;"><span>번호</span></th>
                                 <th><span>제목</span></th>
                                 <th class="d-none d-md-table-cell" style="width: 11em;"><span>글쓴이</span></th>
                                 <th class="d-none d-md-table-cell" style="width: 8em;"><span>날짜</span></th>
                                 <th class="d-none d-md-table-cell" style="width: 6em;"><span>진행현황</span></th>
+                                
                             </tr>
                         </thead>
                         <tbody>

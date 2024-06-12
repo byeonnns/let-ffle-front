@@ -42,17 +42,10 @@ const routes = [
         path: '/Member/Mypage/MypageProFile',
         component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage/MypageProFile.vue')
     },
-    {
-        path: '/Member/Mypage/MypageProFile2',
-        component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage/MypageProFile2.vue')
-    },
+
     {
         path: '/Member/Mypage/MypageProFile3',
         component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage/MypageProFile3.vue')
-    },
-    {
-        path: '/Member/Mypage/MypageProFile4',
-        component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/Mypage/MypageProFile4.vue')
     },
     {
         path: '/Member/Mypage/ProfileManagement',

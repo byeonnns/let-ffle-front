@@ -44,28 +44,15 @@
                             </div>
                             <hr class="mb-3" />
                             <div class="text-center">
-                                <table class="table mb-4">
-                                    <thead>
-                                        <tr class="d-none d-md-table-row text-center">
-                                            <th class="d-none d-md-table-cell" style="width: 4em;"><span>래플 이름</span>
-                                            </th>
-                                            <th class="d-none d-md-table-cell" style="width: 11em;"><span>당첨 일자</span>
-                                            </th>
-                                            <th class="d-none d-md-table-cell" style="width: 8em;"><span>당첨자</span></th>
-                                            <th class="d-none d-md-table-cell" style="width: 4em;"><span>응모 상품</span>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>래플 1번</td>
-                                            <td>2024.06.10</td>
-                                            <td>XXX</td>
-                                            <td>류현진 싸인 유니폼</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
                             </div>
+                            <MypageTableTemplate>
+                                <template v-slot:head2>당첨 날짜</template>
+                                <template v-slot:head3>당첨 상품</template>
+                                <template v-slot:body1>아이폰 뿌리는 이벤트</template>
+                                <template v-slot:body2>2024.02.02</template>
+                                <template v-slot:body3>아이폰 15Pro</template>
+                                <template v-slot:body4><button class="btn w-50">테스트 버튼</button></template>
+                            </MypageTableTemplate>
                         </div>
                     </div>
                 </div>
@@ -75,6 +62,7 @@
 </template>
 
 <script setup>
+import MypageTableTemplate from './MypageTableTemplate.vue';
 </script>
 
 <style scoped>
@@ -135,6 +123,8 @@
     height: 40px;
     text-align: center;
     border-radius: 10px;
+    background-color:  #F37551;
+    color: white;
 }
 
 .Status {
