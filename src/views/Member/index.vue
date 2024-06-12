@@ -4,14 +4,22 @@
             <MypageNavBar />
             <div class="flex-grow-1">
                 <RouterView />
-            </div> 
+                <div>
+
+                </div>
+
+
+
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
 import { RouterView } from 'vue-router';
-import MypageNavBar from './MypageNavBar.vue';
+import MypageNavBar from '@/views/Member/Components/MypageNavBar.vue';
+
+
 
 
 </script>
@@ -61,4 +69,29 @@ a {
     text-decoration: none;
     color: black;
 }
+
+/*  */
+.circle-border {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid black;
+    overflow: hidden;
+}
+
+/* .circle-border img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.position-absolute>.btn {
+    margin-right: 10px;
+
+}
+
+.btn {
+    background-color: #F37551;
+    color: white;
+} */
 </style>

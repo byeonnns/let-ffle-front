@@ -6,7 +6,7 @@
                         height="20px">300</span>
                 <RouterLink to="/join" class="me-3"><span class="d-none d-md-inline-block">회원가입</span></RouterLink>
                 <RouterLink to="/login" class="me-3"><span class="d-none d-md-inline-block">로그인</span></RouterLink>
-                <RouterLink to="/Member/Mypage" class="me-3"><span class="d-none d-md-inline-block">마이페이지</span>
+                <RouterLink to="/Member" class="me-3"><span class="d-none d-md-inline-block">마이페이지</span>
                 </RouterLink>
                 <RouterLink to="/Notice" class="me-3"><span class="d-none d-md-inline-block">고객센터</span></RouterLink>
                 <RouterLink to="/Admin/Main" class="me-3"><span class="d-none d-md-inline-block">관리자</span></RouterLink>

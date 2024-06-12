@@ -24,14 +24,14 @@
             <table class="table table-bordered;">
                 <tbody>
                     <tr style="height: 100px;">
-                    <th class="table-active" style="width: 455px;">답변</th>
-                    <td colspan="3" style="border: 1px solid #ebebeb;">답변이 등록되면 보여지는 영역</td>
-                </tr>
+                        <th class="table-active" style="width: 455px;">답변</th>
+                        <td colspan="3" style="border: 1px solid #ebebeb;">답변이 등록되면 보여지는 영역</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
         <div class="text-center">
-            <RouterLink to="/Member/Mypage/ToInquiry"><button class="btn btn-outline-light btn-sm">목록</button></RouterLink>
+            <RouterLink to="/Member/InquiryList"><button class="btn btn-outline-light btn-sm">목록</button></RouterLink>
         </div>
     </div>
 </template>
@@ -44,5 +44,4 @@
     width: 80px;
     height: 40px;
 }
-
 </style>
