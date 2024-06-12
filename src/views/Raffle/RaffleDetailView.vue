@@ -6,13 +6,13 @@
                     style="object-position:center top;">
             </div>
             <p class="h1">
-                <slot name="detailTitle"></slot><i class="bi bi-heart fs-3"></i>
+                제목 제목<i class="bi bi-heart fs-3"></i>
             </p>
             <p class="h3">
-                <slot name="detailTime"></slot>
+                시간 시간
             </p>
             <p class="h5">
-                <slot name="detailContent"></slot>
+                글 내용 글 내용
             </p>
             <p>태그를 적는 부분</p>
             <div class="d-flex flex-column px-5 mt-5">

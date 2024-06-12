@@ -16,7 +16,7 @@
                 <!--  border:1px solid black; -->
                 <div class="text-end" style="width: 100%; height: 30px;">
 
-                    <RouterLink to="/Board/Write">
+                    <RouterLink to="/Board/WriteForm">
                         <button class="btn btn-outline-light btn-sm"> 글쓰기</button>
                     </RouterLink>
                 </div>

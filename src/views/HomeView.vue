@@ -31,13 +31,13 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    <RaffleMain/>
+    <Raffle/>
     <!-- Todo : 임시로 해놓음 컴포넌트화 할 것인지? -->
   </div>
 </template>
 
 <script setup>
-import RaffleMain from "./Raffle/Main"
+import Raffle from "./Raffle"
 </script>
 
 <style scoped></style>

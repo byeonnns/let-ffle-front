@@ -1,15 +1,15 @@
-import BoardList from '../views/Board/BoardList.vue'
-import Write from '../views/Board/Write.vue'
+import BoardList from '../views/Board/index.vue'
+import Write from '@/components/WriteForm.vue';
 import BoardComment from '../views/Board/BoardDetail.vue'
 
 const routes = [
     {
-        path: '/Board/Write',
-        component: () => import(/* webpackChunkName: "Board" */ '@/views/Board/Write')
+        path: '/Board/WriteForm',
+        component: () => import(/* webpackChunkName: "Board" */ '@/components/WriteForm.vue')
     },
     {
         path: '/Board/BoardList',
-        component: () => import(/* webpackChunkName: "Board" */ '@/views/Board/BoardList')
+        component: () => import(/* webpackChunkName: "Board" */ '@/views/Board')
     },
     {
         path: '/Board/BoardDetail',

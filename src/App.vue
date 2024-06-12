@@ -1,16 +1,15 @@
 <template>
   <div>
-    <AppHeader class="sticky-top bg-white" />
+    <Header class="sticky-top bg-white"/>
     <router-view />
-    <AppFooter v-if="!$route.path.startsWith('/Admin')"/>
+    <Footer v-if="!$route.path.startsWith('/Admin')"/>
     <FooterNav class="d-lg-none sticky-bottom container-fluid" />
   </div>
 </template>
 
 <script setup>
-import AppHeader from '@/components/AppHeader';
-import AppMenu from '@/components/AppMenu.vue';
-import AppFooter from "@/components/AppFooter.vue";
+import Header from '@/components/Header';
+import Footer from "@/components/Footer.vue";
 import FooterNav from "@/components/FooterNav.vue";
 </script>
 

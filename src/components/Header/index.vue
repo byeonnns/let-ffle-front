@@ -24,8 +24,8 @@
                                 </RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Raffle/Main" class="nav-link"
-                                    :class="{ 'active': nowPath === '/Raffle/Main' }">RAFFLE</RouterLink>
+                                <RouterLink to="/Raffle" class="nav-link"
+                                    :class="{ 'active': nowPath === '/Raffle' }">RAFFLE</RouterLink>
                             </li>
                             <li class="nav-item">
                                 <RouterLink to="/Notice" class="nav-link"
