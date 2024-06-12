@@ -57,7 +57,7 @@
                                                 당첨 기간
                                             </th>
                                             <th>
-                                                당첨 상품
+                                                 상품
                                             </th>
                                             <th>바로가기</th>
                                         </tr>
@@ -94,7 +94,7 @@ import SerachPeriod from './Components/SearchPeriod.vue';
 </script>
 
 <style scoped>
-.content_title {
+/* .content_title {
     margin-bottom: 20px;
     text-align: center;
 }
@@ -157,5 +157,5 @@ import SerachPeriod from './Components/SearchPeriod.vue';
 
 .Status {
     display: flex;
-}
+} */
 </style>
