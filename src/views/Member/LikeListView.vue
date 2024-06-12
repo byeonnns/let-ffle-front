@@ -1,26 +1,24 @@
 <template>
     <div>
-        <div class="container"> 
+        <div class="container">
             <div class="d-flex">
                 <div class="d-flex flex-column ms-5" style="width: 100%;">
                     <div style="border-bottom: 3px solid #F37551;">
                         <h4>찜 목록</h4>
                     </div>
-                    <div class="mb-3">
-                        <span style="font-size: 13px;">전체 n</span>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex">
-                            <div style="width: 6rem; height: 85px;">
-                                <img src="@/assets/shoes.png" class="card-img-top" alt="..."
-                                    style="max-width: 100%; height: auto;;">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="@/assets/shoes.png" class="card-img-top" alt="..."
+                                style="max-width: 6rem; height: auto;">
+                            <div class="ms-3">
+                                <div>Nike</div>
+                                <div>Nike Air Force 1'07First Use White Team Red</div>
                             </div>
-                            <div class="align-content-center">Nike<br>Nike Air Force 1'07First Use White Team Red</div>
                         </div>
-                        <div class="align-content-center">
-                            <button class="btn btm-sm me-2" style="background-color: #F37551">응모</button>
+                        <div>
+                            <button class="btn btm-sm me-2" style="background-color: #F37551; color: white;">응모</button>
                             <button class="btn btm-sm"
-                                style="background-color: white; color:black; border: 1px solid black;">삭제</button>
+                                style="background-color: white; color: black; border: 1px solid black;">삭제</button>
                         </div>
                     </div>
                     <hr />
@@ -40,5 +38,4 @@
 .router {
     color: black;
 }
-
 </style>

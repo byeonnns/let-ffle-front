@@ -23,25 +23,21 @@ const routes = [
             path: 'UpdateMember',
             component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/UpdateMemberView.vue')
         },
+        {
+            path: 'InquiryList',
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/InquiryListView.vue')
+        },
+        {
+            path: 'WriteInquiry',
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/WriteInquiryView.vue')
+        },
+        {
+            path: 'InquiryDetails',
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/InquiryDetails.vue')
+        },
         
         ]
     }
-
-    , {
-        path: '/Member/WriteInquiry',
-        component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/WriteInquiryView.vue')
-    },
-    {
-        path: '/Member/InquiryDetails',
-        component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/InquiryDetails.vue')
-    },
-    {
-        path: '/Member/InquiryList',
-        component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/InquiryListView.vue')
-    },
-
-
-
 ];
 
 export default routes;

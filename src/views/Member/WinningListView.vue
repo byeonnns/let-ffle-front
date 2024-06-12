@@ -54,10 +54,10 @@
                                         <tr>
                                             <th>래플 이름</th>
                                             <th>
-                                                응모 기간
+                                                당첨 기간
                                             </th>
                                             <th>
-                                                응모 상품
+                                                당첨 상품
                                             </th>
                                             <th>바로가기</th>
                                         </tr>
@@ -89,7 +89,7 @@
 </template>
 
 <script setup>
-import SerachPeriod from './Components/SerachPeriod.vue';
+import SerachPeriod from './Components/SearchPeriod.vue';
 
 </script>
 
