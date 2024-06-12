@@ -23,10 +23,7 @@ const routes = [
             path: 'UpdateMember',
             component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/UpdateMemberView.vue')
         },
-        {
-            path: 'InquiryList',
-            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/InquiryListView.vue')
-        }
+        
         ]
     }
 

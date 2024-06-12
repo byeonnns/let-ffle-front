@@ -1,6 +1,5 @@
 <template>
     <div class="d-flex">
-        <AdminSidebar />
         <div class="w-100 ms-5">
             <div>
                 <!-- contents -->
@@ -58,7 +57,6 @@
 </template>
 
 <script setup>
-import AdminSidebar from '@/views/Admin/Sidebar';
 function updateRaffle() {
 
 }

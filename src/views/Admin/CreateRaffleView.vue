@@ -1,6 +1,5 @@
 <template>
     <div class="d-flex">
-        <AdminSidebar/>
         <div class="w-100">
             <div>
                 <!-- contents -->
@@ -236,7 +235,6 @@
 </template>
 
 <script setup>
-import AdminSidebar from '@/views/Admin/Sidebar';
 </script>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex">
-        <AdminSidebar/>
+        <Sidebar/>
         <div>
             공지사항 등록
             <form>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import AdminSidebar from '@/views/Admin/Sidebar';
+import Sidebar from '@/views/Admin/Components/Sidebar';
 </script>
 
 <style scoped>
