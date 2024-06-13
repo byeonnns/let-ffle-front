@@ -58,6 +58,15 @@
                     <li class="sidebar-item">
                         <RouterLink to="/Admin/CreateFaq" class="sidebar-link" style="color: white;">자주묻는질문 등록</RouterLink>
                     </li>
+                </ul>
+            </li>
+            <!-- 문의 관리 -->
+            <li class="sidebar-item">
+                <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#board" aria-expanded="false" aria-controls="board">
+                    <i class="bi bi-person-raised-hand" style="color: white;"></i>
+                </a>
+                <ul id="board" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
                         <RouterLink to="/Admin/InquiryList" class="sidebar-link" style="color: white;">1:1 문의 관리</RouterLink>
                     </li>

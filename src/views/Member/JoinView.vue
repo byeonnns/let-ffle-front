@@ -6,27 +6,27 @@
                 <p class="text-center fw-bold fst-italic m-5" style="font-size:50px">Let-<span style="color:#FF5C35">FFle</span></p>
                 <label for="memail mb-2">이메일 주소*</label>
                 <div class="d-flex justify-content-between">
-                    <input id="memail" type="email" class="border-0 border-bottom flex-grow-1">
+                    <input id="memail" type="email" class="border-0 border-bottom flex-grow-1 input">
                     <button class="btn text-white btn-outline-light btn-sm">중복 확인</button>
                 </div>
                 <label for="mpassword" class="mt-5 mb-2">비밀번호*</label>
-                <input id="mpassword" type="password" class="border-0 border-bottom">
-                <label for="mname" class="mt-5 mb-2">이름</label>
-                <input id="mname" type="text" class="border-0 border-bottom">
+                <input id="mpassword" type="password" class="border-0 border-bottom input">
+                <label for="mname" class="mt-5 mb-2 input">이름</label>
+                <input id="mname" type="text" class="border-0 border-bottom input">
                 <label for="mnickname" class="mt-5 mb-2">닉네임</label>
                 <div class="d-flex justify-content-between">
-                    <input id="mnickname" type="text" class="border-0 border-bottom flex-grow-1">
+                    <input id="mnickname" type="text" class="border-0 border-bottom flex-grow-1 input">
                     <button class="btn text-white btn-outline-light btn-sm">중복 확인</button>
                 </div>
                 <label for="mte" class="mt-5 mb-2">전화번호</label>
-                <input id="mtel" type="text" class="border-0 border-bottom" v-model="tel">
+                <input id="mtel" type="text" class="border-0 border-bottom input" v-model="tel">
                 <label for="maddress" class="mt-5 mb-2">주소</label>
                 <div class="d-flex justify-content-between">
-                    <input id="maddress" type="text" class="border-0 border-bottom text-center flex-grow-1" placeholder="우편번호">
+                    <input id="maddress" type="text" class="border-0 border-bottom text-center flex-grow-1 input" placeholder="우편번호">
                     <button class="btn text-white btn-outline-light btn-sm">우편번호 찾기</button>
                 </div>
-                <input type="text" class="border-0 border-bottom mt-3" placeholder="주소">
-                <input type="text" class="border-0 border-bottom mt-3" placeholder="상세주소">
+                <input type="text" class="border-0 border-bottom mt-3 input" placeholder="주소">
+                <input type="text" class="border-0 border-bottom mt-3 input" placeholder="상세주소">
                 <button class="btn text-white btn-lg mt-5">가입하기</button>
             </div>
         </div>
@@ -69,4 +69,8 @@ const handleResize = () => {
 window.addEventListener('resize', handleResize);
 </script>
 
-<style scoped></style>
+<style scoped>
+.input{
+    outline: none;
+}
+</style>
