@@ -23,7 +23,7 @@
                                 <td>tjdwns3823@naver.com</td>
                                 <td>변성준</td>
                                 <td>byeon</td>
-                                <td><button class="btn btn-sm">상세</button></td>
+                                <td><RouterLink to="MemberDetail"><button class="btn btn-sm">상세</button></RouterLink></td>
                             </tr>
                             <tr>
                                 <td>2</td>
