@@ -5,9 +5,9 @@
             <div class="d-flex flex-column" :style="responsiveSize">
                 <p class="text-center fst-italic m-5" style="font-size:50px; font-weight: 900">Let-<span style="color:#FF5C35">FFle</span></p>
                 <label for="memail" class="mb-2">이메일 주소</label>
-                <input id="memail" type="email" class="border-0 border-bottom">
+                <input id="memail" type="email" class="border-0 border-bottom input">
                 <label for="mpassword" class="mt-5 mb-2">비밀번호</label>
-                <input id="mpassword" type="password" class="border-0 border-bottom">
+                <input id="mpassword" type="password" class="border-0 border-bottom input">
                 <button class="btn text-white btn-lg mt-5">로그인</button>
                 <div class="row mt-3 text-center">
                     <div class="col-4 border-end"><RouterLink to="/???">이메일 가입</RouterLink></div>
@@ -38,4 +38,7 @@ window.addEventListener('resize', handleResize);
 </script>
 
 <style scoped>
+.input{
+    outline: none;
+}
 </style>
