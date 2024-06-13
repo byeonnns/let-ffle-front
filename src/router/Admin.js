@@ -1,7 +1,7 @@
 const routes = [
     {
         path: '/Admin',
-        component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin'),
+        component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Main'),
         children: [{
             path: '',
             component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Main/MainView.vue'),
@@ -12,7 +12,7 @@ const routes = [
         },
         {
             path: 'MemberDetail',
-            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/MemberDetailView.vue'),
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Member/MemberDetailView.vue'),
         },
         {
             path: 'CreateRaffle',
