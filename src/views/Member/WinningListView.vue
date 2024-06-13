@@ -9,41 +9,7 @@
                     <div class="content_area my-page-content">
                         <div class="my_purchase">
                             <div class="v-portal" style="display: none;"></div>
-                            <!-- <div class="period_search">
-                                <div class="period_month border mt-2">
-                                    <ul class="month_list container d-flex justify-content-center">
-                                        <li class="month_item">
-                                            <a href="#" class="month_link">전체</a>
-                                        </li>
-                                        <li class="month_item">
-                                            <a href="#" class="month_link">최근 2개월</a>
-                                        </li>
-                                        <li class="month_item">
-                                            <a href="#" class="month_link">4개월</a>
-                                        </li>
-                                        <li class="month_item">
-                                            <a href="#" class="month_link">6개월</a>
-                                        </li>
-                                        <span class="ms-3">
-                                            <li class="month_item">
-                                                <input type="date" class="month_link">
-                                            </li>
-                                            <li class="month_item">
-                                                <input type="date" class="month_link">
-                                            </li>
-                                            <li class="month_item">
-                                                <a href="#" class="month_link"
-                                                    style="color: white; background-color: #F37551;">조회</a>
-                                            </li>
-                                        </span>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="mb-5 mt-2">
-                                <p style="color: gray; font-size: 15px;">●한 번에 조회 가능한 기간은 최대 6개월입니다.</p>
-                            </div> -->
                             <SerachPeriod>
-
                             </SerachPeriod>
                             <hr class="mb-3" />
                             <div class="text-center">
@@ -53,29 +19,18 @@
                                     <thead>
                                         <tr>
                                             <th>래플 이름</th>
-                                            <th>
-                                                당첨 기간
-                                            </th>
-                                            <th>
-                                                 상품
-                                            </th>
+                                            <th>당첨 기간</th>
+                                            <th>상품</th>
                                             <th>바로가기</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                아이폰 뿌리는 이벤트
-                                            </td>
-                                            <td>
-                                                2024.01.01 ~ 2024.02.02
-                                            </td>
-                                            <td>
-                                                아이폰 11Pro
-                                            </td>
-                                            <td>
-                                                <button class="btn w-50">테스트 버튼</button>
-                                            </td>
+                                            <td>아이폰 뿌리는 이벤트</td>
+                                            <td>2024.01.01 ~ 2024.02.02</td>
+                                            <td>아이폰 11Pro</td>
+                                            <td><button class="btn w-50">테스트 버튼</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -145,7 +100,7 @@ import SerachPeriod from './Components/SearchPeriod.vue';
     margin-top: 15px;
     font-size: 13px;
 }
-
+*/
 .btn {
     width: 100px;
     height: 40px;
@@ -155,7 +110,7 @@ import SerachPeriod from './Components/SearchPeriod.vue';
     color: white;
 }
 
-.Status {
+/* .Status {
     display: flex;
-} */
+}  */
 </style>

@@ -4,12 +4,7 @@
             <MypageNavBar />
             <div class="flex-grow-1">
                 <RouterView />
-                <div>
-
-                </div>
-
-
-
+                
             </div>
         </div>
     </div>
@@ -17,7 +12,7 @@
 
 <script setup>
 import { RouterView } from 'vue-router';
-import MypageNavBar from '@/views/Member/Components/MypageNavBar.vue';
+import MypageNavBar from '@/views/Member/Components/MypageSidebar.vue';
 
 
 
