@@ -19,36 +19,28 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>
+                                <td style="width: 25%;">
                                     <RouterLink to="/Board/BoardList?category=service">
                                         <span class="spanded">전체</span>
                                     </RouterLink>
                                 </td>
-                                <td>
+                                <td style="width: 25%;">
                                     <RouterLink to="/Notice/BoardDetail">
-                                        <span class="spanded">서비스</span>
+                                        <span class="spanded">이용정책</span>
                                     </RouterLink>
                                 </td>
-                                <td>
+                                <td style="width: 25%;">
                                     <RouterLink to="/Board/BoardComment">
-                                        <span class="spanded">이벤트</span>
+                                        <span class="spanded">일반</span>
+                                    </RouterLink>
+                                </td>
+                                <td style="width: 25%;"> 
+                                    <RouterLink to="/Board/BoardComment">
+                                        <span class="spanded">래플</span>
                                     </RouterLink>
                                 </td>
                             </tr>
-                            <tr>
-
-                                <td>
-                                    <RouterLink to="/Board/BoardComment">
-                                        <span class="spanded">공지</span>
-                                    </RouterLink>
-                                </td>
-                                <td>
-
-                                    <RouterLink to="/Board/BoardComment">
-                                        <span class="spanded">기타</span>
-                                    </RouterLink>
-                                </td>
-                            </tr>
+                            
 
                         </tbody>
                     </table>
@@ -127,8 +119,6 @@
                                             <li>여러 개의 계정을 생성하여 자전거래</li>
                                             <li>개인정보 유출</li>
                                             <li>커뮤니티 내 허위사실 유포 등 서비스 운영을 방해하는 각종 부정행위</li>
-
-
                                         </div>
                                     </div>
                                 </div>

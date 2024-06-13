@@ -1,26 +1,12 @@
 <template>
     <div>
         <div class="board-list container">
-            <div style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 10px">
+            <div
+                style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 10px">
                 <h3>자유 게시판</h3>
-            </div>
-            <div style="width: 100%; height:60px;">
-                <!-- border:1px solid black; -->
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="search" aria-label="Recipient's username"
-                        aria-describedby="button-addon2">
-                    <button class="btn btn-outline-light" type="button" id="button-addon2">검색</button>
-                </div>
             </div>
             <div style="width: 100%; height:100%;">
                 <!--  border:1px solid black; -->
-                <div class="text-end" style="width: 100%; height: 30px;">
-
-                    <RouterLink to="/Board/WriteBoard">
-                        <button class="btn btn-outline-light btn-sm"> 글쓰기</button>
-                    </RouterLink>
-                </div>
-
                 <div style="width: 100%; height:100%; ">
                     <!-- border:1px solid black; -->
 
@@ -88,17 +74,39 @@
                                 <td>2024-06-08</td>
                                 <td>22</td>
                             </tr>
-                            <tr>
-                                <td colspan="5" class="text-end">
-                                    <button class="btn btn-outline-light btn-sm me-1">처음</button>
-                                    <button class="btn btn-outline-light btn-sm me-1">이전</button>
-                                    <button class="btn btn-outline-light btn-sm me-1">1,2,3,4,5 </button>
-                                    <button class="btn btn-outline-light btn-sm me-1">다음</button>
-                                    <button class="btn btn-outline-light btn-sm">맨끝</button>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
+                    <div class="text-end mb-2">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button class="btn btn-outline-light btn-sm me-1">처음</button>
+                            <button class="btn btn-outline-light btn-sm me-3">이전</button>
+                            <button class="btn btn-outline-light btn-sm me-1">1</button>
+                            <button class="btn btn-outline-light btn-sm me-1">2</button>
+                            <button class="btn btn-outline-light btn-sm me-1">3</button>
+                            <button class="btn btn-outline-light btn-sm me-1">4</button>
+                            <button class="btn btn-outline-light btn-sm me-3">5</button>
+                            <button class="btn btn-outline-light btn-sm me-1">다음</button>
+                            <button class="btn btn-outline-light btn-sm">맨끝</button>
+                        </div>
+                        <div class="position-relative" style="top: -30px;">
+                            <button class="btn btn-outline-light btn-sm">
+                                <RouterLink to="/Board/WriteBoard">글쓰기</RouterLink>
+                            </button>
+                        </div>
+                    </div>
+                    <div style="width: 30%; height:60px;" class="container">
+                        <!-- border:1px solid black; -->
+                        <div class="input-group" style="align-content: center;">
+                            <select id="selectOption">
+                                <option value="title">제목</option>
+                                <option value="content">내용</option>
+                                <option value="nickname">닉네임</option>
+                            </select>
+                            <input type="text" class="form-control" placeholder="search"
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-light" type="button" id="button-addon2">검색</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,5 +131,9 @@
     /* 세로 중앙 정렬 */
     padding: 15px 5px;
     border: none;
+}
+
+.btn {
+    color: black;
 }
 </style>
