@@ -5,6 +5,7 @@
                 <h3>문의 상세 보기</h3>
             </div>
             <div class="container" style="width: 100%; height:100%; ">
+            <div>
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
@@ -25,12 +26,13 @@
                     <table class="table table-bordered;">
                         <tbody>
                             <tr style="height: 100px;">
-                                <th class="table-active" style="width: 455px;">답변</th>
+                                <th class="table-active">답변</th>
                                 <td colspan="3" style="border: 1px solid #ebebeb;">답변이 등록되면 보여지는 영역</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
                 <div class="text-center">
                     <RouterLink to="/Member/InquiryList"><button class="btn btn-outline-light btn-sm">목록</button>
                     </RouterLink>
