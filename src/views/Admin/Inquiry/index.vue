@@ -1,6 +1,6 @@
 <template>
     <div>
-        1:1 문의
+        1:1 문의 조회
         <RouterLink to="/Admin/Inquiry/Reply"><button>답변</button></RouterLink>
     </div>
 </template>
