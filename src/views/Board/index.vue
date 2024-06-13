@@ -77,34 +77,35 @@
                         </tbody>
                     </table>
                     <div class="text-end mb-2">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <button class="btn btn-outline-light btn-sm me-1">처음</button>
-                            <button class="btn btn-outline-light btn-sm me-3">이전</button>
-                            <button class="btn btn-outline-light btn-sm me-1">1</button>
-                            <button class="btn btn-outline-light btn-sm me-1">2</button>
-                            <button class="btn btn-outline-light btn-sm me-1">3</button>
-                            <button class="btn btn-outline-light btn-sm me-1">4</button>
-                            <button class="btn btn-outline-light btn-sm me-3">5</button>
-                            <button class="btn btn-outline-light btn-sm me-1">다음</button>
-                            <button class="btn btn-outline-light btn-sm">맨끝</button>
-                        </div>
-                        <div class="position-relative" style="top: -30px;">
-                            <button class="btn btn-outline-light btn-sm">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex flex-grow-1 justify-content-center ms-5">
+                                <button class="btn btn-outline-light btn-sm me-1">처음</button>
+                                <button class="btn btn-outline-light btn-sm me-3">이전</button>
+                                <button class="btn btn-outline-light btn-sm me-1">1</button>
+                                <button class="btn btn-outline-light btn-sm me-1">2</button>
+                                <button class="btn btn-outline-light btn-sm me-1">3</button>
+                                <button class="btn btn-outline-light btn-sm me-1">4</button>
+                                <button class="btn btn-outline-light btn-sm me-3">5</button>
+                                <button class="btn btn-outline-light btn-sm me-1">다음</button>
+                                <button class="btn btn-outline-light btn-sm">맨끝</button>
+                            </div>
+                            <button class="btn btn-outline-light btn-sm ms-3">
                                 <RouterLink to="/Board/WriteBoard">글쓰기</RouterLink>
                             </button>
                         </div>
                     </div>
-                    <div style="width: 30%; height:60px;" class="container">
+                    <div style="width: 32%; height:60px;" class="container">
                         <!-- border:1px solid black; -->
                         <div class="input-group" style="align-content: center;">
-                            <select id="selectOption">
+                            <select id="selectOption" class="me-3">
                                 <option value="title">제목</option>
                                 <option value="content">내용</option>
                                 <option value="nickname">닉네임</option>
+                                <option value="title">제목 + 내용</option>
                             </select>
-                            <input type="text" class="form-control" placeholder="search"
-                                aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-light" type="button" id="button-addon2">검색</button>
+                            <input type="text" class="form-control" aria-label="Recipient's username"
+                                aria-describedby="button-addon2">
+                            <button class="btn btn-outline-light ms-2" type="button" id="button-addon2">검색</button>
                         </div>
                     </div>
                 </div>
