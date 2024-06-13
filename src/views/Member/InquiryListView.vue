@@ -30,7 +30,6 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-end mt-3 me-3">
-                        <button type="button" class="btn btn-light me-2">검색</button>
                         <RouterLink to="/Member/WriteInquiry"><button type="button"
                                 class="btn btn-light">글쓰기</button></RouterLink>
                     </div>
