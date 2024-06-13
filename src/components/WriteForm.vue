@@ -1,12 +1,5 @@
 <template>
-
-    <div class="container" style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; ">
-      <h3 style=" margin-top: 30px">게시글쓰기</h3>
-    </div>
-  
-    <div class="container" style="width: 100%; height:500px; ">
-  
-      <div style="width: 100%; height:500px;">
+        <div>
         <form>
           <div class="form-group row">
             <label for="btitle" class="col-sm-2 col-form-label">제목</label>
@@ -29,18 +22,8 @@
             </div>
           </div>
   
-          <div class="form-group row">
-            <div class="col-sm-12 d-flex justify-content-end">
-              <input type="submit" class="btn btn-outline-light btn-sm me-2" value="등록" />
-              <RouterLink to="/Board/BoardList">
-                <input type="button" class="btn btn-outline-light btn-sm" value="취소" />
-              </RouterLink>
-            </div>
-          </div>
-  
         </form>
       </div>
-    </div>
   
   </template>
   
