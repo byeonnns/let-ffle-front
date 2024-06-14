@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Header class="sticky-top bg-white"/>
+    <Header class="sticky-top bg-white z-1" />
     <router-view />
-    <Footer v-if="!$route.path.startsWith('/Admin')"/>
+    <Footer v-if="!$route.path.startsWith('/Admin')" />
     <FooterNav class="d-lg-none sticky-bottom container-fluid" />
   </div>
 </template>
@@ -31,16 +31,16 @@ import FooterNav from "@/components/FooterNav.vue";
 }
 
 #app a:hover {
-    color:#FF5C35;
-    transition: all 0.15s;
+  color: #FF5C35;
+  transition: all 0.15s;
 }
 
 #app a.non-this {
-    color: initial;
+  color: initial;
 }
 
 #app .router-link-exact-active {
-  color: #FF5C35; 
+  color: #FF5C35;
 }
 
 #app .nav-link {
@@ -56,4 +56,9 @@ import FooterNav from "@/components/FooterNav.vue";
     opacity: 65%;
     transition: all 0.15s;
 } */
+
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 </style>
