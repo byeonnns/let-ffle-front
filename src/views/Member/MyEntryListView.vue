@@ -56,7 +56,7 @@
                                         <td>아이폰 뿌리는 이벤트</td>
                                         <td>2024.01.01 ~ 2024.02.02</td>
                                         <td>아이폰 11Pro</td>
-                                        <td><button class="btn w-50">랫플바로 가기</button></td>
+                                        <td><button class="btn w-50"> 래플 바로 가기</button></td>
                                     </tr>
                                 </tbody>
                             </table>
