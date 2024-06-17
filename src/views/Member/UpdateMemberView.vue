@@ -136,7 +136,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
                         <!-- <RouterLink to="/login"> -->
-                            <button type="button" class="btn btn-outline-light" @click="ReturnLog()">확인</button>
+                            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal" @click="ReturnLog()">확인</button>
                         <!-- </RouterLink> -->
                     </div>
                 </div>
