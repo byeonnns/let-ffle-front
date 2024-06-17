@@ -1,86 +1,97 @@
 <template>
-    <aside id="sidebar">
-        <ul class="sidebar-nav">
-            <!-- 회원 관리 (회원 조회) -->
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#member" aria-expanded="false" aria-controls="member">
-                    <i class="bi bi-person" style="color:white;"></i>
-                </a>
-
-                <ul id="member" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+    <div>
+        <div class="position-fixed z-1">
+            <aside id="sidebar">
+                <ul class="sidebar-nav">
+                    <!-- 회원 관리 (회원 조회) -->
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/MemberList" class="sidebar-link" style="color: white;">전체 회원 조회</RouterLink>
+                        <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#member" aria-expanded="false" aria-controls="member">
+                            <i class="bi bi-person" style="color:white;"></i>
+                        </a>
+
+                        <ul id="member" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <RouterLink to="/Admin/MemberList" class="sidebar-link" style="color: white;">전체 회원 조회
+                                </RouterLink>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- 래플 관리 (래플 등록, 래플 목록(내부: 수정 및 삭제)) -->
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#product" aria-expanded="false" aria-controls="product">
+                            <i class="bi bi-dice-5" style="color:white;"></i>
+                        </a>
+                        <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <RouterLink to="/Admin/CreateRaffle" class="sidebar-link" style="color: white;">래플 등록
+                                </RouterLink>
+                            </li>
+                            <li class="sidebar-item">
+                                <RouterLink to="/Admin/RaffleList" class="sidebar-link" style="color: white;">래플 목록
+                                </RouterLink>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- 당첨자 관리 (당첨자 조회 (내부 : 배송지 및 연락처 확인)) -->
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#order" aria-expanded="false" aria-controls="order">
+                            <i class="bi bi-gift" style="color:white;"></i>
+                        </a>
+                        <ul id="order" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <RouterLink to="/Admin/WinnerList" class="sidebar-link" style="color: white;">당첨자 조회
+                                </RouterLink>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- 고객센터 관리 (공지사항, 고객문의, Q&A) -->
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#board" aria-expanded="false" aria-controls="board">
+                            <i class="bi bi-megaphone" style="color: white;"></i>
+                        </a>
+                        <ul id="board" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <RouterLink to="/Admin/CreateNotice" class="sidebar-link" style="color: white;">공지사항 등록
+                                </RouterLink>
+                            </li>
+                            <li class="sidebar-item">
+                                <RouterLink to="/Admin/CreateFaq" class="sidebar-link" style="color: white;">자주묻는질문 등록
+                                </RouterLink>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- 문의 관리 -->
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#board" aria-expanded="false" aria-controls="board">
+                            <i class="bi bi-person-raised-hand" style="color: white;"></i>
+                        </a>
+                        <ul id="board" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <RouterLink to="/Admin/InquiryList" class="sidebar-link" style="color: white;">1:1 문의 관리
+                                </RouterLink>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
-            </li>
 
-            <!-- 래플 관리 (래플 등록, 래플 목록(내부: 수정 및 삭제)) -->
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#product" aria-expanded="false" aria-controls="product">
-                    <i class="bi bi-dice-5" style="color:white;"></i>
-                </a>
-                <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item">
-                        <RouterLink to="/Admin/CreateRaffle" class="sidebar-link" style="color: white;">래플 등록</RouterLink>
-                    </li>
-                    <li class="sidebar-item">
-                        <RouterLink to="/Admin/RaffleList" class="sidebar-link" style="color: white;">래플 목록</RouterLink>
-                    </li>
-                </ul>
-            </li>
-
-            <!-- 당첨자 관리 (당첨자 조회 (내부 : 배송지 및 연락처 확인)) -->
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#order" aria-expanded="false" aria-controls="order">
-                    <i class="bi bi-gift" style="color:white;"></i>
-                </a>
-                <ul id="order" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item">
-                        <RouterLink to="/Admin/WinnerList" class="sidebar-link" style="color: white;">당첨자 조회</RouterLink>
-                           
-                    </li>
-                </ul>
-            </li>
-
-            <!-- 고객센터 관리 (공지사항, 고객문의, Q&A) -->
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#board" aria-expanded="false" aria-controls="board">
-                    <i class="bi bi-megaphone" style="color: white;"></i>
-                </a>
-                <ul id="board" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item">
-                        <RouterLink to="/Admin/CreateNotice" class="sidebar-link" style="color: white;">공지사항 등록</RouterLink>
-                    </li>
-                    <li class="sidebar-item">
-                        <RouterLink to="/Admin/CreateFaq" class="sidebar-link" style="color: white;">자주묻는질문 등록</RouterLink>
-                    </li>
-                </ul>
-            </li>
-            <!-- 문의 관리 -->
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
-                    data-bs-target="#board" aria-expanded="false" aria-controls="board">
-                    <i class="bi bi-person-raised-hand" style="color: white;"></i>
-                </a>
-                <ul id="board" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item">
-                        <RouterLink to="/Admin/InquiryList" class="sidebar-link" style="color: white;">1:1 문의 관리</RouterLink>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <div class="sidebar-footer">
-            <a href="#" class="sidebar-link">
-                <i class="lni lni-exit"></i>
-                <span>Logout</span>
-            </a>
+                <!-- <div class="sidebar-footer">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-exit"></i>
+                        <span>Logout</span>
+                    </a>
+                </div> -->
+            </aside>
         </div>
-    </aside>
+    </div>
 </template>
 
 <script setup>

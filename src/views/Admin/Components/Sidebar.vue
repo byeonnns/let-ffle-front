@@ -79,8 +79,12 @@
                 <i class="lni lni-exit"></i>
                 <span>Logout</span>
             </a>
+                </div> -->
+            </aside>
+                </div> -->
+            </aside>
         </div>
-    </aside>
+    </div>
 </template>
 
 <script setup>

@@ -5,9 +5,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title"><slot name="modalHeader"></slot></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body p-0">
                         <slot name="modalBody"></slot>
                     </div>
                     <div class="modal-footer">
@@ -34,8 +33,13 @@ const showModal = () => {
     modalInstance.show();
 };
 
+const hideModal = () => {
+    modalInstance.hide();
+};
+
 defineExpose({
-  showModal
+  showModal,
+  hideModal
 });
 
 </script>
