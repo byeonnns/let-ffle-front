@@ -19,32 +19,78 @@
                                     <thead>
                                         <tr>
                                             <th>래플 이름</th>
-                                            <th>당첨 기간</th>
+                                            <th>당첨 일자</th>
                                             <th>상품</th>
-                                            <th>바로가기</th>
+                                            <th>배송 상태</th>
                                         </tr>
                                     </thead>
-
-                                    <tbody>
+                                    
+                                    
+                                    <tbody class="table table-group-divider">
                                         <tr>
                                             <td>아이폰 뿌리는 이벤트</td>
-                                            <td>2024.01.01 ~ 2024.02.02</td>
+                                            <td>2024.01.01</td>
                                             <td>아이폰 11Pro</td>
-                                            <td><button class="btn w-50">테스트 버튼</button></td>
+                                            <td><button class="btn btn-outline-light" @click="inputAddress"
+                                                    style="font-size: 15px;">배송지 입력</button></td>
+                                        </tr>
+                                    
+                                        <tr>
+                                            <td>아이폰 뿌리는 이벤트</td>
+                                            <td>2024.01.01</td>
+                                            <td>아이폰 11Pro</td>
+                                            <td>배송 완료</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <RaffleModal ref="inputModal">
+        <template v-slot:modalHeader>
+            배송지 입력
+        </template>
+        <template v-slot:modalBody>
+            <div class="container">
+                <div class="div_form row mb-3">
+                    <label>이름</label>
+                    <input type="text" placeholder="신우호" class="input" style="border-bottom: 1px solid #ebebeb">
+                </div>
+
+                <div class="div_form row mb-3">
+                    <label>전화번호</label>
+                    <input type="text" placeholder="010-8308-8798" class="input"
+                        style="border-bottom: 1px solid #ebebeb">
+                </div>
+
+                <div class="div_form row">
+                    <label>주소</label>
+                    <input type="text" placeholder="경기도 시흥시 포동" class="input" style="border-bottom: 1px solid #ebebeb">
+                </div>
+            </div>
+        </template>
+        <template v-slot:modalFooter>
+            <button class="btn btn-outline-light" data-bs-dismiss="modal" style="width: 15%;">닫기</button>
+            <button class="btn btn-outline-light" data-bs-dismiss="modal" style="width: 15%">완료</button>
+        </template>
+    </RaffleModal>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import SerachPeriod from './Components/SearchPeriod.vue';
+import RaffleModal from '@/components/RaffleModal.vue';
+
+const inputModal = ref(null);
+
+function inputAddress() {
+    inputModal.value.showModal();
+}
 
 </script>
 
@@ -110,7 +156,19 @@ import SerachPeriod from './Components/SearchPeriod.vue';
     color: white;
 }
 
+.input {
+    border-width: 0;
+    /* input 라인 없애기 */
+    outline: none;
+
+}
+
 /* .Status {
     display: flex;
 }  */
+
+td {
+    align-content: center;
+    padding: 5px;
+}
 </style>

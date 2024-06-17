@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         <div>
-                            <button class="btn btm-sm me-2" style="background-color: #F37551; color: white;">응모</button>
+                            <RouterLink to="/Raffle/RaffleDetail"><button class="btn btm-sm me-2" style="background-color: #F37551; color: white;">응모</button></RouterLink>
                             <button class="btn btm-sm"
                                 style="background-color: white; color: black; border: 1px solid black;">삭제</button>
                         </div>

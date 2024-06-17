@@ -48,11 +48,11 @@ import FooterNav from "@/components/FooterNav.vue";
 }
 
 #app .btn {
-    background-color:#FF5C35;
+    background-color:#F37551;
     color:white;
 }
 #app .btn:hover {
-    background-color:#FF5C35;
+    background-color:#F37551;
     opacity: 65%;
     transition: all 0.15s;
 }
@@ -61,4 +61,6 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
+
 </style>
