@@ -43,9 +43,9 @@
                                                 </td>
                                                 <td>
                                                     <RouterLink to="/Admin/CreateRaffle"><button
-                                                            class="btn btn-warning update-raffle-btn">수정</button>
+                                                            class="btn update-raffle-btn">수정</button>
                                                     </RouterLink>
-                                                    <button class="btn btn-danger delete-raffle-btn ms-3"
+                                                    <button class="btn delete-raffle-btn ms-3"
                                                         @click="deleteRaffle">삭제</button>
                                                 </td>
                                             </tr>
@@ -63,7 +63,7 @@
                                                     발표 완료
                                                 </td>
                                                 <td>
-                                                    <RouterLink to="/Admin/WinnerList"><button class="btn btn-warning update-raffle-btn">당첨자 확인</button></RouterLink>
+                                                    <RouterLink to="/Admin/WinnerList"><button class="btn update-raffle-btn">당첨자 확인</button></RouterLink>
                                                 </td>
                                             </tr>
                                         </tbody>
