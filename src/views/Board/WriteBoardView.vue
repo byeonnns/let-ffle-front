@@ -5,11 +5,20 @@
     </div>
     <div class="container" style="width: 100%; height:500px;">
         <div style="width: 100%; height:500px;">
+            <div class="form-group row">
+                <label for="btitle" class="col-sm-2 col-form-label">유형</label>
+                <div class="col-sm-10">
+                    <select>
+                        <option>자유</option>
+                        <option>당첨후기</option>
+                    </select>
+                </div>
+            </div>
             <WriteForm />
             <div class="form-group row">
                 <div class="col-sm-12 d-flex justify-content-end">
                     <RouterLink to="/Board/BoardList">
-                    <input type="submit" class="btn btn-outline-dark btn-sm me-2" value="등록" />
+                        <input type="submit" class="btn btn-outline-dark btn-sm me-2" value="등록" />
                         <input type="button" class="btn btn-outline-dark btn-sm" value="취소" />
                     </RouterLink>
                 </div>

@@ -29,14 +29,13 @@
                 </div>
                 <RouterLink to="/join" class="me-3"><span class="d-inline-block">회원가입</span></RouterLink>
                 <RouterLink to="/login" class="me-3"><span class="d-inline-block">로그인</span></RouterLink>
-                <RouterLink to="/Member" class="me-3"><span class="d-inline-block">마이페이지</span>
-                </RouterLink>
+                <RouterLink to="/Member" class="me-3"><span class="d-inline-block">마이페이지</span></RouterLink>
                 <RouterLink to="/Notice" class="me-3"><span class="d-inline-block">고객센터</span></RouterLink>
                 <RouterLink to="/Admin" class="me-3"><span class="d-inline-block">관리자</span></RouterLink>
             </div>
             <nav class="navbar navbar-expand-lg bg-body-white">
                 <div class="container-fluid">
-                    <RouterLink to="/" class="fw-bold fst-italic non-this" style="font-size:28px">Let-<span
+                    <RouterLink to="/" class="fw-bold fst-italic non-this" style="font-size:40px">Let-<span
                             style="color:#FF5C35">FFle</span></RouterLink>
                     <div class="navbar-toggler bi bi-bell fs-3 border-0" @click="clickCheck">
                     </div>

@@ -9,11 +9,15 @@
                 <!--  border:1px solid black; -->
                 <div style="width: 100%; height:100%; ">
                     <!-- border:1px solid black; -->
+                    <div>
+                        <button class="btn me-2">일반</button>
+                        <button class="btn">당첨 후기</button>
+                    </div>
 
                     <table class="table mt-2">
                         <thead style="border-bottom: 1px solid #ebebeb">
                             <!-- class="text-center" -->
-                            <th style="width:70px">번호</th>
+                            <th style="width:80px">분류</th>
                             <th>제목</th>
                             <th style="width:150px">글쓴이</th>
                             <th style="width:120px">날짜</th>
@@ -22,7 +26,7 @@
                         <tbody>
                             <!--class="text-center"  -->
                             <tr>
-                                <td>21560</td>
+                                <td>자유</td>
                                 <RouterLink to="./BoardDetail" style="text-decoration: none;">
                                     <td>현재 이런 상황에 대한 반응들</td>
                                 </RouterLink>
@@ -31,28 +35,28 @@
                                 <td>4</td>
                             </tr>
                             <tr>
-                                <td>21309</td>
+                                <td>자유</td>
                                 <td>이 글을 보시게된다면 저에게...</td>
                                 <td>나는야 나비</td>
                                 <td>2024-06-05</td>
                                 <td>6</td>
                             </tr>
                             <tr>
-                                <td>21100</td>
+                                <td>자유</td>
                                 <td>굉장한 메리트가 있는 이런거 보셨나요...</td>
                                 <td>말왕 탕후루</td>
                                 <td>2024-06-07</td>
                                 <td>10</td>
                             </tr>
                             <tr>
-                                <td>21222</td>
+                                <td>자유</td>
                                 <td>강의실에서 인싸되는 방법</td>
                                 <td>야삐</td>
                                 <td>2024-06-04</td>
                                 <td>206</td>
                             </tr>
                             <tr>
-                                <td>21219</td>
+                                <td>자유</td>
                                 <td>탕후루와 마라탕은 무슨관계인가..</td>
                                 <td>탕후루루룩</td>
                                 <td>2024-06-05</td>
@@ -60,14 +64,14 @@
                             </tr>
 
                             <tr>
-                                <td>30120</td>
+                                <td>당첨후기</td>
                                 <td>나 응모 당첨 100%인 썰 풀어본다..</td>
                                 <td>응모왕</td>
                                 <td>2024-06-05</td>
                                 <td>603</td>
                             </tr>
                             <tr>
-                                <td>29304</td>
+                                <td>당첨후기</td>
                                 <td>미션에 관한 정답 모음집..</td>
                                 <td>미션만 한다</td>
                                 <td>2024-06-08</td>
