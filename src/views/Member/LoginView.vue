@@ -12,7 +12,7 @@
                 <div class="row mt-3 text-center">
                     <div class="col-4 border-end"><RouterLink to="/join">이메일 가입</RouterLink></div>
                     <div class="col-4"><RouterLink to="/FindId">이메일 찾기</RouterLink></div>
-                    <div class="col-4 border-start"><RouterLink to="/???">비밀번호 찾기</RouterLink></div>
+                    <div class="col-4 border-start"><RouterLink to="/FindPassword">비밀번호 찾기</RouterLink></div>
                 </div>
             </div>
         </div>
