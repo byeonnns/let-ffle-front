@@ -4,13 +4,6 @@
             <h3 style=" margin-top: 30px">공지사항 등록</h3>
         </div>
         <CreateForm />
-
-        <div class="container text-end">
-            <RouterLink to="/Notice">
-                <button class="btn btn-dark btn-sm me-2">등록</button>
-            </RouterLink>
-            <RouterLink to="/Admin"><button class="btn btn-dark btn-sm">취소</button></RouterLink>
-        </div>
     </div>
 </template>
 

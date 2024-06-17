@@ -4,12 +4,6 @@
             <h3 style=" margin-top: 30px">자주묻는질문 등록</h3>
         </div>
         <CreateForm />
-        <div class="container text-end">
-            <RouterLink to="/Faq"> 
-                <button class="btn btn-sm">등록</button>
-            </RouterLink>
-            <RouterLink to="/Admin"><button class="btn btn-sm">취소</button></RouterLink>
-        </div>
     </div>
 </template>
 

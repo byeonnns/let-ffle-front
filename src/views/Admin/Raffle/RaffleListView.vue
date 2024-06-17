@@ -42,8 +42,9 @@
                                                     발표 예정
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-warning update-raffle-btn"
-                                                        @click="updateRaffle"><RouterLink to="/Admin/CreateRaffle">수정</RouterLink></button>
+                                                    <RouterLink to="/Admin/CreateRaffle"><button
+                                                            class="btn btn-warning update-raffle-btn">수정</button>
+                                                    </RouterLink>
                                                     <button class="btn btn-danger delete-raffle-btn ms-3"
                                                         @click="deleteRaffle">삭제</button>
                                                 </td>
@@ -62,8 +63,7 @@
                                                     발표 완료
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-warning update-raffle-btn"
-                                                        @click="updateRaffle"><RouterLink to="/Admin/WinnerList">당첨자 확인</RouterLink></button>
+                                                    <RouterLink to="/Admin/WinnerList"><button class="btn btn-warning update-raffle-btn">당첨자 확인</button></RouterLink>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -76,15 +76,35 @@
             </div>
         </div>
     </div>
+    <RaffleModal ref="deleteModal">
+        <template v-slot:modalHeader>
+            알림
+        </template>
+        <template v-slot:modalBody>
+            <div class="ms-3" style="font-size: 20px;">
+                정말 삭제하시겠습니까?
+            </div>
+        </template>
+        <template v-slot:modalFooter>
+            <div class="modal-body d-flex justify-content-center">
+                <button type="button" class="btn btn-modal me-3" data-bs-dismiss="modal">예</button>
+                <button type="button" class="btn btn-modal" data-bs-dismiss="modal" aria-label="Close">아니오</button>
+            </div>
+        </template>
+    </RaffleModal>
 </template>
 
 <script setup>
+import RaffleModal from '@/components/RaffleModal.vue';
+import { ref } from 'vue';
+const deleteModal = ref(null);
+
 function updateRaffle() {
 
 }
 
 function deleteRaffle() {
-
+    deleteModal.value.showModal();
 }
 </script>
 
