@@ -88,7 +88,7 @@
         <template v-slot:modalFooter>
             <div class="modal-body d-flex justify-content-center">
                 <button type="button" class="btn btn-modal me-3" data-bs-dismiss="modal">예</button>
-                <button type="button" class="btn btn-modal" data-bs-dismiss="modal" aria-label="Close">아니오</button>
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">아니오</button>
             </div>
         </template>
     </RaffleModal>
@@ -115,5 +115,9 @@ function deleteRaffle() {
 
 .content-area {
     margin-top: 30px;
+}
+
+.btn-modal {
+    width: 70px;
 }
 </style>

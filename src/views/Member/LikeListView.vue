@@ -16,8 +16,9 @@
                             </div>
                         </div>
                         <div>
-                            <RouterLink to="/Raffle/RaffleDetail"><button class="btn btm-sm me-2" style="background-color: #F37551; color: white;">응모</button></RouterLink>
-                            <button class="btn btm-sm"
+                            <RouterLink to="/Raffle/RaffleDetail"><button class="btn btm-sm me-2"
+                                    style="background-color: #F37551; color: white;">응모</button></RouterLink>
+                            <button class="btn btm-sm" @click="deleteBtn"
                                 style="background-color: white; color: black; border: 1px solid black;">삭제</button>
                         </div>
                     </div>
@@ -29,13 +30,37 @@
             </div>
         </div>
     </div>
+    <RaffleModal ref="deleteModal">
+        <template v-slot:modalHeader>
+            알림
+        </template>
+        <template v-slot:modalBody>
+            좋아요 목록에서 삭제됩니다.
+        </template>
+        <template v-slot:modalFooter>
+            <button class="btn btn-modal btn-outline-light" data-bs-dismiss="modal">예</button>
+            <button class="btn btn-outline-light" data-bs-dismiss="modal">아니오</button>
+        </template>
+    </RaffleModal>
 </template>
 
 <script setup>
+import RaffleModal from '@/components/RaffleModal.vue';
+import { ref } from 'vue';
+
+const deleteModal = ref(null);
+
+function deleteBtn() {
+    deleteModal.value.showModal();
+}
 </script>
 
 <style scoped>
 .router {
     color: black;
+}
+
+.btn-modal {
+    width: 70px;
 }
 </style>
