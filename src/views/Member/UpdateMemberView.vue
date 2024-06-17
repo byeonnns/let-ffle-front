@@ -27,9 +27,10 @@
                                 <input type="password" placeholder="●●●●●●●●" class="input w-50">
                             </div>
                             <hr class="p-0 m-0 w-100 mt-3">
-                            <button type="modal" data-bs-toggle="modal" data-bs-target="#changePW"
-                                class="btn btn-white btn-sm"
-                                style="position: absolute; bottom: 0; right: 0;">변경</button>
+                            <button class="btn btn-outline-light btn-sm"
+                                style="position: absolute; bottom: 0; right: 0;" @click="seeModal()">변경</button>
+
+
                         </div>
                         <div class="mt-4" style="width: 50%;">
                             <h5 style="font-size: 13px;">휴대폰 번호</h5>
@@ -40,15 +41,14 @@
 
                             </div>
                             <hr class="p-0 m-0 w-100 mb-4 mt-3">
-                            <button type="modal" data-bs-toggle="modal" data-bs-target="#changePH"
-                                class="btn btn-white btn-sm mb-5"
-                                style="position: absolute; bottom: 0; right: 0;">변경</button>
+                            <button class="btn btn-white btn-sm mb-5" style="position: absolute; bottom: 0; right: 0;"
+                                @click="lookModal()">변경</button>
                         </div>
                         <div class="w-50 position-relative">
                             <div class="mt-1 d-flex justify-content-end">
-                                <RouterLink to="#"><button type="button" data-bs-toggle="modal"
-                                        data-bs-target="#Modaltest" class="btn btn-sm"
-                                        style="font-size: 14px; color: black; background-color: white; text-decoration: underline;">회원탈퇴</button>
+                                <RouterLink to="#"><button type="button" class="btn btn-sm"
+                                        style="font-size: 14px; color: black; background-color: white; text-decoration: underline;"
+                                        @click="checkhandle()">회원탈퇴</button>
                                 </RouterLink>
                             </div>
                         </div>
@@ -57,103 +57,99 @@
             </div>
         </div>
 
-        <!-- Modal 비밀번호 변경 -->
-        <div class="modal fade" id="changePW" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">비밀번호 수정</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- Modal 비밀번호 변경  Slot화-->
+        <RaffleModal ref="PWModal">
+            <template v-slot:modalHeader>
+                <h4>비밀번호 수정</h4>
+            </template>
+            <template v-slot:modalBody>
+                <div class="container">
+                    <div class="div_form row mb-3">
+                        <label>기존 비밀번호</label>
+                        <input type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb">
                     </div>
 
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="div_form row mb-3">
-                                <label>기존 비밀번호</label>
-                                <input type="password" placeholder="" class="input"
-                                    style="border-bottom: 1px solid #ebebeb">
-                            </div>
-
-                            <div class="div_form row mb-3">
-                                <label>새 비밀번호</label>
-                                <input type="password" placeholder="" class="input"
-                                    style="border-bottom: 1px solid #ebebeb">
-                            </div>
-
-                            <div class="div_form row">
-                                <label>비밀번호 확인</label>
-                                <input type="password" placeholder="" class="input"
-                                    style="border-bottom: 1px solid #ebebeb">
-                            </div>
-                        </div>
+                    <div class="div_form row mb-3">
+                        <label>새 비밀번호</label>
+                        <input type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb">
                     </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-                        <button type="button" class="btn btn-outline-light">수정 완료</button>
+                    <div class="div_form row">
+                        <label>비밀번호 확인</label>
+                        <input type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb">
                     </div>
                 </div>
-            </div>
-        </div>
+            </template>
+            <template v-slot:modalFooter>
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-outline-light">수정 완료</button>
+            </template>
+        </RaffleModal>
 
-        <!-- Modal 휴대폰 번호 변경 -->
-        <div class="modal fade" id="changePH" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">휴대폰 번호 수정</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="div_form row">
-                                <label>새 휴대폰 번호</label>
-                                <input type="text" placeholder="010-xxxx-xxxx" class="input"
-                                    style="border-bottom: 1px solid #ebebeb">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-                        <button type="button" class="btn btn-outline-light">수정 완료</button>
+        <!-- Modal 휴대폰 번호 변경 Slot화-->
+        <RaffleModal ref="PWCModal">
+            <template v-slot:modalHeader>
+                <h4>휴대폰 번호 수정</h4>
+            </template>
+            <template v-slot:modalBody>
+                <div class="container">
+                    <div class="div_form row">
+                        <label>새 휴대폰 번호</label>
+                        <input type="text" placeholder="010-xxxx-xxxx" class="input"
+                            style="border-bottom: 1px solid #ebebeb">
                     </div>
                 </div>
-            </div>
-        </div>
+            </template>
+            <template v-slot:modalFooter>
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-outline-light">수정 완료</button>
+            </template>
+        </RaffleModal>
 
+        <!-- 회원 탈퇴 Slot화 -->
+        <RaffleModal ref="Withdrawal">
+            <template v-slot:modalHeader>
+                <h4>탈퇴여부</h4>
+            </template>
+            <template v-slot:modalBody>
+                정말로다가 탈퇴를 하시겠습니까??
+            </template>
+            <template v-slot:modalFooter>
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+                 <RouterLink to="/login">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">확인</button>
+                 </RouterLink> 
+            </template>
+        </RaffleModal>
 
-        <!-- Modal 탈퇴여부-->
-        <div class="modal fade" id="Modaltest" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">탈퇴여부</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        정말로다가 탈퇴를 하시겠습니까??
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-                        <!-- <RouterLink to="/login"> -->
-                            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal" @click="ReturnLog()">확인</button>
-                        <!-- </RouterLink> -->
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
+import RaffleModal from '@/components/RaffleModal.vue';
+import { ref } from 'vue'
 
-const router = useRouter();
+const PWModal = ref(null);
+const PWCModal = ref(null);
+const Withdrawal = ref(null);
 
-function ReturnLog(){
-    router.push ("/login")
+function seeModal() {
+    PWModal.value.showModal();
 }
+function lookModal() {
+    PWCModal.value.showModal();
+}
+function checkhandle() {
+    Withdrawal.value.showModal();
+
+
+}
+
+
+
+
+
 </script>
 
 <style scoped>
