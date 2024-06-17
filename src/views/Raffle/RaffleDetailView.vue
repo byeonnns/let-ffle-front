@@ -16,14 +16,17 @@
                 </div>
             </div>
             <p class="h3 my-4">
-                {{ nowDate }}
+                <!-- {{ nowDate }} -->
+                2024.06.17(월) 15:00 ~ 2024.06.23(일) 15:00
+
             </p>
             <p class="h5">
                 템포러리 브랜드를 추구하며 더그레이티스트만의 해석으로 트렌드와 개성의 양립을 지향합니다.
                 <br>
                 더그레이티스트만의 감성을 담은 24 SUMMER 드랍을 ~50% 혜택으로 만나보세요.
             </p>
-            <p>태그를 적는 부분</p>
+            <p style="color: #4d8fd0">#패션 #데일리룩 #Fashoin #Raffle #like 
+                <br>#나만의 룩 #응모참여 # 응모미션 #Mession </p>
             <div class="d-flex flex-column px-5 mt-5">
                 <div v-if="step > 1" class="d-flex justify-content-center mb-2">
                     <button class="btn btn-dark btn-lg me-2 flex-grow-1" @click="onQuiz()">미션 확인</button>
@@ -82,14 +85,17 @@ import GiftLottie from '@/components/GiftLottie.vue'
 import HeartLottie from '@/assets/lottie/likeHeart.json'
 import RaffleModal from '@/components/RaffleModal.vue'
 
-let nowDate = ref(new Date());
+// let nowDate = ref(new Date());
 
-onMounted(() => {
-    const likeData = false;
-    if (likeData === true) {
-        like.value = true;
-    }
-});
+// onMounted(() => {
+//     const likeData = false;
+//     if (likeData === true) {
+//         like.value = true;
+//     }
+// });
+// 날짜 시간 구현
+
+
 
 /* 래플 프로세스 */
 let step = ref(1);

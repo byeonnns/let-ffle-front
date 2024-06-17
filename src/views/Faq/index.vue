@@ -20,22 +20,22 @@
                         <tbody>
                             <tr>
                                 <td style="width: 25%;">
-                                    <RouterLink to="/Board/BoardList?category=service">
+                                    <RouterLink to="#">
                                         <span class="spanded">전체</span>
                                     </RouterLink>
                                 </td>
                                 <td style="width: 25%;">
-                                    <RouterLink to="/Notice/BoardDetail">
+                                    <RouterLink to="#">
                                         <span class="spanded">이용정책</span>
                                     </RouterLink>
                                 </td>
                                 <td style="width: 25%;">
-                                    <RouterLink to="/Board/BoardComment">
+                                    <RouterLink to="#">
                                         <span class="spanded">일반</span>
                                     </RouterLink>
                                 </td>
                                 <td style="width: 25%;"> 
-                                    <RouterLink to="/Board/BoardComment">
+                                    <RouterLink to="#">
                                         <span class="spanded">래플</span>
                                     </RouterLink>
                                 </td>
@@ -193,5 +193,9 @@
 .table tr {
     text-align: center;
 
+}
+/* 전체, 이용정책 글자 색 */
+.spanded{
+    color: black;
 }
 </style>

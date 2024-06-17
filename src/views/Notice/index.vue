@@ -15,22 +15,22 @@
                         <tbody>
                             <tr>
                                 <td style="width: 25%;">
-                                    <RouterLink to="/Board/BoardList?category=service">
+                                    <RouterLink to="#">
                                         <span class="spanded">전체</span>
                                     </RouterLink>
                                 </td>
                                 <td style="width: 25%;">
-                                    <RouterLink to="/Notice/BoardDetail">
+                                    <RouterLink to="#">
                                         <span class="spanded">공지</span>
                                     </RouterLink>
                                 </td>
                                 <td style="width: 25%;">
-                                    <RouterLink to="/Board/BoardComment">
+                                    <RouterLink to="#">
                                         <span class="spanded">당첨자 발표</span>
                                     </RouterLink>
                                 </td>
                                 <td style="width: 25%;">
-                                    <RouterLink to="/Board/BoardComment">
+                                    <RouterLink to="#">
                                         <span class="spanded">서비스</span>
                                     </RouterLink>
                                 </td>
@@ -52,7 +52,7 @@
 
                         <tbody>
                             <tr>
-                                <td class="text-center">공지</td>
+                                <td class="text-center text-cr" >공지</td>
                                 <td>
                                     <RouterLink to="/Notice/NoticeDetail" style="text-decoration: none; color: black">6월
                                         공휴일
@@ -62,33 +62,33 @@
                                 <td>2024-06-11</td>
                             </tr>
                             <tr>
-                                <td class="text-center">당첨자 발표</td>
+                                <td class="text-center text-cr">당첨자 발표</td>
                                 <td>[안내] Draq-시엔느 응모</td>
                                 <td>2024-06-11</td>
                             </tr>
                             <tr>
-                                <td class="text-center">공지</td>
+                                <td class="text-center text-cr">공지</td>
                                 <td>보관안내</td>
                                 <td>2024-06-11</td>
                             </tr>
                             <tr>
-                                <td class="text-center">서비스</td>
+                                <td class="text-center text-cr">서비스</td>
                                 <td>검수 지연안내</td>
                                 <td>2024-06-11</td>
                             </tr>
                             <tr>
-                                <td class="text-center">당첨자 발표</td>
+                                <td class="text-center text-cr">당첨자 발표</td>
                                 <td>보관 판매 신청 재개 안내</td>
                                 <td>2024-06-11</td>
                             </tr>
 
                             <tr>
-                                <td class="text-center">공지</td>
+                                <td class="text-center text-cr">공지</td>
                                 <td>보관판매 불가능</td>
                                 <td>2024-06-11</td>
                             </tr>
                             <tr>
-                                <td class="text-center">전체</td>
+                                <td class="text-center text-cr">전체</td>
                                 <td>우리조는 야삐</td>
                                 <td>2024-06-11</td>
                             </tr>
@@ -130,6 +130,9 @@
 
 
 <style scoped>
+.text-cr{
+    color: #F37551;
+}
 .table th,
 .table tr {
     text-align: center;
@@ -144,6 +147,7 @@
 .spanded {
     align-items: center;
     height: 100%;
+    color: black;
 
 }
 

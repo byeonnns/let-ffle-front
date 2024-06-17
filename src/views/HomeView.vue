@@ -10,15 +10,17 @@
           aria-label="Slide 3"></button>
       </div>
       <div class="carousel-inner mb-3">
+        <RouterLink to="/Raffle">
         <div class="carousel-item active">
-          <img src="@/assets/tempImage/Kith.webp" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="@/assets/tempImage/Perverze.webp" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="@/assets/tempImage/samsung.webp" class="d-block w-100" alt="...">
-        </div>
+            <img src="@/assets/tempImage/Kith.webp" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="@/assets/tempImage/Perverze.webp" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="@/assets/tempImage/samsung.webp" class="d-block w-100" alt="...">
+          </div>
+        </RouterLink>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
         data-bs-slide="prev">
