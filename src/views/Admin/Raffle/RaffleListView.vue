@@ -43,7 +43,7 @@
                                                 </td>
                                                 <td>
                                                     <button class="btn btn-warning update-raffle-btn"
-                                                        @click="updateRaffle">수정</button>
+                                                        @click="updateRaffle"><RouterLink to="/Admin/CreateRaffle">수정</RouterLink></button>
                                                     <button class="btn btn-danger delete-raffle-btn ms-3"
                                                         @click="deleteRaffle">삭제</button>
                                                 </td>
@@ -63,7 +63,7 @@
                                                 </td>
                                                 <td>
                                                     <button class="btn btn-warning update-raffle-btn"
-                                                        @click="updateRaffle">당첨자 확인</button>
+                                                        @click="updateRaffle"><RouterLink to="/Admin/WinnerList">당첨자 확인</RouterLink></button>
                                                 </td>
                                             </tr>
                                         </tbody>

@@ -3,31 +3,22 @@
         <div>
             <div class="footer-div d-lg-flex flex-row-reverse justify-content-between">
                 <div class="">
-                    <div>
-                        <strong>고객센터</strong>
-                        <ul class="list-group">
-                            <li class="list-group-item">문의하기</li>
-                            <li class="list-group-item">자주 묻는 질문</li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="d-flex">
                     <div>
                         <strong>이용안내</strong>
                         <ul class="list-group me-5">
-                            <li class="list-group-item">검수기준</li>
-                            <li class="list-group-item">이용정책</li>
-                            <li class="list-group-item">패널티 정책</li>
-                            <li class="list-group-item">커뮤니티 가이드라인</li>
+                            <RouterLink to="Faq"><li class="list-group-item">이용정책</li></RouterLink>
+                            <RouterLink to="Faq"><li class="list-group-item">패널티 정책</li></RouterLink>
+                            <RouterLink to="Faq"><li class="list-group-item">커뮤니티 가이드라인</li></RouterLink>
                         </ul>
                     </div>
                     <div>
                         <strong>고객지원</strong>
                         <ul class="list-group">
-                            <li class="list-group-item">공지사항</li>
-                            <li class="list-group-item">서비스 소개</li>
-                            <li class="list-group-item">스토어 안내</li>
-                            <li class="list-group-item">판매자 방문접수</li>
+                            <RouterLink to="Notice"><li class="list-group-item">공지사항</li></RouterLink>
+                            <RouterLink to="Faq"><li class="list-group-item">자주 묻는 질문</li></RouterLink>
+                            <RouterLink to="/Member/WriteInquiry"><li class="list-group-item">문의하기</li></RouterLink>
                         </ul>
                     </div>
                 </div>

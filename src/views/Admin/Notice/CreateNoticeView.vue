@@ -9,7 +9,7 @@
             <RouterLink to="/Notice">
                 <button class="btn btn-dark btn-sm me-2">등록</button>
             </RouterLink>
-            <button class="btn btn-dark btn-sm">취소</button>
+            <RouterLink to="/Admin"><button class="btn btn-dark btn-sm">취소</button></RouterLink>
         </div>
     </div>
 </template>

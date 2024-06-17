@@ -8,7 +8,7 @@
             <RouterLink to="/Faq"> 
                 <button class="btn btn-sm">등록</button>
             </RouterLink>
-            <button class="btn btn-sm">취소</button>
+            <RouterLink to="/Admin"><button class="btn btn-sm">취소</button></RouterLink>
         </div>
     </div>
 </template>

@@ -192,8 +192,8 @@
                             </div>
                         </div>
                         <div class="btn_big_wrap btn_size_fix mt60">
-                            <button type="submit" class="btn_submit me-3">등록</button>
-                            <button type="button" class="white btn_cancle">취소</button>
+                            <RouterLink to="/Admin/RaffleList"><button type="submit" class="btn_submit me-3">등록</button></RouterLink>
+                            <RouterLink to="/Admin"><button type="button" class="white btn_cancle">취소</button></RouterLink>
                         </div>
                     </form>
                 </div>

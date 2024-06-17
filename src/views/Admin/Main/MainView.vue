@@ -1,127 +1,135 @@
 <template>
-<div class="container w-100">
-    <div class="d-flex w-100">
-        <div class="w-100">
-            <!-- contents -->
-            <div class="main p-3">
-                <div class="headingArea">
-                    <div class="title">
-                        <h1 id="itemTitle">래플 대시보드</h1>
+    <div class="container w-100">
+        <div class="d-flex w-100">
+            <div class="w-100">
+                <!-- contents -->
+                <div class="main p-3">
+                    <div class="headingArea">
+                        <div class="title">
+                            <h1 id="itemTitle">래플 대시보드</h1>
+                        </div>
                     </div>
-                </div>
 
-                <div class="section_block">
-                    <div class="sub w-100">
-                        <div class="col-sm-8" style="background-color: #F37551;">
-                            <div class="sub1 ms-4 mt-2">
-                                <h5 class="subheading">래플 현황</h5>
+                    <div class="section_block">
+                        <div class="sub w-100">
+                            <div class="col-sm-8" style="background-color: #F37551;">
+                                <div class="sub1 ms-4 mt-2">
+                                    <h5 class="subheading">래플 현황</h5>
+                                </div>
+                                <div class="sub2 mt-2">
+                                    <span class="subheading2">최종 업데이트 일시 : </span>
+                                    <span class="sub-update-date">2024-06-04 19:35</span>
+                                </div>
                             </div>
-                            <div class="sub2 mt-2">
-                                <span class="subheading2">최종 업데이트 일시 : </span>
-                                <span class="sub-update-date">2024-06-04 19:35</span>
+
+                        </div>
+
+                        <div class="title_block d-flex w-100">
+                            <div class="col-sm-2 info">
+                                <h6 class="sub_tit">구분</h6>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <h6 class="sub_tit">래플 수</h6>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <h6 class="sub_tit">참여자 수</h6>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <h6 class="sub_tit">바로가기</h6>
                             </div>
                         </div>
 
+                        <div class="item1_block d-flex">
+                            <div class="col-sm-2 item_tit">
+                                <h6 class="sub_tit">스포츠/야구</h6>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <span>7</span>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <span>128</span>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <RouterLink to="/Raffle">
+                                    <button type="button" class="btn btn-outline-light" onclick="location.href='#'">
+                                        래플 바로가기
+                                    </button>
+                                </RouterLink>
+                            </div>
+                        </div>
+
+                        <div class="item2_block d-flex">
+                            <div class="col-sm-2 item_tit">
+                                <h6 class="sub_tit">스포츠/축구</h6>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <span>4</span>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <span>62</span>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <RouterLink to="/Raffle">
+                                    <button type="button" class="btn btn-outline-light" onclick="location.href='#'">
+                                        래플 바로가기
+                                    </button>
+                                </RouterLink>
+                            </div>
+                        </div>
+
+                        <div class="item3_block d-flex">
+                            <div class="col-sm-2 item_tit">
+                                <h6 class="sub_tit">패션/의류</h6>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <span>11</span>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <span>307</span>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <RouterLink to="/Raffle">
+                                    <button type="button" class="btn btn-outline-light" onclick="location.href='#'">
+                                        래플 바로가기
+                                    </button>
+                                </RouterLink>
+                            </div>
+                        </div>
+
+                        <div class="item3_block d-flex">
+                            <div class="col-sm-2 item_tit">
+                                <h6 class="sub_tit">패션/신발</h6>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <span>2</span>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <span>90</span>
+                            </div>
+                            <div class="col-sm-2 info">
+                                <RouterLink to="/Raffle">
+                                    <button type="button" class="btn btn-outline-light" onclick="location.href='#'">
+                                        래플 바로가기
+                                    </button>
+                                </RouterLink>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="title_block d-flex w-100">
-                        <div class="col-sm-2 info">
-                            <h6 class="sub_tit">구분</h6>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <h6 class="sub_tit">래플 수</h6>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <h6 class="sub_tit">참여자 수</h6>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <h6 class="sub_tit">바로가기</h6>
-                        </div>
+                    <div class="desc_block mt-2">
+                        <h5 class="desc_title">
+                            대시보드
+                        </h5>
+                        <h5 class="desc">
+                            - 래플 유형 별로 등록된 래플 수, 참여자 수를 확인할 수 있습니다.
+                        </h5>
                     </div>
-
-                    <div class="item1_block d-flex">
-                        <div class="col-sm-2 item_tit">
-                            <h6 class="sub_tit">스포츠/야구</h6>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <span>7</span>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <span>128</span>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <button type="button" class="btn btn-outline-light" onclick="location.href='#'">
-                                래플 바로가기
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="item2_block d-flex">
-                        <div class="col-sm-2 item_tit">
-                            <h6 class="sub_tit">스포츠/축구</h6>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <span>4</span>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <span>62</span>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <button type="button" class="btn btn-outline-light" onclick="location.href='#'">
-                                래플 바로가기
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="item3_block d-flex">
-                        <div class="col-sm-2 item_tit">
-                            <h6 class="sub_tit">패션/의류</h6>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <span>11</span>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <span>307</span>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <button type="button" class="btn btn-outline-light" onclick="location.href='#'">
-                                래플 바로가기
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="item3_block d-flex">
-                        <div class="col-sm-2 item_tit">
-                            <h6 class="sub_tit">패션/신발</h6>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <span>2</span>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <span>90</span>
-                        </div>
-                        <div class="col-sm-2 info">
-                            <button type="button" class="btn btn-outline-light" onclick="location.href='#'">
-                                래플 바로가기
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="desc_block mt-2">
-                    <h5 class="desc_title">
-                        대시보드
-                    </h5>
-                    <h5 class="desc">
-                        - 래플 유형 별로 등록된 래플 수, 참여자 수를 확인할 수 있습니다.
-                    </h5>
                 </div>
             </div>
         </div>
+
+
     </div>
-
-
-</div>
 </template>
 
 <script setup>
