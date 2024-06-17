@@ -28,7 +28,7 @@
                             </div>
                             <hr class="p-0 m-0 w-100 mt-3">
                             <button class="btn btn-outline-light btn-sm"
-                                style="position: absolute; bottom: 0; right: 0;" @click="seeModal()">변경</button>
+                                style="position: absolute; bottom: 0; right: 0;" @click="seeModal">변경</button>
 
 
                         </div>
@@ -38,17 +38,17 @@
                         <div class="w-50 position-relative">
                             <div style="align-content: end;">
                                 <input type="email" placeholder="010-8***-*798" class="input w-50">
-
                             </div>
+
                             <hr class="p-0 m-0 w-100 mb-4 mt-3">
                             <button class="btn btn-white btn-sm mb-5" style="position: absolute; bottom: 0; right: 0;"
-                                @click="lookModal()">변경</button>
+                                @click="lookModal">변경</button>
                         </div>
                         <div class="w-50 position-relative">
                             <div class="mt-1 d-flex justify-content-end">
                                 <RouterLink to="#"><button type="button" class="btn btn-sm"
                                         style="font-size: 14px; color: black; background-color: white; text-decoration: underline;"
-                                        @click="checkhandle()">회원탈퇴</button>
+                                        @click="checkhandle">회원탈퇴</button>
                                 </RouterLink>
                             </div>
                         </div>
