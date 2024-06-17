@@ -10,7 +10,8 @@
 
                 <ul id="member" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/MemberList" class="sidebar-link" style="color: white;">전체 회원 조회</RouterLink>
+                        <RouterLink to="/Admin/MemberList" class="sidebar-link" style="color: white;">전체 회원 조회
+                        </RouterLink>
                     </li>
                 </ul>
             </li>
@@ -23,7 +24,8 @@
                 </a>
                 <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/CreateRaffle" class="sidebar-link" style="color: white;">래플 등록</RouterLink>
+                        <RouterLink to="/Admin/CreateRaffle" class="sidebar-link" style="color: white;">래플 등록
+                        </RouterLink>
                     </li>
                     <li class="sidebar-item">
                         <RouterLink to="/Admin/RaffleList" class="sidebar-link" style="color: white;">래플 목록</RouterLink>
@@ -39,8 +41,9 @@
                 </a>
                 <ul id="order" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/WinnerList" class="sidebar-link" style="color: white;">당첨자 조회</RouterLink>
-                           
+                        <RouterLink to="/Admin/WinnerList" class="sidebar-link" style="color: white;">당첨자 조회
+                        </RouterLink>
+
                     </li>
                 </ul>
             </li>
@@ -53,10 +56,12 @@
                 </a>
                 <ul id="board" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/CreateNotice" class="sidebar-link" style="color: white;">공지사항 등록</RouterLink>
+                        <RouterLink to="/Admin/CreateNotice" class="sidebar-link" style="color: white;">공지사항 등록
+                        </RouterLink>
                     </li>
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/CreateFaq" class="sidebar-link" style="color: white;">자주묻는질문 등록</RouterLink>
+                        <RouterLink to="/Admin/CreateFaq" class="sidebar-link" style="color: white;">자주묻는질문 등록
+                        </RouterLink>
                     </li>
                 </ul>
             </li>
@@ -68,7 +73,8 @@
                 </a>
                 <ul id="board" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <RouterLink to="/Admin/InquiryList" class="sidebar-link" style="color: white;">1:1 문의 관리</RouterLink>
+                        <RouterLink to="/Admin/InquiryList" class="sidebar-link" style="color: white;">1:1 문의 관리
+                        </RouterLink>
                     </li>
                 </ul>
             </li>
@@ -79,12 +85,8 @@
                 <i class="lni lni-exit"></i>
                 <span>Logout</span>
             </a>
-                </div> -->
-            </aside>
-                </div> -->
-            </aside>
         </div>
-    </div>
+    </aside>
 </template>
 
 <script setup>
