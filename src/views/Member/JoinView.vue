@@ -3,7 +3,7 @@
         <div class="d-flex justify-content-center">
             <!--아이디(이메일), 비밀번호, 이름, 주민번호, 전화번호, 주소를 입력받는다.-->
             <div class="d-flex flex-column" :style="responsiveSize">
-                <p class="text-center fw-bold fst-italic m-5" style="font-size:50px">Let-<span
+                <p class="text-center fw-bold fst-italic" style="font-size:50px">Let-<span
                         style="color:#FF5C35">FFle</span></p>
                 <label for="memail mb-2">이메일 주소*</label>
                 <div class="d-flex justify-content-between">
@@ -38,7 +38,6 @@
                 </template>
                 <template v-slot:modalBody>
                     <VueDaumPostcode :animation=true :max-suggest-items="3" :theme='{
-                        bgColor: "#F37551", //바탕 배경색
                         textColor: "#000000", //기본 글자색
                         postcodeTextColor: "#000000", //우편번호 글자색
                         emphTextColor: "#FF5C35", //강조 글자색
@@ -71,12 +70,11 @@ const addressSearched = (data) => {
     if (data.userSelectedType === 'R') {
         zonecode.value = data.zonecode;
         address.value = data.address;
-        postcodeMount.value = false;
         postcodeModal.value.hideModal();
+        
     } else {
         zonecode.value = data.zonecode;
         address.value = data.jibunAddress;
-        postcodeMount.value = false;
         postcodeModal.value.hideModal();
     }
 }

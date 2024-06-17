@@ -6,7 +6,7 @@
                     <div class="modal-header">
                         <h5 class="modal-title"><slot name="modalHeader"></slot></h5>
                     </div>
-                    <div class="modal-body p-0">
+                    <div class="modal-body">
                         <slot name="modalBody"></slot>
                     </div>
                     <div class="modal-footer">
