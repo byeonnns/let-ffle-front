@@ -7,7 +7,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import giftAnimation from "@/assets/lottie/giftLottie.json"
+import { Vue3Lottie } from 'vue3-lottie';
+import giftAnimation from "@/assets/lottie/giftLottie.json";
 const isNone = ref(false);
 function lottieOff() {
     isNone.value = true;

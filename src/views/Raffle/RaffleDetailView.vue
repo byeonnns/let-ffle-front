@@ -29,8 +29,8 @@
                 <br>#나만의 룩 #응모참여 # 응모미션 #Mession </p>
             <div class="d-flex flex-column px-5 mt-5">
                 <div v-if="step > 1" class="d-flex justify-content-center mb-2">
-                    <button class="btn btn-dark btn-lg me-2 flex-grow-1" @click="onQuiz()">미션 확인</button>
-                    <button class="btn btn-white btn-lg border border-black ms-2 flex-grow-1" @click="onModal()">베리 사용</button>
+                    <button class="btn btn-dark btn-lg me-2 flex-grow-1" @click="onQuiz">미션 확인</button>
+                    <button class="btn btn-white btn-lg border border-black ms-2 flex-grow-1" @click="onModal">베리 사용</button>
                 </div>
                     <button class="btn btn-dark btn-lg" @click="raffleprocess($event)">응모하기</button>
             </div>
@@ -79,7 +79,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { Modal, Toast } from 'bootstrap';
-import { Vue3Lottie } from 'vue3-lottie'
 import RaffleToast from '@/components/RaffleToast.vue'
 import GiftLottie from '@/components/GiftLottie.vue'
 import HeartLottie from '@/assets/lottie/likeHeart.json'
@@ -87,15 +86,12 @@ import RaffleModal from '@/components/RaffleModal.vue'
 
 // let nowDate = ref(new Date());
 
-// onMounted(() => {
-//     const likeData = false;
-//     if (likeData === true) {
-//         like.value = true;
-//     }
-// });
-// 날짜 시간 구현
-
-
+onMounted(() => {
+    const likeData = false;
+    if (likeData === true) {
+        like.value = true;
+    }
+});
 
 /* 래플 프로세스 */
 let step = ref(1);
@@ -121,9 +117,14 @@ const raffleQuizModal = ref(null);
 const people = ['변성준', '이재원', '신메시', '김영주'];
 const selectedPerson = ref('이재원'); // 초기 선택된 값
 
-function onQuiz() {
+// function onQuiz() {
+//     raffleQuizModal.value.showModal();
+// }
+
+const onQuiz = () => {
     raffleQuizModal.value.showModal();
 }
+
 function onModal() {
     raffleModal.value.showModal();
 }
@@ -149,7 +150,6 @@ function likeIt() {
         like.value = true;
     } else {
         raffleToast.value.showToast("좋아요를 취소했습니다.");
-
         likeAnimation.value.playSegments([8, 0], true);
         like.value = false;
     }
