@@ -9,8 +9,10 @@
                 <WriteForm />
 
                 <div class="d-flex justify-content-end">
-                    <input type="submit" value="신청하기" class="btn btn-light me-2">
-                    <input type="submit" value="취소" class="btn btn-light">
+                    <RouterLink to="/Member/InquiryList">
+                        <input type="submit" value="신청하기" class="btn btn-light me-2">
+                        <input type="submit" value="취소" class="btn btn-light">
+                    </RouterLink>
                 </div>
             </div>
         </div>

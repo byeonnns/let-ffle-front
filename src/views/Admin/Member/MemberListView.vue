@@ -41,11 +41,10 @@
                                 <option>이름</option>
                                 <option>닉네임</option>
                             </select>
-                            <input>
+                            <input class="me-2">
                         </div>
                         <button type="button" class="btn btn-light me-2">검색</button>
-                        <RouterLink to="/Member/WriteInquiry"><button type="button"
-                                class="btn btn-light">글쓰기</button></RouterLink>
+                        
                     </div>
                 </div>
             </div>

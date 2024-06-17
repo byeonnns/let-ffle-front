@@ -134,8 +134,10 @@
                         정말로다가 탈퇴를 하시겠습니까??
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                        <button type="button" class="btn btn-primary">확인</button>
+                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+                        <!-- <RouterLink to="/login"> -->
+                            <button type="button" class="btn btn-outline-light" @click="ReturnLog()">확인</button>
+                        <!-- </RouterLink> -->
                     </div>
                 </div>
             </div>
@@ -145,6 +147,13 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+function ReturnLog(){
+    router.push ("/login")
+}
 </script>
 
 <style scoped>

@@ -11,8 +11,7 @@
                     <!-- border:1px solid black; -->
 
                     <table class="table mt-2">
-                        <thead style="border-bottom: 1px solid #ebebeb
-                    ">
+                        <thead style="border-bottom: 1px solid #ebebeb">
                             <!-- class="text-center" -->
                             <th style="width:70px">번호</th>
                             <th>제목</th>

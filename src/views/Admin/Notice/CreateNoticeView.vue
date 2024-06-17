@@ -5,9 +5,11 @@
         </div>
         <CreateForm />
 
-        <div>
-            <button class="btn btn-sm">등록</button>
-            <button class="btn btn-sm">취소</button>
+        <div class="container text-end">
+            <RouterLink to="/Notice">
+                <button class="btn btn-dark btn-sm me-2">등록</button>
+            </RouterLink>
+            <button class="btn btn-dark btn-sm">취소</button>
         </div>
     </div>
 </template>
@@ -16,4 +18,6 @@
 import CreateForm from '@/views/Admin/Components/CreateForm.vue';
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
