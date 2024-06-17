@@ -52,8 +52,8 @@
 
                         <tbody>
                             <tr>
-                                <td class="text-center text-cr" >공지</td>
-                                <td>
+                                <td class="table_category text-cr" >공지</td>
+                                <td class="table_title">
                                     <RouterLink to="/Notice/NoticeDetail" style="text-decoration: none; color: black">6월
                                         공휴일
                                         휴무에 따른 거래 및
@@ -62,48 +62,48 @@
                                 <td>2024-06-11</td>
                             </tr>
                             <tr>
-                                <td class="text-center text-cr">당첨자 발표</td>
-                                <td>[안내] Draq-시엔느 응모</td>
+                                <td class="table_category text-cr">당첨자 발표</td>
+                                <td class="table_title">Draq-시엔느 응모</td>
                                 <td>2024-06-11</td>
                             </tr>
                             <tr>
-                                <td class="text-center text-cr">공지</td>
-                                <td>보관안내</td>
+                                <td class="table_category text-cr">공지</td>
+                                <td class="table_title">보관안내</td>
                                 <td>2024-06-11</td>
                             </tr>
                             <tr>
-                                <td class="text-center text-cr">서비스</td>
-                                <td>검수 지연안내</td>
+                                <td class="table_category text-cr">서비스</td>
+                                <td class="table_title">검수 지연안내</td>
                                 <td>2024-06-11</td>
                             </tr>
                             <tr>
-                                <td class="text-center text-cr">당첨자 발표</td>
-                                <td>보관 판매 신청 재개 안내</td>
+                                <td class="table_category text-cr">당첨자 발표</td>
+                                <td class="table_title">보관 판매 신청 재개 안내</td>
                                 <td>2024-06-11</td>
                             </tr>
 
                             <tr>
-                                <td class="text-center text-cr">공지</td>
-                                <td>보관판매 불가능</td>
+                                <td class="table_category text-cr">공지</td>
+                                <td class="table_title">보관판매 불가능</td>
                                 <td>2024-06-11</td>
                             </tr>
                             <tr>
-                                <td class="text-center text-cr">전체</td>
-                                <td>우리조는 야삐</td>
+                                <td class="table_category text-cr">공지</td>
+                                <td class="table_title">우리조는 야삐</td>
                                 <td>2024-06-11</td>
                             </tr>
 
                             <tr>
                                 <td colspan="5" class="text-center">
-                                    <button class="btn btn-outline-light btn-sm me-1">처음</button>
-                                    <button class="btn btn-outline-light btn-sm me-3">이전</button>
-                                    <button class="btn btn-outline-light btn-sm me-1">1</button>
-                                    <button class="btn btn-outline-light btn-sm me-1">2</button>
-                                    <button class="btn btn-outline-light btn-sm me-1">3</button>
-                                    <button class="btn btn-outline-light btn-sm me-1">4</button>
-                                    <button class="btn btn-outline-light btn-sm me-3">5</button>
-                                    <button class="btn btn-outline-light btn-sm me-1"> 다음</button>
-                                    <button class="btn btn-outline-light btn-sm">맨끝</button>
+                                    <button class="btn btn-outline-light btn-sm me-1" style="background-color: white; color:black;">처음</button>
+                                    <button class="btn btn-outline-light btn-sm me-3" style="background-color: white; color:black;">이전</button>
+                                    <button class="btn btn-outline-light btn-sm me-1" style="background-color: white; color:black;">1</button>
+                                    <button class="btn btn-outline-light btn-sm me-1" style="background-color: white; color:black;">2</button>
+                                    <button class="btn btn-outline-light btn-sm me-1" style="background-color: white; color:black;">3</button>
+                                    <button class="btn btn-outline-light btn-sm me-1" style="background-color: white; color:black;">4</button>
+                                    <button class="btn btn-outline-light btn-sm me-3" style="background-color: white; color:black;">5</button>
+                                    <button class="btn btn-outline-light btn-sm me-1" style="background-color: white; color:black;"> 다음</button>
+                                    <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">맨끝</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -153,5 +153,13 @@
 
 .btn{
     color: black;
+}
+
+.table_category {
+    text-align: start;
+}
+
+.table_title {
+    text-align: start;
 }
 </style>

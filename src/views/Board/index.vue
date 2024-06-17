@@ -10,8 +10,8 @@
                 <div style="width: 100%; height:100%; ">
                     <!-- border:1px solid black; -->
                     <div>
-                        <button class="btn me-2">일반</button>
-                        <button class="btn">당첨 후기</button>
+                        <button class="btn me-2" style="background-color: white; color:black;">일반</button>
+                        <button class="btn" style="background-color: white; color:black;">당첨 후기</button>
                     </div>
 
                     <table class="table mt-2">
@@ -82,18 +82,18 @@
                     <div class="text-end mb-2">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex flex-grow-1 justify-content-center ms-5">
-                                <button class="btn btn-outline-light btn-sm me-1">처음</button>
-                                <button class="btn btn-outline-light btn-sm me-3">이전</button>
-                                <button class="btn btn-outline-light btn-sm me-1">1</button>
-                                <button class="btn btn-outline-light btn-sm me-1">2</button>
-                                <button class="btn btn-outline-light btn-sm me-1">3</button>
-                                <button class="btn btn-outline-light btn-sm me-1">4</button>
-                                <button class="btn btn-outline-light btn-sm me-3">5</button>
-                                <button class="btn btn-outline-light btn-sm me-1">다음</button>
-                                <button class="btn btn-outline-light btn-sm">맨끝</button>
+                                <button class="btn btn-outline-light btn-sm me-1" style="background-color: white; color:black;">처음</button>
+                                <button class="btn btn-outline-light btn-sm me-3" style="background-color: white; color:black;">이전</button>
+                                <button class="btn btn-outline-light btn-sm me-1" style="background-color: white; color:black;">1</button>
+                                <button class="btn btn-outline-light btn-sm me-1" style="background-color: white; color:black;">2</button>
+                                <button class="btn btn-outline-light btn-sm me-1" style="background-color: white; color:black;">3</button>
+                                <button class="btn btn-outline-light btn-sm me-1" style="background-color: white; color:black;">4</button>
+                                <button class="btn btn-outline-light btn-sm me-3" style="background-color: white; color:black;">5</button>
+                                <button class="btn btn-outline-light btn-sm me-1" style="background-color: white; color:black;">다음</button>
+                                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">맨끝</button>
                             </div>
-                            <button class="btn btn-outline-light btn-sm ms-3">
-                                <RouterLink to="/Board/WriteBoard">글쓰기</RouterLink>
+                            <button class="btn btn-outline-light btn-sm ms-3" style="background-color: #FF5C35;">
+                                <RouterLink to="/Board/WriteBoard" style="color: white;">글쓰기</RouterLink>
                             </button>
                         </div>
                     </div>

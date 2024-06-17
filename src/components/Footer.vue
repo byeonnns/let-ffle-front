@@ -8,16 +8,16 @@
                     <div>
                         <strong>이용안내</strong>
                         <ul class="list-group me-5">
-                            <RouterLink to="Faq"><li class="list-group-item">이용정책</li></RouterLink>
-                            <RouterLink to="Faq"><li class="list-group-item">패널티 정책</li></RouterLink>
-                            <RouterLink to="Faq"><li class="list-group-item">커뮤니티 가이드라인</li></RouterLink>
+                            <RouterLink to="/Faq"><li class="list-group-item">이용정책</li></RouterLink>
+                            <RouterLink to="/Faq"><li class="list-group-item">패널티 정책</li></RouterLink>
+                            <RouterLink to="/Faq"><li class="list-group-item">커뮤니티 가이드라인</li></RouterLink>
                         </ul>
                     </div>
                     <div>
                         <strong>고객지원</strong>
                         <ul class="list-group">
-                            <RouterLink to="Notice"><li class="list-group-item">공지사항</li></RouterLink>
-                            <RouterLink to="Faq"><li class="list-group-item">자주 묻는 질문</li></RouterLink>
+                            <RouterLink to="/Notice"><li class="list-group-item">공지사항</li></RouterLink>
+                            <RouterLink to="/Faq"><li class="list-group-item">자주 묻는 질문</li></RouterLink>
                             <RouterLink to="/Member/WriteInquiry"><li class="list-group-item">문의하기</li></RouterLink>
                         </ul>
                     </div>
