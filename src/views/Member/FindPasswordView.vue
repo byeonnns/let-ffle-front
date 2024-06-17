@@ -5,7 +5,7 @@
                 <p class="text-center" style="font-size:32px; font-weight: 700;">비밀번호 찾기</p>
                 <hr class="border-2 opacity-100 mt-2" />
                 <div>
-                    <p>가입 시 등록한 휴대폰 번호와 이름,<br>이메일을 입력해주세요.</p>
+                    <p>가입 시 등록한 휴대폰 번호와<br>이름, 이메일을 입력해주세요.</p>
                 </div>
                 <label for="mte" class="mb-2" style="margin-top:44px">휴대폰 번호</label>
                 <input id="mtel" type="text" class="border-0 border-bottom" v-model="mphone">
