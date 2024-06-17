@@ -1,4 +1,4 @@
-import Faq from '../views/Faq/index.vue'
+
 const routes = [
     {
         path: '/Faq',

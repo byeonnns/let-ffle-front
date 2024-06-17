@@ -1,5 +1,3 @@
-import Announcement from '../views/Notice/index.vue'
-import BoardDetail from '../views/Notice/NoticeDetailView.vue'
 
 const routes = [
     {

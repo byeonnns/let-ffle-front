@@ -1,7 +1,3 @@
-import BoardList from '../views/Board/index.vue'
-import Write from '@/components/WriteForm.vue';
-import BoardComment from '../views/Board/BoardDetailView.vue'
-
 const routes = [
     {
         path: '/Board/WriteBoard',
