@@ -35,7 +35,15 @@ const routes = [
             path: 'InquiryDetails',
             component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/InquiryDetails.vue')
         },
-        
+        {
+            path: 'MyBoardList',
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyBoardListView.vue')
+        },
+        {
+            path: 'MyCommentList',
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyCommentListView.vue')
+        },
+
         ]
     }
 ];

@@ -26,10 +26,10 @@
                         <h5>커뮤니티 관리</h5>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <RouterLink to="/Member/">내 게시글</RouterLink>
+                                <RouterLink to="/Member/MyBoardList">내 게시글</RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Member/">내 댓글</RouterLink>
+                                <RouterLink to="/Member/MyCommentList">내 댓글</RouterLink>
                             </li>
                         </ul>
                     </li>
