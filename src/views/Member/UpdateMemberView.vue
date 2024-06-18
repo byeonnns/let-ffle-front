@@ -17,32 +17,50 @@
                             <div style="align-content: end;">
                                 <input type="email" placeholder="as***naver.com" class="input w-50">
                             </div>
-                            <hr class="p-0 m-0 w-100 mb-4 mt-3">
+                            <hr class="p-0 m-0 w-100">
                         </div>
-                        <div style="width: 50%;">
-                            <h5 style="font-size: 13px;" class="mt-1">비밀번호</h5>
+                        <div class="mt-4" style="width: 50%;">
+                            <h5 style="font-size: 13px;">비밀번호</h5>
                         </div>
                         <div class="w-50 position-relative">
                             <div style="align-content: end;">
                                 <input type="password" placeholder="●●●●●●●●" class="input w-50">
                             </div>
-                            <hr class="p-0 m-0 w-100 mt-3">
+                            <hr class="p-0 m-0 w-100">
                             <button class="btn btn-outline-light btn-sm"
                                 style="position: absolute; bottom: 0; right: 0;" @click="seeModal">변경</button>
-
-
                         </div>
                         <div class="mt-4" style="width: 50%;">
                             <h5 style="font-size: 13px;">휴대폰 번호</h5>
                         </div>
                         <div class="w-50 position-relative">
                             <div style="align-content: end;">
-                                <input type="email" placeholder="010-8***-*798" class="input w-50">
+                                <input type="text" placeholder="010-8***-*798" class="input w-50">
                             </div>
 
-                            <hr class="p-0 m-0 w-100 mb-4 mt-3">
-                            <button class="btn btn-white btn-sm mb-5" style="position: absolute; bottom: 0; right: 0;"
+                            <hr class="p-0 m-0 w-100">
+                            <button class="btn btn-outline-light btn-sm" style="position: absolute; bottom: 0; right: 0;"
                                 @click="lookModal">변경</button>
+                        </div>
+                        <div class="mt-4" style="width: 50%;">
+                            <h5 style="font-size: 13px;">주소</h5>
+                        </div>
+                        <div class="w-50 position-relative">
+                            <div style="align-content: end;">
+                                <input type="text" placeholder="주소" class="input w-50">
+                            </div>
+                            <hr class="p-0 m-0 w-100">
+                            <button class="btn btn-outline-light btn-sm" style="position: absolute; bottom: 0; right: 0;"
+                                @click="addrModal">변경</button>
+                        </div>
+                        <div class="mt-4" style="width: 50%;">
+                            <h5 style="font-size: 13px;">상세 주소</h5>
+                        </div>
+                        <div class="w-50 position-relative">
+                            <div style="align-content: end;">
+                                <input type="text" placeholder="상세 주소" class="input w-50">
+                            </div>
+                            <hr class="p-0 m-0 w-100">
                         </div>
                         <div class="w-50 position-relative">
                             <div class="mt-1 d-flex justify-content-end">
@@ -106,6 +124,50 @@
             </template>
         </RaffleModal>
 
+        <!-- Modal 우편번호 입력 -->
+        <RaffleModal ref="ADRModal">
+            <template v-slot:modalHeader>
+                우편번호 입력
+            </template>
+
+            <template v-slot:modalBody>
+                <div>
+                    <div class="">
+                        <input v-model="zonecode" id="maddress" type="text"
+                            class="border-0 border-bottom flex-grow-1 input" placeholder="우편번호">
+                        <button class="btn text-white btn-outline-light btn-sm ms-3" @click="DaumPostcode()">우편번호 찾기</button>
+                    </div>
+                    <div class="mt-3">
+                        <input v-model="address" type="text" placeholder="주소" class="input w-50">
+                        <hr class="p-0 m-0 w-100 mb-4">
+                    </div>
+                    <input v-model="addressDetail" type="text" placeholder="상세 주소" class="input w-50">
+                    <hr class="p-0 m-0 w-100 mb-4">
+                </div>
+            </template>
+
+            <template v-slot:modalFooter>
+                <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal">완료</button>
+                <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal">닫기</button>
+            </template>
+
+        </RaffleModal>
+
+        <!-- 주소 API -->
+        <RaffleModal ref="postcodeModal">
+                <template v-slot:modalHeader>
+                    주소 검색
+                </template>
+                <template v-slot:modalBody>
+                    <VueDaumPostcode :animation=true :max-suggest-items="3" :theme='{
+                        textColor: "#000000", //기본 글자색
+                        postcodeTextColor: "#000000", //우편번호 글자색
+                        emphTextColor: "#FF5C35", //강조 글자색
+                        outlineColor: "#FF5C35" //테두리
+                    }' v-if="postcodeMount" @complete="addressSearched" />
+                </template>
+            </RaffleModal>
+
         <!-- 회원 탈퇴 Slot화 -->
         <RaffleModal ref="Withdrawal">
             <template v-slot:modalHeader>
@@ -116,9 +178,9 @@
             </template>
             <template v-slot:modalFooter>
                 <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-                 <RouterLink to="/login">
-                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">확인</button>
-                 </RouterLink> 
+                <RouterLink to="/login">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">확인</button>
+                </RouterLink>
             </template>
         </RaffleModal>
 
@@ -129,10 +191,37 @@
 <script setup>
 import RaffleModal from '@/components/RaffleModal.vue';
 import { ref } from 'vue'
+import { VueDaumPostcode } from 'vue-daum-postcode';
 
 const PWModal = ref(null);
 const PWCModal = ref(null);
 const Withdrawal = ref(null);
+const ADRModal = ref(null);
+
+const postcodeModal = ref(null);
+const postcodeMount = ref(false);
+
+const zonecode = ref('');
+const address = ref('');
+const addressDetail = ref('');
+
+const DaumPostcode = () => {
+    postcodeModal.value.showModal();
+    postcodeMount.value = true;
+}
+
+const addressSearched = (data) => {
+    if (data.userSelectedType === 'R') {
+        zonecode.value = data.zonecode;
+        address.value = data.address;
+        postcodeModal.value.hideModal();
+        
+    } else {
+        zonecode.value = data.zonecode;
+        address.value = data.jibunAddress;
+        postcodeModal.value.hideModal();
+    }
+}
 
 function seeModal() {
     PWModal.value.showModal();
@@ -142,11 +231,11 @@ function lookModal() {
 }
 function checkhandle() {
     Withdrawal.value.showModal();
-
-
 }
 
-
+function addrModal() {
+    ADRModal.value.showModal();
+}
 
 
 
@@ -168,13 +257,14 @@ function checkhandle() {
     text-align: center;
     background-color: #F37551;
     color: white;
+    margin-bottom: 0px;
 }
 
 .input {
     border-width: 0;
     /* input 라인 없애기 */
     outline: none;
-
+    width: 76%;
 }
 
 h5 {
@@ -184,4 +274,5 @@ h5 {
 input::placeholder {
     color: gray;
 }
+
 </style>
