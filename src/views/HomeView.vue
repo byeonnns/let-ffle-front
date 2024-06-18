@@ -33,10 +33,9 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <Raffle />
         <div class='container'>
-            <hr class="border-3 opacity-100"/>
             <p class="h3 mb-3">마감 임박 래플</p>
+            <hr class="border-3 opacity-100"/>
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <RouterLink to="/Raffle/RaffleDetail">
@@ -65,6 +64,111 @@
                         <p class="raffle-description">2차 LET-FFLE 선발매</p>
                     </RouterLink>
                 </div>
+            </div>
+        </div>
+        <div class='container'>
+            <p class="h3 mb-3">지금 바로 미션 참여 가능한 래플</p>
+            <hr class="border-3 opacity-100"/>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <RouterLink to="/Raffle/RaffleDetail">
+                        <div class="img-container">
+                            <img src="@/assets/imgSample2.jpg" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <p class="raffle-title mt-2">BLR 인기 티셔츠 리오더 & 신규 발매</p>
+                        <p class="raffle-description">[~24.6.10 11AM] 5% 할인</p>
+                    </RouterLink>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <RouterLink to="/Raffle/RaffleDetail">
+                        <div class="img-container">
+                            <img src="@/assets/img1.jpg" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <p class="raffle-title mt-2">지용킴 x 삼성 뮤직 프레임</p>
+                        <p class="raffle-description">LET-FFLE에서만 단독 발매</p>
+                    </RouterLink>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <RouterLink to="/Raffle/RaffleDetail">
+                        <div class="img-container">
+                            <img src="@/assets/imgSample3.jpg" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <p class="raffle-title mt-2">웨이비니스 24서머 3차 드랍</p>
+                        <p class="raffle-description">2차 LET-FFLE 선발매</p>
+                    </RouterLink>
+                </div>
+            </div>
+        </div>
+        <div class='container'>
+            <p class="h3 mb-3">누군가가 방금 응모한 래플</p>
+            <hr class="border-3 opacity-100"/>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <RouterLink to="/Raffle/RaffleDetail">
+                        <div class="img-container">
+                            <img src="@/assets/imgSample2.jpg" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <p class="raffle-title mt-2">BLR 인기 티셔츠 리오더 & 신규 발매</p>
+                        <p class="raffle-description">[~24.6.10 11AM] 5% 할인</p>
+                    </RouterLink>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <RouterLink to="/Raffle/RaffleDetail">
+                        <div class="img-container">
+                            <img src="@/assets/img1.jpg" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <p class="raffle-title mt-2">지용킴 x 삼성 뮤직 프레임</p>
+                        <p class="raffle-description">LET-FFLE에서만 단독 발매</p>
+                    </RouterLink>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <RouterLink to="/Raffle/RaffleDetail">
+                        <div class="img-container">
+                            <img src="@/assets/imgSample3.jpg" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <p class="raffle-title mt-2">웨이비니스 24서머 3차 드랍</p>
+                        <p class="raffle-description">2차 LET-FFLE 선발매</p>
+                    </RouterLink>
+                </div>
+            </div>
+        </div>
+        <div class='container'>
+            <p class="h3 mb-3">랭킹 리스트</p>
+            <hr class="border-3 opacity-100"/>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex">
+                   <div class="card me-4 col-4">
+                        <div class="card-header">
+                            금주의 베리왕!
+                        </div>
+                        <div class="card-body">
+                            <i class="bi bi-trophy" style="color: gold;"><span style="color:black;">이*원 님</span></i><br/>
+                            <i class="bi bi-trophy" style="color: silver"><span style="color:black;">신*호 님</span></i><br/>
+                            <i class="bi bi-trophy" style="color: brown;"><span style="color:black;">김*주 님</span></i>
+                        </div>
+                   </div>
+                   <div class="card me-4 col-4">
+                        <div class="card-header">
+                            금주의 미션왕!
+                        </div>
+                        <div class="card-body">
+                            <i class="bi bi-trophy" style="color: gold;"><span style="color:black;">이*원 님</span></i><br/>
+                            <i class="bi bi-trophy" style="color: silver"><span style="color:black;">신*호 님</span></i><br/>
+                            <i class="bi bi-trophy" style="color: brown;"><span style="color:black;">김*주 님</span></i>
+                        </div>
+                   </div>
+                   <div class="card me-4 col-4">
+                        <div class="card-header">
+                            금주의 당첨왕!
+                        </div>
+                        <div class="card-body">
+                            <i class="bi bi-trophy" style="color: gold;"><span style="color:black;">이*원 님</span></i><br/>
+                            <i class="bi bi-trophy" style="color: silver"><span style="color:black;">신*호 님</span></i><br/>
+                            <i class="bi bi-trophy" style="color: brown;"><span style="color:black;">김*주 님</span></i>
+                        </div>
+                   </div>
+                </div>
+                
             </div>
         </div>
         <!-- Todo : 임시로 해놓음 컴포넌트화 할 것인지? -->
