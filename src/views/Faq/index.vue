@@ -8,11 +8,9 @@
                     style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 10px">
                     <h3 style="margin-right: 80%;">자주 묻는 질문</h3>
                 </div>
-                <div style="width: 100%; height:60px;">
+                
 
-                </div>
-
-                <div style="width: 100%; height:100%; margin-bottom: 10px;">
+                <div style="width: 100%; height:100%; margin-bottom: 10px; margin-top: 10px;">
                     <!-- border:1px solid black; -->
                     <table class="table table-bordered">
                         <thead>

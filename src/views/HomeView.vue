@@ -72,7 +72,7 @@
 </template>
 
 <script setup>
-import Raffle from "./Raffle"
+import Raffle from "./Raffle/RaffleMainView.vue"
 </script>
 
 <style scoped>

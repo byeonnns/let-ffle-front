@@ -5,7 +5,7 @@ const routes = [
     },
     {
         path: '/Board/BoardList',
-        component: () => import(/* webpackChunkName: "Board" */ '@/views/Board')
+        component: () => import(/* webpackChunkName: "Board" */ '@/views/Board/BoardMain.vue')
     },
     {
         path: '/Board/BoardDetail',

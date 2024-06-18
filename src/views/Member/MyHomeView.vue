@@ -4,7 +4,7 @@
             <div class="flex-grow-1">
                 <div class="container ms-5">
                     <div class="d-flex mb-5">
-                        <div class="card rounded-3 custom-card">
+                        <div class="card custom-card">
                             <div class="card-body mt-3 ms-3 flex-column d-flex align-items-start">
                                 <div class="mt-3 ms-3">
                                     <div>
@@ -14,7 +14,7 @@
                                 </div>
                                 <div class="position-absolute top-50 end-0 translate-middle-y me-4">
                                     <RouterLink to="/Member/UpdateMember"
-                                        class="btn btn-lg border rounded-3" style="color: white;">내 정보 수정</RouterLink>
+                                        class="btn btn-lg border" style="color: white;">내 정보 수정</RouterLink>
                                 </div>
                             </div>
                         </div>

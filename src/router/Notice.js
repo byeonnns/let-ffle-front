@@ -2,7 +2,7 @@
 const routes = [
     {
         path: '/Notice',
-        component: () => import(/* webpackChunkName: "Notice" */ '@/views/Notice')
+        component: () => import(/* webpackChunkName: "Notice" */ '@/views/Notice/NoticeMainView.vue')
     },
     {
         path: '/Notice/NoticeDetail',
