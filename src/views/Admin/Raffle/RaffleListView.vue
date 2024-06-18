@@ -21,6 +21,7 @@
                                         </colgroup>
                                         <thead>
                                             <tr>
+                                                <th scope="col">번호</th>
                                                 <th scope="col">래플 이름</th>
                                                 <th scope="col">응모 기간</th>
                                                 <th scope="col">당첨자</th>
@@ -29,6 +30,11 @@
                                         </thead>
                                         <tbody class="ordtable-tbody">
                                             <tr>
+                                                <td>
+                                                    <div class="n-prd-row">
+                                                        <RouterLink to="/">1</RouterLink>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div class="n-prd-row">
                                                         <RouterLink to="/">래플1</RouterLink>
@@ -52,6 +58,11 @@
                                             <tr>
                                                 <td>
                                                     <div class="n-prd-row">
+                                                        <RouterLink to="/">2</RouterLink>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="n-prd-row">
                                                         <RouterLink to="/">래플2</RouterLink>
                                                     </div>
                                                 </td>
@@ -63,11 +74,34 @@
                                                     발표 완료
                                                 </td>
                                                 <td>
-                                                    <RouterLink to="/Admin/WinnerList"><button class="btn update-raffle-btn">당첨자 확인</button></RouterLink>
+                                                    <RouterLink to="/Admin/WinnerList"><button
+                                                            class="btn update-raffle-btn">당첨자 확인</button></RouterLink>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-4">
+                                    <div class="d-flex flex-grow-1 justify-content-center">
+                                        <button class="btn btn-outline-light btn-sm me-1"
+                                            style="background-color: white; color:black;">처음</button>
+                                        <button class="btn btn-outline-light btn-sm me-3"
+                                            style="background-color: white; color:black;">이전</button>
+                                        <button class="btn btn-outline-light btn-sm me-1"
+                                            style="background-color: white; color:black;">1</button>
+                                        <button class="btn btn-outline-light btn-sm me-1"
+                                            style="background-color: white; color:black;">2</button>
+                                        <button class="btn btn-outline-light btn-sm me-1"
+                                            style="background-color: white; color:black;">3</button>
+                                        <button class="btn btn-outline-light btn-sm me-1"
+                                            style="background-color: white; color:black;">4</button>
+                                        <button class="btn btn-outline-light btn-sm me-3"
+                                            style="background-color: white; color:black;">5</button>
+                                        <button class="btn btn-outline-light btn-sm me-1"
+                                            style="background-color: white; color:black;">다음</button>
+                                        <button class="btn btn-outline-light btn-sm"
+                                            style="background-color: white; color:black;">맨끝</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

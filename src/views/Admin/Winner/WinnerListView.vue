@@ -46,8 +46,29 @@
                             </select>
                             <input class="me-2">
                         </div>
-                        <button type="button" class="btn btn-light me-2">검색</button>
-                        
+                        <button type="button" class="btn btn-light me-2 mb-4">검색</button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-grow-1 justify-content-center ms-5">
+                            <button class="btn btn-outline-light btn-sm me-1"
+                                style="background-color: white; color:black;">처음</button>
+                            <button class="btn btn-outline-light btn-sm me-3"
+                                style="background-color: white; color:black;">이전</button>
+                            <button class="btn btn-outline-light btn-sm me-1"
+                                style="background-color: white; color:black;">1</button>
+                            <button class="btn btn-outline-light btn-sm me-1"
+                                style="background-color: white; color:black;">2</button>
+                            <button class="btn btn-outline-light btn-sm me-1"
+                                style="background-color: white; color:black;">3</button>
+                            <button class="btn btn-outline-light btn-sm me-1"
+                                style="background-color: white; color:black;">4</button>
+                            <button class="btn btn-outline-light btn-sm me-3"
+                                style="background-color: white; color:black;">5</button>
+                            <button class="btn btn-outline-light btn-sm me-1"
+                                style="background-color: white; color:black;">다음</button>
+                            <button class="btn btn-outline-light btn-sm"
+                                style="background-color: white; color:black;">맨끝</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -58,5 +79,4 @@
 <script setup>
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
