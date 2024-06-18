@@ -1,47 +1,47 @@
 
 const routes = [
     {
-        path: '/Member',
-        component: () => import(/* webpackChunkName: "Member" */ '@/views/Member'),
+        path: '/Member/MyPage',
+        component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView'),
         children: [{
             path: 'MyEntryList',
-            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyEntryList.vue')
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/MyEntryList.vue')
         },
         {
             path: '',
-            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MypageHome.vue')
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/MypageHome.vue')
         },
         {
             path: 'LikeList',
-            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/LikeList.vue')
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/LikeList.vue')
         },
         {
             path: 'WinningList',
-            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/WinningList.vue')
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/WinningList.vue')
         },
         {
             path: 'UpdateMember',
-            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/UpdateMember.vue')
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/UpdateMember.vue')
         },
         {
             path: 'InquiryList',
-            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/InquiryList.vue')
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/InquiryList.vue')
         },
         {
             path: 'WriteInquiry',
-            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/WriteInquiry.vue')
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/WriteInquiry.vue')
         },
         {
             path: 'InquiryDetails',
-            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/InquiryDetail.vue')
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/InquiryDetail.vue')
         },
         {
             path: 'MyBoardList',
-            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyBoardList.vue')
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/MyBoardList.vue')
         },
         {
             path: 'MyCommentList',
-            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyCommentList.vue')
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/MyCommentList.vue')
         },
 
         ]

@@ -29,7 +29,7 @@
                 </div>
                 <RouterLink to="/join" class="me-3"><span class="d-inline-block">회원가입</span></RouterLink>
                 <RouterLink to="/login" class="me-3"><span class="d-inline-block">로그인</span></RouterLink>
-                <RouterLink to="/Member" class="me-3"><span class="d-inline-block">마이페이지</span></RouterLink>
+                <RouterLink to="/Member/MyPage" class="me-3"><span class="d-inline-block">마이페이지</span></RouterLink>
                 <RouterLink to="/Notice" class="me-3"><span class="d-inline-block">고객센터</span></RouterLink>
                 <RouterLink to="/Admin" class="me-3"><span class="d-inline-block">관리자</span></RouterLink>
             </div>

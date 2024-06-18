@@ -12,7 +12,7 @@
 
 <script setup>
 import { RouterView } from 'vue-router';
-import MypageNavBar from '@/views/Member/Components/MypageSidebar.vue';
+import MypageNavBar from '@/views/Member/MyPageView/Components/MypageSidebar.vue';
 
 
 
