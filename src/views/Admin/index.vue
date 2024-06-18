@@ -1,14 +1,16 @@
 <template>
-    <div class="d-flex">
-        <AdminSidebar />
-        <div class="flex-grow-1">
-            <RouterView/>
+    <div>
+        <div class="container-lg d-flex">
+            <AdminSidebar class="me-5" style="min-width: 100px;"/>
+            <div class="flex-grow-1">
+                <RouterView />
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import AdminSidebar from '@/views/Admin/Components/Sidebar.vue';
+import AdminSidebar from '@/views/Admin/Components/AdminSidebar.vue';
 import { RouterView } from 'vue-router';
 
 </script>

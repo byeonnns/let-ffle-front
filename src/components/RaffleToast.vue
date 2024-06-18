@@ -1,15 +1,15 @@
 <template>
     <div>
-        <div class="toast-container position-fixed bottom-0 end-0 p-3 z-2">
-            <div ref="liveToast" class="toast mb-5 mb-lg-0" role="alert" aria-live="assertive" aria-atomic="true"
-                data-bs-autohide="true">
-                <div class="toast-header text-white" style="background-color: #FF5C35;">
+        <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3 z-2">
+            <div ref="liveToast" class="toast rounded-pill border-0" role="alert" aria-live="assertive"
+                aria-atomic="true" data-bs-autohide="false" style="background-color: rgba(255,92,53, 0.85);">
+                <!-- <div class="toast-header text-white" style="background-color: #FF5C35;">
                     <strong class="me-auto">알림</strong>
                     <small>{{ nowTime }}</small>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    {{ message }}
+                </div> -->
+                <div class="toast-body text-white text-center align-content-center">
+                    <i class="bi bi-balloon-heart position-absolute top-50 start-0 translate-middle-y ps-4"></i> {{ message }}
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@ const showToast = (toastMessage) => {
 };
 
 defineExpose({
-  showToast
+    showToast
 });
 </script>
 

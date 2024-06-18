@@ -38,6 +38,10 @@ const routes = [
             path: 'InquiryList',
             component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/InquiryList.vue'),
         },
+        {
+            path: 'RaffleMonitor',
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/RaffleMonitor.vue'),
+        }
         
     ]
     },
