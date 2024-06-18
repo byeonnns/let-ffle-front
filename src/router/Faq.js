@@ -2,7 +2,7 @@
 const routes = [
     {
         path: '/Faq',
-        component: () => import(/* webpackChunkName: "Faq" */ '@/views/Faq')
+        component: () => import(/* webpackChunkName: "Faq" */ '@/views/Faq/FaqMainView.vue')
     },
 
 
