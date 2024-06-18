@@ -7,7 +7,7 @@
         <div style="width: 100%; height:500px;">
             <div class="form-group row">
                 <label for="btitle" class="col-sm-2 col-form-label">유형</label>
-                <div class="col-sm-10">
+                <div class="col-sm-10 text">
                     <select>
                         <option>자유</option>
                         <option>당첨후기</option>
@@ -31,4 +31,8 @@
 import WriteForm from "@/components/WriteForm.vue";
 </script>
 
-<style scoped></style>
+<style scoped>
+.text{
+    align-content: center;
+}
+</style>

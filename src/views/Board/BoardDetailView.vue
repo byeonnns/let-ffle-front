@@ -10,21 +10,36 @@
 
 
         <div class="">
+
             <h2>[자유] 현재 이런 상황에 대한 반응들</h2>
-            <span class="me-3">매번 긍정일순 없어</span><i class="bi bi-clock me-2">2024.06.05</i><i class="bi bi-eye">3</i>
-            <hr/>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <span class="me-3">매번 긍정일순 없어</span><i class="bi bi-clock me-2">2024.06.05</i><i
+                        class="bi bi-eye">3</i>
+
+                </div>
+                <div>
+                    <RouterLink to="/Board/WriteBoard">
+                        <input type="submit" class="btn btn-outline-light btn-sm me-2" value="수정" />
+                    </RouterLink>
+                    <input type="button" class="btn btn-outline-light btn-sm me-2" value="삭제" />
+
+                </div>
+            </div>
+
+            <hr />
 
             <div class="mt-5">
                 현재 이런 상황에 대해 나는 아무런 할말이 없구만유...
             </div>
 
-            <div class="mt-3">
-                <RouterLink to="/Board/Write">
+            <div class="text-center" style="margin-top:100px ;">
+                <!-- <RouterLink to="/Board/Write">
                     <input type="submit" class="btn btn-outline-light btn-sm me-2" value="수정" />
                 </RouterLink>
-                <input type="button" class="btn btn-outline-light btn-sm me-2" value="삭제" />
+                <input type="button" class="btn btn-outline-light btn-sm me-2" value="삭제" /> -->
                 <RouterLink to="/Board/BoardList">
-                    <input type="button" class="btn btn-outline-light btn-sm" value="뒤로" />
+                    <input type="button" class="btn btn-outline-light btn-sm" value="목록" />
                 </RouterLink>
             </div>
         </div>
