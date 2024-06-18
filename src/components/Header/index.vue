@@ -3,7 +3,7 @@
         <div class="container-lg">
             <div class="d-flex d-none d-lg-block text-end">
                 <div class="d-inline-block">
-                    <Popper :show="showPopper" :placement="'left'">
+                    <Popper :placement="'left'">
                         <span class="me-3"><img src="@/assets/berry-icon.png" class="me-1" height="20px"
                                 @click="popper">300</span>
                         <template #content>
@@ -89,10 +89,6 @@ const currentComponent = computed(() => {
     } else {
         return NullSubMenu;
     }
-});
-
-const popper = () => ({
-    showPopper: true
 });
 
 </script>

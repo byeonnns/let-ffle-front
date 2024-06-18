@@ -4,7 +4,7 @@
             <div class="row">
                 <RaffleVue v-for="n in 5" :key="n"/>
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink to="/Raffle/Detail">
+                    <RouterLink to="/Raffle/RaffleDetail">
                         <div class="img-container">
                             <img src="@/assets/imgSample2.jpg" class="w-100 h-100 object-fit-cover">
                         </div>
@@ -13,7 +13,7 @@
                     </RouterLink>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink to="/Raffle/Detail">
+                    <RouterLink to="/Raffle/RaffleDetail">
                         <div class="img-container">
                             <img src="@/assets/imgSample3.jpg" class="w-100 h-100 object-fit-cover">
                         </div>
@@ -22,7 +22,7 @@
                     </RouterLink>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink to="/Raffle/Detail">
+                    <RouterLink to="/Raffle/RaffleDetail">
                         <div class="img-container">
                             <img src="@/assets/img4.jpg" class="w-100 h-100 object-fit-cover">
                         </div>
@@ -31,7 +31,7 @@
                     </RouterLink>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink to="/Raffle/Detail">
+                    <RouterLink to="/Raffle/RaffleDetail">
                         <div class="img-container">
                             <img src="@/assets/img1.jpg" class="w-100 h-100 object-fit-cover">
                         </div>
@@ -40,7 +40,7 @@
                     </RouterLink>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink to="/Raffle/Detail">
+                    <RouterLink to="/Raffle/RaffleDetail">
                         <div class="img-container">
                             <img src="@/assets/imgSample2.jpg" class="w-100 h-100 object-fit-cover">
                         </div>
@@ -49,7 +49,7 @@
                     </RouterLink>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink to="/Raffle/Detail">
+                    <RouterLink to="/Raffle/RaffleDetail">
                         <div class="img-container">
                             <img src="@/assets/img1.jpg" class="w-100 h-100 object-fit-cover">
                         </div>
