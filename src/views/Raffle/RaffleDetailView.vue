@@ -43,11 +43,32 @@
 
         <RaffleModal ref="raffleModal">
             <template v-slot:modalHeader>
-                베리 사용
+                ※ 베리 사용 안내 ※
             </template>
             <template v-slot:modalBody>
-                몇 개나 사용할까요?<br>
-                <input type="text" />
+                <ul>
+                    <li>베리는 하나의 래플에 최대10개까지 사용할수 있습니다.</li>
+                    <li>한번 등록시에는 다시 반환 할수 없습니다.</li>
+                    <li>베리는 중복으로 사용이 가능합니다</li>
+                    <li>베리를 사용하게 되면 당첨확률이 UP↑</li>
+                    <li>해당 래플에 현재 베리를 0개 사용했습니다.</li>
+                </ul>
+
+                <label class="me-2">몇 개나 사용할까요?</label>
+                <select name="number">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+
+                </select>
+                개
             </template>
             <template v-slot:modalFooter>
                 <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">취소</button>
