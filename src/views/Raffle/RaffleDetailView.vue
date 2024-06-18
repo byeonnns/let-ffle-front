@@ -25,14 +25,17 @@
                 <br>
                 더그레이티스트만의 감성을 담은 24 SUMMER 드랍을 ~50% 혜택으로 만나보세요.
             </p>
-            <p style="color: #4d8fd0">#패션 #데일리룩 #Fashoin #Raffle #like 
-                <br>#나만의 룩 #응모참여 # 응모미션 #Mession </p>
+            <p style="color: #4d8fd0">#패션 #데일리룩 #Fashoin #Raffle #like
+                <br>#나만의 룩 #응모참여 # 응모미션 #Mession
+            </p>
             <div class="d-flex flex-column px-5 mt-5">
                 <div v-if="step > 1" class="d-flex justify-content-center mb-2">
-                    <button class="btn btn-dark btn-lg me-2 flex-grow-1" @click="onQuiz">미션 확인</button>
-                    <button class="btn btn-white btn-lg border border-black ms-2 flex-grow-1" @click="onModal">베리 사용</button>
+                    <button class="btn btn-outline-light btn-lg me-2 flex-grow-1" @click="onQuiz">미션 확인</button>
+                    <button class="btn btn-outline-light btn-lg  ms-2 flex-grow-1" @click="onModal">베리
+                        사용</button>
+                    <!-- border border-black -->
                 </div>
-                    <button class="btn btn-dark btn-lg" @click="raffleprocess($event)">응모하기</button>
+                <button class="btn btn-outline-light btn-lg" @click="raffleprocess($event)">응모하기</button>
             </div>
         </div>
 
@@ -47,8 +50,8 @@
                 <input type="text" />
             </template>
             <template v-slot:modalFooter>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                <button type="button" class="btn btn-primary">완료</button>
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-outline-light">완료</button>
             </template>
         </RaffleModal>
 
@@ -69,8 +72,8 @@
                 <p class="m-0">제출 : {{ selectedPerson }}</p>
             </template>
             <template v-slot:modalFooter>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                <button type="button" class="btn btn-primary">완료</button>
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-outline-light">완료</button>
             </template>
         </RaffleModal>
     </div>
