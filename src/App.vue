@@ -50,6 +50,7 @@ import FooterNav from "@/components/FooterNav.vue";
 #app .btn {
     background-color:#F37551;
     color:white;
+    border-radius: 0;
 }
 #app .btn:hover {
     background-color:#F37551;

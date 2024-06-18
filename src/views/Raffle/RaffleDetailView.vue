@@ -78,7 +78,6 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { Modal, Toast } from 'bootstrap';
 import RaffleToast from '@/components/RaffleToast.vue'
 import GiftLottie from '@/components/GiftLottie.vue'
 import HeartLottie from '@/assets/lottie/likeHeart.json'

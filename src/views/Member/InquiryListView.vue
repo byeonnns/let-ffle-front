@@ -16,13 +16,15 @@
                                 <th class="d-none d-md-table-cell" style="width: 11em;"><span>글쓴이</span></th>
                                 <th class="d-none d-md-table-cell" style="width: 8em;"><span>날짜</span></th>
                                 <th class="d-none d-md-table-cell" style="width: 6em;"><span>진행현황</span></th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td><RouterLink to="/Member/InquiryDetails">안녕하세요</RouterLink></td>
+                                <td>
+                                    <RouterLink to="/Member/InquiryDetails">안녕하세요</RouterLink>
+                                </td>
                                 <td>김작가</td>
                                 <td>2013-05-21</td>
                                 <td>진행중</td>
@@ -30,8 +32,8 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-end mt-3 me-3">
-                        <RouterLink to="/Member/WriteInquiry"><button type="button"
-                                class="btn btn-light">글쓰기</button></RouterLink>
+                        <RouterLink to="/Member/WriteInquiry"><button type="button" class="btn btn-light">글쓰기</button>
+                        </RouterLink>
                     </div>
                 </div>
             </div>

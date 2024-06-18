@@ -1,37 +1,13 @@
 <template>
     <footer>
         <div>
-            <div class="footer-div d-lg-flex flex-row-reverse justify-content-between">
-                <div class="">
-                </div>
-                <div class="d-flex">
-                    <div>
-                        <strong>이용안내</strong>
-                        <ul class="list-group me-5">
-                            <RouterLink to="/Faq"><li class="list-group-item">이용정책</li></RouterLink>
-                            <RouterLink to="/Faq"><li class="list-group-item">패널티 정책</li></RouterLink>
-                            <RouterLink to="/Faq"><li class="list-group-item">커뮤니티 가이드라인</li></RouterLink>
-                        </ul>
-                    </div>
-                    <div>
-                        <strong>고객지원</strong>
-                        <ul class="list-group">
-                            <RouterLink to="/Notice"><li class="list-group-item">공지사항</li></RouterLink>
-                            <RouterLink to="/Faq"><li class="list-group-item">자주 묻는 질문</li></RouterLink>
-                            <RouterLink to="/Member/WriteInquiry"><li class="list-group-item">문의하기</li></RouterLink>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
             <div class="d-lg-flex justify-content-between footer-div2">
                 <div class="mt-4">
                     <ul class="d-flex gap-3 list-unstyled">
-                        <li>회사소개</li>
-                        <li>인재채용</li>
-                        <li>제휴제안</li>
                         <li>이용약관</li>
-                        <li>개인정보처리방침</li>
+                        <RouterLink to="/Notice"><li class="list-group-item">공지사항</li></RouterLink>
+                        <li>제휴제안</li>
+                        <RouterLink to="/Member/WriteInquiry"><li class="list-group-item">문의하기</li></RouterLink>
                     </ul>
                     <span class="d-none d-lg-block" style="font-size: 13px;">주식회사 렛플 대표 : 변성준 사업자등록번호 : 123-45-67890
                         통신판매업 : 제2024-가락시장A-0016호<br />
