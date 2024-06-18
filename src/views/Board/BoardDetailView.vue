@@ -3,47 +3,55 @@
 
     <div class="container"
         style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px;margin-top: 30px">
-        <h3 >글상세 보기</h3>
+        <h3>자유 게시판</h3>
     </div>
 
     <div class="container" style="width: 100%; height:100%; ">
 
 
+        <div class="">
+            <h2>[자유] 현재 이런 상황에 대한 반응들</h2>
+            <span class="me-3">매번 긍정일순 없어</span><i class="bi bi-clock me-2">2024.06.05</i><i class="bi bi-eye">3</i>
+            <hr/>
 
-        <table class="table table-bordered">
+            <div class="mt-5">
+                현재 이런 상황에 대해 나는 아무런 할말이 없구만유...
+            </div>
+
+            <div class="mt-3">
+                <RouterLink to="/Board/Write">
+                    <input type="submit" class="btn btn-outline-light btn-sm me-2" value="수정" />
+                </RouterLink>
+                <input type="button" class="btn btn-outline-light btn-sm me-2" value="삭제" />
+                <RouterLink to="/Board/BoardList">
+                    <input type="button" class="btn btn-outline-light btn-sm" value="뒤로" />
+                </RouterLink>
+            </div>
+        </div>
+
+        <!-- <table class="table table-bordered">
 
             <tbody>
                 <tr>
-                    <th class="table-active" style="border-bottom:1px solid white ">글유형</th>
-                    <td>자유 게시판</td>
-                    <td class="table-active" style="border-bottom:1px solid white; ">등록일</td>
+
+                    <th class="table-active" style="border-bottom:1px solid white; ">등록일</th>
                     <td>2024-06-05</td>
-                </tr>
-                <tr>
-                    <th class="table-active" style="border-bottom:1px solid white; ">제목</th>
-                    <td>현재 이런 상황에 대한 반응들</td>
-                    <td class="table-active" style="border-bottom:1px solid white; ">조회</td>
+                    <th class="table-active" style="border-bottom:1px solid white; ">조회</th>
                     <td>4</td>
                 </tr>
                 <tr>
+                    <th class="table-active" style="border-bottom:1px solid white; ">제목</th>
+                    <td>[자유] 현재 이런 상황에 대한 반응들</td>
                     <th class="table-active" style="border-bottom:1px solid white; ">작성자</th>
                     <td colspan="3">매번 긍정일순 없어</td>
-
                 </tr>
                 <tr style="height: 300px;">
                     <th class="table-active" style="border-bottom:1px solid white;">내용</th>
-                    <td colspan="3">현재 이런상황에 대해 나는 아무런 할말이 없구만유...</td>
-
+                    <td colspan="3">현재 이런 상황에 대해 나는 아무런 할말이 없구만유...</td>
                 </tr>
             </tbody>
-        </table>
-        <RouterLink to="/Board/Write">
-            <input type="submit" class="btn btn-outline-light btn-sm me-2" value="수정" />
-        </RouterLink>
-        <input type="button" class="btn btn-outline-light btn-sm me-2" value="삭제" />
-        <RouterLink to="/Board/BoardList">
-            <input type="button" class="btn btn-outline-light btn-sm" value="뒤로" />
-        </RouterLink>
+        </table> -->
+
 
 
         <div class="form-group row mt-5">
@@ -60,14 +68,15 @@
         <div style="width: 100%;">
             <!-- border:1px solid black -->
             <div class="mt-4" style="border-bottom:1px solid #ebebeb ;">
-                <p>댓글</p>
+                <p>댓글 [1]</p>
             </div>
 
             <div class="mt-3">
                 <p class="custom-title me-3">릭재원</p>
                 <p class="custom-text">2024-06-11</p>
                 <RouterLink to="/">
-                <button class="my_btn btn-outline-light btn-sm m-2"><i class="bi bi-x-square" ></i></button></RouterLink>
+                    <button class="my_btn btn-outline-light btn-sm m-2"><i class="bi bi-x-square"></i></button>
+                </RouterLink>
             </div>
             <div style=" background-color: #FAFAFA; height: 100px; padding: 5px">
                 <p class="mt-3">이거 좀 재미있는 상황인 거 같음 </p>
@@ -97,12 +106,12 @@
 }
 
 .my_btn {
-  background-color:white;
-  color: #F37551;
-  border: none;
-  border-radius: 5px;
-  width: 20px;
-  height: 30px;
-  
+    background-color: white;
+    color: #F37551;
+    border: none;
+    border-radius: 5px;
+    width: 20px;
+    height: 30px;
+
 }
 </style>

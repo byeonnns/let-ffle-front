@@ -17,7 +17,7 @@
                     <table class="table mt-2">
                         <thead style="border-bottom: 1px solid #ebebeb">
                             <!-- class="text-center" -->
-                            <th style="width:80px">분류</th>
+                            <th style="width:80px">글번호</th>
                             <th>제목</th>
                             <th style="width:150px">글쓴이</th>
                             <th style="width:120px">날짜</th>
@@ -26,53 +26,53 @@
                         <tbody>
                             <!--class="text-center"  -->
                             <tr>
-                                <td>자유</td>
+                                <td>20312</td>
                                 <RouterLink to="./BoardDetail" style="text-decoration: none;">
-                                    <td>현재 이런 상황에 대한 반응들</td>
+                                    <td>[자유] 현재 이런 상황에 대한 반응들</td>
                                 </RouterLink>
                                 <td>매번 긍정일순 없어</td>
                                 <td>2024-06-05</td>
                                 <td>4</td>
                             </tr>
                             <tr>
-                                <td>자유</td>
-                                <td>이 글을 보시게된다면 저에게...</td>
+                                <td>19018</td>
+                                <td>[자유] 이 글을 보시게된다면 저에게...</td>
                                 <td>나는야 나비</td>
                                 <td>2024-06-05</td>
                                 <td>6</td>
                             </tr>
                             <tr>
-                                <td>자유</td>
-                                <td>굉장한 메리트가 있는 이런거 보셨나요...</td>
+                                <td>18710</td>
+                                <td>[자유] 굉장한 메리트가 있는 이런거 보셨나요...</td>
                                 <td>말왕 탕후루</td>
                                 <td>2024-06-07</td>
                                 <td>10</td>
                             </tr>
                             <tr>
-                                <td>자유</td>
-                                <td>강의실에서 인싸되는 방법</td>
+                                <td>20804</td>
+                                <td>[자유] 강의실에서 인싸되는 방법</td>
                                 <td>야삐</td>
                                 <td>2024-06-04</td>
                                 <td>206</td>
                             </tr>
                             <tr>
-                                <td>자유</td>
-                                <td>탕후루와 마라탕은 무슨관계인가..</td>
+                                <td>19676</td>
+                                <td>[자유] 탕후루와 마라탕은 무슨관계인가..</td>
                                 <td>탕후루루룩</td>
                                 <td>2024-06-05</td>
                                 <td>21</td>
                             </tr>
 
                             <tr>
-                                <td>당첨후기</td>
-                                <td>나 응모 당첨 100%인 썰 풀어본다..</td>
+                                <td>23314</td>
+                                <td>[당첨 후기] 나 응모 당첨 100%인 썰 풀어본다..</td>
                                 <td>응모왕</td>
                                 <td>2024-06-05</td>
                                 <td>603</td>
                             </tr>
                             <tr>
-                                <td>당첨후기</td>
-                                <td>미션에 관한 정답 모음집..</td>
+                                <td>23301</td>
+                                <td>[당첨 후기] 미션에 관한 정답 모음집..</td>
                                 <td>미션만 한다</td>
                                 <td>2024-06-08</td>
                                 <td>22</td>
