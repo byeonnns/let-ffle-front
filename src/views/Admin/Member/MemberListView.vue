@@ -34,7 +34,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="d-flex justify-content-end mt-3 me-3">
+                    <div class="d-flex justify-content-end align-items-center mt-3 me-3">
                         <div>
                             <select class="me-2">
                                 <option>ID</option>
@@ -43,7 +43,7 @@
                             </select>
                             <input class="me-2">
                         </div>
-                        <button type="button" class="btn btn-light me-2 mb-4">검색</button>
+                        <button type="button" class="btn btn-light">검색</button>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex flex-grow-1 justify-content-center">

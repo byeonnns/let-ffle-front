@@ -59,7 +59,7 @@
                                     <div class="item_wrap">
                                         <div class="item item_attach">
                                             <div class="img_box d-flex">
-                                                <div id="defaultImg">item</div>
+                                                <div id="defaultImg">image</div>
                                             </div>
 
                                             <div class="item_edit">
@@ -88,7 +88,7 @@
                                     <div class="item_wrap">
                                         <div class="item item_attach">
                                             <div class="img_box d-flex">
-                                                <div id="defaultImg">detail</div>
+                                                <div id="defaultImg">image</div>
                                             </div>
 
                                             <div class="item_edit">
@@ -115,9 +115,9 @@
                                 </div>
                                 <div class="td">
                                     <div class="form_set">
-                                        <div class="input_clear sm">
+                                        <div class="input_clear sm" style="display: flex; align-items: center;">
                                             <input type="date" id="prdname" name="prdname">
-                                            <span class="ms-2 mt-3">~</span>
+                                            <span style="margin-right: 10px; margin-left: 10px;">~</span>
                                             <input type="date" id="prdname" name="prdname">
                                         </div>
                                     </div>
@@ -140,9 +140,10 @@
                                 </div>
                                 <div class="td">
                                     <div class="form_set">
-                                        <div class="input_clear sm">
+
+                                        <div class="input_clear sm" style="display: flex; align-items: center;">
                                             <input type="datetime-local" id="prdname" name="prdname">
-                                            <span class="ms-2 mt-3">~</span>
+                                            <span style="margin-right: 10px; margin-left: 10px;">~</span>
                                             <input type="datetime-local" id="prdname" name="prdname">
                                         </div>
                                     </div>
@@ -154,7 +155,7 @@
                                 </div>
                                 <div class="td">
                                     <textarea
-                                        style="width: 50%;">류현진 선수가 KBO의 한화 이글스로 돌아왔습니다. 그렇다면 류현진 선수가 메이저 리그에 있을 때, 가장 최근 소속팀은 어디일까요?</textarea>
+                                        style="width: 100%;">류현진 선수가 KBO의 한화 이글스로 돌아왔습니다. 그렇다면 류현진 선수가 메이저 리그에 있을 때, 가장 최근 소속팀은 어디일까요?</textarea>
                                 </div>
                             </div>
                             <div class="tr">
@@ -186,14 +187,16 @@
                                 </div>
                                 <div class="td">
                                     <div class="input_clear sm">
-                                        <input type="text" id="prdbrand" name="prdbrand" placeholder="숫자만 입력하세요.">
+                                        <input type="text" id="prdbrand" name="prdbrand" style="width: 50px;">명
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="btn_big_wrap btn_size_fix mt60">
-                            <RouterLink to="/Admin/RaffleList"><button type="submit" class="btn_submit me-3">등록</button></RouterLink>
-                            <RouterLink to="/Admin"><button type="button" class="white btn_cancle">취소</button></RouterLink>
+                            <RouterLink to="/Admin/RaffleList"><button type="submit" class="btn_submit me-3">등록</button>
+                            </RouterLink>
+                            <RouterLink to="/Admin"><button type="button" class="white btn_cancle">취소</button>
+                            </RouterLink>
                         </div>
                     </form>
                 </div>
@@ -236,7 +239,6 @@
     margin-bottom: 10px;
 }
 
-
 /* table --------------------------------*/
 .section_block1,
 .section_block2 {
@@ -273,7 +275,6 @@
     display: table;
     width: 100%;
     border-collapse: collapse;
-    border-top: 1px solid black;
 }
 
 .form_table .tr {
@@ -304,7 +305,7 @@
     padding: 0;
     font-size: 14px;
     font-weight: 500;
-    height: 48px;
+    height: 100%;
     margin-top: 0;
     display: flex;
     align-items: center;
@@ -459,88 +460,6 @@
     color: #999999;
 }
 
-/* .button_set {
-    line-height: normal;
-    font-weight: 500;
-    border-collapse: collapse;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    margin-top: 16px;
-    justify-content: flex-start;
-}
-
-.btn_sub_m {
-    border-collapse: collapse;
-    box-sizing: border-box;
-    margin: 0;
-    font-weight: 500;
-    vertical-align: middle;
-    cursor: pointer;
-    font-size: 13px;
-    min-width: 105px;
-    height: 38px;
-    border-radius: 3px;
-    padding: 0 30px;
-    line-height: 38px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #cccccc;
-    background: white;
-}
-
-#inputFileImage1-2 {
-    margin-left: 10px;
-    width: 100%;
-    height: 48px;
-    padding: 0 15px;
-    font-size: 14px;
-    border: 1px solid black;
-    background: white;
-    border-radius: 3px;
-    transition: all 0.5s;
-    vertical-align: middle;
-    display: none;
-} */
-
-/*item detail img -----------------------------*/
-/*.itemDetail_wrap {
-    border-collapse: collapse;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    background: white;
-    min-height: 120px;
-}
-
-.itemDetail_attach {
-    line-height: normal;
-    font-size: 14px;
-    font-weight: 500;
-    border-collapse: collapse;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-.itemDetail_edit {
-    line-height: normal;
-    font-weight: 500;
-    border-collapse: collapse;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    margin-left: 30px;
-} */
-
 /* product img */
 .attach_wrap {
     line-height: normal;
@@ -663,5 +582,12 @@
     width: 200px;
     flex: 0 0 200px;
     margin-left: 10px;
+}
+
+input {
+    border-width: 0;
+    /* input 라인 없애기 */
+    outline: none;
+    border-bottom: 1px solid gray;
 }
 </style>

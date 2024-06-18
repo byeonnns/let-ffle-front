@@ -154,4 +154,8 @@ function deleteRaffle() {
 .btn-modal {
     width: 70px;
 }
+
+td {
+    align-content: center;
+}
 </style>
