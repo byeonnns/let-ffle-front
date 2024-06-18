@@ -6,7 +6,7 @@
                 <RouterLink to="/Raffle" class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-box2-heart d-block"></i>RAFFLE</li></RouterLink>
                 <RouterLink to="/Notice" class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-star d-block"></i>NOTICE</li></RouterLink>
                 <RouterLink to="/Board/BoardList" class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-people d-block"></i>COMMUNITY</li></RouterLink>
-                <RouterLink to="/Member" class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-person-standing d-block"></i>MY</li></RouterLink>
+                <RouterLink to="/Member/MyPage" class="flex-grow-1"><li style="font-size:0.6rem"><i class="bi bi-person-standing d-block"></i>MY</li></RouterLink>
             </ul>
         </div>
     </div>
