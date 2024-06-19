@@ -91,24 +91,6 @@
 </script>
 
 <style scoped>
-.custom-card {
-    height: 150px;
-    width: 100%;
-}
-
-.card-body {
-    margin-top: 10px;
-}
-
-.card-body .btn {
-    font-size: 12px;
-}
-
-.btn {
-    background-color: #F37551;
-    color: white;
-}
-
 .circle-border {
     width: 60px;
     height: 60px;
