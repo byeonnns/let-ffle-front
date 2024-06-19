@@ -31,6 +31,27 @@
                             </div>
                         </div>
                     </div>
+                    <hr class="mb-3" />
+                    <table class="w-100 text-center">
+                        <thead>
+                            <tr>
+                                <th>래플 이름</th>
+                                <th>응모 기간</th>
+                                <th>응모 상품</th>
+                                <th>바로가기</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table table-group-divider">
+                            <tr>
+                                <td>아이폰 뿌리는 이벤트</td>
+                                <td>2024.01.01 ~ 2024.02.02</td>
+                                <td>아이폰 11Pro</td>
+                                <td>
+                                    <RouterLink to="/Raffle"><button class="btn w-50">래플 바로가기</button></RouterLink>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <hr class="border-3 opacity-100 mt-0 mb-2" style="border-color: #F37551;" />

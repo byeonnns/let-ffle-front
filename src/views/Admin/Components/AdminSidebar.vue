@@ -1,7 +1,7 @@
 <template>
     <div>
         <nav class="d-flex flex-column">
-            <RouterLink to="/Admin" class="text-center text-nowrap h4 mb-4 no-animation fw-bold">관리자 페이지</RouterLink>
+            <RouterLink to="/Admin" class="text-center text-nowrap h4 mb-4 no-animation" style="font-family: NanumSquareNeo; font-weight: 700">관리자 페이지</RouterLink>
             <h5>래플 관리</h5>
             <div class="d-flex flex-column bg-light mb-4">
                 <RouterLink to="/Admin/RaffleList" class="ps-2 mb-2">래플 리스트</RouterLink>
@@ -25,6 +25,10 @@
 </script>
 
 <style scoped>
+div{
+    font-family: NanumSquareNeo;
+}
+
 a:not(.no-animation) {
     border-left: 2px solid rgba(243, 117, 81, 0);
 }

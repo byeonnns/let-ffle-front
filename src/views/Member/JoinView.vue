@@ -13,17 +13,14 @@
                             v-model="member.mid">
                         <button class="btn text-white btn-outline-light btn-sm">중복 확인</button>
                     </div>
-                    <p style="color: red;">{{ checkMid }}</p>
 
                     <label for="mpassword" class="mt-5 mb-2">비밀번호*</label>
                     <input id="mpassword" type="password" class="border-0 border-bottom input"
                         v-model="member.mpassword">
-                    <p style="color: red;">{{ checkMpassword }}</p>
 
                     <label for="mname" class="mt-5 mb-2 input">이름</label>
                     <input id="mname" type="text" class="border-0 border-bottom input" v-model="member.mname">
-                    <p style="color: red;">{{ checkMname }}</p>
-
+                    
                     <label for="mnickname" class="mt-5 mb-2">닉네임</label>
                     <div class="d-flex justify-content-between">
                         <input id="mnickname" type="text" class="border-0 border-bottom flex-grow-1 input"
@@ -33,7 +30,6 @@
 
                     <label for="mte" class="mt-5 mb-2">전화번호</label>
                     <input id="mphone" type="text" class="border-0 border-bottom input" v-model="member.mphone">
-                    <p style="color: red;"> {{ checkMphone }}</p>
 
                     <label for="maddress" class="mt-5 mb-2">주소</label>
                     <div class="d-flex justify-content-between">
@@ -44,8 +40,9 @@
                     <input v-model="address" type="text" class="border-0 border-bottom mt-3 input" placeholder="주소">
                     <input v-model="addressDetail" type="text" class="border-0 border-bottom mt-3 input"
                         placeholder="상세주소">
-                    <button class="btn text-white btn-lg mt-5 w-100">가입하기</button>
-
+                    <RouterLink to="/" class="flex-grow-1"><button
+                            class="btn text-white btn-lg mt-5 w-100">가입하기</button>
+                    </RouterLink>
                 </div>
                 <RaffleModal ref="postcodeModal">
                     <template v-slot:modalHeader>
@@ -53,11 +50,11 @@
                     </template>
                     <template v-slot:modalBody>
                         <VueDaumPostcode :animation=true :max-suggest-items="3" :theme='{
-                            textColor: "#000000", //기본 글자색
-                            postcodeTextColor: "#000000", //우편번호 글자색
-                            emphTextColor: "#FF5C35", //강조 글자색
-                            outlineColor: "#FF5C35" //테두리
-                        }' v-if="postcodeMount" @complete="addressSearched" />
+                        textColor: "#000000", //기본 글자색
+                        postcodeTextColor: "#000000", //우편번호 글자색
+                        emphTextColor: "#FF5C35", //강조 글자색
+                        outlineColor: "#FF5C35" //테두리
+                    }' v-if="postcodeMount" @complete="addressSearched" />
                     </template>
                 </RaffleModal>
             </form>
@@ -69,13 +66,6 @@
 import { reactive, ref } from 'vue';
 import RaffleModal from '@/components/RaffleModal.vue';
 import { VueDaumPostcode } from 'vue-daum-postcode'
-
-// 유효성 검사시에 값이 맞는지 안맞는지
-const checkMid = ref(null);
-const checkMpassword = ref(null);
-const checkMname = ref(null);
-const checkMphone = ref(null);
-// 
 
 const postcodeModal = ref(null);
 const postcodeMount = ref(false);
@@ -94,7 +84,7 @@ const addressSearched = (data) => {
         zonecode.value = data.zonecode;
         address.value = data.address;
         postcodeModal.value.hideModal();
-
+        
     } else {
         zonecode.value = data.zonecode;
         address.value = data.jibunAddress;
@@ -119,62 +109,44 @@ window.addEventListener('resize', handleResize);
 
 // 유효성 검사
 const member = ref({
-    mid: "",
+    mid:"",
     mpassword: "",
     mname: "",
     mnickname: "",
     mphone: "",
-    maddress: ""
+    maddress:""
 });
 
 function handleSubmit() {
 
     var total = true;
 
-    var midPattern = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+    var midPattern = /^ [a - zA - Z0 -9._ % +-] + @[a - zA - Z0 - 9. -] +\.[a - zA - Z]{ 2,} $ /;
     var userMid = midPattern.test(member.value.mid);
-    if (userMid) {
-        checkMid.value = "";
-    } else if (!userMid) {
+    if (!userMid) {
         total = false;
-        checkMid.value = "올바르지 않은 양식입니다";
-    }
-
+     }
+    
     var mpasswordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
     var userPassword = mpasswordPattern.test(member.value.mpassword);
-    if (userPassword) {
-        checkMpassword.value = ""
-    } else {
-        (!userPassword)
+    if (!userPassword) {
         total = false;
-        checkMpassword.value = "올바르지 않은 양식입니다"
-
     }
 
     var mnamePattern = /^[가-힣]+$/;
     var userMname = mnamePattern.test(member.value.mname);
-    if (userMname) {
-        checkMname.value = "";
-    } else {
-        (!userMname)
+    if (!userMname) {
         total = false;
-        checkMname.value = "올바르지 않는 양식입니다."
     }
-
-
 
     var mphonePattern = /^010-\d{3,4}-\d{4}$/;
     var userPhone = mphonePattern.test(member.value.mphone);
-    if (userPhone) {
-        checkMphone.value =" "
-    } else {
-        (!userPhone) 
+    if (!userPhone) {
         total = false;
-        checkMphone.value = "올바르지 않는 양식입니다."
     }
 
     // if (total) {
-    // member.submit
+        
     // }
 
 }
