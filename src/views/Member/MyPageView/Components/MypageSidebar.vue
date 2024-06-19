@@ -1,55 +1,25 @@
 <template>
     <div>
-        <div class="d-flex flex-column">
-            <div class="d-flex flex-column">
-                <div>
-                    <RouterLink to="/Member/MyPage">
-                        <h3>마이페이지</h3>
-                    </RouterLink>
-                </div>
-                <nav class="nav flex-column">
-                    <li>
-                        <h5>래플 정보</h5>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <RouterLink to="/Member/MyPage/MyEntryList">응모 내역</RouterLink>
-                            </li>
-                            <li class="nav-item">
-                                <RouterLink to="/Member/MyPage/WinningList">당첨 내역</RouterLink>
-                            </li>
-                            <li class="nav-item">
-                                <RouterLink to="/Member/MyPage/LikeList">찜 목록</RouterLink>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h5>커뮤니티 관리</h5>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <RouterLink to="/Member/MyPage/MyBoardList">내 게시글</RouterLink>
-                            </li>
-                            <li class="nav-item">
-                                <RouterLink to="/Member/MyPage/MyCommentList">내 댓글</RouterLink>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h5>나의 정보</h5>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <RouterLink to="/Member/MyPage/MyBerryHistory">베리 변동 내역</RouterLink>
-                            </li>
-                            <li class="nav-item">
-                                <RouterLink to="/Member/MyPage/UpdateMember">회원 정보 수정</RouterLink>
-                            </li>
-                            <li class="nav-item">
-                                <RouterLink to="/Member/MyPage/InquiryList">문의 하기</RouterLink>
-                            </li>
-                        </ul>
-                    </li>
-                </nav>
+        <nav class="d-flex flex-column">
+            <RouterLink to="/Member/MyPage" class="text-center text-nowrap h4 mb-4 no-animation" style="font-family: NanumSquareNeo; font-weight: 700">마이페이지</RouterLink>
+            <h5>래플 정보</h5>
+            <div class="d-flex flex-column bg-light mb-4">
+                <RouterLink to="/Member/MyPage/MyEntryList" class="ps-2 mb-2">응모 내역</RouterLink>
+                <RouterLink to="/Member/MyPage/WinningList" class="ps-2 mb-2">당첨 내역</RouterLink>
+                <RouterLink to="/Member/MyPage/LikeList" class="ps-2">찜 목록</RouterLink>
             </div>
-        </div>
+            <h5>커뮤니티 관리</h5>
+            <div class="d-flex flex-column bg-light mb-4">
+                <RouterLink to="/Member/MyPage/MyBoardList" class="ps-2 mb-2">내 게시글</RouterLink>
+                <RouterLink to="/Member/MyPage/MyCommentList" class="ps-2">내 댓글</RouterLink>
+            </div>
+            <h5>나의 정보</h5>
+            <div class="d-flex flex-column bg-light">
+                <RouterLink to="/Member/MyPage/MyBerryHistory" class="ps-2 mb-2">베리 변동 내역</RouterLink>
+                <RouterLink to="/Member/MyPage/UpdateMember" class="ps-2 mb-2">회원 정보 수정</RouterLink>
+                <RouterLink to="/Member/MyPage/InquiryList" class="ps-2">문의 하기</RouterLink>
+            </div>
+        </nav>
     </div>
 </template>
 
@@ -57,15 +27,16 @@
 </script>
 
 <style scoped>
-nav > li {
-    margin-top:40px;
+div{
+    font-family: NanumSquareNeo;
 }
 
-ul > li {
-    font-size: 15px;
-    padding-left: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: #fafafa;
+a:not(.no-animation) {
+    border-left: 2px solid rgba(243, 117, 81, 0);
+}
+
+a:hover:not(.no-animation) {
+    border-left: 2px solid rgba(243, 117, 81, 1);
+    transition: all .2s ease-out;
 }
 </style>
