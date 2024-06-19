@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="d-flex container-lg">
-            <MypageNavBar />
+            <MypageNavBar style="min-width:150px"/>
             <div class="flex-grow-1 ps-5">
                 <RouterView />
             </div>

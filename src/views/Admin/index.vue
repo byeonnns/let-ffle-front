@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container-lg d-flex">
-            <AdminSidebar />
+            <AdminSidebar style="min-width:150px"/>
             <div class="flex-grow-1 ps-5">
                 <RouterView />
             </div>
