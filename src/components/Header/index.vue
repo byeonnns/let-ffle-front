@@ -7,20 +7,27 @@
                         <span class="me-3"><img src="@/assets/berry-icon.png" class="me-1" height="20px"
                                 @click="popper">300</span>
                         <template #content>
-                            <div class="d-flex flex-column bg-white border">
-                                <p class="text-center">베리 변동 내역</p>
+                            <div class="d-flex flex-column bg-white border" style="width: 300px;">
+                                <p class="text-center" style="font-size: 22px;">베리 변동 내역</p>
+                                <div style="font-size: 10px; text-align: left;">
+                                    ※ 베리 변동 내역은 최근 10개 까지만 조회됩니다. <br/>
+                                    ※ 자세한 내역은 마이페이지에서 확인 가능합니다. <button class="btn btn-sm" style="background-color: white; color: black;">→ 마이페이지 이동</button>
+                                </div>
                                 <table class="p-0 table-bordered">
+                                    <thead >
+                                        <th>시간</th>
+                                        <th>적립/사용</th>
+                                        <th>사유</th>
+                                    </thead>
                                     <tr>
-                                        <td class="pe-2">06-12 20:45</td>
-                                        <td>획득</td>
-                                        <td class="pe-2">+1</td>
-                                        <td>미션 성공</td>
+                                        <td>2024.06.13  17:30</td>
+                                        <td>10개 사용</td>
+                                        <td>당첨 확률 상승</td>
                                     </tr>
                                     <tr>
-                                        <td class="pe-2">06-13 17:30</td>
-                                        <td>소비</td>
-                                        <td class="pe-2">-1</td>
-                                        <td>확률 상승</td>
+                                        <td>2024.06.12  20:45</td>
+                                        <td>1개 적립</td>
+                                        <td>일일 3회 미션 성공</td>
                                     </tr>
                                 </table>
                             </div>
@@ -93,4 +100,13 @@ const currentComponent = computed(() => {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+thead {
+    text-align: center;
+}
+
+tr {
+    font-size: 12px; 
+    text-align: center;
+}
+</style>
