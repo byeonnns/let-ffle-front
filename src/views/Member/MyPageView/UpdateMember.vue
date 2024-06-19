@@ -158,7 +158,8 @@
             </template>
             <template v-slot:modalFooter>
                 <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-                <button @click="changePhNum" type="button" class="btn btn-outline-light" :data-bs-dismiss="isOk ? 'modal' : ''">수정
+                <button @click="changePhNum" type="button" class="btn btn-outline-light"
+                    :data-bs-dismiss="isOk ? 'modal' : ''">수정
                     완료</button>
             </template>
         </RaffleModal>
@@ -251,7 +252,9 @@ function changeNickname() {
 
 }
 
-// 휴대폰 번호 상태 정의
+const testModel = ref(null);
+
+const PWModal = ref(null);
 const PWCModal = ref(null);
 const changePhone = ref('');
 const changePhoneModal = ref('');
@@ -260,17 +263,16 @@ const falsePhone = ref('');
 // 휴대폰 번호 유효성 검사
 function changePhNum() {
     const changePhoneModalPattern = new RegExp("010-\\d{4}-\\d{4}");
-    if(changePhoneModalPattern.test(changePhoneModal.value)) {
+    if (changePhoneModalPattern.test(changePhoneModal.value)) {
         changePhone.value = changePhoneModal.value;
         falsePhone.value = '';
         PWCModal.value.hideModal();
-        
+
     } else {
         falsePhone.value = '번호 형식에 맞지 않습니다.';
     }
 }
 
-const PWModal = ref(null);
 const Withdrawal = ref(null);
 const ADRModal = ref(null);
 const postcodeModal = ref(null);
