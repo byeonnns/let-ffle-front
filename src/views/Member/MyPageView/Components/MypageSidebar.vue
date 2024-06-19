@@ -4,8 +4,8 @@
             <RouterLink to="/Member/MyPage" class="text-center text-nowrap h3 mb-5 no-animation" style="font-family: NanumSquareNeo; font-weight: 700">마이페이지</RouterLink>
             <h4>래플 정보</h4>
             <div class="d-flex flex-column bg-light mb-5">
-                <RouterLink to="/Member/MyPage/RaffleList" class="ps-2 mb-2">응모 내역</RouterLink>
-                <RouterLink to="/Member/MyPage/RaffleMonitor" class="ps-2 mb-2">당첨 내역</RouterLink>
+                <RouterLink to="/Member/MyPage/MyEntryList" class="ps-2 mb-2">응모 내역</RouterLink>
+                <RouterLink to="/Member/MyPage/WinningList" class="ps-2 mb-2">당첨 내역</RouterLink>
                 <RouterLink to="/Member/MyPage/LikeList" class="ps-2">찜 목록</RouterLink>
             </div>
             <h4>커뮤니티 관리</h4>
