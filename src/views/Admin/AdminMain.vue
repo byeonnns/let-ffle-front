@@ -106,7 +106,7 @@
                         <th scope="col">구분</th>
                         <th scope="col">누적 래플 수</th>
                         <th scope="col">누적 참여자 수</th>
-                        <th scope="col">바로가기</th>
+                        <th scope="col">이동</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,25 +114,25 @@
                         <td class="bg-light">전체</td>
                         <td>12</td>
                         <td>12</td>
-                        <td><button class="btn btn-sm">이동</button></td>
+                        <td><button class="btn btn-sm">바로가기</button></td>
                     </tr>
                     <tr>
                         <td class="bg-light">Sports</td>
                         <td>34</td>
                         <td>34</td>
-                        <td><button class="btn btn-sm">이동</button></td>
+                        <td><button class="btn btn-sm">바로가기</button></td>
                     </tr>
                     <tr>
                         <td class="bg-light">Art</td>
                         <td>56</td>
                         <td>56</td>
-                        <td><button class="btn btn-sm">이동</button></td>
+                        <td><button class="btn btn-sm">바로가기</button></td>
                     </tr>
                     <tr>
                         <td class="bg-light">Fashion</td>
                         <td>78</td>
                         <td>78</td>
-                        <td><button class="btn btn-sm">이동</button></td>
+                        <td><button class="btn btn-sm">바로가기</button></td>
                     </tr>
                 </tbody>
             </table>

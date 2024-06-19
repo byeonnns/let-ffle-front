@@ -164,7 +164,7 @@
                 </div>
             </div>
             <hr class="border-3 opacity-100 mt-4" style="border-color: #F37551;" />
-            <button class="btn">래플 바로가기</button>
+            <button class="btn mb-5">래플 바로가기</button>
         </div>
     </div>
 </template>

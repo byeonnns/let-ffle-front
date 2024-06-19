@@ -19,6 +19,33 @@ import FooterNav from "@/components/FooterNav.vue";
   src: url(/public/fonts/Jamsil_Regular.ttf);
 }
 
+
+@font-face {
+  font-family: 'NanumSquareNeo';
+  src: url(/public/fonts/NanumSquareNeoOTF-Rg.otf);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NanumSquareNeo';
+  src: url(/public/fonts/NanumSquareNeoOTF-Bd.otf);
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NanumSquareNeo';
+  src: url(/public/fonts/NanumSquareNeoOTF-Eb.otf);
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NanumSquareNeo';
+  src: url(/public/fonts/NanumSquareNeoOTF-Hv.otf);
+  font-weight: 900;
+  font-style: normal;
+}
+
+
 #app {
   font-family: 'jamsil';
   -webkit-font-smoothing: antialiased;
