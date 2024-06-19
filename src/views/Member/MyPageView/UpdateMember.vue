@@ -26,7 +26,7 @@
                         </div>
                         <div class="w-50 position-relative">
                             <div style="align-content: end;">
-                                <input type="email" placeholder="Kosa" class="input w-50">
+                                <input v-model="nick" type="text" class="input w-50">
                             </div>
                             <hr class="p-0 m-0 w-100">
                             <button class="btn btn-outline-light btn-sm"
@@ -50,7 +50,7 @@
                         </div>
                         <div class="w-50 position-relative">
                             <div style="align-content: end;">
-                                <input type="text" placeholder="010-8***-*798" class="input w-50">
+                                <input v-model="changePhone" type="text" placeholder="010-8***-*798" class="input w-50">
                             </div>
 
                             <hr class="p-0 m-0 w-100">
@@ -99,14 +99,14 @@
             <template v-slot:modalBody>
                 <div class="div_form row">
                     <label>기존 닉네임</label>
-                    <input type="text" placeholder="Kosa" class="input"
-                        style="border-bottom: 1px solid #ebebeb">
+                    <input v-model="mNickChange" type="text" class="input" style="border-bottom: 1px solid #ebebeb">
+                    <span>{{ falseNickname }}</span>
                 </div>
             </template>
 
             <template v-slot:modalFooter>
                 <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-outline-light">수정 완료</button>
+                <button type="button" class="btn btn-outline-light" @click="changeNickname">수정 완료</button>
             </template>
 
         </RaffleModal>
@@ -150,14 +150,16 @@
                 <div class="container">
                     <div class="div_form row">
                         <label>새 휴대폰 번호</label>
-                        <input type="text" placeholder="010-xxxx-xxxx" class="input"
+                        <input v-model="changePhoneModal" type="text" placeholder="010-xxxx-xxxx" class="input"
                             style="border-bottom: 1px solid #ebebeb">
+                        <span>{{ falsePhone }}</span>
                     </div>
                 </div>
             </template>
             <template v-slot:modalFooter>
                 <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-outline-light">수정 완료</button>
+                <button @click="changePhNum" type="button" class="btn btn-outline-light" :data-bs-dismiss="isOk ? 'modal' : ''">수정
+                    완료</button>
             </template>
         </RaffleModal>
 
@@ -212,7 +214,7 @@
                 <h4>탈퇴여부</h4>
             </template>
             <template v-slot:modalBody>
-                정말로다가 탈퇴를 하시겠습니까??
+                정말로다가 탈퇴를 하시겠습니까?
             </template>
             <template v-slot:modalFooter>
                 <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
@@ -231,14 +233,49 @@ import RaffleModal from '@/components/RaffleModal.vue';
 import { ref } from 'vue'
 import { VueDaumPostcode } from 'vue-daum-postcode';
 
-const PWModal = ref(null);
+const NickNameModal = ref(null); // 닉네임 모달창 상태 정의
+const nick = ref(''); // 닉네임 양방향 상태 정의
+const mNickChange = ref(''); // Modal 닉네임 양방향 상태 정의
+const falseNickname = ref(''); // 닉네임이 잘못되었을 때 상태 정의
+
+// 닉네임 유효성 검사 ( 2자 이상 8자 이하 영문 + 숫자 )
+function changeNickname() {
+    const mNickChangePattern = new RegExp("[a-zA-Z0-9가-힣]{2,8}");
+    if (mNickChangePattern.test(mNickChange.value)) {
+        nick.value = mNickChange.value;
+        falseNickname.value = '';
+        NickNameModal.value.hideModal();
+    } else {
+        falseNickname.value = '닉네임 형식에 맞지 않습니다.';
+    }
+
+}
+
+// 휴대폰 번호 상태 정의
 const PWCModal = ref(null);
+const changePhone = ref('');
+const changePhoneModal = ref('');
+const falsePhone = ref('');
+
+// 휴대폰 번호 유효성 검사
+function changePhNum() {
+    const changePhoneModalPattern = new RegExp("010-\\d{4}-\\d{4}");
+    if(changePhoneModalPattern.test(changePhoneModal.value)) {
+        changePhone.value = changePhoneModal.value;
+        falsePhone.value = '';
+        PWCModal.value.hideModal();
+        
+    } else {
+        falsePhone.value = '번호 형식에 맞지 않습니다.';
+    }
+}
+
+const PWModal = ref(null);
 const Withdrawal = ref(null);
 const ADRModal = ref(null);
-
 const postcodeModal = ref(null);
 const postcodeMount = ref(false);
-const NickNameModal = ref(null);
+
 
 
 const zonecode = ref('');
