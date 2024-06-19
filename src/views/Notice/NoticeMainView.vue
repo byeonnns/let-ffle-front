@@ -153,6 +153,7 @@
 
 .btn{
     color: black;
+    border: none;
 }
 
 .table_category {

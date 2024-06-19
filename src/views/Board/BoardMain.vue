@@ -148,5 +148,6 @@
 
 .btn {
     color: black;
+    border: none;
 }
 </style>
