@@ -26,7 +26,7 @@
                         </div>
                         <div class="w-50 position-relative">
                             <div style="align-content: end;">
-                                <input type="email" placeholder="Kosa" class="input w-50">
+                                <input v-model="testModel" type="text" placeholder="Kosa" class="input w-50">
                             </div>
                             <hr class="p-0 m-0 w-100">
                             <button class="btn btn-outline-light btn-sm"
@@ -85,6 +85,7 @@
                                 </RouterLink>
                             </div>
                         </div>
+                        <h1> 테스트 : {{ testModel }}</h1>
                     </div>
                 </div>
             </div>
@@ -230,6 +231,8 @@
 import RaffleModal from '@/components/RaffleModal.vue';
 import { ref } from 'vue'
 import { VueDaumPostcode } from 'vue-daum-postcode';
+
+const testModel = ref(null);
 
 const PWModal = ref(null);
 const PWCModal = ref(null);
