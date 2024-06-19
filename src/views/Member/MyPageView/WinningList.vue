@@ -30,7 +30,7 @@
                                         <tr>
                                             <td>아이폰 뿌리는 이벤트</td>
                                             <td>2024.01.01</td>
-                                            <td>아이폰 11Pro</td>
+                                            <td>아이폰 15Pro</td>
                                             <td><button class="btn btn-outline-light" @click="inputAddress"
                                                     style="font-size: 15px;">배송지 입력</button></td>
                                         </tr>
@@ -38,7 +38,7 @@
                                         <tr>
                                             <td>아이폰 뿌리는 이벤트</td>
                                             <td>2024.01.01</td>
-                                            <td>아이폰 11Pro</td>
+                                            <td>아이폰 15Pro</td>
                                             <td>배송 완료</td>
                                         </tr>
                                     </tbody>

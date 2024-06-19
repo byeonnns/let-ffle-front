@@ -48,15 +48,15 @@
                                         <th>래플 이름</th>
                                         <th>응모 기간</th>
                                         <th>응모 상품</th>
-                                        <th>바로가기</th>
+                                        <th>바로 가기</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="table table-group-divider">
                                     <tr>
                                         <td>아이폰 뿌리는 이벤트</td>
                                         <td>2024.01.01 ~ 2024.02.02</td>
-                                        <td>아이폰 11Pro</td>
-                                        <td><RouterLink to="/Raffle"><button class="btn w-50"> 래플 바로 가기</button></RouterLink></td>
+                                        <td>아이폰 15Pro</td>
+                                        <td><RouterLink to="/Raffle"><button class="btn btn-outline-light btn-sm w-50"> 래플 바로 가기</button></RouterLink></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -136,5 +136,9 @@ import SerachPeriod from './Components/SearchPeriod.vue';
 
 .Status {
     display: flex;
+}
+
+td{
+    align-content: center;
 }
 </style>

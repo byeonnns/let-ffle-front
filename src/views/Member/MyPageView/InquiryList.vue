@@ -23,7 +23,7 @@
                             <tr>
                                 <td>1</td>
                                 <td>
-                                    <RouterLink to="/Member/InquiryDetails">안녕하세요</RouterLink>
+                                    <RouterLink to="/Member/MyPage/InquiryDetails">안녕하세요</RouterLink>
                                 </td>
                                 <td>김작가</td>
                                 <td>2013-05-21</td>
@@ -32,7 +32,7 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-end mt-3 me-3">
-                        <RouterLink to="/Member/WriteInquiry"><button type="button" class="btn btn-light">글쓰기</button>
+                        <RouterLink to="/Member/MyPage/WriteInquiry"><button type="button" class="btn btn-light">글쓰기</button>
                         </RouterLink>
                     </div>
                 </div>
