@@ -43,6 +43,10 @@ const routes = [
             path: 'MyCommentList',
             component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/MyCommentList.vue')
         },
+        {
+            path: 'MyBerryHistory',
+            component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/MyBerryHistory.vue')
+        },
 
         ]
     }

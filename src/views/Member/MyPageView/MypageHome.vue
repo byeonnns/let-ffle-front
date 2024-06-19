@@ -19,7 +19,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <hr class="mb-3" />
                     <table class="w-100 text-center">
                         <thead>
                             <tr>
@@ -29,7 +29,7 @@
                                 <th>바로가기</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="table table-group-divider">
                             <tr>
                                 <td>아이폰 뿌리는 이벤트</td>
                                 <td>2024.01.01 ~ 2024.02.02</td>
@@ -84,5 +84,9 @@
 
 .position-absolute>.btn {
     margin-right: 10px;
+}
+
+td {
+    align-content: center;
 }
 </style>

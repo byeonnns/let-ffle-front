@@ -37,6 +37,9 @@
                         <h5>나의 정보</h5>
                         <ul class="nav flex-column">
                             <li class="nav-item">
+                                <RouterLink to="/Member/MyPage/MyBerryHistory">베리 변동 내역</RouterLink>
+                            </li>
+                            <li class="nav-item">
                                 <RouterLink to="/Member/MyPage/UpdateMember">회원 정보 수정</RouterLink>
                             </li>
                             <li class="nav-item">
