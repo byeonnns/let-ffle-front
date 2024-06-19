@@ -34,40 +34,11 @@
             </div>
 
             <div class="text-center" style="margin-top:100px ;">
-                <!-- <RouterLink to="/Board/Write">
-                    <input type="submit" class="btn btn-outline-light btn-sm me-2" value="수정" />
-                </RouterLink>
-                <input type="button" class="btn btn-outline-light btn-sm me-2" value="삭제" /> -->
                 <RouterLink to="/Board/BoardList">
                     <input type="button" class="btn btn-outline-light btn-sm" value="목록" />
                 </RouterLink>
             </div>
         </div>
-
-        <!-- <table class="table table-bordered">
-
-            <tbody>
-                <tr>
-
-                    <th class="table-active" style="border-bottom:1px solid white; ">등록일</th>
-                    <td>2024-06-05</td>
-                    <th class="table-active" style="border-bottom:1px solid white; ">조회</th>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <th class="table-active" style="border-bottom:1px solid white; ">제목</th>
-                    <td>[자유] 현재 이런 상황에 대한 반응들</td>
-                    <th class="table-active" style="border-bottom:1px solid white; ">작성자</th>
-                    <td colspan="3">매번 긍정일순 없어</td>
-                </tr>
-                <tr style="height: 300px;">
-                    <th class="table-active" style="border-bottom:1px solid white;">내용</th>
-                    <td colspan="3">현재 이런 상황에 대해 나는 아무런 할말이 없구만유...</td>
-                </tr>
-            </tbody>
-        </table> -->
-
-
 
         <div class="form-group row mt-5">
             <div style="margin-bottom: 30px">
