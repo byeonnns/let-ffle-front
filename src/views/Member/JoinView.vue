@@ -11,38 +11,36 @@
                 <div class="d-flex justify-content-between">
                     <input id="memail" type="email" class="border-0 border-bottom flex-grow-1 input"
                         v-model="member.mid" @input="midCheck(onbtn)">
-                    <button class="btn text-white btn-outline-light btn-sm">중복 확인</button>
                 </div>
-                <p style="color: red;">{{ checkMid }}</p>
+                <p style="color: #FF5C35; min-height: 24px;">{{ checkMid }}</p>
 
                 <label for="mpassword" class="mt-5 mb-2">비밀번호*</label>
                 <input id="mpassword" type="password" class="border-0 border-bottom input" v-model="member.mpassword"
                     @input="mpasswordCheck(onbtn)">
-                <p style="color: red;">{{ checkMpassword }}</p>
+                <p style="color: #FF5C35; min-height: 24px;">{{ checkMpassword }}</p>
 
                 <label for="mname" class="mt-5 mb-2 input">이름</label>
                 <input id="mname" type="text" class="border-0 border-bottom input" v-model="member.mname"
                     @input="mnameCheck(onbtn)">
-                <p style="color: red;">{{ checkMname }}</p>
+                <p style="color: #FF5C35; min-height: 24px;">{{ checkMname }}</p>
 
                 <label for="mnickname" class="mt-5 mb-2">닉네임</label>
                 <div class="d-flex justify-content-between">
                     <input id="mnickname" type="text" class="border-0 border-bottom flex-grow-1 input"
                         v-model="member.mnickname" @input="mnickCheck(onbtn)">
-                    <button class="btn text-white btn-outline-light btn-sm">중복 확인</button>
                 </div>
-                <p style="color: red;">{{ checkMnick }}</p>
+                <p style="color: #FF5C35; min-height: 24px;">{{ checkMnick }}</p>
 
                 <label for="mte" class="mt-5 mb-2">전화번호</label>
                 <input id="mphone" type="text" class="border-0 border-bottom input" v-model="member.mphone"
                     @input="mphoneCheck(onbtn)">
-                <p style="color: red;"> {{ checkMphone }}</p>
+                <p style="color: #FF5C35; min-height: 24px;"> {{ checkMphone }}</p>
 
                 <label for="maddress" class="mt-5 mb-2">주소</label>
                 <div class="d-flex justify-content-between">
                     <input v-model="zonecode" id="maddress" type="text"
-                        class="border-0 border-bottom text-center flex-grow-1 input" placeholder="우편번호">
-                    <button class="btn text-white btn-outline-light btn-sm">우편번호 찾기</button>
+                        class="border-0 border-bottom flex-grow-1 input" placeholder="우편번호">
+                    <button class="btn text-white btn-outline-light btn-sm" @click="DaumPostcode">우편번호 찾기</button>
                 </div>
                 <input v-model="address" type="text" class="border-0 border-bottom mt-3 input" placeholder="주소">
                 <input v-model="addressDetail" type="text" class="border-0 border-bottom mt-3 input" placeholder="상세주소">
@@ -195,6 +193,12 @@ const midCheck = (onbtn) => {
     if (!userMid) {
         checkMid.value = "이메일 주소를 정확히 입력해주세요."
     } else {
+        // var isExist = 'DB에 해당 아이디 있는지 여부를 true,false로 리턴받은 값 -> true면 중복된 이메일';
+        // if ( isExist ) {
+        //  checkMid.value = "이미 사용중인 이메일입니다.";
+        // } else {
+        //  checkMid.value = "";
+        // }
         checkMid.value = "";
     }
     onbtn();
@@ -202,10 +206,10 @@ const midCheck = (onbtn) => {
 }
 
 const mpasswordCheck=(onbtn)=>{
-    var mpasswordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+    var mpasswordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,12}$/;
      userPassword = mpasswordPattern.test(member.value.mpassword);
     if (!userPassword) {
-        checkMpassword.value="비밀번호를 입력해주세요"
+        checkMpassword.value="영어, 숫자를 포함한 8~12자로 작성해주세요."
     } else {
         checkMpassword.value=""
     }
@@ -240,6 +244,12 @@ const mnickCheck = (onbtn) => {
     if (!userMnickname) {
         checkMnick.value ="닉네임을 입력해주세요"
     } else {
+        // var isExist = 'DB에 해당 아이디 있는지 여부를 true,false로 리턴받은 값 -> true면 중복된 이메일';
+        // if ( isExist ) {
+        //  checkMid.value = "이미 사용중인 이메일입니다.";
+        // } else {
+        //  checkMid.value = "";
+        // }
         checkMnick.value=""
     }
     onbtn();
