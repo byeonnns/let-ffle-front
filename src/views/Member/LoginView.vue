@@ -8,9 +8,9 @@
                 <input v-model="memail" type="email" class="border-0 border-bottom input" @input="emailCheck">
                 <p style="color:#FF5C35">{{ emailError }}</p>
                 <label for="mpassword" class="mt-3">비밀번호</label>
-                <input v-model="mpassword" type="password" class="border-0 border-bottom input">
-                <p>{{ passwordError }}</p>
-                <button class="btn text-white btn-lg mt-4">로그인</button>
+                <input v-model="mpassword" type="password" class="border-0 border-bottom input" @input="passwordCheck">
+                <p style="color: #FF5C35;">{{ passwordError }}</p>
+                <button class="btn text-white btn-lg mt-4" :class=" isPass ? '' : 'disabled'">로그인</button>
                 <div class="row mt-3 text-center">
                     <div class="col-4 border-end"><RouterLink to="/join">이메일 가입</RouterLink></div>
                     <div class="col-4"><RouterLink to="/FindId">이메일 찾기</RouterLink></div>
@@ -28,6 +28,7 @@ const memail = ref('');
 const mpassword = ref('');
 const passwordError = ref('');
 const emailError = ref('');
+const isPass = ref(false);
 
 const emailRegExp = new RegExp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
 const emailCheck = () => {
@@ -37,6 +38,16 @@ const emailCheck = () => {
         emailError.value = "";
     }
 }
+
+const passwordCheck = () => {
+    if(mpassword.value.length == 0) {
+        passwordError.value = '비밀번호를 입력해주세요.';
+    } else {
+        passwordError.value = '';
+    }
+}
+
+
 
 
 /* 반응형 관련 코드 */
