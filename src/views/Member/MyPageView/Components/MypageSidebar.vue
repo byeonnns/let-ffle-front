@@ -18,6 +18,7 @@
                 <RouterLink to="/Member/MyPage/MyBerryHistory" class="ps-2 mb-2">베리 변동 내역</RouterLink>
                 <RouterLink to="/Member/MyPage/UpdateMember" class="ps-2 mb-2">회원 정보 수정</RouterLink>
                 <RouterLink to="/Member/MyPage/InquiryList" class="ps-2">문의 하기</RouterLink>
+                <RouterLink to="/Member/MyPage/UpdateMember2" class="ps-2">정보 수정2</RouterLink>
             </div>
         </nav>
     </div>
