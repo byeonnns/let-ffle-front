@@ -257,33 +257,28 @@ function changeNickname() {
 }
 
 // 비밀번호 상태 정의
-const NewPassword = ref('');
-const RePassword = ref('');
-const PWModal = ref(null);
-const falsePassword = ref('');
-const changePw = ref('');
-const samePassword = ref('');
-let isTotalPW = true;
+const NewPassword = ref(''); // 새 비밀번호 모달창 (양방향)
+const RePassword = ref(''); // 비밀번호 확인 모달창 (양방향)
+const PWModal = ref(null); // 비밀번호 변경 모달 상태 정의
+const falsePassword = ref(''); // 새 비밀번호 span 태그 상태 정의
+const changePw = ref(''); // 비밀번호 상태 정의 
+const samePassword = ref(''); // 비밀번호 span 태그 상태 정의
+
 
 // 비밀번호 유효성 검사
 function changePassword() {
     const NewPasswordPettern = new RegExp("(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}");
     if(NewPassword.value.length == 0) {
-        falsePassword.value = '비밀번호를 입력해 주세요.';
-        isTotalPW = false;
+        falsePassword.value = '비밀번호를 입력해 주세요.';   
     } else if (NewPassword.value.length < 8 || NewPassword.value.length > 15 || !NewPasswordPettern.test(NewPassword.value)) {
         falsePassword.value = '영문 포함 8자이상 15자이하로 입력해 주세요.';
-        isTotalPW = false;
     } else {
         falsePassword.value = '';
     }
-   
     if(RePassword.value.length == 0) {
         samePassword.value = '비밀번호를 입력해 주세요.';
-        isTotalPW = false;
     } else if(NewPassword.value != RePassword.value) {
         samePassword.value = '비밀번호가 일치하지 않습니다.';
-        isTotalPW = false;
     } else if(RePassword.value.length < 8 || RePassword.value.length > 15) {
         samePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
     } else {
