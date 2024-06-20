@@ -28,9 +28,10 @@
                 <label for="mnickname" class="mt-5 mb-2">닉네임</label>
                 <div class="d-flex justify-content-between">
                     <input id="mnickname" type="text" class="border-0 border-bottom flex-grow-1 input"
-                        v-model="member.mnickname">
+                        v-model="member.mnickname" @input="mnickCheck(onbtn)">
                     <button class="btn text-white btn-outline-light btn-sm">중복 확인</button>
                 </div>
+                <p style="color: red;">{{ checkMnick }}</p>
 
                 <label for="mte" class="mt-5 mb-2">전화번호</label>
                 <input id="mphone" type="text" class="border-0 border-bottom input" v-model="member.mphone"
@@ -74,9 +75,11 @@ import { VueDaumPostcode } from 'vue-daum-postcode'
 // 유효성 검사시에 값이 맞는지 안맞는지
 const checkMid = ref(null);
 const checkMpassword = ref(null);
+const checkMnick = ref(null);
 const checkMname = ref(null);
 const checkMphone = ref(null);
 const ispass = ref(false);
+
 // 
 
 const postcodeModal = ref(null);
@@ -184,6 +187,7 @@ let userMid;
 let userPassword;
 let userMname;
 let userPhone;
+let userMnickname;
 
 const midCheck = (onbtn) => {
     var midPattern = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
@@ -229,8 +233,19 @@ const mphoneCheck = (onbtn) => {
     }
     onbtn();
 }
+
+const mnickCheck = (onbtn) => {
+    var mnicknamePattern = /^[가-힣a-zA-Z0-9_-]{2,15}$/
+    userMnickname = mnicknamePattern.test(member.value.mnickname);
+    if (!userMnickname) {
+        checkMnick.value ="닉네임을 입력해주세요"
+    } else {
+        checkMnick.value=""
+    }
+    onbtn();
+}
 function onbtn(){
-    if (userMid && userPassword && userMname && userPhone) {
+    if (userMid && userPassword && userMname && userPhone && userMnickname) {
         ispass.value="true"
     } else {
         ispass.value="false"
