@@ -39,7 +39,7 @@
                         </div>
                         <div class="w-50 position-relative">
                             <div style="align-content: end;">
-                                <input type="password" placeholder="●●●●●●●●" class="input w-50">
+                                <input v-model="changePw" type="password" placeholder="●●●●●●●●" class="input w-50">
                             </div>
                             <hr class="p-0 m-0 w-100">
                             <button class="btn btn-outline-light btn-sm"
@@ -98,9 +98,9 @@
 
             <template v-slot:modalBody>
                 <div class="div_form row">
-                    <label>기존 닉네임</label>
+                    <label>변경할 닉네임</label>
                     <input v-model="mNickChange" type="text" class="input" style="border-bottom: 1px solid #ebebeb">
-                    <span>{{ falseNickname }}</span>
+                    <span style="color: red;">{{ falseNickname }}</span>
                 </div>
             </template>
 
@@ -126,18 +126,20 @@
 
                     <div class="div_form row mb-3">
                         <label>새 비밀번호</label>
-                        <input type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb">
+                        <input v-model="NewPassword" type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb">
+                        <span style="color: red;">{{ falsePassword }}</span>
                     </div>
 
                     <div class="div_form row">
                         <label>비밀번호 확인</label>
-                        <input type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb">
+                        <input v-model="RePassword" type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb">
+                        <span style="color: red;">{{ samePassword }}</span>
                     </div>
                 </div>
             </template>
             <template v-slot:modalFooter>
                 <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-outline-light">수정 완료</button>
+                <button type="button" class="btn btn-outline-light" @click="changePassword">수정 완료</button>
             </template>
         </RaffleModal>
 
@@ -152,7 +154,7 @@
                         <label>새 휴대폰 번호</label>
                         <input v-model="changePhoneModal" type="text" placeholder="010-xxxx-xxxx" class="input"
                             style="border-bottom: 1px solid #ebebeb">
-                        <span>{{ falsePhone }}</span>
+                        <span style="color: red;">{{ falsePhone }}</span>
                     </div>
                 </div>
             </template>
@@ -246,15 +248,53 @@ function changeNickname() {
         nick.value = mNickChange.value;
         falseNickname.value = '';
         NickNameModal.value.hideModal();
+    } else if(mNickChange.value == '') {
+        falseNickname.value = '닉네임을 입력해주세요.';
     } else {
-        falseNickname.value = '닉네임 형식에 맞지 않습니다.';
+        falseNickname.value = '닉네임 형식이 올바르지 않습니다.';
     }
 
 }
 
-
-
+// 비밀번호 상태 정의
+const NewPassword = ref('');
+const RePassword = ref('');
 const PWModal = ref(null);
+const falsePassword = ref('');
+const changePw = ref('');
+const samePassword = ref('');
+let isTotalPW = true;
+
+// 비밀번호 유효성 검사
+function changePassword() {
+    const NewPasswordPettern = new RegExp("(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}");
+    if(NewPassword.value.length == 0) {
+        falsePassword.value = '비밀번호를 입력해 주세요.';
+        isTotalPW = false;
+    } else if (NewPassword.value.length < 8 || NewPassword.value.length > 15 || !NewPasswordPettern.test(NewPassword.value)) {
+        falsePassword.value = '영문 포함 8자이상 15자이하로 입력해 주세요.';
+        isTotalPW = false;
+    } else {
+        falsePassword.value = '';
+    }
+   
+    if(RePassword.value.length == 0) {
+        samePassword.value = '비밀번호를 입력해 주세요.';
+        isTotalPW = false;
+    } else if(NewPassword.value != RePassword.value) {
+        samePassword.value = '비밀번호가 일치하지 않습니다.';
+        isTotalPW = false;
+    } else if(RePassword.value.length < 8 || RePassword.value.length > 15) {
+        samePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
+    } else {
+        samePassword.value = '';
+        changePw.value = NewPassword.value;
+        PWModal.value.hideModal();
+    }
+
+
+}   
+
 const PWCModal = ref(null);
 const changePhone = ref('');
 const changePhoneModal = ref('');
@@ -267,9 +307,10 @@ function changePhNum() {
         changePhone.value = changePhoneModal.value;
         falsePhone.value = '';
         PWCModal.value.hideModal();
-
+    } else if(changePhoneModal.value == '') {
+        falsePhone.value = '휴대폰 번호를 입력해주세요.';
     } else {
-        falsePhone.value = '번호 형식에 맞지 않습니다.';
+        falsePhone.value = '번호 형식에 맞춰 입력해주세요.';
     }
 }
 
