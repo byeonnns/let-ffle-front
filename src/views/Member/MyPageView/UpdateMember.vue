@@ -248,6 +248,7 @@ function changeNickname() {
         nick.value = mNickChange.value;
         falseNickname.value = '';
         NickNameModal.value.hideModal();
+        mNickChange.value=null;
     } else if(mNickChange.value == '') {
         falseNickname.value = '닉네임을 입력해주세요.';
     } else {
@@ -278,6 +279,31 @@ const samePassword = ref(''); // 비밀번호 span 태그 상태 정의
 
 
 // 비밀번호 유효성 검사
+function changePassword() {
+    const NewPasswordPettern = new RegExp("(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}");
+    if(NewPassword.value.length == 0) {
+        falsePassword.value = '비밀번호를 입력해 주세요.';
+    } else if(NewPassword.value.length < 8 || NewPassword.value.length > 15 || !NewPasswordPettern.test(NewPassword.value)) {
+        falsePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
+    } else {
+        falsePassword.value = '';
+    }
+
+    if(RePassword.value.length == 0) {
+        samePassword.value = '비밀번호를 입력해 주세요.';
+    } else if(NewPassword.value != RePassword.value) {
+        samePassword.value = '비밀번호가 일치하지 않습니다.';
+    } else if(RePassword.value.length < 8 || RePassword.value.length > 15) {
+        samePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
+    } else {
+        samePassword.value = '';
+        changePw.value = NewPassword.value;
+        PWModal.value.hideModal();
+        NewPassword.value = null; 
+        RePassword.value = null;
+    }
+}
+
 const passwordCheck =() => {
     const NewPasswordPettern = new RegExp("(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}");
     if(NewPassword.value.length == 0) {
@@ -302,30 +328,6 @@ const passwordReCheck =() => {
     }
 }
 
-function changePassword() {
-    const NewPasswordPettern = new RegExp("(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}");
-    if(NewPassword.value.length == 0) {
-        falsePassword.value = '비밀번호를 입력해 주세요.';
-    } else if(NewPassword.value.length < 8 || NewPassword.value.length > 15 || !NewPasswordPettern.test(NewPassword.value)) {
-        falsePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
-    } else {
-        falsePassword.value = '';
-    }
-
-    if(RePassword.value.length == 0) {
-        samePassword.value = '비밀번호를 입력해 주세요.';
-    } else if(NewPassword.value != RePassword.value) {
-        samePassword.value = '비밀번호가 일치하지 않습니다.';
-    } else if(RePassword.value.length < 8 || RePassword.value.length > 15) {
-        samePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
-    } else {
-        samePassword.value = '';
-        changePw.value = NewPassword.value;
-        PWModal.value.hideModal();
-    }
-}
-
-
 
 const PWCModal = ref(null);
 const changePhone = ref('');
@@ -338,6 +340,7 @@ function changePhNum() {
     if (changePhoneModalPattern.test(changePhoneModal.value)) {
         changePhone.value = changePhoneModal.value;
         falsePhone.value = '';
+        changePhoneModal.value = null;
         PWCModal.value.hideModal();
     } else if(changePhoneModal.value == '') {
         falsePhone.value = '휴대폰 번호를 입력해주세요.';
