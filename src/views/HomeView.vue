@@ -35,7 +35,7 @@
         </div>
         <div class='container'>
             <p class="h3 mb-3">마감 임박 래플</p>
-            <hr class="border-3 opacity-100"/>
+            <hr class="border-3 opacity-100" />
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <RouterLink to="/Raffle/RaffleDetail">
@@ -68,7 +68,7 @@
         </div>
         <div class='container'>
             <p class="h3 mb-3">지금 바로 미션 참여 가능한 래플</p>
-            <hr class="border-3 opacity-100"/>
+            <hr class="border-3 opacity-100" />
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <RouterLink to="/Raffle/RaffleDetail">
@@ -101,7 +101,7 @@
         </div>
         <div class='container'>
             <p class="h3 mb-3">누군가가 방금 응모한 래플</p>
-            <hr class="border-3 opacity-100"/>
+            <hr class="border-3 opacity-100" />
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <RouterLink to="/Raffle/RaffleDetail">
@@ -132,43 +132,71 @@
                 </div>
             </div>
         </div>
-        <div class='container'>
-            <p class="h3 mb-3">랭킹 리스트</p>
-            <hr class="border-3 opacity-100"/>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex">
-                   <div class="card me-4 col-4">
-                        <div class="card-header">
-                            금주의 베리왕!
-                        </div>
-                        <div class="card-body">
-                            <i class="bi bi-trophy" style="color: gold;"><span style="color:black;">이*원 님</span></i><br/>
-                            <i class="bi bi-trophy" style="color: silver"><span style="color:black;">신*호 님</span></i><br/>
-                            <i class="bi bi-trophy" style="color: brown;"><span style="color:black;">김*주 님</span></i>
-                        </div>
-                   </div>
-                   <div class="card me-4 col-4">
-                        <div class="card-header">
-                            금주의 미션왕!
-                        </div>
-                        <div class="card-body">
-                            <i class="bi bi-trophy" style="color: gold;"><span style="color:black;">이*원 님</span></i><br/>
-                            <i class="bi bi-trophy" style="color: silver"><span style="color:black;">신*호 님</span></i><br/>
-                            <i class="bi bi-trophy" style="color: brown;"><span style="color:black;">김*주 님</span></i>
-                        </div>
-                   </div>
-                   <div class="card me-4 col-4">
-                        <div class="card-header">
-                            금주의 당첨왕!
-                        </div>
-                        <div class="card-body">
-                            <i class="bi bi-trophy" style="color: gold;"><span style="color:black;">이*원 님</span></i><br/>
-                            <i class="bi bi-trophy" style="color: silver"><span style="color:black;">신*호 님</span></i><br/>
-                            <i class="bi bi-trophy" style="color: brown;"><span style="color:black;">김*주 님</span></i>
-                        </div>
-                   </div>
-                </div>
-                
+        <div class='container d-flex'>
+            <div class="col">
+                <table class="table table-bordered mb-0">
+                    <tbody>
+                        <tr class="text-center">
+                            <td class="col-4 p-0 position-relative">
+                                <button class="position-absolute btn start-0 w-100 z-1" @click="changeRankingTab(1)">금주의
+                                    응모왕!</button>
+                            </td>
+                            <td class="col-4 p-0 position-relative">
+                                <button class="position-absolute btn start-0 w-100 z-1" @click="changeRankingTab(2)">금주의
+                                    베리왕!</button>
+                            </td>
+                            <td class="col-4 p-0 position-relative">
+                                <button class="position-absolute btn start-0 w-100 z-1" @click="changeRankingTab(3)">금주의
+                                    미션왕!</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <div class="d-flex">
+                                    <div class="col">
+                                        <div class="position-relative">
+                                            <h5
+                                                class="position-absolute top-50 start-50 translate-middle-x text-white fw-bold z-1">
+                                                1</h5>
+                                            <Vue3Lottie :animationData="rank1crown"
+                                                style="margin-top: -10%; margin-bottom: -25%;" />
+                                            <h5 class="text-center text-nowrap mb-0">
+                                                <h6>{{ rank1.count }}</h6>{{ rank1.name }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="position-relative">
+                                            <h5
+                                                class="position-absolute top-50 start-50 translate-middle-x text-white fw-bold z-1">
+                                                2</h5>
+                                            <Vue3Lottie :animationData="rank2crown"
+                                                style="margin-top: -10%; margin-bottom: -25%;" />
+                                            <h5 class="text-center text-nowrap mb-0">
+                                                <h6>{{ rank2.count }}</h6>{{ rank2.name }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="position-relative">
+                                            <h5
+                                                class="position-absolute top-50 start-50 translate-middle-x text-white fw-bold z-1">
+                                                3</h5>
+                                            <Vue3Lottie :animationData="rank3crown"
+                                                style="margin-top: -10%; margin-bottom: -25%;" />
+                                            <h5 class="text-center text-nowrap mb-0">
+                                                <h6>{{ rank3.count }}</h6>{{ rank3.name }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+
             </div>
         </div>
         <!-- Todo : 임시로 해놓음 컴포넌트화 할 것인지? -->
@@ -176,7 +204,39 @@
 </template>
 
 <script setup>
-import Raffle from "./Raffle/RaffleMainView.vue"
+import { ref } from 'vue';
+import vue3lottie from 'vue3-lottie';
+import rank1crown from '@/assets/lottie/gold_crown.json'
+import rank2crown from '@/assets/lottie/silver_crown.json'
+import rank3crown from '@/assets/lottie/bronze_crown.json'
+
+const rank1 = ref({
+    count: 100 + "회",
+    name: "감기걸린사람"
+});
+
+const rank2 = ref({
+    count: 50,
+    name: "머리자른사람"
+});
+
+const rank3 = ref({
+    count: 25,
+    name: "구경하는사람"
+});
+
+function changeRankingTab(btnNum) {
+    if (btnNum === 1) {
+        rank1.value.count = 100 + "회";
+        rank1.value.name = "감기걸린사람";
+    } else if (btnNum === 2) {
+        rank1.value.count = 30 + "개";
+        rank1.value.name = "변*준";
+    } else if (btnNum === 3) {
+        rank1.value.count = 1298319 + "회";
+        rank1.value.name = "팀장";
+    }
+}
 </script>
 
 <style scoped>

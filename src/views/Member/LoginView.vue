@@ -7,10 +7,10 @@
                         style="color:#FF5C35">FFle</span></p>
                 <label for="memail">이메일 주소</label>
                 <input v-model="memail" type="email" class="border-0 border-bottom input" @input="emailCheck(onBtn)">
-                <p style="color:#FF5C35">{{ emailError }}</p>
+                <p class="m-0" style="color:#FF5C35">{{ emailError }}</p>
                 <label for="mpassword" class="mt-3">비밀번호</label>
                 <input v-model="mpassword" type="password" class="border-0 border-bottom input" @input="passwordCheck(onBtn)">
-                <p style="color: #FF5C35;">{{ passwordError }}</p>
+                <p class="m-0" style="color: #FF5C35;">{{ passwordError }}</p>
                 <button class="btn text-white btn-lg mt-4" :class="isPass ? '' : 'disabled'">로그인</button>
                 <div class="row mt-3 text-center">
                     <div class="col-4 border-end">
@@ -56,6 +56,7 @@ const passwordCheck = (onBtn) => {
     onBtn();
 }
 
+
 function onBtn() {
     if (emailRegExp.test(memail.value) && mpassword.value.length > 0) {
         isPass.value = true;
@@ -88,5 +89,10 @@ window.addEventListener('resize', handleResize);
 
 p {
     font-size: 12px;
+    min-height: 18px;
+}
+
+label {
+    font-size: 14px;
 }
 </style>
