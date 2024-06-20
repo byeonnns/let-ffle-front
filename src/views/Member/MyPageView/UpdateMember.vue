@@ -14,8 +14,8 @@
                             <h5 style="font-size: 13px;">이메일주소</h5>
                         </div>
                         <div class="w-50 position-relative">
-                            <div style="align-content: end;">
-                                <input type="email" placeholder="as***naver.com" class="input w-50">
+                            <div>
+                                <input type="email" placeholder="as***naver.com" class="input w-100">
                             </div>
                             <hr class="p-0 m-0 w-100">
 
@@ -25,8 +25,8 @@
                             <h5 style="font-size: 13px;">닉네임</h5>
                         </div>
                         <div class="w-50 position-relative">
-                            <div style="align-content: end;">
-                                <input v-model="nick" type="email" placeholder="Kosa" class="input w-50">
+                            <div>
+                                <input v-model="nick" type="email" placeholder="Kosa" class="input w-100">
                             </div>
                             <hr class="p-0 m-0 w-100">
                             <button class="btn btn-outline-light btn-sm"
@@ -38,8 +38,8 @@
                             <h5 style="font-size: 13px;">비밀번호</h5>
                         </div>
                         <div class="w-50 position-relative">
-                            <div style="align-content: end;">
-                                <input v-model="changePw" type="password" placeholder="●●●●●●●●" class="input w-50">
+                            <div>
+                                <input v-model="changePw" type="password" placeholder="●●●●●●●●" class="input w-100">
                             </div>
                             <hr class="p-0 m-0 w-100">
                             <button class="btn btn-outline-light btn-sm"
@@ -49,8 +49,8 @@
                             <h5 style="font-size: 13px;">휴대폰 번호</h5>
                         </div>
                         <div class="w-50 position-relative">
-                            <div style="align-content: end;">
-                                <input v-model="changePhone" type="text" placeholder="010-8***-*798" class="input w-50">
+                            <div>
+                                <input v-model="changePhone" type="text" placeholder="010-8***-*798" class="input w-100">
                             </div>
 
                             <hr class="p-0 m-0 w-100">
@@ -61,8 +61,8 @@
                             <h5 style="font-size: 13px;">주소</h5>
                         </div>
                         <div class="w-50 position-relative">
-                            <div style="align-content: end;">
-                                <input type="text" placeholder="주소" class="input w-50">
+                            <div class="d-flex">
+                                <input v-model="changeAdr" type="text" placeholder="주소" class="input w-100">
                             </div>
                             <hr class="p-0 m-0 w-100">
                             <button class="btn btn-outline-light btn-sm"
@@ -72,8 +72,8 @@
                             <h5 style="font-size: 13px;">상세 주소</h5>
                         </div>
                         <div class="w-50 position-relative">
-                            <div style="align-content: end;">
-                                <input type="text" placeholder="상세 주소" class="input w-50">
+                            <div>
+                                <input v-model="changeReAdr" type="text" placeholder="상세 주소" class="input w-100">
                             </div>
                             <hr class="p-0 m-0 w-100">
                         </div>
@@ -181,16 +181,16 @@
                             찾기</button>
                     </div>
                     <div class="mt-3">
-                        <input v-model="address" type="text" placeholder="주소" class="input w-50">
+                        <input v-model="address" type="text" placeholder="주소" class="input w-100">
                         <hr class="p-0 m-0 w-100 mb-4">
                     </div>
-                    <input v-model="addressDetail" type="text" placeholder="상세 주소" class="input w-50">
+                    <input v-model="addressDetail" type="text" placeholder="상세 주소" class="input w-100">
                     <hr class="p-0 m-0 w-100 mb-4">
                 </div>
             </template>
 
             <template v-slot:modalFooter>
-                <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal">완료</button>
+                <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal" @click="addressCheck">완료</button>
                 <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal">닫기</button>
             </template>
 
@@ -360,6 +360,14 @@ const PhoneNumCheck = () => {
     } else {
         falsePhone.value = '번호 형식에 맞춰 입력해주세요.';
     }
+}
+const changeAdr = ref('');
+const changeReAdr = ref('');
+// 주소 유효성 검사
+function addressCheck() {
+    changeAdr.value = "(" + zonecode.value + ")" + " " + address.value;
+    changeReAdr.value = addressDetail.value;
+    
 }
 
 
