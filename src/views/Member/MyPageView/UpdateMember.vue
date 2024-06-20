@@ -99,7 +99,7 @@
             <template v-slot:modalBody>
                 <div class="div_form row">
                     <label>변경할 닉네임</label>
-                    <input v-model="mNickChange" type="text" class="input" style="border-bottom: 1px solid #ebebeb">
+                    <input v-model="mNickChange" type="text" class="input" style="border-bottom: 1px solid #ebebeb" @input="nickNameCheck">
                     <span style="color: red;">{{ falseNickname }}</span>
                 </div>
             </template>
@@ -126,13 +126,13 @@
 
                     <div class="div_form row mb-3">
                         <label>새 비밀번호</label>
-                        <input v-model="NewPassword" type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb">
+                        <input v-model="NewPassword" type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb" @input="passwordCheck">
                         <span style="color: red;">{{ falsePassword }}</span>
                     </div>
 
                     <div class="div_form row">
                         <label>비밀번호 확인</label>
-                        <input v-model="RePassword" type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb">
+                        <input v-model="RePassword" type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb" @input="passwordReCheck">
                         <span style="color: red;">{{ samePassword }}</span>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                     <div class="div_form row">
                         <label>새 휴대폰 번호</label>
                         <input v-model="changePhoneModal" type="text" placeholder="010-xxxx-xxxx" class="input"
-                            style="border-bottom: 1px solid #ebebeb">
+                            style="border-bottom: 1px solid #ebebeb" @input="PhoneNumCheck">
                         <span style="color: red;">{{ falsePhone }}</span>
                     </div>
                 </div>
@@ -243,7 +243,7 @@ const falseNickname = ref(''); // 닉네임이 잘못되었을 때 상태 정의
 
 // 닉네임 유효성 검사 ( 2자 이상 8자 이하 영문 + 숫자 )
 function changeNickname() {
-    const mNickChangePattern = new RegExp("[a-zA-Z0-9가-힣]{2,8}");
+    const mNickChangePattern = new RegExp("[가-힣a-zA-Z0-9_-]{2,15}");
     if (mNickChangePattern.test(mNickChange.value)) {
         nick.value = mNickChange.value;
         falseNickname.value = '';
@@ -254,6 +254,15 @@ function changeNickname() {
         falseNickname.value = '닉네임 형식이 올바르지 않습니다.';
     }
 
+}
+// 실시간 상태 검사
+const nickNameCheck = () => {
+    const mNickChangePattern = new RegExp("[a-zA-Z0-9가-힣]{2,8}");
+    if(!mNickChangePattern.test(mNickChange.value)) {
+        falseNickname.value = '닉네임을 정확히 입력해주세요.';
+    } else {
+        falseNickname.value = '';
+    }
 }
 
 // 비밀번호 상태 정의
@@ -266,15 +275,40 @@ const samePassword = ref(''); // 비밀번호 span 태그 상태 정의
 
 
 // 비밀번호 유효성 검사
-function changePassword() {
+const passwordCheck =() => {
     const NewPasswordPettern = new RegExp("(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}");
     if(NewPassword.value.length == 0) {
-        falsePassword.value = '비밀번호를 입력해 주세요.';   
-    } else if (NewPassword.value.length < 8 || NewPassword.value.length > 15 || !NewPasswordPettern.test(NewPassword.value)) {
-        falsePassword.value = '영문 포함 8자이상 15자이하로 입력해 주세요.';
+        falsePassword.value = '비밀번호를 입력해 주세요.';
+    } else if(NewPassword.value.length < 8 || NewPassword.value.length > 15 || !NewPasswordPettern.test(NewPassword.value)) {
+        falsePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
     } else {
         falsePassword.value = '';
     }
+}
+const passwordReCheck =() => {
+    if(RePassword.value.length == 0) {
+        samePassword.value = '비밀번호를 입력해주세요.';
+    } else if(NewPassword.value != RePassword.value) {
+        samePassword.value = '비밀번호가 일치하지 않습니다.';
+    } else if (RePassword.value.length < 8 || RePassword.value.length > 15) {
+        samePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
+    } else {
+        samePassword.value = '';
+        changePw.value = NewPassword.value;
+        // PWModal.value.hideModal();
+    }
+}
+
+function changePassword() {
+    const NewPasswordPettern = new RegExp("(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}");
+    if(NewPassword.value.length == 0) {
+        falsePassword.value = '비밀번호를 입력해 주세요.';
+    } else if(NewPassword.value.length < 8 || NewPassword.value.length > 15 || !NewPasswordPettern.test(NewPassword.value)) {
+        falsePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
+    } else {
+        falsePassword.value = '';
+    }
+
     if(RePassword.value.length == 0) {
         samePassword.value = '비밀번호를 입력해 주세요.';
     } else if(NewPassword.value != RePassword.value) {
@@ -286,9 +320,9 @@ function changePassword() {
         changePw.value = NewPassword.value;
         PWModal.value.hideModal();
     }
+}
 
 
-}   
 
 const PWCModal = ref(null);
 const changePhone = ref('');
@@ -308,6 +342,20 @@ function changePhNum() {
         falsePhone.value = '번호 형식에 맞춰 입력해주세요.';
     }
 }
+
+const PhoneNumCheck = () => {
+    const changePhoneModalPattern = new RegExp("010-\\d{4}-\\d{4}");
+    if(changePhoneModalPattern.test(changePhoneModal.value)) {
+        changePhone.value = changePhoneModal.value;
+        falsePhone.value = '';
+        // PWCModal.value.hideModal();
+    } else if(changePhoneModal.value == '') {
+        falsePhone.value = '휴대폰 번호를 입력해주세요.';
+    } else {
+        falsePhone.value = '번호 형식에 맞춰 입력해주세요.';
+    }
+}
+
 
 const Withdrawal = ref(null);
 const ADRModal = ref(null);
