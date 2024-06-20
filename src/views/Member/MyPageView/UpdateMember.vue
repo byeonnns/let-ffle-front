@@ -257,11 +257,14 @@ function changeNickname() {
 }
 // 실시간 상태 검사
 const nickNameCheck = () => {
-    const mNickChangePattern = new RegExp("[a-zA-Z0-9가-힣]{2,8}");
-    if(!mNickChangePattern.test(mNickChange.value)) {
-        falseNickname.value = '닉네임을 정확히 입력해주세요.';
-    } else {
+    const mNickChangePattern = new RegExp("[가-힣a-zA-Z0-9_-]{2,15}");
+    if(mNickChangePattern.test(mNickChange.value)) {
+        nick.value = mNickChange.value;
         falseNickname.value = '';
+    } else if(mNickChange.value == '') {
+        falseNickname.value = '닉네임을 입력해주세요.';
+    } else {
+        falseNickname.value = '닉네임 형식이 올바르지 않습니다.';
     }
 }
 
