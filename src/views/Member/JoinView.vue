@@ -38,8 +38,8 @@
 
                 <label for="maddress" class="mt-5 mb-2">주소</label>
                 <div class="d-flex justify-content-between">
-                    <input v-model="zonecode" id="maddress" type="text"
-                        class="border-0 border-bottom flex-grow-1 input" placeholder="우편번호">
+                    <input v-model="zonecode" id="maddress" type="text" class="border-0 border-bottom flex-grow-1 input"
+                        placeholder="우편번호">
                     <button class="btn text-white btn-outline-light btn-sm" @click="DaumPostcode">우편번호 찾기</button>
                 </div>
                 <input v-model="address" type="text" class="border-0 border-bottom mt-3 input" placeholder="주소">
@@ -130,62 +130,13 @@ const member = ref({
     maddress: ""
 });
 
-// function handleSubmit() {
-
-//     var total = true;
-
-//     var midPattern = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
-//     var userMid = midPattern.test(member.value.mid);
-//     if (userMid) {
-//         checkMid.value = "";
-//     } else if (!userMid) {
-//         total = false;
-//         checkMid.value = "올바르지 않은 양식입니다";
-//     }
-
-//     var mpasswordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
-//     var userPassword = mpasswordPattern.test(member.value.mpassword);
-//     if (userPassword) {
-//         checkMpassword.value = ""
-//     } else if (!userPassword) {
-//         total = false;
-//         checkMpassword.value = "올바르지 않은 양식입니다"
-
-//     }
-
-//     var mnamePattern = /^[가-힣]+$/;
-//     var userMname = mnamePattern.test(member.value.mname);
-//     if (userMname) {
-//         checkMname.value = "";
-//     } else if(!userMname) {
-//         total = false;
-//         checkMname.value = "올바르지 않는 양식입니다."
-//     }
-
-
-
-//     var mphonePattern = /^010-\d{3,4}-\d{4}$/;
-//     var userPhone = mphonePattern.test(member.value.mphone);
-//     if (userPhone) {
-//         checkMphone.value =" "
-//     } else if ((!userPhone)) {
-//         total = false;
-//         checkMphone.value = "올바르지 않는 양식입니다."
-//     }
-
-//     if (total) {
-//      member.submit
-//      }
-
-// }
-
 
 // 유효성 검사
-let userMid;
-let userPassword;
-let userMname;
-let userPhone;
-let userMnickname;
+let userMid = false;
+let userPassword = false;
+let userMname = false;
+let userPhone = false;
+let userMnickname = false;
 
 const midCheck = (onbtn) => {
     var midPattern = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
@@ -205,13 +156,13 @@ const midCheck = (onbtn) => {
 
 }
 
-const mpasswordCheck=(onbtn)=>{
+const mpasswordCheck = (onbtn) => {
     var mpasswordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,12}$/;
-     userPassword = mpasswordPattern.test(member.value.mpassword);
+    userPassword = mpasswordPattern.test(member.value.mpassword);
     if (!userPassword) {
-        checkMpassword.value="영어, 숫자를 포함한 8~12자로 작성해주세요."
+        checkMpassword.value = "영어, 숫자를 포함한 8~12자로 작성해주세요."
     } else {
-        checkMpassword.value=""
+        checkMpassword.value = ""
     }
     onbtn();
 }
@@ -220,9 +171,9 @@ const mnameCheck = (onbtn) => {
     var mnamePattern = /^[가-힣]{2,4}$/;
     userMname = mnamePattern.test(member.value.mname);
     if (!userMname) {
-    checkMname.value="이름을 입력해주세요"
+        checkMname.value = "이름을 입력해주세요"
     } else {
-    checkMname.value=""
+        checkMname.value = ""
     }
     onbtn();
 }
@@ -231,9 +182,9 @@ const mphoneCheck = (onbtn) => {
     var mphonePattern = /^010-\d{3,4}-\d{4}$/;
     userPhone = mphonePattern.test(member.value.mphone);
     if (!userPhone) {
-        checkMphone.value="전화번호를 입력해주세요"
+        checkMphone.value = "전화번호를 입력해주세요"
     } else {
-        checkMphone.value=""
+        checkMphone.value = ""
     }
     onbtn();
 }
@@ -242,7 +193,7 @@ const mnickCheck = (onbtn) => {
     var mnicknamePattern = /^[가-힣a-zA-Z0-9_-]{2,15}$/
     userMnickname = mnicknamePattern.test(member.value.mnickname);
     if (!userMnickname) {
-        checkMnick.value ="닉네임을 입력해주세요"
+        checkMnick.value = "닉네임을 입력해주세요"
     } else {
         // var isExist = 'DB에 해당 아이디 있는지 여부를 true,false로 리턴받은 값 -> true면 중복된 이메일';
         // if ( isExist ) {
@@ -250,16 +201,19 @@ const mnickCheck = (onbtn) => {
         // } else {
         //  checkMid.value = "";
         // }
-        checkMnick.value=""
+        checkMnick.value = ""
     }
     onbtn();
 }
-function onbtn(){
+
+function onbtn() {
+    console.log(userMid, userPassword);
     if (userMid && userPassword && userMname && userPhone && userMnickname) {
-        ispass.value="true"
+        ispass.value = "true"
     } else {
-        ispass.value="false"
+        ispass.value = "false"
     }
+    console.log(ispass.value);
 }
 
 
