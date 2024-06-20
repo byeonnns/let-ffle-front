@@ -17,19 +17,19 @@
                             <img src="@/assets/berry-icon.png" class="me-2" height="20px">
                             일일 베리 퀘스트
                             <img src="@/assets/berry-icon.png" class="ms-2" height="20px"></h4>
-                        <div class="mt-3">
+                        <div class="mt-4">
                             <div class="d-flex text-center">
                                 <div class="col">
-                                    <h3>매일 매일 접속하기</h3>
-                                    <h5>Complete</h5>
+                                    <h5 class="fw-bold">매일 매일 접속하기</h5>
+                                    <p>완료</p>
                                 </div>
                                 <div class="col">
-                                    <h3>래플 응모하기</h3>
-                                    <h5>Complete</h5>
+                                    <h5 class="fw-bold">래플 응모하기</h5>
+                                    <p>완료</p>
                                 </div>
                                 <div class="col">
-                                    <h3>래플&미션 올 클리어</h3>
-                                    <h5>Incomplete</h5>
+                                    <h5 class="fw-bold">래플&미션 올 클리어</h5>
+                                    <p>미완료</p>
                                 </div>
                             </div>
                         </div>

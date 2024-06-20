@@ -9,7 +9,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div> -->
                 <div class="toast-body text-white text-center align-content-center">
-                    <i class="bi bi-balloon-heart position-absolute top-50 start-0 translate-middle-y ps-4"></i> {{ message }}
+                    {{ message }}
                 </div>
             </div>
         </div>
