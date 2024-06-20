@@ -14,25 +14,68 @@
                     </select>
                 </div>
             </div>
-            <WriteForm />
-            <div class="form-group row">
-                <div class="col-sm-12 d-flex justify-content-end">
-                    <RouterLink to="/Board/BoardList">
+            <form @submit.prevent="handleSubmit">
+                <WriteForm ref="writeFormRef" />
+                <div class="form-group row">
+                    <div class="col-sm-12 d-flex justify-content-end">
                         <input type="submit" class="btn btn-outline-light btn-sm me-2" value="등록" />
-                        <input type="button" class="btn btn-outline-light btn-sm" value="취소" />
-                    </RouterLink>
+                        <RouterLink to="/Board/BoardList">
+                            <input type="button" class="btn btn-outline-light btn-sm" value="취소" />
+                        </RouterLink>
+                    </div>
                 </div>
-            </div>
+
+                <p>test:{{ checkTitle }}</p>
+                <p>teeet:{{ checkContent }}</p>
+            </form>
         </div>
+        <RaffleToast ref="seeya" />
+
     </div>
 </template>
 
 <script setup>
 import WriteForm from "@/components/WriteForm.vue";
+import { ref } from "vue";
+import RaffleToast from "@/components/RaffleToast.vue";
+
+const checkTitle = ref(null);
+const checkContent = ref(null);
+const writeFormRef = ref(null);
+const seeya = ref(null);
+
+
+function handleSubmit() {
+
+    var total = true;
+
+    var titlePattern = /^.{2,50}$/;
+    var usertitle = titlePattern.test(writeFormRef.value.board.btitle)
+    console.log()
+    if (usertitle) {
+        checkTitle.value = "";
+    } else if (!usertitle) {
+        total = false;
+        seeya.value.showToast("제목을 작성 해주세요");
+        // checkTitle.value = "제목을 작성 해주세요";
+    }
+
+    var contentPattern = /^.{10,1000}$/;
+    var usercontent = contentPattern.test(writeFormRef.value.board.bcontent);
+    console.log(writeFormRef.value.board.bcontent);
+    if (!usercontent) {
+        total = false;
+        seeya.value.showToast("내용을 작성 해주세요");
+        // 토스트는 나오는 시작점이 밑에부터 시작하게된다.
+        //  checkContent.value = "용을 작성 해주세요";
+    }
+}
+
+
 </script>
 
 <style scoped>
-.text{
+.text {
     align-content: center;
 }
 </style>

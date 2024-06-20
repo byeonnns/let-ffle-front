@@ -2,7 +2,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-center">
             <!--아이디(이메일), 비밀번호, 이름, 주민번호, 전화번호, 주소를 입력받는다.-->
-            <form @submit.prevent="handleSubmit" id="joinform">
+            <form @submit.prevent="handleSubmit">
                 <div class="d-flex flex-column" :style="responsiveSize">
                     <p class="text-center fw-bold fst-italic" style="font-size:50px">Let-<span
                             style="color:#FF5C35">FFle</span></p>
@@ -144,8 +144,7 @@ function handleSubmit() {
     var userPassword = mpasswordPattern.test(member.value.mpassword);
     if (userPassword) {
         checkMpassword.value = ""
-    } else {
-        (!userPassword)
+    } else if (!userPassword) {      
         total = false;
         checkMpassword.value = "올바르지 않은 양식입니다"
 
@@ -155,8 +154,7 @@ function handleSubmit() {
     var userMname = mnamePattern.test(member.value.mname);
     if (userMname) {
         checkMname.value = "";
-    } else {
-        (!userMname)
+    } else if(!userMname) {
         total = false;
         checkMname.value = "올바르지 않는 양식입니다."
     }
@@ -167,8 +165,7 @@ function handleSubmit() {
     var userPhone = mphonePattern.test(member.value.mphone);
     if (userPhone) {
         checkMphone.value =" "
-    } else {
-        (!userPhone) 
+    } else if ((!userPhone)) {
         total = false;
         checkMphone.value = "올바르지 않는 양식입니다."
     }
