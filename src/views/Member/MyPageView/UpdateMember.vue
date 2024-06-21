@@ -6,90 +6,93 @@
                     <div style="border-bottom: 3px solid #F37551;" class="mb-3">
                         <h4>회원 정보 수정</h4>
                     </div>
-                    <div class="d-flex justify-content-center flex-column align-items-center mt-4">
-                        <div class="mb-3" style="width: 50%;">
-                            <span style="font-size: 25px;" class="fw-bold mb-3">내 계정</span>
-                        </div>
-                        <div style="width: 50%;" class="mt-3">
-                            <h5 style="font-size: 13px;">이메일주소</h5>
-                        </div>
-                        <div class="w-50 position-relative">
+                    <div class="content">
+                        <div>
                             <div>
-                                <input type="email" placeholder="as***naver.com" class="input w-100">
-                            </div>
-                            <hr class="p-0 m-0 w-100">
-
-                        </div>
-
-                        <div style="width: 50%;" class="mt-3">
-                            <h5 style="font-size: 13px;">닉네임</h5>
-                        </div>
-                        <div class="w-50 position-relative">
-                            <div>
-                                <input v-model="nick" type="email" placeholder="Kosa" class="input w-100">
-                            </div>
-                            <hr class="p-0 m-0 w-100">
-                            <button class="btn btn-outline-light btn-sm"
-                                style="position: absolute; bottom: 0; right: 0;" @click="NickChModal">변경</button>
-
-                        </div>
-
-                        <div class="mt-4" style="width: 50%;">
-                            <h5 style="font-size: 13px;">비밀번호</h5>
-                        </div>
-                        <div class="w-50 position-relative">
-                            <div>
-                                <input v-model="changePw" type="password" placeholder="●●●●●●●●" class="input w-100">
-                            </div>
-                            <hr class="p-0 m-0 w-100">
-                            <button class="btn btn-outline-light btn-sm"
-                                style="position: absolute; bottom: 0; right: 0;" @click="seeModal">변경</button>
-                        </div>
-                        <div class="mt-4" style="width: 50%;">
-                            <h5 style="font-size: 13px;">휴대폰 번호</h5>
-                        </div>
-                        <div class="w-50 position-relative">
-                            <div>
-                                <input v-model="changePhone" type="text" placeholder="010-8***-*798" class="input w-100">
-                            </div>
-
-                            <hr class="p-0 m-0 w-100">
-                            <button class="btn btn-outline-light btn-sm"
-                                style="position: absolute; bottom: 0; right: 0;" @click="lookModal">변경</button>
-                        </div>
-                        <div class="mt-4" style="width: 50%;">
-                            <h5 style="font-size: 13px;">주소</h5>
-                        </div>
-                        <div class="w-50 position-relative">
-                            <div class="d-flex">
-                                <input v-model="changeAdr" type="text" placeholder="주소" class="input w-100">
-                            </div>
-                            <hr class="p-0 m-0 w-100">
-                            <button class="btn btn-outline-light btn-sm"
-                                style="position: absolute; bottom: 0; right: 0;" @click="addrModal">변경</button>
-                        </div>
-                        <div class="mt-4" style="width: 50%;">
-                            <h5 style="font-size: 13px;">상세 주소</h5>
-                        </div>
-                        <div class="w-50 position-relative">
-                            <div>
-                                <input v-model="changeReAdr" type="text" placeholder="상세 주소" class="input w-100">
-                            </div>
-                            <hr class="p-0 m-0 w-100">
-                        </div>
-                        <div class="w-50 position-relative">
-                            <div class="mt-1 d-flex justify-content-end">
-                                <RouterLink to="#"><button type="button" class="btn btn-sm"
-                                        style="font-size: 14px; color: black; background-color: white; text-decoration: underline;"
-                                        @click="checkhandle">회원탈퇴</button>
-                                </RouterLink>
+                                <div class="form_table">
+                                    <div class="tr">
+                                        <div class="th">
+                                            <p>이메일</p>
+                                        </div>
+                                        <div class="td">
+                                            <div>
+                                                <input type="text" readonly placeholder="asd@naver.com">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tr">
+                                        <div class="th">
+                                            <p>닉네임</p>
+                                        </div>
+                                        <div class="td">
+                                            <div>
+                                                <input v-model="nick" type="text" placeholder="신떙떙" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="td">
+                                            <button @click="NickChModal" class="btn btn-ch btn-outline-light ms-4"
+                                                style="width: 120px; font-size: 15px;">닉네임 변경</button>
+                                        </div>
+                                    </div>
+                                    <div class="tr">
+                                        <div class="th">
+                                            <p>비밀번호</p>
+                                        </div>
+                                        <div class="td">
+                                            <input v-model="changePw" type="password" placeholder="●●●●●●●●" readonly>
+                                        </div>
+                                        <div class="td">
+                                            <button class="btn btn-ch btn-outline-light ms-4"
+                                                style="width: 120px; font-size: 15px;" @click="seeModal">비밀번호
+                                                변경</button>
+                                        </div>
+                                    </div>
+                                    <div class="tr">
+                                        <div class="th">
+                                            <p>휴대폰 번호</p>
+                                        </div>
+                                        <div class="td">
+                                            <div>
+                                                <input v-model="changePhone" type="text" placeholder="010-1234-5678"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                        <div class="td">
+                                            <button class="btn btn-ch btn-outline-light ms-4"
+                                                style="width: 120px; font-size: 15px;" @click="lookModal">번호 변경</button>
+                                        </div>
+                                    </div>
+                                    <div class="tr">
+                                        <div class="th">
+                                            <p>주소</p>
+                                        </div>
+                                        <div class="td">
+                                            <div>
+                                                <div>
+                                                    <button class="btn btn-outline-light"
+                                                        style="font-size: 15px; width: 110px;" @click="addrModal">주소
+                                                        변경</button>
+                                                    <div class="mt-2">
+                                                        <input v-model="changeAdr" class="mb-2" type="text"
+                                                            placeholder="도로명 주소"> <br />
+                                                        <input v-model="changeReAdr" type="text" placeholder="상세 주소">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" class="btn btn-sm"
+                                            style="font-size: 14px; width: 100px; color: black; background-color: white; text-decoration: underline;"
+                                            @click="checkhandle">회원탈퇴</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- Modal 닉네임 변경 slot화 -->
         <RaffleModal ref="NickNameModal">
             <template v-slot:modalHeader>
@@ -99,14 +102,17 @@
             <template v-slot:modalBody>
                 <div class="div_form row">
                     <label>변경할 닉네임</label>
-                    <input v-model="mNickChange" type="text" class="input" style="border-bottom: 1px solid #ebebeb" @input="nickNameCheck">
+                    <input v-model="mNickChange" type="text" class="input w-100" style="height: 40px;"
+                        @input="nickNameCheck">
                     <span style="color: red;">{{ falseNickname }}</span>
                 </div>
             </template>
 
             <template v-slot:modalFooter>
-                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-outline-light" @click="changeNickname">수정 완료</button>
+                <button style="width: 90px; font-size: 15px;" type="button" class="btn btn-outline-light"
+                    data-bs-dismiss="modal">닫기</button>
+                <button style="width: 90px; font-size: 15px;" type="button" class="btn btn-outline-light"
+                    @click="changeNickname">수정 완료</button>
             </template>
 
         </RaffleModal>
@@ -121,25 +127,29 @@
                 <div class="container">
                     <div class="div_form row mb-3">
                         <label>기존 비밀번호</label>
-                        <input type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb">
+                        <input type="password" placeholder="" class="input">
                     </div>
 
                     <div class="div_form row mb-3">
                         <label>새 비밀번호</label>
-                        <input v-model="NewPassword" type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb" @input="passwordCheck">
+                        <input v-model="NewPassword" type="password" placeholder="" class="input" style=""
+                            @input="passwordCheck">
                         <span style="color: red;">{{ falsePassword }}</span>
                     </div>
 
                     <div class="div_form row">
                         <label>비밀번호 확인</label>
-                        <input v-model="RePassword" type="password" placeholder="" class="input" style="border-bottom: 1px solid #ebebeb" @input="passwordReCheck">
+                        <input v-model="RePassword" type="password" placeholder="" class="input" style=""
+                            @input="passwordReCheck">
                         <span style="color: red;">{{ samePassword }}</span>
                     </div>
                 </div>
             </template>
             <template v-slot:modalFooter>
-                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-outline-light" @click="changePassword">수정 완료</button>
+                <button style="width: 90px; font-size: 15px;" type="button" class="btn btn-outline-light"
+                    data-bs-dismiss="modal">닫기</button>
+                <button style="width: 90px; font-size: 15px;" type="button" class="btn btn-outline-light"
+                    @click="changePassword">수정 완료</button>
             </template>
         </RaffleModal>
 
@@ -152,16 +162,17 @@
                 <div class="container">
                     <div class="div_form row">
                         <label>새 휴대폰 번호</label>
-                        <input v-model="changePhoneModal" type="text" placeholder="010-xxxx-xxxx" class="input"
-                            style="border-bottom: 1px solid #ebebeb" @input="PhoneNumCheck">
+                        <input v-model="changePhoneModal" type="text" placeholder="010-xxxx-xxxx" class="input" style=""
+                            @input="PhoneNumCheck">
                         <span style="color: red;">{{ falsePhone }}</span>
                     </div>
                 </div>
             </template>
             <template v-slot:modalFooter>
-                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-                <button @click="changePhNum" type="button" class="btn btn-outline-light"
-                    :data-bs-dismiss="isOk ? 'modal' : ''">수정
+                <button style="width: 90px; font-size: 15px;" type="button" class="btn btn-outline-light"
+                    data-bs-dismiss="modal">닫기</button>
+                <button style="width: 90px; font-size: 15px;" @click="changePhNum" type="button"
+                    class="btn btn-outline-light" :data-bs-dismiss="isOk ? 'modal' : ''">수정
                     완료</button>
             </template>
         </RaffleModal>
@@ -177,7 +188,8 @@
                     <div class="">
                         <input v-model="zonecode" id="maddress" type="text"
                             class="border-0 border-bottom flex-grow-1 input" placeholder="우편번호">
-                        <button class="btn text-white btn-outline-light btn-sm ms-3" @click="DaumPostcode()">우편번호
+                        <button class="btn text-white btn-outline-light btn-sm ms-3" style="width: 100px;"
+                            @click="DaumPostcode()">우편번호
                             찾기</button>
                     </div>
                     <div class="mt-3">
@@ -248,8 +260,8 @@ function changeNickname() {
         nick.value = mNickChange.value;
         falseNickname.value = '';
         NickNameModal.value.hideModal();
-        mNickChange.value=null;
-    } else if(mNickChange.value == '') {
+        mNickChange.value = null;
+    } else if (mNickChange.value == '') {
         falseNickname.value = '닉네임을 입력해주세요.';
     } else {
         falseNickname.value = '닉네임 형식이 올바르지 않습니다.';
@@ -259,10 +271,10 @@ function changeNickname() {
 // 실시간 상태 검사
 const nickNameCheck = () => {
     const mNickChangePattern = new RegExp("[가-힣a-zA-Z0-9_-]{2,15}");
-    if(mNickChangePattern.test(mNickChange.value)) {
+    if (mNickChangePattern.test(mNickChange.value)) {
         nick.value = mNickChange.value;
         falseNickname.value = '';
-    } else if(mNickChange.value == '') {
+    } else if (mNickChange.value == '') {
         falseNickname.value = '닉네임을 입력해주세요.';
     } else {
         falseNickname.value = '닉네임 형식이 올바르지 않습니다.';
@@ -281,43 +293,43 @@ const samePassword = ref(''); // 비밀번호 span 태그 상태 정의
 // 비밀번호 유효성 검사
 function changePassword() {
     const NewPasswordPettern = new RegExp("(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}");
-    if(NewPassword.value.length == 0) {
+    if (NewPassword.value.length == 0) {
         falsePassword.value = '비밀번호를 입력해 주세요.';
-    } else if(NewPassword.value.length < 8 || NewPassword.value.length > 15 || !NewPasswordPettern.test(NewPassword.value)) {
+    } else if (NewPassword.value.length < 8 || NewPassword.value.length > 15 || !NewPasswordPettern.test(NewPassword.value)) {
         falsePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
     } else {
         falsePassword.value = '';
     }
 
-    if(RePassword.value.length == 0) {
+    if (RePassword.value.length == 0) {
         samePassword.value = '비밀번호를 입력해 주세요.';
-    } else if(NewPassword.value != RePassword.value) {
+    } else if (NewPassword.value != RePassword.value) {
         samePassword.value = '비밀번호가 일치하지 않습니다.';
-    } else if(RePassword.value.length < 8 || RePassword.value.length > 15) {
+    } else if (RePassword.value.length < 8 || RePassword.value.length > 15) {
         samePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
     } else {
         samePassword.value = '';
         changePw.value = NewPassword.value;
         PWModal.value.hideModal();
-        NewPassword.value = null; 
+        NewPassword.value = null;
         RePassword.value = null;
     }
 }
 
-const passwordCheck =() => {
+const passwordCheck = () => {
     const NewPasswordPettern = new RegExp("(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}");
-    if(NewPassword.value.length == 0) {
+    if (NewPassword.value.length == 0) {
         falsePassword.value = '비밀번호를 입력해 주세요.';
-    } else if(NewPassword.value.length < 8 || NewPassword.value.length > 15 || !NewPasswordPettern.test(NewPassword.value)) {
+    } else if (NewPassword.value.length < 8 || NewPassword.value.length > 15 || !NewPasswordPettern.test(NewPassword.value)) {
         falsePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
     } else {
         falsePassword.value = '';
     }
 }
-const passwordReCheck =() => {
-    if(RePassword.value.length == 0) {
+const passwordReCheck = () => {
+    if (RePassword.value.length == 0) {
         samePassword.value = '비밀번호를 입력해주세요.';
-    } else if(NewPassword.value != RePassword.value) {
+    } else if (NewPassword.value != RePassword.value) {
         samePassword.value = '비밀번호가 일치하지 않습니다.';
     } else if (RePassword.value.length < 8 || RePassword.value.length > 15) {
         samePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
@@ -342,7 +354,7 @@ function changePhNum() {
         falsePhone.value = '';
         changePhoneModal.value = null;
         PWCModal.value.hideModal();
-    } else if(changePhoneModal.value == '') {
+    } else if (changePhoneModal.value == '') {
         falsePhone.value = '휴대폰 번호를 입력해주세요.';
     } else {
         falsePhone.value = '번호 형식에 맞춰 입력해주세요.';
@@ -351,11 +363,11 @@ function changePhNum() {
 
 const PhoneNumCheck = () => {
     const changePhoneModalPattern = new RegExp("010-\\d{4}-\\d{4}");
-    if(changePhoneModalPattern.test(changePhoneModal.value)) {
+    if (changePhoneModalPattern.test(changePhoneModal.value)) {
         changePhone.value = changePhoneModal.value;
         falsePhone.value = '';
         // PWCModal.value.hideModal();
-    } else if(changePhoneModal.value == '') {
+    } else if (changePhoneModal.value == '') {
         falsePhone.value = '휴대폰 번호를 입력해주세요.';
     } else {
         falsePhone.value = '번호 형식에 맞춰 입력해주세요.';
@@ -367,7 +379,7 @@ const changeReAdr = ref('');
 function addressCheck() {
     changeAdr.value = "(" + zonecode.value + ")" + " " + address.value;
     changeReAdr.value = addressDetail.value;
-    
+
 }
 
 
@@ -421,36 +433,81 @@ function NickChModal() {
 </script>
 
 <style scoped>
-.bottom-border {
-    border-width: 0 0 1px;
+.tr>.th {
+    align-content: center;
+}
+
+p {
+    margin: 0px;
+}
+
+input[type="text"] {
+    width: 300px;
+    /* 너비 조절 */
+    height: 45px;
+    /* 높이 조절 */
+    padding: 10px;
+    /* 내부 여백 */
+    font-size: 16px;
+    /* 글꼴 크기 */
+}
+
+input[type="password"] {
+    width: 300px;
+    /* 너비 조절 */
+    height: 45px;
+    /* 높이 조절 */
+    padding: 10px;
+    /* 내부 여백 */
+    font-size: 16px;
+    /* 글꼴 크기 */
 }
 
 .btn {
-    margin-bottom: 20px;
-    border-radius: 10px;
-    font-size: 12px;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 10px;
-    padding-bottom: 6px;
-    text-align: center;
-    background-color: #F37551;
-    color: white;
-    margin-bottom: 0px;
+    width: 60px;
+    height: 46px;
+    background-color: #FF5C35;
 }
 
-.input {
-    border-width: 0;
-    /* input 라인 없애기 */
-    outline: none;
-    width: 76%;
+/*
+
+*/
+.form_table {
+    line-height: normal;
+    font-size: 14px;
+    font-weight: 500;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
 }
 
-h5 {
-    color: gray;
+
+.form_table .tr {
+    font-weight: 500;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    border-bottom: 1px solid #f2f2f2;
 }
 
-input::placeholder {
-    color: gray;
+.tr .th {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    margin: 0;
+    display: table-cell;
+    width: 160px;
+}
+
+.tr .td {
+    font-size: 14px;
+    padding: 20px 0;
+    margin: 0;
+    align-content: center;
+
 }
 </style>

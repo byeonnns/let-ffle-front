@@ -53,4 +53,8 @@
 .center {
     text-align: center;
 }
+
+.btn {
+    background-color: #FF5C35;
+}
 </style>
