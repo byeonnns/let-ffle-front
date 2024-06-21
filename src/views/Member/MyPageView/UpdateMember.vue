@@ -69,13 +69,15 @@
                                         <div class="td">
                                             <div>
                                                 <div>
-                                                    <button class="btn btn-outline-light"
-                                                        style="font-size: 15px; width: 110px;" @click="addrModal">주소
-                                                        변경</button>
                                                     <div class="mt-2">
+                                                        <input style="width: 90px;" v-model="changePost" class="mb-2 me-2 text-center" type="text"
+                                                            placeholder="우편 번호">
                                                         <input v-model="changeAdr" class="mb-2" type="text"
-                                                            placeholder="도로명 주소"> <br />
-                                                        <input v-model="changeReAdr" type="text" placeholder="상세 주소">
+                                                            placeholder="도로명 주소">
+                                                            <button class="btn btn-outline-light ms-4"
+                                                        style="font-size: 15px; width: 110px;" @click="addrModal">주소
+                                                        변경</button> <br />
+                                                        <input style="width: 398px;" v-model="changeReAdr" type="text" placeholder="상세 주소">
                                                     </div>
                                                 </div>
                                             </div>
@@ -375,11 +377,12 @@ const PhoneNumCheck = () => {
 }
 const changeAdr = ref('');
 const changeReAdr = ref('');
+const changePost = ref('');
 // 주소 유효성 검사
 function addressCheck() {
-    changeAdr.value = "(" + zonecode.value + ")" + " " + address.value;
+    changeAdr.value = address.value;
     changeReAdr.value = addressDetail.value;
-
+    changePost.value = zonecode.value;
 }
 
 
