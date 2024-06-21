@@ -76,8 +76,8 @@
             좋아요 목록에서 삭제됩니다.
         </template>
         <template v-slot:modalFooter>
-            <button class="btn btn-modal btn-outline-light" data-bs-dismiss="modal">예</button>
-            <button class="btn btn-outline-light" data-bs-dismiss="modal">아니오</button>
+            <button class="btn btn-outline-light" data-bs-dismiss="modal" style="width: 20%;">예</button>
+            <button class="btn btn-outline-light" data-bs-dismiss="modal" style="width: 20%;">아니오</button>
         </template>
     </RaffleModal>
 </template>
