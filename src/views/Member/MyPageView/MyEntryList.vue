@@ -39,24 +39,30 @@
                             <SerachPeriod></SerachPeriod>
                         </div>
 
-                        <hr class="mb-3" />
+                        <hr class="mb-2" />
 
-                        <div>
-                            <table class="w-100 text-center">
+                        <div class="mb-2">
+                            <table class="table text-center">
                                 <thead>
                                     <tr>
-                                        <th>래플 이름</th>
-                                        <th>응모 기간</th>
-                                        <th>응모 상품</th>
-                                        <th>바로 가기</th>
+                                        <th class="col-2" scope="col">래플명</th>
+                                        <th class="col-2" scope="col">응모일</th>
+                                        <th class="col-2" scope="col">현재 상태</th>
+                                        <th class="col-2" scope="col">미션 완료</th>
+                                        <th class="col-2" scope="col">사용 베리</th>
+                                        <th class="col-2" scope="col">확률</th>
+                                        <th class="col-2" scope="col">이동</th>
                                     </tr>
                                 </thead>
-                                <tbody class="table table-group-divider">
+                                <tbody>
                                     <tr>
-                                        <td>아이폰 뿌리는 이벤트</td>
-                                        <td>2024.01.01 ~ 2024.02.02</td>
-                                        <td>아이폰 15Pro</td>
-                                        <td><RouterLink to="/Raffle"><button class="btn btn-outline-light btn-sm w-50"> 래플 바로 가기</button></RouterLink></td>
+                                        <td>더그레이티스트24</td>
+                                        <td>24-06-16</td>
+                                        <td>진행 중</td>
+                                        <td>Y</td>
+                                        <td>10</td>
+                                        <td>17.12%</td>
+                                        <td><button class="btn btn-sm">바로가기</button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -138,7 +144,7 @@ import SerachPeriod from './Components/SearchPeriod.vue';
     display: flex;
 }
 
-td{
+td {
     align-content: center;
 }
 </style>

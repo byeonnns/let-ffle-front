@@ -6,7 +6,7 @@
             <div class="d-flex flex-column bg-light" style="margin-bottom: 30px;">
                 <RouterLink to="/Member/MyPage/MyEntryList" class="ps-2 mt-3">응모 내역</RouterLink>
                 <RouterLink to="/Member/MyPage/WinningList" class="ps-2 mt-2">당첨 내역</RouterLink>
-                <RouterLink to="/Member/MyPage/LikeList" class="ps-2 mt-2 mb-3">찜 목록</RouterLink>
+                <RouterLink to="/Member/MyPage/LikeList" class="ps-2 mt-2 mb-3">관심 리스트</RouterLink>
             </div>
             <h5>커뮤니티 관리</h5>
             <div class="d-flex flex-column bg-light" style="margin-bottom: 30px;">
