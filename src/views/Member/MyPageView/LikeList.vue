@@ -84,4 +84,8 @@ function deleteBtn() {
 .btn-modal {
     width: 70px;
 }
+
+.btn {
+    background-color: #F37551;
+}
 </style>

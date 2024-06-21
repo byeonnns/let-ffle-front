@@ -1,7 +1,7 @@
 <template>
     <div>
         <nav class="d-flex flex-column">
-            <RouterLink to="/Member/MyPage" class="text-center text-nowrap h4 mb-4 no-animation fw-bold">마이 페이지</RouterLink>
+            <RouterLink to="/Member/MyPage" class="text-start text-nowrap h4 mb-4 no-animation fw-bold">마이 페이지</RouterLink>
             <h5>래플 정보</h5>
             <div class="d-flex flex-column bg-light" style="margin-bottom: 30px;">
                 <RouterLink to="/Member/MyPage/MyEntryList" class="ps-2 mt-3">응모 내역</RouterLink>

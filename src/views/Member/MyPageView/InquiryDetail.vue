@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <RouterLink to="/Member/InquiryList"><button class="btn btn-outline-light btn-sm">목록</button>
+                    <RouterLink to="/Member/Mypage/InquiryList"><button class="btn btn-outline-light btn-sm">목록</button>
                     </RouterLink>
                 </div>
             </div>
