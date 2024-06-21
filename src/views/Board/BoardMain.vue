@@ -101,7 +101,8 @@
                                 <button class="btn btn-outline-light btn-sm"
                                     style="background-color: white; color:black;">맨끝</button>
                             </div>
-                            <button class="btn btn-outline-light btn-sm ms-3" style="background-color: #F37551;">
+                            <button class="btn btn-outline-light btn-sm ms-3 rounded-0"
+                                style="background-color: #F37551;">
                                 <RouterLink to="/Board/WriteBoard" style="color: white;">글쓰기</RouterLink>
                             </button>
                         </div>
@@ -117,7 +118,8 @@
                             </select>
                             <input type="text" class="form-control" aria-label="Recipient's username"
                                 aria-describedby="button-addon2">
-                            <button class="btn btn-outline-light ms-2" type="button" id="button-addon2">검색</button>
+                            <button class="btn btn-outline-light ms-2 rounded-0" type="button"
+                                id="button-addon2 rounded-0">검색</button>
                         </div>
                     </div>
                 </div>

@@ -20,9 +20,9 @@
                 </div>
                 <div>
                     <RouterLink to="/Board/WriteBoard">
-                        <input type="submit" class="btn btn-outline-light btn-sm me-2" value="수정" />
+                        <input type="submit" class="btn btn-outline-light btn-sm me-2 rounded-0" value="수정" />
                     </RouterLink>
-                    <input type="button" class="btn btn-outline-light btn-sm me-2" value="삭제" />
+                    <input type="button" class="btn btn-outline-light btn-sm me-2 rounded-0" value="삭제" />
 
                 </div>
             </div>
@@ -35,7 +35,7 @@
 
             <div class="text-center" style="margin-top:100px ;">
                 <RouterLink to="/Board/BoardList">
-                    <input type="button" class="btn btn-outline-light btn-sm" value="목록" />
+                    <input type="button" class="btn btn-outline-light btn-sm rounded-0" value="목록" />
                 </RouterLink>
             </div>
         </div>
@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-outline-light">댓글작성</button>
+            <button class="btn btn-outline-light rounded-0">댓글작성</button>
         </div>
 
 

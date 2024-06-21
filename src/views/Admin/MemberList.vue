@@ -23,14 +23,17 @@
                                 <td>tjdwns3823@naver.com</td>
                                 <td>변성준</td>
                                 <td>byeon</td>
-                                <td><RouterLink to="MemberDetail"><button class="btn btn-sm">상세</button></RouterLink></td>
+                                <td>
+                                    <RouterLink to="MemberDetail"><button class="btn btn-sm rounded-0">상세</button>
+                                    </RouterLink>
+                                </td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>jw123@naver.com</td>
                                 <td>이재원</td>
                                 <td>jwlee</td>
-                                <td><button class="btn btn-sm">상세</button></td>
+                                <td><button class="btn btn-sm rounded-0">상세</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -43,7 +46,7 @@
                             </select>
                             <input class="me-2">
                         </div>
-                        <button type="button" class="btn btn-light">검색</button>
+                        <button type="button" class="btn btn-light rounded-0">검색</button>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex flex-grow-1 justify-content-center">

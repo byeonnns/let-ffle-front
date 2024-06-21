@@ -109,19 +109,19 @@
                             <tr>
                                 <td>kosa@songpa.it</td>
                                 <td>김코사</td>
-                                <td><button class="btn btn-sm">확인</button></td>
+                                <td><button class="btn btn-sm rounded-0">확인</button></td>
                                 <td>배송 준비 중</td>
                             </tr>
                             <tr>
                                 <td>hou@nal.do</td>
                                 <td>신우호</td>
-                                <td><button class="btn btn-sm" disabled>미입력</button></td>
+                                <td><button class="btn btn-sm rounded-0" disabled>미입력</button></td>
                                 <td>미발송</td>
                             </tr>
                             <tr>
                                 <td>mid</td>
                                 <td>mname</td>
-                                <td><button class="btn btn-sm" disabled>미입력</button></td>
+                                <td><button class="btn btn-sm rounded-0" disabled>미입력</button></td>
                                 <td>미발송</td>
                             </tr>
                         </tbody>
@@ -164,7 +164,7 @@
                 </div>
             </div>
             <hr class="border-3 opacity-100 mt-4" style="border-color: #F37551;" />
-            <button class="btn mb-5">래플 바로가기</button>
+            <button class="btn mb-5 rounded-0">래플 바로가기</button>
         </div>
     </div>
 </template>
@@ -180,5 +180,6 @@ td {
 .btn{
     background-color: #F37551;
     color: white;
+    
 }
 </style>

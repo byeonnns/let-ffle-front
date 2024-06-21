@@ -49,9 +49,9 @@
                                                 </td>
                                                 <td>
                                                     <RouterLink to="/Admin/CreateRaffle"><button
-                                                            class="btn update-raffle-btn">수정</button>
+                                                            class="btn update-raffle-btn rounded-0">수정</button>
                                                     </RouterLink>
-                                                    <button class="btn delete-raffle-btn ms-3"
+                                                    <button class="btn delete-raffle-btn ms-3 rounded-0"
                                                         @click="deleteRaffle">삭제</button>
                                                 </td>
                                             </tr>
@@ -75,7 +75,8 @@
                                                 </td>
                                                 <td>
                                                     <RouterLink to="/Admin/WinnerList"><button
-                                                            class="btn update-raffle-btn">당첨자 확인</button></RouterLink>
+                                                            class="btn update-raffle-btn rounded-0">당첨자 확인</button>
+                                                    </RouterLink>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -161,5 +162,6 @@ td {
 .btn{
     background-color: #F37551;
     color: white;
+
 }
 </style>

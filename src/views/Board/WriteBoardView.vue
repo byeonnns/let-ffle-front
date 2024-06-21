@@ -18,9 +18,9 @@
                 <WriteForm ref="writeFormRef" />
                 <div class="form-group row">
                     <div class="col-sm-12 d-flex justify-content-end">
-                        <input type="submit" class="btn btn-outline-light btn-sm me-2" value="등록" />
+                        <input type="submit" class="btn btn-outline-light btn-sm me-2 rounded-0" value="등록" />
                         <RouterLink to="/Board/BoardList">
-                            <input type="button" class="btn btn-outline-light btn-sm" value="취소" />
+                            <input type="button" class="btn btn-outline-light btn-sm rounded-0" value="취소" />
                         </RouterLink>
                     </div>
                 </div>

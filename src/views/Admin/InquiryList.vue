@@ -37,7 +37,7 @@
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <RouterLink to="/Admin/InquiryList">
-                                <button class="btn btn-outline-light">등록</button>
+                                <button class="btn btn-outline-light rounded-0">등록</button>
                             </RouterLink>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                                 <p>베리는 매일 첫 로그인 시 1개, 하루 응모 3개 전부 참여 및 미션 수행까지 모두 완료하시면 1개를 추가 지급합니다. 감사합니다.</p>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 

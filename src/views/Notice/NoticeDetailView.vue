@@ -23,7 +23,8 @@
 
 
                 <div class="text-center">
-                    <button class="btn btn-outline-light btn-sm" style="margin-top: 40px;" @click="AnnouncementHandle()">목록
+                    <button class="btn btn-outline-light btn-sm rounded-0" style="margin-top: 40px;"
+                        @click="AnnouncementHandle()">목록
                         보기</button>
                 </div>
             </div>
