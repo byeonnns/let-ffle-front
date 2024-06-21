@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="carouselExampleIndicators" class="carousel slide container mb-4 d-none d-lg-block">
+        <div id="carouselExampleIndicators" class="carousel slide container mb-5 d-none d-lg-block">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -33,10 +33,10 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <div class='container'>
-            <p class="h3 mb-3">마감 임박 래플</p>
-            <hr class="border-3 opacity-100" />
-            <div class="row">
+        <div class="container">
+            <p class="h3">New Release</p>
+            <hr class="border-3 opacity-100 mt-0" />
+            <div class="row mb-5">
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <RouterLink to="/Raffle/RaffleDetail">
                         <div class="img-container">
@@ -66,42 +66,9 @@
                 </div>
             </div>
         </div>
-        <div class='container'>
-            <p class="h3 mb-3">지금 바로 미션 참여 가능한 래플</p>
-            <hr class="border-3 opacity-100" />
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink to="/Raffle/RaffleDetail">
-                        <div class="img-container">
-                            <img src="@/assets/imgSample2.jpg" class="w-100 h-100 object-fit-cover">
-                        </div>
-                        <p class="raffle-title mt-2">BLR 인기 티셔츠 리오더 & 신규 발매</p>
-                        <p class="raffle-description">[~24.6.10 11AM] 5% 할인</p>
-                    </RouterLink>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink to="/Raffle/RaffleDetail">
-                        <div class="img-container">
-                            <img src="@/assets/img1.jpg" class="w-100 h-100 object-fit-cover">
-                        </div>
-                        <p class="raffle-title mt-2">지용킴 x 삼성 뮤직 프레임</p>
-                        <p class="raffle-description">LET-FFLE에서만 단독 발매</p>
-                    </RouterLink>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink to="/Raffle/RaffleDetail">
-                        <div class="img-container">
-                            <img src="@/assets/imgSample3.jpg" class="w-100 h-100 object-fit-cover">
-                        </div>
-                        <p class="raffle-title mt-2">웨이비니스 24서머 3차 드랍</p>
-                        <p class="raffle-description">2차 LET-FFLE 선발매</p>
-                    </RouterLink>
-                </div>
-            </div>
-        </div>
-        <div class='container'>
-            <p class="h3 mb-3">누군가가 방금 응모한 래플</p>
-            <hr class="border-3 opacity-100" />
+        <div class="container">
+            <p class="h3 text-end">Cut-off Soon</p>
+            <hr class="border-3 opacity-100 opacity-100 mt-0" />
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <RouterLink to="/Raffle/RaffleDetail">
@@ -133,7 +100,7 @@
             </div>
         </div>
         <div class="container d-flex mt-5">
-            <div class="col pe-2">
+            <div class="col-12 col-lg-6 pe-2">
                 <table class="table table-borderless mb-0">
                     <thead>
                         <tr class="text-center">
@@ -203,8 +170,61 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col ps-2">
-                
+            <div class="col-12 col-lg-6 ps-2">
+                <div class="p-5">
+                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="card border-0">
+                                    <img src="@/assets/sports.jpg" class="card-img" alt="...">
+                                    <div class="card-img-overlay d-flex flex-column">
+                                        <h2 class="card-title">Sports</h2>
+                                        <p class="card-text">
+                                            당신의 스포츠 팀,<br>
+                                            당신의 스타,<br>
+                                            당신의 보물들
+                                        </p>
+                                        <button class="card-text btn btn-dark mt-auto">바로가기</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card border-0">
+                                    <img src="@/assets/opera.jpg" class="card-img" alt="...">
+                                    <div class="card-img-overlay text-light d-flex flex-column">
+                                        <h2 class="card-title">Art</h2>
+                                        <p class="card-text text-end">
+                                            "잊지 못할 순간" "마법 같은 이야기" "환상의 멜로디"
+                                        </p>
+                                        <button class="card-text btn btn-light mt-auto">바로가기</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card border-0">
+                                    <img src="@/assets/shoes.jpg" class="card-img" alt="...">
+                                    <div class="card-img-overlay text-light d-flex flex-column">
+                                        <h2 class="card-title" style="background-color: rgba(255,92,53, 0.7);">Fashion</h2>
+                                        <p class="card-text h1" style="background-color: rgba(255,92,53, 0.7);">
+                                            스타일의 완성
+                                        </p>
+                                        <button class="card-text btn btn-warning mt-auto">바로가기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Todo : 임시로 해놓음 컴포넌트화 할 것인지? -->
@@ -212,14 +232,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import vue3lottie from 'vue3-lottie';
+import { computed, onMounted, ref } from 'vue';
+import { useStore } from 'vuex';
 import rank1crown from '@/assets/lottie/gold_crown.json'
 import rank2crown from '@/assets/lottie/silver_crown.json'
 import rank3crown from '@/assets/lottie/bronze_crown.json'
 
-const isSelected = ref(1);
+const store = useStore();
 
+const serverTime = computed(() => store.getters['clientTime/getCurrentTime']);
+
+const isSelected = ref(1);
 const rank1 = ref({
     count: 100 + "회",
     name: "감기걸린사람"

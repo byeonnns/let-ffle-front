@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
+import clientTime from './clientTime'
 
-export default createStore({
+const store = createStore({
   state: {
   },
   getters: {
@@ -10,5 +11,10 @@ export default createStore({
   actions: {
   },
   modules: {
-  }
+    clientTime
+  },
 })
+
+store.dispatch('clientTime/updateTime');
+
+export default store;
