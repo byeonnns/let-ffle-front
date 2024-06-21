@@ -128,7 +128,7 @@
                                     <p class="form_label">미션 종류</p>
                                 </div>
                                 <div class="td">
-                                    <select>
+                                    <select style="font-size: 16px;">
                                         <option>퀴즈 미션</option>
                                         <option>타임 미션</option>
                                     </select>
@@ -155,7 +155,7 @@
                                 </div>
                                 <div class="td">
                                     <textarea
-                                        style="width: 100%;">류현진 선수가 KBO의 한화 이글스로 돌아왔습니다. 그렇다면 류현진 선수가 메이저 리그에 있을 때, 가장 최근 소속팀은 어디일까요?</textarea>
+                                        style="width: 100%; font-size: 16px;">류현진 선수가 KBO의 한화 이글스로 돌아왔습니다. 그렇다면 류현진 선수가 메이저 리그에 있을 때, 가장 최근 소속팀은 어디일까요?</textarea>
                                 </div>
                             </div>
                             <div class="tr">
@@ -165,19 +165,19 @@
                                 <div class="td">
                                     <input type="radio" id="opt1" name="fav_language" value="HTML">
                                     <label for="opt1" class="ms-1 me-3">
-                                        <input>
+                                        <input style="font-size: 14px;">
                                     </label>
                                     <input type="radio" id="opt2" name="fav_language" value="HTML">
                                     <label for="opt2" class="ms-1 me-3">
-                                        <input>
+                                        <input style="font-size: 14px;">
                                     </label>
                                     <input type="radio" id="opt3" name="fav_language" value="HTML">
                                     <label for="opt3" class="ms-1 me-3">
-                                        <input>
+                                        <input style="font-size: 14px;">
                                     </label>
                                     <input type="radio" id="opt4" name="fav_language" value="HTML">
                                     <label for="opt4" class="ms-1 me-3">
-                                        <input>
+                                        <input style="font-size: 14px;">
                                     </label>
                                 </div>
                             </div>
@@ -304,7 +304,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 500;
     height: 100%;
     margin-top: 0;
@@ -491,11 +491,12 @@
     margin: 0;
     vertical-align: middle;
     flex: 0 0 auto;
-    height: 22px;
+    height: 30px;
     padding: 3px 10px;
+    align-content: center;
     background-color: black;
     border-radius: 2px;
-    font-size: 12px;
+    font-size: 14px;
     cursor: pointer;
     color: white;
 }
@@ -590,5 +591,9 @@ input {
     /* input 라인 없애기 */
     outline: none;
     border-bottom: 1px solid gray;
+}
+
+.td input {
+    font-size: 16px;
 }
 </style>

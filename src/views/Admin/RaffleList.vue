@@ -11,7 +11,7 @@
                         <div class="content-area">
                             <div id="order_list_div" class="section_block">
                                 <div class="no_data type4">
-                                    <table class="table table-col">
+                                    <table class="table table-col mb-4">
                                         <colgroup>
                                             <col style="width: 14.2%">
                                             <col style="width: 14.2%">
@@ -82,8 +82,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="d-flex justify-content-between align-items-center mt-4">
-                                    <div class="d-flex flex-grow-1 justify-content-center">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex flex-grow-1 justify-content-center ms-5">
                                         <button class="btn btn-outline-light btn-sm me-1"
                                             style="background-color: white; color:black;">처음</button>
                                         <button class="btn btn-outline-light btn-sm me-3"
@@ -103,6 +103,10 @@
                                         <button class="btn btn-outline-light btn-sm"
                                             style="background-color: white; color:black;">맨끝</button>
                                     </div>
+                                    <button class="btn btn-outline-light ms-3 rounded-0"
+                                        style="background-color: #F37551;">
+                                        <RouterLink to="/Admin/CreateRaffle" style="color: white;">래플 등록</RouterLink>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +163,8 @@ function deleteRaffle() {
 td {
     align-content: center;
 }
-.btn{
+
+.btn {
     background-color: #F37551;
     color: white;
 
