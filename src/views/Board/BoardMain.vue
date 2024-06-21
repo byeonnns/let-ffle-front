@@ -147,7 +147,8 @@
 }
 
 .btn {
-    color: black;
+    color: white;
     border: none;
+    background-color: #F37551;
 }
 </style>

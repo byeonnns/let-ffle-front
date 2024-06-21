@@ -177,4 +177,8 @@ import { ref } from 'vue';
 td {
     align-content: center;
 }
+.btn{
+    background-color: #F37551;
+    color: white;
+}
 </style>

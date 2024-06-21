@@ -168,4 +168,8 @@
 .spanded {
     color: black;
 }
+.btn{
+    background-color: #F37551;
+    color: white;
+}
 </style>

@@ -155,4 +155,8 @@ td {
 th {
     background-color: #d8dce3;
 }
+.btn{
+    background-color: #F37551;
+    color: white;;
+}
 </style>

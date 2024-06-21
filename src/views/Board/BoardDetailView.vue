@@ -100,4 +100,8 @@
     height: 30px;
 
 }
+.btn{
+    background-color: #F37551;
+    color: white;
+}
 </style>

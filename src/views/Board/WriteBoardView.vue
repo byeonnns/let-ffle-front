@@ -25,8 +25,6 @@
                     </div>
                 </div>
 
-                <p>test:{{ checkTitle }}</p>
-                <p>teeet:{{ checkContent }}</p>
             </form>
         </div>
         <RaffleToast ref="seeya" />
@@ -77,5 +75,9 @@ function handleSubmit() {
 <style scoped>
 .text {
     align-content: center;
+}
+.btn{
+    background-color: #F37551;
+    color: white;
 }
 </style>

@@ -79,4 +79,9 @@
 <script setup>
 </script>
 
-<style scoped></style>
+<style scoped>
+.btn{
+    background-color: #F37551;
+    color: white;
+}
+</style>
