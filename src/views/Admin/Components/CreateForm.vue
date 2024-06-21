@@ -11,14 +11,15 @@
             <div class="form-group row mt-4">
                 <label for="btitle" class="col-sm-2 col-form-label">제목</label>
                 <div class="col-sm-10">
-                    <input id="btitle" type="text" class="form-control" />
+                    <input id="btitle" type="text" class="form-control" v-model="notice.ntitle" />
                 </div>
             </div>
 
             <div class="form-group row mt-4">
                 <label for="bcontent" class="col-sm-2 col-form-label">내용</label>
                 <div class="col-sm-10">
-                    <textarea v-model="childText" type="text" class="form-control" style="height:250px;"></textarea>
+                    <textarea v-model="notice.ncontent" type="text" class="form-control"
+                        style="height:250px;"></textarea>
                 </div>
             </div>
 
@@ -31,7 +32,7 @@
 
             <div class="form-group row">
                 <div class="col-sm-12 d-flex justify-content-end">
-                    <input type="submit" class="btn btn-outline-light btn-sm me-2 rounded-0" value="등록" />
+                    <input type="submit" class="btn btn-outline-light btn-sm me-2 rounded-0" value="등록" @click="handleSubmit()" />
                     <RouterLink to="/Board/BoardList">
                         <input type="button" class="btn btn-outline-light btn-sm rounded-0" value="취소" />
                     </RouterLink>
@@ -40,17 +41,42 @@
 
             </div>
         </div>
+        <RaffleToast ref="seeya" />
     </div>
 
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import RaffleToast from '@/components/RaffleToast.vue';
 
 const childText = ref('');
+const seetitle = ref("")
+const notice= ref({
+    ntitle: "",
+    ncontent: "",
+    nattach: null
+    
+})
+
+function handleSubmit() {
+    var total = true;
+
+    var ntitlepattern = /^.{2,50}$/;
+    var noticetitle = ntitlepattern.test(notice.value.ntitle)
+    if (noticetitle) {
+        seetitle.value = "";
+    } else if (!noticetitle)
+        total = false;
+    seetitle.value.showToast("입력을 해주세요")
+}
+
+
+
 
 defineExpose({
-    childText
+    childText,
+    notice
 });
 </script>
 
