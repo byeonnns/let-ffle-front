@@ -9,7 +9,7 @@
                 </div>
                 <label for="mte" class="mb-2" style="margin-top:44px">휴대폰 번호</label>
                 <input id="mtel" type="text" class="border-0 border-bottom" v-model="tel">
-                <button class="btn text-white btn-lg mt-5" @click="findId">이메일 아이디 찾기</button>
+                <button class="btn text-white rounded-0 btn-lg mt-5" @click="findId" style="background-color: #F37551; ">이메일 아이디 찾기</button>      
             </div>
         </div>
     </div>
@@ -44,8 +44,8 @@ const findId = () => {
         </div>
         <h4>a*******h@kosa.com</h4>
         <div class="row mt-5">
-            <button class="btn text-white btn-lg flex-grow-1 col me-2">비밀번호 찾기</button>
-            <button class="btn text-white btn-lg flex-grow-1 col ms-2">로그인</button>
+            <button class="btn text-white btn-lg rounded-0 flex-grow-1 col me-2" style="background-color: #F37551;"><RouterLink to="/FindPassword">비밀번호 찾기</RouterLink></button>
+            <button class="btn text-white btn-lg rounded-0 flex-grow-1 col ms-2" style="background-color: #F37551;"><RouterLink to="/login">로그인</RouterLink></button>
         </div>
     </div>
     `;

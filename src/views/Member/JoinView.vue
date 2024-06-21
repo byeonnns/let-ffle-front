@@ -40,11 +40,11 @@
                 <div class="d-flex justify-content-between">
                     <input v-model="zonecode" id="maddress" type="text" class="border-0 border-bottom flex-grow-1 input"
                         placeholder="우편번호">
-                    <button class="btn text-white btn-outline-light btn-sm" @click="DaumPostcode" style="background-color: #F37551;">우편번호 찾기</button>
+                    <button class="btn text-white btn-outline-light rounded-0 btn-sm" @click="DaumPostcode" style="background-color: #F37551; margin-left: 10px;">우편번호 찾기</button>
                 </div>
                 <input v-model="address" type="text" class="border-0 border-bottom mt-3 input" placeholder="주소">
                 <input v-model="addressDetail" type="text" class="border-0 border-bottom mt-3 input" placeholder="상세주소">
-                <button class="btn text-white btn-lg mt-5 w-100" :class="ispass ? '' : 'disabled'" style="background-color: #F37551;">가입하기</button>
+                <button class="btn text-white rounded-0 btn-lg mt-5 w-100" :class="ispass ? '' : 'disabled'" style="background-color: #F37551;">가입하기</button>
 
             </div>
             <RaffleModal ref="postcodeModal">
@@ -171,7 +171,7 @@ const mnameCheck = (onbtn) => {
     var mnamePattern = /^[가-힣]{2,4}$/;
     userMname = mnamePattern.test(member.value.mname);
     if (!userMname) {
-        checkMname.value = "이름을 입력해주세요"
+        checkMname.value = "이름을 입력해주세요."
     } else {
         checkMname.value = ""
     }
@@ -179,10 +179,10 @@ const mnameCheck = (onbtn) => {
 }
 
 const mphoneCheck = (onbtn) => {
-    var mphonePattern = /^010-\d{3,4}-\d{4}$/;
+    var mphonePattern = /^010\d{4}\d{4}$/;
     userPhone = mphonePattern.test(member.value.mphone);
     if (!userPhone) {
-        checkMphone.value = "전화번호를 입력해주세요"
+        checkMphone.value = "하이픈('-')을 제외한 숫자만 입력해주세요."
     } else {
         checkMphone.value = ""
     }
@@ -193,11 +193,11 @@ const mnickCheck = (onbtn) => {
     var mnicknamePattern = /^[가-힣a-zA-Z0-9_-]{2,15}$/
     userMnickname = mnicknamePattern.test(member.value.mnickname);
     if (!userMnickname) {
-        checkMnick.value = "닉네임을 입력해주세요"
+        checkMnick.value = "한글, 영문, 숫자를 사용하여 2~15자 사이로 입력해주세요."
     } else {
         // var isExist = 'DB에 해당 아이디 있는지 여부를 true,false로 리턴받은 값 -> true면 중복된 이메일';
         // if ( isExist ) {
-        //  checkMid.value = "이미 사용중인 이메일입니다.";
+        //  checkMid.value = "이미 사용중인 닉네임입니다.";
         // } else {
         //  checkMid.value = "";
         // }

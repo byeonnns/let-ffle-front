@@ -13,7 +13,7 @@
                 <input id="mtel" type="text" class="border-0 border-bottom" v-model="mname">
                 <label for="mte" class="mb-2" style="margin-top:44px">이메일</label>
                 <input id="mtel" type="text" class="border-0 border-bottom" v-model="mid">
-                <button class="btn text-white btn-lg mt-5" @click="findId">비밀번호 찾기</button>
+                <button class="btn text-white rounded-0 btn-lg mt-5" @click="findId" style="background-color: #F37551;">비밀번호 찾기</button>
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@ const findId = () => {
         </div>
         <h4>letffle4nerd</h4>
         <div class="row mt-5">
-            <button class="btn text-white btn-lg flex-grow-1 col ms-2">로그인</button>
+            <button class="btn text-white rounded-0 btn-lg flex-grow-1 col ms-2" style="background-color: #F37551;">로그인</button>
         </div>
     </div>
     `;
