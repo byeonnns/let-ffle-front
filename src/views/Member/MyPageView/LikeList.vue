@@ -9,7 +9,7 @@
                     <div class="card mt-4 border-0">
                         <div class="row g-0">
                             <div class="col-md-3 align-content-center">
-                                <img src="@/assets/imgSample3.jpg" class="img-fluid rounded-start card" width="200px" style="border: 2px solid black; height: 130px;">
+                                <img src="@/assets/imgSample3.jpg" class="img-fluid rounded-start card" width="200px" style="border: 1px solid black; height: 130px;">
                             </div>
                             <div class="col-md-8 align-content-center">
                                 <div class="card-body">
@@ -35,7 +35,7 @@
                     <div class="card mt-2 border-0">
                         <div class="row g-0">
                             <div class="col-md-3 align-content-center">
-                                <img src="@/assets/imgSample2.jpg" class="img-fluid rounded-start card" width="200px" style="border: 2px solid black; height: 130px;">
+                                <img src="@/assets/imgSample2.jpg" class="img-fluid rounded-start card" width="200px" style="border: 1px solid black; height: 130px;">
                             </div>
                             <div class="col-md-8 align-content-center">
                                 <div class="card-body">
