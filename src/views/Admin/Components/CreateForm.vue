@@ -1,12 +1,13 @@
 <template>
-    <div class="container" style="width: 100%; height:500px; ">
-        <div style="width: 100%; height:500px;">
-            <div class="form-group row">
-                <label for="btitle" class="col-sm-2 col-form-label">분류</label>
-                <div class="col-sm-10">
-                    <input id="btitle" type="text" class="form-control" />
+    <form @submit.prevent="handleSubmit">
+        <div class="container" style="width: 100%; height:500px; ">
+            <div style="width: 100%; height:500px;">
+                <div class="form-group row">
+                    <label for="btitle" class="col-sm-2 col-form-label">분류</label>
+                    <div class="col-sm-10">
+                        <input id="btitle" type="text" class="form-control" />
+                    </div>
                 </div>
-            </div>
 
             <div class="form-group row mt-4">
                 <label for="btitle" class="col-sm-2 col-form-label">제목</label>
@@ -23,12 +24,12 @@
                 </div>
             </div>
 
-            <div class="form-group row mt-4">
-                <label for="battach" class="col-sm-2 col-form-label">첨부파일</label>
-                <div class="col-sm-10">
-                    <input id="battach" type="file" class="form-control-file" ref="battach" />
+                <div class="form-group row mt-4">
+                    <label for="battach" class="col-sm-2 col-form-label">첨부파일</label>
+                    <div class="col-sm-10">
+                        <input id="battach" type="file" class="form-control-file" ref="battach" />
+                    </div>
                 </div>
-            </div>
 
             <div class="form-group row">
                 <div class="col-sm-12 d-flex justify-content-end">
@@ -81,7 +82,7 @@ defineExpose({
 </script>
 
 <style scoped>
-.btn{
+.btn {
     background-color: #F37551;
     color: white;
 }
