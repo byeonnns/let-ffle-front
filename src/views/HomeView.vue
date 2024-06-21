@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="container">
-            <p class="h3 text-end">Cut-off Soon</p>
+            <p class="h3">Cut-off Soon</p>
             <hr class="border-3 opacity-100 opacity-100 mt-0" />
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
@@ -99,135 +99,28 @@
                 </div>
             </div>
         </div>
-        <div class="container d-flex mt-5">
-            <div class="col-12 col-lg-6 pe-2">
-                <table class="table table-borderless mb-0">
-                    <thead>
-                        <tr class="text-center">
-                            <td class="col-4 p-0 position-relative">
-                                <div class="position-absolute start-0 w-100 z-1 border align-content-center"
-                                    style="min-height: 40px;" :class="isSelected == 1 ? 'selected' : null"
-                                    @click="changeRankingTab(1)">금주의
-                                    응모왕!</div>
-                            </td>
-                            <td class="col-4 p-0 position-relative">
-                                <div class="position-absolute start-0 w-100 z-1 border align-content-center"
-                                    style="min-height: 40px;" :class="isSelected == 2 ? 'selected' : null"
-                                    @click="changeRankingTab(2)">금주의
-                                    베리왕!</div>
-                            </td>
-                            <td class="col-4 p-0 position-relative">
-                                <div class="position-absolute start-0 w-100 z-1 border align-content-center"
-                                    style="min-height: 40px;" :class="isSelected == 3 ? 'selected' : null"
-                                    @click="changeRankingTab(3)">금주의
-                                    미션왕!</div>
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="4">
-                                <div class="d-flex">
-                                    <div class="col">
-                                        <div class="position-relative">
-                                            <h5
-                                                class="position-absolute top-50 start-50 translate-middle-x text-white fw-bold z-1">
-                                                1</h5>
-                                            <Vue3Lottie :animationData="rank1crown"
-                                                style="margin-top: -10%; margin-bottom: -25%;" />
-                                            <h5 class="text-center text-nowrap mb-0">
-                                                <h6>{{ rank1.count }}</h6>{{ rank1.name }}
-                                            </h5>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="position-relative">
-                                            <h5
-                                                class="position-absolute top-50 start-50 translate-middle-x text-white fw-bold z-1">
-                                                2</h5>
-                                            <Vue3Lottie :animationData="rank2crown"
-                                                style="margin-top: -10%; margin-bottom: -25%;" />
-                                            <h5 class="text-center text-nowrap mb-0">
-                                                <h6>{{ rank2.count }}</h6>{{ rank2.name }}
-                                            </h5>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="position-relative">
-                                            <h5
-                                                class="position-absolute top-50 start-50 translate-middle-x text-white fw-bold z-1">
-                                                3</h5>
-                                            <Vue3Lottie :animationData="rank3crown"
-                                                style="margin-top: -10%; margin-bottom: -25%;" />
-                                            <h5 class="text-center text-nowrap mb-0">
-                                                <h6>{{ rank3.count }}</h6>{{ rank3.name }}
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-12 col-lg-6 ps-2">
-                <div class="p-5">
-                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="card border-0">
-                                    <img src="@/assets/sports.jpg" class="card-img" alt="...">
-                                    <div class="card-img-overlay d-flex flex-column">
-                                        <h2 class="card-title">Sports</h2>
-                                        <p class="card-text">
-                                            당신의 스포츠 팀,<br>
-                                            당신의 스타,<br>
-                                            당신의 보물들
-                                        </p>
-                                        <button class="card-text btn btn-dark mt-auto">바로가기</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card border-0">
-                                    <img src="@/assets/opera.jpg" class="card-img" alt="...">
-                                    <div class="card-img-overlay text-light d-flex flex-column">
-                                        <h2 class="card-title">Art</h2>
-                                        <p class="card-text text-end">
-                                            "잊지 못할 순간" "마법 같은 이야기" "환상의 멜로디"
-                                        </p>
-                                        <button class="card-text btn btn-light mt-auto">바로가기</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card border-0">
-                                    <img src="@/assets/shoes.jpg" class="card-img" alt="...">
-                                    <div class="card-img-overlay text-light d-flex flex-column">
-                                        <h2 class="card-title" style="background-color: rgba(255,92,53, 0.7);">Fashion</h2>
-                                        <p class="card-text h1" style="background-color: rgba(255,92,53, 0.7);">
-                                            스타일의 완성
-                                        </p>
-                                        <button class="card-text btn btn-warning mt-auto">바로가기</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+        <div class="container">
+            <div class="d-flex position-relative">
+                <div class="col-4 px-1">
+                    <img src="@/assets/baseball.jpg" class="w-100" alt="...">
+                    <div class="d-flex position-absolute top-0">
+                        <h1>Sports</h1>
+                    </div>
+                </div>
+                <div class="col-4 px-1 position-relative">
+                    <img src="@/assets/imyong.jpg" class="w-100" alt="...">
+                    <div class="d-flex position-absolute top-0">
+                        <h1>Art</h1>
+                    </div>
+                </div>
+                <div class="col-4 px-1 position-relative">
+                    <img src="@/assets/mainFashion.jpg" class="w-100" alt="...">
+                    <div class="d-flex position-absolute top-0">
+                        <h1>Fashion</h1>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Todo : 임시로 해놓음 컴포넌트화 할 것인지? -->
     </div>
 </template>
 
@@ -302,4 +195,24 @@ img {
     background-color: #F37551;
     color: white;
 }
+
+/*.card {
+    overflow: hidden;
+}
+
+.card-img {
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.1);
+}
+
+.card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card:hover .card-img-overlay {
+    background-color: rgba(0, 0, 0, 0);
+}*/
 </style>

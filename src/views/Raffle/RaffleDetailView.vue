@@ -11,7 +11,7 @@
                     <p class="text-secondary">Raffle > Fashion</p>
                     <div class="d-flex justify-content-between">
                         <h1 class="align-content-center">Raffle Name</h1>
-                        <div style="width:100px; height:100px" @click="likeIt()">
+                        <div @click="likeIt()">
                             <Vue3Lottie :animationData="HeartLottie" :loop="1" @on-animation-loaded="likeCheck"
                                 ref="likeAnimation" :autoPlay="false" />
                         </div>
@@ -27,7 +27,7 @@
                         <h1 class="mx-4">:</h1>
                         <h1 class="secondsCount">{{ serverTime.seconds }}</h1>
                     </div>
-                    <div class="d-flex flex-column border">
+                    <div class="d-flex flex-column border mt-5">
                         <div class="d-flex">
                             <button class="btn btn-dark flex-grow-1" :class="step !== 1 ? 'disabled' : ''">1.
                                 응모하기</button>
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="d-flex flex-column border">
+                    <div class="d-flex flex-column border mt-5">
                         <div class="d-flex">
                             <button class="btn btn-dark flex-grow-1">래플안내</button>
                             <button class="btn btn-dark flex-grow-1">미션안내</button>
@@ -118,7 +118,6 @@
                                 <br>
                                 나도 모르겠다 이젠
                             </p>
-                            <button class="btn mt-2 btn-outline-dark w-100" @click="raffleprocess()">응모하기</button>
                         </div>
                     </div>
                 </div>
@@ -207,6 +206,7 @@ function likeIt() {
     }
 }
 </script>
+
 <style scoped>
 .dayCount::after {
     font-size: 16px;
