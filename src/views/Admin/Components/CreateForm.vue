@@ -1,15 +1,18 @@
 <template>
-    <form @submit.prevent="handleSubmit">
-        <div class="container" style="width: 100%; height:500px; ">
+    <div class="container" style="width: 100%; height:500px; ">
+            <form @submit.prevent="handleSubmit">
             <div style="width: 100%; height:500px;">
                 <div class="form-group row">
                     <label for="btitle" class="col-sm-2 col-form-label">분류</label>
                     <div class="col-sm-10">
-                        <input id="btitle" type="text" class="form-control" />
+                        <select>
+                            <option>공지사항</option>
+                            <option>자주 묻는 질문</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="form-group row mt-4">
+                <div class="form-group row mt-2">
                     <label for="btitle" class="col-sm-2 col-form-label">제목</label>
                     <div class="col-sm-10">
                         <input id="btitle" type="text" class="form-control" v-model="notice.ntitle" />
@@ -30,6 +33,7 @@
                         <input id="battach" type="file" class="form-control-file" ref="battach" />
                     </div>
                 </div>
+                
 
                 <div class="form-group row">
                     <div class="col-sm-12 d-flex justify-content-end">
@@ -42,9 +46,9 @@
 
                 </div>
             </div>
+        </form>
             <RaffleToast ref="seeya" />
         </div>
-    </form>
 
 
 
@@ -54,25 +58,34 @@
 import { ref } from 'vue';
 import RaffleToast from '@/components/RaffleToast.vue';
 
+const seeya = ref("");
 const childText = ref('');
-const seetitle = ref("")
+const seetitle = ref("");
+const seeContent = ref("");
 const notice = ref({
     ntitle: "",
     ncontent: "",
     nattach: null
 
-})
+});
+
 
 function handleSubmit() {
     var total = true;
 
     var ntitlepattern = /^.{2,50}$/;
     var noticetitle = ntitlepattern.test(notice.value.ntitle)
-    if (noticetitle) {
-        seetitle.value = "";
-    } else if (!noticetitle)
-        total = false;
-    seetitle.value.showToast("입력을 해주세요")
+    if (!noticetitle) {
+        seeya.value.showToast("제목을 입력 해주세요");
+    } else  (noticetitle) 
+    seetitle.value = "";
+
+    var ncontentpattern = /^.{2,100}$/;
+    var ncontent = ncontentpattern.test(notice.value.ncontent)
+    if (!ncontent) {
+        seeya.value.showToast("내용을 입력 해주세요");
+    } else (ncontent)
+    seeContent.value =""
 }
 
 

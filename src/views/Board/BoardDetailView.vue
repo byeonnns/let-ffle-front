@@ -92,7 +92,7 @@ function ckeckComment() {
     if (!userComment) {
         look.value.showToast("댓글을 2자이상 100자 이내로 작성해주세요");
     } else {
-        chekcomment.value = ""
+        look.value.showToast("댓글이 입력 되었습니다.")
     }
 
 }
