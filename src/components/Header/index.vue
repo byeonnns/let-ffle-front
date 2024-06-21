@@ -11,7 +11,7 @@
                                 <p class="text-center" style="font-size: 22px;">베리 변동 내역</p>
                                 <div style="font-size: 10px; text-align: left;">
                                     ※ 베리 변동 내역은 최근 10개 까지만 조회됩니다. <br/>
-                                    ※ 자세한 내역은 마이페이지에서 확인 가능합니다. <button class="btn btn-sm" style="background-color: white; color: black;">→ 마이페이지 이동</button>
+                                    ※ 자세한 내역은 마이페이지에서 확인 가능합니다. <button class="btn btn-sm" style="background-color: white; color: black;"><RouterLink to="/Member/MyPage/MyBerryHistory">→ 마이페이지 이동</RouterLink></button>
                                 </div>
                                 <table class="p-0 table-bordered">
                                     <thead >

@@ -40,11 +40,11 @@
                 <div class="d-flex justify-content-between">
                     <input v-model="zonecode" id="maddress" type="text" class="border-0 border-bottom flex-grow-1 input"
                         placeholder="우편번호">
-                    <button class="btn text-white btn-outline-light btn-sm" @click="DaumPostcode">우편번호 찾기</button>
+                    <button class="btn text-white btn-outline-light btn-sm" @click="DaumPostcode" style="background-color: #F37551;">우편번호 찾기</button>
                 </div>
                 <input v-model="address" type="text" class="border-0 border-bottom mt-3 input" placeholder="주소">
                 <input v-model="addressDetail" type="text" class="border-0 border-bottom mt-3 input" placeholder="상세주소">
-                <button class="btn text-white btn-lg mt-5 w-100" :class="ispass ? '' : 'disabled'">가입하기</button>
+                <button class="btn text-white btn-lg mt-5 w-100" :class="ispass ? '' : 'disabled'" style="background-color: #F37551;">가입하기</button>
 
             </div>
             <RaffleModal ref="postcodeModal">

@@ -11,7 +11,7 @@
                 <label for="mpassword" class="mt-3">비밀번호</label>
                 <input v-model="mpassword" type="password" class="border-0 border-bottom input" @input="passwordCheck(onBtn)">
                 <p class="m-0" style="color: #FF5C35;">{{ passwordError }}</p>
-                <button class="btn text-white btn-lg mt-4" :class="isPass ? '' : 'disabled'">로그인</button>
+                <button class="btn text-white btn-lg mt-4" :class="isPass ? '' : 'disabled'" style="background-color: #F37551;">로그인</button>
                 <div class="row mt-3 text-center">
                     <div class="col-4 border-end">
                         <RouterLink to="/join">이메일 가입</RouterLink>
