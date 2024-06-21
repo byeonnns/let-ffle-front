@@ -102,20 +102,22 @@
         <div class="container">
             <div class="d-flex position-relative">
                 <div class="col-4 px-1">
-                    <img src="@/assets/baseball.jpg" class="w-100" alt="...">
-                    <div class="d-flex position-absolute top-0">
+                    <img src="@/assets/badminton.png" class="w-100" alt="...">
+                    <div class="d-flex position-absolute bottom-0">
                         <h1>Sports</h1>
+                        entry now
                     </div>
                 </div>
                 <div class="col-4 px-1 position-relative">
-                    <img src="@/assets/imyong.jpg" class="w-100" alt="...">
-                    <div class="d-flex position-absolute top-0">
+                    <img src="@/assets/mic.png" class="w-100" alt="...">
+                    <div class="d-flex position-absolute bottom-0">
                         <h1>Art</h1>
+                        
                     </div>
                 </div>
                 <div class="col-4 px-1 position-relative">
-                    <img src="@/assets/mainFashion.jpg" class="w-100" alt="...">
-                    <div class="d-flex position-absolute top-0">
+                    <img src="@/assets/shoes2.png" class="w-100" alt="...">
+                    <div class="d-flex position-absolute bottom-0">
                         <h1>Fashion</h1>
                     </div>
                 </div>
