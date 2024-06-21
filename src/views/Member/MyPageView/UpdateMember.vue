@@ -31,7 +31,7 @@
                                         </div>
                                         <div class="td">
                                             <button @click="NickChModal" class="btn btn-ch btn-outline-light ms-4"
-                                                style="width: 120px; font-size: 15px;">닉네임 변경</button>
+                                                style="width: 100px; font-size: 15px;">변경</button>
                                         </div>
                                     </div>
                                     <div class="tr">
@@ -43,8 +43,7 @@
                                         </div>
                                         <div class="td">
                                             <button class="btn btn-ch btn-outline-light ms-4"
-                                                style="width: 120px; font-size: 15px;" @click="seeModal">비밀번호
-                                                변경</button>
+                                                style="width: 100px; font-size: 15px;" @click="seeModal">변경</button>
                                         </div>
                                     </div>
                                     <div class="tr">
@@ -59,7 +58,7 @@
                                         </div>
                                         <div class="td">
                                             <button class="btn btn-ch btn-outline-light ms-4"
-                                                style="width: 120px; font-size: 15px;" @click="lookModal">번호 변경</button>
+                                                style="width: 100px; font-size: 15px;" @click="lookModal">변경</button>
                                         </div>
                                     </div>
                                     <div class="tr">
@@ -71,13 +70,12 @@
                                                 <div>
                                                     <div class="mt-2">
                                                         <input style="width: 90px;" v-model="changePost" class="mb-2 me-2 text-center" type="text"
-                                                            placeholder="우편 번호">
+                                                            placeholder="우편번호" readonly>
                                                         <input v-model="changeAdr" class="mb-2" type="text"
-                                                            placeholder="도로명 주소">
+                                                            placeholder="도로명 주소" readonly>
                                                             <button class="btn btn-outline-light ms-4"
-                                                        style="font-size: 15px; width: 110px;" @click="addrModal">주소
-                                                        변경</button> <br />
-                                                        <input style="width: 398px;" v-model="changeReAdr" type="text" placeholder="상세 주소">
+                                                        style="font-size: 15px; width: 100px;" @click="addrModal">변경</button> <br />
+                                                        <input style="width: 398px;" v-model="changeReAdr" type="text" placeholder="상세 주소" readonly>
                                                     </div>
                                                 </div>
                                             </div>
