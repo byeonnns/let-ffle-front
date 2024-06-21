@@ -40,16 +40,16 @@
             </div>
         </div>
 
+
         <div class="form-group row mt-5">
             <div style="margin-bottom: 30px">
                 <textarea id="bcontent" type="text" class="form-control" placeholder="댓글을 입력하세요."
-                    style="height:100px;"></textarea>
+                    v-model="board.bcomment" style="height:100px;"></textarea>
             </div>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-outline-light rounded-0">댓글작성</button>
+            <button class="btn btn-outline-light rounded-0" @click="ckeckComment">댓글작성</button>
         </div>
-
 
         <div style="width: 100%;">
             <!-- border:1px solid black -->
@@ -70,6 +70,7 @@
             </div>
         </div>
 
+        <RaffleToast ref="look" />
 
     </div>
 
@@ -77,6 +78,25 @@
 
 
 <script setup>
+import RaffleToast from '@/components/RaffleToast.vue';
+import { ref } from "vue";
+
+
+const board = ref({ bcomment: "" });
+const look = ref(null);
+const chekcomment = ref(null);
+
+function ckeckComment() {
+    var commentPattern = /^.{2,100}$/;
+    var userComment = commentPattern.test(board.value.bcomment)
+    if (!userComment) {
+        look.value.showToast("댓글을 2자이상 100자 이내로 작성해주세요");
+    } else {
+        chekcomment.value = ""
+    }
+
+}
+
 
 </script>
 
@@ -100,7 +120,8 @@
     height: 30px;
 
 }
-.btn{
+
+.btn {
     background-color: #F37551;
     color: white;
 }

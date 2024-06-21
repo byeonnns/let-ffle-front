@@ -54,8 +54,8 @@ function handleSubmit() {
         checkTitle.value = "";
     } else if (!usertitle) {
         total = false;
-        seeya.value.showToast("제목을 작성 해주세요");
-        // checkTitle.value = "제목을 작성 해주세요";
+        seeya.value.showToast("제목을 2자 이상 작성 해주세요");
+       
     }
 
     var contentPattern = /^.{10,1000}$/;
@@ -63,9 +63,8 @@ function handleSubmit() {
     console.log(writeFormRef.value.board.bcontent);
     if (!usercontent) {
         total = false;
-        seeya.value.showToast("내용을 작성 해주세요");
-        // 토스트는 나오는 시작점이 밑에부터 시작하게된다.
-        //  checkContent.value = "용을 작성 해주세요";
+        seeya.value.showToast("내용을 10자 이상 작성 해주세요");
+      
     }
 }
 
