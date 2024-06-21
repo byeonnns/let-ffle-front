@@ -63,7 +63,7 @@
                             </li>
                             <li class="nav-item">
                                 <RouterLink to="/Board/BoardList" class="nav-link"
-                                    :class="{ 'active': nowPath === '/Board/BoardList' }">COMUNNITY</RouterLink>
+                                    :class="{ 'active': nowPath === '/Board/BoardList' }">COMMUNITY</RouterLink>
                             </li>
                         </ul>
                     </div>

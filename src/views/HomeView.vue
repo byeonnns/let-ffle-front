@@ -132,24 +132,32 @@
                 </div>
             </div>
         </div>
-        <div class='container d-flex'>
-            <div class="col">
-                <table class="table table-bordered mb-0">
-                    <tbody>
+        <div class="container d-flex mt-5">
+            <div class="col pe-2">
+                <table class="table table-borderless mb-0">
+                    <thead>
                         <tr class="text-center">
                             <td class="col-4 p-0 position-relative">
-                                <button class="position-absolute btn start-0 w-100 z-1" @click="changeRankingTab(1)">금주의
-                                    응모왕!</button>
+                                <div class="position-absolute start-0 w-100 z-1 border align-content-center"
+                                    style="min-height: 40px;" :class="isSelected == 1 ? 'selected' : null"
+                                    @click="changeRankingTab(1)">금주의
+                                    응모왕!</div>
                             </td>
                             <td class="col-4 p-0 position-relative">
-                                <button class="position-absolute btn start-0 w-100 z-1" @click="changeRankingTab(2)">금주의
-                                    베리왕!</button>
+                                <div class="position-absolute start-0 w-100 z-1 border align-content-center"
+                                    style="min-height: 40px;" :class="isSelected == 2 ? 'selected' : null"
+                                    @click="changeRankingTab(2)">금주의
+                                    베리왕!</div>
                             </td>
                             <td class="col-4 p-0 position-relative">
-                                <button class="position-absolute btn start-0 w-100 z-1" @click="changeRankingTab(3)">금주의
-                                    미션왕!</button>
+                                <div class="position-absolute start-0 w-100 z-1 border align-content-center"
+                                    style="min-height: 40px;" :class="isSelected == 3 ? 'selected' : null"
+                                    @click="changeRankingTab(3)">금주의
+                                    미션왕!</div>
                             </td>
                         </tr>
+                    </thead>
+                    <tbody>
                         <tr>
                             <td colspan="4">
                                 <div class="d-flex">
@@ -195,8 +203,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col">
-
+            <div class="col ps-2">
+                
             </div>
         </div>
         <!-- Todo : 임시로 해놓음 컴포넌트화 할 것인지? -->
@@ -209,6 +217,8 @@ import vue3lottie from 'vue3-lottie';
 import rank1crown from '@/assets/lottie/gold_crown.json'
 import rank2crown from '@/assets/lottie/silver_crown.json'
 import rank3crown from '@/assets/lottie/bronze_crown.json'
+
+const isSelected = ref(1);
 
 const rank1 = ref({
     count: 100 + "회",
@@ -226,6 +236,7 @@ const rank3 = ref({
 });
 
 function changeRankingTab(btnNum) {
+    isSelected.value = btnNum;
     if (btnNum === 1) {
         rank1.value.count = 100 + "회";
         rank1.value.name = "감기걸린사람";
@@ -262,5 +273,10 @@ img {
     font-size: 13px;
     margin-bottom: 0;
     box-sizing: border-box;
+}
+
+.selected {
+    background-color: #F37551;
+    color: white;
 }
 </style>
