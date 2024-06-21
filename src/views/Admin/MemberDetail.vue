@@ -15,9 +15,9 @@
                         <thead>
                             <tr class="d-none d-md-table-row text-center">
                                 <th class="d-none d-md-table-cell" style="width: 11em;"><span>ID</span></th>
-                                <th class="d-none d-md-table-cell" style="width: 8em;"><span>이름</span></th>
-                                <th class="d-none d-md-table-cell" style="width: 4em;"><span>전화번호</span></th>
-                                <th class="d-none d-md-table-cell" style="width: 6em;"><span>주소</span></th>
+                                <th class="d-none d-md-table-cell" style="width: 4em;"><span>이름</span></th>
+                                <th class="d-none d-md-table-cell" style="width: 7em;"><span>전화번호</span></th>
+                                <th class="d-none d-md-table-cell" style="width: 7em;"><span>주소</span></th>
                                 <th class="d-none d-md-table-cell" style="width: 6em;"><span>보유 베리 수</span></th>
                             </tr>
                         </thead>
