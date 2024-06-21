@@ -7,8 +7,8 @@
             <div class="card flex-grow-1 my-4">
                 <div class="card-body d-flex pb-2">
                     <RouterLink to="/Member/MyPage/UpdateMember" class="align-content-center">
-                        <div class="btn text-center px-3 rounded-2">
-                            <strong>신우호 [닉네임]</strong>
+                        <div class="btn text-center px-3">
+                            <strong>신** [닉네임]</strong>
                             <h6 class="mt-2 m-0">asd@naver.com</h6>
                         </div>
                     </RouterLink>
@@ -91,7 +91,6 @@
 .circle-border {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
     border: 1px solid black;
     overflow: hidden;
 }
@@ -108,5 +107,11 @@
 
 td {
     align-content: center;
+}
+
+.btn {
+    color: white;
+    background-color: #F37551;
+    border-radius: 0px;
 }
 </style>

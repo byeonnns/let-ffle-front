@@ -471,6 +471,7 @@ input[type="password"] {
     height: 46px;
     background-color: #F37551;
     color: white;
+    border-radius: 0px;
 }
 
 /*

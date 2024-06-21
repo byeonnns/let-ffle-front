@@ -87,5 +87,6 @@ function deleteBtn() {
 
 .btn {
     background-color: #F37551;
+    border-radius: 0px;
 }
 </style>

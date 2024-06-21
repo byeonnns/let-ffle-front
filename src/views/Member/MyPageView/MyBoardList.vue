@@ -56,5 +56,6 @@
 
 .btn {
     background-color: #FF5C35;
+    border-radius: 0px;
 }
 </style>

@@ -51,5 +51,6 @@ td {
 .btn{
     background-color: #F37551;
     color: white;
+    border-radius: 0px;
 }
 </style>

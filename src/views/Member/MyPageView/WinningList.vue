@@ -151,7 +151,7 @@ function inputAddress() {
     width: 100px;
     height: 40px;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 0px;
     background-color: #F37551;
     color: white;
 }
