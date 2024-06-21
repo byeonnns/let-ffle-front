@@ -31,10 +31,6 @@ const routes = [
             component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/CreateNotice.vue'),
         },
         {
-            path: 'CreateFaq',
-            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/CreateFaq.vue'),
-        },
-        {
             path: 'InquiryList',
             component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/InquiryList.vue'),
         },

@@ -207,7 +207,7 @@ const mnickCheck = (onbtn) => {
 }
 
 function onbtn() {
-    console.log(userMid, userPassword);
+    // console.log(userMid, userPassword);
     if (userMid && userPassword && userMname && userPhone && userMnickname) {
         ispass.value = true
     } else {

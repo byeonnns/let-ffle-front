@@ -32,12 +32,12 @@
                         <div class=" form-group row mt-3">
                             <div style="margin-bottom: 30px">
                                 <textarea id="bcontent" type="text" class="form-control" placeholder="답변을 입력하세요."
-                                    style="height:100px;"></textarea>
+                                    style="height:100px;" v-model="Inquiry.Icomment"></textarea>
                             </div>
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <RouterLink to="/Admin/InquiryList">
-                                <button class="btn btn-outline-light rounded-0">등록</button>
+                                <button class="btn btn-outline-light rounded-0" @click="commentSubmit()">등록</button>
                             </RouterLink>
                         </div>
                     </div>
@@ -106,11 +106,30 @@
                 </div>
             </div>
         </div>
-
+        <RaffleToast ref="look" />
     </div>
 </template>
 
 <script setup>
+import { ref } from "vue"
+import RaffleToast from '@/components/RaffleToast.vue';
+
+const look = ref(null);
+const Inquiry = ref({
+    Icomment: ""
+});
+
+function commentSubmit() {
+    var icommentPattern = /^.{2,100}$/;
+    var adminComment = icommentPattern.test(Inquiry.value.Icomment)
+    if (!adminComment) {
+        look.value.showToast("답변을 다시 입력해주세요")
+    } else {
+        look.value.showToast("답변이 완료 되었습니다.")
+    }
+}
+
+
 
 </script>
 
@@ -168,7 +187,8 @@
 .spanded {
     color: black;
 }
-.btn{
+
+.btn {
     background-color: #F37551;
     color: white;
 }
