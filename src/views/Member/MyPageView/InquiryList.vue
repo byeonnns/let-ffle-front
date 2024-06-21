@@ -48,4 +48,8 @@
 td {
     text-align: center;
 }
+.btn{
+    background-color: #F37551;
+    color: white;
+}
 </style>

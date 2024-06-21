@@ -470,6 +470,7 @@ input[type="password"] {
     width: 60px;
     height: 46px;
     background-color: #F37551;
+    color: white;
 }
 
 /*
