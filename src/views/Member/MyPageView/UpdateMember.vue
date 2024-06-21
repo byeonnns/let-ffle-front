@@ -466,7 +466,7 @@ input[type="password"] {
 .btn {
     width: 60px;
     height: 46px;
-    background-color: #FF5C35;
+    background-color: #F37551;
 }
 
 /*
