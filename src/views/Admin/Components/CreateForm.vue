@@ -4,7 +4,7 @@
             <div style="width: 100%; height:500px;">
                 <div class="form-group row">
                     <label for="btitle" class="col-sm-2 col-form-label">분류</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-10 align-content-center">
                         <select>
                             <option>공지사항</option>
                             <option>자주 묻는 질문</option>

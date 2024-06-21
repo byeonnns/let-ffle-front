@@ -38,7 +38,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn btn-sm rounded-0">바로가기</button>
+                            <button class="btn btn-sm rounded-0"><RouterLink to="/Raffle?rcategory=sports" class="text-white">바로가기</RouterLink></button>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn btn-sm rounded-0">바로가기</button>
+                            <button class="btn btn-sm rounded-0"><RouterLink to="/Raffle?rcategory=art" class="text-white">바로가기</RouterLink></button>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn btn-sm rounded-0">바로가기</button>
+                            <button class="btn btn-sm rounded-0"><RouterLink to="/Raffle?rcategory=fashion" class="text-white">바로가기</RouterLink></button>
                         </div>
                     </div>
                 </div>

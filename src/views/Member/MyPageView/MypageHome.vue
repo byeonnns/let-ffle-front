@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         
-                        <div class="mt-3">
+                        <div class="mt-3 p-3">
                             <span class="fw-bold h5">※ 베리 획득 방법</span> <br/>
                             <span> - 매일 첫 로그인 시 베리 1개를 획득할 수 있습니다.</span> <br/>
                             <span> - 하루에 3개 래플에 응모하면 베리 1개를 획득할 수 있습니다. (매일 0시 기준)</span> <br/>

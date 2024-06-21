@@ -513,4 +513,8 @@ input[type="password"] {
     align-content: center;
 
 }
+
+label {
+    padding : 0;
+}
 </style>
