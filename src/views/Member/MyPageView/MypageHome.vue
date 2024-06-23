@@ -5,7 +5,7 @@
                 <div class="align-content-center d-flex justify-content-between p-3 ms-4">
                     <span>
                         <h6> <h5 style="display: inline;">영바오</h5> 님, 안녕하세요!</h6>
-                        <strong class="mt-2 m-0">오늘의 래플 참여 가능 횟수가 1 회 남았습니다.</strong>
+                        <strong class="mt-2 m-0">오늘의 래플 참여 가능 횟수가 <span style="color: #F37551;">1</span> 회 남았습니다.</strong>
                     </span>
                     <RouterLink to="/Member/MyPage/UpdateMember"><button class="btn btn-outline-light">회원 정보 수정</button></RouterLink>
                 </div>

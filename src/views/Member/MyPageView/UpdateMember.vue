@@ -71,12 +71,12 @@
                                                     <div class="mt-2">
                                                         <input style="width: 90px;" v-model="changePost" class="mb-2 me-2 text-center" type="text"
                                                             placeholder="우편번호" readonly>
-                                                        <input v-model="changeAdr" class="mb-2" type="text"
-                                                            placeholder="도로명 주소" readonly>
+                                                            <input style="width: 200px;" v-model="changeReAdr" type="text" placeholder="상세 주소" readonly>
                                                             <button class="btn btn-outline-light ms-4"
                                                         style="font-size: 15px; width: 100px;" @click="addrModal">변경</button> <br />
-                                                        <input style="width: 398px;" v-model="changeReAdr" type="text" placeholder="상세 주소" readonly>
-                                                    </div>
+                                                        </div>
+                                                        <input v-model="changeAdr" style="width: 422px;" class="mb-2" type="text"
+                                                            placeholder="도로명 주소" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -104,7 +104,8 @@
                     <label>변경할 닉네임</label>
                     <input v-model="mNickChange" type="text" class="input w-100" style="height: 40px;"
                         @input="nickNameCheck">
-                    <span style="color: red;">{{ falseNickname }}</span>
+                    <span v-if="NickResult == false" style="color: red;">{{ falseNickname }}</span>
+                    <span v-if="NickResult == true" style="color: green;">{{ falseNickname }}</span>
                 </div>
             </template>
 
@@ -134,14 +135,16 @@
                         <label>새 비밀번호</label>
                         <input v-model="NewPassword" type="password" placeholder="" class="input" style=""
                             @input="passwordCheck">
-                        <span style="color: red;">{{ falsePassword }}</span>
+                        <span v-if="passwordResult == false" style="color: red;">{{ falsePassword }}</span>
+                        <span v-if="passwordResult == true" style="color: green;">{{ falsePassword }}</span>
                     </div>
 
                     <div class="div_form row">
                         <label>비밀번호 확인</label>
                         <input v-model="RePassword" type="password" placeholder="" class="input" style=""
                             @input="passwordReCheck">
-                        <span style="color: red;">{{ samePassword }}</span>
+                        <span v-if="RepassowrdResult == false" style="color: red;">{{ samePassword }}</span>
+                        <span v-if="RepassowrdResult == true" style="color: green;">{{ samePassword }}</span>
                     </div>
                 </div>
             </template>
@@ -164,7 +167,8 @@
                         <label>새 휴대폰 번호</label>
                         <input v-model="changePhoneModal" type="text" placeholder="010-xxxx-xxxx" class="input" style=""
                             @input="PhoneNumCheck">
-                        <span style="color: red;">{{ falsePhone }}</span>
+                        <span v-if="phoneResult == false" style="color: red;">{{ falsePhone }}</span>
+                        <span v-if="phoneResult == true" style="color: green;">{{ falsePhone }}</span>
                     </div>
                 </div>
             </template>
@@ -253,12 +257,14 @@ const nick = ref(''); // 닉네임 양방향 상태 정의
 const mNickChange = ref(''); // Modal 닉네임 양방향 상태 정의
 const falseNickname = ref(''); // 닉네임이 잘못되었을 때 상태 정의
 
+
 // 닉네임 유효성 검사 ( 2자 이상 8자 이하 영문 + 숫자 )
+let NickResult = false;
 function changeNickname() {
     const mNickChangePattern = new RegExp("[가-힣a-zA-Z0-9_-]{2,15}");
     if (mNickChangePattern.test(mNickChange.value)) {
         nick.value = mNickChange.value;
-        falseNickname.value = '';
+        falseNickname.value = '올바름';
         NickNameModal.value.hideModal();
         mNickChange.value = null;
     } else if (mNickChange.value == '') {
@@ -273,11 +279,14 @@ const nickNameCheck = () => {
     const mNickChangePattern = new RegExp("[가-힣a-zA-Z0-9_-]{2,15}");
     if (mNickChangePattern.test(mNickChange.value)) {
         nick.value = mNickChange.value;
-        falseNickname.value = '';
+        falseNickname.value = '닉네임 형식에 맞게 입력하셨습니다.';
+        NickResult = true;
     } else if (mNickChange.value == '') {
         falseNickname.value = '닉네임을 입력해주세요.';
+        NickResult = false;
     } else {
         falseNickname.value = '닉네임 형식이 올바르지 않습니다.';
+        NickResult = false;
     }
 }
 
@@ -316,26 +325,36 @@ function changePassword() {
     }
 }
 
+let passwordResult = false;
 const passwordCheck = () => {
     const NewPasswordPettern = new RegExp("(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}");
     if (NewPassword.value.length == 0) {
         falsePassword.value = '비밀번호를 입력해 주세요.';
+        passwordResult = false;
     } else if (NewPassword.value.length < 8 || NewPassword.value.length > 15 || !NewPasswordPettern.test(NewPassword.value)) {
         falsePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
+        passwordResult = false;
     } else {
-        falsePassword.value = '';
+        falsePassword.value = '비밀번호를 올바르게 입력하셨습니다.';
+        passwordResult = true;
     }
 }
+
+let RepassowrdResult = false;
 const passwordReCheck = () => {
     if (RePassword.value.length == 0) {
         samePassword.value = '비밀번호를 입력해주세요.';
+        RepassowrdResult = false;
     } else if (NewPassword.value != RePassword.value) {
         samePassword.value = '비밀번호가 일치하지 않습니다.';
+        RepassowrdResult = false;
     } else if (RePassword.value.length < 8 || RePassword.value.length > 15) {
         samePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
+        RepassowrdResult = false;
     } else {
-        samePassword.value = '';
+        samePassword.value = '비밀번호가 일치합니다.';
         changePw.value = NewPassword.value;
+        RepassowrdResult = true;
         // PWModal.value.hideModal();
     }
 }
@@ -345,7 +364,7 @@ const PWCModal = ref(null);
 const changePhone = ref('');
 const changePhoneModal = ref('');
 const falsePhone = ref('');
-
+let phoneResult = false;
 // 휴대폰 번호 유효성 검사
 function changePhNum() {
     const changePhoneModalPattern = new RegExp("010-\\d{4}-\\d{4}");
@@ -365,12 +384,15 @@ const PhoneNumCheck = () => {
     const changePhoneModalPattern = new RegExp("010-\\d{4}-\\d{4}");
     if (changePhoneModalPattern.test(changePhoneModal.value)) {
         changePhone.value = changePhoneModal.value;
-        falsePhone.value = '';
+        falsePhone.value = '번호 형식에 맞게 입력하셨습니다.';
+        phoneResult = true;
         // PWCModal.value.hideModal();
     } else if (changePhoneModal.value == '') {
         falsePhone.value = '휴대폰 번호를 입력해주세요.';
+        phoneResult = false;
     } else {
         falsePhone.value = '번호 형식에 맞춰 입력해주세요.';
+        phoneResult = false;
     }
 }
 const changeAdr = ref('');
