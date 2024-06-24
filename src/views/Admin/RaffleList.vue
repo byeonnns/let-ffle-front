@@ -4,41 +4,33 @@
             <div style="border-bottom: 3px solid #F37551;">
                 <h3>래플 목록 조회</h3>
             </div>
-            <table class="table table-col mb-4">
-                <colgroup>
-                    <col style="width: 14.2%">
-                    <col style="width: 14.2%">
-                    <col style="width: 14.2%">
-                    <col style="width: 10.2%">
-                    <col style="width: 11%">
-                </colgroup>
+            <table class="table text-center">
                 <thead>
                     <tr>
                         <th scope="col">번호</th>
                         <th scope="col">래플 이름</th>
-                        <th scope="col">응모 기간</th>
-                        <th scope="col">당첨자</th>
-                        <th scope="col">수정</th>
+                        <th scope="col">개시일</th>
+                        <th scope="col">마감일</th>
+                        <th scope="col">상태</th>
+                        <th scope="col">관리</th>
                     </tr>
                 </thead>
-                <tbody class="ordtable-tbody">
+                <tbody>
                     <tr>
                         <td>
-                            <div class="n-prd-row">
-                                <RouterLink to="/">1</RouterLink>
-                            </div>
+                            <RouterLink to="/">1</RouterLink>
                         </td>
                         <td>
-                            <div class="n-prd-row">
-                                <RouterLink to="/">래플1</RouterLink>
-                            </div>
+                            <RouterLink to="/">더그레이티스트24 SUMMER 드랍 ~50%</RouterLink>
                         </td>
                         <td>
-                            <fmt:formatDate value="" pattern="yyyy-MM-dd" />2024-06-04 ~
+                            2024-06-04
+                        </td>
+                        <td>
                             2024-06-10
                         </td>
                         <td>
-                            발표 예정
+                            진행 중
                         </td>
                         <td>
                             <RouterLink to="/Admin/CreateRaffle"><button
@@ -49,25 +41,23 @@
                     </tr>
                     <tr>
                         <td>
-                            <div class="n-prd-row">
-                                <RouterLink to="/">2</RouterLink>
-                            </div>
+                            <RouterLink to="/">2</RouterLink>
                         </td>
                         <td>
-                            <div class="n-prd-row">
-                                <RouterLink to="/">래플2</RouterLink>
-                            </div>
+                            <RouterLink to="/">더그레이티스트24 SUMMER 드랍 ~50%</RouterLink>
                         </td>
                         <td>
-                            <fmt:formatDate value="" pattern="yyyy-MM-dd" />2024-06-04 ~
+                            2024-06-04
+                        </td>
+                        <td>
                             2024-06-10
                         </td>
                         <td>
-                            발표 완료
+                            종료
                         </td>
                         <td>
-                            <RouterLink to="/Admin/WinnerList"><button class="btn update-raffle-btn rounded-0">당첨자
-                                    확인</button>
+                            <RouterLink to="/Admin/WinnerList"><button
+                                    class="btn rounded-0">확인</button>
                             </RouterLink>
                         </td>
                     </tr>
@@ -133,18 +123,6 @@ function deleteRaffle() {
 </script>
 
 <style scoped>
-.heading-area {
-    border-bottom: 1px solid #ebebeb;
-}
-
-.content-area {
-    margin-top: 30px;
-}
-
-.btn-modal {
-    width: 70px;
-}
-
 td {
     align-content: center;
 }
@@ -152,6 +130,5 @@ td {
 .btn {
     background-color: #F37551;
     color: white;
-
 }
 </style>
