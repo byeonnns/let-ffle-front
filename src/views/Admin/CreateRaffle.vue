@@ -52,6 +52,7 @@
                                 <div class="item item_attach">
                                     <div class="img_box d-flex">
                                         <div id="defaultImg">image</div>
+                                        <img :src="headImgUrl">
                                     </div>
 
                                     <div class="item_edit">
@@ -61,7 +62,7 @@
                                             <div class="attach_top">
                                                 <label class="attach_img" for="prdimgrep1attach">사진
                                                     첨부</label>
-                                                <input class="input_file" id="prdimgrep1attach" type="file" multiple>
+                                                <input class="input_file" id="prdimgrep1attach" type="file" ref="prdimgrep1attach" @change="imgChange">
                                             </div>
                                             <div class="attached" data-file="prdimgrep1attach" id="inputUploadFile">
                                             </div>
@@ -89,7 +90,8 @@
                                             <div class="attach_top">
                                                 <label class="attach_img" for="prdimgdetailattach">사진
                                                     첨부</label>
-                                                <input class="input_file" id="prdimgdetailattach" name="prdimgdetailattach" type="file">
+                                                <input class="input_file" id="prdimgdetailattach"
+                                                    name="prdimgdetailattach" type="file">
                                             </div>
                                             <div class="attached" data-file="prdimgdetailattach" id="inputUploadFile">
                                             </div>
@@ -224,6 +226,16 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+const headImgUrl = ref(null);
+const prdimgrep1attach = ref(null);
+
+function imgChange() {
+    headImgUrl.value = URL.createObjectURL(prdimgrep1attach.value.files[0]);
+}
+
+
 </script>
 
 <style scoped>
