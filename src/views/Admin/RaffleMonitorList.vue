@@ -2,7 +2,7 @@
     <div>
         <div class="d-flex flex-column">
             <div style="border-bottom: 3px solid #F37551;">
-                <h3>래플 리스트</h3>
+                <h3>래플 모니터</h3>
             </div>
             <table class="table text-center">
                 <thead>
@@ -33,10 +33,8 @@
                             진행 중
                         </td>
                         <td>
-                            <RouterLink to="/Admin/CreateRaffle"><button
-                                    class="btn update-raffle-btn rounded-0">수정</button>
+                            <RouterLink to="/Admin/RaffleMonitorDetail"><button class="btn rounded-0">모니터링</button>
                             </RouterLink>
-                            <button class="btn delete-raffle-btn ms-3 rounded-0" @click="deleteRaffle">삭제</button>
                         </td>
                     </tr>
                     <tr>
@@ -56,21 +54,15 @@
                             종료
                         </td>
                         <td>
-                            <RouterLink to="/Admin/WinnerList"><button class="btn rounded-0">확인</button>
+                            <RouterLink to="/Admin/RaffleMonitorDetail"><button class="btn rounded-0">모니터링</button>
                             </RouterLink>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="d-flex flex-column">
-            <div class="text-end">
-                <button class="btn btn-outline-ligh rounded-0" style="background-color: #F37551;">
-                    <RouterLink to="/Admin/CreateRaffle" style="color: white;">등록
-                    </RouterLink>
-                </button>
-            </div>
-            <div class="text-center">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex flex-grow-1 justify-content-center">
                 <button class="btn btn-outline-light btn-sm me-1"
                     style="background-color: white; color:black;">처음</button>
                 <button class="btn btn-outline-light btn-sm me-3"
@@ -90,34 +82,11 @@
                 <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">맨끝</button>
             </div>
         </div>
-        <RaffleModal ref="deleteModal">
-            <template v-slot:modalHeader>
-                알림
-            </template>
-            <template v-slot:modalBody>
-                <div class="ms-3" style="font-size: 20px;">
-                    정말 삭제하시겠습니까?
-                </div>
-            </template>
-            <template v-slot:modalFooter>
-                <button type="button" class="btn" data-bs-dismiss="modal">예</button>
-                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">아니오</button>
-            </template>
-        </RaffleModal>
     </div>
 </template>
 
 <script setup>
-import RaffleModal from '@/components/RaffleModal.vue';
 import { ref } from 'vue';
-const deleteModal = ref(null);
-
-function updateRaffle() {
-}
-
-function deleteRaffle() {
-    deleteModal.value.showModal();
-}
 </script>
 
 <style scoped>

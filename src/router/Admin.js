@@ -4,39 +4,43 @@ const routes = [
         component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin'),
         children: [{
             path: '',
-            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/AdminMain.vue'),
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/AdminMain.vue')
         },
         {
             path: 'MemberList',
-            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/MemberList.vue'),
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/MemberList.vue')
         },
         {
             path: 'MemberDetail',
-            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/MemberDetail.vue'),
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/MemberDetail.vue')
         },
         {
             path: 'CreateRaffle',
-            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/CreateRaffle.vue'),
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/CreateRaffle.vue')
         },
         {
             path: 'RaffleList',
-            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/RaffleList.vue'),
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/RaffleList.vue')
         },
         {
             path: 'WinnerList',
-            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/WinnerList.vue'),
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/WinnerList.vue')
         },
         {
             path: 'CreateNotice',
-            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/CreateNotice.vue'),
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/CreateNotice.vue')
         },
         {
             path: 'InquiryList',
-            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/InquiryList.vue'),
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/InquiryList.vue')
         },
         {
-            path: 'RaffleMonitor',
-            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/RaffleMonitor.vue'),
+            path: 'RaffleMonitorList',
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/RaffleMonitorList.vue')
+        },
+        {
+            path: 'RaffleMonitorDetail',
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/RaffleMonitorDetail.vue')
         }
         
     ]

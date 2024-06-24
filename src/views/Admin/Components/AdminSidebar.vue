@@ -5,7 +5,7 @@
             <h5>래플 관리</h5>
             <div class="d-flex flex-column bg-light" style="margin-bottom: 30px;">
                 <RouterLink to="/Admin/RaffleList" class="ps-2 mt-3">래플 리스트</RouterLink>
-                <RouterLink to="/Admin/RaffleMonitor" class="ps-2 mt-2 mb-3">래플 모니터</RouterLink>
+                <RouterLink to="/Admin/RaffleMonitorList" class="ps-2 mt-2 mb-3">래플 모니터</RouterLink>
             </div>
             <h5>회원 관리</h5>
             <div class="d-flex flex-column bg-light" style="margin-bottom: 30px;">
