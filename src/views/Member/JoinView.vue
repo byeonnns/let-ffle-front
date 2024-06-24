@@ -2,65 +2,68 @@
     <div class="container-lg">
         <div class="d-flex justify-content-center">
             <!--아이디(이메일), 비밀번호, 이름, 주민번호, 전화번호, 주소를 입력받는다.-->
-             <form @submit.prevent="handleSubmit"> 
-            <div class="d-flex flex-column" :style="responsiveSize">
-                <p class="text-center fw-bold fst-italic" style="font-size:50px">Let-<span
-                        style="color:#FF5C35">FFle</span></p>
+            <form @submit.prevent="handleSubmit">
+                <div class="d-flex flex-column" :style="responsiveSize">
+                    <p class="text-center fw-bold fst-italic" style="font-size:50px">Let-<span
+                            style="color:#FF5C35">FFle</span></p>
 
-                <label for="memail mb-2">이메일 주소*</label>
-                <div class="d-flex justify-content-between">
-                    <input id="memail" type="email" class="border-0 border-bottom flex-grow-1 input"
-                        v-model="member.mid" @input="midCheck(onbtn)">
+                    <label for="memail">이메일 주소*</label>
+                    <div class="d-flex justify-content-between">
+                        <input id="memail" type="email" class="border-0 border-bottom flex-grow-1 input"
+                            v-model="member.mid" @input="midCheck(onbtn)">
+                    </div>
+                    <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ checkMid }}</p>
+
+                    <label for="mpassword">비밀번호*</label>
+                    <input id="mpassword" type="password" class="border-0 border-bottom input"
+                        v-model="member.mpassword" @input="mpasswordCheck(onbtn)">
+                    <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ checkMpassword }}</p>
+
+                    <label for="mname">이름</label>
+                    <input id="mname" type="text" class="border-0 border-bottom input" v-model="member.mname"
+                        @input="mnameCheck(onbtn)">
+                    <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ checkMname }}</p>
+
+                    <label for="mnickname">닉네임</label>
+                    <div class="d-flex justify-content-between">
+                        <input id="mnickname" type="text" class="border-0 border-bottom flex-grow-1 input"
+                            v-model="member.mnickname" @input="mnickCheck(onbtn)">
+                    </div>
+                    <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ checkMnick }}</p>
+
+                    <label for="mte">전화번호</label>
+                    <input id="mphone" type="text" class="border-0 border-bottom input" v-model="member.mphone"
+                        @input="mphoneCheck(onbtn)">
+                    <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ checkMphone }}</p>
+
+                    <label for="maddress">주소</label>
+                    <div class="d-flex justify-content-between">
+                        <input v-model="zonecode" id="maddress" type="text"
+                            class="border-0 border-bottom flex-grow-1 input" placeholder="우편번호">
+                        <button class="btn text-white btn-outline-light rounded-0 btn-sm" @click="DaumPostcode"
+                            style="background-color: #F37551; margin-left: 10px;">우편번호 찾기</button>
+                    </div>
+                    <input v-model="address" type="text" class="border-0 border-bottom mt-3 input" placeholder="주소">
+                    <input v-model="addressDetail" type="text" class="border-0 border-bottom mt-3 input"
+                        placeholder="상세주소">
+                    <button type="submit" class="btn text-white rounded-0 btn-lg mt-5 w-100"
+                        :class="ispass ? '' : 'disable'" style="background-color: #F37551;">가입하기</button>
+
                 </div>
-                <p style="color: #FF5C35; min-height: 24px;">{{ checkMid }}</p>
-
-                <label for="mpassword" class="mt-5 mb-2">비밀번호*</label>
-                <input id="mpassword" type="password" class="border-0 border-bottom input" v-model="member.mpassword"
-                    @input="mpasswordCheck(onbtn)">
-                <p style="color: #FF5C35; min-height: 24px;">{{ checkMpassword }}</p>
-
-                <label for="mname" class="mt-5 mb-2 input">이름</label>
-                <input id="mname" type="text" class="border-0 border-bottom input" v-model="member.mname"
-                    @input="mnameCheck(onbtn)">
-                <p style="color: #FF5C35; min-height: 24px;">{{ checkMname }}</p>
-
-                <label for="mnickname" class="mt-5 mb-2">닉네임</label>
-                <div class="d-flex justify-content-between">
-                    <input id="mnickname" type="text" class="border-0 border-bottom flex-grow-1 input"
-                        v-model="member.mnickname" @input="mnickCheck(onbtn)">
-                </div>
-                <p style="color: #FF5C35; min-height: 24px;">{{ checkMnick }}</p>
-
-                <label for="mte" class="mt-5 mb-2">전화번호</label>
-                <input id="mphone" type="text" class="border-0 border-bottom input" v-model="member.mphone"
-                    @input="mphoneCheck(onbtn)">
-                <p style="color: #FF5C35; min-height: 24px;"> {{ checkMphone }}</p>
-
-                <label for="maddress" class="mt-5 mb-2">주소</label>
-                <div class="d-flex justify-content-between">
-                    <input v-model="zonecode" id="maddress" type="text" class="border-0 border-bottom flex-grow-1 input"
-                        placeholder="우편번호">
-                    <button class="btn text-white btn-outline-light rounded-0 btn-sm" @click="DaumPostcode" style="background-color: #F37551; margin-left: 10px;">우편번호 찾기</button>
-                </div>
-                <input v-model="address" type="text" class="border-0 border-bottom mt-3 input" placeholder="주소">
-                <input v-model="addressDetail" type="text" class="border-0 border-bottom mt-3 input" placeholder="상세주소">
-                <button type="submit" class="btn text-white rounded-0 btn-lg mt-5 w-100" :class="ispass ? '' : 'disable'" style="background-color: #F37551;">가입하기</button>
-
-            </div>
-            <RaffleModal ref="postcodeModal">
-                <template v-slot:modalHeader>
-                    주소 검색
-                </template>
-                <template v-slot:modalBody>
-                    <VueDaumPostcode :animation=true :max-suggest-items="3" :theme='{
-                        textColor: "#000000", //기본 글자색
-                        postcodeTextColor: "#000000", //우편번호 글자색
-                        emphTextColor: "#FF5C35", //강조 글자색
-                        outlineColor: "#FF5C35" //테두리
-                    }' v-if="postcodeMount" @complete="addressSearched" />
-                </template>
-            </RaffleModal>
-             </form> 
+                <RaffleModal ref="postcodeModal">
+                    <template v-slot:modalHeader>
+                        주소 검색
+                    </template>
+                    <template v-slot:modalBody>
+                        <VueDaumPostcode :animation=true :max-suggest-items="3" :theme='{
+                            textColor: "#000000", //기본 글자색
+                            postcodeTextColor: "#000000", //우편번호 글자색
+                            emphTextColor: "#FF5C35", //강조 글자색
+                            outlineColor: "#FF5C35" //테두리
+                        }' v-if="postcodeMount" @complete="addressSearched" />
+                    </template>
+                </RaffleModal>
+            </form>
         </div>
     </div>
 </template>
@@ -228,7 +231,7 @@ async function handleSubmit() {
         const response = await MemberAPI.join(data);
         router.push("/");
     } catch (error) {
-        console.log(error)       
+        console.log(error)
     }
 }
 

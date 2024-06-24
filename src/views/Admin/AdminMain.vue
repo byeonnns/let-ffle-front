@@ -6,16 +6,16 @@
             </div>
             <div class="d-flex text-center mt-4">
                 <div class="col">
-                    <h3>전체 래플</h3>
-                    <h5>1</h5>
+                    <h5>전체 래플</h5>
+                    <h6>1</h6>
                 </div>
                 <div class="col">
-                    <h3>진행 중인 래플</h3>
-                    <h5>1</h5>
+                    <h5>진행 중인 래플</h5>
+                    <h6>1</h6>
                 </div>
                 <div class="col">
-                    <h3>종료된 래플</h3>
-                    <h5>1</h5>
+                    <h5>종료된 래플</h5>
+                    <h6>1</h6>
                 </div>
             </div>
             <hr class="border-3 opacity-100" style="border-color: #F37551;" />
