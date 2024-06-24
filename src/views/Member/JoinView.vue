@@ -2,7 +2,7 @@
     <div class="container-lg">
         <div class="d-flex justify-content-center">
             <!--아이디(이메일), 비밀번호, 이름, 주민번호, 전화번호, 주소를 입력받는다.-->
-            <!-- <form @submit.prevent="handleSubmit"> -->
+             <form @submit.prevent="handleSubmit"> 
             <div class="d-flex flex-column" :style="responsiveSize">
                 <p class="text-center fw-bold fst-italic" style="font-size:50px">Let-<span
                         style="color:#FF5C35">FFle</span></p>
@@ -44,7 +44,7 @@
                 </div>
                 <input v-model="address" type="text" class="border-0 border-bottom mt-3 input" placeholder="주소">
                 <input v-model="addressDetail" type="text" class="border-0 border-bottom mt-3 input" placeholder="상세주소">
-                <button class="btn text-white rounded-0 btn-lg mt-5 w-100" :class="ispass ? '' : 'disabled'" style="background-color: #F37551;">가입하기</button>
+                <button type="submit" class="btn text-white rounded-0 btn-lg mt-5 w-100" :class="ispass ? '' : 'disable'" style="background-color: #F37551;">가입하기</button>
 
             </div>
             <RaffleModal ref="postcodeModal">
@@ -60,7 +60,7 @@
                     }' v-if="postcodeMount" @complete="addressSearched" />
                 </template>
             </RaffleModal>
-            <!-- </form> -->
+             </form> 
         </div>
     </div>
 </template>
@@ -69,6 +69,8 @@
 import { reactive, ref } from 'vue';
 import RaffleModal from '@/components/RaffleModal.vue';
 import { VueDaumPostcode } from 'vue-daum-postcode'
+import MemberAPI from '@/apis/MemberAPI';
+import router from '@/router';
 
 // 유효성 검사시에 값이 맞는지 안맞는지
 const checkMid = ref(null);
@@ -214,6 +216,20 @@ function onbtn() {
         ispass.value = false
     }
     console.log(ispass.value);
+}
+
+// 가입시에 버튼 실행..?
+async function handleSubmit() {
+    console.log(member.value.mid)
+    console.log(member.value.mpassword)
+    console.log(member.value.mname)
+    try {
+        const data = JSON.parse(JSON.stringify(member));
+        const response = await MemberAPI.join(data);
+        router.push("/");
+    } catch (error) {
+        console.log(error)       
+    }
 }
 
 
