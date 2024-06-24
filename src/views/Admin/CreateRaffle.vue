@@ -237,20 +237,6 @@ const prdimgrep1attach = ref(null);
 
 const rMissionType = ref(null);
 
-
-const rMissionType = ref(null);
-
-
-function imgChange() {
-    if(!head) {
-        headImgUrl.value = defaultImg;
-    } else {
-        headImgUrl.value = URL.createObjectURL(prdimgrep1attach.value.files[0]);
-    }
-   
-    
-}
-
 const prdimgdetailattach = ref(null);
 const DetailImgUrl = ref(null);
 
