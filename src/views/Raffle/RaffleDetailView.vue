@@ -42,19 +42,21 @@
                         </div>
 
                         <div class="p-3 text-center" v-if="step === 1">
-                            <p class="h5 text-start">
-                                응모하는건 자유지만 취소할땐 아니란다
-                                <br>
-                                당첨 안된다고 뭐라하지 말것
-                                <br>
-                                나도 모르겠다 이젠
+                            <p class="h6 text-start">
+                                하단의 응모하기 버튼을 클릭하시면 응모가 완료됩니다. <br />
+                                응모 전 반드시 아래 주의사항을 읽어주세요. <br /> <br />
+
+                                ※ 응모 주의사항 <br />
+                                • 응모한 이후에는 취소할 수 없습니다. <br />
+                                • 응모는 일일 최대 3회까지만 가능합니다. <br />
+                                • 미션 참여 및 베리 사용은 응모 마감 전까지만 가능합니다.
                             </p>
                             <button class="btn mt-2 btn-outline-dark w-100" @click="raffleprocess()">응모하기</button>
                         </div>
 
                         <div class="p-3 text-start" v-if="step === 2">
-                            <h4>퀴즈 미션</h4>
-                            <p>문제 : 다음 중 4팀의 팀원이 아닌 사람은 누구?</p>
+                            <h4>Quiz</h4>
+                            <p>다음 중 4팀의 팀원이 아닌 사람을 골라주세요.</p>
                             <div class="form-check" v-for="(person, index) in people" :key="index">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                     :id="'flexRadioDefault' + index" :value="person" v-model="selectedPerson">
@@ -66,18 +68,18 @@
                                 제출</button>
                         </div>
                         <div class="p-3 text-start" v-if="step === 2">
-                            <h4>핫 타임 미션</h4>
-                            <p>지정된 시간 내에 참여 버튼 눌러주세요라 ㅓㅜㅈ궘ㄴㅇ러ㅣㄴ</p>
+                            <h4>Hot Time</h4>
+                            <p>지정된 시간동안 하단의 미션 참여 버튼을 눌러주세요.</p>
                             <button class="btn mt-2 btn-outline-dark w-100" @click="raffleprocess()">미션
                                 참여</button>
                         </div>
                         <div class="p-3 text-start" v-if="step === 3">
-                            <h4>베리 사용</h4>
+                            <h4>베리 사용 안내</h4>
                             <ul>
-                                <li>베리는 하나의 래플에 최대10개까지 사용할수 있습니다.</li>
-                                <li>한번 등록시에는 다시 반환 할수 없습니다.</li>
-                                <li>베리는 중복으로 사용이 가능합니다</li>
-                                <li>베리를 사용하게 되면 당첨확률이 UP↑</li>
+                                <li>베리를 사용하여 당첨 확률을 증가시킬 수 있습니다.</li>
+                                <li>베리는 하나의 래플에 최대 10개까지 사용 가능합니다.</li>
+                                <li>사용한 베리는 사용 취소 및 환불이 불가능합니다.</li>
+                                <li>응모 기간 내에는 베리 추가 사용이 가능합니다.</li>
                                 <li>해당 래플에 현재 베리를 0개 사용했습니다.</li>
                             </ul>
 
@@ -94,11 +96,9 @@
                                 <option>9</option>
                                 <option>10</option>
                             </select>개
-                            <button class="btn mt-2 btn-outline-dark w-100" @click="raffleprocess()">사용 하기</button>
+                            <button class="btn mt-2 btn-outline-dark w-100" @click="raffleprocess()">사용하기</button>
                         </div>
                         <div class="p-3 text-start" v-if="step === 4">
-                            <h4>당첨 확인</h4>
-                            <p>네 운을 시험해봐라!</p>
                             <button class="btn mt-2 btn-outline-dark w-100" @click="raffleprocess()">당첨 확인</button>
                         </div>
                     </div>
@@ -111,12 +111,37 @@
                         </div>
 
                         <div class="p-3 text-center" v-if="step === 1">
-                            <p class="h5 text-start">
-                                응모하는건 자유지만 취소할땐 아니란다
-                                <br>
-                                당첨 안된다고 뭐라하지 말것
-                                <br>
-                                나도 모르겠다 이젠
+                            <p class="h6 text-start">
+                                더그레이티스트는 템포러리 브랜드를 추구하며 더그레이티스트만의 해석으로 트렌드와 개성의 양립을 지향합니다.
+                                더그레이티스트만의 감성을 담은 24 SUMMER 드랍을 ~50% 혜택으로 만나보세요.
+                            </p>
+                        </div>
+                        <div class="p-3 text-center" v-if="step === 1">
+                            <p class="h6 text-start">
+                                해당 래플의 미션은 퀴즈 미션입니다. <br/> 응모에 참여하신 뒤, 퀴즈를 풀고 정답을 맞혀주세요. <br/> <br/>
+                                
+                                ※ 퀴즈 미션 주의사항 <br/>
+                                • 답을 제출하면 정답 여부를 바로 확인하실 수 있습니다. <br/>
+                                • 한 번 정답을 제출한 뒤에는 제출한 답을 수정하거나 다시 풀 수 없습니다. 신중하게 풀어주세요! <br/>
+                            </p>
+                        </div>
+                        <div class="p-3 text-center" v-if="step === 1">
+                            <p class="h6 text-start">
+                                해당 래플의 미션은 핫타임 미션입니다. <br/> 응모에 참여하신 뒤, 정해진 시간동안 미션참여 탭의 미션 참여 버튼을 클릭해주세요!  <br/>
+                                <br/>
+                                핫 타임 : 2024.06.24 19:00 PM ~ 2024.06.24 21:00 PM <br/> <br/>
+
+                                ※ 핫 타임 미션 주의사항 <br/>
+                                • 미션 참여 버튼을 클릭하시면 자동으로 미션 성공 처리됩니다. <br/>
+                                • 정해진 시간 외에는 버튼이 활성화되지 않습니다. <br/>
+                            </p>
+                        </div>
+                        <div class="p-3 text-center" v-if="step === 1">
+                            <p class="h6 text-start">
+                                ※ 당첨자 유의사항 <br/>
+                                • 당첨 여부는 마이페이지 > 당첨 내역 조회 에서 확인하실 수 있습니다. <br/>
+                                • 경품을 수령하실 배송지와 수령인 정보를 추가로 입력해주세요. <br/>
+                                • 배송지 및 수령인 정보 입력은 마이페이지 > 당첨 내역 > 배송지 입력 버튼을 통해 가능합니다. <br/>
                             </p>
                         </div>
                     </div>
