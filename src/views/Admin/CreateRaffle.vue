@@ -153,13 +153,13 @@
                             <p class="form_label">미션 종류</p>
                         </div>
                         <div class="td">
-                            <select style="font-size: 16px;">
-                                <option>퀴즈 미션</option>
-                                <option>타임 미션</option>
+                            <select style="font-size: 16px;" v-model="rMissionType">
+                                <option value="quiz">퀴즈 미션</option>
+                                <option value="time">타임 미션</option>
                             </select>
                         </div>
                     </div>
-                    <div class="tr">
+                    <div class="tr" v-if="rMissionType == 'time'">
                         <div class="th">
                             <p class="form_label">핫타임</p>
                         </div>
@@ -174,45 +174,47 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tr">
-                        <div class="th">
-                            <p class="form_label">퀴즈 내용</p>
+                    <div v-if="rMissionType == 'quiz'">
+                        <div class="tr">
+                            <div class="th">
+                                <p class="form_label">퀴즈 내용</p>
+                            </div>
+                            <div class="td">
+                                <textarea
+                                    style="width: 100%; font-size: 16px;">류현진 선수가 KBO의 한화 이글스로 돌아왔습니다. 그렇다면 류현진 선수가 메이저 리그에 있을 때, 가장 최근 소속팀은 어디일까요?</textarea>
+                            </div>
                         </div>
-                        <div class="td">
-                            <textarea
-                                style="width: 100%; font-size: 16px;">류현진 선수가 KBO의 한화 이글스로 돌아왔습니다. 그렇다면 류현진 선수가 메이저 리그에 있을 때, 가장 최근 소속팀은 어디일까요?</textarea>
+                        <div class="tr">
+                            <div class="th">
+                                <p class="form_label">퀴즈 보기 (정답 체크)</p>
+                            </div>
+                            <div class="td">
+                                <input type="radio" id="opt1" name="fav_language" value="HTML">
+                                <label for="opt1" class="ms-1 me-3">
+                                    <input style="font-size: 14px;">
+                                </label>
+                                <input type="radio" id="opt2" name="fav_language" value="HTML">
+                                <label for="opt2" class="ms-1 me-3">
+                                    <input style="font-size: 14px;">
+                                </label>
+                                <input type="radio" id="opt3" name="fav_language" value="HTML">
+                                <label for="opt3" class="ms-1 me-3">
+                                    <input style="font-size: 14px;">
+                                </label>
+                                <input type="radio" id="opt4" name="fav_language" value="HTML">
+                                <label for="opt4" class="ms-1 me-3">
+                                    <input style="font-size: 14px;">
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tr">
-                        <div class="th">
-                            <p class="form_label">퀴즈 보기 (정답 체크)</p>
-                        </div>
-                        <div class="td">
-                            <input type="radio" id="opt1" name="fav_language" value="HTML">
-                            <label for="opt1" class="ms-1 me-3">
-                                <input style="font-size: 14px;">
-                            </label>
-                            <input type="radio" id="opt2" name="fav_language" value="HTML">
-                            <label for="opt2" class="ms-1 me-3">
-                                <input style="font-size: 14px;">
-                            </label>
-                            <input type="radio" id="opt3" name="fav_language" value="HTML">
-                            <label for="opt3" class="ms-1 me-3">
-                                <input style="font-size: 14px;">
-                            </label>
-                            <input type="radio" id="opt4" name="fav_language" value="HTML">
-                            <label for="opt4" class="ms-1 me-3">
-                                <input style="font-size: 14px;">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="tr">
-                        <div class="th">
-                            <p class="form_label">당첨자 수</p>
-                        </div>
-                        <div class="td">
-                            <div class="input_clear sm">
-                                <input type="text" id="prdbrand" name="prdbrand" style="width: 50px;">명
+                        <div class="tr">
+                            <div class="th">
+                                <p class="form_label">당첨자 수</p>
+                            </div>
+                            <div class="td">
+                                <div class="input_clear sm">
+                                    <input type="text" id="prdbrand" name="prdbrand" style="width: 50px;">명
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -236,6 +238,9 @@ let head = true; // false일 경우 기본 이미지를 보임, true 일 경우 
 const headImgUrl = ref(null);
 const prdimgrep1attach = ref(null);
 const defaultImage = null;
+
+const rMissionType = ref(null);
+
 
 function imgChange() {
     const head = prdimgrep1attach.value.files[0];
