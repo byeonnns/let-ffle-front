@@ -51,19 +51,18 @@
                             <div class="item_wrap">
                                 <div class="item item_attach">
                                     <div class="img_box">
-                                        <div v-if="!headImgUrl" id="defaultImg">image</div>
-                                        <img v-else :src="headImgUrl" class="w-100 h-100 object-fit-cover">
+                                        <div v-if="!head" id="defaultImg">image</div>
+                                        <img v-if="head == true" :src="headImgUrl" class="w-100 h-100 object-fit-cover">
                                     </div>
 
-                                    <div class="item_edit">
-                                        <p class="tit">래플의 대표 이미지를 등록해주세요.</p>
+                                            <div class="item_edit">
+                                                <p class="tit">래플의 대표 이미지를 등록해주세요.</p>
 
                                         <div class="attach_wrap">
                                             <div class="attach_top">
                                                 <label class="attach_img" for="prdimgrep1attach">사진
                                                     첨부</label>
-                                                <input class="input_file" id="prdimgrep1attach" type="file"
-                                                    ref="prdimgrep1attach" @change="imgChange">
+                                                <input class="input_file" id="prdimgrep1attach" type="file" ref="prdimgrep1attach" @change="imgChange">
                                             </div>
                                             <div class="attached" data-file="prdimgrep1attach" id="inputUploadFile">
                                             </div>
@@ -80,20 +79,19 @@
                         <div class="td">
                             <div class="item_wrap">
                                 <div class="item item_attach">
-                                    <div class="img_box">
-                                        <div v-if="!DetailImgUrl" id="defaultImg">image</div>
-                                        <img v-else :src="DetailImgUrl" class="w-100 h-100 object-fit-contain" />
+                                    <div class="img_box d-flex">
+                                        <div id="defaultImg">image</div>
+                                        <img :src="DetailImgUrl"/>
                                     </div>
 
-                                    <div class="item_edit">
-                                        <p class="tit">래플의 상세 이미지를 등록해주세요.</p>
+                                            <div class="item_edit">
+                                                <p class="tit">래플의 상세 이미지를 등록해주세요.</p>
 
                                         <div class="attach_wrap">
                                             <div class="attach_top">
                                                 <label class="attach_img" for="prdimgdetailattach">사진
                                                     첨부</label>
-                                                <input class="input_file" id="prdimgdetailattach" type="file"
-                                                    ref="prdimgdetailattach" @change="DetailImageChange">
+                                                <input class="input_file" id="prdimgdetailattach" type="file" ref="prdimgdetailattach" @change="DetailImageChange">
                                             </div>
                                             <div class="attached" data-file="prdimgdetailattach" id="inputUploadFile">
                                             </div>
@@ -111,8 +109,8 @@
                             <div class="item_wrap">
                                 <div class="item item_attach">
                                     <div class="img_box d-flex">
-                                        <div v-if="!GiftImgUrl" id="defaultImg">image</div>
-                                        <img v-else :src="GiftImgUrl" class="w-100 h-100 object-fit-cover" />
+                                        <div id="defaultImg">image</div>
+                                        <img :src="GiftImgUrl"/>
                                     </div>
 
                                     <div class="item_edit">
@@ -123,8 +121,7 @@
                                                 <label class="attach_img" for="prdimggiftattach">사진
                                                     첨부</label>
                                                 <input class="input_file" id="prdimggiftattach" name="prdgiftlist[]"
-                                                    type="file" multiple @change="GiftImageChange"
-                                                    ref="prdimggiftattach">
+                                                    type="file" multiple @change="GiftImageChange" ref="prdimggiftattach">
                                             </div>
                                             <div class="attached" data-file="prdimgrep1attach" id="inputUploadFile">
                                             </div>
@@ -234,50 +231,38 @@
 <script setup>
 import { ref } from 'vue';
 
-let head = true; // false일 경우 기본 이미지를 보임, true 일 경우 선택한 이미지 보임 (미리보기)
+let head = false;
 const headImgUrl = ref(null);
 const prdimgrep1attach = ref(null);
-const defaultImage = null;
+
+const rMissionType = ref(null);
+
 
 const rMissionType = ref(null);
 
 
 function imgChange() {
-    const head = prdimgrep1attach.value.files[0];
-    if (head) {
-        headImgUrl.value = URL.createObjectURL(head);
-
+    if(!head) {
+        headImgUrl.value = defaultImg;
     } else {
-        headImgUrl.value = defaultImage;
+        headImgUrl.value = URL.createObjectURL(prdimgrep1attach.value.files[0]);
     }
+   
+    
 }
 
 const prdimgdetailattach = ref(null);
 const DetailImgUrl = ref(null);
-let detail = true;
 
 function DetailImageChange() {
-    const detail = prdimgdetailattach.value.files[0];
-    if (detail) {
-        DetailImgUrl.value = URL.createObjectURL(detail);
-    } else {
-        DetailImgUrl.value = defaultImage;
-    }
-
+    DetailImgUrl.value = URL.createObjectURL(prdimgdetailattach.value.files[0]);
 }
 
-let gift = true;
 const prdimggiftattach = ref(null);
 const GiftImgUrl = ref(null);
 
 function GiftImageChange() {
-    const gift = prdimggiftattach.value.files[0];
-    if (gift) {
-        GiftImgUrl.value = URL.createObjectURL(gift);
-    } else {
-        GiftImgUrl.value = defaultImage;
-    }
-
+    GiftImgUrl.value = URL.createObjectURL(prdimggiftattach.value.files[0]);
 }
 
 
