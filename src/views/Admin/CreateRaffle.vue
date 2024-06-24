@@ -55,14 +55,15 @@
                                         <img v-else :src="headImgUrl" class="w-100 h-100 object-fit-cover">
                                     </div>
 
-                                            <div class="item_edit">
-                                                <p class="tit">래플의 대표 이미지를 등록해주세요.</p>
+                                    <div class="item_edit">
+                                        <p class="tit">래플의 대표 이미지를 등록해주세요.</p>
 
                                         <div class="attach_wrap">
                                             <div class="attach_top">
                                                 <label class="attach_img" for="prdimgrep1attach">사진
                                                     첨부</label>
-                                                <input class="input_file" id="prdimgrep1attach" type="file" ref="prdimgrep1attach" @change="imgChange">
+                                                <input class="input_file" id="prdimgrep1attach" type="file"
+                                                    ref="prdimgrep1attach" @change="imgChange">
                                             </div>
                                             <div class="attached" data-file="prdimgrep1attach" id="inputUploadFile">
                                             </div>
@@ -84,14 +85,15 @@
                                         <img v-else :src="DetailImgUrl" class="w-100 h-100 object-fit-contain" />
                                     </div>
 
-                                            <div class="item_edit">
-                                                <p class="tit">래플의 상세 이미지를 등록해주세요.</p>
+                                    <div class="item_edit">
+                                        <p class="tit">래플의 상세 이미지를 등록해주세요.</p>
 
                                         <div class="attach_wrap">
                                             <div class="attach_top">
                                                 <label class="attach_img" for="prdimgdetailattach">사진
                                                     첨부</label>
-                                                <input class="input_file" id="prdimgdetailattach" type="file" ref="prdimgdetailattach" @change="DetailImageChange">
+                                                <input class="input_file" id="prdimgdetailattach" type="file"
+                                                    ref="prdimgdetailattach" @change="DetailImageChange">
                                             </div>
                                             <div class="attached" data-file="prdimgdetailattach" id="inputUploadFile">
                                             </div>
@@ -110,7 +112,7 @@
                                 <div class="item item_attach">
                                     <div class="img_box d-flex">
                                         <div v-if="!GiftImgUrl" id="defaultImg">image</div>
-                                        <img v-else :src="GiftImgUrl"/>
+                                        <img v-else :src="GiftImgUrl" />
                                     </div>
 
                                     <div class="item_edit">
@@ -121,7 +123,8 @@
                                                 <label class="attach_img" for="prdimggiftattach">사진
                                                     첨부</label>
                                                 <input class="input_file" id="prdimggiftattach" name="prdgiftlist[]"
-                                                    type="file" multiple @change="GiftImageChange" ref="prdimggiftattach">
+                                                    type="file" multiple @change="GiftImageChange"
+                                                    ref="prdimggiftattach">
                                             </div>
                                             <div class="attached" data-file="prdimggiftattach" id="inputUploadFile">
                                             </div>
@@ -204,6 +207,8 @@
                                 </label>
                             </div>
                         </div>
+                    </div>
+                    <div v-if="rMissionType === 'time' || rMissionType === 'quiz'">
                         <div class="tr">
                             <div class="th">
                                 <p class="form_label">당첨자 수</p>
@@ -215,6 +220,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="btn_big_wrap btn_size_fix mt60">
                     <RouterLink to="/Admin/RaffleList"><button type="submit"
@@ -251,12 +257,12 @@ const DetailImgUrl = ref(null);
 
 function DetailImageChange() {
     const Detail = prdimgdetailattach.value.files[0];
-    if(Detail) {
+    if (Detail) {
         DetailImgUrl.value = URL.createObjectURL(Detail);
     } else {
         DetailImgUrl.value = defaultImage;
     }
-    
+
 }
 
 const prdimggiftattach = ref(null);
@@ -264,12 +270,12 @@ const GiftImgUrl = ref(null);
 
 function GiftImageChange() {
     const gift = prdimggiftattach.value.files[0];
-    if(gift) {
+    if (gift) {
         GiftImgUrl.value = URL.createObjectURL(gift);
     } else {
         GiftImgUrl.value = defaultImage;
     }
-    
+
 }
 
 
