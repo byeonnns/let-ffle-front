@@ -1,207 +1,224 @@
 <template>
     <div>
-        <div class="container">
-            <div class="d-flex">
-                <!-- <div class="flex-grow-1 d-flex flex-column"></div> -->
-                <div class="d-flex flex-column p-3" style="width: 100%;">
-                    <div style="border-bottom: 3px solid #F37551;" class="mb-3">
-                        <h4>래플 등록</h4>
-                    </div>
-
-                    <form>
-                        <div class="form_table">
-                            <div class="tr">
-                                <div class="th">
-                                    <p class="form_label">래플 제목</p>
-                                </div>
-                                <div class="td">
-                                    <input>
-                                </div>
-                            </div>
-                            <div class="tr">
-                                <div class="th">
-                                    <p class="form_label">래플 부제목</p>
-                                </div>
-                                <div class="td">
-                                    <input>
-                                </div>
-                            </div>
-                            <div class="tr">
-                                <div class="th">
-                                    <p class="form_label">래플 설명</p>
-                                </div>
-                                <div class="td">
-                                    <input>
-                                </div>
-                            </div>
-                            <div class="tr">
-                                <div class="th">
-                                    <p class="form_label">대분류</p>
-                                </div>
-                                <div class="td">
-                                    <input type="text" id="selboxDirect" name="" placeholder="스포츠, 예술, 패션 등">
-                                </div>
-                            </div>
-                            <!-- <div class="tr">
-                                                                <div class="th">
-                                                                    <p class="form_label">소분류</p>
-                                                                </div>
-                                                                <div class="td">
-                                                                    <input type="text" id="selboxDirect" name=""
-                                                                        placeholder="야구, 축구, 연극, 의류, 신발 등">
-                                                                </div>
-                                                            </div> -->
-                            <div class="tr">
-                                <div class="th">
-                                    <p class="form_label">래플 썸네일</p>
-                                </div>
-                                <div class="td">
-                                    <div class="item_wrap">
-                                        <div class="item item_attach">
-                                            <div class="img_box d-flex">
-                                                <div id="defaultImg">image</div>
-                                            </div>
-
-                                            <div class="item_edit">
-                                                <p class="tit">래플의 대표 이미지를 등록해주세요.</p>
-
-                                                <div class="attach_wrap">
-                                                    <div class="attach_top">
-                                                        <label class="attach_img" for="prdimgrep1attach">사진
-                                                            첨부</label>
-                                                        <input class="input_file" id="prdimgrep1attach"
-                                                            name="prdimglist[]" type="file" multiple>
-                                                    </div>
-                                                    <div class="attached" data-file="prdimgrep1attach"
-                                                        id="inputUploadFile"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tr">
-                                <div class="th">
-                                    <p class="form_label">래플 상세 이미지</p>
-                                </div>
-                                <div class="td">
-                                    <div class="item_wrap">
-                                        <div class="item item_attach">
-                                            <div class="img_box d-flex">
-                                                <div id="defaultImg">image</div>
-                                            </div>
-
-                                            <div class="item_edit">
-                                                <p class="tit">래플의 상세 이미지를 등록해주세요.</p>
-
-                                                <div class="attach_wrap">
-                                                    <div class="attach_top">
-                                                        <label class="attach_img" for="prdimgdetailattach">사진
-                                                            첨부</label>
-                                                        <input class="input_file" id="prdimgdetailattach"
-                                                            name="prdimgdetailattach" type="file">
-                                                    </div>
-                                                    <div class="attached" data-file="prdimgdetailattach"
-                                                        id="inputUploadFile"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tr">
-                                <div class="th">
-                                    <p class="form_label">참여 기간</p>
-                                </div>
-                                <div class="td">
-                                    <div class="form_set">
-                                        <div class="input_clear sm" style="display: flex; align-items: center;">
-                                            <input type="date" id="prdname" name="prdname">
-                                            <span style="margin-right: 10px; margin-left: 10px;">~</span>
-                                            <input type="date" id="prdname" name="prdname">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tr">
-                                <div class="th">
-                                    <p class="form_label">미션 종류</p>
-                                </div>
-                                <div class="td">
-                                    <select style="font-size: 16px;">
-                                        <option>퀴즈 미션</option>
-                                        <option>타임 미션</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="tr">
-                                <div class="th">
-                                    <p class="form_label">핫타임</p>
-                                </div>
-                                <div class="td">
-                                    <div class="form_set">
-
-                                        <div class="input_clear sm" style="display: flex; align-items: center;">
-                                            <input type="datetime-local" id="prdname" name="prdname">
-                                            <span style="margin-right: 10px; margin-left: 10px;">~</span>
-                                            <input type="datetime-local" id="prdname" name="prdname">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tr">
-                                <div class="th">
-                                    <p class="form_label">퀴즈 내용</p>
-                                </div>
-                                <div class="td">
-                                    <textarea
-                                        style="width: 100%; font-size: 16px;">류현진 선수가 KBO의 한화 이글스로 돌아왔습니다. 그렇다면 류현진 선수가 메이저 리그에 있을 때, 가장 최근 소속팀은 어디일까요?</textarea>
-                                </div>
-                            </div>
-                            <div class="tr">
-                                <div class="th">
-                                    <p class="form_label">퀴즈 보기 (정답 체크)</p>
-                                </div>
-                                <div class="td">
-                                    <input type="radio" id="opt1" name="fav_language" value="HTML">
-                                    <label for="opt1" class="ms-1 me-3">
-                                        <input style="font-size: 14px;">
-                                    </label>
-                                    <input type="radio" id="opt2" name="fav_language" value="HTML">
-                                    <label for="opt2" class="ms-1 me-3">
-                                        <input style="font-size: 14px;">
-                                    </label>
-                                    <input type="radio" id="opt3" name="fav_language" value="HTML">
-                                    <label for="opt3" class="ms-1 me-3">
-                                        <input style="font-size: 14px;">
-                                    </label>
-                                    <input type="radio" id="opt4" name="fav_language" value="HTML">
-                                    <label for="opt4" class="ms-1 me-3">
-                                        <input style="font-size: 14px;">
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="tr">
-                                <div class="th">
-                                    <p class="form_label">당첨자 수</p>
-                                </div>
-                                <div class="td">
-                                    <div class="input_clear sm">
-                                        <input type="text" id="prdbrand" name="prdbrand" style="width: 50px;">명
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="btn_big_wrap btn_size_fix mt60">
-                            <RouterLink to="/Admin/RaffleList"><button type="submit"
-                                    class="btn_submit me-3 rounded-0">등록</button>
-                            </RouterLink>
-                            <RouterLink to="/Admin"><button type="button" class="white btn_cancle">취소</button>
-                            </RouterLink>
-                        </div>
-                    </form>
-                </div>
+        <div class="d-flex flex-column">
+            <div style="border-bottom: 3px solid #F37551;" class="mb-3">
+                <h3>래플 등록</h3>
             </div>
+            <form>
+                <div class="form_table">
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">래플 제목</p>
+                        </div>
+                        <div class="td">
+                            <input>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">래플 부제목</p>
+                        </div>
+                        <div class="td">
+                            <input>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">래플 설명</p>
+                        </div>
+                        <div class="td">
+                            <input>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">대분류</p>
+                        </div>
+                        <div class="td">
+                            <select class="form-select" style="width: auto;">
+                                <option selected>카테고리</option>
+                                <option value="1">스포츠</option>
+                                <option value="2">예술</option>
+                                <option value="3">패션</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">래플 썸네일</p>
+                        </div>
+                        <div class="td">
+                            <div class="item_wrap">
+                                <div class="item item_attach">
+                                    <div class="img_box d-flex">
+                                        <div id="defaultImg">image</div>
+                                    </div>
+
+                                    <div class="item_edit">
+                                        <p class="tit">래플의 대표 이미지를 등록해주세요.</p>
+
+                                        <div class="attach_wrap">
+                                            <div class="attach_top">
+                                                <label class="attach_img" for="prdimgrep1attach">사진
+                                                    첨부</label>
+                                                <input class="input_file" id="prdimgrep1attach" type="file" multiple>
+                                            </div>
+                                            <div class="attached" data-file="prdimgrep1attach" id="inputUploadFile">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">래플 상세 이미지</p>
+                        </div>
+                        <div class="td">
+                            <div class="item_wrap">
+                                <div class="item item_attach">
+                                    <div class="img_box d-flex">
+                                        <div id="defaultImg">image</div>
+                                    </div>
+
+                                    <div class="item_edit">
+                                        <p class="tit">래플의 상세 이미지를 등록해주세요.</p>
+
+                                        <div class="attach_wrap">
+                                            <div class="attach_top">
+                                                <label class="attach_img" for="prdimgdetailattach">사진
+                                                    첨부</label>
+                                                <input class="input_file" id="prdimgdetailattach" name="prdimgdetailattach" type="file">
+                                            </div>
+                                            <div class="attached" data-file="prdimgdetailattach" id="inputUploadFile">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">래플 경품 이미지</p>
+                        </div>
+                        <div class="td">
+                            <div class="item_wrap">
+                                <div class="item item_attach">
+                                    <div class="img_box d-flex">
+                                        <div id="defaultImg">image</div>
+                                    </div>
+
+                                    <div class="item_edit">
+                                        <p class="tit">래플의 경품 이미지를 등록해주세요.</p>
+
+                                        <div class="attach_wrap">
+                                            <div class="attach_top">
+                                                <label class="attach_img" for="prdimggiftattach">사진
+                                                    첨부</label>
+                                                <input class="input_file" id="prdimggiftattach" name="prdgiftlist[]"
+                                                    type="file" multiple>
+                                            </div>
+                                            <div class="attached" data-file="prdimgrep1attach" id="inputUploadFile">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">참여 기간</p>
+                        </div>
+                        <div class="td">
+                            <div class="form_set">
+                                <div class="d-flex align-items-center">
+                                    <input type="date" id="prdname" name="prdname">
+                                    <span style="margin-right: 10px; margin-left: 10px;">~</span>
+                                    <input type="date" id="prdname" name="prdname">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">미션 종류</p>
+                        </div>
+                        <div class="td">
+                            <select style="font-size: 16px;">
+                                <option>퀴즈 미션</option>
+                                <option>타임 미션</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">핫타임</p>
+                        </div>
+                        <div class="td">
+                            <div class="form_set">
+
+                                <div class="input_clear sm" style="display: flex; align-items: center;">
+                                    <input type="datetime-local" id="prdname" name="prdname">
+                                    <span style="margin-right: 10px; margin-left: 10px;">~</span>
+                                    <input type="datetime-local" id="prdname" name="prdname">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">퀴즈 내용</p>
+                        </div>
+                        <div class="td">
+                            <textarea
+                                style="width: 100%; font-size: 16px;">류현진 선수가 KBO의 한화 이글스로 돌아왔습니다. 그렇다면 류현진 선수가 메이저 리그에 있을 때, 가장 최근 소속팀은 어디일까요?</textarea>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">퀴즈 보기 (정답 체크)</p>
+                        </div>
+                        <div class="td">
+                            <input type="radio" id="opt1" name="fav_language" value="HTML">
+                            <label for="opt1" class="ms-1 me-3">
+                                <input style="font-size: 14px;">
+                            </label>
+                            <input type="radio" id="opt2" name="fav_language" value="HTML">
+                            <label for="opt2" class="ms-1 me-3">
+                                <input style="font-size: 14px;">
+                            </label>
+                            <input type="radio" id="opt3" name="fav_language" value="HTML">
+                            <label for="opt3" class="ms-1 me-3">
+                                <input style="font-size: 14px;">
+                            </label>
+                            <input type="radio" id="opt4" name="fav_language" value="HTML">
+                            <label for="opt4" class="ms-1 me-3">
+                                <input style="font-size: 14px;">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="tr">
+                        <div class="th">
+                            <p class="form_label">당첨자 수</p>
+                        </div>
+                        <div class="td">
+                            <div class="input_clear sm">
+                                <input type="text" id="prdbrand" name="prdbrand" style="width: 50px;">명
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn_big_wrap btn_size_fix mt60">
+                    <RouterLink to="/Admin/RaffleList"><button type="submit"
+                            class="btn_submit me-3 rounded-0">등록</button>
+                    </RouterLink>
+                    <RouterLink to="/Admin"><button type="button" class="white btn_cancle">취소</button>
+                    </RouterLink>
+                </div>
+            </form>
         </div>
     </div>
 </template>
@@ -324,15 +341,6 @@
     flex: 1;
     margin: 0;
     margin-left: 30px;
-}
-
-.input_clear {
-    border-collapse: collapse;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    width: 240px;
 }
 
 .section_block1 .input_clear input {

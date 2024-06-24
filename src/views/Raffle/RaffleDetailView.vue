@@ -134,7 +134,7 @@ import RaffleToast from '@/components/RaffleToast.vue'
 import GiftLottie from '@/components/GiftLottie.vue'
 import HeartLottie from '@/assets/lottie/likeHeart.json'
 
-const settingDate = new Date('2024-06-23T15:57:30')
+const settingDate = new Date('2024-06-25T15:57:30')
 const store = useStore();
 const serverTime = computed(() => {
     const diffMilliseconds = settingDate - store.getters['clientTime/getTimeForCalculate'];
