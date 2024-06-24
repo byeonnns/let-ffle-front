@@ -51,8 +51,8 @@
                             <div class="item_wrap">
                                 <div class="item item_attach">
                                     <div class="img_box">
-                                        <div v-if="!head" id="defaultImg">image</div>
-                                        <img v-if="head == true" :src="headImgUrl" class="w-100 h-100 object-fit-cover">
+                                        <div v-if="!headImgUrl" id="defaultImg">image</div>
+                                        <img v-else :src="headImgUrl" class="w-100 h-100 object-fit-cover">
                                     </div>
 
                                             <div class="item_edit">
@@ -80,8 +80,8 @@
                             <div class="item_wrap">
                                 <div class="item item_attach">
                                     <div class="img_box d-flex">
-                                        <div id="defaultImg">image</div>
-                                        <img :src="DetailImgUrl"/>
+                                        <div v-if="!DetailImgUrl" id="defaultImg">image</div>
+                                        <img v-else :src="DetailImgUrl" class="w-100 h-100 object-fit-contain" />
                                     </div>
 
                                             <div class="item_edit">
@@ -109,8 +109,8 @@
                             <div class="item_wrap">
                                 <div class="item item_attach">
                                     <div class="img_box d-flex">
-                                        <div id="defaultImg">image</div>
-                                        <img :src="GiftImgUrl"/>
+                                        <div v-if="!GiftImgUrl" id="defaultImg">image</div>
+                                        <img v-else :src="GiftImgUrl"/>
                                     </div>
 
                                     <div class="item_edit">
@@ -123,7 +123,7 @@
                                                 <input class="input_file" id="prdimggiftattach" name="prdgiftlist[]"
                                                     type="file" multiple @change="GiftImageChange" ref="prdimggiftattach">
                                             </div>
-                                            <div class="attached" data-file="prdimgrep1attach" id="inputUploadFile">
+                                            <div class="attached" data-file="prdimggiftattach" id="inputUploadFile">
                                             </div>
                                         </div>
                                     </div>
@@ -231,9 +231,18 @@
 <script setup>
 import { ref } from 'vue';
 
-let head = false;
 const headImgUrl = ref(null);
 const prdimgrep1attach = ref(null);
+const defaultImage = null;
+
+function imgChange() {
+    const head = prdimgrep1attach.value.files[0];
+    if (head) {
+        headImgUrl.value = URL.createObjectURL(head);
+    } else {
+        headImgUrl.value = defaultImage;
+    }
+}
 
 const rMissionType = ref(null);
 
@@ -241,14 +250,26 @@ const prdimgdetailattach = ref(null);
 const DetailImgUrl = ref(null);
 
 function DetailImageChange() {
-    DetailImgUrl.value = URL.createObjectURL(prdimgdetailattach.value.files[0]);
+    const Detail = prdimgdetailattach.value.files[0];
+    if(Detail) {
+        DetailImgUrl.value = URL.createObjectURL(Detail);
+    } else {
+        DetailImgUrl.value = defaultImage;
+    }
+    
 }
 
 const prdimggiftattach = ref(null);
 const GiftImgUrl = ref(null);
 
 function GiftImageChange() {
-    GiftImgUrl.value = URL.createObjectURL(prdimggiftattach.value.files[0]);
+    const gift = prdimggiftattach.value.files[0];
+    if(gift) {
+        GiftImgUrl.value = URL.createObjectURL(gift);
+    } else {
+        GiftImgUrl.value = defaultImage;
+    }
+    
 }
 
 
