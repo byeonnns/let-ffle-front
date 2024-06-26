@@ -33,7 +33,7 @@
                             진행 중
                         </td>
                         <td>
-                            <RouterLink to="/Admin/RaffleMonitorDetail"><button class="btn rounded-0">모니터링</button>
+                            <RouterLink to="/Admin/RaffleMonitorDetail"><button class="btn btn-sm rounded-0">모니터링</button>
                             </RouterLink>
                         </td>
                     </tr>
@@ -54,33 +54,23 @@
                             종료
                         </td>
                         <td>
-                            <RouterLink to="/Admin/RaffleMonitorDetail"><button class="btn rounded-0">모니터링</button>
+                            <RouterLink to="/Admin/RaffleMonitorDetail"><button class="btn btn-sm rounded-0">모니터링</button>
                             </RouterLink>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex flex-grow-1 justify-content-center">
-                <button class="btn btn-outline-light btn-sm me-1"
-                    style="background-color: white; color:black;">처음</button>
-                <button class="btn btn-outline-light btn-sm me-3"
-                    style="background-color: white; color:black;">이전</button>
-                <button class="btn btn-outline-light btn-sm me-1"
-                    style="background-color: white; color:black;">1</button>
-                <button class="btn btn-outline-light btn-sm me-1"
-                    style="background-color: white; color:black;">2</button>
-                <button class="btn btn-outline-light btn-sm me-1"
-                    style="background-color: white; color:black;">3</button>
-                <button class="btn btn-outline-light btn-sm me-1"
-                    style="background-color: white; color:black;">4</button>
-                <button class="btn btn-outline-light btn-sm me-3"
-                    style="background-color: white; color:black;">5</button>
-                <button class="btn btn-outline-light btn-sm me-1"
-                    style="background-color: white; color:black;">다음</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">맨끝</button>
-            </div>
+        <div class="text-center">
+            <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">처음</button>
+            <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">이전</button>
+            <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">1</button>
+            <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">2</button>
+            <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">3</button>
+            <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">4</button>
+            <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">5</button>
+            <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">다음</button>
+            <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">맨끝</button>
         </div>
     </div>
 </template>

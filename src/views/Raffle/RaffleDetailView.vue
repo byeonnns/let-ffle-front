@@ -159,12 +159,18 @@ import RaffleToast from '@/components/RaffleToast.vue'
 import GiftLottie from '@/components/GiftLottie.vue'
 import HeartLottie from '@/assets/lottie/likeHeart.json'
 
-const settingDate = new Date('2024-06-25T15:57:30')
+const settingDate = new Date('2024-06-26T11:57:30')
 const store = useStore();
 const serverTime = computed(() => {
     const diffMilliseconds = settingDate - store.getters['clientTime/getTimeForCalculate'];
     if (diffMilliseconds < 0) {
-        return "Cut-off";
+        const remain = {
+            days: "00",
+            hours: "00",
+            minutes: "00",
+            seconds: "00"
+        }
+        return remain;
     } else {
         const seconds = Math.floor(diffMilliseconds / 1000) % 60;
         const minutes = Math.floor(diffMilliseconds / (1000 * 60)) % 60;

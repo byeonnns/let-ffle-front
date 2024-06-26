@@ -112,7 +112,7 @@
                                 <div class="item item_attach">
                                     <div class="img_box d-flex">
                                         <div v-if="!GiftImgUrl" id="defaultImg">image</div>
-                                        <img v-else :src="GiftImgUrl" />
+                                        <img v-else :src="GiftImgUrl" class="w-100 h-100 object-fit-contain"/>
                                     </div>
 
                                     <div class="item_edit">
@@ -262,7 +262,6 @@ function DetailImageChange() {
     } else {
         DetailImgUrl.value = defaultImage;
     }
-
 }
 
 const prdimggiftattach = ref(null);
@@ -275,7 +274,6 @@ function GiftImageChange() {
     } else {
         GiftImgUrl.value = defaultImage;
     }
-
 }
 
 

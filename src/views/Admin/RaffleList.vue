@@ -17,46 +17,25 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td>1</td>
+                        <td>더그레이티스트24 SUMMER 드랍 ~50%</td>
+                        <td>2024-06-04</td>
+                        <td>2024-06-10</td>
+                        <td>진행 중</td>
                         <td>
-                            <RouterLink to="/">1</RouterLink>
-                        </td>
-                        <td>
-                            <RouterLink to="/">더그레이티스트24 SUMMER 드랍 ~50%</RouterLink>
-                        </td>
-                        <td>
-                            2024-06-04
-                        </td>
-                        <td>
-                            2024-06-10
-                        </td>
-                        <td>
-                            진행 중
-                        </td>
-                        <td>
-                            <RouterLink to="/Admin/CreateRaffle"><button
-                                    class="btn update-raffle-btn rounded-0">수정</button>
-                            </RouterLink>
-                            <button class="btn delete-raffle-btn ms-3 rounded-0" @click="deleteRaffle">삭제</button>
+                                <RouterLink class="btn btn-sm rounded-0 text-white me-1" to="/Admin/CreateRaffle">수정
+                                </RouterLink>
+                                <button class="btn btn-sm rounded-0 ms-1" @click="deleteRaffle">삭제</button>
                         </td>
                     </tr>
                     <tr>
+                        <td>2</td>
+                        <td>더그레이티스트24 SUMMER 드랍 ~50%</td>
+                        <td>2024-06-04</td>
+                        <td>2024-06-10</td>
+                        <td>종료</td>
                         <td>
-                            <RouterLink to="/">2</RouterLink>
-                        </td>
-                        <td>
-                            <RouterLink to="/">더그레이티스트24 SUMMER 드랍 ~50%</RouterLink>
-                        </td>
-                        <td>
-                            2024-06-04
-                        </td>
-                        <td>
-                            2024-06-10
-                        </td>
-                        <td>
-                            종료
-                        </td>
-                        <td>
-                            <RouterLink to="/Admin/WinnerList"><button class="btn rounded-0">확인</button>
+                            <RouterLink to="/Admin/WinnerList"><button class="btn btn-sm rounded-0">확인</button>
                             </RouterLink>
                         </td>
                     </tr>
@@ -71,22 +50,14 @@
                 </button>
             </div>
             <div class="text-center">
-                <button class="btn btn-outline-light btn-sm me-1"
-                    style="background-color: white; color:black;">처음</button>
-                <button class="btn btn-outline-light btn-sm me-3"
-                    style="background-color: white; color:black;">이전</button>
-                <button class="btn btn-outline-light btn-sm me-1"
-                    style="background-color: white; color:black;">1</button>
-                <button class="btn btn-outline-light btn-sm me-1"
-                    style="background-color: white; color:black;">2</button>
-                <button class="btn btn-outline-light btn-sm me-1"
-                    style="background-color: white; color:black;">3</button>
-                <button class="btn btn-outline-light btn-sm me-1"
-                    style="background-color: white; color:black;">4</button>
-                <button class="btn btn-outline-light btn-sm me-3"
-                    style="background-color: white; color:black;">5</button>
-                <button class="btn btn-outline-light btn-sm me-1"
-                    style="background-color: white; color:black;">다음</button>
+                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">처음</button>
+                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">이전</button>
+                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">1</button>
+                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">2</button>
+                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">3</button>
+                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">4</button>
+                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">5</button>
+                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">다음</button>
                 <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">맨끝</button>
             </div>
         </div>

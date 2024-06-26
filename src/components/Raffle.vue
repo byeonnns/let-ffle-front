@@ -21,7 +21,7 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
-const settingDate = new Date('2024-06-21T11:57:30')
+const settingDate = new Date('2024-06-27T11:57:30')
 const store = useStore();
 const serverTime = computed(() => {
     const diffMilliseconds = settingDate - store.getters['clientTime/getTimeForCalculate'];
