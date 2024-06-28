@@ -10,7 +10,7 @@
                 <h3 class="accordion-header">
                     <button class="accordion-button custom-accordion-button" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                        <p class="custom-title me-5">1</p>
+                        <p class="custom-title me-5">{{ Inquiry.ino }}</p>
                         <p class="custom-title me-5" style="width: 80px; color: #F37551">답변대기중</p>
                         <p class="custom-text">안녕하세요</p>
                     </button>
@@ -116,7 +116,8 @@ import RaffleToast from '@/components/RaffleToast.vue';
 
 const look = ref(null);
 const Inquiry = ref({
-    Icomment: ""
+    ireply: "",
+    ino : "",
 });
 
 function commentSubmit() {

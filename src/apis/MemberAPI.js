@@ -12,6 +12,9 @@ function login(member) {
     return axios.post("/member/login", qs.stringify(member));
 }
 
+function inquiryReply() {
+    return axios.put("/member/inquiryReply",)
+}
 export default {
     join,
     login

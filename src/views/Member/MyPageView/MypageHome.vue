@@ -4,8 +4,8 @@
             <div class="card p-2 flex-grow-1 my-2">
                 <div class="align-content-center d-flex justify-content-between p-3 ms-4">
                     <span>
-                        <h6> <h5 style="display: inline;">영바오</h5> 님, 안녕하세요!</h6>
-                        <strong class="mt-2 m-0">오늘의 래플 참여 가능 횟수가 <span style="color: #F37551;">1</span> 회 남았습니다.</strong>
+                        <h6> <h5 style="display: inline;">{{ user.mnickname }}</h5> 님, 안녕하세요!</h6>
+                        <strong class="mt-2 m-0">오늘의 래플 참여 가능 횟수가 <span style="color: #F37551;"> {{ user.ablecount }} </span> 회 남았습니다.</strong>
                     </span>
                     <RouterLink to="/Member/MyPage/UpdateMember"><button class="btn btn-outline-light">회원 정보 수정</button></RouterLink>
                 </div>
@@ -21,11 +21,11 @@
                             <div class="d-flex text-center">
                                 <div class="col">
                                     <h5 class="">매일 매일 접속하기</h5>
-                                    <p class="fw-bold"> 획득 완료!</p>
+                                    <p class="fw-bold"> {{ user.berryLoginMission }}</p>
                                 </div>
                                 <div class="col">
                                     <h5 class="">하루 3회 래플 응모하기</h5>
-                                    <p class="fw-bold">2/3 완료</p>
+                                    <p class="fw-bold"> {{ user.berryTodayRaffleEntry}}/3 완료</p>
                                 </div>
                                 <div class="col">
                                     <h5 class="">일일 래플&미션 모두 완료하기</h5>
@@ -49,6 +49,14 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+const user = ref({
+    mnickname : "",
+    ablecount : "",
+    berryLoginMission : "",
+    berryTodayRaffleEntry : "",
+});
 </script>
 
 <style scoped>
