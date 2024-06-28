@@ -71,15 +71,15 @@ function handleLogout() {
     store.dispatch("deleteAuth");
 }
 const passwordError = ref('');
-const idError = ref('');
+const emailError = ref('');
 const isPass = ref(false);
 const idRegExp = new RegExp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
 
 const emailCheck = (onBtn) => {
     if (!idRegExp.test(member.value.mid)) {
-        idError.value = "이메일 주소를 정확히 입력해주세요."
+        emailError.value = "이메일 주소를 정확히 입력해주세요."
     } else {
-        idError.value = "";
+        emailError.value = "";
     }
     onBtn();
 }

@@ -7,7 +7,7 @@
                         <li>이용약관</li>
                         <RouterLink to="/Notice"><li class="list-group-item">공지사항</li></RouterLink>
                         <li>제휴제안</li>
-                        <RouterLink to="/Member/WriteInquiry"><li class="list-group-item">문의하기</li></RouterLink>
+                        <RouterLink to="/Member/MyPage/WriteInquiry"><li class="list-group-item">문의하기</li></RouterLink>
                     </ul>
                     <span class="d-none d-lg-block" style="font-size: 13px;">주식회사 렛플 대표 : 변성준 사업자등록번호 : 123-45-67890
                         통신판매업 : 제2024-가락시장A-0016호<br />
