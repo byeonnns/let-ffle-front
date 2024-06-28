@@ -31,7 +31,6 @@ function removeAuthHeader() {
     delete axios.defaults.headers.common["Authorization"];
 }
 
-/*
 // Local Storage에 Access Token을 저장
 function saveAccessToken(accessToken) {
     localStorage.setItem("accessToken", accessToken);
@@ -43,8 +42,10 @@ function readAccessToken() {
     const accessToken = localStorage.getItem("accessToken") || ""; // 앞이 false의 의미를 가지는 값을 가진다면 || 뒤의 값으로 세팅
     return accessToken;
 }
-*/
+
 export default {
     addAuthHeader,
-    removeAuthHeader
+    removeAuthHeader,
+    saveAccessToken,
+    readAccessToken
 }

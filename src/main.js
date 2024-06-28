@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Vue3Lottie from 'vue3-lottie'
+import axiosConfig from './apis/axiosConfig'
 
 // Bootstrap 관련 Javascript와 css, icon 로딩
 import 'bootstrap'
