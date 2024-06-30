@@ -4,7 +4,7 @@
             <div class="card p-2 flex-grow-1 my-2">
                 <div class="align-content-center d-flex justify-content-between p-3 ms-4">
                     <span>
-                        <h6> <h5 style="display: inline;">{{ user.mnickname }}</h5> 님, 안녕하세요!</h6>
+                        <h6> <h5 style="display: inline;">{{ mnickname.mnickname }}</h5> 님, 안녕하세요!</h6>
                         <strong class="mt-2 m-0">오늘의 래플 참여 가능 횟수가 <span style="color: #F37551;"> {{ user.ablecount }} </span> 회 남았습니다.</strong>
                     </span>
                     <RouterLink to="/Member/MyPage/UpdateMember"><button class="btn btn-outline-light">회원 정보 수정</button></RouterLink>
@@ -49,6 +49,7 @@
 </template>
 
 <script setup>
+import MemberAPI from '@/apis/MemberAPI';
 import { ref } from 'vue';
 
 const user = ref({
@@ -57,6 +58,19 @@ const user = ref({
     berryLoginMission : "",
     berryTodayRaffleEntry : "",
 });
+
+const mnickname = ref({});
+
+async function mypage() {
+    try {
+        const response = await MemberAPI.mypage();
+        mnickname.value = response.data.mnickname;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+mypage();
 </script>
 
 <style scoped>

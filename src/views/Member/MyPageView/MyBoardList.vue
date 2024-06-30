@@ -19,13 +19,13 @@
 
                         </thead>
                         <tbody>
-                            <tr class="center">
-                                <td>1</td>
+                            <tr v-for="board in page.boards" :key="board.bno" class="center">
+                                <td>{{ board.bno }}</td>
                                 <td>
-                                    <RouterLink to="/Board/BoardDetail" style="color: black;">현재 이런 상황에 대한 반응들
+                                    <RouterLink :to="`/Board/BoardDetail?bno=${board.bno}&pageNo=${pageNo}`" style="color: black;"> {{ board.btitle }}
                                     </RouterLink>
                                 </td>
-                                <td>2024-06-05</td>
+                                <td> {{ board.bcreatedat }}</td>
                                 <td>
                                     <RouterLink to="/Board/BoardDetail"><button
                                             class="btn btn-outline-light btn-sm me-2">수정</button>
@@ -47,6 +47,33 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
+import { useStore } from 'vuex';
+import { useRoute, useRouter } from 'vue-router';
+import BoardAPI from '@/apis/BoardAPI';
+
+const store = useStore();
+const route = useRoute();
+const pageNo = ref(route.query.pageNo || 1);
+
+const page = ref({
+    boards: [],
+    pager: {}
+});
+
+async function myBoardList(pageNo) {
+    try {
+        const response = await BoardAPI.myBoardList(pageNo);
+        page.value.board = response.data.boards;
+        page.value.pager = response.data.pager;
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+myBoardList(pageNo.value);
+
 </script>
 
 <style scoped>
