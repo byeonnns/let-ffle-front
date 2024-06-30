@@ -27,9 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div style="margin-top: 30px;">
-                <div class="border-bottom mb-4"></div>
-            </div>
+            <hr>
             <div class="d-flex">
                 <div class="col-10">
                     <div class="card mt-2 border-0">
@@ -41,6 +39,30 @@
                                 <div class="card-body">
                                     <h5 class="card-title">BLR 인기 티셔츠 리오더 & 신규 발매</h5>
                                     <p class="m-0">템포러리 브랜드를 추구하며</p> 더그레이티스트만의 해석으로 트렌드와 개성의 양립을 지향합니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex col-2 justify-content-end">
+                    <div class="align-content-center mt-4">
+                        <RouterLink to="/Raffle/RaffleDetail"><button class="btn btn-outline-light mb-2" style="background-color: #F37551; color: white;">응모</button></RouterLink>
+                        <button class="btn btn-outline-light border" style="background-color: white; color: black;" @click="deleteBtn">삭제</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex">
+                <div class="col-10">
+                    <div class="card mt-2 border-0">
+                        <div class="row g-0">
+                            <div class="col-md-3 align-content-center">
+                                <img src="@/assets/imgSample2.jpg" class="img-fluid rounded-start card" width="200px" style="border: 1px solid black; height: 130px;">
+                            </div>
+                            <div class="col-md-8 align-content-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ likeList.rtitle }}</h5>
+                                    <p class="m-0">{{ likeList.rsubtitle }}</p>
                                 </div>
                             </div>
                         </div>
@@ -87,6 +109,12 @@ import RaffleModal from '@/components/RaffleModal.vue';
 import { ref } from 'vue';
 
 const deleteModal = ref(null);
+
+const likeList = ref({
+    rthumbnailimg:null,
+    rtitle:"타이틀",
+    rsubtitle:"서브타이틀"
+});
 
 function deleteBtn() {
     deleteModal.value.showModal();

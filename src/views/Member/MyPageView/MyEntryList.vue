@@ -13,7 +13,8 @@
                                 <a href="#" class="tab_link">
                                     <dl class="tab_box">
                                         <dt class="title" style="height: 50px;">전체</dt>
-                                        <dd class="count">1</dd>
+                                        <dd class="count">{{totalRaffle}}
+                                        </dd>
                                     </dl>
                                 </a>
                             </div>
@@ -21,7 +22,7 @@
                                 <a href="#" class="tab_link">
                                     <dl class="tab_box">
                                         <dt class="title" style="height: 50px;">진행 중</dt>
-                                        <dd class="count">1</dd>
+                                        <dd class="count">{{applyingRaffle}}</dd>
                                     </dl>
                                 </a>
                             </div>
@@ -29,7 +30,7 @@
                                 <a href="#" class="tab_link">
                                     <dl class="tab_box">
                                         <dt class="title" style="height: 50px;">종료</dt>
-                                        <dd class="count">0</dd>
+                                        <dd class="count">{{closedRaffle}}</dd>
                                     </dl>
                                 </a>
                             </div>
@@ -56,12 +57,12 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>더그레이티스트24</td>
-                                        <td>24-06-16</td>
-                                        <td>진행 중</td>
-                                        <td>Y</td>
-                                        <td>10</td>
-                                        <td>17.12%</td>
+                                        <td>{{ entryList.rtitle }}</td>
+                                        <td>{{ entryList.rdtcreatedat }}</td>
+                                        <td>{{ entryList.status }}</td>
+                                        <td>{{ entryList.rdtmissioncleared }}</td>
+                                        <td>{{ entryList.rdtberryspend }}</td>
+                                        <td>{{ entryList.probability }}</td>
                                         <td><button class="btn btn-sm">바로가기</button></td>
                                     </tr>
                                 </tbody>
@@ -75,7 +76,18 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import SerachPeriod from './Components/SearchPeriod.vue';
+
+const entryList = ref({
+    rtitle:"레플 이름",
+    rdtcreatedat:"응모일",
+    status:null,
+    rdtmissioncleared:"미션 여부",
+    rdtberryspend:0,
+    probability:100 + " %"
+});
+
 </script>
 
 <style scoped>
