@@ -20,9 +20,9 @@
                         </thead>
                         <tbody>
                             <tr class="center">
-                                <td>1</td>
-                                <td>현재 이런 상황에 대한 반응들</td>
-                                <td>2024-06-11</td>
+                                <td>{{ boards.board.bno }}</td>
+                                <td>{{ boards.board.btitle }}</td>
+                                <td>{{ boards.board.bcreatedat }}</td>
                                 <td>
                                     <RouterLink to="/Board/BoardDetail"><button
                                             class="btn btn-outline-light btn-sm">이동하기</button>
@@ -40,6 +40,14 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+
+const boards = ref({
+    board : [],
+    pager : {}
+
+});
 </script>
 
 <style scoped>

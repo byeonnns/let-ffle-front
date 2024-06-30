@@ -49,6 +49,7 @@
 </template>
 
 <script setup>
+import MemberAPI from '@/apis/MemberAPI';
 import { ref } from 'vue';
 
 const member = ref({

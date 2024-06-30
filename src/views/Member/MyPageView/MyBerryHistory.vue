@@ -19,12 +19,16 @@
                         <div class="d-flex justify-content-between container mb-4">
                             <span>
                                 <span style="margin-right: 30px;">06.17&emsp;22:52</span>
-                                <span>첫 회원가입 보너스</span>
-                                <div style="margin-inline-start: 130px;">적립</div>
+                                <span>{{ berryHistory.berry.bhreason }}</span>
+                                <div v-if="berryHisroty.berry.bhchangevalue > 0" style="margin-inline-start: 130px;">적립
+                                </div>
+                                <div v-if="berryHisroty.berry.bhchangevalue < 0" style="margin-inline-start: 130px;">사용
+                                </div>
+
                             </span>
                             <span>
                                 <img src="@/assets/berry-icon.png" class="me-1" height="20px">
-                                <strong>+30개</strong>
+                                <strong>{{ berryHisroty.berry.bhchangevalue }}개</strong>
                             </span>
                         </div>
                         <div class="d-flex justify-content-between container mb-5">
@@ -65,6 +69,13 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+
+const berryHistory = ref({
+    berry: [],
+    pager: {}
+});
 </script>
 
 <style scoped>
@@ -75,5 +86,4 @@ td {
 .btn {
     border: none;
 }
-
 </style>

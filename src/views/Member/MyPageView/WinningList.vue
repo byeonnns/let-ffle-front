@@ -41,6 +41,13 @@
                                             <td>아이폰 15Pro</td>
                                             <td>배송 완료</td>
                                         </tr>
+
+                                        <tr>
+                                            <td>{{ WinningList.rtitle }}</td>
+                                            <td>{{ WinningList.rfinishedat }}</td>
+                                            <td>{{ WinningList.rgift }}</td>
+                                            <td>배송 완료</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -87,6 +94,12 @@ import SerachPeriod from './Components/SearchPeriod.vue';
 import RaffleModal from '@/components/RaffleModal.vue';
 
 const inputModal = ref(null);
+
+const WinningList = ref({
+    rtitle:"제목",
+    rfinishedat:"응모시간",
+    rgift:"선물"
+});
 
 function inputAddress() {
     inputModal.value.showModal();

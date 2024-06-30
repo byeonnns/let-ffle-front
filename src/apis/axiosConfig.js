@@ -17,6 +17,7 @@ function addAuthHeader(accessToken) {
     axios를 이용해서 Authorization 헤더의 값으로 우리가 로그인시켜준 유저의 Access Token을 넣어주는 코드
     */
     axios.defaults.headers.common["Authorization"] = "Bearer " + accessToken;
+    console.log(axios.defaults.headers.common);
 }
 
 // 공통 요청 헤더에서 Authorization 헤더를 삭제
@@ -29,6 +30,7 @@ function removeAuthHeader() {
     */
 
     delete axios.defaults.headers.common["Authorization"];
+    console.log(axios.defaults.headers.common);
 }
 
 // Local Storage에 Access Token을 저장
