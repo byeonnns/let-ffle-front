@@ -96,7 +96,7 @@ const store = createStore({
 
       // 로컬 파일에서 삭제
       localStorage.removeItem("mid");
-      localStorage.removeItem("acceeToken");
+      localStorage.removeItem("accessToken");
 
       // Axios 요청 공통 헤더에 인증 정보 삭제
       axiosConfig.removeAuthHeader();

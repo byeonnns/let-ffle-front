@@ -10,4 +10,7 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
+// 브라우저 refresh시 인증 정보를 store에 저장
+store.dispatch("loadAuth");
+
 createApp(App).use(Vue3Lottie).use(store).use(router).mount('#app')

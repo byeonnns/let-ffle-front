@@ -22,7 +22,8 @@
                             <tr v-for="board in page.boards" :key="board.bno" class="center">
                                 <td>{{ board.bno }}</td>
                                 <td>
-                                    <RouterLink :to="`/Board/BoardDetail?bno=${board.bno}&pageNo=${pageNo}`" style="color: black;"> {{ board.btitle }}
+                                    <RouterLink :to="`/Board/BoardDetail?bno=${board.bno}&pageNo=${pageNo}`"
+                                        style="color: black;"> {{ board.btitle }}
                                     </RouterLink>
                                 </td>
                                 <td> {{ board.bcreatedat }}</td>
@@ -35,7 +36,25 @@
                                     </RouterLink>
                                 </td>
                             </tr>
-                        
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <button @click="changePageNo(1)"
+                                        class="btn btn-outline-primary btn-sm me-1">처음</button>
+                                    <button v-if="page.pager.groupNo > 1"
+                                        @click="changePageNo(page.pager.startPageNo - 1)"
+                                        class="btn btn-outline-info btn-sm me-1">이전</button>
+                                    <button v-for="pageNo in page.pager.pageArray" :key="pageNo"
+                                        @click="changePageNo(pageNo)"
+                                        :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-success'"
+                                        class="btn btn-sm me-1">{{ pageNo }}</button>
+                                    <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
+                                        @click="changePageNo(page.pager.endPageNo + 1)"
+                                        class="btn btn-outline-info btn-sm me-1">다음</button>
+                                    <button @click="changePageNo(page.pager.totalPageNo)"
+                                        class="btn btn-outline-primary btn-sm">맨끝</button>
+                                </td>
+                            </tr>
+
                         </tbody>
                     </table>
 
@@ -47,13 +66,14 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
 import BoardAPI from '@/apis/BoardAPI';
 
 const store = useStore();
 const route = useRoute();
+const router = useRouter();
 const pageNo = ref(route.query.pageNo || 1);
 
 const page = ref({
@@ -64,7 +84,7 @@ const page = ref({
 async function myBoardList(pageNo) {
     try {
         const response = await BoardAPI.myBoardList(pageNo);
-        page.value.board = response.data.boards;
+        page.value.boards = response.data.board;
         page.value.pager = response.data.pager;
 
     } catch (error) {
@@ -74,6 +94,23 @@ async function myBoardList(pageNo) {
 
 myBoardList(pageNo.value);
 
+// 페이저의 버튼을 클릭했을 때 해당 페이지로 이동하는 함수 정의
+function changePageNo(argPageNo) {
+    router.push(`/Member/MyPage/MyBoardList?pageNo=${argPageNo}`);
+}
+
+// 요청 경로 변경을 감시
+watch(
+    route, (newRoute, oldRoute) => {
+        if (newRoute.query.pageNo) {
+            myBoardList(newRoute.query.pageNo);
+            pageNo.value = newRoute.query.pageNo;
+        } else {
+            myBoardList(1);
+            pageNo.value = 1;
+        }
+    }
+);
 </script>
 
 <style scoped>
