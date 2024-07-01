@@ -7,15 +7,15 @@
             <div class="d-flex text-center mt-4">
                 <div class="col">
                     <h5>전체 래플</h5>
-                    <h6>1</h6>
+                    <h6>{{ raffle.totalRaffle }}</h6>
                 </div>
                 <div class="col">
                     <h5>진행 중인 래플</h5>
-                    <h6>1</h6>
+                    <h6>{{ raffle.progressRaffle }}</h6>
                 </div>
                 <div class="col">
                     <h5>종료된 래플</h5>
-                    <h6>1</h6>
+                    <h6>{{ raffle.endRaffle }}</h6>
                 </div>
             </div>
             <hr class="border-3 opacity-100" style="border-color: #F37551;" />
@@ -29,16 +29,19 @@
                             <table class="table text-center table-borderless">
                                 <tbody>
                                     <tr>
+                                        <!-- 스포츠에 관한 진행하는 래플(raffleDetail..?) -->
                                         <td class="bg-light col-6">진행 중인 래플</td>
-                                        <td class="col-6">234</td>
+                                        <td class="col-6">{{ raffle.sportProgressRaffle }}</td>
                                     </tr>
                                     <tr>
                                         <td class="bg-light col-6">현재 참여인원</td>
-                                        <td class="col-6">513515</td>
+                                        <td class="col-6">{{ member.sportRaffle }}</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn btn-sm rounded-0"><RouterLink to="/Raffle?rcategory=sports" class="text-white">바로가기</RouterLink></button>
+                            <button class="btn btn-sm rounded-0">
+                                <RouterLink to="/Raffle?rcategory=sports" class="text-white">바로가기</RouterLink>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -52,15 +55,17 @@
                                 <tbody>
                                     <tr>
                                         <td class="bg-light col-6">진행 중인 래플</td>
-                                        <td class="col-6">234</td>
+                                        <td class="col-6">{{ raffle.artProgressRaffle }}</td>
                                     </tr>
                                     <tr>
                                         <td class="bg-light col-6">현재 참여인원</td>
-                                        <td class="col-6">513515</td>
+                                        <td class="col-6">{{ member.artRaffle }}</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn btn-sm rounded-0"><RouterLink to="/Raffle?rcategory=art" class="text-white">바로가기</RouterLink></button>
+                            <button class="btn btn-sm rounded-0">
+                                <RouterLink to="/Raffle?rcategory=art" class="text-white">바로가기</RouterLink>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -74,15 +79,17 @@
                                 <tbody>
                                     <tr>
                                         <td class="bg-light col-6">진행 중인 래플</td>
-                                        <td class="col-6">234</td>
+                                        <td class="col-6">{{ raffle.fashionProgressRaffle }}</td>
                                     </tr>
                                     <tr>
                                         <td class="bg-light col-6">현재 참여인원</td>
-                                        <td class="col-6">513515</td>
+                                        <td class="col-6">{{ member.fashionRaffle }}</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn btn-sm rounded-0"><RouterLink to="/Raffle?rcategory=fashion" class="text-white">바로가기</RouterLink></button>
+                            <button class="btn btn-sm rounded-0">
+                                <RouterLink to="/Raffle?rcategory=fashion" class="text-white">바로가기</RouterLink>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -112,26 +119,27 @@
                 <tbody>
                     <tr>
                         <td class="bg-light">전체</td>
-                        <td>12</td>
-                        <td>12</td>
+                        <td>{{ raffle.totalRaffle }}</td>
+                        <td>{{ member.totalMember }}</td>
                         <td><button class="btn btn-sm rounded-0">바로가기</button></td>
                     </tr>
                     <tr>
+                        <!-- 기존에 있는 현재 래플과 끝낫던 래플들의 총합계..? -->
                         <td class="bg-light">Sports</td>
-                        <td>34</td>
-                        <td>34</td>
+                        <td>{{ raffle.totalSport }}</td>
+                        <td>{{ member.totalSport }}</td>
                         <td><button class="btn btn-sm rounded-0">바로가기</button></td>
                     </tr>
                     <tr>
                         <td class="bg-light">Art</td>
-                        <td>56</td>
-                        <td>56</td>
+                        <td>{{ raffle.totalArt }}</td>
+                        <td>{{ member.totalArt }}</td>
                         <td><button class="btn btn-sm rounded-0">바로가기</button></td>
                     </tr>
                     <tr>
                         <td class="bg-light">Fashion</td>
-                        <td>78</td>
-                        <td>78</td>
+                        <td>{{ raffle.totalFashion }}</td>
+                        <td>{{ member.totalFashion }}</td>
                         <td><button class="btn btn-sm rounded-0">바로가기</button></td>
                     </tr>
                 </tbody>
@@ -141,6 +149,41 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+const raffle = ref({
+    // 상단에 DashBoard에 있는 전체 , 진행중, 끝난 레플
+    totalRaffle: "250",
+    progressRaffle: "150",
+    endRaffle: "100",
+
+    // 현재 진행중인 래플의 종류 갯수
+    sportProgressRaffle: "50",
+    artProgressRaffle: "50",
+    fashionProgressRaffle: "50",
+
+    // 누적래플의 수
+    totalSport: "85",
+    totalArt: "75",
+    totalFashion: "90",
+});
+
+const member = ref({
+    // 래플의 참여한 user들
+    totalMember: "6800",
+    sportRaffle: "253",
+    artRaffle: "157",
+    fashionRaffle: "300",
+
+    // 누적 참여자수
+    totalSport: "2500",
+    totalArt: "1800",
+    totalFashion: "2400"
+
+});
+
+
+
 </script>
 
 <style scoped>
@@ -155,8 +198,10 @@ td {
 th {
     background-color: #d8dce3;
 }
-.btn{
+
+.btn {
     background-color: #F37551;
-    color: white;;
+    color: white;
+    ;
 }
 </style>
