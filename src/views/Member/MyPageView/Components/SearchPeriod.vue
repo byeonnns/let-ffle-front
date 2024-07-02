@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="period_search">
-            <div class="period_month border mt-2">
+            <div class="period_month border">
                 <ul class="month_list container d-flex justify-content-center">
                     <li class="month_item">
                         <a href="#" class="month_link">전체</a>
@@ -28,9 +28,6 @@
                     </span>
                 </ul>
             </div>
-        </div>
-        <div class="mb-4 mt-2">
-            <p style="color: gray; font-size: 15px;">●한 번에 조회 가능한 기간은 최대 6개월입니다.</p>
         </div>
     </div>
 

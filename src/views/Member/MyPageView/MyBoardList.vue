@@ -70,6 +70,7 @@ import { onMounted, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
 import BoardAPI from '@/apis/BoardAPI';
+import MemberAPI from '@/apis/MemberAPI';
 
 const store = useStore();
 const route = useRoute();
@@ -83,7 +84,9 @@ const page = ref({
 
 async function myBoardList(pageNo) {
     try {
-        const response = await BoardAPI.myBoardList(pageNo);
+        console.log("myBoardList : " + pageNo);
+        const response = await MemberAPI.myBoardList(pageNo);
+        console.log(response.data.board);
         page.value.boards = response.data.board;
         page.value.pager = response.data.pager;
 
@@ -96,6 +99,7 @@ myBoardList(pageNo.value);
 
 // 페이저의 버튼을 클릭했을 때 해당 페이지로 이동하는 함수 정의
 function changePageNo(argPageNo) {
+    console.log(argPageNo);
     router.push(`/Member/MyPage/MyBoardList?pageNo=${argPageNo}`);
 }
 

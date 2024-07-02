@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, defineExpose } from 'vue';
+import { onMounted, ref } from 'vue';
 import { Toast } from 'bootstrap';
 
 const liveToast = ref(null);
