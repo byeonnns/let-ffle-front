@@ -3,8 +3,8 @@
     <div class="container" style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; ">
         <h3 style=" margin-top: 30px">게시글쓰기</h3>
     </div>
-    <div class="container" style="width: 100%; height:500px;">
-        <div style="width: 100%; height:500px;">
+    <div class="container" style="width: 100%; height:100%;">
+        <div style="width: 100%; height:100%;">
             <form @submit.prevent="handleSubmit">
                 <div class="form-group row">
                     <label for="btitle" class="col-sm-2 col-form-label">유형</label>
@@ -20,7 +20,6 @@
                         <label for="btitle" class="col-sm-2 col-form-label">제목</label>
                         <div class="col-sm-10">
                             <input id="btitle" type="text" class="form-control" v-model="board.btitle" />
-
                         </div>
                     </div>
 
@@ -34,6 +33,10 @@
 
                     <div class="form-group row mt-4">
                         <label for="battach" class="col-sm-2 col-form-label">첨부파일</label>
+                        <div v-if="board.battachoname !== null">
+                        <img width="300"
+                            :src="`${axios.defaults.baseURL}/community/battach/${bno}?accessToken=${$store.state.accessToken}`">
+                        </div>
                         <div class="col-sm-10">
                             <input id="battach" type="file" class="form-control-file" ref="battach" />
                         </div>
@@ -60,22 +63,48 @@
 import WriteForm from "@/components/WriteForm.vue";
 import { ref } from "vue";
 import RaffleToast from "@/components/RaffleToast.vue";
-import BoardAPI from "@/apis/BoardAPI";
-import { useRouter } from "vue-router";
+import boardAPI from "@/apis/BoardAPI";
+import { useRoute, useRouter } from "vue-router";
+import axios from "axios";
 
 const checkTitle = ref(null);
 const checkContent = ref(null);
 const writeFormRef = ref(null);
 const seeya = ref(null);
+
+const board = ref({})
 const router = useRouter();
-
-const board = ref({
-    bcategory: "자유",
-    btitle: "",
-    bcontent: "",
-});
-
+const route = useRoute();
+const pageNo = route.query.pageNo;
 const battach = ref(null);
+
+const bno = route.query.bno;
+
+
+// 해당 bno 게시물 얻는 함수
+async function getBoard(argBno) {
+    try {
+        const response = await boardAPI.boardDetail(argBno);
+        board.value = response.data;
+        if (board.value.battachoname != null) {
+            getAttach(argBno);
+        }
+        console.log(board.value);
+    } catch (error) {
+        console.log(error);
+    }
+}
+// 첨부 다운로드
+async function getAttach(argBno) {
+    try {
+        const response = await boardAPI.boardAttachDownload(argBno);
+        const blob = response.data;
+        battach.value = URL.createObjectURL(blob);
+    } catch (error) {
+        console.log(error);
+    }
+}
+getBoard(bno);
 
 async function handleSubmit() {
 
@@ -100,6 +129,7 @@ async function handleSubmit() {
         const formData = new FormData();
 
         // 문자 파트 넣기
+        formData.append("bno", board.value.bno);
         formData.append("btitle", board.value.btitle);
         formData.append("bcontent", board.value.bcontent);
         formData.append("bcategory", board.value.bcategory);
@@ -112,13 +142,14 @@ async function handleSubmit() {
 
         // 게시물 쓰기 요청
         try {
-            const response = await BoardAPI.writeBoard(formData);
+            const response = await boardAPI.updateBoard(formData);
             router.back();
         } catch (error) {
             console.log(error);
         }
     }
 }
+
 </script>
 
 <style scoped>

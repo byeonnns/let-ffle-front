@@ -11,6 +11,10 @@ const routes = [
         path: '/Board/BoardDetail',
         component: () => import(/* webpackChunkName: "Board" */ '@/views/Board/BoardDetailView.vue')
     },
+    {
+        path: '/Board/BoardUpdate',
+        component: () => import(/* webpackChunkName: "Board" */ '@/views/Board/UpdateBoardView.vue')
+    }
 
 
 ];

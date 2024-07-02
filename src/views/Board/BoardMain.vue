@@ -25,88 +25,43 @@
                         </thead>
                         <tbody>
                             <!--class="text-center"  -->
-                            <tr>
-                                <td>20312</td>
-                                <RouterLink to="./BoardDetail" style="text-decoration: none;">
-                                    <td>[자유] 현재 이런 상황에 대한 반응들</td>
+                            <tr v-for="board in page.boards" :key="board.bno">
+                                <td>{{ board.bno }}</td>
+                                <RouterLink :to="`/Board/BoardDetail?bno=${board.bno}&pageNo=${pageNo}`"
+                                    style="text-decoration: none;">
+                                    <td>[{{ board.bcategory }}] {{ board.btitle }}</td>
                                 </RouterLink>
-                                <td>매번 긍정일순 없어</td>
-                                <td>2024-06-05</td>
-                                <td>4</td>
-                            </tr>
-                            <tr>
-                                <td>19018</td>
-                                <td>[자유] 이 글을 보시게된다면 저에게...</td>
-                                <td>나는야 나비</td>
-                                <td>2024-06-05</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>18710</td>
-                                <td>[자유] 굉장한 메리트가 있는 이런거 보셨나요...</td>
-                                <td>말왕 탕후루</td>
-                                <td>2024-06-07</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td>20804</td>
-                                <td>[자유] 강의실에서 인싸되는 방법</td>
-                                <td>야삐</td>
-                                <td>2024-06-04</td>
-                                <td>206</td>
-                            </tr>
-                            <tr>
-                                <td>19676</td>
-                                <td>[자유] 탕후루와 마라탕은 무슨관계인가..</td>
-                                <td>탕후루루룩</td>
-                                <td>2024-06-05</td>
-                                <td>21</td>
+                                <td> {{ board.mid }}</td>
+                                <td> {{ board.bcreatedat }} </td>
+                                <td> {{ board.bhitcount }} </td>
                             </tr>
 
                             <tr>
-                                <td>23314</td>
-                                <td>[당첨 후기] 나 응모 당첨 100%인 썰 풀어본다..</td>
-                                <td>응모왕</td>
-                                <td>2024-06-05</td>
-                                <td>603</td>
-                            </tr>
-                            <tr>
-                                <td>23301</td>
-                                <td>[당첨 후기] 미션에 관한 정답 모음집..</td>
-                                <td>미션만 한다</td>
-                                <td>2024-06-08</td>
-                                <td>22</td>
+                                <td colspan="5" class="text-center">
+                                    <button @click="changePageNo(1)"
+                                        class="btn btn-outline-primary btn-sm me-1">처음</button>
+                                    <button v-if="page.pager.groupNo > 1"
+                                        @click="changePageNo(page.pager.startPageNo - 1)"
+                                        class="btn btn-outline-info btn-sm me-1">이전</button>
+                                    <button v-for="pageNo in page.pager.pageArray" :key="pageNo"
+                                        @click="changePageNo(pageNo)"
+                                        :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-success'"
+                                        class="btn btn-sm me-1">{{ pageNo }}</button>
+                                    <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
+                                        @click="changePageNo(page.pager.endPageNo + 1)"
+                                        class="btn btn-outline-info btn-sm me-1">다음</button>
+                                    <button @click="changePageNo(page.pager.totalPageNo)"
+                                        class="btn btn-outline-primary btn-sm">맨끝</button>
+
+                                    <button class="btn btn-outline-light btn-sm ms-3 rounded-0"
+                                        style="background-color: #F37551;">
+                                        <RouterLink to="/Board/WriteBoard" style="color: white;">글쓰기</RouterLink>
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="text-end mb-2">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex flex-grow-1 justify-content-center ms-5">
-                                <button class="btn btn-outline-light btn-sm me-1"
-                                    style="background-color: white; color:black;">처음</button>
-                                <button class="btn btn-outline-light btn-sm me-3"
-                                    style="background-color: white; color:black;">이전</button>
-                                <button class="btn btn-outline-light btn-sm me-1"
-                                    style="background-color: white; color:black;">1</button>
-                                <button class="btn btn-outline-light btn-sm me-1"
-                                    style="background-color: white; color:black;">2</button>
-                                <button class="btn btn-outline-light btn-sm me-1"
-                                    style="background-color: white; color:black;">3</button>
-                                <button class="btn btn-outline-light btn-sm me-1"
-                                    style="background-color: white; color:black;">4</button>
-                                <button class="btn btn-outline-light btn-sm me-3"
-                                    style="background-color: white; color:black;">5</button>
-                                <button class="btn btn-outline-light btn-sm me-1"
-                                    style="background-color: white; color:black;">다음</button>
-                                <button class="btn btn-outline-light btn-sm"
-                                    style="background-color: white; color:black;">맨끝</button>
-                            </div>
-                            <button class="btn btn-outline-light btn-sm ms-3 rounded-0"
-                                style="background-color: #F37551;">
-                                <RouterLink to="/Board/WriteBoard" style="color: white;">글쓰기</RouterLink>
-                            </button>
-                        </div>
-                    </div>
+
                     <div style="width: 32%; height:60px;" class="container">
                         <!-- border:1px solid black; -->
                         <div class="input-group" style="align-content: center;">
@@ -132,7 +87,50 @@
 
 
 <script setup>
+import { ref, watch } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import BoardAPI from '@/apis/BoardAPI';
 
+const router = useRouter();
+const route = useRoute();
+
+const pageNo = ref(route.query.pageNo || 1);
+
+const page = ref({
+    boards: [],
+    pager: {}
+});
+
+async function getBoardList(pageNo) {
+    try {
+        const response = await BoardAPI.getBoardList(pageNo);
+        page.value.boards = response.data.board;
+        page.value.pager = response.data.pager;
+        console.log(page.value);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getBoardList(pageNo.value);
+
+function changePageNo(argPageNo) {
+    router.push(`/Board/BoardList?pageNo=${argPageNo}`);
+}
+
+watch(
+    route, (newRoute, oldRoute) => {
+        if (newRoute.query.pageNo) {
+            console.log(pageNo.value)
+            getBoardList(newRoute.query.pageNo);
+            pageNo.value = newRoute.query.pageNo;
+        } else {
+            console.log()
+            getBoardList(1);
+            pageNo.value = 1;
+        }
+    }
+);
 
 </script>
 

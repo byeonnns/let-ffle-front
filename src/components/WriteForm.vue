@@ -3,16 +3,16 @@
     <div class="form-group row">
       <label for="btitle" class="col-sm-2 col-form-label">제목</label>
       <div class="col-sm-10">
-        <input id="btitle" type="text" class="form-control" v-model="board.btitle" />
+        <input id="btitle" type="text" class="form-control"/>
+
       </div>
     </div>
-
 
     <div class="form-group row mt-4">
       <label for="bcontent" class="col-sm-2 col-form-label">내용</label>
       <div class="col-sm-10">
         <textarea id="bcontent" type="text" class="form-control" style="height:250px;"
-          v-model="board.bcontent"></textarea>
+          ></textarea>
       </div>
     </div>
 
@@ -29,16 +29,20 @@
 
 <script setup>
 import { ref } from 'vue';
-const board = ref({
-  btitle: "",
-  bcontent: "",
-  battach: null
-})
 
+const prop = defineProps([
+    "bcontent",
+    "btitle"
+]);
 
-defineExpose({
-  board
-});
+function check() {
+  console.log(prop.btitle);
+  console.log(prop.bcontent);
+}
+
+// defineExpose({
+//   board
+// });
 </script>
 
 <style scoped></style>
