@@ -3,9 +3,14 @@
 import axios from "axios";
 
 function myEntryList() {
-    return axios.get("/raffle/getRaffleDetailList")
+    return axios.get("/raffle/getRaffleDetailList");
+}
+
+function myWinnerList() {
+    return axios.get("/raffle/getWinnerDetailList");
 }
 
 export default {
-    myEntryList
+    myEntryList,
+    myWinnerList
 }
