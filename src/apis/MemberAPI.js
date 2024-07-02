@@ -25,9 +25,24 @@ function myBoardList(pageNo) {
     return axios.get("/member/myBoardList", { params: { pageNo:pageNo } });
 }
 
+function myPageDashboard(){
+    return axios.get("/member/getMyPageDashboard");
+}
+
+function myBerryHistory(){
+    return axios.get("/member/getBerryHistoryList");
+}
+
+function myLikeList(pageNo){
+    return axios.get("/member/likeList", { params: { pageNo:pageNo } });
+}
+
 export default {
     join,
     login,
     mypage,
-    myBoardList
+    myBoardList,
+    myPageDashboard,
+    myBerryHistory,
+    myLikeList
 }

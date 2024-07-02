@@ -1,76 +1,69 @@
 <template>
     <div>
-        <div class="container">
-            <div class="d-flex flex-column ms-5" style="width: 100%;">
-                <div style="border-bottom: 3px solid #F37551;" class="mb-3">
-                    <h4>응모 내역</h4>
+        <div class="d-flex flex-column">
+            <div style="border-bottom: 3px solid #F37551;">
+                <h3>응모 내역</h3>
+            </div>
+            <div class="purchase_list_tab mt-2">
+                <div class="tab_item total">
+                    <a href="#" class="tab_link">
+                        <dl class="tab_box m-0">
+                            <dt class="title" style="height: 50px;">전체</dt>
+                            <dd class="count">{{ myRaffleDetail.totalRaffle }}</dd>
+                        </dl>
+                    </a>
                 </div>
-                <div class="content_area my-page-content">
-                    <div class="my_purchase">
-                        <div class="v-portal" style="display: none;"></div>
-                        <div class="purchase_list_tab detail_tab flex-container">
-                            <div class="tab_item total">
-                                <a href="#" class="tab_link">
-                                    <dl class="tab_box m-0">
-                                        <dt class="title" style="height: 50px;">전체</dt>
-                                        <dd class="count">{{ myRaffleDetail.totalRaffle }}</dd>
-                                    </dl>
-                                </a>
-                            </div>
-                            <div class="tab_item">
-                                <a href="#" class="tab_link">
-                                    <dl class="tab_box m-0">
-                                        <dt class="title" style="height: 50px;">진행 중</dt>
-                                        <dd class="count">{{ myRaffleDetail.ongoingRaffle }}</dd>
-                                    </dl>
-                                </a>
-                            </div>
-                            <div class="tab_item">
-                                <a href="#" class="tab_link">
-                                    <dl class="tab_box m-0">
-                                        <dt class="title" style="height: 50px;">종료</dt>
-                                        <dd class="count">{{ myRaffleDetail.closedRaffle }}</dd>
-                                    </dl>
-                                </a>
-                            </div>
-                        </div>
-
-                        <hr class="mt-2"/>
-
-                        <div>
-                            <SerachPeriod></SerachPeriod>
-                        </div>
-
-                        <hr/>
-
-                        <div class="mb-2">
-                            <table class="table text-center">
-                                <thead>
-                                    <tr>
-                                        <th class="col-2" scope="col">래플명</th>
-                                        <th class="col-2" scope="col">응모 시간</th>
-                                        <th class="col-2" scope="col">현재 상태</th>
-                                        <th class="col-2" scope="col">미션 완료</th>
-                                        <th class="col-2" scope="col">사용 베리</th>
-                                        <th class="col-2" scope="col">확률</th>
-                                        <th class="col-2" scope="col">이동</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="entryList in myRaffleDetail.RaffleDetailRequest" :key="entryList">
-                                        <td>{{ entryList.raffle.rtitle }}</td>
-                                        <td>{{ formatDate(entryList.raffleDetail.rdtcreatedat) }}</td>
-                                        <td>{{ entryList.nowStatus }}</td>
-                                        <td>{{ entryList.raffleDetail.rdtmissioncleared }}</td>
-                                        <td>{{ entryList.raffleDetail.rdtberryspend }}개</td>
-                                        <td>{{ entryList.probability }}%</td>
-                                        <td><button class="btn btn-sm">바로가기</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <div class="tab_item">
+                    <a href="#" class="tab_link">
+                        <dl class="tab_box m-0">
+                            <dt class="title" style="height: 50px;">진행 중</dt>
+                            <dd class="count">{{ myRaffleDetail.ongoingRaffle }}</dd>
+                        </dl>
+                    </a>
                 </div>
+                <div class="tab_item">
+                    <a href="#" class="tab_link">
+                        <dl class="tab_box m-0">
+                            <dt class="title" style="height: 50px;">종료</dt>
+                            <dd class="count">{{ myRaffleDetail.closedRaffle }}</dd>
+                        </dl>
+                    </a>
+                </div>
+            </div>
+
+            <hr class="mt-0" />
+
+            <div>
+                <SerachPeriod></SerachPeriod>
+            </div>
+
+            <hr />
+
+            <div class="mb-2">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th class="col-2" scope="col">래플명</th>
+                            <th class="col-2" scope="col">응모 시간</th>
+                            <th class="col-2" scope="col">현재 상태</th>
+                            <th class="col-2" scope="col">미션 완료</th>
+                            <th class="col-2" scope="col">사용 베리</th>
+                            <th class="col-2" scope="col">확률</th>
+                            <th class="col-2" scope="col">이동</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="entryList in myRaffleDetail.RaffleDetailRequest" :key="entryList">
+                            <td>{{ entryList.raffle.rtitle }}</td>
+                            <td>{{ formatDate(entryList.raffleDetail.rdtcreatedat) }}</td>
+                            <td>{{ entryList.nowStatus }}</td>
+                            <td>{{ entryList.raffleDetail.rdtmissioncleared }}</td>
+                            <td>{{ entryList.raffleDetail.rdtberryspend }}개</td>
+                            <td>{{ entryList.probability }}%</td>
+                            <td><button class="btn btn-sm">바로가기</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -78,12 +71,8 @@
 
 <script setup>
 import RaffleAPI from '@/apis/RaffleAPI';
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import SerachPeriod from './Components/SearchPeriod.vue';
-import { useStore } from 'vuex';
-
-const today = ref(Date.now());
-const store = useStore();
 
 const myRaffleDetail = ref({
     totalRaffle: null,
@@ -94,7 +83,7 @@ const myRaffleDetail = ref({
 
 async function getMyEntryList() {
     try {
-        const response = await RaffleAPI.myEntryList(store.state.mid);
+        const response = await RaffleAPI.myEntryList();
         myRaffleDetail.value.totalRaffle = response.data.myTotalRaffle;
         myRaffleDetail.value.ongoingRaffle = response.data.myOngoingRaffle;
         myRaffleDetail.value.closedRaffle = response.data.myClosedRaffle;
@@ -121,11 +110,6 @@ getMyEntryList();
 </script>
 
 <style scoped>
-.content_title {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
 .title h3 {
     font-size: 24px;
 }
