@@ -3,10 +3,8 @@ import axios from "axios";
 import qs from 'qs';
 
 // join
-function myBoardList(mid) {
-    return axios.get("/member/myBoardList" , mid);
-}
+
 
 export default {
-    myBoardList
+    
 }

@@ -18,10 +18,16 @@ function mypage() {
 }
 
 function inquiryReply() {
-    return axios.put("/member/inquiryReply",)
+    return axios.put("/member/inquiryReply")
 }
+
+function myBoardList(pageNo) {
+    return axios.get("/member/myBoardList", { params: { pageNo:pageNo } });
+}
+
 export default {
     join,
     login,
-    mypage
+    mypage,
+    myBoardList
 }
