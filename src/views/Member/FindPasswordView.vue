@@ -8,10 +8,12 @@
                     <p>가입 시 등록한 휴대폰 번호와<br>이름, 이메일을 입력해주세요.</p>
                 </div>
                 <label for="mte" class="mb-2" style="margin-top:44px">휴대폰 번호</label>
-                <input id="mtel" type="text" class="border-0 border-bottom" v-model="mphone">
-
+                <input id="mtel" type="text" class="border-0 border-bottom" v-model="user.mphone" @input="phCheck">
+                <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ mphoneCheck }}</p>
                 <label for="mte" class="mb-2" style="margin-top:44px">이메일</label>
-                <input id="mtel" type="text" class="border-0 border-bottom" v-model="mid">
+                <input id="mtel" type="text" class="border-0 border-bottom" v-model="user.mid" @input="idCheck">
+                <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ midCheck }}</p>
+
                 <button class="btn text-white rounded-0 btn-lg mt-5" @click="findId"
                     style="background-color: #F37551;">비밀번호 찾기</button>
             </div>
@@ -55,6 +57,41 @@ import { reactive, ref } from 'vue';
 import RaffleModal from '@/components/RaffleModal.vue';
 
 
+// 휴대폰번호 와 이메일 유효성
+const mphoneCheck = ref(null);
+const midCheck = ref(null);
+
+const user = ref({
+    mid: "",
+    mphone:""
+})
+let userMphone = false;
+let userMid = false;
+
+const idCheck = () => {
+    var midPattern = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+    userMid = midPattern.test(user.value.mid);
+    if (!userMid) {
+        midCheck.value ="이메일이 올바르지 않습니다."
+    } else {
+        midCheck.value=""
+    }
+}
+const phCheck = () => {
+    var mphPattern = /^010\d{4}\d{4}$/;
+    userMphone = mphPattern.test(user.value.mphone);
+    if (!userMphone) {
+        mphoneCheck.value = "전화번호 몰랑."
+    } else {
+        mphoneCheck.value = ""
+    }
+}
+// 
+
+
+
+
+
 // 비밀번호 찾기 모달창 생성
 const findModal = ref("");
 const liken = ref("");
@@ -62,6 +99,8 @@ const liken = ref("");
 function findId() {
     findModal.value.showModal();
 }
+// 
+
 //비밀 번호 같은지 확인 유효성 검사
 const findIdView = ref("");
 const RePassword = ref("");
