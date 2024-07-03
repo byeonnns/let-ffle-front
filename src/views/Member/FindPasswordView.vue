@@ -9,20 +9,103 @@
                 </div>
                 <label for="mte" class="mb-2" style="margin-top:44px">휴대폰 번호</label>
                 <input id="mtel" type="text" class="border-0 border-bottom" v-model="mphone">
-                <label for="mte" class="mb-2" style="margin-top:44px">이름</label>
-                <input id="mtel" type="text" class="border-0 border-bottom" v-model="mname">
+
                 <label for="mte" class="mb-2" style="margin-top:44px">이메일</label>
                 <input id="mtel" type="text" class="border-0 border-bottom" v-model="mid">
-                <button class="btn text-white rounded-0 btn-lg mt-5" @click="findId" style="background-color: #F37551;">비밀번호 찾기</button>
+                <button class="btn text-white rounded-0 btn-lg mt-5" @click="findId"
+                    style="background-color: #F37551;">비밀번호 찾기</button>
             </div>
         </div>
+        <RaffleModal ref="findModal">
+            <template v-slot:modalHeader>
+                <h3>새비밀번호 찾기</h3>
+            </template>
+            <template v-slot:modalBody>
+                <div class="container">
+                    <div class="div_form row mb-3">
+                        <label>새 비밀번호</label>
+                        <input v-model="NewPassword" type="password" placeholder="" class="border-0 border-bottom"
+                            @input="chagnePw">
+                        <span v-if="passwordResult == false" style="color: red;">{{ falsePassword }}</span>
+                        <span v-if="passwordResult == true" style="color: green;">{{ falsePassword }}</span>
+                    </div>
+
+                    <div class="div_form row">
+                        <label>비밀번호 확인</label>
+                        <input v-model="RePassword" type="password" placeholder="" class="border-0 border-bottom"
+                            @input="RechagnePw">
+                        <span v-if="RepassowrdResult == false" style="color: red;">{{ samePassword }}</span>
+                        <span v-if="RepassowrdResult == true" style="color: green;">{{ samePassword }}</span>
+                    </div>
+                </div>
+            </template>
+            <template v-slot:modalFooter>
+                <button style="background-color: #F37551; color:white; border-radius: 0px; " type="button"
+                    class="btn btn-outline-light " data-bs-dismiss="modal">닫기</button>
+
+                <button style="background-color: #F37551; color:white; border-radius: 0px;" type="button"
+                    class="btn btn-outline-light" data-bs-dismiss="modal">완료</button>
+            </template>
+        </RaffleModal>
     </div>
 </template>
 
 <script setup>
 import { reactive, ref } from 'vue';
+import RaffleModal from '@/components/RaffleModal.vue';
 
-const findIdView = ref(null);
+
+// 비밀번호 찾기 모달창 생성
+const findModal = ref("");
+const liken = ref("");
+
+function findId() {
+    findModal.value.showModal();
+}
+//비밀 번호 같은지 확인 유효성 검사
+const findIdView = ref("");
+const RePassword = ref("");
+const falsePassword = ref("");
+const NewPassword = ref("");
+const samePassword = ref("");
+
+//새 비밀 번호 확인 유효성 검사
+let passwordResult = false;
+const chagnePw = () => {
+    const NewPasswordPettern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,12}$/;
+    if (NewPassword.value.length == 0) {
+        falsePassword.value = '비밀번호를 입력해 주세요.';
+        passwordResult = false;
+    } else if (NewPassword.value.length < 8 || NewPassword.value.length > 12 || !NewPasswordPettern.test(NewPassword.value)) {
+        falsePassword.value = '영문 포함 8자 이상 12자 이하로 입력해 주세요.';
+        passwordResult = false;
+    } else {
+        falsePassword.value = '비밀번호를 올바르게 입력하셨습니다.';
+        passwordResult = true;
+    }
+}
+
+//새 비밀번호와 동일한 유효성검사 다시 확인할 필요가 있음.
+let RepassowrdResult = false;
+const RechagnePw = () => {
+    if (RePassword.value.length == 0) {
+        samePassword.value = '비밀번호를 입력해주세요.';
+        RepassowrdResult = false;
+    } else if (NewPassword.value != RePassword.value) {
+        samePassword.value = '비밀번호가 일치하지 않습니다.';
+        RepassowrdResult = false;
+    } else if (RePassword.value.length < 8 || RePassword.value.length > 12) {
+        samePassword.value = '영문 포함 8자 이상 12자 이하로 입력해 주세요.';
+        RepassowrdResult = false;
+    } else {
+        samePassword.value = '비밀번호가 일치합니다.';  
+        liken.value = NewPassword.value;
+        RepassowrdResult = true;
+        
+    }
+}
+// 
+
 
 /* 반응형 UI */
 const responsiveSize = reactive({
@@ -38,25 +121,26 @@ const handleResize = () => {
 window.addEventListener('resize', handleResize);
 
 /* 이메일 찾기 */
-const findId = () => {
-    findIdView.value.innerHTML = `
-    <div class="d-flex flex-column text-center" :style="responsiveSize">
-        <p class="text-center h3" style="font-weight: 700; margin-bottom:14px;">회원님의 비밀번호입니다.</p>
-        <hr class="border-2 opacity-100 my-4"/>
-        <div>
-            <h6>비밀번호</h6>
-        </div>
-        <h4>letffle4nerd</h4>
-        <div class="row mt-5">
-            <button class="btn text-white rounded-0 btn-lg flex-grow-1 col ms-2" style="background-color: #F37551;">로그인</button>
-        </div>
-    </div>
-    `;
-}
+// const findId = () => {
+//     findIdView.value.innerHTML = `
+//     <div class="d-flex flex-column text-center" :style="responsiveSize">
+//         <p class="text-center h3" style="font-weight: 700; margin-bottom:14px;">회원님의 비밀번호입니다.</p>
+//         <hr class="border-2 opacity-100 my-4"/>
+//         <div>
+//             <h6>비밀번호</h6>
+//         </div>
+//         <h4>letffle4nerd</h4>
+//         <div class="row mt-5">
+//             <button class="btn text-white rounded-0 btn-lg flex-grow-1 col ms-2" style="background-color: #F37551;">로그인</button>
+//         </div>
+//     </div>
+//     `;
+// }
 </script>
 
 <style scoped>
 input {
     outline: none;
 }
+
 </style>
