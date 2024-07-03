@@ -24,29 +24,17 @@
                                             <th>배송 상태</th>
                                         </tr>
                                     </thead>
-                                    
-                                    
-                                    <tbody class="table table-group-divider">
-                                        <tr>
-                                            <td>아이폰 뿌리는 이벤트</td>
-                                            <td>2024.01.01</td>
-                                            <td>아이폰 15Pro</td>
-                                            <td><button class="btn btn-outline-light" @click="inputAddress"
-                                                    style="font-size: 15px;">배송지 입력</button></td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td>아이폰 뿌리는 이벤트</td>
-                                            <td>2024.01.01</td>
-                                            <td>아이폰 15Pro</td>
-                                            <td>배송 완료</td>
-                                        </tr>
 
-                                        <tr>
-                                            <td>{{ WinningList.rtitle }}</td>
-                                            <td>{{ WinningList.rfinishedat }}</td>
-                                            <td>{{ WinningList.rgift }}</td>
-                                            <td>배송 완료</td>
+
+                                    <tbody class="table table-group-divider">
+                                        <tr v-for="win in winningList" :key="win.rno">
+                                            <td> {{ win.rtitle }}</td>
+                                            <td> {{ formatDate(win.rfinishedat) }}</td>
+                                            <td> {{ win.rgift }}</td>
+
+                                            <td v-if="win.rcontent == null"><button class="btn btn-outline-light"
+                                                    @click="inputAddress" style="font-size: 15px;">배송지 입력</button></td>
+                                            <td v-if="win.rcontent != null">배송중</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -92,17 +80,38 @@
 import { ref } from 'vue';
 import SerachPeriod from './Components/SearchPeriod.vue';
 import RaffleModal from '@/components/RaffleModal.vue';
+import RaffleAPI from "@/apis/RaffleAPI";
 
 const inputModal = ref(null);
 
-const WinningList = ref({
-    rtitle:"제목",
-    rfinishedat:"응모시간",
-    rgift:"선물"
-});
-
 function inputAddress() {
     inputModal.value.showModal();
+}
+
+const winningList = ref([
+]);
+
+async function winnerList() {
+    try {
+        const response = await RaffleAPI.myWinnerList();
+        winningList.value = response.data;
+        console.log(response.data);
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+winnerList();
+
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+    const day = String(date.getDate()).padStart(2, '0');
+    
+
+    return `${year}-${month}-${day}`;
 }
 
 </script>

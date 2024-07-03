@@ -5,9 +5,9 @@
                 <div class="align-content-center d-flex justify-content-between p-3 ms-4">
                     <span>
                         <h6> <h5 style="display: inline;">{{ member.mnickname }}</h5> 님, 안녕하세요!</h6>
-                        <strong class="mt-2 m-0">오늘의 래플 참여 가능 횟수가 <span style="color: #F37551;"> {{ member.ablecount }} </span> 회 남았습니다.</strong>
+                        <strong class="mt-2 m-0">오늘의 래플 참여 가능 횟수가 <span style="color: #F37551;"> {{ 3 - member.todayEntryRaffle }} </span> 회 남았습니다.</strong>
                     </span>
-                    <RouterLink to="/Member/MyPage/UpdateMember"><button class="btn btn-outline-light">회원 정보 수정</button></RouterLink>
+                    <RouterLink class="btn btn-outline-light align-content-center text-white" to="/Member/MyPage/UpdateMember">회원 정보 수정</RouterLink>
                 </div>
             </div>
             <div class="card flex-grow-1 mt-5">
@@ -25,12 +25,11 @@
                                 </div>
                                 <div class="col">
                                     <h5 class="">하루 3회 래플 응모하기</h5>
-                                    <p class="fw-bold"> {{ member.berryTodayRaffleEntry}}/3 완료</p>
+                                    <p class="fw-bold"> {{ member.todayEntryRaffle }}/3 완료</p>
                                 </div>
                                 <div class="col">
                                     <h5 class="">일일 래플&미션 모두 완료하기</h5>
-                                    <p class="fw-bold">래플 참여 {{ member.raffleParticipate }}/3 완료</p>
-                                    <p class="fw-bold">미션 참여{{ member.missionCleared }}/3 완료</p>
+                                    <p class="fw-bold">{{ member.todayClearedMission }}/3 완료</p>
                                 </div>
                             </div>
                         </div>
@@ -53,13 +52,25 @@ import MemberAPI from '@/apis/MemberAPI';
 import { ref } from 'vue';
 
 const member = ref({
-    mnickname : "영바오",
-    ablecount : "3",
+    mnickname : null,
+    todayEntryRaffle : 0,
+    todayClearedMission : 0,
     berryLoginMission : "미션 완료",
-    berryTodayRaffleEntry : "2",
-    raffleParticipate : "1",
-    missionCleared : "2"
 });
+
+async function getMyPageDashboard() {
+    try {
+        const response = await MemberAPI.myPageDashboard();
+        member.value.mnickname = response.data.mNickname;
+        member.value.todayEntryRaffle = response.data.todayEntryRaffle;
+        member.value.todayClearedMission = response.data.todayClearedMission;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getMyPageDashboard()
+
 </script>
 
 <style scoped>
