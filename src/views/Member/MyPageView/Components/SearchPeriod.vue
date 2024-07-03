@@ -1,36 +1,25 @@
 <template>
     <div>
-        <div class="period_search">
-            <div class="period_month border">
-                <ul class="month_list container d-flex justify-content-center">
-                    <li class="month_item">
-                        <a href="#" class="month_link">전체</a>
-                    </li>
-                    <li class="month_item">
-                        <a href="#" class="month_link">최근 2개월</a>
-                    </li>
-                    <li class="month_item">
-                        <a href="#" class="month_link">4개월</a>
-                    </li>
-                    <li class="month_item">
-                        <a href="#" class="month_link">6개월</a>
-                    </li>
-                    <span class="ms-3">
-                        <li class="month_item">
-                            <input type="date" class="month_link">
-                        </li>
-                        <li class="month_item">
-                            <input type="date" class="month_link">
-                        </li>
-                        <li class="month_item">
-                            <a href="#" class="month_link" style="color: white; background-color: #F37551;">조회</a>
-                        </li>
-                    </span>
-                </ul>
+        <div class="d-flex justify-content-center align-content-center">
+            <li class="month_item">
+                <button class="month_link mx-1 bg-white">전체</button>
+            </li>
+            <li class="month_item">
+                <button class="month_link mx-1 bg-white">2개월</button>
+            </li>
+            <li class="month_item">
+                <button class="month_link mx-1 bg-white">4개월</button>
+            </li>
+            <li class="month_item">
+                <button class="month_link mx-1 bg-white">6개월</button>
+            </li>
+            <div class="d-flex justify-content-center align-content-center ms-4">
+                    <input type="date" class="month_link">
+                    <input type="date" class="month_link ms-2">
+                    <button class="btn btn-sm ms-2" style="text-align: center;border-radius: 0px; background-color: #F37551; color: white;">조회</button>
             </div>
         </div>
     </div>
-
 </template>
 
 <script setup>
@@ -38,68 +27,15 @@
 </script>
 
 <style scoped>
-.content_title {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.title h3 {
-    font-size: 24px;
-}
-
-.purchase_list_tab {
-    display: flex;
-}
-
-.tab_item {
-    flex: 1;
-    text-align: center;
-    padding: 10px;
-}
-
-.tab_link {
-    text-decoration: none;
-}
-
-.tab_box {
-    padding: 10px;
-}
-
-.title {
-    font-size: 18px;
-}
-
-.count {
-    font-size: 16px;
-}
-
 .month_item {
     display: inline-block;
 }
 
-.month_item>.month_link {
-    border: 1px solid darkgray;
-    margin-right: 5px;
-    text-decoration-line: none;
-}
-
 .month_link {
+    border: 1px solid darkgray;
+    text-decoration-line: none;
     display: inline-block;
     padding: 5px 10px;
-    margin-top: 15px;
     font-size: 13px;
-}
-
-.btn {
-    width: 100px;
-    height: 40px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: #F37551;
-    color: white;
-}
-
-.Status {
-    display: flex;
 }
 </style>

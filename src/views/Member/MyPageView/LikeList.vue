@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="d-flex flex-column">
-            <div style="border-bottom: 3px solid #F37551;">
+            <div class="mb-2" style="border-bottom: 3px solid #F37551;">
                 <h3>관심 리스트</h3>
             </div>
             <div v-for="item in likeList.RaffleRequest" :key="item.raffle.rno">
@@ -15,11 +15,11 @@
                         <h5>{{ item.raffle.rtitle }}</h5>
                         <p class="m-0">{{ item.raffle.rsubtitle }}</p>
                     </div>
-                    <div class="align-content-center">
-                        <RouterLink to="/Raffle/RaffleDetail"><button class="btn btn-outline-light mb-2"
-                                style="background-color: #F37551; color: white;">응모</button></RouterLink>
-                        <button class="btn btn-outline-light border" style="background-color: white; color: black;"
-                            @click="deleteBtn">삭제</button>
+                    <div class="d-flex flex-column" style="width:200px;">
+                        <RouterLink to="/Raffle/RaffleDetail" class="btn btn-outline-light mt-3" style="background-color: #F37551; color: white;">
+                            응모
+                        </RouterLink>
+                        <button class="btn btn-outline-light border mt-auto mb-3" style="background-color: white; color: black;" @click="deleteBtn(item.raffle.rno)">삭제</button>
                     </div>
                 </div>
                 <hr>
@@ -32,36 +32,24 @@
                     :class="(likeList.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-success'"
                     class="btn btn-sm me-1">{{ pageNo }}</button>
                 <button v-if="likeList.pager.groupNo < likeList.pager.totalGroupNo"
-                    @click="changePageNo(likeList.pager.endPageNo + 1)" class="btn btn-outline-info btn-sm me-1">다음</button>
-                <button @click="changePageNo(likeList.pager.totalPageNo)" class="btn btn-outline-primary btn-sm">맨끝</button>
-
-                <button class="btn btn-outline-light btn-sm ms-3 rounded-0" style="background-color: #F37551;">
-                    <RouterLink to="/Board/WriteBoard" style="color: white;">글쓰기</RouterLink>
-                </button>
+                    @click="changePageNo(likeList.pager.endPageNo + 1)"
+                    class="btn btn-outline-info btn-sm me-1">다음</button>
+                <button @click="changePageNo(likeList.pager.totalPageNo)"
+                    class="btn btn-outline-primary btn-sm">맨끝</button>
             </div>
         </div>
     </div>
-    <RaffleModal ref="deleteModal">
-        <template v-slot:modalHeader>
-            알림
-        </template>
-        <template v-slot:modalBody>
-            좋아요 목록에서 삭제됩니다.
-        </template>
-        <template v-slot:modalFooter>
-            <button class="btn btn-outline-light" data-bs-dismiss="modal" style="width: 20%;">예</button>
-            <button class="btn btn-outline-light" data-bs-dismiss="modal" style="width: 20%;">아니오</button>
-        </template>
-    </RaffleModal>
 </template>
 
 <script setup>
-import RaffleModal from '@/components/RaffleModal.vue';
 import MemberAPI from '@/apis/MemberAPI';
 import axios from "axios";
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
-const deleteModal = ref(null);
+const router = useRouter();
+const route = useRoute();
+const pageNo = ref(route.query.pageNo || 1);
 
 const likeList = ref({
     RaffleRequest: [],
@@ -78,14 +66,35 @@ async function getMyLikeList(pageNo) {
     }
 }
 function changePageNo(argPageNo) {
-    getMyLikeList(argPageNo);
+    router.push(`/Member/MyPage/LikeList?pageNo=${argPageNo}`);
 }
 
-getMyLikeList();
+getMyLikeList(pageNo.value);
 
-function deleteBtn() {
-    deleteModal.value.showModal();
+async function deleteBtn(rno) {
+    if (confirm("관심 목록에서 제거하시겠습니까?")) {
+        try {
+            await MemberAPI.deleteLikeList(rno);
+            if(likeList.value.pager.rowsPerPage <= 6)
+                getMyLikeList(1);
+            else
+                getMyLikeList(pageNo.value);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
+
+watch(route, (newRoute, oldRoute) => {
+    if (newRoute.query.pageNo) {
+        getMyLikeList(newRoute.query.pageNo);
+        pageNo.value = newRoute.query.pageNo;
+    } else {
+        getMyLikeList(1);
+        pageNo.value = 1;
+    }
+});
+
 </script>
 
 <style scoped>

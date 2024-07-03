@@ -43,24 +43,48 @@
                 <table class="table text-center">
                     <thead>
                         <tr>
-                            <th class="col-2" scope="col">래플명</th>
-                            <th class="col-2" scope="col">응모 시간</th>
+                            <th class="col-5" scope="col">래플명</th>
                             <th class="col-2" scope="col">현재 상태</th>
-                            <th class="col-2" scope="col">미션 완료</th>
-                            <th class="col-2" scope="col">사용 베리</th>
-                            <th class="col-2" scope="col">확률</th>
-                            <th class="col-2" scope="col">이동</th>
+                            <th class="col-2" scope="col">종료일</th>
+                            <th class="col-2" scope="col">응모 시간</th>
+                            <th class="col-1" scope="col">상세</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="entryList in myRaffleDetail.RaffleDetailRequest" :key="entryList">
                             <td>{{ entryList.raffle.rtitle }}</td>
-                            <td>{{ formatDate(entryList.raffleDetail.rdtcreatedat) }}</td>
                             <td>{{ entryList.nowStatus }}</td>
-                            <td>{{ entryList.raffleDetail.rdtmissioncleared }}</td>
-                            <td>{{ entryList.raffleDetail.rdtberryspend }}개</td>
-                            <td>{{ entryList.probability }}%</td>
-                            <td><button class="btn btn-sm">바로가기</button></td>
+                            <td>{{ formatDate(entryList.raffle.rfinishedat) }}</td>
+                            <td>{{ formatDate(entryList.raffleDetail.rdtcreatedat) }} <br> {{
+                                formatTime(entryList.raffleDetail.rdtcreatedat) }}</td>
+                            <td>
+                                <Popper :placement="'right'">
+                                    <button class="btn btn-sm btn-design" @click="popper">상세</button>
+                                    <template #content>
+                                        <div class="d-flex flex-column bg-white border">
+                                            <p class="text-center m-0" style="font-size: 16px;">래플 상세 내역</p>
+                                            <div style="font-size: 12px; text-align: center;">
+                                                <table class="table table-bordered m-0" style="width:200px">
+                                                    <thead>
+                                                        <th>미션 완료</th>
+                                                        <th>사용 베리</th>
+                                                        <th>당첨 확률</th>
+                                                    </thead>
+                                                    <tr>
+                                                        <td>{{ entryList.raffleDetail.rdtmissioncleared }}</td>
+                                                        <td>{{ entryList.raffleDetail.rdtberryspend }}개</td>
+                                                        <td>{{ entryList.probability }}%</td>
+                                                    </tr>
+                                                </table>
+                                                <button class="btn btn-white btn-sm">
+                                                    <RouterLink to="/Member/MyPage/MyBerryHistory">래플로 이동 ▶</RouterLink>
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </template>
+                                </Popper>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -73,6 +97,8 @@
 import RaffleAPI from '@/apis/RaffleAPI';
 import { ref } from 'vue';
 import SerachPeriod from './Components/SearchPeriod.vue';
+import Popper from "vue3-popper";
+
 
 const myRaffleDetail = ref({
     totalRaffle: null,
@@ -96,13 +122,19 @@ async function getMyEntryList() {
 function formatDate(dateStr) {
     const date = new Date(dateStr);
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
+
+function formatTime(dateStr) {
+    const date = new Date(dateStr);
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
     const seconds = String(date.getSeconds()).padStart(2, '0');
 
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    return `${hours}:${minutes}:${seconds}`;
 }
 
 getMyEntryList();
@@ -156,9 +188,8 @@ getMyEntryList();
     font-size: 13px;
 }
 
-.btn {
-    width: 100px;
-    height: 40px;
+.btn-design {
+    text-wrap: nowrap;
     text-align: center;
     border-radius: 0px;
     background-color: #F37551;

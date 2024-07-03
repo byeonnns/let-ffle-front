@@ -37,6 +37,10 @@ function myLikeList(pageNo){
     return axios.get("/member/likeList", { params: { pageNo:pageNo } });
 }
 
+function deleteLikeList(rno) {
+    return axios.delete("/member/deleteLikeList", { params: { rno:rno } });
+}
+
 export default {
     join,
     login,
@@ -44,5 +48,6 @@ export default {
     myBoardList,
     myPageDashboard,
     myBerryHistory,
-    myLikeList
+    myLikeList,
+    deleteLikeList
 }
