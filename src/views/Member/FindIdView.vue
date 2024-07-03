@@ -5,10 +5,15 @@
                 <p class="text-center" style="font-size:32px; font-weight: 700;">이메일 아이디 찾기</p>
                 <hr class="border-2 opacity-100 mt-2" />
                 <div>
-                    <p>가입 시 등록한 휴대폰 번호를 입력하면<br>이메일 주소의 일부를 알려드립니다.</p>
+                    <p>가입 시 등록한 휴대폰 번호를 입력하면<br>로그인 이메일을 알려드립니다.</p>
                 </div>
                 <label for="mte" class="mb-2" style="margin-top:44px">휴대폰 번호</label>
-                <input id="mtel" type="text" class="border-0 border-bottom" v-model="tel">
+                <input id="mtel" type="text" class="border-0 border-bottom" v-model="member.mphone">
+
+                <div v-if="member.mid !== ''">
+                    <p>로그인 이메일 : {{ member.mid }}</p>
+                </div>
+
                 <button class="btn text-white rounded-0 btn-lg mt-5" @click="findId" style="background-color: #F37551; ">이메일 아이디 찾기</button>      
             </div>
         </div>
@@ -16,9 +21,16 @@
 </template>
 
 <script setup>
+import MemberAPI from '@/apis/MemberAPI';
 import { reactive, ref } from 'vue';
 
 const findIdView = ref(null);
+
+const member = ref({
+    mid : "",
+    mphone : ""
+});
+
 
 /* 반응형 UI */
 const responsiveSize = reactive({
@@ -33,7 +45,15 @@ const handleResize = () => {
 };
 window.addEventListener('resize', handleResize);
 
-/* 이메일 찾기 */
+async function findId() {
+    const response = await MemberAPI.findId(member.value.mphone);
+    if (response.data.result == 'success') {
+        console.log(response.data.result);
+        member.value.mid = response.data.mid;
+    }
+}
+
+/* 이메일 찾기 
 const findId = () => {
     findIdView.value.innerHTML = `
     <div class="d-flex flex-column text-center" :style="responsiveSize">
@@ -50,6 +70,7 @@ const findId = () => {
     </div>
     `;
 }
+*/
 </script>
 
 <style scoped>
