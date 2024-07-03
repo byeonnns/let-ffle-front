@@ -1,13 +1,32 @@
-// Member 컨트롤러에 요청을 보낼 때 사용하는 메소드들이 들어있을 파일
 import axios from "axios";
 import qs from 'qs';
 
-// join
+// 회원가입
 function join(member) {
-    return axios.post("/member/join" , member);
+    return axios.post("/member/join", member);
 }
 
-// login
+// 아이디 중복 검사
+function idDuplicationCheck(mid) {
+    return axios.post("/member/idDuplicationCheck/" + mid);
+}
+
+// 닉네임 중복 검사
+function nicknameDuplicationCheck(mnickname) {
+    return axios.post("/member/nicknameDuplicationCheck/" + mnickname);
+}
+
+// 휴대폰 중복 검사
+function phoneDuplicationCheck(mphone) {
+    return axios.post("/member/phoneDuplicationCheck/" + mphone);
+}
+
+// 아이디 찾기
+function findId(mphone) {
+    return axios.post("/member/findId/" + mphone);
+}
+
+// 로그인
 function login(member) {
     return axios.post("/member/login", qs.stringify(member));
 }
@@ -49,5 +68,9 @@ export default {
     myPageDashboard,
     myBerryHistory,
     myLikeList,
-    deleteLikeList
+    deleteLikeList,
+    idDuplicationCheck,
+    nicknameDuplicationCheck,
+    phoneDuplicationCheck,
+    findId
 }

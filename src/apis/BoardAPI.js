@@ -45,6 +45,10 @@ function deleteComment(cno) {
     return axios.put("/community/deleteComment/" + cno);
 }
 
+ function createComment(formData) {
+     return axios.post("/community/createComment", formData);
+ }
+
 export default {
     myBoardList,
     getBoardList,
@@ -54,5 +58,6 @@ export default {
     writeBoard,
     deleteBoard,
     getCommentList,
-    deleteComment
+    deleteComment,
+    createComment
 }
