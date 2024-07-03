@@ -4,7 +4,19 @@ import qs from 'qs';
 
 // join
 function join(member) {
-    return axios.post("/member/join" , member);
+    return axios.post("/member/join", member);
+}
+
+function idDuplicationCheck(mid) {
+    return axios.post("/member/idDuplicationCheck/" + mid);
+}
+
+function nicknameDuplicationCheck(mnickname) {
+    return axios.post("/member/nicknameDuplicationCheck/" + mnickname);
+}
+
+function phoneDuplicationCheck(mphone) {
+    return axios.post("/member/phoneDuplicationCheck/" + mphone);
 }
 
 // login
@@ -29,5 +41,8 @@ export default {
     join,
     login,
     mypage,
-    myBoardList
+    myBoardList,
+    idDuplicationCheck,
+    nicknameDuplicationCheck,
+    phoneDuplicationCheck
 }

@@ -38,16 +38,16 @@
 
                     <label for="maddress">주소</label>
                     <div class="d-flex justify-content-between">
-                        <input v-model="zonecode" id="maddress" type="text"
+                        <input v-model="member.mzipcode" id="maddress" type="text"
                             class="border-0 border-bottom flex-grow-1 input" placeholder="우편번호">
-                        <button class="btn text-white btn-outline-light rounded-0 btn-sm" @click="DaumPostcode"
+                        <button type="button" class="btn text-white btn-outline-light rounded-0 btn-sm" @click="DaumPostcode"
                             style="background-color: #F37551; margin-left: 10px;">우편번호 찾기</button>
                     </div>
-                    <input v-model="address" type="text" class="border-0 border-bottom mt-3 input" placeholder="주소">
-                    <input v-model="addressDetail" type="text" class="border-0 border-bottom mt-3 input"
+                    <input v-model="member.maddress1" type="text" class="border-0 border-bottom mt-3 input" placeholder="주소">
+                    <input v-model="member.maddress2" type="text" class="border-0 border-bottom mt-3 input"
                         placeholder="상세주소">
                     <button type="submit" class="btn text-white rounded-0 btn-lg mt-5 w-100"
-                        :class="ispass ? '' : 'disable'" style="background-color: #F37551;">가입하기</button>
+                        :class="ispass ? '' : 'disabled'" style="background-color: #F37551;">가입하기</button>
 
                 </div>
                 <RaffleModal ref="postcodeModal">
@@ -83,14 +83,8 @@ const checkMname = ref(null);
 const checkMphone = ref(null);
 const ispass = ref(false);
 
-// 
-
 const postcodeModal = ref(null);
 const postcodeMount = ref(false);
-
-const zonecode = ref('');
-const address = ref('');
-const addressDetail = ref('');
 
 const DaumPostcode = () => {
     postcodeModal.value.showModal();
@@ -99,13 +93,13 @@ const DaumPostcode = () => {
 
 const addressSearched = (data) => {
     if (data.userSelectedType === 'R') {
-        zonecode.value = data.zonecode;
-        address.value = data.address;
+        member.value.mzipcode = data.zonecode;
+        member.value.maddress1 = data.address;
         postcodeModal.value.hideModal();
 
     } else {
-        zonecode.value = data.zonecode;
-        address.value = data.jibunAddress;
+        member.value.mzipcode = data.zonecode;
+        member.value.maddress1 = data.jibunAddress;
         postcodeModal.value.hideModal();
     }
 }
@@ -132,7 +126,10 @@ const member = ref({
     mname: "",
     mnickname: "",
     mphone: "",
-    maddress: ""
+    mzipcode: "",
+    maddress: "",
+    maddress1: "",
+    maddress2: ""
 });
 
 
@@ -143,22 +140,20 @@ let userMname = false;
 let userPhone = false;
 let userMnickname = false;
 
-const midCheck = (onbtn) => {
+const midCheck = async (onbtn) => {
     var midPattern = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
     userMid = midPattern.test(member.value.mid);
     if (!userMid) {
         checkMid.value = "이메일 주소를 정확히 입력해주세요."
     } else {
-        // var isExist = 'DB에 해당 아이디 있는지 여부를 true,false로 리턴받은 값 -> true면 중복된 이메일';
-        // if ( isExist ) {
-        //  checkMid.value = "이미 사용중인 이메일입니다.";
-        // } else {
-        //  checkMid.value = "";
-        // }
-        checkMid.value = "";
+        const response = await MemberAPI.idDuplicationCheck(member.value.mid);
+        if ( response.data.result == 'fail' ) {
+         checkMid.value = "이미 사용중인 이메일입니다.";
+        } else {
+         checkMid.value = "";
+        }
     }
     onbtn();
-
 }
 
 const mpasswordCheck = (onbtn) => {
@@ -183,30 +178,34 @@ const mnameCheck = (onbtn) => {
     onbtn();
 }
 
-const mphoneCheck = (onbtn) => {
+const mphoneCheck = async (onbtn) => {
     var mphonePattern = /^010\d{4}\d{4}$/;
     userPhone = mphonePattern.test(member.value.mphone);
     if (!userPhone) {
         checkMphone.value = "하이픈('-')을 제외한 숫자만 입력해주세요."
     } else {
-        checkMphone.value = ""
+        const response = await MemberAPI.phoneDuplicationCheck(member.value.mphone);
+        if ( response.data.result == 'fail' ) {
+            checkMphone.value = "이미 등록된 전화번호입니다.";
+        } else {
+            checkMphone.value = "";
+        }
     }
     onbtn();
 }
 
-const mnickCheck = (onbtn) => {
+const mnickCheck = async (onbtn) => {
     var mnicknamePattern = /^[가-힣a-zA-Z0-9_-]{2,15}$/
     userMnickname = mnicknamePattern.test(member.value.mnickname);
     if (!userMnickname) {
         checkMnick.value = "한글, 영문, 숫자를 사용하여 2~15자 사이로 입력해주세요."
     } else {
-        // var isExist = 'DB에 해당 아이디 있는지 여부를 true,false로 리턴받은 값 -> true면 중복된 이메일';
-        // if ( isExist ) {
-        //  checkMid.value = "이미 사용중인 닉네임입니다.";
-        // } else {
-        //  checkMid.value = "";
-        // }
-        checkMnick.value = ""
+        const response = await MemberAPI.nicknameDuplicationCheck(member.value.mnickname);
+        if ( response.data.result == 'fail' ) {
+            checkMnick.value = "이미 사용중인 닉네임입니다.";
+        } else {
+            checkMnick.value = "";
+        }
     }
     onbtn();
 }
@@ -221,14 +220,16 @@ function onbtn() {
     console.log(ispass.value);
 }
 
-// 가입시에 버튼 실행..?
 async function handleSubmit() {
     console.log(member.value.mid)
     console.log(member.value.mpassword)
     console.log(member.value.mname)
+    member.value.maddress = member.value.maddress1 + ", " + member.value.maddress2;
+    console.log(member.value.maddress);
     try {
-        const data = JSON.parse(JSON.stringify(member));
+        const data = JSON.parse(JSON.stringify(member.value));
         const response = await MemberAPI.join(data);
+        console.log(response.data);
         router.push("/");
     } catch (error) {
         console.log(error)
