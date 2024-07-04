@@ -47,15 +47,14 @@ import axios from "axios";
 import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
-const router = useRouter();
-const route = useRoute();
-const pageNo = ref(route.query.pageNo || 1);
-
 const likeList = ref({
     RaffleRequest: [],
     pager: {}
 });
 
+const router = useRouter();
+const route = useRoute();
+const pageNo = ref(route.query.pageNo || 1);
 async function getMyLikeList(pageNo) {
     try {
         const response = await MemberAPI.myLikeList(pageNo);
@@ -68,8 +67,16 @@ async function getMyLikeList(pageNo) {
 function changePageNo(argPageNo) {
     router.push(`/Member/MyPage/LikeList?pageNo=${argPageNo}`);
 }
-
 getMyLikeList(pageNo.value);
+watch(route, (newRoute, oldRoute) => {
+    if (newRoute.query.pageNo) {
+        getMyLikeList(newRoute.query.pageNo);
+        pageNo.value = newRoute.query.pageNo;
+    } else {
+        getMyLikeList(1);
+        pageNo.value = 1;
+    }
+});
 
 async function deleteBtn(rno) {
     if (confirm("관심 목록에서 제거하시겠습니까?")) {
@@ -84,16 +91,6 @@ async function deleteBtn(rno) {
         }
     }
 }
-
-watch(route, (newRoute, oldRoute) => {
-    if (newRoute.query.pageNo) {
-        getMyLikeList(newRoute.query.pageNo);
-        pageNo.value = newRoute.query.pageNo;
-    } else {
-        getMyLikeList(1);
-        pageNo.value = 1;
-    }
-});
 
 </script>
 

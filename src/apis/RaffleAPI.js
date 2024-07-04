@@ -2,8 +2,8 @@
 
 import axios from "axios";
 
-function myEntryList() {
-    return axios.get("/raffle/getRaffleDetailList")
+function myEntryList(pageNo, status, start, end) {
+    return axios.get("/raffle/getRaffleDetailList", { params: { pageNo:pageNo, status:status, start:start, end:end } })
 }
 
 function myWinnerList() {
