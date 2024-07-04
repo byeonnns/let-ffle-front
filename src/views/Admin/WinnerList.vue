@@ -16,21 +16,14 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    <tr>
-                        <td>래플 1</td>
-                        <td>tjdwns3823@naver.com</td>
-                        <td>변성준</td>
-                        <td>010-2232-3823</td>
-                        <td>IT벤처타워 16층</td>
-                        <td>배송 완료</td>
-                    </tr>
-                    <tr>
-                        <td>래플 2</td>
-                        <td>jw123@naver.com</td>
-                        <td>이재원</td>
-                        <td>010-4046-8382</td>
-                        <td>IT벤처타워 12층</td>
-                        <td>배송지 미입력</td>
+                    <tr v-for="winner in page.winners" :key="winner.rno">
+                        <td>{{ winner.rtitle }}</td>
+                        <td>{{ winner.mid }}</td>
+                        <td>{{ winner.wreceivername }}</td>
+                        <td>{{ winner.wreceiverphone }}</td>
+                        <td>{{ winner.wreceiveraddress }}</td>
+                        <td v-if="winner.wreceiveraddress">배송 중</td>
+                        <td v-else>배송 대기</td>
                     </tr>
                 </tbody>
             </table>
@@ -49,21 +42,78 @@
                 </div>
             </div>
             <div class="text-center">
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">처음</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">이전</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">1</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">2</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">3</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">4</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">5</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">다음</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">맨끝</button>
+                <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
+                <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
+                    class="btn btn-outline-light btn-sm me-1">이전</button>
+                <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
+                    :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
+                    class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
+                <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
+                    @click="changePageNo(page.pager.endPageNo + 1)" class="btn btn-outline-light btn-sm me-1">다음</button>
+                <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
+import MemberAPI from '@/apis/MemberAPI';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter, useRoute } from 'vue-router';
+import { ref, watch } from 'vue';
+const router = useRouter();
+const route = useRoute();
+
+const store = useStore();
+const serverTime = computed(() => {
+    const diffMilliseconds = store.getters['clientTime/getTimeForCalculate'];
+    console.log(diffMilliseconds);
+    return new Date(diffMilliseconds);
+});
+
+
+const pageNo = ref(route.query.pageNo || 1);
+
+const page = ref({
+    winners: [],
+    pager: {}
+});
+
+async function getWinnerList(pageNo) {
+    try {
+        console.log(pageNo.value + '알려저');
+        const response = await MemberAPI.winnerList(pageNo);
+        console.log(response + "나오나여?");
+        
+        page.value.winners = response.data.winner;
+        page.value.pager = response.data.pager;
+        console.log(page.value);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getWinnerList(pageNo.value);
+
+function changePageNo(argPageNo) {
+    router.push(`/Admin/WinnerList?pageNo=${argPageNo}`);
+}
+
+watch(
+    route, (newRoute, oldRoute) => {
+        if (newRoute.query.pageNo) {
+            console.log(pageNo.value)
+            getWinnerList(newRoute.query.pageNo);
+            pageNo.value = newRoute.query.pageNo;
+        } else {
+            console.log()
+            getWinnerList(1);
+            pageNo.value = 1;
+        }
+    }
+);
+
 </script>
 
 <style scoped>
