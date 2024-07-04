@@ -19,6 +19,10 @@ const routes = [
             component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/CreateRaffle.vue')
         },
         {
+            path: 'UpdateRaffle',
+            component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/UpdateRaffle.vue')
+        },
+        {
             path: 'RaffleList',
             component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/RaffleList.vue')
         },

@@ -251,10 +251,11 @@
 <script setup>
 import RaffleAPI from '@/apis/RaffleAPI';
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
+const route = useRoute();
 const router = useRouter();
-
+const rno = route.query.rno;
 const headImgUrl = ref(null);
 const prdimgrep1attach = ref(null);
 const defaultImage = null;
@@ -399,6 +400,63 @@ function finishFormatDate(dateStr) {
     timemission.value.tfinishedat = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
 
+// rno에 해당하는 래플 정보 가져오기
+async function getRaffle(argRno) {
+    try {
+        const response = await RaffleAPI.getRaffle(argRno);
+        console.log(response.data);
+        raffle.value = response.data.raffle;
+        if (response.data.quizMission != null) {
+            quizmission.value = response.data.quizMission;
+        } else {
+            timemission.value = response.data.timeMission;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getRaffle(rno);
+
+// 해당 래플의 썸네일 이미지 가져오기
+async function getRaffleThumbnailImg(argRno) {
+    try {
+        const response = await RaffleAPI.raffleThumbnailAttachDownload(argRno);
+        console.log(response.data);
+        const blob = response.data;
+        headImgUrl.value = URL.createObjectURL(blob);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getRaffleThumbnailImg(rno);
+// 해당 래플의 디테일 이미지 가져오기
+async function getRaffleDetailImg(argRno) {
+    try {
+        const response = await RaffleAPI. raffleDetailAttachDownload(argRno);
+        console.log(response.data);
+        const blob = response.data;
+        DetailImgUrl.value = URL.createObjectURL(blob);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getRaffleDetailImg(rno);
+
+// 해당 래플의 경품 이미지 가져오기
+async function getRaffleGiftImg(argRno) {
+    try {
+        const response = await RaffleAPI. raffleGiftAttachDownload(argRno);
+        console.log(response.data);
+        const blob = response.data;
+        GiftImgUrl.value = URL.createObjectURL(blob);
+    } catch (error) {
+        console.log(error);
+    }
+}
+getRaffleGiftImg(rno);
 </script>
 
 <style scoped>
