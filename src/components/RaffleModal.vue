@@ -4,7 +4,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title"><slot name="modalHeader"></slot></h5>
+                        <slot name="modalHeader"></slot>
                     </div>
                     <div class="modal-body">
                         <slot name="modalBody"></slot>

@@ -3,12 +3,12 @@
 import axios from "axios";
 import qs from 'qs';
 
-function myEntryList() {
-    return axios.get("/raffle/getRaffleDetailList")
+function myEntryList(pageNo, status, start, end) {
+    return axios.get("/raffle/getRaffleDetailList", { params: { pageNo:pageNo, status:status, start:start, end:end } })
 }
 
-function myWinnerList() {
-    return axios.get("/raffle/getWinnerDetailList");
+function myWinnerList(pageNo, start, end) {
+    return axios.get("/raffle/getWinnerDetailList", { params: { pageNo:pageNo, start:start, end:end } });
 }
 
 // 첨부 다운로드

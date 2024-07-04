@@ -7,7 +7,6 @@
             <table class="table text-center">
                 <thead>
                     <tr>
-                        <th>번호</th>
                         <th>ID</th>
                         <th>이름</th>
                         <th>닉네임</th>
@@ -15,22 +14,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>tjdwns3823@naver.com</td>
-                        <td>변성준</td>
-                        <td>byeon</td>
+                    <tr v-for="member in page.members" :key="member.mid">
+                        <td>{{ member.mid }}</td>
+                        <td>{{ member.mname }}</td>
+                        <td>{{ member.mnickname }}</td>
                         <td>
                             <RouterLink to="MemberDetail"><button class="btn btn-sm rounded-0">상세</button>
                             </RouterLink>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>jw123@naver.com</td>
-                        <td>이재원</td>
-                        <td>jwlee</td>
-                        <td><button class="btn btn-sm rounded-0">상세</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -49,15 +40,15 @@
             </div>
 
             <div class="text-center">
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">처음</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">이전</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">1</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">2</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">3</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">4</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">5</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">다음</button>
-                <button class="btn btn-outline-light btn-sm" style="background-color: white; color:black;">맨끝</button>
+                <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
+                <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
+                    class="btn btn-outline-light btn-sm me-1">이전</button>
+                <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
+                    :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
+                    class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
+                <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
+                    @click="changePageNo(page.pager.endPageNo + 1)" class="btn btn-outline-light btn-sm me-1">다음</button>
+                <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
             </div>
         </div>
     </div>
@@ -65,6 +56,75 @@
 </template>
 
 <script setup>
+import MemberAPI from '@/apis/MemberAPI';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter, useRoute } from 'vue-router';
+import { ref, watch } from 'vue';
+const router = useRouter();
+const route = useRoute();
+
+const store = useStore();
+const serverTime = computed(() => {
+    const diffMilliseconds = store.getters['clientTime/getTimeForCalculate'];
+    console.log(diffMilliseconds);
+    return new Date(diffMilliseconds);
+});
+
+
+const pageNo = ref(route.query.pageNo || 1);
+
+const page = ref({
+    members: [],
+    pager: {}
+});
+
+async function getMemberList(pageNo) {
+    try {
+        console.log(pageNo.value + '알려저');
+        const response = await MemberAPI.memberList(pageNo);
+        console.log(response + "나오나여?");
+        
+        page.value.members = response.data.member;
+        page.value.pager = response.data.pager;
+        console.log(page.value);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getMemberList(pageNo.value);
+
+function changePageNo(argPageNo) {
+    router.push(`/Admin/MemberList?pageNo=${argPageNo}`);
+}
+
+watch(
+    route, (newRoute, oldRoute) => {
+        if (newRoute.query.pageNo) {
+            console.log(pageNo.value)
+            getMemberList(newRoute.query.pageNo);
+            pageNo.value = newRoute.query.pageNo;
+        } else {
+            console.log()
+            getMemberList(1);
+            pageNo.value = 1;
+        }
+    }
+);
+
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
 </script>
 
 <style scoped>

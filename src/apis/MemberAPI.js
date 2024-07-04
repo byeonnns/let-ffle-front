@@ -69,6 +69,22 @@ function deleteLikeList(rno) {
     return axios.delete("/member/deleteLikeList", { params: { rno:rno } });
 }
 
+function updateWinner(data) {
+    return axios.put("/member/updateWinner", data);
+}
+
+function myAddress() {
+    return axios.get("/member/getMyAddress");
+}
+
+function memberList(pageNo) {
+    return axios.get("/member/getAdminMemberList", { params: { pageNo:pageNo }})
+}
+
+function winnerList(pageNo) {
+    return axios.get("/member/getAdminWinnerList", { params: { pageNo:pageNo }})
+}
+
 export default {
     join,
     login,
@@ -83,5 +99,9 @@ export default {
     phoneDuplicationCheck,
     findId,
     findPassword,
-    updatePassword
+    updatePassword,
+    updateWinner,
+    myAddress,
+    memberList,
+    winnerList
 }

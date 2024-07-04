@@ -6,35 +6,36 @@
             </div>
             <div class="purchase_list_tab mt-2">
                 <div class="tab_item total">
-                    <a href="#" class="tab_link">
+                    <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Total')">
                         <dl class="tab_box m-0">
                             <dt class="title" style="height: 50px;">전체</dt>
                             <dd class="count">{{ myRaffleDetail.totalRaffle }}</dd>
                         </dl>
-                    </a>
+                    </button>
                 </div>
                 <div class="tab_item">
-                    <a href="#" class="tab_link">
+                    <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Ongoing')">
                         <dl class="tab_box m-0">
                             <dt class="title" style="height: 50px;">진행 중</dt>
                             <dd class="count">{{ myRaffleDetail.ongoingRaffle }}</dd>
                         </dl>
-                    </a>
+                    </button>
                 </div>
                 <div class="tab_item">
-                    <a href="#" class="tab_link">
+                    <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Closed')">
                         <dl class="tab_box m-0">
                             <dt class="title" style="height: 50px;">종료</dt>
                             <dd class="count">{{ myRaffleDetail.closedRaffle }}</dd>
                         </dl>
-                    </a>
+                    </button>
                 </div>
             </div>
 
             <hr class="mt-0" />
 
             <div>
-                <SerachPeriod></SerachPeriod>
+                <SearchPeriod ref="searchPeriod" @searchList="changeSearchPeriod()">
+                </SearchPeriod>
             </div>
 
             <hr />
@@ -88,6 +89,19 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                <button @click="changePageOption(1, status)" class="btn btn-outline-primary btn-sm me-1">처음</button>
+                <button v-if="myRaffleDetail.pager.groupNo > 1" @click="changePageOption(myRaffleDetail.pager.startPageNo - 1, status)"
+                    class="btn btn-outline-info btn-sm me-1">이전</button>
+                <button v-for="pageNo in myRaffleDetail.pager.pageArray" :key="pageNo" @click="changePageOption(pageNo, status)"
+                    :class="(myRaffleDetail.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-success'"
+                    class="btn btn-sm me-1">{{ pageNo }}</button>
+                <button v-if="myRaffleDetail.pager.groupNo < myRaffleDetail.pager.totalGroupNo"
+                    @click="changePageOption(myRaffleDetail.pager.endPageNo + 1, status)"
+                    class="btn btn-outline-info btn-sm me-1">다음</button>
+                <button @click="changePageOption(myRaffleDetail.pager.totalPageNo, status)"
+                    class="btn btn-outline-primary btn-sm">맨끝</button>
+                </div>
             </div>
         </div>
     </div>
@@ -95,30 +109,66 @@
 
 <script setup>
 import RaffleAPI from '@/apis/RaffleAPI';
-import { ref } from 'vue';
-import SerachPeriod from './Components/SearchPeriod.vue';
+import { ref, watch } from 'vue';
+import SearchPeriod from './Components/SearchPeriod.vue';
 import Popper from "vue3-popper";
-
+import { useRoute, useRouter } from 'vue-router';
 
 const myRaffleDetail = ref({
     totalRaffle: null,
     ongoingRaffle: null,
     closedRaffle: null,
-    RaffleDetailRequest: []
+    RaffleDetailRequest: [],
+    pager: {}
 });
 
-async function getMyEntryList() {
+const searchPeriod = ref(null);
+
+const router = useRouter();
+const route = useRoute();
+const pageNo = ref(route.query.pageNo || 1);
+const status = ref(route.query.status || 'Total');
+const startDate = ref(route.query.start || null);
+const endDate = ref(route.query.end || null);
+
+async function getMyEntryList(pageNo, status, startDate, endDate) {
     try {
-        const response = await RaffleAPI.myEntryList();
+        const response = await RaffleAPI.myEntryList(pageNo, status, startDate, endDate);
         myRaffleDetail.value.totalRaffle = response.data.myTotalRaffle;
         myRaffleDetail.value.ongoingRaffle = response.data.myOngoingRaffle;
         myRaffleDetail.value.closedRaffle = response.data.myClosedRaffle;
         myRaffleDetail.value.RaffleDetailRequest = response.data.RaffleDetailRequest;
+        myRaffleDetail.value.pager = response.data.pager;
     } catch (error) {
         console.log(error);
     }
 }
 
+function changePageOption(pageNo, status) {
+    router.push(`/Member/MyPage/MyEntryList?pageNo=${pageNo}&status=${status}&start=${startDate.value}&end=${endDate.value}`);
+}
+
+function changeSearchPeriod(){
+    startDate.value = searchPeriod.value.getStartDate();
+    endDate.value = searchPeriod.value.getEndDate();
+    changePageOption(1, status.value);
+}
+
+watch(route, (newRoute, oldRoute) => {
+    if (newRoute.query.pageNo || newRoute.query.status || newRoute.query.start || newRoute.query.end) {
+        getMyEntryList(newRoute.query.pageNo, newRoute.query.status, newRoute.query.start, newRoute.query.end);
+        pageNo.value = newRoute.query.pageNo;
+        status.value = newRoute.query.status;
+    } else {
+        getMyEntryList(1);
+        pageNo.value = 1;
+        status.value = "Total";
+    }
+});
+
+getMyEntryList(pageNo.value, status.value, startDate.value, endDate.value);
+
+/* 시간 출력 포맷 */
 function formatDate(dateStr) {
     const date = new Date(dateStr);
     const year = date.getFullYear();
@@ -136,9 +186,6 @@ function formatTime(dateStr) {
 
     return `${hours}:${minutes}:${seconds}`;
 }
-
-getMyEntryList();
-
 </script>
 
 <style scoped>
@@ -153,10 +200,6 @@ getMyEntryList();
 .tab_item {
     flex: 1;
     text-align: center;
-}
-
-.tab_link {
-    text-decoration: none;
 }
 
 .tab_box {
