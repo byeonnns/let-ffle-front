@@ -22,11 +22,13 @@
                         <td>{{ formatDate(raffle.rstartedat) }}</td>
                         <td>{{ formatDate(raffle.rfinishedat) }}</td>
                         <td v-if="serverTime > new Date(raffle.rfinishedat)">마감</td>
-                        <td v-if="serverTime < new Date(raffle.rfinishedat)">진행 중</td>
+                        <td v-if="serverTime < new Date(raffle.rstartedat)">진행 예정</td>
+                        <td v-if="serverTime <= new Date(raffle.rfinishedat) && new Date(raffle.rstartedat) <= serverTime">진행 중</td>
                         <td>
                             <RouterLink v-if="serverTime < new Date(raffle.rfinishedat)" class="btn btn-sm rounded-0 text-white me-1" to="/Admin/CreateRaffle">수정
                             </RouterLink>
-                            <button class="btn btn-sm rounded-0 ms-1" @click="deleteRaffle">삭제</button>
+                            <!-- 응모가 시작안되었으면 삭제가능 -->
+                            <button v-if="serverTime < new Date(raffle.rstartedat)" class="btn btn-sm rounded-0 ms-1" @click="deleteRaffle">삭제</button>
                         </td>
                     </tr>
                 </tbody>
