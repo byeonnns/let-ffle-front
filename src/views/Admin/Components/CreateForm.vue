@@ -1,39 +1,46 @@
 <template>
-    <div class="container" style="width: 100%; height:500px; ">
-            <form @submit.prevent="handleSubmit">
+    <div class="container" style="width: 100%; height:500px;">
+        <form @submit.prevent="handleSubmit">
             <div style="width: 100%; height:500px;">
                 <div class="form-group row">
-                    <label for="btitle" class="col-sm-2 col-form-label">분류</label>
+                    <label for="nmaincategory" class="col-sm-2 col-form-label">분류</label>
                     <div class="col-sm-10 align-content-center">
-                        <select>
-                            <option>공지사항</option>
-                            <option>자주 묻는 질문</option>
+                        <select v-model="notice.nmaincategory">
+                            <option value="공지사항">공지사항</option>
+                            <option value="자주 묻는 질문">자주 묻는 질문</option>
                         </select>
                     </div>
                 </div>
-
+                <div class="form-group row">
+                    <label for="nsubcategory" class="col-sm-2 col-form-label">소분류</label>
+                    <div class="col-sm-10 align-content-center">
+                        <select v-model="notice.nsubcategory">
+                            <option value="공지">공지</option>
+                            <option value="당첨자 발표">당첨자 발표</option>
+                            <option value="서비스">서비스</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="form-group row mt-2">
-                    <label for="btitle" class="col-sm-2 col-form-label">제목</label>
+                    <label for="ntitle" class="col-sm-2 col-form-label">제목</label>
                     <div class="col-sm-10">
-                        <input id="btitle" type="text" class="form-control" v-model="notice.ntitle" />
+                        <input id="ntitle" type="text" class="form-control" v-model="notice.ntitle" />
                     </div>
                 </div>
 
                 <div class="form-group row mt-4">
-                    <label for="bcontent" class="col-sm-2 col-form-label">내용</label>
+                    <label for="ncontent" class="col-sm-2 col-form-label">내용</label>
                     <div class="col-sm-10">
-                        <textarea v-model="notice.ncontent" type="text" class="form-control"
-                            style="height:250px;"></textarea>
+                        <textarea v-model="notice.ncontent" id="ncontent" class="form-control" style="height:250px;"></textarea>
                     </div>
                 </div>
 
                 <div class="form-group row mt-4">
-                    <label for="battach" class="col-sm-2 col-form-label">첨부파일</label>
+                    <label for="nattach" class="col-sm-2 col-form-label">첨부파일</label>
                     <div class="col-sm-10">
-                        <input id="battach" type="file" class="form-control-file" ref="battach" />
+                        <input id="nattach" type="file" class="form-control-file" ref="nattach" />
                     </div>
                 </div>
-                
 
                 <div class="form-group row">
                     <div class="col-sm-12 d-flex justify-content-end">
@@ -42,57 +49,76 @@
                             <input type="button" class="btn btn-outline-light btn-sm rounded-0" value="취소" />
                         </RouterLink>
                     </div>
-
-
                 </div>
             </div>
         </form>
-            <RaffleToast ref="seeya" />
-        </div>
-
-
-
+        <RaffleToast ref="seeya" />
+    </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import RaffleToast from '@/components/RaffleToast.vue';
+import NoticeAPI from '@/apis/NoticeAPI';
+import { useRouter } from 'vue-router';
 
 const seeya = ref("");
-const childText = ref('');
-const seetitle = ref("");
-const seeContent = ref("");
-const notice = ref({
-    ntitle: "",
-    ncontent: "",
-    nattach: null
+const router = useRouter();
 
+const notice = ref({
+    nmaincategory: "공지사항",
+    nsubcategory:"공지",
+    ntitle: "",
+    ncontent: ""
 });
 
+const nattach = ref(null);
 
-function handleSubmit() {
-    var total = true;
+async function handleSubmit() {
+    let total = true;
 
-    var ntitlepattern = /^.{2,50}$/;
-    var noticetitle = ntitlepattern.test(notice.value.ntitle)
-    if (!noticetitle) {
+    const titlepattern = /^.{2,50}$/;
+    const yourtitle = titlepattern.test(notice.value.ntitle);
+    if (!yourtitle) {
+        total = false;
         seeya.value.showToast("제목을 입력 해주세요");
-    } else  (noticetitle) 
-    seetitle.value = "";
+    }
 
-    var ncontentpattern = /^.{2,100}$/;
-    var ncontent = ncontentpattern.test(notice.value.ncontent)
-    if (!ncontent) {
+    const contentpattern = /^.{2,100}$/;
+    const yourcontent = contentpattern.test(notice.value.ncontent);
+    if (!yourcontent) {
+        total = false;
         seeya.value.showToast("내용을 입력 해주세요");
-    } else (ncontent)
-    seeContent.value =""
+    }
+
+    if (total) {
+        // formData 추가 전 값 확인
+        console.log("ntitle:", notice.value.ntitle);
+        console.log("ncontent:", notice.value.ncontent);
+        console.log("nsubcategory", notice.value.nsubcategory);
+        console.log("nmaincategory:", notice.value.nmaincategory);
+
+        const formData = new FormData();
+        formData.append("ntitle", notice.value.ntitle);
+        formData.append("ncontent", notice.value.ncontent);
+        formData.append("nsubcategory", notice.value.nsubcategory);
+        formData.append("nmaincategory", notice.value.nmaincategory);
+
+        const elNattach = nattach.value;
+        if (elNattach.files.length != 0) {
+            formData.append("nattach", elNattach.files[0]);
+        }
+
+        try {
+            await NoticeAPI.createNotice(formData);
+            router.back();
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
-
-
-
 defineExpose({
-    childText,
     notice
 });
 </script>
