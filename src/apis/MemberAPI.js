@@ -77,6 +77,14 @@ function myAddress() {
     return axios.get("/member/getMyAddress");
 }
 
+function memberList(pageNo) {
+    return axios.get("/member/getAdminMemberList", { params: { pageNo:pageNo }})
+}
+
+function winnerList(pageNo) {
+    return axios.get("/member/getAdminWinnerList", { params: { pageNo:pageNo }})
+}
+
 export default {
     join,
     login,
@@ -93,5 +101,7 @@ export default {
     findPassword,
     updatePassword,
     updateWinner,
-    myAddress
+    myAddress,
+    memberList,
+    winnerList
 }
