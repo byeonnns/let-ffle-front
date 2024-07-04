@@ -16,8 +16,13 @@ function raffleAttachDownload(rno) {
     return axios.get("/raffle/raffleAttach/" + rno, { responseType: "blob" });
 }
 
+function getAdminRaffleList(pageNo) {
+    return axios.get("/raffle/getAdminRaffleList", { params: {  pageNo: pageNo  }});
+}
+
 export default {
     myEntryList,
     myWinnerList,
-    raffleAttachDownload
+    raffleAttachDownload,
+    getAdminRaffleList
 }

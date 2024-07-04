@@ -26,6 +26,15 @@ function findId(mphone) {
     return axios.post("/member/findId/" + mphone);
 }
 
+// 비밀번호 찾기
+function findPassword(mphone, mid) {
+    return axios.post("/member/findPassword/" + mphone + "/" + mid );
+}
+
+function updatePassword(mid, mpassword) {
+    return axios.put("/member/mypage/updateMpassword/" + mid + "/" + mpassword);
+}
+
 // 로그인
 function login(member) {
     return axios.post("/member/login", qs.stringify(member));
@@ -72,5 +81,7 @@ export default {
     idDuplicationCheck,
     nicknameDuplicationCheck,
     phoneDuplicationCheck,
-    findId
+    findId,
+    findPassword,
+    updatePassword
 }
