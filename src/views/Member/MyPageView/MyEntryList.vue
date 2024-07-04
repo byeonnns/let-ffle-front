@@ -34,7 +34,7 @@
             <hr class="mt-0" />
 
             <div>
-                <SearchPeriod ref="searchPeriod" @searchList="changePageOption(pageNo, status)">
+                <SearchPeriod ref="searchPeriod" @searchList="changeSearchPeriod()">
                 </SearchPeriod>
             </div>
 
@@ -128,8 +128,8 @@ const router = useRouter();
 const route = useRoute();
 const pageNo = ref(route.query.pageNo || 1);
 const status = ref(route.query.status || 'Total');
-const startDate = ref(route.query.start);
-const endDate = ref(route.query.end);
+const startDate = ref(route.query.start || null);
+const endDate = ref(route.query.end || null);
 
 async function getMyEntryList(pageNo, status, startDate, endDate) {
     try {
@@ -145,7 +145,13 @@ async function getMyEntryList(pageNo, status, startDate, endDate) {
 }
 
 function changePageOption(pageNo, status) {
-    router.push(`/Member/MyPage/myEntryList?pageNo=${pageNo}&status=${status}&start=${searchPeriod.value.getStartDate()}&end=${searchPeriod.value.getEndDate()}`);
+    router.push(`/Member/MyPage/MyEntryList?pageNo=${pageNo}&status=${status}&start=${startDate.value}&end=${endDate.value}`);
+}
+
+function changeSearchPeriod(){
+    startDate.value = searchPeriod.value.getStartDate();
+    endDate.value = searchPeriod.value.getEndDate();
+    changePageOption(1, status.value);
 }
 
 watch(route, (newRoute, oldRoute) => {
@@ -161,18 +167,6 @@ watch(route, (newRoute, oldRoute) => {
 });
 
 getMyEntryList(pageNo.value, status.value, startDate.value, endDate.value);
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* 시간 출력 포맷 */
 function formatDate(dateStr) {
