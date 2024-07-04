@@ -335,7 +335,7 @@ const passwordCheck = () => {
         falsePassword.value = '영문 포함 8자 이상 15자 이하로 입력해 주세요.';
         passwordResult = false;
     } else {
-        falsePassword.value = '비밀번호를 올바르게 입력하셨습니다.';
+        falsePassword.value = '';
         passwordResult = true;
     }
 }
