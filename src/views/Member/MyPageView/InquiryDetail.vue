@@ -50,7 +50,6 @@ import MemberAPI from '@/apis/MemberAPI';
 import { useRouter, useRoute } from 'vue-router';
 
 const route = useRoute();
-const router = useRouter();
 const inquiry = ref({});
 const ino = route.query.ino;
 async function myInquiryDetail(ino) {

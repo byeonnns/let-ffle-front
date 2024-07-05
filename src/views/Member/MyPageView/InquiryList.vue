@@ -12,8 +12,8 @@
                             <tr class="d-none d-md-table-row text-center">
 
                                 <th class="d-none d-md-table-cell" style="width: 4em;"><span>번호</span></th>
-                                <th><span>제목</span></th>
-                                <th class="d-none d-md-table-cell" style="width: 11em;"><span>글쓴이</span></th>
+                                <th style="width: 5em;"><span>제목</span></th>
+                                <th class="d-none d-md-table-cell" style="width: 7em;"><span>글쓴이</span></th>
                                 <th class="d-none d-md-table-cell" style="width: 8em;"><span>날짜</span></th>
                                 <th class="d-none d-md-table-cell" style="width: 6em;"><span>답변상태</span></th>
 
@@ -27,7 +27,7 @@
                                 </td>
                                 <td>{{ inquiry.mid }}</td>
                                 <td>{{ formatDate(inquiry.icreatedat) }}</td>
-                                <td v-if="inquiry.ireply == null">대기중</td>
+                                <td v-if="inquiry.ireply == null"><RouterLink :to="`/Member/Mypage/InquiryUpdate?ino=${inquiry.ino}`"><button class="btn btn-outline-light btn-sm">수정하기</button></RouterLink>대기중</td>
                                 <td v-if="inquiry.ireply != null">답변완료</td>
                             </tr>
                         </tbody>
@@ -113,6 +113,9 @@ function formatDate(dateStr) {
 
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
+
+
+
 </script>
 
 <style scoped>

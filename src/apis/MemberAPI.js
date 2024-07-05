@@ -106,6 +106,10 @@ function myInquiryDetail(ino) {
     return axios.get("/member/inquiryDetail/" + ino);
 }
 
+function updateInquiry(formData) {
+    return axios.put("/member/updateInquiry" , formData)
+}
+
 export default {
     join,
     login,
@@ -129,5 +133,6 @@ export default {
     like,
     cancleLike,
     myInquiryList,
-    myInquiryDetail
+    myInquiryDetail,
+    updateInquiry
 }
