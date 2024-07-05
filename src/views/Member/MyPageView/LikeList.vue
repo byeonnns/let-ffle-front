@@ -7,9 +7,7 @@
             <div v-for="item in likeList.RaffleRequest" :key="item.raffle.rno">
                 <div class="d-flex justify-content-between mt-2">
                     <div class="align-content-center">
-                        <img v-if="item.raffleImage.rthumbnailimgoname != null"
-                            :src="`${axios.defaults.baseURL}/raffle/raffleAttach/${item.raffle.rno}`" class="rounded"
-                            width="200px" height="130px;">
+                        <img v-if="item.raffleImage.rthumbnailimgoname != null" :src="`${axios.defaults.baseURL}/raffle/raffleThumbnailAttach/${item.raffle.rno}`" class="rounded" width="200px" height="130px;">
                     </div>
                     <div class="align-content-center">
                         <h5>{{ item.raffle.rtitle }}</h5>

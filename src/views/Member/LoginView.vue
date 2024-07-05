@@ -2,23 +2,17 @@
     <div class="container-lg">
         <div class="d-flex justify-content-center">
             <!--아이디(이메일), 비밀번호, 이름, 주민번호, 전화번호, 주소를 입력받는다.-->
-            <div class="d-flex flex-column" :style="responsiveSize">
+            <form @submit.prevent="handleLogin" class="d-flex flex-column" :style="responsiveSize">
                 <p class="text-center fst-italic" style="font-size:50px; font-weight: 900">Let-<span
                         style="color:#FF5C35">FFle</span></p>
-                        <form @submit.prevent="handleLogin">
                             <label for="memail">이메일 주소</label>
                             <input v-model="member.mid" type="email" class="border-0 border-bottom input" @input="emailCheck(onBtn)">
                             <p class="m-0" style="color:#FF5C35">{{ emailError }}</p>
                             <label for="mpassword" class="mt-3">비밀번호</label>
                             <input v-model="member.mpassword" type="password" class="border-0 border-bottom input" @input="passwordCheck(onBtn)">
                             <p class="m-0" style="color: #FF5C35;">{{ passwordError }}</p>
-                            <div v-if="$store.state.mid == ''">
-                                <input type="submit" value="로그인" class="btn text-white rounded-0 btn-lg mt-4" :class="isPass ? '' : 'disabled'" style="background-color: #F37551;">
-                            </div>
-                        </form>
-                <div v-if="$store.state.mid !== ''">
-                    <button class="btn btn-success btn-sm mt-3" @click="handleLogout">로그아웃</button>
-                </div>
+                            <button v-if="$store.state.mid !== ''" class="btn btn-success rounded-0 btn-lg mt-4" @click="handleLogout">로그아웃</button>
+                            <input v-else type="submit" value="로그인" class="btn text-white rounded-0 btn-lg mt-4" :class="isPass ? '' : 'disabled'" style="background-color: #F37551;">
                 <div class="row mt-3 text-center">
                     <div class="col-4 border-end">
                         <RouterLink to="/join">이메일 가입</RouterLink>
@@ -30,7 +24,7 @@
                         <RouterLink to="/FindPassword">비밀번호 찾기</RouterLink>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </template>
