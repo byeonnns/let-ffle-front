@@ -97,6 +97,15 @@ function cancleLike(rno) {
     return axios.delete("/member/deleteLikeList/" + rno);
 }
 
+function myInquiryList(pageNo) {
+    return axios.get("/member/getInquiryList", { params: { pageNo:pageNo }})
+}
+
+function myInquiryDetail(ino) {
+    // Path Variable로 데이터 전송
+    return axios.get("/member/inquiryDetail/" + ino);
+}
+
 export default {
     join,
     login,
@@ -118,5 +127,7 @@ export default {
     winnerList,
     myInquirycreate,
     like,
-    cancleLike
+    cancleLike,
+    myInquiryList,
+    myInquiryDetail
 }

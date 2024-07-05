@@ -8,8 +8,8 @@
                 </div>
                 <WriteForm ref="createWriteForm"/>
                 <div class="d-flex justify-content-end">
-                    <input value="신청하기" class="btn btn-light me-2" @click="handleClick()">
-                    <RouterLink to="/Member/Mypage/InquiryList"><input value="취소" class="btn btn-light"></RouterLink>
+                    <input value="신청하기" class="input btn btn-outline-light me-2" @click="handleClick()"/>
+                    <RouterLink to="/Member/Mypage/InquiryList"><input value="취소" class="input btn btn-outline-light"></RouterLink>
                 </div>
             </div>
         </div>
@@ -36,5 +36,9 @@ function handleClick() {
     background-color: #F37551;
     color: white;
     border-radius: 0px;
+}
+
+.input {
+    width: 100px;
 }
 </style>

@@ -46,15 +46,19 @@
 
 <script setup>
 import { ref } from 'vue';
+import MemberAPI from '@/apis/MemberAPI';
+import { useRouter, useRoute } from 'vue-router';
 
-const inquiry = ref({
-    ititle: "안녕하세요",
-    icontent: "베리를 많이 얻고 싶은데 지금 5개밖에 없어서요. 당첨되고 싶은 래플이 있는데 10개를 다 사용해서 확률을 올리고 싶어요. 어떻게 하면 베리를 얻을 수 있는건가요?",
-    icreatedat: "2024.06.20",
-    ireply: "안녕하세요. 렛플(Let-FFle)은 현재 매일 베리를 획득할 수 있는 일일 퀘스트가 있습니다. 매일 첫 로그인 시 베리 1개가 지급되며, 하루에 3개의 래플에 응모하시면 베리 1개를 추가 지급합니다. 3개의 래플 응모 참여와 미션까지 모두 완료하시면 베리 1개를 획득하실 수 있으니, 이용에 참고 부탁드립니다. 감사합니다.",
-    istatus: "답변완료"
-});
+const route = useRoute();
+const router = useRouter();
+const inquiry = ref({});
+const ino = route.query.ino;
+async function myInquiryDetail(ino) {
+    const response = await MemberAPI.myInquiryDetail(ino);
+    inquiry.value = response.data;
+}
 
+myInquiryDetail(ino);
 </script>
 
 <style scoped>
