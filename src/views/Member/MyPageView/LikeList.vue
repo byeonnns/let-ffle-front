@@ -80,7 +80,7 @@ watch(route, (newRoute, oldRoute) => {
 async function deleteBtn(rno) {
     if (confirm("관심 목록에서 제거하시겠습니까?")) {
         try {
-            await MemberAPI.deleteLikeList(rno);
+            await MemberAPI.cancleLike(rno);
             if(likeList.value.pager.rowsPerPage <= 6)
                 getMyLikeList(1);
             else
