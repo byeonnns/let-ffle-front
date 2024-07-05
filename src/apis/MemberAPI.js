@@ -57,8 +57,8 @@ function myPageDashboard(){
     return axios.get("/member/getMyPageDashboard");
 }
 
-function myBerryHistory(){
-    return axios.get("/member/getBerryHistoryList");
+function myBerryHistory(pageNo, option){
+    return axios.get("/member/getBerryHistoryList", { params: { pageNo:pageNo, option:option } });
 }
 
 function myLikeList(pageNo){
