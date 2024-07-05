@@ -31,8 +31,8 @@ function findPassword(mphone, mid) {
     return axios.post("/member/findPassword/" + mphone + "/" + mid );
 }
 
-function updatePassword(mid, mpassword) {
-    return axios.put("/member/mypage/updateMpassword/" + mid + "/" + mpassword);
+function resetPassword(mid, mpassword) {
+    return axios.put("/member/resetMpassword/" + mid + "/" + mpassword);
 }
 
 // 로그인
@@ -97,6 +97,34 @@ function cancleLike(rno) {
     return axios.delete("/member/deleteLikeList/" + rno);
 }
 
+function updateNickname(mnickname) {
+    return axios.put("/member/mypage/updateMnickname/" + mnickname);
+}
+
+function getMember() {
+    return axios.get("/member/getMember");
+}
+
+function passwordMatchCheck(mpassword) {
+    return axios.post("/member/mypage/passwordMatchCheck/" + mpassword);
+}
+
+function updatePassword(mpassword) {
+    return axios.put("/member/mypage/updateMpassword/" + mpassword);
+}
+
+function updateMphone(mphone) {
+    return axios.put("/member/mypage/updateMphone/" + mphone);
+}
+
+function updateMaddress(mzipcode, maddress) {
+    return axios.put("/member/mypage/updateMaddress/" + mzipcode + "/" + maddress);
+}
+
+function changeMenabled() {
+    return axios.put("/member/deleteMember");
+}
+
 function myInquiryList(pageNo) {
     return axios.get("/member/getInquiryList", { params: { pageNo:pageNo }})
 }
@@ -124,7 +152,7 @@ export default {
     phoneDuplicationCheck,
     findId,
     findPassword,
-    updatePassword,
+    resetPassword,
     updateWinner,
     myAddress,
     memberList,
@@ -132,6 +160,13 @@ export default {
     myInquirycreate,
     like,
     cancleLike,
+    updateNickname,
+    getMember,
+    passwordMatchCheck,
+    updatePassword,
+    updateMphone,
+    updateMaddress,
+    changeMenabled,
     myInquiryList,
     myInquiryDetail,
     updateInquiry

@@ -1,15 +1,12 @@
 <template>
     <div>
-        <div class="container">
-            <div class="d-flex">
-                <!-- <div class="flex-grow-1 d-flex flex-column"></div> -->
-                <div class="d-flex flex-column ms-5" style="width: 100%;">
-                    <div style="border-bottom: 3px solid #F37551;" class="mb-3">
-                        <h4>문의 내역</h4>
-                    </div>
-                    <table class="table mb-0">
-                        <thead>
-                            <tr class="d-none d-md-table-row text-center">
+        <div class="d-flex flex-column">
+            <div style="border-bottom: 3px solid #F37551;">
+                <h3>문의 내역</h3>
+            </div>
+            <table class="table mb-0">
+                <thead>
+                    <tr class="d-none d-md-table-row text-center">
 
                                 <th class="d-none d-md-table-cell" style="width: 4em;"><span>번호</span></th>
                                 <th style="width: 5em;"><span>제목</span></th>
@@ -49,8 +46,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        
+    
 </template>
 
 <script setup>
@@ -122,7 +119,8 @@ function formatDate(dateStr) {
 td {
     text-align: center;
 }
-.btn{
+
+.btn {
     background-color: #F37551;
     color: white;
     border-radius: 0px;
