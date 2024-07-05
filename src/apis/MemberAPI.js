@@ -89,6 +89,10 @@ function myInquirycreate(inquiry, mid) {
     return axios.post("/member/mypage/createInquiry", inquiry, mid);
 }
 
+function getLikeStatus(rno) {
+    return axios.get("/member/likeStatus/" + rno)
+}
+
 function like(rno) {
     return axios.post("/member/addLikeList/" + rno);
 }
@@ -117,6 +121,7 @@ export default {
     memberList,
     winnerList,
     myInquirycreate,
+    getLikeStatus,
     like,
     cancleLike
 }

@@ -52,6 +52,10 @@ function updateRdtMissionCleared(rno, manswer) {
     return axios.put("/raffle/updateRdtMissionCleared/" + rno + "/" + manswer);
 }
 
+function getRaffleStatus(rno) {
+    return axios.get("/raffle/readRaffleDetail/" + rno);
+}
+
 export default {
     myEntryList,
     myWinnerList,
@@ -63,5 +67,6 @@ export default {
     getRaffle,
     getRaffleList,
     apply,
-    updateRdtMissionCleared
+    updateRdtMissionCleared,
+    getRaffleStatus
 }

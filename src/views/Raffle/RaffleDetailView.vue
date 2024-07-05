@@ -30,19 +30,21 @@
                     </div>
                     <div class="d-flex flex-column border mt-5">
                         <div class="d-flex">
-                            <button class="btn flex-grow-1" :class="step !== 1 ? 'disabled' : ''">1.
+                            <button class="btn flex-grow-1" :class="raffleStatus === '래플 미참여' ? '' : 'disabled'">1.
                                 응모하기</button>
-                            <button class="btn flex-grow-1" :class="step === 2 || step === 3 ? '' : 'disabled'"
-                                @click="step = 2">2.
-                                미션참여</button>
-                            <button class="btn flex-grow-1" :class="step === 2 || step === 3 ? '' : 'disabled'"
-                                @click="step = 3">3.
-                                베리사용</button>
-                            <button class="btn flex-grow-1" :class="step !== 4 ? 'disabled' : ''">4.
+
+                            <button class="btn flex-grow-1" :class="raffleStatus === '미션 대기' || raffleStatus === '미션 성공' ||
+                                raffleStatus === '미션 실패' ? '' : 'disabled'" @click="tab = '미션 참여'">2. 미션참여</button>
+
+                            <button class="btn flex-grow-1" :class="raffleStatus === '미션 대기' || raffleStatus === '미션 성공' ||
+                                raffleStatus === '미션 실패' ? '' : 'disabled'" @click="tab = '베리 사용'">3. 베리사용</button>
+
+                            <button class="btn flex-grow-1"
+                                :class="raffleStatus === '당첨 발표' || raffleStatus === '미참여 래플 종료' ? '' : 'disabled'">4.
                                 당첨확인</button>
                         </div>
 
-                        <div class="p-3 text-center" v-if="step === 1">
+                        <div class="p-3 text-center" v-if="raffleStatus === '래플 미참여'">
                             <p class="h6 text-start">
                                 하단의 응모하기 버튼을 클릭하시면 응모가 완료됩니다. <br />
                                 응모 전 반드시 아래 주의사항을 읽어주세요. <br /> <br />
@@ -52,13 +54,14 @@
                                 • 응모는 일일 최대 3회까지만 가능합니다. <br />
                                 • 미션 참여 및 베리 사용은 응모 마감 전까지만 가능합니다.
                             </p>
-                            <button class="btn mt-2 w-100" @click="apply">응모하기</button>
+                            <button class="btn mt-2 w-100" @click="apply(rno)">응모하기</button>
                         </div>
 
-                        <div class="p-3 text-start" v-if="step === 2">
+                        <div class="p-3 text-start"
+                            v-if="raffleStatus === '미션 대기' && raffleRequest.raffle.rmissiontype === 'quiz' && tab == '미션 참여'">
                             <h4>Quiz</h4>
                             <p>{{ raffleRequest.quizMission.qcontent }}</p>
-                            <form @submit.prevent="updateRdtMissionCleared">
+                            <form @submit.prevent="updateRdtMissionCleared(rno)">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" id="opt1" name="manswer"
                                         v-model="manswer" :value="raffleRequest.quizMission.qoption1">
@@ -82,13 +85,28 @@
                                 <button type="submit" class="btn mt-2 w-100">정답 제출</button>
                             </form>
                         </div>
-                        <div class="p-3 text-start" v-if="step === 2">
+
+                        <div class="p-3 text-start"
+                            v-if="raffleStatus === '미션 대기' && raffleRequest.raffle.rmissiontype === 'time' && tab == '미션 참여'">
                             <h4>Hot Time</h4>
                             <p>지정된 시간동안 하단의 미션 참여 버튼을 눌러주세요.</p>
-                            <button class="btn mt-2 w-100" @click="raffleprocess()">미션
-                                참여</button>
+                            <button v-if="!passTime" class="btn mt-2 w-100 disabled">핫 타임이 아닙니다.</button>
+                            <button v-if="passTime" class="btn mt-2 w-100" @click="updateRdtMissionCleared(rno)">미션 참여</button>
                         </div>
-                        <div class="p-3 text-start" v-if="step === 3">
+
+                        <div class="p-3 text-start" v-if="raffleStatus === '미션 성공' && tab == '미션 참여'">
+                            <h4>너 미션 이미 성공했잖아</h4>
+                            너 이뻐
+                        </div>
+
+                        <div class="p-3 text-start" v-if="raffleStatus === '미션 실패' && tab == '미션 참여'">
+                            <h4>너 미션 이미 실패했잖아</h4>
+                            풉
+                        </div>
+
+
+                        <div class="p-3 text-start"
+                            v-if="(raffleStatus === '미션 대기' || raffleStatus === '미션 성공' || raffleStatus === '미션 실패') && tab == '베리 사용'">
                             <h4>베리 사용 안내</h4>
                             <ul>
                                 <li>베리를 사용하여 당첨 확률을 증가시킬 수 있습니다.</li>
@@ -113,24 +131,29 @@
                             </select>개
                             <button class="btn mt-2 w-100" @click="raffleprocess()">사용하기</button>
                         </div>
-                        <div class="p-3 text-start" v-if="step === 4">
+                        <div class="p-3 text-start" v-if="raffleStatus === '당첨 발표'">
                             <button class="btn mt-2 w-100" @click="raffleprocess()">당첨 확인</button>
+                        </div>
+                        <div class="p-3 text-start" v-if="raffleStatus === '미참여 래플 종료'">
+                            <h1>너 참여 안했잖아</h1>
+                            돌아가 인마
                         </div>
                     </div>
                     <br>
                     <div class="d-flex flex-column border mt-5">
                         <div class="d-flex">
-                            <button class="btn flex-grow-1">래플안내</button>
-                            <button class="btn flex-grow-1">미션안내</button>
-                            <button class="btn flex-grow-1">당첨안내</button>
+                            <button class="btn flex-grow-1" @click="selectGuide('raffle')">래플안내</button>
+                            <button class="btn flex-grow-1" @click="selectGuide('mission')">미션안내</button>
+                            <button class="btn flex-grow-1" @click="selectGuide('winning')">당첨안내</button>
                         </div>
 
-                        <div class="p-3 text-center">
+                        <div v-if="shift == 'raffle'" class="p-3 text-center">
                             <p class="h6 text-start">
                                 {{ raffleRequest.raffle.rcontent }}
                             </p>
                         </div>
-                        <div v-if="raffleRequest.raffle.rmissiontype == 'quiz'" class="p-3 text-center">
+                        <div v-if="raffleRequest.raffle.rmissiontype == 'quiz' && shift == 'mission'"
+                            class="p-3 text-center">
                             <p class="h6 text-start">
                                 해당 래플의 미션은 퀴즈 미션입니다. <br /> 응모에 참여하신 뒤, 퀴즈를 풀고 정답을 맞혀주세요. <br /> <br />
 
@@ -139,18 +162,19 @@
                                 • 한 번 정답을 제출한 뒤에는 제출한 답을 수정하거나 다시 풀 수 없습니다. 신중하게 풀어주세요! <br />
                             </p>
                         </div>
-                        <div v-if="raffleRequest.raffle.rmissiontype == 'time'" class="p-3 text-center">
+                        <div v-if="raffleRequest.raffle.rmissiontype == 'time' && shift == 'mission'"
+                            class="p-3 text-center">
                             <p class="h6 text-start">
                                 해당 래플의 미션은 핫타임 미션입니다. <br /> 응모에 참여하신 뒤, 정해진 시간동안 미션참여 탭의 미션 참여 버튼을 클릭해주세요! <br />
                                 <br />
-                                핫 타임 : 2024.06.24 19:00 PM ~ 2024.06.24 21:00 PM <br /> <br />
-
+                                핫 타임 : {{ raffleRequest.timeMission.tstartedat }} ~ {{
+                                    raffleRequest.timeMission.tfinishedat }} <br /> <br />
                                 ※ 핫 타임 미션 주의사항 <br />
                                 • 미션 참여 버튼을 클릭하시면 자동으로 미션 성공 처리됩니다. <br />
                                 • 정해진 시간 외에는 버튼이 활성화되지 않습니다. <br />
                             </p>
                         </div>
-                        <div class="p-3 text-center">
+                        <div v-if="shift == 'winning'" class="p-3 text-center">
                             <p class="h6 text-start">
                                 ※ 당첨자 유의사항 <br />
                                 • 당첨 여부는 마이페이지 > 당첨 내역 조회 에서 확인하실 수 있습니다. <br />
@@ -167,7 +191,7 @@
 
 <script setup>
 import axios from 'axios';
-import { onMounted, ref } from 'vue';
+import { ref, watch } from 'vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import RaffleToast from '@/components/RaffleToast.vue'
@@ -177,11 +201,17 @@ import { useRoute } from 'vue-router';
 import RaffleAPI from '@/apis/RaffleAPI';
 import MemberAPI from '@/apis/MemberAPI';
 
-const settingDate = new Date('2024-06-26T11:57:30');
+const settingDate = ref(null);
+const passTime = ref(false);
+const startHotTime = ref(null);
+const endHotTime = ref(null);
+
 const route = useRoute();
 const store = useStore();
+
 const serverTime = computed(() => {
-    const diffMilliseconds = settingDate - store.getters['clientTime/getTimeForCalculate'];
+    const nowTime = store.getters['clientTime/getTimeForCalculate'];
+    const diffMilliseconds = settingDate.value - nowTime;
     if (diffMilliseconds < 0) {
         const remain = {
             days: "00",
@@ -205,30 +235,20 @@ const serverTime = computed(() => {
     }
 });
 
-
-onMounted(() => {
-    const likeData = false;
-    if (likeData === true) {
-        like.value = true;
+watch(serverTime, (newVal, oldVal) => {
+    const nowTime = store.getters['clientTime/getTimeForCalculate'];
+    console.log(nowTime);
+    if (startHotTime.value < nowTime && nowTime < endHotTime.value) {
+        passTime.value = true;
+    } else {
+        passTime.value = false;
     }
-});
+})
 
 /* 래플 프로세스 */
-let step = ref(1);
-function raffleprocess() {
-    if (step.value === 1) {
-        step.value = 2;
-    } else if (step.value === 2) {
-        step.value = 3;
-    } else if (step.value === 3) {
-        step.value = 4;
-    } else {
-        giftLottieShow.value = true;
-    }
-}
-
-const people = ['변성준', '이재원', '신메시', '김영주'];
-const selectedPerson = ref('이재원'); // 초기 선택된 값
+const raffleStatus = ref(null);
+const tab = ref('미션 참여');
+const shift = ref('raffle');
 
 /* 토스트 */
 const raffleToast = ref(null);
@@ -237,6 +257,8 @@ const raffleToast = ref(null);
 const giftLottieShow = ref(false);
 const likeAnimation = ref(null);
 const like = ref(false);
+const rno = route.query.rno;
+const raffleRequest = ref({});
 
 const likeCheck = () => {
     if (like.value == true) {
@@ -258,33 +280,48 @@ async function likeIt() {
     }
 }
 
-const rno = route.query.rno;
-const raffleRequest = ref({});
+async function getRaffleStatus(rno) {
+    const response = await RaffleAPI.getRaffleStatus(rno);
+    raffleStatus.value = response.data;
+}
 
 async function getRaffleRequest(argRno) {
     const response = await RaffleAPI.getRaffle(argRno);
     raffleRequest.value = response.data;
+    settingDate.value = new Date(response.data.raffle.rfinishedat + "T00:00:00");
+    if (response.data.raffle.rmissiontype == 'time') {
+        startHotTime.value = new Date(response.data.timeMission.tstartedat.replace(' ', 'T'));
+        endHotTime.value = new Date(response.data.timeMission.tfinishedat.replace(' ', 'T'));
+    }
     console.log(raffleRequest.value);
 }
 
-getRaffleRequest(rno);
+async function getLikeStatus(rno) {
+    const response = await MemberAPI.getLikeStatus(rno);
+    like.value = response.data;
+}
 
-async function apply() {
+getRaffleRequest(rno);
+getLikeStatus(rno);
+getRaffleStatus(rno);
+
+async function apply(rno) {
     const response = await RaffleAPI.apply(rno);
-    step.value = 2;
     raffleToast.value.showToast("응모가 완료되었습니다.");
+    getRaffleStatus(rno);
 }
 
 const manswer = ref(null);
 
-async function updateRdtMissionCleared() {
+async function updateRdtMissionCleared(rno) {
     // 라디오 버튼이 클릭된게 뭔지를 받아와서 manswer를 유저의 제출 답으로 저장
     // 백엔드에 manswer를 넘겨줌
-
-
-    console.log(manswer.value);
     const response = await RaffleAPI.updateRdtMissionCleared(rno, manswer.value);
+    getRaffleStatus(rno);
+}
 
+function selectGuide(param) {
+    shift.value = param;
 }
 </script>
 
