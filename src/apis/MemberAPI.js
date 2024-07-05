@@ -57,8 +57,8 @@ function myPageDashboard(){
     return axios.get("/member/getMyPageDashboard");
 }
 
-function myBerryHistory(){
-    return axios.get("/member/getBerryHistoryList");
+function myBerryHistory(pageNo, option){
+    return axios.get("/member/getBerryHistoryList", { params: { pageNo:pageNo, option:option } });
 }
 
 function myLikeList(pageNo){
@@ -85,8 +85,8 @@ function winnerList(pageNo) {
     return axios.get("/member/getAdminWinnerList", { params: { pageNo:pageNo }})
 }
 
-function myInquirycreate(inquiry, mid) {
-    return axios.post("/member/mypage/createInquiry", inquiry, mid);
+function myInquirycreate(formData) {
+    return axios.post("/member/mypage/createInquiry", formData);
 }
 
 function like(rno) {

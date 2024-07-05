@@ -65,6 +65,7 @@ async function getMyLikeList(pageNo) {
 function changePageNo(argPageNo) {
     router.push(`/Member/MyPage/LikeList?pageNo=${argPageNo}`);
 }
+
 getMyLikeList(pageNo.value);
 watch(route, (newRoute, oldRoute) => {
     if (newRoute.query.pageNo) {
@@ -99,5 +100,9 @@ async function deleteBtn(rno) {
 
 .btn-modal {
     width: 70px;
+}
+
+.btn {
+    border: none;
 }
 </style>
