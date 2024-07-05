@@ -3,13 +3,13 @@
         <div class="container-lg">
             <div class="row">
                 <RaffleVue v-for="n in 5" :key="n"/>
-                <div v-for="raffle in raffles.raffle" :key="raffle.rno" class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink to="/Raffle/RaffleDetail">
+                <div v-for="request in raffles" :key="request" class="col-lg-4 col-md-6 col-12 mb-4">
+                    <RouterLink :to="`/Raffle/RaffleDetail?rno=${request.raffle.rno}`">
                         <div class="img-container">
-                            <img src="@/assets/imgSample2.jpg" class="w-100 h-100 object-fit-cover">
+                            <img :src="`${axios.defaults.baseURL}/raffle/raffleThumbnailAttach/${request.raffle.rno}`" class="w-100 h-100 object-fit-cover">
                         </div>
-                        <p class="raffle-title mt-2">{{ raffle.raffle.rtitle }}</p>
-                        <p class="raffle-description"> {{ raffle.raffle.rsubtitle }}</p>
+                        <p class="raffle-title mt-2">{{ request.raffle.rtitle }}</p>
+                        <p class="raffle-description"> {{ request.raffle.rsubtitle }}</p>
                     </RouterLink>
                 </div>
                 
@@ -19,20 +19,27 @@
 </template>
 
 <script setup>
+import axios from "axios";
 import RaffleAPI from "@/apis/RaffleAPI";
 import RaffleVue from "@/components/Raffle.vue";
 import { ref } from 'vue';
 
 const raffles = ref();
+const attach = ref();
 
 async function getRaffleList() {
     const response = await RaffleAPI.getRaffleList();
     raffles.value = response.data;
     console.log(raffles.value);
+    console.log(raffles.value[0].raffle)
 }
 
 getRaffleList();
 
+// async function getRaffleAttachList() {
+//     const response = await RaffleAPI.getRaffleAttachList();
+//     attach.value = response.data;
+// }
 
 </script>
 

@@ -44,6 +44,14 @@ function getRaffleList() {
     return axios.get("/raffle/getRaffleList");
 }
 
+function apply(rno) {
+    return axios.post("/raffle/createRaffleDetail/" + rno);
+}
+
+function updateRdtMissionCleared(rno, manswer) {
+    return axios.put("/raffle/updateRdtMissionCleared/" + rno + "/" + manswer);
+}
+
 export default {
     myEntryList,
     myWinnerList,
@@ -53,5 +61,7 @@ export default {
     getAdminRaffleList,
     createRaffle,
     getRaffle,
-    getRaffleList
+    getRaffleList,
+    apply,
+    updateRdtMissionCleared
 }

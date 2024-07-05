@@ -2,22 +2,23 @@
     <div>
         <GiftLottie v-if="giftLottieShow" />
         <RaffleToast ref="raffleToast" />
-        <div class="container">
+        <div v-if="raffleRequest.raffle" class="container">
             <div class="row">
                 <div class="col-6">
-                    <img src="@/assets/tempImage/uniform.png" class="w-100">
+                    <img :src="`${axios.defaults.baseURL}/raffle/raffleDetailAttach/${rno}`" class="w-100">
+                    <img :src="`${axios.defaults.baseURL}/raffle/raffleGiftAttach/${rno}`" class="w-100 mt-5">
                 </div>
                 <div class="col-6 d-flex flex-column position-sticky h-100" style="top:142px">
-                    <p class="text-secondary">Raffle > Fashion</p>
+                    <p class="text-secondary">Raffle > {{ raffleRequest.raffle.rcategory }}</p>
                     <div class="d-flex justify-content-between">
-                        <h1 class="align-content-center">Raffle Name</h1>
-                        <div @click="likeIt()">
+                        <h1 class="align-content-center"> {{ raffleRequest.raffle.rtitle }} </h1>
+                        <div @click="likeIt">
                             <Vue3Lottie :animationData="HeartLottie" :loop="1" @on-animation-loaded="likeCheck"
                                 ref="likeAnimation" :autoPlay="false" />
                         </div>
                     </div>
-                    <h5>2024-06-22 @ 18:00 부터</h5>
-                    <h5>2024-06-22 @ 18:00 까지</h5>
+                    <h5>{{ raffleRequest.raffle.rstartedat }} 부터</h5>
+                    <h5>{{ raffleRequest.raffle.rfinishedat }} 까지</h5>
                     <div class="d-flex text-center">
                         <h1 class="dayCount">{{ serverTime.days }}</h1>
                         <h1 class="mx-4">:</h1>
@@ -51,21 +52,35 @@
                                 • 응모는 일일 최대 3회까지만 가능합니다. <br />
                                 • 미션 참여 및 베리 사용은 응모 마감 전까지만 가능합니다.
                             </p>
-                            <button class="btn mt-2 w-100" @click="raffleprocess()">응모하기</button>
+                            <button class="btn mt-2 w-100" @click="apply">응모하기</button>
                         </div>
 
                         <div class="p-3 text-start" v-if="step === 2">
                             <h4>Quiz</h4>
-                            <p>다음 중 4팀의 팀원이 아닌 사람을 골라주세요.</p>
-                            <div class="form-check" v-for="(person, index) in people" :key="index">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    :id="'flexRadioDefault' + index" :value="person" v-model="selectedPerson">
-                                <label class="form-check-label" :for="'flexRadioDefault' + index">
-                                    {{ person }}
-                                </label>
-                            </div>
-                            <button class="btn mt-2 w-100" @click="raffleprocess()">정답
-                                제출</button>
+                            <p>{{ raffleRequest.quizMission.qcontent }}</p>
+                            <form @submit.prevent="updateRdtMissionCleared">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="opt1" name="manswer"
+                                        v-model="manswer" :value="raffleRequest.quizMission.qoption1">
+                                    <label for="opt1">{{ raffleRequest.quizMission.qoption1 }}</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="opt2" name="manswer"
+                                        v-model="manswer" :value="raffleRequest.quizMission.qoption2">
+                                    <label for="opt2">{{ raffleRequest.quizMission.qoption2 }}</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="opt3" name="manswer"
+                                        v-model="manswer" :value="raffleRequest.quizMission.qoption3">
+                                    <label for="opt3">{{ raffleRequest.quizMission.qoption3 }}</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="opt4" name="manswer"
+                                        v-model="manswer" :value="raffleRequest.quizMission.qoption4">
+                                    <label for="opt4">{{ raffleRequest.quizMission.qoption4 }}</label>
+                                </div>
+                                <button type="submit" class="btn mt-2 w-100">정답 제출</button>
+                            </form>
                         </div>
                         <div class="p-3 text-start" v-if="step === 2">
                             <h4>Hot Time</h4>
@@ -112,11 +127,10 @@
 
                         <div class="p-3 text-center">
                             <p class="h6 text-start">
-                                더그레이티스트는 템포러리 브랜드를 추구하며 더그레이티스트만의 해석으로 트렌드와 개성의 양립을 지향합니다.
-                                더그레이티스트만의 감성을 담은 24 SUMMER 드랍을 ~50% 혜택으로 만나보세요.
+                                {{ raffleRequest.raffle.rcontent }}
                             </p>
                         </div>
-                        <div class="p-3 text-center">
+                        <div v-if="raffleRequest.raffle.rmissiontype == 'quiz'" class="p-3 text-center">
                             <p class="h6 text-start">
                                 해당 래플의 미션은 퀴즈 미션입니다. <br /> 응모에 참여하신 뒤, 퀴즈를 풀고 정답을 맞혀주세요. <br /> <br />
 
@@ -125,7 +139,7 @@
                                 • 한 번 정답을 제출한 뒤에는 제출한 답을 수정하거나 다시 풀 수 없습니다. 신중하게 풀어주세요! <br />
                             </p>
                         </div>
-                        <div class="p-3 text-center">
+                        <div v-if="raffleRequest.raffle.rmissiontype == 'time'" class="p-3 text-center">
                             <p class="h6 text-start">
                                 해당 래플의 미션은 핫타임 미션입니다. <br /> 응모에 참여하신 뒤, 정해진 시간동안 미션참여 탭의 미션 참여 버튼을 클릭해주세요! <br />
                                 <br />
@@ -152,14 +166,19 @@
 </template>
 
 <script setup>
+import axios from 'axios';
 import { onMounted, ref } from 'vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import RaffleToast from '@/components/RaffleToast.vue'
 import GiftLottie from '@/components/GiftLottie.vue'
 import HeartLottie from '@/assets/lottie/likeHeart.json'
+import { useRoute } from 'vue-router';
+import RaffleAPI from '@/apis/RaffleAPI';
+import MemberAPI from '@/apis/MemberAPI';
 
-const settingDate = new Date('2024-06-26T11:57:30')
+const settingDate = new Date('2024-06-26T11:57:30');
+const route = useRoute();
 const store = useStore();
 const serverTime = computed(() => {
     const diffMilliseconds = settingDate - store.getters['clientTime/getTimeForCalculate'];
@@ -225,16 +244,47 @@ const likeCheck = () => {
     }
 }
 
-function likeIt() {
+async function likeIt() {
     if (like.value === false) {
+        const response = await MemberAPI.like(rno);
         raffleToast.value.showToast("좋아요를 눌렀습니다.");
         likeAnimation.value.playSegments([0, 19], true);
         like.value = true;
     } else {
+        const response = await MemberAPI.cancleLike(rno);
         raffleToast.value.showToast("좋아요를 취소했습니다.");
         likeAnimation.value.playSegments([8, 0], true);
         like.value = false;
     }
+}
+
+const rno = route.query.rno;
+const raffleRequest = ref({});
+
+async function getRaffleRequest(argRno) {
+    const response = await RaffleAPI.getRaffle(argRno);
+    raffleRequest.value = response.data;
+    console.log(raffleRequest.value);
+}
+
+getRaffleRequest(rno);
+
+async function apply() {
+    const response = await RaffleAPI.apply(rno);
+    step.value = 2;
+    raffleToast.value.showToast("응모가 완료되었습니다.");
+}
+
+const manswer = ref(null);
+
+async function updateRdtMissionCleared() {
+    // 라디오 버튼이 클릭된게 뭔지를 받아와서 manswer를 유저의 제출 답으로 저장
+    // 백엔드에 manswer를 넘겨줌
+
+
+    console.log(manswer.value);
+    const response = await RaffleAPI.updateRdtMissionCleared(rno, manswer.value);
+
 }
 </script>
 
