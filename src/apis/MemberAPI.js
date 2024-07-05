@@ -85,6 +85,10 @@ function winnerList(pageNo) {
     return axios.get("/member/getAdminWinnerList", { params: { pageNo:pageNo }})
 }
 
+function myInquirycreate(inquiry, mid) {
+    return axios.post("/member/mypage/createInquiry", inquiry, mid);
+}
+
 export default {
     join,
     login,
@@ -103,5 +107,6 @@ export default {
     updateWinner,
     myAddress,
     memberList,
-    winnerList
+    winnerList,
+    myInquirycreate
 }

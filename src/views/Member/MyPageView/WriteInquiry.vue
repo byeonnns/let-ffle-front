@@ -21,6 +21,63 @@
 
 <script setup>
 import WriteForm from '@/components/WriteForm.vue';
+import MemberAPI from '@/apis/MemberAPI';
+import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+
+const seeya = ref("");
+const router = useRouter();
+
+const inquiry = ref({
+    nmaincategory: "공지사항",
+    nsubcategory:"공지",
+    ntitle: "",
+    ncontent: ""
+});
+
+const iattach = ref(null);
+
+async function handleSubmit() {
+    let total = true;
+
+    const titlepattern = /^.{2,50}$/;
+    const yourtitle = titlepattern.test(inquiry.value.ntitle);
+    if (!yourtitle) {
+        total = false;
+        seeya.value.showToast("제목을 입력 해주세요");
+    }
+
+    const contentpattern = /^.{2,100}$/;
+    const yourcontent = contentpattern.test(inquiry.value.ncontent);
+    if (!yourcontent) {
+        total = false;
+        seeya.value.showToast("내용을 입력 해주세요");
+    }
+
+    if (total) {
+        // formData 추가 전 값 확인
+        console.log("ititle:", inquiry.value.ntitle);
+        console.log("icontent:", inquiry.value.ncontent);
+
+        const formData = new FormData();
+        formData.append("ititle", inquiry.value.ntitle);
+        formData.append("icontent", inquiry.value.ncontent);
+
+        const elNattach = iattach.value;
+        if (elNattach.files.length != 0) {
+            formData.append("nattach", elNattach.files[0]);
+        }
+
+        try {
+            await MemberAPI.createNotice(formData);
+            router.back();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+
 </script>
 
 <style scoped>
