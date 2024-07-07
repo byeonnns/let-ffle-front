@@ -19,7 +19,7 @@
                         <td>{{ member.mname }}</td>
                         <td>{{ member.mnickname }}</td>
                         <td>
-                            <RouterLink to="MemberDetail"><button class="btn btn-sm rounded-0">상세</button>
+                            <RouterLink :to="`/Admin/MemberDetail?mid=${member.mid}`"><button class="btn btn-sm rounded-0">상세</button>
                             </RouterLink>
                         </td>
                     </tr>

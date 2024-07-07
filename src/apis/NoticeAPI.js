@@ -5,6 +5,16 @@ function createNotice(formData) {
     return axios.post("/notice/createNotice", formData);
 }
 
+function noticeList(pageNo, subcategory) {
+    return axios.get("/notice/getNoticeList", { params: { pageNo:pageNo, subcategory:subcategory }})
+}
+
+function noticeDetail(nno) {
+    return axios.get("/notice/readNotice/" + nno);
+}
+
 export default {
-    createNotice
+    createNotice,
+    noticeList,
+    noticeDetail
 }

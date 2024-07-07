@@ -142,6 +142,10 @@ function updateInquiry(formData) {
     return axios.put("/member/updateInquiry" , formData)
 }
 
+function AdminMemberDetail(mid) {
+    return axios.get("/member/getMemberDetail/" + mid)
+}
+
 export default {
     join,
     login,
@@ -174,5 +178,6 @@ export default {
     changeMenabled,
     myInquiryList,
     myInquiryDetail,
-    updateInquiry
+    updateInquiry,
+    AdminMemberDetail
 }

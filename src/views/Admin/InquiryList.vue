@@ -1,124 +1,110 @@
 <template>
-    <div class="container" style="height: 100%;">
-        <!-- <div class="card-header">1대1문의 사항 입니다.</div> -->
-        <div class="container" style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; ">
-            <h3 style=" margin-top: 30px">문의내역</h3>
-        </div>
+    <div>
+        <div class="d-flex flex-column">
+            <div style="border-bottom: 3px solid #F37551;">
+                <h3>문의 내역</h3>
+            </div>
 
-        <div class="accordion">
-            <div class="accordion-item">
-                <h3 class="accordion-header">
-                    <button class="accordion-button custom-accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                        <p class="custom-title me-5">{{ Inquiry.ino }}</p>
-                        <p class="custom-title me-5" style="width: 80px; color: #F37551">답변대기중</p>
-                        <p class="custom-text">안녕하세요</p>
-                    </button>
-                </h3>
-                <div id="collapse1" class="accordion-collapse collapse  container" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="container "
-                            style="width: 100%;  height:300px; background-color: #FAFAFA; padding: 30px;">
-                            <!-- border:1px solid black  -->
-
-                            <div style="width: 100%; ">
-                                <!-- border:1px solid black -->
-                                <p>베리는 어떻게 얻을 수 있나요?</p>
+            <div class="accordion" id="accordionExample">
+                <div v-for="Inquiry in page.Inquirys" :key="Inquiry.ino" class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button custom-accordion-button" type="button" data-bs-toggle="collapse"
+                            :data-bs-target="'#collapse' + Inquiry.ino" aria-expanded="true"
+                            :aria-controls="'collapse' + Inquiry.ino">
+                            <p class="custom-title me-5">{{ Inquiry.ino }}</p>
+                            <p class="custom-title me-5" style="width: 80px; color: #F37551"
+                                v-if="Inquiry.ireply == null">답변 대기중</p>
+                            <p class="custom-title me-5" style="width: 80px; color: #F37551"
+                                v-if="Inquiry.ireply != null">답변 완료</p>
+                            <p class="custom-text">{{ Inquiry.ititle }}</p>
+                        </button>
+                    </h3>
+                    <div :id="'collapse' + Inquiry.ino" class="accordion-collapse collapse container"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="container "
+                                style="width: 100%;  height:300px; background-color: #FAFAFA; padding: 30px;">
+                                <!-- border:1px solid black  -->
+                                <div style="width: 100%; ">
+                                    <!-- border:1px solid black -->
+                                    <p>{{ Inquiry.icontent }}</p>
+                                </div>
                             </div>
-
-                        </div>
-
-                        <!-- 답변 등록 폼 -->
-                        <div class=" form-group row mt-3">
-                            <div style="margin-bottom: 30px">
-                                <textarea id="bcontent" type="text" class="form-control" placeholder="답변을 입력하세요."
-                                    style="height:100px;" v-model="Inquiry.Icomment"></textarea>
+                            <!-- 답변 등록 폼 -->
+                            <div class=" form-group row mt-3" v-if="Inquiry.ireply == null">
+                                <div style="margin-bottom: 30px">
+                                    <textarea id="bcontent" type="text" class="form-control" placeholder="답변을 입력하세요."
+                                        style="height:100px;" v-model="Inquiry.Icomment"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <RouterLink to="/Admin/InquiryList">
-                                <button class="btn btn-outline-light rounded-0" @click="commentSubmit()">등록</button>
-                            </RouterLink>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <RouterLink to="/Admin/InquiryList">
+                                    <button class="btn btn-outline-light rounded-0" @click="commentSubmit()">등록</button>
+                                </RouterLink>
+                            </div>
+                            <div class=" form-group row mt-3" v-if="Inquiry.ireply != null">
+                                <h3>등록된 답변</h3>
+                                <div>
+                                    <p>{{ Inquiry.ireply }}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-        </div>
-        <div class="accordion">
-            <div class="accordion-item">
-                <h3 class="accordion-header">
-                    <button class="accordion-button custom-accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
-                        <p class="custom-title me-5">2</p>
-                        <p class="custom-title me-5" style="width: 80px;">답변완료</p>
-                        <p class="custom-text">문의 드립니다</p>
-                    </button>
-                </h3>
-                <div id="collapse2" class="accordion-collapse collapse  container" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="container "
-                            style="width: 100%;  height:300px; background-color: #FAFAFA; padding: 30px;">
-                            <!-- border:1px solid black  -->
-
-                            <div style="width: 100%; ">
-                                <!-- border:1px solid black -->
-                                <p>베리는 어떻게 얻을 수 있나요?</p>
-                            </div>
-                        </div>
-                        <!-- 답변 등록 폼 -->
-                        <div class=" form-group row mt-3">
-                            <h3>등록된 답변</h3>
-                            <div>
-                                <p>베리는 매일 첫 로그인 시 1개, 하루 응모 3개 전부 참여 및 미션 수행까지 모두 완료하시면 1개를 추가 지급합니다. 감사합니다.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+            <div class="text-center">
+                <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
+                <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
+                    class="btn btn-outline-light btn-sm me-1">이전</button>
+                <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
+                    :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
+                    class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
+                <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
+                    @click="changePageNo(page.pager.endPageNo + 1)"
+                    class="btn btn-outline-light btn-sm me-1">다음</button>
+                <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
             </div>
-
+            <RaffleToast ref="look" />
         </div>
-
-        <div class="text-end mb-2 mt-3">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex flex-grow-1 justify-content-center ms-5">
-                    <button class="btn btn-outline-light btn-sm me-1"
-                        style="background-color: white; color:black;">처음</button>
-                    <button class="btn btn-outline-light btn-sm me-3"
-                        style="background-color: white; color:black;">이전</button>
-                    <button class="btn btn-outline-light btn-sm me-1"
-                        style="background-color: white; color:black;">1</button>
-                    <button class="btn btn-outline-light btn-sm me-1"
-                        style="background-color: white; color:black;">2</button>
-                    <button class="btn btn-outline-light btn-sm me-1"
-                        style="background-color: white; color:black;">3</button>
-                    <button class="btn btn-outline-light btn-sm me-1"
-                        style="background-color: white; color:black;">4</button>
-                    <button class="btn btn-outline-light btn-sm me-3"
-                        style="background-color: white; color:black;">5</button>
-                    <button class="btn btn-outline-light btn-sm me-1"
-                        style="background-color: white; color:black;">다음</button>
-                    <button class="btn btn-outline-light btn-sm"
-                        style="background-color: white; color:black;">맨끝</button>
-                </div>
-            </div>
-        </div>
-        <RaffleToast ref="look" />
     </div>
 </template>
 
 <script setup>
-import { ref } from "vue"
+import { ref,watch } from "vue"
 import RaffleToast from '@/components/RaffleToast.vue';
+import MemberAPI from "@/apis/MemberAPI";
+import { useRouter, useRoute } from 'vue-router';
+
+const router = useRouter();
+const route = useRoute();
+
+const pageNo = ref(route.query.pageNo || 1);
+
+const page = ref({
+    Inquirys: 
+    [],
+    pager: {}
+});
+
+
+async function myInquiryList(pageNo) {
+    try {
+        const response = await MemberAPI.myInquiryList(pageNo)
+        page.value.Inquirys = response.data.inquiry;
+        page.value.pager = response.data.pager;
+        console.log(page.value);
+    } catch (error) {
+        console.log(error);
+    }
+}
+myInquiryList(pageNo.value);
+
+function changePageNo(argPageNo) {
+    router.push(`/Admin/InquiryList?pageNo=${argPageNo}`);
+}
 
 const look = ref(null);
-const Inquiry = ref({
-    ireply: "",
-    ino : "",
-});
+const Inquiry = ref({});
 
 function commentSubmit() {
     var icommentPattern = /^.{2,100}$/;
@@ -130,7 +116,19 @@ function commentSubmit() {
     }
 }
 
-
+watch(
+    route, (newRoute, oldRoute) => {
+        if (newRoute.query.pageNo) {
+            console.log(pageNo.value)
+            myInquiryList(newRoute.query.pageNo);
+            pageNo.value = newRoute.query.pageNo;
+        } else {
+            console.log()
+            myInquiryList(1);
+            pageNo.value = 1;
+        }
+    }
+);
 
 </script>
 
