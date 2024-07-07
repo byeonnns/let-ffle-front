@@ -23,11 +23,11 @@
                         </thead>
                         <tbody class="text-center">
                             <tr>
-                                <td>tjdwns3823@naver.com</td>
-                                <td>변성준</td>
-                                <td>010-2232-3823</td>
-                                <td>IT벤처타워 16층 4강의실</td>
-                                <td>16</td>
+                                <td>{{ member.mid }}</td>
+                                <td>{{ member.mname }}</td>
+                                <td>{{ member.mphone }}</td>
+                                <td>{{ member.maddress }}</td>
+                                <td>{{ member.mberry }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -45,12 +45,13 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            <tr>
-                                <td>지용킴 x 삼성 뮤직 프레임</td>
-                                <td>2024.06.04 ~ 2024.06.11</td>
-                                <td>2024.06.05 16:01 PM</td>
-                                <td>4</td>
-                                <td>미당첨</td>
+                            <tr v-for="r in raffleDetailList" :key="r.raffle.rno">
+                                <td>{{ r.raffle.rtitle }}</td>
+                                <td>{{ r.raffle.rstartedat }} ~ {{ r.raffle.rfinishedat }}</td>
+                                <td>{{ r.raffleDetail.rdtcreatedat }} PM</td>
+                                <td>{{ r.raffleDetail.rdtberryspend }}</td>
+                                <td v-if="r.raffleDetail.mid == r.winner.mid">당첨</td>
+                                <td v-if="r.raffleDetail.mid != r.winner.mid">미당첨</td>
                             </tr>
                         </tbody>
                     </table>
@@ -61,6 +62,37 @@
 </template>
 
 <script setup>
+import MemberAPI from '@/apis/MemberAPI';
+import RaffleAPI from '@/apis/RaffleAPI';
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+
+const member =ref({});
+const route = useRoute();
+const mid = route.query.mid
+const raffleDetailList = ref([]);
+
+async function getAdminRaffleDetailList(mid) {
+    try {
+        const response = await RaffleAPI.getAdminRaffleDetailList(mid);
+        raffleDetailList.value = response.data;
+    } catch(error) {
+        console.log(error);
+    }
+}
+getAdminRaffleDetailList(mid);
+
+async function getMemberDetail(mid) {
+    try {
+        const response = await MemberAPI.AdminMemberDetail(mid);
+        console.log(member.value);
+        member.value = response.data;
+    } catch(error) {
+        console.log(error);
+    }
+    
+}
+getMemberDetail(mid);
 </script>
 
 <style scoped>

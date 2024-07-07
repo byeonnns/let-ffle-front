@@ -60,6 +60,10 @@ function getRaffleDetail(rno) {
     return axios.get("/raffle/readRaffleDetail/" + rno);
 }
 
+function getAdminRaffleDetailList(mid) {
+    return axios.get("/raffle/getAdminRaffleDetail/" + mid);
+}
+
 export default {
     myEntryList,
     myWinnerList,
@@ -73,5 +77,6 @@ export default {
     apply,
     updateRdtMissionCleared,
     getRaffleDetail,
-    updateRdtBerrySpend
+    updateRdtBerrySpend,
+    getAdminRaffleDetailList
 }

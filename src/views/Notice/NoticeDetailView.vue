@@ -13,10 +13,10 @@
         <div style="width: 100%;">
             <!-- border:1px solid black -->
             <div class="mt-4" style="border-bottom:1px solid #ebebeb ;">
-                <h2>6월 공휴일 휴무에 따른 거래 및 정산일정안내</h2>
+                <h2>{{ notice.ntitle }}</h2>
             </div>
             <div style=" background-color: #FAFAFA;">
-                <p class="mt-3"> 안녕하세요 LET-FFle입니다 </p>
+                <p class="mt-3"> {{ notice.ncontent }} </p>
                 <p>휴무 | 2024년 6월 6일 (목)</p>
                 <p>*휴무 기간 남겨주신 문의는 익일부터 순차적으로 답변 드릴 예정입니다.*</p>
                 <p>감사합니다.</p>
@@ -24,8 +24,7 @@
 
                 <div class="text-center">
                     <button class="btn btn-outline-light btn-sm rounded-0" style="margin-top: 40px;"
-                        @click="AnnouncementHandle()">목록
-                        보기</button>
+                        @click="AnnouncementHandle()">목록 보기</button>
                 </div>
             </div>
         </div>
@@ -36,9 +35,24 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
-const router = useRouter();
+import NoticeAPI from '@/apis/NoticeAPI';
+import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
+const route = useRoute();
+const router = useRouter();
+const notice = ref({});
+const nno = route.query.nno;
+
+async function getNoticeDetail(nno) {
+    try {
+        const response = await NoticeAPI.noticeDetail(nno);
+        notice.value = response.data;
+    } catch(error) {
+        console.log(error);
+    }
+}
+getNoticeDetail(nno);
 function AnnouncementHandle() {
     router.push("/Notice");
 }
