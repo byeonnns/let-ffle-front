@@ -141,9 +141,9 @@ function myInquiryDetail(ino) {
 function updateInquiry(formData) {
     return axios.put("/member/updateInquiry" , formData)
 }
-
-function AdminMemberDetail(mid) {
-    return axios.get("/member/getMemberDetail/" + mid)
+// 내 댓글 가져오기
+function myCommentList(pageNo) {
+    return axios.get("member/boardCommentList" , {params:{pageNo:pageNo}})
 }
 
 export default {
@@ -179,5 +179,6 @@ export default {
     myInquiryList,
     myInquiryDetail,
     updateInquiry,
+    myCommentList,
     AdminMemberDetail
 }
