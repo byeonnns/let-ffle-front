@@ -73,7 +73,7 @@ const midCheck = ref(null);
 
 const member = ref({
     mid: "",
-    mphone:""
+    mphone: ""
 })
 
 let userMphone = false;
@@ -84,10 +84,10 @@ const idCheck = () => {
     var midPattern = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
     userMid = midPattern.test(member.value.mid);
     if (!userMid) {
-        midCheck.value ="이메일이 올바르지 않습니다.";
+        midCheck.value = "이메일이 올바르지 않습니다.";
         total = false;
     } else {
-        midCheck.value=""
+        midCheck.value = ""
     }
 }
 const phCheck = () => {
@@ -162,8 +162,7 @@ const RechagnePw = () => {
 
 // 비밀번호 수정 요청
 async function updatePassword() {
-    const response = await MemberAPI.updatePassword(member.value.mid, fixNewPassword.value);
-    console.log(response.data);
+    await MemberAPI.resetPassword(member.value.mid, fixNewPassword.value);
     router.push("/login");
     findModal.value.hideModal();
 }
@@ -204,5 +203,4 @@ window.addEventListener('resize', handleResize);
 input {
     outline: none;
 }
-
 </style>
