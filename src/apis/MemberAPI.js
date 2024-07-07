@@ -46,7 +46,7 @@ function mypage() {
 }
 
 function inquiryReply() {
-    return axios.put("/member/inquiryReply")
+    return axios.put("/member/inquiryReply");
 }
 
 function myBoardList(pageNo) {
@@ -184,5 +184,6 @@ export default {
     myInquiryDetail,
     updateInquiry,
     myCommentList,
-    AdminMemberDetail
+    AdminMemberDetail,
+    inquiryReply
 }

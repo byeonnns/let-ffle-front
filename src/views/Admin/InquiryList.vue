@@ -45,7 +45,7 @@
                             <div class=" form-group row mt-3" v-if="Inquiry.ireply != null">
                                 <h3>등록된 답변</h3>
                                 <div>
-                                    <p>{{ Inquiry.ireply }}</p>
+                                    <p>{{ inquirys.ireply }}</p>
                                 </div>
                             </div>
                         </div>
@@ -86,6 +86,17 @@ const page = ref({
     pager: {}
 });
 
+const inquirys = ref({});
+
+async function inquiryReply() {
+    try {
+        const response = await MemberAPI.inquiryReply();
+        inquirys.value = response.data;
+    } catch(error) {
+        console.log(error);
+    }
+}
+inquiryReply();
 
 async function myInquiryList(pageNo) {
     try {
