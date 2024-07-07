@@ -146,6 +146,10 @@ function myCommentList(pageNo) {
     return axios.get("member/boardCommentList" , {params:{pageNo:pageNo}})
 }
 
+function AdminMemberDetail(mid) {
+    return axios.get("/member/getMemberDetail/" + mid)
+}
+
 export default {
     join,
     login,
