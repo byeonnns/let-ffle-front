@@ -30,21 +30,21 @@
                     </div>
                     <div class="d-flex flex-column border mt-5">
                         <div class="d-flex">
-                            <button class="btn flex-grow-1" :class="raffleStatus === '래플 미참여' ? '' : 'disabled'">1.
+                            <button class="btn flex-grow-1" :class="raffleDetail.raffleStatus === '래플 미참여' ? '' : 'disabled'">1.
                                 응모하기</button>
 
-                            <button class="btn flex-grow-1" :class="raffleStatus === '미션 대기' || raffleStatus === '미션 성공' ||
-                                raffleStatus === '미션 실패' ? '' : 'disabled'" @click="tab = '미션 참여'">2. 미션참여</button>
+                            <button class="btn flex-grow-1" :class="raffleDetail.raffleStatus === '미션 대기' || raffleDetail.raffleStatus === '미션 성공' ||
+                                raffleDetail.raffleStatus === '미션 실패' ? '' : 'disabled'" @click="tab = '미션 참여'">2. 미션참여</button>
 
-                            <button class="btn flex-grow-1" :class="raffleStatus === '미션 대기' || raffleStatus === '미션 성공' ||
-                                raffleStatus === '미션 실패' ? '' : 'disabled'" @click="tab = '베리 사용'">3. 베리사용</button>
+                            <button class="btn flex-grow-1" :class="raffleDetail.raffleStatus === '미션 대기' || raffleDetail.raffleStatus === '미션 성공' ||
+                                raffleDetail.raffleStatus === '미션 실패' ? '' : 'disabled'" @click="tab = '베리 사용'">3. 베리사용</button>
 
                             <button class="btn flex-grow-1"
-                                :class="raffleStatus === '당첨 발표' || raffleStatus === '미참여 래플 종료' ? '' : 'disabled'">4.
+                                :class="raffleDetail.raffleStatus === '당첨 발표' || raffleDetail.raffleStatus === '미참여 래플 종료' ? '' : 'disabled'">4.
                                 당첨확인</button>
                         </div>
 
-                        <div class="p-3 text-center" v-if="raffleStatus === '래플 미참여'">
+                        <div class="p-3 text-center" v-if="raffleDetail.raffleStatus === '래플 미참여'">
                             <p class="h6 text-start">
                                 하단의 응모하기 버튼을 클릭하시면 응모가 완료됩니다. <br />
                                 응모 전 반드시 아래 주의사항을 읽어주세요. <br /> <br />
@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="p-3 text-start"
-                            v-if="raffleStatus === '미션 대기' && raffleRequest.raffle.rmissiontype === 'quiz' && tab == '미션 참여'">
+                            v-if="raffleDetail.raffleStatus === '미션 대기' && raffleRequest.raffle.rmissiontype === 'quiz' && tab == '미션 참여'">
                             <h4>Quiz</h4>
                             <p>{{ raffleRequest.quizMission.qcontent }}</p>
                             <form @submit.prevent="updateRdtMissionCleared(rno)">
@@ -87,54 +87,51 @@
                         </div>
 
                         <div class="p-3 text-start"
-                            v-if="raffleStatus === '미션 대기' && raffleRequest.raffle.rmissiontype === 'time' && tab == '미션 참여'">
+                            v-if="raffleDetail.raffleStatus === '미션 대기' && raffleRequest.raffle.rmissiontype === 'time' && tab == '미션 참여'">
                             <h4>Hot Time</h4>
                             <p>지정된 시간동안 하단의 미션 참여 버튼을 눌러주세요.</p>
                             <button v-if="!passTime" class="btn mt-2 w-100 disabled">핫 타임이 아닙니다.</button>
                             <button v-if="passTime" class="btn mt-2 w-100" @click="updateRdtMissionCleared(rno)">미션 참여</button>
                         </div>
 
-                        <div class="p-3 text-start" v-if="raffleStatus === '미션 성공' && tab == '미션 참여'">
+                        <div class="p-3 text-start" v-if="raffleDetail.raffleStatus === '미션 성공' && tab == '미션 참여'">
                             <h4>너 미션 이미 성공했잖아</h4>
                             너 이뻐
                         </div>
 
-                        <div class="p-3 text-start" v-if="raffleStatus === '미션 실패' && tab == '미션 참여'">
+                        <div class="p-3 text-start" v-if="raffleDetail.raffleStatus === '미션 실패' && tab == '미션 참여'">
                             <h4>너 미션 이미 실패했잖아</h4>
                             풉
                         </div>
 
 
                         <div class="p-3 text-start"
-                            v-if="(raffleStatus === '미션 대기' || raffleStatus === '미션 성공' || raffleStatus === '미션 실패') && tab == '베리 사용'">
+                            v-if="(raffleDetail.raffleStatus === '미션 대기' || raffleDetail.raffleStatus === '미션 성공' || raffleDetail.raffleStatus === '미션 실패') && tab == '베리 사용'">
                             <h4>베리 사용 안내</h4>
                             <ul>
                                 <li>베리를 사용하여 당첨 확률을 증가시킬 수 있습니다.</li>
                                 <li>베리는 하나의 래플에 최대 10개까지 사용 가능합니다.</li>
                                 <li>사용한 베리는 사용 취소 및 환불이 불가능합니다.</li>
                                 <li>응모 기간 내에는 베리 추가 사용이 가능합니다.</li>
-                                <li>해당 래플에 현재 베리를 0개 사용했습니다.</li>
+                                <li>해당 래플에 현재 베리를 {{raffleDetail.raffleDetail.rdtberryspend}}개 사용했습니다.</li>
                             </ul>
-
-                            <label class="me-2">몇 개나 사용할까요?</label>
-                            <select name="number">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                            </select>개
-                            <button class="btn mt-2 w-100" @click="raffleprocess()">사용하기</button>
+                            <div v-if="raffleDetail.raffleDetail.rdtberryspend < 10">
+                                <label class="me-2">몇 개나 사용할까요?</label>
+                                <select name="number" v-model="selectBerry">
+                                    <template v-for="n in 9" :key="n">
+                                        <option v-if="raffleDetail.raffleDetail.rdtberryspend <= 10 - n">{{ n }}</option>
+                                    </template>
+                                </select>개
+                                <button class="btn mt-2 w-100" @click="updateRdtBerrySpend(rno, selectBerry)">사용하기</button>
+                            </div>
+                            <div v-else>
+                                베리를 최대로 사용했습니다!
+                            </div>
                         </div>
-                        <div class="p-3 text-start" v-if="raffleStatus === '당첨 발표'">
+                        <div class="p-3 text-start" v-if="raffleDetail.raffleStatus === '당첨 발표'">
                             <button class="btn mt-2 w-100" @click="raffleprocess()">당첨 확인</button>
                         </div>
-                        <div class="p-3 text-start" v-if="raffleStatus === '미참여 래플 종료'">
+                        <div class="p-3 text-start" v-if="raffleDetail.raffleStatus === '미참여 래플 종료'">
                             <h1>너 참여 안했잖아</h1>
                             돌아가 인마
                         </div>
@@ -205,6 +202,7 @@ const settingDate = ref(null);
 const passTime = ref(false);
 const startHotTime = ref(null);
 const endHotTime = ref(null);
+const selectBerry = ref(1);
 
 const route = useRoute();
 const store = useStore();
@@ -246,7 +244,10 @@ watch(serverTime, (newVal, oldVal) => {
 })
 
 /* 래플 프로세스 */
-const raffleStatus = ref(null);
+const raffleDetail = ref({
+    raffleDetail : {},
+    raffleStatus : null
+});
 const tab = ref('미션 참여');
 const shift = ref('raffle');
 
@@ -266,6 +267,11 @@ const likeCheck = () => {
     }
 }
 
+async function getLikeStatus(rno) {
+    const response = await MemberAPI.getLikeStatus(rno);
+    like.value = response.data;
+}
+
 async function likeIt() {
     if (like.value === false) {
         const response = await MemberAPI.like(rno);
@@ -280,9 +286,10 @@ async function likeIt() {
     }
 }
 
-async function getRaffleStatus(rno) {
-    const response = await RaffleAPI.getRaffleStatus(rno);
-    raffleStatus.value = response.data;
+async function getRaffleDetail(rno) {
+    const response = await RaffleAPI.getRaffleDetail(rno);
+    raffleDetail.value.raffleDetail = response.data.raffleDetail;
+    raffleDetail.value.raffleStatus = response.data.raffleStatus;
 }
 
 async function getRaffleRequest(argRno) {
@@ -296,19 +303,20 @@ async function getRaffleRequest(argRno) {
     console.log(raffleRequest.value);
 }
 
-async function getLikeStatus(rno) {
-    const response = await MemberAPI.getLikeStatus(rno);
-    like.value = response.data;
+async function updateRdtBerrySpend(rno, rdtberryspend) {
+    await RaffleAPI.updateRdtBerrySpend(rno, rdtberryspend)
+    getRaffleDetail(rno);
 }
+
 
 getRaffleRequest(rno);
 getLikeStatus(rno);
-getRaffleStatus(rno);
+getRaffleDetail(rno);
 
 async function apply(rno) {
     const response = await RaffleAPI.apply(rno);
     raffleToast.value.showToast("응모가 완료되었습니다.");
-    getRaffleStatus(rno);
+    getRaffleDetail(rno);
 }
 
 const manswer = ref(null);
@@ -317,7 +325,7 @@ async function updateRdtMissionCleared(rno) {
     // 라디오 버튼이 클릭된게 뭔지를 받아와서 manswer를 유저의 제출 답으로 저장
     // 백엔드에 manswer를 넘겨줌
     const response = await RaffleAPI.updateRdtMissionCleared(rno, manswer.value);
-    getRaffleStatus(rno);
+    getRaffleDetail(rno);
 }
 
 function selectGuide(param) {

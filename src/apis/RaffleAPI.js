@@ -48,11 +48,15 @@ function apply(rno) {
     return axios.post("/raffle/createRaffleDetail/" + rno);
 }
 
+function updateRdtBerrySpend(rno, rdtBerrySpend) {
+    return axios.put("/raffle/updateRdtBerrySpend",  qs.stringify({rno: rno, rdtBerrySpend: rdtBerrySpend}));
+}
+
 function updateRdtMissionCleared(rno, manswer) {
     return axios.put("/raffle/updateRdtMissionCleared/" + rno + "/" + manswer);
 }
 
-function getRaffleStatus(rno) {
+function getRaffleDetail(rno) {
     return axios.get("/raffle/readRaffleDetail/" + rno);
 }
 
@@ -68,5 +72,6 @@ export default {
     getRaffleList,
     apply,
     updateRdtMissionCleared,
-    getRaffleStatus
+    getRaffleDetail,
+    updateRdtBerrySpend
 }
