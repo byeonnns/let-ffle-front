@@ -10,8 +10,8 @@
                 <div style="width: 100%; height:100%; ">
                     <!-- border:1px solid black; -->
                     <div>
-                        <button class="btn me-2" style="background-color: white; color:black;">일반</button>
-                        <button class="btn" style="background-color: white; color:black;">당첨 후기</button>
+                        <button class="btn me-2" style="background-color: white; color:black;" @click="categorySearch('자유')">자유</button>
+                        <button class="btn" style="background-color: white; color:black;" @click="categorySearch('당첨후기')">당첨 후기</button>
                     </div>
 
                     <table class="table mt-2">
@@ -65,16 +65,16 @@
                     <div style="width: 32%; height:60px;" class="container">
                         <!-- border:1px solid black; -->
                         <div class="input-group" style="align-content: center;">
-                            <select id="selectOption" class="me-3">
-                                <option value="title">제목</option>
+                            <select id="selectOption" class="me-3" v-model="searchType">
+                                <option value="title" selected>제목</option>
                                 <option value="content">내용</option>
                                 <option value="nickname">닉네임</option>
-                                <option value="title">제목 + 내용</option>
+                                <option value="titleOrContet">제목 + 내용</option>
                             </select>
                             <input type="text" class="form-control" aria-label="Recipient's username"
-                                aria-describedby="button-addon2">
+                                aria-describedby="button-addon2" v-model="searchWord" @keyup.enter="getBoardList(1, searchType, searchWord)">
                             <button class="btn btn-outline-light ms-2 rounded-0" type="button"
-                                id="button-addon2 rounded-0">검색</button>
+                                @click="getBoardList(1, searchType, searchWord)">검색</button>
                         </div>
                     </div>
                 </div>
@@ -87,12 +87,25 @@
 
 
 <script setup>
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import BoardAPI from '@/apis/BoardAPI';
 
 const router = useRouter();
 const route = useRoute();
+
+const searchType = ref('title');
+const searchWord = ref();
+
+async function categorySearch(type) {
+    try {
+        const response = await BoardAPI.categorySearch(type);
+        page.value.boards = response.data.board;
+        page.value.pager = response.data.pager;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 const pageNo = ref(route.query.pageNo || 1);
 
@@ -101,9 +114,9 @@ const page = ref({
     pager: {}
 });
 
-async function getBoardList(pageNo) {
+async function getBoardList(pageNo, searchType='' ,word='') {
     try {
-        const response = await BoardAPI.getBoardList(pageNo);
+        const response = await BoardAPI.getBoardList(pageNo, searchType, word);
         page.value.boards = response.data.board;
         page.value.pager = response.data.pager;
         console.log(page.value);
@@ -112,7 +125,9 @@ async function getBoardList(pageNo) {
     }
 }
 
-getBoardList(pageNo.value);
+onMounted(() => {
+    getBoardList(pageNo.value);
+})
 
 function changePageNo(argPageNo) {
     router.push(`/Board/BoardList?pageNo=${argPageNo}`);

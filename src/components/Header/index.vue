@@ -53,7 +53,7 @@
                                 </RouterLink>
                             </li>
                             <li class="nav-item">
-                                <RouterLink to="/Raffle" class="nav-link" :class="{ 'active': nowPath === '/Raffle' }">
+                                <RouterLink to="/Raffle?category=all&sortType=popular" class="nav-link" :class="{ 'active': nowPath === '/Raffle' }">
                                     RAFFLE</RouterLink>
                             </li>
                             <li class="nav-item">
