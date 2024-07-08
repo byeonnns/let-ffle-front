@@ -29,8 +29,15 @@
                                     </RouterLink>
                                 </td>
                             </tr>
+
+                            <tr v-if="page.boards.length === 0">
+                                <td colspan="5" class="non-center">
+                                    <h4>작성된 댓글이 없습니다.</h4>
+                                </td>
+                            </tr>
+
                             <tr>
-                                <td colspan="5" class="text-center">
+                                <td v-if="page.pager.totalPageNo > 0" colspan="5" class="text-center">
                                     <button @click="changePageNo(1)"
                                         class="btn btn-outline-light btn-sm me-1">처음</button>
                                     <button v-if="page.pager.groupNo > 1"
@@ -68,9 +75,9 @@ const router = useRouter();
 const route = useRoute();
 const pageNo = ref(route.query.pageNo || 1);
 
-const  page = ref({
-    boards : [],
-    pager : {}
+const page = ref({
+    boards: [],
+    pager: {}
 
 });
 
@@ -80,9 +87,9 @@ async function myCommentList(pageNo) {
         page.value.boards = response.data.total;
         console.log(page.value);
         page.value.pager = response.data.pager;
-    }catch(error){
+    } catch (error) {
         console.log(error);
-    
+
     }
 }
 myCommentList(pageNo.value);
@@ -109,7 +116,7 @@ watch(
 </script>
 
 <style scoped>
-.center{
+.center {
     text-align: center;
 }
 
@@ -117,5 +124,17 @@ watch(
     background-color: #F37551;
     color: white;
     border-radius: 0px;
+}
+
+/* 작성된 게시글이 없을때 나오게끔 처리 */
+.non-center {
+    text-align: center;
+    width: 100%;
+    /* colspan 속성을 고려하여 전체 너비 설정 */
+    height: 300px;
+    /* 높이를 100px로 설정 (필요에 따라 조정 가능) */
+    vertical-align: middle;
+    /* 텍스트를 수직으로 가운데 정렬 */
+
 }
 </style>

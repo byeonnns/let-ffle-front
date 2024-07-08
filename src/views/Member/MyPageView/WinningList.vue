@@ -26,23 +26,28 @@
                             </td>
                             <td v-if="win.rcontent != null">배송 중</td>
                         </tr>
+                        <tr v-if="winningList.list.length === 0">
+                            <td colspan="5" class="non-center">
+                                <h4>당첨 내역이 없습니다.</h4>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 
-                <div class="d-flex justify-content-center">
-                    <button @click="changePageOption(1)" class="btn btn-outline-primary btn-sm me-1">처음</button>
+                <div v-if="winningList.pager.totalPageNo > 0" class="d-flex justify-content-center">
+                    <button @click="changePageOption(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
                     <button v-if="winningList.pager.groupNo > 1"
                         @click="changePageOption(winningList.pager.startPageNo - 1)"
-                        class="btn btn-outline-info btn-sm me-1">이전</button>
+                        class="btn btn-outline-light btn-sm me-1">이전</button>
                     <button v-for="pageNo in winningList.pager.pageArray" :key="pageNo"
                         @click="changePageOption(pageNo)"
-                        :class="(winningList.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-success'"
+                        :class="(winningList.pager.pageNo == pageNo) ? 'btn-outline-light' : 'btn-outline-light'"
                         class="btn btn-sm me-1">{{ pageNo }}</button>
                     <button v-if="winningList.pager.groupNo < winningList.pager.totalGroupNo"
                         @click="changePageOption(winningList.pager.endPageNo + 1)"
-                        class="btn btn-outline-info btn-sm me-1">다음</button>
+                        class="btn btn-outline-light btn-sm me-1">다음</button>
                     <button @click="changePageOption(winningList.pager.totalPageNo)"
-                        class="btn btn-outline-primary btn-sm">맨끝</button>
+                        class="btn btn-outline-light btn-sm">맨끝</button>
                 </div>
                 <SearchPeriod ref="searchPeriod" @searchList="changeSearchPeriod()" class="mt-2">
                 </SearchPeriod>
@@ -54,7 +59,8 @@
                 <div class="d-flex w-100">
                     <h4 class="m-0">배송지 입력</h4>
                     <button class="ms-auto btn btn-outline-light btn-sm"
-                        style="text-align: center; border-radius: 0px; background-color: #F37551; color: white;" @click="getAccountAddress()">내 주소 가져오기</button>
+                        style="text-align: center; border-radius: 0px; background-color: #F37551; color: white;"
+                        @click="getAccountAddress()">내 주소 가져오기</button>
                 </div>
             </template>
             <template v-slot:modalBody>
@@ -197,5 +203,23 @@ watch(route, (newRoute, oldRoute) => {
 
 td {
     align-content: center;
+}
+
+.btn {
+    background-color: #F37551;
+    color: white;
+    border: none;
+}
+
+/* 작성된 게시글이 없을때 나오게끔 처리 */
+.non-center {
+    text-align: center;
+    width: 100%;
+    /* colspan 속성을 고려하여 전체 너비 설정 */
+    height: 300px;
+    /* 높이를 100px로 설정 (필요에 따라 조정 가능) */
+    vertical-align: middle;
+    /* 텍스트를 수직으로 가운데 정렬 */
+
 }
 </style>

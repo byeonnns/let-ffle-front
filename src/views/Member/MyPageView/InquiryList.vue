@@ -8,47 +8,59 @@
                 <thead>
                     <tr class="d-none d-md-table-row text-center">
 
-                                <th class="d-none d-md-table-cell" style="width: 4em;"><span>번호</span></th>
-                                <th style="width: 5em;"><span>제목</span></th>
-                                <th class="d-none d-md-table-cell" style="width: 7em;"><span>글쓴이</span></th>
-                                <th class="d-none d-md-table-cell" style="width: 8em;"><span>날짜</span></th>
-                                <th class="d-none d-md-table-cell" style="width: 6em;"><span>답변상태</span></th>
+                        <th class="d-none d-md-table-cell" style="width: 4em;"><span>번호</span></th>
+                        <th style="width: 5em;"><span>제목</span></th>
+                        <th class="d-none d-md-table-cell" style="width: 7em;"><span>글쓴이</span></th>
+                        <th class="d-none d-md-table-cell" style="width: 8em;"><span>날짜</span></th>
+                        <th class="d-none d-md-table-cell" style="width: 6em;"><span>답변상태</span></th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="inquiry in page.inquirys" :key="inquiry.ino">
-                                <td>{{inquiry.ino}}</td>
-                                <td>
-                                    <RouterLink :to="`/Member/Mypage/InquiryDetails?ino=${inquiry.ino}`">{{ inquiry.ititle }}</RouterLink>
-                                </td>
-                                <td>{{ inquiry.mid }}</td>
-                                <td>{{ formatDate(inquiry.icreatedat) }}</td>
-                                <td v-if="inquiry.ireply == null"><RouterLink :to="`/Member/Mypage/InquiryUpdate?ino=${inquiry.ino}`"><button class="btn btn-outline-light btn-sm">수정하기</button></RouterLink>대기중</td>
-                                <td v-if="inquiry.ireply != null">답변완료</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="d-flex justify-content-end mt-3 me-3">
-                        <RouterLink to="/Member/MyPage/WriteInquiry"><button type="button" class="btn btn-light">글쓰기</button>
-                        </RouterLink>
-                    </div>
-                    <div class="text-center">
-                        <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
-                        <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
-                            class="btn btn-outline-light btn-sm me-1">이전</button>
-                        <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
-                            :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
-                            class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
-                        <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
-                            @click="changePageNo(page.pager.endPageNo + 1)" class="btn btn-outline-light btn-sm me-1">다음</button>
-                        <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
-                    </div>
-                </div>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="inquiry in page.inquirys" :key="inquiry.ino">
+                        <td>{{ inquiry.ino }}</td>
+                        <td>
+                            <RouterLink :to="`/Member/Mypage/InquiryDetails?ino=${inquiry.ino}`">{{ inquiry.ititle }}
+                            </RouterLink>
+                        </td>
+                        <td>{{ inquiry.mid }}</td>
+                        <td>{{ formatDate(inquiry.icreatedat) }}</td>
+                        <td v-if="inquiry.ireply == null">
+                            <RouterLink :to="`/Member/Mypage/InquiryUpdate?ino=${inquiry.ino}`"><button
+                                    class="btn btn-outline-light btn-sm">수정하기</button></RouterLink>대기중
+                        </td>
+                        <td v-if="inquiry.ireply != null">답변완료</td>
+                    </tr>
+                    <tr v-if="page.inquirys.length === 0">
+                        <td colspan="5" class="non-center">
+                            <h4>문의 한 내용이 없습니다.</h4>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-end mt-3 me-3">
+                <RouterLink to="/Member/MyPage/WriteInquiry"><button type="button" class="btn btn-light">글쓰기</button>
+                </RouterLink>
             </div>
-        
-    
+            <div v-if="page.pager.totalPageNo > 0" class="text-center">
+                <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
+                <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
+                    class="btn btn-outline-light btn-sm me-1">이전</button>
+                <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
+                    :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
+                    class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
+                <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
+                    @click="changePageNo(page.pager.endPageNo + 1)"
+                    class="btn btn-outline-light btn-sm me-1">다음</button>
+                <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
+            </div>
+        </div>
+    </div>
+
+
 </template>
+
+
 
 <script setup>
 import MemberAPI from '@/apis/MemberAPI';
@@ -70,7 +82,7 @@ async function getmyInquiryList(pageNo) {
         console.log(pageNo.value + '알려저');
         const response = await MemberAPI.myInquiryList(pageNo);
         console.log(response + "나오나여?");
-        
+
         page.value.inquirys = response.data.inquiry;
         page.value.pager = response.data.pager;
         console.log(page.value);
@@ -124,5 +136,17 @@ td {
     background-color: #F37551;
     color: white;
     border-radius: 0px;
+}
+
+/* 작성된 게시글이 없을때 나오게끔 처리 */
+.non-center {
+    text-align: center;
+    width: 100%;
+    /* colspan 속성을 고려하여 전체 너비 설정 */
+    height: 300px;
+    /* 높이를 100px로 설정 (필요에 따라 조정 가능) */
+    vertical-align: middle;
+    /* 텍스트를 수직으로 가운데 정렬 */
+
 }
 </style>

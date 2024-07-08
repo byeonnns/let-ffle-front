@@ -33,12 +33,19 @@
                                     </RouterLink>
 
                                     <button class="btn btn-outline-light btn-sm"
-                                        @click="deleteBoard(pageNo,board.bno)">삭제</button>
-
+                                        @click="deleteBoard(pageNo, board.bno)">삭제</button>
                                 </td>
                             </tr>
+
+                            <tr v-if="page.boards.length === 0">
+                                <td colspan="5" class="non-center">
+                                    <h4>작성된 게시물이 없습니다.</h4>
+                                </td>
+                            </tr>
+
+
                             <tr>
-                                <td colspan="5" class="text-center">
+                                <td v-if="page.pager.totalPageNo > 0" colspan="5" class="text-center">
                                     <button @click="changePageNo(1)"
                                         class="btn btn-outline-light btn-sm me-1">처음</button>
                                     <button v-if="page.pager.groupNo > 1"
@@ -98,9 +105,9 @@ async function myBoardList(pageNo) {
 
 myBoardList(pageNo.value);
 
-async function deleteBoard(pageNo,bno) {
+async function deleteBoard(pageNo, bno) {
     try {
-        await BoardAPI.deleteBoard(bno);    
+        await BoardAPI.deleteBoard(bno);
         myBoardList(pageNo);
 
     } catch (error) {
@@ -137,5 +144,29 @@ watch(
     background-color: #F37551;
     color: white;
     border-radius: 0px;
+}
+
+.table-cell {
+    width: 25%;
+    /* 모든 셀의 너비를 동일하게 설정 */
+    text-align: center;
+    /* 텍스트를 가운데 정렬 */
+}
+
+.no-boards {
+    width: 100%;
+    /* colspan 속성을 고려하여 전체 너비 설정 */
+}
+
+/* 작성된 게시글이 없을때 나오게끔 처리 */
+.non-center {
+    text-align: center;
+    width: 100%;
+    /* colspan 속성을 고려하여 전체 너비 설정 */
+    height: 300px;
+    /* 높이를 100px로 설정 (필요에 따라 조정 가능) */
+    vertical-align: middle;
+    /* 텍스트를 수직으로 가운데 정렬 */
+
 }
 </style>
