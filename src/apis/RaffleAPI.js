@@ -71,6 +71,9 @@ function getAdminRaffleDetailList(mid) {
 function winnerCreate(rno) {
     return axios.post("/raffle/createWinner", qs.stringify({rno}));
 }
+function getAdminDashboard() {
+    return axios.get("/raffle/getAdminDashboard");
+}
 
 function getNewReleaseRaffles() {
     return axios.get("/raffle/getNewReleaseRaffles");
@@ -97,6 +100,7 @@ export default {
     searchRaffleList,
     updateRdtBerrySpend,
     winnerCreate,
+    getAdminDashboard,
     getNewReleaseRaffles,
     getCutOffSoonRaffles
 }

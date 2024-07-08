@@ -1,6 +1,6 @@
 <template>
     <div>
-        <GiftLottie v-if="giftLottieShow" />
+        <GiftLottie ref="lottie"/>
         <RaffleToast ref="raffleToast" />
         <div v-if="raffleRequest.raffle" class="container">
             <div class="row">
@@ -204,6 +204,7 @@ const startHotTime = ref(null);
 const endHotTime = ref(null);
 const selectBerry = ref(1);
 
+const lottie = ref(null);
 const route = useRoute();
 const store = useStore();
 
@@ -267,7 +268,6 @@ const shift = ref('raffle');
 const raffleToast = ref(null);
 
 /* 좋아요 */
-const giftLottieShow = ref(false);
 const likeAnimation = ref(null);
 const like = ref(false);
 const rno = route.query.rno;
@@ -323,6 +323,13 @@ async function updateRdtBerrySpend(rno, rdtberryspend) {
 
 async function winnerCreate(rno) {
     const response = await RaffleAPI.winnerCreate(rno);
+    if(response.data == "당첨") {
+        raffleToast.value.showToast("래플에 당첨되셨습니다!");
+        lottie.value.winLottieOn();
+    } else if(response.data == "낙첨") {
+        raffleToast.value.showToast("당첨에 실패했습니다...");
+        lottie.value.defeatLottieOn();
+    }
     getRaffleRequest(rno);
 }
 
