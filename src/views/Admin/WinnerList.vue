@@ -41,7 +41,7 @@
                     <button class="btn btn-sm">검색</button>
                 </div>
             </div>
-            <div class="text-center">
+            <div class="text-center" v-if="page.winners.length > 0">
                 <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
                 <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
                     class="btn btn-outline-light btn-sm me-1">이전</button>
@@ -53,6 +53,9 @@
                 <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
             </div>
         </div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center" style="height: 100%; font-size: 20px;" v-if="page.winners.length === 0">
+        <span>당첨자 내역이 없습니다.</span>
     </div>
 </template>
 
