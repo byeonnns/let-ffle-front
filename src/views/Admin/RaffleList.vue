@@ -99,13 +99,12 @@ const page = ref({
 
 async function getRaffleList(pageNo) {
     try {
-        console.log(pageNo.value + '알려저');
         const response = await RaffleAPI.getAdminRaffleList(pageNo);
-        console.log(response + "나오나여?");
         
         page.value.raffles = response.data.Raffle;
         page.value.pager = response.data.pager;
-        console.log(page.value);
+
+        console.log(page.value.raffles);
     } catch (error) {
         console.log(error);
     }

@@ -153,9 +153,9 @@
                         <div class="td">
                             <div class="form_set">
                                 <div class="d-flex align-items-center">
-                                    <input type="date" v-model="raffle.rstartedat">
+                                    <input type="datetime-local" v-model="raffle.rstartedat" @change="raffleStartedat(raffle.rstartedat)">
                                     <span style="margin-right: 10px; margin-left: 10px;">~</span>
-                                    <input type="date" v-model="raffle.rfinishedat">
+                                    <input type="datetime-local" v-model="raffle.rfinishedat" @change="raffleFinishedat(raffle.rfinishedat)">
                                 </div>
                             </div>
                         </div>
@@ -382,6 +382,31 @@ async function createRaffle() {
     }
 }
 
+function raffleStartedat(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    raffle.value.rstartedat = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
+function raffleFinishedat(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    raffle.value.rfinishedat = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
 
 function startFormatDate(dateStr) {
     const date = new Date(dateStr);

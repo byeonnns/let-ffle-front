@@ -83,7 +83,7 @@ const useBH = ref(null);
 const router = useRouter();
 const route = useRoute();
 const pageNo = ref(route.query.pageNo || 1);
-const option = ref(route.query.option || "Use");
+const option = ref(route.query.option || "Total");
 
 async function getMyBerryHistory(pageNo, option) {
     try {

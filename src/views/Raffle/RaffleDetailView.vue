@@ -17,8 +17,8 @@
                                 ref="likeAnimation" :autoPlay="false" />
                         </div>
                     </div>
-                    <h5>{{ raffleRequest.raffle.rstartedat }} 부터</h5>
-                    <h5>{{ raffleRequest.raffle.rfinishedat }} 까지</h5>
+                    <h5>{{ dateFormat(raffleRequest.raffle.rstartedat) }} 부터</h5>
+                    <h5>{{ dateFormat(raffleRequest.raffle.rfinishedat) }} 까지</h5>
                     <div class="d-flex text-center">
                         <h1 class="dayCount">{{ serverTime.days }}</h1>
                         <h1 class="mx-4">:</h1>
@@ -207,6 +207,19 @@ const selectBerry = ref(1);
 const route = useRoute();
 const store = useStore();
 
+function dateFormat(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
 const serverTime = computed(() => {
     const nowTime = store.getters['clientTime/getTimeForCalculate'];
     const diffMilliseconds = settingDate.value - nowTime;
@@ -290,12 +303,13 @@ async function getRaffleDetail(rno) {
     const response = await RaffleAPI.getRaffleDetail(rno);
     raffleDetail.value.raffleDetail = response.data.raffleDetail;
     raffleDetail.value.raffleStatus = response.data.raffleStatus;
+    console.log(raffleDetail.value.raffleStatus);
 }
 
 async function getRaffleRequest(argRno) {
     const response = await RaffleAPI.getRaffle(argRno);
     raffleRequest.value = response.data;
-    settingDate.value = new Date(response.data.raffle.rfinishedat + "T00:00:00");
+    settingDate.value = new Date(response.data.raffle.rfinishedat);
     if (response.data.raffle.rmissiontype == 'time') {
         startHotTime.value = new Date(response.data.timeMission.tstartedat.replace(' ', 'T'));
         endHotTime.value = new Date(response.data.timeMission.tfinishedat.replace(' ', 'T'));
