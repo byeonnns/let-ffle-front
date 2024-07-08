@@ -8,8 +8,8 @@ function myBoardList(mid) {
 }
 
 // boardList
-function getBoardList(pageNo) {
-    return axios.get("/community/getBoardList", { params: { pageNo: pageNo } });
+function getBoardList(pageNo, searchType='', word='') {
+    return axios.get("/community/getBoardList", { params: { pageNo : pageNo, searchType : searchType ,word : word } });
 }
 
 function boardDetail(bno) {
@@ -49,6 +49,10 @@ function deleteComment(cno) {
      return axios.post("/community/createComment", formData);
  }
 
+ function categorySearch(category, pageNo = 1) {
+    return axios.get("/community/getBoardListByCategory/" + category , {params : { pageNo : pageNo}});
+}
+
 export default {
     myBoardList,
     getBoardList,
@@ -59,5 +63,6 @@ export default {
     deleteBoard,
     getCommentList,
     deleteComment,
-    createComment
+    createComment,
+    categorySearch
 }

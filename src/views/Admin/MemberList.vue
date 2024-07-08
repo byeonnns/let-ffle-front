@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <div class="text-center">
+            <div class="text-center"  v-if="page.members.length > 0">
                 <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
                 <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
                     class="btn btn-outline-light btn-sm me-1">이전</button>
@@ -52,7 +52,9 @@
             </div>
         </div>
     </div>
-
+    <div class="d-flex justify-content-center align-items-center" style="height: 100%; font-size: 20px;" v-if="page.members === 0">
+        <span>조회 가능한 회원이 없습니다.</span>
+    </div>
 </template>
 
 <script setup>

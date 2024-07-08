@@ -55,19 +55,19 @@
                             <tr>
                                 <td colspan="5" class="text-center">
                                     <button @click="changePageNo(1)"
-                                        class="btn btn-outline-light btn-sm me-1">처음</button>
+                                        class="btn btn-outline-light btn-sm me-1" style="background-color: #F37551; color: white">처음</button>
                                     <button v-if="page.pager.groupNo > 1"
                                         @click="changePageNo(page.pager.startPageNo - 1)"
-                                        class="btn btn-outline-light btn-sm me-1">이전</button>
+                                        class="btn btn-outline-light btn-sm me-1" style="background-color: #F37551; color: white">이전</button>
                                     <button v-for="pageNo in page.pager.pageArray" :key="pageNo"
                                         @click="changePageNo(pageNo)"
                                         :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
-                                        class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
+                                        class="btn btn-outline-light btn-sm me-1" style="background-color: #F37551; color: white">{{ pageNo }}</button>
                                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
                                         @click="changePageNo(page.pager.endPageNo + 1)"
                                         class="btn btn-outline-light btn-sm me-1">다음</button>
                                     <button @click="changePageNo(page.pager.totalPageNo)"
-                                        class="btn btn-outline-light btn-sm">맨끝</button>
+                                        class="btn btn-outline-light btn-sm" style="background-color: #F37551; color: white">맨끝</button>
                                 </td>
                             </tr>
                         </tbody>

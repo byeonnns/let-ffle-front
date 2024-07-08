@@ -51,6 +51,7 @@
                             <th class="col-1" scope="col">상세</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <tr v-for="entryList in myRaffleDetail.RaffleDetailRequest" :key="entryList">
                             <td>{{ entryList.raffle.rtitle }}</td>
@@ -59,6 +60,7 @@
                             <td>{{ formatDate(entryList.raffleDetail.rdtcreatedat) }} <br> {{
                                 formatTime(entryList.raffleDetail.rdtcreatedat) }}</td>
                             <td>
+
                                 <Popper :placement="'right'">
                                     <button class="btn btn-sm btn-design" @click="popper">상세</button>
                                     <template #content>
@@ -76,6 +78,7 @@
                                                         <td>{{ entryList.raffleDetail.rdtberryspend }}개</td>
                                                         <td>{{ entryList.probability }}%</td>
                                                     </tr>
+
                                                 </table>
                                                 <button class="btn btn-white btn-sm">
                                                     <RouterLink to="/Member/MyPage/MyBerryHistory">래플로 이동 ▶</RouterLink>
@@ -87,20 +90,28 @@
                                 </Popper>
                             </td>
                         </tr>
+                        <tr v-if="myRaffleDetail.RaffleDetailRequest.length === 0">
+                            <td colspan="5" class="non-center">
+                                <h4>응모한 내역이 없습니다.</h4>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-                <div class="d-flex justify-content-center">
-                <button @click="changePageOption(1, status)" class="btn btn-outline-primary btn-sm me-1">처음</button>
-                <button v-if="myRaffleDetail.pager.groupNo > 1" @click="changePageOption(myRaffleDetail.pager.startPageNo - 1, status)"
-                    class="btn btn-outline-info btn-sm me-1">이전</button>
-                <button v-for="pageNo in myRaffleDetail.pager.pageArray" :key="pageNo" @click="changePageOption(pageNo, status)"
-                    :class="(myRaffleDetail.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-success'"
-                    class="btn btn-sm me-1">{{ pageNo }}</button>
-                <button v-if="myRaffleDetail.pager.groupNo < myRaffleDetail.pager.totalGroupNo"
-                    @click="changePageOption(myRaffleDetail.pager.endPageNo + 1, status)"
-                    class="btn btn-outline-info btn-sm me-1">다음</button>
-                <button @click="changePageOption(myRaffleDetail.pager.totalPageNo, status)"
-                    class="btn btn-outline-primary btn-sm">맨끝</button>
+                <div v-if="myRaffleDetail.pager.totalPageNo > 0" class=" d-flex justify-content-center ">
+                    <button @click=" changePageOption(1, status)"
+                        class="btn btn-outline-light btn-sm me-1 btn-design ">처음</button>
+                    <button v-if="myRaffleDetail.pager.groupNo > 1"
+                        @click="changePageOption(myRaffleDetail.pager.startPageNo - 1, status)"
+                        class="btn btn-outline-light btn-sm me-1 btn-design">이전</button>
+                    <button v-for="pageNo in myRaffleDetail.pager.pageArray" :key="pageNo"
+                        @click="changePageOption(pageNo, status)"
+                        :class="(myRaffleDetail.pager.pageNo == pageNo) ? 'btn-outline-light btn-design' : 'btn-outline-light btn-design'"
+                        class="btn btn-sm me-1 btn-design">{{ pageNo }}</button>
+                    <button v-if="myRaffleDetail.pager.groupNo < myRaffleDetail.pager.totalGroupNo"
+                        @click="changePageOption(myRaffleDetail.pager.endPageNo + 1, status)"
+                        class="btn btn-outline-light btn-sm me-1 btn-design">다음</button>
+                    <button @click="changePageOption(myRaffleDetail.pager.totalPageNo, status)"
+                        class="btn btn-outline-light btn-sm btn-design">맨끝</button>
                 </div>
             </div>
         </div>
@@ -245,5 +256,16 @@ function formatTime(dateStr) {
 
 td {
     align-content: center;
+}
+/* 작성된 게시글이 없을때 나오게끔 처리 */
+.non-center {
+    text-align: center;
+    width: 100%;
+    /* colspan 속성을 고려하여 전체 너비 설정 */
+    height: 300px;
+    /* 높이를 100px로 설정 (필요에 따라 조정 가능) */
+    vertical-align: middle;
+    /* 텍스트를 수직으로 가운데 정렬 */
+
 }
 </style>

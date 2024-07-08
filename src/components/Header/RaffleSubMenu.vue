@@ -3,13 +3,13 @@
         <nav class="navbar navbar-expand bg-body-white p-0">
             <ul class="navbar-nav nav-underline">
                 <li class="nav-item">
-                    <RouterLink to="/Raffle/Sports" class="nav-link" :class="{ 'active': nowPath === '/Raffle/Sports'}">SPORTS</RouterLink>
+                    <button @click="goSports" class="nav-link" :class="{ 'active': nowPath === '/Raffle/Sports'}">SPORTS</button>
                 </li>
                 <li class="nav-item">
-                    <RouterLink to="/Raffle/Art" class="nav-link" :class="{ 'active': nowPath === '/Raffle/Art' }">ART</RouterLink>
+                    <button @click="goArt" class="nav-link" :class="{ 'active': nowPath === '/Raffle/Art' }">ART</button>
                 </li>
                 <li class="nav-item">
-                    <RouterLink to="/Raffle/Fashion" class="nav-link" :class="{ 'active': nowPath === '/Raffle/Fashion' }">FASHION</RouterLink>
+                    <button @click="goFashion" class="nav-link" :class="{ 'active': nowPath === '/Raffle/Fashion' }">FASHION</button>
                 </li>
             </ul>
         </nav>
@@ -66,6 +66,22 @@
 </template>
 
 <script setup>
+import { RouterLink, useRouter } from 'vue-router';
+
+
+const router = useRouter();
+
+function goSports() {
+    router.push("/Raffle?category=sports&sortType=popular");
+}
+
+function goArt() {
+    router.push("/Raffle?category=art&sortType=popular");
+}
+
+function goFashion() {
+    router.push("/Raffle?category=fashion&sortType=popular");
+}
 /*import { ref } from 'vue';
 
 const prop = defineProps([

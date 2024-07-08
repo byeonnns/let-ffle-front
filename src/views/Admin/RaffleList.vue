@@ -42,7 +42,7 @@
                     </RouterLink>
                 </button>
             </div>
-            <div class="text-center">
+            <div class="text-center" v-if="page.raffles.length > 0">
                 <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
                 <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
                     class="btn btn-outline-light btn-sm me-1">이전</button>
@@ -68,6 +68,9 @@
                 <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">아니오</button>
             </template>
         </RaffleModal>
+    </div>
+    <div class="d-flex justify-content-center align-items-center" style="height: 100%; font-size: 20px;" v-if="page.raffles === 0">
+        <span>래플 내역이 없습니다.</span>
     </div>
 </template>
 

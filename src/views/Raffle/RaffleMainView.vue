@@ -1,8 +1,21 @@
 <template>
     <div>
+        
         <div class="container-lg">
+            <div>
+                <button class="btn btn-sm" @click="changeSortType('popular')">인기순</button>
+                <button class="btn btn-sm" @click="changeSortType('new')">최신순</button>
+                <button class="btn btn-sm" @click="changeSortType('cutoffsoon')">응모마감순</button>
+            </div>
+    
+            <div class="d-flex justify-content-end">
+                    <div class="input-group input-group-sm w-auto">
+                        <input type="text" class="form-control" v-model="searchWord" @keyup.enter="search(searchWord)">
+                        <button class="btn btn-sm" @click="search">검색</button>
+                    </div>
+                </div>
             <div class="row">
-                <RaffleVue v-for="n in 5" :key="n"/>
+                <!-- <RaffleVue v-for="n in 5" :key="n"/> -->
                 <div v-for="request in raffles" :key="request" class="col-lg-4 col-md-6 col-12 mb-4">
                     <RouterLink :to="`/Raffle/RaffleDetail?rno=${request.raffle.rno}`">
                         <div class="img-container">
@@ -22,25 +35,51 @@
 import axios from "axios";
 import RaffleAPI from "@/apis/RaffleAPI";
 import RaffleVue from "@/components/Raffle.vue";
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { useRoute, useRouter } from "vue-router";
 
+const route = useRoute();
+const router = useRouter();
 const raffles = ref();
 const attach = ref();
+var category = (route.query.category || "all");
+var sortType = (route.query.sortType || "popular");
 
-async function getRaffleList() {
-    const response = await RaffleAPI.getRaffleList();
+const searchWord = ref();
+
+async function search() {
+    const response = await RaffleAPI.searchRaffleList(searchWord.value);
+    raffles.value = response.data;
+}
+
+console.log(category);
+console.log(sortType);
+
+async function getRaffleList(argCategory, argSortType) {
+    const response = await RaffleAPI.getRaffleList(argCategory, argSortType);
     raffles.value = response.data;
     console.log(raffles.value);
     console.log(raffles.value[0].raffle)
 }
+getRaffleList(category, sortType);
 
-getRaffleList();
+function changeSortType(sortType) {
+    router.push(`/Raffle?category=${route.query.category}&sortType=${sortType}`);
+}
 
-// async function getRaffleAttachList() {
-//     const response = await RaffleAPI.getRaffleAttachList();
-//     attach.value = response.data;
-// }
+watch(
+    route, (newRoute, oldRoute) => {
+        if (newRoute.query.category || newRoute.query.sortType) {
+            getRaffleList(newRoute.query.category, newRoute.query.sortType);
+        }
+    },
 
+    category, (newCategory, oldCategory) => {
+        if (newCategory.query.category) {
+            category = newCategory.query.category;
+        }
+    }
+);
 </script>
 
 <style scoped>

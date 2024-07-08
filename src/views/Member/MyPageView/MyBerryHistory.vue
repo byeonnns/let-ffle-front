@@ -12,7 +12,7 @@
                         <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Total')">
                             <dl class="tab_box m-0">
                                 <dt class="title" style="height: 50px;">전체</dt>
-                                <dd class="count">{{totalBH}}</dd>
+                                <dd class="count">{{ totalBH }}</dd>
                             </dl>
                         </button>
                     </div>
@@ -20,7 +20,7 @@
                         <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Save')">
                             <dl class="tab_box m-0">
                                 <dt class="title" style="height: 50px;">적립</dt>
-                                <dd class="count">{{saveBH}}</dd>
+                                <dd class="count">{{ saveBH }}</dd>
                             </dl>
                         </button>
                     </div>
@@ -28,7 +28,7 @@
                         <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Use')">
                             <dl class="tab_box m-0">
                                 <dt class="title" style="height: 50px;">사용</dt>
-                                <dd class="count">{{useBH}}</dd>
+                                <dd class="count">{{ useBH }}</dd>
                             </dl>
                         </button>
                     </div>
@@ -52,20 +52,25 @@
                             <strong>{{ item.bhchangevalue }} 개</strong>
                         </td>
                     </tr>
+                    <tr v-if="berry.length === 0">
+                        <td colspan="5" class="non-center">
+                            <h4>사용한 베리가 없습니다.</h4>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="d-flex justify-content-center">
-        <button @click="changePageOption(1, option)" class="btn btn-outline-primary btn-sm me-1">처음</button>
+    <div v-if="pager.totalPageNo > 0" class="d-flex justify-content-center">
+        <button @click="changePageOption(1, option)" class="btn btn-outline-light btn-sm me-1">처음</button>
         <button v-if="pager.groupNo > 1" @click="changePageOption(pager.startPageNo - 1)"
-            class="btn btn-outline-info btn-sm me-1">이전</button>
+            class="btn btn-outline-light btn-sm me-1">이전</button>
         <button v-for="pageNo in pager.pageArray" :key="pageNo" @click="changePageOption(pageNo, option)"
-            :class="(pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-success'" class="btn btn-sm me-1">{{
+            :class="(pager.pageNo == pageNo) ? 'btn-outline-light' : 'btn-outline-light'" class="btn btn-sm me-1">{{
             pageNo }}</button>
-        <button v-if="pager.groupNo < pager.totalGroupNo"
-            @click="changePageOption(pager.endPageNo + 1, option)" class="btn btn-outline-info btn-sm me-1">다음</button>
-        <button @click="changePageOption(pager.totalPageNo, option)" class="btn btn-outline-primary btn-sm">맨끝</button>
+        <button v-if="pager.groupNo < pager.totalGroupNo" @click="changePageOption(pager.endPageNo + 1, option)"
+            class="btn btn-outline-light btn-sm me-1">다음</button>
+        <button @click="changePageOption(pager.totalPageNo, option)" class="btn btn-outline-light btn-sm">맨끝</button>
     </div>
 </template>
 
@@ -168,6 +173,19 @@ td {
 }
 
 .btn {
+    background-color: #F37551;
+    color: white;
     border: none;
+}
+
+.non-center {
+    text-align: center;
+    width: 100%;
+    /* colspan 속성을 고려하여 전체 너비 설정 */
+    height: 300px;
+    /* 높이를 100px로 설정 (필요에 따라 조정 가능) */
+    vertical-align: middle;
+    /* 텍스트를 수직으로 가운데 정렬 */
+
 }
 </style>

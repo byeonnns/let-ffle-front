@@ -40,8 +40,12 @@ function getRaffle(rno) {
     return axios.get("/raffle/readRaffle/" + rno);
 }
 
-function getRaffleList() {
-    return axios.get("/raffle/getRaffleList");
+function getRaffleList(category, sortType) {
+    return axios.get("/raffle/getRaffleList", { params: { category : category, sortType : sortType } });
+}
+
+function searchRaffleList(word) {
+    return axios.get("/raffle/searchRaffleList/" + word);
 }
 
 function apply(rno) {
@@ -77,6 +81,7 @@ export default {
     apply,
     updateRdtMissionCleared,
     getRaffleDetail,
-    updateRdtBerrySpend,
-    getAdminRaffleDetailList
+    getAdminRaffleDetailList,
+    searchRaffleList,
+    updateRdtBerrySpend
 }
