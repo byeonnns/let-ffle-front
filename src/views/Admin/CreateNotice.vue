@@ -12,7 +12,7 @@
                             <div class="col-sm-10 align-content-center">
                                 <select v-model="notice.nmaincategory">
                                     <option value="공지사항">공지사항</option>
-                                    <option value="자주 묻는 질문">자주 묻는 질문</option>
+                                    <option value="자주묻는질문">자주 묻는 질문</option>
                                 </select>
                             </div>
                         </div>

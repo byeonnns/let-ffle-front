@@ -5,8 +5,8 @@ function createNotice(formData) {
     return axios.post("/notice/createNotice", formData);
 }
 
-function noticeList(pageNo, subcategory) {
-    return axios.get("/notice/getNoticeList", { params: { pageNo:pageNo, subcategory:subcategory }})
+function noticeList(pageNo, mainCategory, subCategory) {
+    return axios.get("/notice/getNoticeList", { params: { pageNo:pageNo, mainCategory: mainCategory , subCategory: subCategory }})
 }
 
 function noticeDetail(nno) {

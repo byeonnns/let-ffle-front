@@ -1,15 +1,11 @@
 <template>
     <div>
         <div class="container ">
-
             <div class="d-flex flex-column flex-grow-1">
-
                 <div class="header"
                     style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; margin-top: 10px">
                     <h3 style="margin-right: 80%;">자주 묻는 질문</h3>
                 </div>
-                
-
                 <div style="width: 100%; height:100%; margin-bottom: 10px; margin-top: 10px;">
                     <!-- border:1px solid black; -->
                     <table class="table table-bordered">
@@ -18,113 +14,69 @@
                         <tbody>
                             <tr>
                                 <td style="width: 25%;">
-                                    <RouterLink to="#">
+                                    <button class="btn btn-outline-light" @click="changeSubcategory('전체')">
                                         <span class="spanded">전체</span>
-                                    </RouterLink>
+                                    </button>
                                 </td>
                                 <td style="width: 25%;">
-                                    <RouterLink to="#">
-                                        <span class="spanded">이용정책</span>
-                                    </RouterLink>
-                                </td>
-                                <td style="width: 25%;">
-                                    <RouterLink to="#">
+                                    <button class="btn btn-outline-light" @click="changeSubcategory('일반')">
                                         <span class="spanded">일반</span>
-                                    </RouterLink>
+                                    </button>
                                 </td>
-                                <td style="width: 25%;"> 
-                                    <RouterLink to="#">
+                                <td style="width: 25%;">
+                                    <button class="btn btn-outline-light" @click="changeSubcategory('이용정책')">
+                                        <span class="spanded">이용정책</span>
+                                    </button>
+                                </td>
+                                <td style="width: 25%;">
+                                    <button class="btn btn-outline-light" @click="changeSubcategory('래플')">
                                         <span class="spanded">래플</span>
-                                    </RouterLink>
+                                    </button>
                                 </td>
                             </tr>
-                            
-
                         </tbody>
                     </table>
                 </div>
-
-
-
                 <div style="width: 100%; height:100%;">
-                    <!--  border:1px solid black; -->
-
-
-                    <div class="accordion" id="accordionExample">
+                    <div v-for="faq in page.faqs" :key="faq.nno" class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h3 class="accordion-header">
                                 <button class="accordion-button custom-accordion-button" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true"
-                                    aria-controls="collapse1">
-                                    <p class="custom-title" style="color: #F37551">이용정책</p>
-                                    <p class="custom-text">패널티 정책</p>
+                                    data-bs-toggle="collapse" :data-bs-target="`#collapse${faq.nno}`"
+                                    aria-expanded="true" :aria-controls="`#collapse${faq.nno}`">
+                                    <p class="custom-title" style="color: #F37551"> {{ faq.nsubcategory }}</p>
+                                    <p class="custom-text">{{ faq.ntitle }}</p>
                                 </button>
                             </h3>
-                            <div id="collapse1" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                            <div :id="`collapse${faq.nno}`" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <div class="container "
+                                    <div class="container"
                                         style="width: 100%;  height:500px; background-color: #FAFAFA; padding: 30px;">
-                                        <!-- border:1px solid black  -->
-
                                         <div style="width: 100%; ">
-                                            <!-- border:1px solid black -->
-                                            <p>안녕하세요 LET-FFle입니다</p>
-                                            <h3>
-                                                <p>패널티 감면 기준</p>
-                                            </h3>
-                                            <p>휴무 | 2024년 6월 6일 (목)</p>
-                                            <p>*휴무 기간 남겨주신 문의는 익일부터 순차적으로 답변 드릴 예정입니다.</p>
-                                            <p>이용약관에 관하여 저에게 물으신다면 아직까지는 준비를 중이라서... 조금 늦어진다는 점 부탁해요~</p>
-                                            <li>서비 차원은 우리가 아직 미숙입니다</li>
-                                            <li>그렇지만 저는 완숙입니다</li>
-                                            <li>하지만 저는 완숙이 좋은걸요..?</li>
-
+                                            {{ faq.ncontent }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button custom-accordion-button" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true"
-                                    aria-controls="collapse2">
-                                    <p class="custom-title" style="color: #F37551">이용정책</p>
-                                    <p class="custom-text">부적절 행위 금지</p>
-                                </button>
-                            </h2>
-                            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <div class="container "
-                                        style="width: 100%;  height:500px; background-color: #FAFAFA; padding: 30px;">
-                                        <!-- border:1px solid black  -->
-
-                                        <div style="width: 100%;">
-                                            <!-- border:1px solid black -->
-                                            <p class="mt-3"> 아래에 해당하는 경우, 이용약관 제 7조(이용제한 등), 21조(부적절 행위)에 따라 일시정지나
-                                                영구이용정지 조치됩니다.
-                                                <br> 허위사실 유포 관련 고의성이 확인될 시, 유관부서로 이관되어 처리될 수 있습니다.
-                                            </p>
-
-                                            <h3>
-                                                <p>금지!</p>
-                                            </h3>
-
-                                            <li>거래 시도</li>
-                                            <li>손상/오염/사용감 있는 상품 거래 시도</li>
-                                            <li>결제 혜택 및 포인트 획득, 시세 조작 등의 목적으로 지인과 공모한 허위 거래</li>
-                                            <li>여러 개의 계정을 생성하여 자전거래</li>
-                                            <li>개인정보 유출</li>
-                                            <li>커뮤니티 내 허위사실 유포 등 서비스 운영을 방해하는 각종 부정행위</li>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-
                     </div>
+                </div>
+                <div v-if="page.faqs.length != 0" colspan="5" class="text-center">
+                    <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1"
+                        style="background-color: #F37551; color: white">처음</button>
+                    <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
+                        class="btn btn-outline-light btn-sm me-1"
+                        style="background-color: #F37551; color: white">이전</button>
+                    <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
+                        :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
+                        class="btn btn-outline-light btn-sm me-1" style="background-color: #F37551; color: white">{{
+                            pageNo }}</button>
+                    <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
+                        @click="changePageNo(page.pager.endPageNo + 1)"
+                        class="btn btn-outline-light btn-sm me-1">다음</button>
+                    <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm"
+                        style="background-color: #F37551; color: white">맨끝</button>
                 </div>
             </div>
         </div>
@@ -139,7 +91,69 @@
 
 
 <script setup>
+import { ref, watch } from 'vue';
+import NoticeAPI from '@/apis/NoticeAPI';
+import { useRoute, useRouter } from 'vue-router';
 
+const route = useRoute();
+const router = useRouter();
+
+const category = ref({
+    mainCatagory: "자주묻는질문",
+    subcategory: route.query.subcategory || "전체"
+});
+const pageNo = ref(route.query.pageNo || 1);
+const page = ref({
+    faqs: [],
+    pager: {}
+});
+
+async function getNoticeList(pageNo) {
+    try {
+        const response = await NoticeAPI.noticeList(pageNo, category.value.mainCatagory, category.value.subcategory);
+        page.value.faqs = response.data.Notice;
+        page.value.pager = response.data.Pager;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+getNoticeList(pageNo.value);
+
+function changePageNo(argPageNo) {
+    router.push(`/Faq?pageNo=${argPageNo}`);
+}
+
+watch(
+    route, (newRoute, oldRoute) => {
+        if (newRoute.query.pageNo) {
+            console.log(pageNo.value)
+            getNoticeList(newRoute.query.pageNo);
+        } else {
+            console.log()
+            getNoticeList(1);
+            pageNo.value = 1;
+        }
+
+    }
+);
+
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
+function changeSubcategory(nsubcategory) {
+    category.value.subcategory = nsubcategory;
+    router.push(`/Faq?subcategory=${nsubcategory}`);
+}
 </script>
 
 
@@ -192,8 +206,9 @@
     text-align: center;
 
 }
+
 /* 전체, 이용정책 글자 색 */
-.spanded{
+.spanded {
     color: black;
 }
 </style>
