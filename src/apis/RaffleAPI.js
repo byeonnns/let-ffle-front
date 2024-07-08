@@ -72,6 +72,10 @@ function winnerCreate(rno) {
     return axios.post("/raffle/createWinner", qs.stringify({rno}));
 }
 
+function getAdminDashboard() {
+    return axios.get("/raffle/getAdminDashboard");
+}
+
 export default {
     myEntryList,
     myWinnerList,
@@ -88,5 +92,6 @@ export default {
     getAdminRaffleDetailList,
     searchRaffleList,
     updateRdtBerrySpend,
-    winnerCreate
+    winnerCreate,
+    getAdminDashboard
 }

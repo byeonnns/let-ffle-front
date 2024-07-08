@@ -149,6 +149,7 @@
 </template>
 
 <script setup>
+import RaffleAPI from '@/apis/RaffleAPI';
 import { ref } from 'vue';
 
 const raffle = ref({
@@ -182,7 +183,27 @@ const member = ref({
 
 });
 
+async function getAdminDashboard(){
+    const response = await RaffleAPI.getAdminDashboard();
+    raffle.value.totalRaffle = response.data.totalRaffle;
+    raffle.value.progressRaffle = response.data.ongoingRaffle;
+    raffle.value.endRaffle = response.data.closedRaffle;
+    raffle.value.sportProgressRaffle = response.data.ongoingSportsRaffle;
+    raffle.value.artProgressRaffle = response.data.ongoingArtRaffle;
+    raffle.value.fashionProgressRaffle = response.data.ongoingFashionRaffle;
+    raffle.value.totalSport = response.data.totalSportsRaffle;
+    raffle.value.totalArt = response.data.totalArtRaffle;
+    raffle.value.totalFashion = response.data.totalFashionRaffle;
+    member.value.totalMember = response.data.totalMember;
+    member.value.sportRaffle = response.data.ongoingSportsMember;
+    member.value.artRaffle = response.data.ongoingArtMember;
+    member.value.fashionRaffle = response.data.ongoingFashionMember;
+    member.value.totalSport = response.data.totalSportsMember;
+    member.value.totalArt = response.data.totalArtMember;
+    member.value.totalFashion = response.data.totalFashionMember;
+}
 
+getAdminDashboard();
 
 </script>
 
