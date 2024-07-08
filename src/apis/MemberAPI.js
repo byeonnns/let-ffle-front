@@ -1,5 +1,6 @@
 import axios from "axios";
 import qs from 'qs';
+import { isReactive } from "vue";
 
 // 회원가입
 function join(member) {
@@ -45,8 +46,9 @@ function mypage() {
     return axios.get("/member/mypage/main")
 }
 
-function inquiryReply() {
-    return axios.put("/member/inquiryReply");
+function inquiryReply(ino, ireply) {
+    console.log(ino, ireply);
+    return axios.put("/member/inquiryReply", qs.stringify({ ino:ino, ireply:ireply}));
 }
 
 function myBoardList(pageNo) {

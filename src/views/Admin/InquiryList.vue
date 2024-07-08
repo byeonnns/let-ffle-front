@@ -31,21 +31,20 @@
                                 </div>
                             </div>
                             <!-- 답변 등록 폼 -->
-                            <div class=" form-group row mt-3" v-if="Inquiry.ireply == null">
-                                <div style="margin-bottom: 30px">
-                                    <textarea id="bcontent" type="text" class="form-control" placeholder="답변을 입력하세요."
-                                        style="height:100px;" v-model="Inquiry.Icomment"></textarea>
+                            <form @submit.prevent="updateInquiry(Inquiry.ino)"> 
+                                <div class=" form-group row mt-3" v-if="Inquiry.ireply == null">
+                                    <div style="margin-bottom: 30px">
+                                        <textarea id="bcontent" type="text" class="form-control" style="height:100px;" v-model="adminReply[Inquiry.ino]"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <RouterLink to="/Admin/InquiryList">
-                                    <button class="btn btn-outline-light rounded-0" @click="commentSubmit()">등록</button>
-                                </RouterLink>
-                            </div>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="submit" class="btn btn-outline-light rounded-0">등록</button>
+                                </div>
+                            </form>
                             <div class=" form-group row mt-3" v-if="Inquiry.ireply != null">
                                 <h3>등록된 답변</h3>
                                 <div>
-                                    <p>{{ inquirys.ireply }}</p>
+                                    <p>{{ Inquiry.ireply }}</p>
                                 </div>
                             </div>
                         </div>
@@ -70,33 +69,22 @@
 </template>
 
 <script setup>
-import { ref,watch } from "vue"
+import { ref, watch } from "vue"
 import RaffleToast from '@/components/RaffleToast.vue';
 import MemberAPI from "@/apis/MemberAPI";
 import { useRouter, useRoute } from 'vue-router';
 
 const router = useRouter();
 const route = useRoute();
-
 const pageNo = ref(route.query.pageNo || 1);
+const adminReply = ref([]);
+
+const look = ref(null);
 
 const page = ref({
-    Inquirys: 
-    [],
+    Inquirys: [],
     pager: {}
 });
-
-const inquirys = ref({});
-
-async function inquiryReply() {
-    try {
-        const response = await MemberAPI.inquiryReply();
-        inquirys.value = response.data;
-    } catch(error) {
-        console.log(error);
-    }
-}
-inquiryReply();
 
 async function myInquiryList(pageNo) {
     try {
@@ -110,36 +98,27 @@ async function myInquiryList(pageNo) {
 }
 myInquiryList(pageNo.value);
 
-function changePageNo(argPageNo) {
-    router.push(`/Admin/InquiryList?pageNo=${argPageNo}`);
+async function updateInquiry(ino){
+    await MemberAPI.inquiryReply(ino, adminReply.value[ino]);
+    myInquiryList(pageNo.value);
 }
 
-const look = ref(null);
-const Inquiry = ref({});
-
-function commentSubmit() {
-    var icommentPattern = /^.{2,100}$/;
-    var adminComment = icommentPattern.test(Inquiry.value.Icomment)
-    if (!adminComment) {
-        look.value.showToast("답변을 다시 입력해주세요")
-    } else {
-        look.value.showToast("답변이 완료 되었습니다.")
-    }
+function changePageNo(argPageNo) {
+    router.push(`/Admin/InquiryList?pageNo=${argPageNo}`);
 }
 
 watch(
     route, (newRoute, oldRoute) => {
         if (newRoute.query.pageNo) {
-            console.log(pageNo.value)
             myInquiryList(newRoute.query.pageNo);
             pageNo.value = newRoute.query.pageNo;
         } else {
-            console.log()
             myInquiryList(1);
             pageNo.value = 1;
         }
     }
 );
+
 
 </script>
 
