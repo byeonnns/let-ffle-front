@@ -178,9 +178,11 @@
                         <div class="td">
                             <div class="form_set">
                                 <div class="input_clear sm" style="display: flex; align-items: center;">
-                                    <input type="datetime-local" v-model="timemission.tstartedat" @change="startFormatDate(timemission.tstartedat)">
+                                    <input type="datetime-local" v-model="timemission.tstartedat"
+                                        @change="startFormatDate(timemission.tstartedat)">
                                     <span style="margin-right: 10px; margin-left: 10px;">~</span>
-                                    <input type="datetime-local" v-model="timemission.tfinishedat" @change="finishFormatDate(timemission.tfinishedat)">
+                                    <input type="datetime-local" v-model="timemission.tfinishedat"
+                                        @change="finishFormatDate(timemission.tfinishedat)">
                                 </div>
                             </div>
                         </div>
@@ -200,27 +202,20 @@
                                 <p class="form_label">퀴즈 보기 (정답 체크)</p>
                             </div>
                             <div class="td">
-                                <input type="radio" id="opt1" name="fav_language" value="HTML"
-                                    v-model="quizmission.qoption1">
-                                <label for="opt1" class="ms-1 me-3">
-                                    <input style="font-size: 14px;">
-                                </label>
-                                <input type="radio" id="opt2" name="fav_language" value="HTML"
-                                    v-model="quizmission.qoption2">
-                                <label for="opt2" class="ms-1 me-3">
-                                    <input style="font-size: 14px;">
-                                </label>
-                                <input type="radio" id="opt3" name="fav_language" value="HTML"
-                                    v-model="quizmission.qoption3">
-                                <label for="opt3" class="ms-1 me-3">
-                                    <input style="font-size: 14px;">
-                                </label>
-                                <input type="radio" id="opt4" name="fav_language" value="HTML"
-                                    v-model="quizmission.qoption4">
-                                <label for="opt4" class="ms-1 me-3">
-                                    <input style="font-size: 14px;">
-                                </label>
+                                <input type="radio" id="opt1" name="fav_language" v-model="checkedAnswer" value="1"
+                                    @change="changeAnswer">
+                                <input style="font-size: 14px;" v-model="quizmission.qoption1" @input="changeAnswer">
+                                <input type="radio" id="opt2" name="fav_language" v-model="checkedAnswer" value="2"
+                                    @change="changeAnswer">
+                                <input style="font-size: 14px;" v-model="quizmission.qoption2" @input="changeAnswer">
+                                <input type="radio" id="opt3" name="fav_language" v-model="checkedAnswer" value="3"
+                                    @change="changeAnswer">
+                                <input style="font-size: 14px;" v-model="quizmission.qoption3" @input="changeAnswer">
+                                <input type="radio" id="opt4" name="fav_language" v-model="checkedAnswer" value="4"
+                                    @change="changeAnswer">
+                                <input style="font-size: 14px;" v-model="quizmission.qoption4" @input="changeAnswer">
                             </div>
+                            
                         </div>
                     </div>
                     <div>
@@ -250,7 +245,7 @@
 
 <script setup>
 import RaffleAPI from '@/apis/RaffleAPI';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -258,6 +253,7 @@ const router = useRouter();
 const headImgUrl = ref(null);
 const prdimgrep1attach = ref(null);
 const defaultImage = null;
+const checkedAnswer = ref(null);
 
 function imgChange() {
     const head = prdimgrep1attach.value.files[0];
@@ -266,6 +262,18 @@ function imgChange() {
     } else {
         headImgUrl.value = defaultImage;
     }
+}
+
+
+function changeAnswer() {
+    if (checkedAnswer.value == 1)
+        quizmission.value.qanswer = quizmission.value.qoption1;
+    else if (checkedAnswer.value == 2)
+        quizmission.value.qanswer = quizmission.value.qoption2;
+    else if (checkedAnswer.value == 3)
+        quizmission.value.qanswer = quizmission.value.qoption3;
+    else
+        quizmission.value.qanswer = quizmission.value.qoption4;
 }
 
 const raffle = ref({
@@ -285,7 +293,8 @@ const quizmission = ref({
     qoption1: "",
     qoption2: "",
     qoption3: "",
-    qoption4: ""
+    qoption4: "",
+    qanswer: ""
 });
 
 const timemission = ref({
@@ -331,8 +340,9 @@ async function createRaffle() {
     formData.append("raffle.rmissiontype", raffle.value.rmissiontype);
     formData.append("raffle.rgift", raffle.value.rgift);
     formData.append("raffle.rwinnercount", raffle.value.rwinnercount);
-    console.log("rstartedat :" , raffle.value.rstartedat);
+    console.log("rstartedat :", raffle.value.rstartedat);
 
+    formData.append("quizMission.qanswer", quizmission.value.qanswer);
     formData.append("quizMission.qcontent", quizmission.value.qcontent);
     formData.append("quizMission.qoption1", quizmission.value.qoption1);
     formData.append("quizMission.qoption2", quizmission.value.qoption2);
@@ -363,7 +373,7 @@ async function createRaffle() {
     console.log("폼 데이터 파일 부분 어펜드 끝");
 
     // 래플 등록 요청
-    try {      
+    try {
         const response = await RaffleAPI.createRaffle(formData);
         console.log(response.data);
         router.back();

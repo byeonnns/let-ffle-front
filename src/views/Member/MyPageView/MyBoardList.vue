@@ -28,30 +28,31 @@
                                 </td>
                                 <td> {{ board.bcreatedat }}</td>
                                 <td>
-                                    <RouterLink to="/Board/BoardDetail"><button
+                                    <RouterLink :to="`/Board/BoardUpdate?bno=${board.bno}&pageNo=${pageNo}`"><button
                                             class="btn btn-outline-light btn-sm me-2">수정</button>
                                     </RouterLink>
 
-                                    <RouterLink to="/Member"><button class="btn btn-outline-light btn-sm">삭제</button>
-                                    </RouterLink>
+                                    <button class="btn btn-outline-light btn-sm"
+                                        @click="deleteBoard(pageNo,board.bno)">삭제</button>
+
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="5" class="text-center">
                                     <button @click="changePageNo(1)"
-                                        class="btn btn-outline-primary btn-sm me-1">처음</button>
+                                        class="btn btn-outline-light btn-sm me-1">처음</button>
                                     <button v-if="page.pager.groupNo > 1"
                                         @click="changePageNo(page.pager.startPageNo - 1)"
-                                        class="btn btn-outline-info btn-sm me-1">이전</button>
+                                        class="btn btn-outline-light btn-sm me-1">이전</button>
                                     <button v-for="pageNo in page.pager.pageArray" :key="pageNo"
                                         @click="changePageNo(pageNo)"
-                                        :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-success'"
+                                        :class="(page.pager.pageNo == pageNo) ? 'btn-outline-light' : 'btn-outline-light'"
                                         class="btn btn-sm me-1">{{ pageNo }}</button>
                                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
                                         @click="changePageNo(page.pager.endPageNo + 1)"
-                                        class="btn btn-outline-info btn-sm me-1">다음</button>
+                                        class="btn btn-outline-light btn-sm me-1">다음</button>
                                     <button @click="changePageNo(page.pager.totalPageNo)"
-                                        class="btn btn-outline-primary btn-sm">맨끝</button>
+                                        class="btn btn-outline-light btn-sm">맨끝</button>
                                 </td>
                             </tr>
 
@@ -96,6 +97,16 @@ async function myBoardList(pageNo) {
 }
 
 myBoardList(pageNo.value);
+
+async function deleteBoard(pageNo,bno) {
+    try {
+        await BoardAPI.deleteBoard(bno);    
+        myBoardList(pageNo);
+
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 // 페이저의 버튼을 클릭했을 때 해당 페이지로 이동하는 함수 정의
 function changePageNo(argPageNo) {
