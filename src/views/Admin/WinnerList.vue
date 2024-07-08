@@ -7,21 +7,18 @@
             <table class="table">
                 <thead>
                     <tr class="d-none d-md-table-row text-center">
-                        <th class="d-none d-md-table-cell" style="width: 4em;"><span>래플명</span></th>
-                        <th class="d-none d-md-table-cell" style="width: 11em;"><span>당첨자 ID</span></th>
-                        <th class="d-none d-md-table-cell" style="width: 8em;"><span>수령인</span></th>
-                        <th class="d-none d-md-table-cell" style="width: 6em;"><span>수령인 연락처</span></th>
-                        <th class="d-none d-md-table-cell" style="width: 6em;"><span>수령 주소</span></th>
-                        <th class="d-none d-md-table-cell" style="width: 6em;"><span>배송 상태</span></th>
+                        <th class="d-none d-md-table-cell" style="width: 35%;"><span>래플명</span></th>
+                        <th class="d-none d-md-table-cell" style="width: 30%;"><span>당첨자 ID</span></th>
+                        <th class="d-none d-md-table-cell" style="width: 18%;"><span>수령지 입력 여부</span></th>
+                        <th class="d-none d-md-table-cell" style="width: 17%;"><span>배송 상태</span></th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
                     <tr v-for="winner in page.winners" :key="winner.rno">
                         <td>{{ winner.raffle.rtitle }}</td>
                         <td>{{ winner.winner.mid }}</td>
-                        <td>{{ winner.winner.wreceivername }}</td>
-                        <td>{{ winner.winner.wreceiverphone }}</td>
-                        <td>{{ winner.winner.wreceiveraddress }}</td>
+                        <td v-if="winner.winner.wreceiverphone"><button class="btn btn-sm">확인</button></td>
+                        <td v-else>미입력</td>
                         <td v-if="winner.winner.wreceiveraddress">배송 중</td>
                         <td v-else>배송 대기</td>
                     </tr>

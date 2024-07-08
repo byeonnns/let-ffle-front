@@ -7,7 +7,6 @@
                 <button class="btn btn-sm" @click="changeSortType('new')">최신순</button>
                 <button class="btn btn-sm" @click="changeSortType('cutoffsoon')">응모마감순</button>
             </div>
-    
             <div class="d-flex justify-content-end">
                     <div class="input-group input-group-sm w-auto">
                         <input type="text" class="form-control" v-model="searchWord" @keyup.enter="search(searchWord)">
@@ -25,7 +24,6 @@
                         <p class="raffle-description"> {{ request.raffle.rsubtitle }}</p>
                     </RouterLink>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -34,14 +32,12 @@
 <script setup>
 import axios from "axios";
 import RaffleAPI from "@/apis/RaffleAPI";
-import RaffleVue from "@/components/Raffle.vue";
 import { ref, watch } from 'vue';
 import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
 const router = useRouter();
 const raffles = ref();
-const attach = ref();
 var category = (route.query.category || "all");
 var sortType = (route.query.sortType || "popular");
 
@@ -52,14 +48,9 @@ async function search() {
     raffles.value = response.data;
 }
 
-console.log(category);
-console.log(sortType);
-
 async function getRaffleList(argCategory, argSortType) {
     const response = await RaffleAPI.getRaffleList(argCategory, argSortType);
     raffles.value = response.data;
-    console.log(raffles.value);
-    console.log(raffles.value[0].raffle)
 }
 getRaffleList(category, sortType);
 

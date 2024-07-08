@@ -12,13 +12,19 @@
             <div class="carousel-inner mb-3">
                 <RouterLink to="/Raffle">
                     <div class="carousel-item active">
-                        <img src="@/assets/tempImage/Kith.webp" class="d-block w-100" alt="...">
+                        <RouterLink to="/Raffle?category=fashion">
+                            <img src="@/assets/tempImage/fashion_banner.jpg" class="d-block w-100" alt="...">
+                        </RouterLink>
                     </div>
                     <div class="carousel-item">
-                        <img src="@/assets/tempImage/Perverze.webp" class="d-block w-100" alt="...">
+                        <RouterLink to="/Raffle?category=art">
+                            <img src="@/assets/tempImage/art_banner.jpg" class="d-block w-100" alt="...">
+                        </RouterLink>
                     </div>
                     <div class="carousel-item">
-                        <img src="@/assets/tempImage/samsung.webp" class="d-block w-100" alt="...">
+                        <RouterLink to="/Raffle?category=sports">
+                            <img src="@/assets/tempImage/sports_banner.jpg" class="d-block w-100" alt="...">
+                        </RouterLink>
                     </div>
                 </RouterLink>
             </div>
@@ -37,12 +43,12 @@
             <p class="h3">New Release</p>
             <hr class="border-3 opacity-100 mt-0" />
             <div class="row mb-5">
-                <div v-for="(raffle, index) in raffle" :key="index" class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink to="/Raffle/RaffleDetail">
-                        <img :src="require(`@/assets/${raffleImage[index]}`)" class="w-100 h-auto">
+                <div v-for="raffle in newReleaseRaffles" :key="raffle.rno" class="col-lg-4 col-md-6 col-12 mb-4">
+                    <RouterLink :to="`/Raffle/RaffleDetail?rno=${raffle.raffle.rno}`">
+                        <img :src="`${axios.defaults.baseURL}/raffle/raffleThumbnailAttach/${raffle.raffle.rno}`" class="w-100 h-auto">
                         <div>
-                            <p class="raffle-title mt-2">{{ raffle.rtitle }}</p>
-                            <p class="raffle-description">{{ raffle.rsubtitle }}</p>
+                            <p class="raffle-title mt-2">{{ raffle.raffle.rtitle }}</p>
+                            <p class="raffle-description">{{ raffle.raffle.rsubtitle }}</p>
                         </div>
                     </RouterLink>
                 </div>
@@ -52,12 +58,12 @@
             <p class="h3">Cut-off Soon</p>
             <hr class="border-3 opacity-100 opacity-100 mt-0" />
             <div class="row">
-                <div v-for="(raffle, index) in raffle" :key="index" class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink to="/Raffle/RaffleDetail">
-                        <img :src="require(`@/assets/${raffleImage[index]}`)" class="w-100 h-auto">
+                <div v-for="raffle in cutOffSoonRaffles" :key="raffle.rno" class="col-lg-4 col-md-6 col-12 mb-4">
+                    <RouterLink :to="`/Raffle/RaffleDetail?rno=${raffle.rno}`">
+                        <img :src="`${axios.defaults.baseURL}/raffle/raffleThumbnailAttach/${raffle.raffle.rno}`" class="w-100 h-auto">
                         <div>
-                            <p class="raffle-title mt-2">{{ raffle.rtitle }}</p>
-                            <p class="raffle-description">{{ raffle.rsubtitle }}</p>
+                            <p class="raffle-title mt-2">{{ raffle.raffle.rtitle }}</p>
+                            <p class="raffle-description">{{ raffle.raffle.rsubtitle }}</p>
                         </div>
                     </RouterLink>
                 </div>
@@ -67,28 +73,30 @@
 </template>
 
 <script setup>
+import RaffleAPI from '@/apis/RaffleAPI';
 import { computed, onMounted, ref } from 'vue';
+import { RouterLink } from 'vue-router';
 import { useStore } from 'vuex';
+import axios from 'axios';
 
 const store = useStore();
 
-const raffleImage = ref(["img1.jpg", "imgSample2.jpg", "imgSample3.jpg"]);
+const newReleaseRaffles = ref();
+const cutOffSoonRaffles = ref();
 
-const raffle = ref([
-    {
-        rtitle: "BLR인기 티셔츠 리오더 & 신규 발매",
-        rsubtitle: "[~24.6.10 11AM] 5% 할인"
-    },
-    {
-        rtitle: "지용킴 x 삼성 뮤직 프레임",
-        rsubtitle: "LET-FFLE에서만 단독 발매"
-    },
-    {
-        rtitle: "웨이비니스 24서머 3차 드랍",
-        rsubtitle: "2차 LET-FFLE 선발매"
-    }
-])
+async function getNewReleaseRaffles() {
+    const response = await RaffleAPI.getNewReleaseRaffles();
+    newReleaseRaffles.value = response.data;
+    console.log(newReleaseRaffles.value);
+}
+getNewReleaseRaffles();
 
+async function getCutOffSoonRaffles() {
+    const response = await RaffleAPI.getCutOffSoonRaffles();
+    cutOffSoonRaffles.value = response.data;
+    console.log(cutOffSoonRaffles.value);
+}
+getCutOffSoonRaffles();
 </script>
 
 <style scoped>

@@ -72,6 +72,14 @@ function winnerCreate(rno) {
     return axios.post("/raffle/createWinner", qs.stringify({rno}));
 }
 
+function getNewReleaseRaffles() {
+    return axios.get("/raffle/getNewReleaseRaffles");
+}
+
+function getCutOffSoonRaffles() {
+    return axios.get("/raffle/getCutOffSoonRaffles");
+}
+
 export default {
     myEntryList,
     myWinnerList,
@@ -88,5 +96,7 @@ export default {
     getAdminRaffleDetailList,
     searchRaffleList,
     updateRdtBerrySpend,
-    winnerCreate
+    winnerCreate,
+    getNewReleaseRaffles,
+    getCutOffSoonRaffles
 }
