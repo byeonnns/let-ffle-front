@@ -28,14 +28,14 @@
             <div class="d-flex justify-content-end">
                 <div class="input-group input-group-sm w-auto">
                     <span class="input-group-text p-0">
-                        <select class="form-select py-0 pe-3 border-0 rounded-end-0 z-1 w-auto">
-                            <option value="1" selected>ID</option>
-                            <option value="2">이름</option>
-                            <option value="3">닉네임</option>
+                        <select class="form-select py-0 pe-3 border-0 rounded-end-0 z-1 w-auto" v-model="searchType">
+                            <option value="mid" selected>ID</option>
+                            <option value="mname">이름</option>
+                            <option value="mnickname">닉네임</option>
                         </select></span>
 
-                    <input type="text" class="form-control">
-                    <button class="btn btn-sm">검색</button>
+                    <input type="text" class="form-control" v-model="searchWord" @keyup.enter="getMemberList(1, searchType, searchWord)">
+                    <button class="btn btn-sm" @click="getMemberList(1, searchType, searchWord)">검색</button>
                 </div>
             </div>
 
@@ -73,7 +73,7 @@ const serverTime = computed(() => {
     return new Date(diffMilliseconds);
 });
 
-
+const searchType = ref("mid");
 const pageNo = ref(route.query.pageNo || 1);
 
 const page = ref({
@@ -81,15 +81,11 @@ const page = ref({
     pager: {}
 });
 
-async function getMemberList(pageNo) {
+async function getMemberList(pageNo, searchType='', searchWord='') {
     try {
-        console.log(pageNo.value + '알려저');
-        const response = await MemberAPI.memberList(pageNo);
-        console.log(response + "나오나여?");
-        
+        const response = await MemberAPI.memberList(pageNo, searchType, searchWord);      
         page.value.members = response.data.member;
         page.value.pager = response.data.pager;
-        console.log(page.value);
     } catch (error) {
         console.log(error);
     }

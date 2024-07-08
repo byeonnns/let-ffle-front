@@ -17,12 +17,12 @@
                 </thead>
                 <tbody class="text-center">
                     <tr v-for="winner in page.winners" :key="winner.rno">
-                        <td>{{ winner.rtitle }}</td>
-                        <td>{{ winner.mid }}</td>
-                        <td>{{ winner.wreceivername }}</td>
-                        <td>{{ winner.wreceiverphone }}</td>
-                        <td>{{ winner.wreceiveraddress }}</td>
-                        <td v-if="winner.wreceiveraddress">배송 중</td>
+                        <td>{{ winner.raffle.rtitle }}</td>
+                        <td>{{ winner.winner.mid }}</td>
+                        <td>{{ winner.winner.wreceivername }}</td>
+                        <td>{{ winner.winner.wreceiverphone }}</td>
+                        <td>{{ winner.winner.wreceiveraddress }}</td>
+                        <td v-if="winner.winner.wreceiveraddress">배송 중</td>
                         <td v-else>배송 대기</td>
                     </tr>
                 </tbody>
@@ -30,15 +30,13 @@
             <div class="d-flex justify-content-end">
                 <div class="input-group input-group-sm w-auto">
                     <span class="input-group-text p-0">
-                        <select class="form-select py-0 pe-3 border-0 rounded-end-0 z-1 w-auto">
-                            <option value="1" selected>ID</option>
-                            <option value="2">이름</option>
-                            <option value="3">닉네임</option>
-                            <option value="4">래플</option>
+                        <select class="form-select py-0 pe-3 border-0 rounded-end-0 z-1 w-auto" v-model="searchType">
+                            <option value="mid">ID</option>
+                            <option value="rtitle">래플</option>
                         </select></span>
 
-                    <input type="text" class="form-control">
-                    <button class="btn btn-sm">검색</button>
+                    <input type="text" class="form-control" v-model="searchWord" @keyup.enter="getWinnerList(1, searchType, searchWord)">
+                    <button class="btn btn-sm" @click="getWinnerList(1, searchType, searchWord)">검색</button>
                 </div>
             </div>
             <div class="text-center" v-if="page.winners.length > 0">
@@ -75,7 +73,7 @@ const serverTime = computed(() => {
     return new Date(diffMilliseconds);
 });
 
-
+const searchType = ref("mid");
 const pageNo = ref(route.query.pageNo || 1);
 
 const page = ref({
@@ -83,15 +81,12 @@ const page = ref({
     pager: {}
 });
 
-async function getWinnerList(pageNo) {
+async function getWinnerList(pageNo, searchType='', searchWord='') {
     try {
-        console.log(pageNo.value + '알려저');
-        const response = await MemberAPI.winnerList(pageNo);
-        console.log(response + "나오나여?");
-        
+        const response = await MemberAPI.winnerList(pageNo, searchType, searchWord);
+        console.log(response.data.winner);
         page.value.winners = response.data.winner;
         page.value.pager = response.data.pager;
-        console.log(page.value);
     } catch (error) {
         console.log(error);
     }

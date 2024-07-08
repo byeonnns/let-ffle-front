@@ -79,12 +79,12 @@ function myAddress() {
     return axios.get("/member/getMyAddress");
 }
 
-function memberList(pageNo) {
-    return axios.get("/member/getAdminMemberList", { params: { pageNo:pageNo }})
+function memberList(pageNo, searchType, searchWord) {
+    return axios.get("/member/getAdminMemberList", { params: { pageNo:pageNo, searchType:searchType, word:searchWord }})
 }
 
-function winnerList(pageNo) {
-    return axios.get("/member/getAdminWinnerList", { params: { pageNo:pageNo }})
+function winnerList(pageNo, searchType, searchWord) {
+    return axios.get("/member/getAdminWinnerList", { params: { pageNo:pageNo, searchType:searchType, word:searchWord }})
 }
 
 function myInquirycreate(inquiry, mid) {
