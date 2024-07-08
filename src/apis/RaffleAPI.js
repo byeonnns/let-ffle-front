@@ -68,6 +68,10 @@ function getAdminRaffleDetailList(mid) {
     return axios.get("/raffle/getAdminRaffleDetail/" + mid);
 }
 
+function winnerCreate(rno) {
+    return axios.post("/raffle/createWinner", qs.stringify({rno}));
+}
+
 export default {
     myEntryList,
     myWinnerList,
@@ -83,5 +87,6 @@ export default {
     getRaffleDetail,
     getAdminRaffleDetailList,
     searchRaffleList,
-    updateRdtBerrySpend
+    updateRdtBerrySpend,
+    winnerCreate
 }

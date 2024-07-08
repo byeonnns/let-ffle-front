@@ -129,7 +129,7 @@
                             </div>
                         </div>
                         <div class="p-3 text-start" v-if="raffleDetail.raffleStatus === '당첨 발표'">
-                            <button class="btn mt-2 w-100" @click="raffleprocess()">당첨 확인</button>
+                            <button class="btn mt-2 w-100" @click="winnerCreate(rno)">당첨 확인</button>
                         </div>
                         <div class="p-3 text-start" v-if="raffleDetail.raffleStatus === '미참여 래플 종료'">
                             <h1>너 참여 안했잖아</h1>
@@ -248,7 +248,6 @@ const serverTime = computed(() => {
 
 watch(serverTime, (newVal, oldVal) => {
     const nowTime = store.getters['clientTime/getTimeForCalculate'];
-    console.log(nowTime);
     if (startHotTime.value < nowTime && nowTime < endHotTime.value) {
         passTime.value = true;
     } else {
@@ -320,6 +319,11 @@ async function getRaffleRequest(argRno) {
 async function updateRdtBerrySpend(rno, rdtberryspend) {
     await RaffleAPI.updateRdtBerrySpend(rno, rdtberryspend)
     getRaffleDetail(rno);
+}
+
+async function winnerCreate(rno) {
+    const response = await RaffleAPI.winnerCreate(rno);
+    getRaffleRequest(rno);
 }
 
 
