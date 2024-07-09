@@ -27,7 +27,7 @@
             <div class="d-flex justify-content-end">
                 <div class="input-group input-group-sm w-auto">
                     <span class="input-group-text p-0">
-                        <select class="form-select py-0 pe-3 border-0 rounded-end-0 z-1 w-auto" v-model="searchType">
+                        <select class="form-select py-0 border-0 rounded-end-0 z-1 w-auto" v-model="searchType">
                             <option value="mid">ID</option>
                             <option value="rtitle">래플</option>
                         </select></span>

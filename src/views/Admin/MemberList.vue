@@ -28,12 +28,12 @@
             <div class="d-flex justify-content-end">
                 <div class="input-group input-group-sm w-auto">
                     <span class="input-group-text p-0">
-                        <select class="form-select py-0 pe-3 border-0 rounded-end-0 z-1 w-auto" v-model="searchType">
+                        <select class="form-select py-0 border-0 rounded-end-0 z-1 w-auto" v-model="searchType">
                             <option value="mid" selected>ID</option>
                             <option value="mname">이름</option>
                             <option value="mnickname">닉네임</option>
-                        </select></span>
-
+                        </select>
+                    </span>
                     <input type="text" class="form-control" v-model="searchWord" @keyup.enter="getMemberList(1, searchType, searchWord)">
                     <button class="btn btn-sm" @click="getMemberList(1, searchType, searchWord)">검색</button>
                 </div>
