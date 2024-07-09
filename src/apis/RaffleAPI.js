@@ -83,6 +83,14 @@ function getCutOffSoonRaffles() {
     return axios.get("/raffle/getCutOffSoonRaffles");
 }
 
+function getMonitorWinnerList(rno, pageNo) {
+    return axios.get("/raffle/readWinnerDetail", {params : {rno : rno, pageNo : pageNo}})
+}
+
+function getRaffleMonitor(rno) {
+    return axios.get("/raffle/getRaffleMonitor", {params : {rno : rno}})
+}
+
 export default {
     myEntryList,
     myWinnerList,
@@ -102,5 +110,7 @@ export default {
     winnerCreate,
     getAdminDashboard,
     getNewReleaseRaffles,
-    getCutOffSoonRaffles
+    getCutOffSoonRaffles,
+    getRaffleMonitor,
+    getMonitorWinnerList
 }

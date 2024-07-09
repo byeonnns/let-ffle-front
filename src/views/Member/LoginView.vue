@@ -51,6 +51,7 @@ async function handleLogin() {
         if (response.data.result === 'success') {
             const payload = {
                 mid: response.data.mid,
+                mrole: response.data.mrole,
                 accessToken: response.data.accessToken
             };
     

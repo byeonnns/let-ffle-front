@@ -13,9 +13,8 @@ const store = createStore({
       return state.mid;
     },
     getMrole(state) {
-      return state.mrole === 'ROLE_ADMIN';
+      return state.mrole;
     },
-
     getAccessToken(state, getters, rootState, rootGetters) {
       return state.accessToken;
     }
@@ -51,6 +50,7 @@ const store = createStore({
           // 상태 변경 작성
           console.log("로그인 성공");
           context.commit("setMid", data.mid); // Mutation을 사용해 상태 변경 (actions는 상태 직접 변경이 불가능하다)
+          context.commit("seMrole", data.mrole);
         })
 
         .catch((data) => {
@@ -63,9 +63,7 @@ const store = createStore({
     loadAuth(context, payload) {
       // mid 전역 상태 설정
       context.commit("setMid", localStorage.getItem("mid") || "");
-
-      const Mrole = localStorage.getItem("mRole") || "";
-      context.commit("setMrole", Mrole);
+      context.commit("setMrole", localStorage.getItem("mrole") || "");
 
       // accessToken 전역 상태 설정
       const accessToken = localStorage.getItem("accessToken") || "";
@@ -87,12 +85,12 @@ const store = createStore({
       */
       // 전역 상태값 변경
       context.commit("setMid", payload.mid);
-      context.commit("setMrole", payload.mRole);
+      context.commit("setMrole", payload.mrole);
       context.commit("setAccessToken", payload.accessToken);
 
       // 로컬 파일에 저장
       localStorage.setItem("mid", payload.mid);
-      localStorage.setItem("mRole", payload.mRole);
+      localStorage.setItem("mrole", payload.mrole);
       localStorage.setItem("accessToken", payload.accessToken);
 
       // Axios 요청 공통 헤더에 인증 정보 추가
@@ -108,7 +106,7 @@ const store = createStore({
 
       // 로컬 파일에서 삭제
       localStorage.removeItem("mid");
-      localStorage.removeItem("mRole");
+      localStorage.removeItem("mrole");
       localStorage.removeItem("accessToken");
 
       // Axios 요청 공통 헤더에 인증 정보 삭제

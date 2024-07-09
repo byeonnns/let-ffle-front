@@ -2,31 +2,38 @@
     <div>
         <div class="d-flex flex-column">
             <hr class="border-3 opacity-100 m-0" style="border-color: #F37551;" />
-            <table class="table text-center table-borderless m-0">
+            <div class="text-center my-3">
+                <h3>{{ monitor.raffle.rtitle }}</h3>
+                <h6 class="mb-0 text-secondary">{{ monitor.raffle.rsubtitle }}</h6>
+            </div>
+            <hr class="border-3 opacity-100 m-0" style="border-color: #F37551;" />
+            <table class="table text-center table-borderless mt-3">
                 <thead>
                     <tr class="h5">
-                        <th class="col-4" scope="col">래플명</th>
-                        <th class="col-1" scope="col">시작일</th>
-                        <th class="col-1" scope="col">종료일</th>
+                        <th class="col-1" scope="col">번호</th>
+                        <th class="col-2" scope="col">생성일</th>
+                        <th class="col-2" scope="col">시작일</th>
+                        <th class="col-2" scope="col">종료일</th>
                         <th class="col-1" scope="col">미션 타입</th>
-                        <th class="col-1" scope="col">당첨인원</th>
+                        <th class="col-1" scope="col">당첨 인원</th>
                         <th class="col-1" scope="col">현재 상태</th>
-                        <th class="col-2" scope="col">현재 참여인원</th>
+                        <th class="col-1" scope="col">참여 인원</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>더그레이티스트24 SUMMER 드랍 ~50%</td>
-                        <td>24-06-01</td>
-                        <td>24-06-18</td>
-                        <td>Quiz</td>
-                        <td>5</td>
-                        <td>진행 중</td>
-                        <td>3854</td>
+                        <td>{{ monitor.raffle.rno }}</td>
+                        <td>{{ formatDate(monitor.raffle.rcreatedat) }}<br>{{ formatTime(monitor.raffle.rcreatedat) }}</td>
+                        <td>{{ formatDate(monitor.raffle.rstartedat) }}<br>{{ formatTime(monitor.raffle.rstartedat) }}</td>
+                        <td>{{ formatDate(monitor.raffle.rfinishedat) }}<br>{{ formatTime(monitor.raffle.rfinishedat) }}</td>
+                        <td>{{ monitor.raffle.rmissiontype }}</td>
+                        <td>{{ monitor.raffle.rwinnercount }}</td>
+                        <td>{{ nowStatus(new Date(monitor.raffle.rstartedat).getTime(), new Date(monitor.raffle.rfinishedat).getTime()) }}</td>
+                        <td>{{ monitor.raffleProcess }}</td>
                     </tr>
                 </tbody>
             </table>
-            <hr class="border-3 opacity-100 mt-0 mb-2" style="border-color: #F37551;" />
+            <hr class="border-3 opacity-100 mt-0" style="border-color: #F37551;" />
             <h4 class="text-center my-3">참여자 리스트</h4>
             <table class="table text-center">
                 <thead>
@@ -106,46 +113,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>kosa@songpa.it</td>
-                                <td>김코사</td>
-                                <td><button class="btn btn-sm rounded-0">확인</button></td>
-                                <td>배송 준비 중</td>
-                            </tr>
-                            <tr>
-                                <td>hou@nal.do</td>
-                                <td>신우호</td>
-                                <td><button class="btn btn-sm rounded-0" disabled>미입력</button></td>
-                                <td>미발송</td>
-                            </tr>
-                            <tr>
-                                <td>mid</td>
-                                <td>mname</td>
-                                <td><button class="btn btn-sm rounded-0" disabled>미입력</button></td>
-                                <td>미발송</td>
+                            <tr v-for="winner in winner.list" :key="winner.rno">
+                                <td>{{ winner.mid }}</td>
+                                <td>{{ winner.rtitle }}</td>
+                                <td v-if="winner.wrecivername != null"><button class="btn btn-sm rounded-0">확인</button>
+                                </td>
+                                <td v-else><button class="btn btn-sm rounded-0" disabled>미입력</button></td>
+                                <td v-if="winner.wrecivername != null">배송 대기</td>
+                                <td v-else>미발송</td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex flex-grow-1 justify-content-center">
-                            <button class="btn btn-outline-light btn-sm me-1"
-                                style="background-color: white; color:black;">처음</button>
-                            <button class="btn btn-outline-light btn-sm me-3"
-                                style="background-color: white; color:black;">이전</button>
-                            <button class="btn btn-outline-light btn-sm me-1"
-                                style="background-color: white; color:black;">1</button>
-                            <button class="btn btn-outline-light btn-sm me-1"
-                                style="background-color: white; color:black;">2</button>
-                            <button class="btn btn-outline-light btn-sm me-1"
-                                style="background-color: white; color:black;">3</button>
-                            <button class="btn btn-outline-light btn-sm me-1"
-                                style="background-color: white; color:black;">4</button>
-                            <button class="btn btn-outline-light btn-sm me-3"
-                                style="background-color: white; color:black;">5</button>
-                            <button class="btn btn-outline-light btn-sm me-1"
-                                style="background-color: white; color:black;">다음</button>
-                            <button class="btn btn-outline-light btn-sm"
-                                style="background-color: white; color:black;">맨끝</button>
+                            <div class="text-center" v-if="winner.list.length > 5">
+                                <button @click="changeWinnerPage(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
+                                <button v-if="winner.pager.groupNo > 1" @click="changeWinnerPage(winner.pager.startPageNo - 1)"
+                                    class="btn btn-outline-light btn-sm me-1">이전</button>
+                                <button v-for="pageNo in winner.pager.pageArray" :key="pageNo" @click="changeWinnerPage(pageNo)"
+                                    :class="(winner.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
+                                    class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
+                                <button v-if="winner.pager.groupNo < winner.pager.totalGroupNo" @click="changeWinnerPage(winner.pager.endPageNo + 1)"
+                                    class="btn btn-outline-light btn-sm me-1">다음</button>
+                                <button @click="changeWinnerPage(winner.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -164,22 +155,100 @@
                 </div>
             </div>
             <hr class="border-3 opacity-100 mt-4" style="border-color: #F37551;" />
-            <button class="btn mb-5 rounded-0">래플 바로가기</button>
+            <button class="btn mb-5 rounded-0">{{ rno }}래플 바로가기</button>
         </div>
     </div>
 </template>
 
 <script setup>
+import RaffleAPI from '@/apis/RaffleAPI';
 import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+
+const route = useRoute();
+const router = useRouter();
+
+const rno = ref(route.query.rno);
+const memberPage = ref(route.query.mPage || 1);
+const winnerPage = ref(route.query.wPage || 1);
+
+const winner = ref({
+    list: [],
+    pager: {}
+});
+
+const monitor = ref({
+    raffle: {},
+    raffleProcess: null
+});
+
+async function getRaffleMonitor(rno) {
+    const response = await RaffleAPI.getRaffleMonitor(rno);
+    try {
+        monitor.value = response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function getWinnerList(rno, pageNo) {
+    const response = await RaffleAPI.getMonitorWinnerList(rno, pageNo);
+    try {
+        winner.value.list = response.data.winner;
+        winner.value.pager = response.data.pager;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const nowStatus = (start, end) => {
+    const date = Date.now();
+    console.log(date + "/" + start);
+    if(date < start){
+        return "대기 중";
+    } else if(start < date && date < end) {
+        return "진행 중";
+    } else if(end < date) {
+        return "종료";
+    }
+}
+
+function changeWinnerPage(pageNo){
+    router.push(`/Admin/RaffleMonitorDetail?mPage=${memberPage.value}&wPage=${pageNo}`)
+}
+
+getRaffleMonitor(rno.value);
+getWinnerList(rno.value, winnerPage.value);
+
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
+
+function formatTime(dateStr) {
+    const date = new Date(dateStr);
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    return `${hours}:${minutes}:${seconds}`;
+}
+
 </script>
 
 <style scoped>
 td {
+    padding-top: 0px;
     align-content: center;
 }
-.btn{
+
+.btn {
     background-color: #F37551;
     color: white;
-    
+
 }
 </style>

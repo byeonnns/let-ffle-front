@@ -47,7 +47,7 @@
 
                 <RouterLink to="/Member/MyPage" class="me-3"><span class="d-inline-block">마이페이지</span></RouterLink>
                 <RouterLink to="/Notice" class="me-3"><span class="d-inline-block">고객센터</span></RouterLink>
-                <RouterLink v-if="$store.state.mRole !== ''" to="/Admin" class="me-3"><span class="d-inline-block">관리자</span></RouterLink>
+                <RouterLink v-if="$store.state.mrole === 'ROLE_ADMIN'" to="/Admin" class="me-3"><span class="d-inline-block">관리자</span></RouterLink>
             </div>
 
             <nav class="navbar navbar-expand-lg bg-body-white">

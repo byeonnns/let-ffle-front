@@ -25,9 +25,13 @@
                         </td>
                         <td>
                             {{ formatDate(raffle.rstartedat) }}
+                            <br>
+                            {{ formatTime(raffle.rstartedat) }}
                         </td>
                         <td>
                             {{ formatDate(raffle.rfinishedat) }}
+                            <br>
+                            {{ formatTime(raffle.rfinishedat) }}
                         </td>
 
                         <td v-if="serverTime > new Date(raffle.rfinishedat)">마감</td>
@@ -35,8 +39,7 @@
                         <td v-if="serverTime <= new Date(raffle.rfinishedat) && new Date(raffle.rstartedat) <= serverTime">진행 중</td>
 
                         <td>
-                            <RouterLink to="/Admin/RaffleMonitorDetail"><button
-                                    class="btn btn-sm rounded-0">모니터링</button>
+                            <RouterLink :to="`/Admin/RaffleMonitorDetail?rno=${raffle.rno}`"><button class="btn btn-sm rounded-0">모니터링</button>
                             </RouterLink>
                         </td>
                     </tr>
@@ -124,15 +127,20 @@ watch(
 function formatDate(dateStr) {
     const date = new Date(dateStr);
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
+
+function formatTime(dateStr) {
+    const date = new Date(dateStr);
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
     const seconds = String(date.getSeconds()).padStart(2, '0');
 
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    return `${hours}:${minutes}:${seconds}`;
 }
-
 
 </script>
 
