@@ -5,11 +5,15 @@ import axiosConfig from '@/apis/axiosConfig';
 const store = createStore({
   state: {
     mid: "",
+    mRole:"",
     accessToken: ""
   },
   getters: {
     getMid(state, getters, rootState, rootGetters) {
       return state.mid;
+    },
+    getMrole(state) {
+      return state.mRole;
     },
 
     getAccessToken(state, getters, rootState, rootGetters) {
@@ -20,7 +24,9 @@ const store = createStore({
     setMid(state, payload) { // payload : 변경할 값을 갖고 있는 객체
       state.mid = payload;
     },
-
+    setMrole(state, payload) {
+      state.mRole = payload;
+    },
     setAccessToken(state, payload) {
       state.accessToken = payload;
     }
@@ -58,6 +64,9 @@ const store = createStore({
       // mid 전역 상태 설정
       context.commit("setMid", localStorage.getItem("mid") || "");
 
+      const Mrole = localStorage.getItem("mRole") || "";
+      context.commit("setMrole",  Mrole);
+
       // accessToken 전역 상태 설정
       const accessToken = localStorage.getItem("accessToken") || "";
       context.commit("setAccessToken", accessToken);
@@ -78,10 +87,12 @@ const store = createStore({
       */
       // 전역 상태값 변경
       context.commit("setMid", payload.mid);
+      context.commit("setMrole", payload.mRole);
       context.commit("setAccessToken", payload.accessToken);
 
       // 로컬 파일에 저장
       localStorage.setItem("mid", payload.mid);
+      localStorage.setItem("mRole", payload.Mrole);
       localStorage.setItem("accessToken", payload.accessToken);
 
       // Axios 요청 공통 헤더에 인증 정보 추가
@@ -92,10 +103,12 @@ const store = createStore({
     deleteAuth(context, payload) {
       // 전역 상태값 변경
       context.commit("setMid", "");
+      context.commit("setMrole", "");
       context.commit("setAccessToken", "");
 
       // 로컬 파일에서 삭제
       localStorage.removeItem("mid");
+      localStorage.removeItem("mRole");
       localStorage.removeItem("accessToken");
 
       // Axios 요청 공통 헤더에 인증 정보 삭제

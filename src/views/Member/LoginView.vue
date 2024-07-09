@@ -33,6 +33,7 @@
 import { reactive, ref } from 'vue';
 import memberAPI from '@/apis/MemberAPI';
 import { useStore } from 'vuex';
+import router from '@/router';
 
 const store = useStore();
 
@@ -55,6 +56,7 @@ async function handleLogin() {
     
             store.dispatch("saveAuth", payload);
         }
+        router.push("/")
 
     } catch (error) {
         console.log(error);
