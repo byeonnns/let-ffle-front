@@ -181,4 +181,12 @@ watch(
 .spanded {
     color: black;
 }
+
+.pagerbtn {
+    color: black;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
+}
+
 </style>

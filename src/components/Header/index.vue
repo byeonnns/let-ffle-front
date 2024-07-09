@@ -25,7 +25,8 @@
                                     <tr v-for="item in berry" :key="item.bhno">
                                         <td>{{ formatDate(item.bhchangedat) }}<br>{{ formatTime(item.bhchangedat) }}</td>
                                         <td>{{ item.bhchangevalue }}</td>
-                                        <td>{{ item.bhreason }}</td>
+                                        <td v-if="item.bhreason.length < 3">{{ item.bhreason }}번 래플에 사용</td>
+                                        <td v-else>{{ item.bhreason }}</td>
                                     </tr>
                                 </table>
                             </div>

@@ -160,11 +160,11 @@ watch(
     text-align: start;
 }
 
-:hover {
-    background-color: transparent;
+.pagerbtn {
+    color: black;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
 }
 
-:hover> :active {
-    background-color: transparent;
-}
 </style>
