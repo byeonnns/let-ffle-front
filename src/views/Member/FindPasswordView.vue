@@ -7,15 +7,14 @@
                 <div>
                     <p>가입 시 등록한 휴대폰 번호와<br>이메일을 입력해주세요.</p>
                 </div>
-                <label for="mte" class="mb-2" style="margin-top:44px">휴대폰 번호</label>
-                <input id="mtel" type="text" class="border-0 border-bottom" v-model="member.mphone" @input="phCheck">
+                <label class="mb-2" style="margin-top:44px">휴대폰 번호</label>
+                <input type="text" class="border-0 border-bottom" v-model="member.mphone" @input="phCheck">
                 <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ mphoneCheck }}</p>
-                <label for="mte" class="mb-2" style="margin-top:44px">이메일</label>
-                <input id="mtel" type="text" class="border-0 border-bottom" v-model="member.mid" @input="idCheck">
+                <label class="mb-2" style="margin-top:44px">이메일</label>
+                <input type="text" class="border-0 border-bottom" v-model="member.mid" @input="idCheck">
                 <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ midCheck }}</p>
-
-                <button :class="ispass ? '' : 'disabled'" class="btn text-white rounded-0 btn-lg mt-5" @click="findPassword"
-                    style="background-color: #F37551;">비밀번호 찾기</button>
+                <button :class="ispass ? '' : 'disabled'" class="btn text-white rounded-0 btn-lg mt-5"
+                    @click="findPassword" style="background-color: #F37551;">비밀번호 찾기</button>
             </div>
         </div>
 
@@ -60,7 +59,8 @@
                 <h5>일치하는 아이디가 존재하지 않습니다.</h5>
             </template>
             <template v-slot:modalFooter>
-                <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal" style="background-color: #F37551; color: white;">닫기</button>
+                <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal"
+                    style="background-color: #F37551; color: white;">닫기</button>
             </template>
         </RaffleModal>
     </div>

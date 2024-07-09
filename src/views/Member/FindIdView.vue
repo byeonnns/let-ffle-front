@@ -9,26 +9,26 @@
                 </div>
                 <label for="mte" class="mb-2" style="margin-top:44px">휴대폰 번호</label>
                 <input id="mtel" type="text" class="border-0 border-bottom" v-model="member.mphone" @input="phcheck">
-
                 <div v-if="member.mid !== ''">
                     <p>로그인 이메일 : {{ member.mid }}</p>
                 </div>
-
-                <button :class="ispass ? '' : 'disabled'" class="btn text-white rounded-0 btn-lg mt-5" @click="findId" style="background-color: #F37551; ">이메일 아이디 찾기</button>      
+                <button :class="ispass ? '' : 'disabled'" class="btn text-white rounded-0 btn-lg mt-5" @click="findId"
+                    style="background-color: #F37551; ">이메일 아이디 찾기</button>
             </div>
         </div>
     </div>
     <RaffleModal ref="noMatchModal">
-            <template v-slot:modalHeader>
-                <h3>알림</h3>
-            </template>
-            <template v-slot:modalBody>
-                <h5>일치하는 아이디가 존재하지 않습니다.</h5>
-            </template>
-            <template v-slot:modalFooter>
-                <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal" style="background-color: #F37551; color: white;">닫기</button>
-            </template>
-        </RaffleModal>
+        <template v-slot:modalHeader>
+            <h3>알림</h3>
+        </template>
+        <template v-slot:modalBody>
+            <h5>일치하는 아이디가 존재하지 않습니다.</h5>
+        </template>
+        <template v-slot:modalFooter>
+            <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal"
+                style="background-color: #F37551; color: white;">닫기</button>
+        </template>
+    </RaffleModal>
 </template>
 
 <script setup>
@@ -36,18 +36,17 @@ import MemberAPI from '@/apis/MemberAPI';
 import { reactive, ref } from 'vue';
 import RaffleModal from '@/components/RaffleModal.vue';
 
-
 const findIdView = ref(null);
 const ispass = ref(false);
 const noMatchModal = ref('');
 const member = ref({
-    mid : "",
-    mphone : ""
+    mid: "",
+    mphone: ""
 });
 
 const isphone = /^010\d{4}\d{4}$/;
 const phcheck = () => {
-    if(!isphone.test(member.value.mphone)) {
+    if (!isphone.test(member.value.mphone)) {
         ispass.value = false;
     } else {
         ispass.value = true;
@@ -70,33 +69,11 @@ window.addEventListener('resize', handleResize);
 async function findId() {
     const response = await MemberAPI.findId(member.value.mphone);
     if (response.data.result == 'success') {
-        console.log(response.data.result);
         member.value.mid = response.data.mid;
-
     } else {
         noMatchModal.value.showModal();
     }
-    
 }
-
-/* 이메일 찾기 
-const findId = () => {
-    findIdView.value.innerHTML = `
-    <div class="d-flex flex-column text-center" :style="responsiveSize">
-        <p class="text-center h3" style="font-weight: 700; margin-bottom:14px;">이메일 주소 찾기에 성공했습니다.</p>
-        <hr class="border-2 opacity-100 my-4"/>
-        <div>
-            <h6>이메일 주소</h6>
-        </div>
-        <h4>a*******h@kosa.com</h4>
-        <div class="row mt-5">
-            <button class="btn text-white btn-lg rounded-0 flex-grow-1 col me-2" style="background-color: #F37551;"><RouterLink to="/FindPassword">비밀번호 찾기</RouterLink></button>
-            <button class="btn text-white btn-lg rounded-0 flex-grow-1 col ms-2" style="background-color: #F37551;"><RouterLink to="/login">로그인</RouterLink></button>
-        </div>
-    </div>
-    `;
-}
-*/
 </script>
 
 <style scoped>

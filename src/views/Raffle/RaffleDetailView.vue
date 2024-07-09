@@ -1,6 +1,6 @@
 <template>
     <div>
-        <GiftLottie ref="lottie"/>
+        <GiftLottie ref="lottie" />
         <RaffleToast ref="raffleToast" />
         <div v-if="raffleRequest.raffle" class="container">
             <div class="row">
@@ -30,20 +30,22 @@
                     </div>
                     <div class="d-flex flex-column border mt-5">
                         <div class="d-flex">
-                            <button class="btn flex-grow-1" :class="raffleDetail.raffleStatus === '래플 미참여' ? '' : 'disabled'">1.
+                            <button class="btn flex-grow-1"
+                                :class="raffleDetail.raffleStatus === '래플 미참여' ? '' : 'disabled'">1.
                                 응모하기</button>
 
                             <button class="btn flex-grow-1" :class="raffleDetail.raffleStatus === '미션 대기' || raffleDetail.raffleStatus === '미션 성공' ||
-                                raffleDetail.raffleStatus === '미션 실패' ? '' : 'disabled'" @click="tab = '미션 참여'">2. 미션참여</button>
+                                raffleDetail.raffleStatus === '미션 실패' ? '' : 'disabled'" @click="tab = '미션 참여'">2.
+                                미션참여</button>
 
                             <button class="btn flex-grow-1" :class="raffleDetail.raffleStatus === '미션 대기' || raffleDetail.raffleStatus === '미션 성공' ||
-                                raffleDetail.raffleStatus === '미션 실패' ? '' : 'disabled'" @click="tab = '베리 사용'">3. 베리사용</button>
+                                raffleDetail.raffleStatus === '미션 실패' ? '' : 'disabled'" @click="tab = '베리 사용'">3.
+                                베리사용</button>
 
                             <button class="btn flex-grow-1"
                                 :class="raffleDetail.raffleStatus === '당첨 발표' || raffleDetail.raffleStatus === '미참여 래플 종료' ? '' : 'disabled'">4.
                                 당첨확인</button>
                         </div>
-
                         <div class="p-3 text-center" v-if="raffleDetail.raffleStatus === '래플 미참여'">
                             <p class="h6 text-start">
                                 하단의 응모하기 버튼을 클릭하시면 응모가 완료됩니다. <br />
@@ -91,7 +93,8 @@
                             <h4>Hot Time</h4>
                             <p>지정된 시간동안 하단의 미션 참여 버튼을 눌러주세요.</p>
                             <button v-if="!passTime" class="btn mt-2 w-100 disabled">핫 타임이 아닙니다.</button>
-                            <button v-if="passTime" class="btn mt-2 w-100" @click="updateRdtMissionCleared(rno)">미션 참여</button>
+                            <button v-if="passTime" class="btn mt-2 w-100" @click="updateRdtMissionCleared(rno)">미션
+                                참여</button>
                         </div>
 
                         <div class="p-3 text-start" v-if="raffleDetail.raffleStatus === '미션 성공' && tab == '미션 참여'">
@@ -113,16 +116,18 @@
                                 <li>베리는 하나의 래플에 최대 10개까지 사용 가능합니다.</li>
                                 <li>사용한 베리는 사용 취소 및 환불이 불가능합니다.</li>
                                 <li>응모 기간 내에는 베리 추가 사용이 가능합니다.</li>
-                                <li>해당 래플에 현재 베리를 {{raffleDetail.raffleDetail.rdtberryspend}}개 사용했습니다.</li>
+                                <li>해당 래플에 현재 베리를 {{ raffleDetail.raffleDetail.rdtberryspend }}개 사용했습니다.</li>
                             </ul>
                             <div v-if="raffleDetail.raffleDetail.rdtberryspend < 10">
                                 <label class="me-2">몇 개나 사용할까요?</label>
                                 <select name="number" v-model="selectBerry">
                                     <template v-for="n in 9" :key="n">
-                                        <option v-if="raffleDetail.raffleDetail.rdtberryspend <= 10 - n">{{ n }}</option>
+                                        <option v-if="raffleDetail.raffleDetail.rdtberryspend <= 10 - n">{{ n }}
+                                        </option>
                                     </template>
                                 </select>개
-                                <button class="btn mt-2 w-100" @click="updateRdtBerrySpend(rno, selectBerry)">사용하기</button>
+                                <button class="btn mt-2 w-100"
+                                    @click="updateRdtBerrySpend(rno, selectBerry)">사용하기</button>
                             </div>
                             <div v-else>
                                 베리를 최대로 사용했습니다!
@@ -143,7 +148,6 @@
                             <button class="btn flex-grow-1" @click="selectGuide('mission')">미션안내</button>
                             <button class="btn flex-grow-1" @click="selectGuide('winning')">당첨안내</button>
                         </div>
-
                         <div v-if="shift == 'raffle'" class="p-3 text-center">
                             <p class="h6 text-start">
                                 {{ raffleRequest.raffle.rcontent }}
@@ -258,8 +262,8 @@ watch(serverTime, (newVal, oldVal) => {
 
 /* 래플 프로세스 */
 const raffleDetail = ref({
-    raffleDetail : {},
-    raffleStatus : null
+    raffleDetail: {},
+    raffleStatus: null
 });
 const tab = ref('미션 참여');
 const shift = ref('raffle');
@@ -302,7 +306,6 @@ async function getRaffleDetail(rno) {
     const response = await RaffleAPI.getRaffleDetail(rno);
     raffleDetail.value.raffleDetail = response.data.raffleDetail;
     raffleDetail.value.raffleStatus = response.data.raffleStatus;
-    console.log(raffleDetail.value.raffleStatus);
 }
 
 async function getRaffleRequest(argRno) {
@@ -313,7 +316,6 @@ async function getRaffleRequest(argRno) {
         startHotTime.value = new Date(response.data.timeMission.tstartedat.replace(' ', 'T'));
         endHotTime.value = new Date(response.data.timeMission.tfinishedat.replace(' ', 'T'));
     }
-    console.log(raffleRequest.value);
 }
 
 async function updateRdtBerrySpend(rno, rdtberryspend) {
@@ -323,16 +325,15 @@ async function updateRdtBerrySpend(rno, rdtberryspend) {
 
 async function winnerCreate(rno) {
     const response = await RaffleAPI.winnerCreate(rno);
-    if(response.data == "당첨") {
+    if (response.data == "당첨") {
         raffleToast.value.showToast("래플에 당첨되셨습니다!");
         lottie.value.winLottieOn();
-    } else if(response.data == "낙첨") {
+    } else if (response.data == "낙첨") {
         raffleToast.value.showToast("당첨에 실패했습니다...");
         lottie.value.defeatLottieOn();
     }
     getRaffleRequest(rno);
 }
-
 
 getRaffleRequest(rno);
 getLikeStatus(rno);

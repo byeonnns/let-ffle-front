@@ -47,20 +47,16 @@ import FooterNav from "@/components/FooterNav.vue";
   font-weight: bold;
 }
 
-/* #app .btn {
-    background-color:#F37551;
-    color:white;
-    border-radius: 0;
-}
-#app .btn:hover {
-    background-color:#F37551;
-    opacity: 65%;
-    transition: all 0.15s;
-} */
-
 body {
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.pagerbtn {
+    color: black;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
 }
 
 

@@ -7,7 +7,6 @@
                     <h3 style="margin-right: 80%;">자주 묻는 질문</h3>
                 </div>
                 <div style="width: 100%; height:100%; margin-bottom: 10px; margin-top: 10px;">
-                    <!-- border:1px solid black; -->
                     <table class="table table-bordered">
                         <thead>
                         </thead>
@@ -44,7 +43,8 @@
                                 <button class="accordion-button custom-accordion-button" type="button"
                                     data-bs-toggle="collapse" :data-bs-target="`#collapse${faq.nno}`"
                                     aria-expanded="true" :aria-controls="`#collapse${faq.nno}`">
-                                    <p class="custom-title" style="color: #F37551"> {{ faq.nsubcategory }}</p>
+                                    <p class="custom-title" style="color: #F37551; width: 60px;"> {{ faq.nsubcategory }}
+                                    </p>
                                     <p class="custom-text">{{ faq.ntitle }}</p>
                                 </button>
                             </h3>
@@ -68,23 +68,15 @@
                         class="btn pagerbtn">이전</button>
                     <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
                         :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
-                        class="btn pagerbtn">{{pageNo}}</button>
+                        class="btn pagerbtn">{{ pageNo }}</button>
                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
-                        @click="changePageNo(page.pager.endPageNo + 1)"
-                        class="btn pagerbtn">다음</button>
+                        @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
                     <button @click="changePageNo(page.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
                 </div>
             </div>
         </div>
-
     </div>
-
-
-
-
-
 </template>
-
 
 <script setup>
 import { ref, watch } from 'vue';
@@ -93,7 +85,6 @@ import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
 const router = useRouter();
-
 const category = ref({
     mainCatagory: "자주묻는질문",
     subcategory: route.query.subcategory || "전체"
@@ -113,45 +104,28 @@ async function getNoticeList(pageNo) {
         console.log(error);
     }
 }
-
 getNoticeList(pageNo.value);
 
 function changePageNo(argPageNo) {
     router.push(`/Faq?pageNo=${argPageNo}`);
 }
 
+function changeSubcategory(nsubcategory) {
+    category.value.subcategory = nsubcategory;
+    router.push(`/Faq?subcategory=${nsubcategory}`);
+}
 watch(
     route, (newRoute, oldRoute) => {
         if (newRoute.query.pageNo) {
-            console.log(pageNo.value)
             getNoticeList(newRoute.query.pageNo);
         } else {
-            console.log()
             getNoticeList(1);
             pageNo.value = 1;
         }
 
     }
 );
-
-function formatDate(dateStr) {
-    const date = new Date(dateStr);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
-    const day = String(date.getDate()).padStart(2, '0');
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-}
-
-function changeSubcategory(nsubcategory) {
-    category.value.subcategory = nsubcategory;
-    router.push(`/Faq?subcategory=${nsubcategory}`);
-}
 </script>
-
 
 <style scoped>
 .custom-accordion-button {
@@ -171,13 +145,6 @@ function changeSubcategory(nsubcategory) {
 .custom-accordion-button:focus {
     box-shadow: none;
     /* 버튼 포커스 시 그림자 제거 */
-}
-
-.pagerbtn {
-    color: black;
-    margin-left: 7px;
-    border: none;
-    background-color: white;
 }
 
 .custom-accordion-button .custom-title,

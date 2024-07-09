@@ -7,10 +7,7 @@
                     <h3>공지사항</h3>
                 </div>
                 <div style="width: 100%; height:60px; margin-bottom: 10px; margin-top: 10px;">
-                    <!-- border:1px solid black; -->
                     <table class="table table-bordered">
-                        <thead>
-                        </thead>
                         <tbody>
                             <tr>
                                 <td style="width: 25%;">
@@ -34,15 +31,10 @@
                                     </button>
                                 </td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>
                 <div style="width: 100%; height:100%;  ">
-
-                    <!--  border:1px solid black; -->
-                    <!-- <div style="width: 100%; height:100%; "> -->
-
                     <table class="table linebd">
                         <tbody>
                             <tr v-for="notice in page.notices" :key="notice.nno">
@@ -64,15 +56,13 @@
                                         :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
                                         class="btn pagerbtn">{{ pageNo }}</button>
                                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
-                                        @click="changePageNo(page.pager.endPageNo + 1)"
-                                        class="btn pagerbtn">다음</button>
+                                        @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
                                     <button @click="changePageNo(page.pager.totalPageNo)"
                                         class="btn pagerbtn">맨끝</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -85,7 +75,6 @@ import NoticeAPI from '@/apis/NoticeAPI';
 
 const route = useRoute();
 const router = useRouter();
-
 const category = ref({
     mainCatagory: "공지사항",
     subcategory: route.query.subcategory || "전체"
@@ -96,55 +85,46 @@ const page = ref({
     pager: {}
 });
 
-console.log("aaa", category.value.subcategory);
-
 async function getNoticeList(pageNo) {
     try {
         const response = await NoticeAPI.noticeList(pageNo, category.value.mainCatagory, category.value.subcategory);
         page.value.notices = response.data.Notice;
         page.value.pager = response.data.Pager;
-        console.log(page.value);
     } catch (error) {
         console.log(error);
     }
 }
-
 getNoticeList(pageNo.value);
 
 function changePageNo(argPageNo) {
     router.push(`/Notice?pageNo=${argPageNo}`);
 }
 
-watch(
-    route, (newRoute, oldRoute) => {
-        if (newRoute.query.pageNo) {
-            console.log(pageNo.value)
-            getNoticeList(newRoute.query.pageNo);
-        } else {
-            console.log()
-            getNoticeList(1);
-            pageNo.value = 1;
-        }
-
-    }
-);
-
 function formatDate(dateStr) {
     const date = new Date(dateStr);
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
     const day = String(date.getDate()).padStart(2, '0');
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
 
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    return `${year}-${month}-${day}`;
 }
 
 function changeSubcategory(nsubcategory) {
     category.value.subcategory = nsubcategory;
     router.push(`/Notice?subcategory=${nsubcategory}`);
 }
+
+watch(
+    route, (newRoute, oldRoute) => {
+        if (newRoute.query.pageNo) {
+            getNoticeList(newRoute.query.pageNo);
+        } else {
+            getNoticeList(1);
+            pageNo.value = 1;
+        }
+
+    }
+);
 
 </script>
 
@@ -170,13 +150,6 @@ function changeSubcategory(nsubcategory) {
     height: 100%;
     color: black;
 
-}
-
-.pagerbtn {
-    color: black;
-    margin-left: 7px;
-    border: none;
-    background-color: white;
 }
 
 .table_category {

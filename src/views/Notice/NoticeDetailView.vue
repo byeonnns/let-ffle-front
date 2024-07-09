@@ -1,25 +1,15 @@
 <template>
-
-
     <div class="container"
         style="width: 100%; height:50px;border-bottom:3px solid #F37551; margin-bottom: 10px;margin-top: 30px ">
         <h3 style="margin-right: 80%; color: black">공지사항</h3>
     </div>
-
-
     <div class="container " style="width: 100%;  height:100%;">
-        <!-- border:1px solid black  -->
-
         <div style="width: 100%;">
-            <!-- border:1px solid black -->
             <div class="mt-4" style="border-bottom:1px solid #ebebeb ;">
                 <h2>{{ notice.ntitle }}</h2>
             </div>
             <div style="background-color: #FAFAFA; white-space:pre;">
                 <p class="mt-3" style="height: 100%;"> {{ notice.ncontent }} </p>
-                
-
-
                 <div class="text-center">
                     <button class="btn btn-outline-light btn-sm rounded-0" style="margin-top: 40px;"
                         @click="AnnouncementHandle()">목록 보기</button>
@@ -27,9 +17,6 @@
             </div>
         </div>
     </div>
-
-
-
 </template>
 
 <script setup>
@@ -46,7 +33,7 @@ async function getNoticeDetail(nno) {
     try {
         const response = await NoticeAPI.noticeDetail(nno);
         notice.value = response.data;
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     }
 }
@@ -57,7 +44,7 @@ function AnnouncementHandle() {
 </script>
 
 <style scoped>
-.btn{
+.btn {
     background-color: #F37551;
     color: white;
 }

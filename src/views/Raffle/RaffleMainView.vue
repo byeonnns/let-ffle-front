@@ -1,24 +1,24 @@
 <template>
     <div>
-        
         <div class="container-lg">
             <div>
                 <button class="btn btn-sm" @click="changeSortType('popular')">인기순</button>
                 <button class="btn btn-sm" @click="changeSortType('new')">최신순</button>
                 <button class="btn btn-sm" @click="changeSortType('cutoffsoon')">응모마감순</button>
             </div>
-            <div class="d-flex justify-content-end">
-                    <div class="input-group input-group-sm w-auto">
-                        <input type="text" class="form-control" v-model="searchWord" @keyup.enter="search(searchWord)">
-                        <button class="btn btn-sm" @click="search">검색</button>
-                    </div>
+            <div class="d-flex justify-content-end mb-3">
+                <div class="input-group input-group-sm w-auto">
+                    <input type="text" class="form-control" v-model="searchWord" @keyup.enter="search(searchWord)">
+                    <button class="btn btn-sm" style="background-color: #F37551; color:white;"
+                        @click="search">검색</button>
                 </div>
+            </div>
             <div class="row">
-                <!-- <RaffleVue v-for="n in 5" :key="n"/> -->
                 <div v-for="request in raffles" :key="request" class="col-lg-4 col-md-6 col-12 mb-4">
                     <RouterLink :to="`/Raffle/RaffleDetail?rno=${request.raffle.rno}`">
                         <div class="img-container">
-                            <img :src="`${axios.defaults.baseURL}/raffle/raffleThumbnailAttach/${request.raffle.rno}`" class="w-100 h-100 object-fit-cover">
+                            <img :src="`${axios.defaults.baseURL}/raffle/raffleThumbnailAttach/${request.raffle.rno}`"
+                                class="w-100 h-100 object-fit-cover">
                         </div>
                         <p class="raffle-title mt-2">{{ request.raffle.rtitle }}</p>
                         <p class="raffle-description"> {{ request.raffle.rsubtitle }}</p>
@@ -40,7 +40,6 @@ const router = useRouter();
 const raffles = ref();
 var category = (route.query.category || "all");
 var sortType = (route.query.sortType || "popular");
-
 const searchWord = ref();
 
 async function search() {
