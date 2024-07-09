@@ -121,8 +121,7 @@ watch(
 }
 
 .btn {
-    background-color: #F37551;
-    color: white;
+    color: black;
     border-radius: 0px;
 }
 

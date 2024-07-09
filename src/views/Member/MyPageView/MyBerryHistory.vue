@@ -173,8 +173,7 @@ td {
 }
 
 .btn {
-    background-color: #F37551;
-    color: white;
+    color: black;
     border: none;
 }
 

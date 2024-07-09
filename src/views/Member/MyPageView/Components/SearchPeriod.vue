@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="d-flex justify-content-center align-content-center">
+        <div class="d-flex justify-content-center align-content-center mt-3 mb-3">
             <li class="month_item">
                 <button class="month_link mx-1 bg-white" @click="setNull()">전체</button>
             </li>

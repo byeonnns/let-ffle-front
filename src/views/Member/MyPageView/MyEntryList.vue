@@ -246,8 +246,7 @@ function formatTime(dateStr) {
     text-wrap: nowrap;
     text-align: center;
     border-radius: 0px;
-    background-color: #F37551;
-    color: white;
+    color: black;
 }
 
 .Status {

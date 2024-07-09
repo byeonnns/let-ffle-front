@@ -5,6 +5,8 @@
                 <h3>당첨 내역</h3>
             </div>
             <div>
+                <SearchPeriod ref="searchPeriod" @searchList="changeSearchPeriod()" class="mt-5 mb-5">
+                </SearchPeriod>
                 <table class="table text-center">
                     <thead>
                         <tr>
@@ -49,8 +51,7 @@
                     <button @click="changePageOption(winningList.pager.totalPageNo)"
                         class="btn btn-outline-light btn-sm">맨끝</button>
                 </div>
-                <SearchPeriod ref="searchPeriod" @searchList="changeSearchPeriod()" class="mt-2">
-                </SearchPeriod>
+                
             </div>
         </div>
 
@@ -206,8 +207,7 @@ td {
 }
 
 .btn {
-    background-color: #F37551;
-    color: white;
+    color: black;
     border: none;
 }
 
