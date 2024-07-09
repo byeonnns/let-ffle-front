@@ -83,12 +83,16 @@ function getCutOffSoonRaffles() {
     return axios.get("/raffle/getCutOffSoonRaffles");
 }
 
+function getMonitorMemberList(rno, pageNo) {
+    return axios.get("/raffle/getMemberMonitor", {params : {rno : rno, pageNo : pageNo}})
+}
+
 function getMonitorWinnerList(rno, pageNo) {
     return axios.get("/raffle/readWinnerDetail", {params : {rno : rno, pageNo : pageNo}})
 }
 
-function getRaffleMonitor(rno) {
-    return axios.get("/raffle/getRaffleMonitor", {params : {rno : rno}})
+function getRaffleMonitor(rno, pageNo) {
+    return axios.get("/raffle/getRaffleMonitor", {params : {rno : rno, pageNo : pageNo}})
 }
 
 export default {
@@ -112,5 +116,6 @@ export default {
     getNewReleaseRaffles,
     getCutOffSoonRaffles,
     getRaffleMonitor,
+    getMonitorMemberList,
     getMonitorWinnerList
 }
