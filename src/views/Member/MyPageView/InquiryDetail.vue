@@ -18,16 +18,15 @@
                                 {{ inquiry.istatus }}
                             </div>
                         </div>
-                        <hr/>
+                        <hr />
                         <div class="inquiry-content p-3">
                             {{ inquiry.icontent }}
                         </div>
-
                         <div class="inquiry-answer mt-5">
                             <div>
                                 <h5>답변</h5>
                             </div>
-                            <hr/>
+                            <hr />
                             <div class="p-2">
                                 {{ inquiry.ireply }}
                             </div>
@@ -47,16 +46,16 @@
 <script setup>
 import { ref } from 'vue';
 import MemberAPI from '@/apis/MemberAPI';
-import { useRouter, useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const inquiry = ref({});
 const ino = route.query.ino;
+
 async function myInquiryDetail(ino) {
     const response = await MemberAPI.myInquiryDetail(ino);
     inquiry.value = response.data;
 }
-
 myInquiryDetail(ino);
 </script>
 

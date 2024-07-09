@@ -5,8 +5,6 @@
                 <h3>베리 변동 내역</h3>
             </div>
             <div style="border-bottom: 3px solid #F37551;">
-
-
                 <div class="purchase_list_tab mt-2">
                     <div class="tab_item total">
                         <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Total')">
@@ -62,15 +60,15 @@
         </div>
     </div>
     <div v-if="pager.totalPageNo > 0" class="d-flex justify-content-center">
-        <button @click="changePageOption(1, option)" class="btn btn-outline-light btn-sm me-1">처음</button>
+        <button @click="changePageOption(1, option)" class="btn pagerbtn">처음</button>
         <button v-if="pager.groupNo > 1" @click="changePageOption(pager.startPageNo - 1)"
-            class="btn btn-outline-light btn-sm me-1">이전</button>
+            class="btn pagerbtn">이전</button>
         <button v-for="pageNo in pager.pageArray" :key="pageNo" @click="changePageOption(pageNo, option)"
-            :class="(pager.pageNo == pageNo) ? 'btn-outline-light' : 'btn-outline-light'" class="btn btn-sm me-1">{{
-            pageNo }}</button>
+            :class="(pager.pageNo == pageNo) ? 'btn-outline-light' : 'btn-outline-light'" class="btn pagerbtn">{{
+                pageNo }}</button>
         <button v-if="pager.groupNo < pager.totalGroupNo" @click="changePageOption(pager.endPageNo + 1, option)"
-            class="btn btn-outline-light btn-sm me-1">다음</button>
-        <button @click="changePageOption(pager.totalPageNo, option)" class="btn btn-outline-light btn-sm">맨끝</button>
+            class="btn pagerbtn">다음</button>
+        <button @click="changePageOption(pager.totalPageNo, option)" class="btn pagerbtn">맨끝</button>
     </div>
 </template>
 
@@ -78,7 +76,6 @@
 import { ref, watch } from 'vue';
 import MemberAPI from '@/apis/MemberAPI';
 import { useRoute, useRouter } from 'vue-router';
-
 
 const berry = ref([]);
 const pager = ref({});
@@ -136,9 +133,7 @@ watch(route, (newRoute, oldRoute) => {
         option.value = 'Total';
     }
 });
-
 getMyBerryHistory(pageNo.value, option.value);
-
 </script>
 
 <style scoped>
@@ -167,7 +162,6 @@ getMyBerryHistory(pageNo.value, option.value);
     font-size: 16px;
 }
 
-
 td {
     align-content: center;
 }
@@ -185,6 +179,5 @@ td {
     /* 높이를 100px로 설정 (필요에 따라 조정 가능) */
     vertical-align: middle;
     /* 텍스트를 수직으로 가운데 정렬 */
-
 }
 </style>

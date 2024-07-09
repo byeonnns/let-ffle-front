@@ -18,7 +18,6 @@
                                                 v-model="inquiry.ititle" />
                                         </div>
                                     </div>
-
                                     <div class="form-group row mt-4">
                                         <label for="icontent" class="col-sm-2 col-form-label">내용</label>
                                         <div class="col-sm-10">
@@ -43,7 +42,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </form>
                         </div>
                     </div>
@@ -63,7 +61,6 @@ import MemberAPI from '@/apis/MemberAPI';
 const router = useRouter();
 const route = useRoute();
 const inquiry = ref({});
-const pageNo = route.query.pageNo;
 const ino = route.query.ino;
 const iattach = ref(null);
 const seeya = ref(null);
@@ -113,7 +110,7 @@ async function handleSubmit() {
 
         // 게시물 쓰기 요청
         try {
-            const response = await MemberAPI.updateInquiry(formData);
+            await MemberAPI.updateInquiry(formData);
             router.back();
         } catch (error) {
             console.log(error);

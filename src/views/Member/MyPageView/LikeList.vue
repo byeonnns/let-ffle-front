@@ -24,15 +24,13 @@
                             style="background-color: white; color: black;"
                             @click="deleteBtn(item.raffle.rno)">삭제</button>
                     </div>
-
                 </div>
                 <hr>
             </div>
-
             <div v-if="likeList.RaffleRequest.length === 0" class="non-center">
                 <h4>등록된 리스트가 없습니다.</h4>
             </div>
-            <div v-if="likeList.pager.totalPageNo > 0 && likeList.pager.totalPageNo.rno !==null"
+            <div v-if="likeList.pager.totalPageNo > 0 && likeList.pager.totalPageNo.rno !== null"
                 class="d-flex justify-content-center">
                 <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
                 <button v-if="likeList.pager.groupNo > 1" @click="changePageNo(likeList.pager.startPageNo - 1)"
@@ -56,14 +54,14 @@ import axios from "axios";
 import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
+const router = useRouter();
+const route = useRoute();
+const pageNo = ref(route.query.pageNo || 1);
 const likeList = ref({
     RaffleRequest: [],
     pager: {}
 });
 
-const router = useRouter();
-const route = useRoute();
-const pageNo = ref(route.query.pageNo || 1);
 async function getMyLikeList(pageNo) {
     try {
         const response = await MemberAPI.myLikeList(pageNo);
@@ -73,11 +71,12 @@ async function getMyLikeList(pageNo) {
         console.log(error);
     }
 }
+getMyLikeList(pageNo.value);
+
 function changePageNo(argPageNo) {
     router.push(`/Member/MyPage/LikeList?pageNo=${argPageNo}`);
 }
 
-getMyLikeList(pageNo.value);
 watch(route, (newRoute, oldRoute) => {
     if (newRoute.query.pageNo) {
         getMyLikeList(newRoute.query.pageNo);
@@ -101,7 +100,6 @@ async function deleteBtn(rno) {
         }
     }
 }
-
 </script>
 
 <style scoped>

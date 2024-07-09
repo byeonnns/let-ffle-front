@@ -7,13 +7,11 @@
             <table class="table mb-0">
                 <thead>
                     <tr class="d-none d-md-table-row text-center">
-
                         <th class="d-none d-md-table-cell" style="width: 4em;"><span>번호</span></th>
                         <th style="width: 5em;"><span>제목</span></th>
                         <th class="d-none d-md-table-cell" style="width: 7em;"><span>글쓴이</span></th>
                         <th class="d-none d-md-table-cell" style="width: 8em;"><span>날짜</span></th>
                         <th class="d-none d-md-table-cell" style="width: 6em;"><span>답변상태</span></th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -43,35 +41,28 @@
                 </RouterLink>
             </div>
             <div v-if="page.pager.totalPageNo > 0" class="text-center">
-                <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
+                <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
                 <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
-                    class="btn btn-outline-light btn-sm me-1">이전</button>
+                    class="btn pagerbtn">이전</button>
                 <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
-                    :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
-                    class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
+                    :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'" class="btn pagerbtn">{{
+                    pageNo }}</button>
                 <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
-                    @click="changePageNo(page.pager.endPageNo + 1)"
-                    class="btn btn-outline-light btn-sm me-1">다음</button>
-                <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
+                    @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
+                <button @click="changePageNo(page.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
             </div>
         </div>
     </div>
-
-
 </template>
-
-
 
 <script setup>
 import MemberAPI from '@/apis/MemberAPI';
 import { useRouter, useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
+
 const router = useRouter();
 const route = useRoute();
-
-
 const pageNo = ref(route.query.pageNo || 1);
-
 const page = ref({
     inquirys: [],
     pager: {}
@@ -79,18 +70,13 @@ const page = ref({
 
 async function getmyInquiryList(pageNo) {
     try {
-        console.log(pageNo.value + '알려저');
         const response = await MemberAPI.myInquiryList(pageNo);
-        console.log(response + "나오나여?");
-
         page.value.inquirys = response.data.inquiry;
         page.value.pager = response.data.pager;
-        console.log(page.value);
     } catch (error) {
         console.log(error);
     }
 }
-
 getmyInquiryList(pageNo.value);
 
 function changePageNo(argPageNo) {
@@ -100,11 +86,9 @@ function changePageNo(argPageNo) {
 watch(
     route, (newRoute, oldRoute) => {
         if (newRoute.query.pageNo) {
-            console.log(pageNo.value)
             getmyInquiryList(newRoute.query.pageNo);
             pageNo.value = newRoute.query.pageNo;
         } else {
-            console.log()
             getmyInquiryList(1);
             pageNo.value = 1;
         }
@@ -122,9 +106,6 @@ function formatDate(dateStr) {
 
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
-
-
-
 </script>
 
 <style scoped>
