@@ -5,7 +5,7 @@ import axiosConfig from '@/apis/axiosConfig';
 const store = createStore({
   state: {
     mid: "",
-    mRole:"",
+    mrole: "",
     accessToken: ""
   },
   getters: {
@@ -13,7 +13,7 @@ const store = createStore({
       return state.mid;
     },
     getMrole(state) {
-      return state.mRole;
+      return state.mrole === 'ROLE_ADMIN';
     },
 
     getAccessToken(state, getters, rootState, rootGetters) {
@@ -24,8 +24,8 @@ const store = createStore({
     setMid(state, payload) { // payload : 변경할 값을 갖고 있는 객체
       state.mid = payload;
     },
-    setMrole(state, payload) {
-      state.mRole = payload;
+    setMrole(state, role) {
+      state.mrole = role;
     },
     setAccessToken(state, payload) {
       state.accessToken = payload;
@@ -65,7 +65,7 @@ const store = createStore({
       context.commit("setMid", localStorage.getItem("mid") || "");
 
       const Mrole = localStorage.getItem("mRole") || "";
-      context.commit("setMrole",  Mrole);
+      context.commit("setMrole", Mrole);
 
       // accessToken 전역 상태 설정
       const accessToken = localStorage.getItem("accessToken") || "";
@@ -92,7 +92,7 @@ const store = createStore({
 
       // 로컬 파일에 저장
       localStorage.setItem("mid", payload.mid);
-      localStorage.setItem("mRole", payload.Mrole);
+      localStorage.setItem("mRole", payload.mRole);
       localStorage.setItem("accessToken", payload.accessToken);
 
       // Axios 요청 공통 헤더에 인증 정보 추가
