@@ -111,6 +111,10 @@ function getMember() {
     return axios.get("/member/getMember");
 }
 
+function getBerryHistoryListForHome() {
+    return axios.get("/member/getBerryHistoryListForHome");
+}
+
 function passwordMatchCheck(mpassword) {
     return axios.post("/member/mypage/passwordMatchCheck/" + mpassword);
 }
@@ -187,5 +191,6 @@ export default {
     updateInquiry,
     myCommentList,
     AdminMemberDetail,
-    inquiryReply
+    inquiryReply,
+    getBerryHistoryListForHome
 }

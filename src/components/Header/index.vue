@@ -3,9 +3,9 @@
         <div class="container-lg">
             <div class="d-flex d-none d-lg-block text-end">
                 <div class="d-inline-block">
-                    <Popper :placement="'left'">
+                    <Popper :placement="'left'" v-if="$store.state.mid !== ''">
                         <span class="me-3"><img src="@/assets/berry-icon.png" class="me-1" height="20px"
-                                @click="popper">300</span>
+                                @click="popper">{{ members.mberry }}</span>
                         <template #content>
                             <div class="d-flex flex-column bg-white border" style="width: 300px;">
                                 <p class="text-center" style="font-size: 22px;">베리 변동 내역</p>
@@ -22,15 +22,10 @@
                                         <th>적립/사용</th>
                                         <th>사유</th>
                                     </thead>
-                                    <tr>
-                                        <td>2024.06.13 17:30</td>
-                                        <td>10개 사용</td>
-                                        <td>당첨 확률 상승</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2024.06.12 20:45</td>
-                                        <td>1개 적립</td>
-                                        <td>일일 3회 미션 성공</td>
+                                    <tr v-for="item in berry" :key="item.bhno">
+                                        <td>{{ formatDate(item.bhchangedat) }}<br>{{ formatTime(item.bhchangedat) }}</td>
+                                        <td>{{ item.bhchangevalue }}</td>
+                                        <td>{{ item.bhreason }}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -42,7 +37,8 @@
                 <RouterLink v-if="$store.state.mid === ''" to="/login" class="me-3"><span
                         class="d-inline-block">로그인</span></RouterLink>
                 <a v-if="$store.state.mid !== ''" class="d-inline-block me-3 logout" @click="handleLogout">로그아웃</a>
-                <RouterLink to="/Member/MyPage" class="me-3"><span class="d-inline-block">마이페이지</span></RouterLink>
+                <RouterLink v-if="$store.state.mid !== ''" to="/Member/MyPage" class="me-3"><span class="d-inline-block">마이페이지</span></RouterLink>
+                <RouterLink v-if="$store.state.mid === ''" to="/login" class="me-3"><span class="d-inline-block">마이페이지</span></RouterLink>
                 <RouterLink to="/Notice" class="me-3"><span class="d-inline-block">고객센터</span></RouterLink>
                 <RouterLink v-if="$store.state.mrole === 'ROLE_ADMIN'" to="/Admin" class="me-3"><span
                         class="d-inline-block">관리자</span>
@@ -84,17 +80,54 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { computed, ref, watch } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import RaffleSubMenu from './RaffleSubMenu.vue';
 import NoticeSubMenu from './NoticeSubMenu.vue';
 import NullSubMenu from './NullSubMenu.vue';
 import Popper from "vue3-popper";
 import { useStore } from 'vuex';
+import MemberAPI from '@/apis/MemberAPI';
 
 const store = useStore();
+const route = useRoute();
 const router = useRouter();
 const nowPath = computed(() => router.currentRoute.value.path);
+const berry = ref([]);
+const members = ref([]);
+
+async function getMember() {
+    try {
+        const response = await MemberAPI.getMember();
+        members.value = response.data; 
+        console.log(members.value);
+    } catch(error) {
+        console.log(error);
+    }
+}
+getMember();
+
+async function getBerryHistoryListForHome() {
+    try {
+        const response = await MemberAPI.getBerryHistoryListForHome();
+        berry.value = response.data;
+    } catch(error) {
+        console.log(error);
+    }
+}
+getBerryHistoryListForHome();
+
+watch(
+    route, (newRoute, oldRoute) => {
+        if (newRoute.query.pageNo) {
+            getMember(newRoute.query.mberry);
+            getBerryHistoryListForHome(newRoute.query.berry);
+        } else {
+            getMember(1);
+            getBerryHistoryListForHome(1);
+        }
+    }
+);
 
 const currentComponent = computed(() => {
     // 현재 경로에 따라 다른 컴포넌트를 반환
@@ -113,6 +146,25 @@ function handleLogout() {
     store.dispatch("deleteAuth");
     router.push("/")
 }
+
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
+
+function formatTime(dateStr) {
+    const date = new Date(dateStr);
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    return `${hours}:${minutes}:${seconds}`;
+}
+
 </script>
 
 <style scoped>
