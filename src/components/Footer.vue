@@ -5,16 +5,20 @@
                 <div class="mt-4">
                     <ul class="d-flex gap-3 list-unstyled">
                         <li>이용약관</li>
-                        <RouterLink to="/Notice"><li class="list-group-item">공지사항</li></RouterLink>
+                        <RouterLink to="/Notice">
+                            <li class="list-group-item">공지사항</li>
+                        </RouterLink>
                         <li>제휴제안</li>
-                        <RouterLink to="/Member/MyPage/WriteInquiry"><li class="list-group-item">문의하기</li></RouterLink>
+                        <RouterLink to="/Member/MyPage/WriteInquiry">
+                            <li class="list-group-item">문의하기</li>
+                        </RouterLink>
                     </ul>
                     <span class="d-none d-lg-block" style="font-size: 13px;">주식회사 렛플 대표 : 변성준 사업자등록번호 : 123-45-67890
                         통신판매업 : 제2024-가락시장A-0016호<br />
-                        사업장 소재지 : 서울특별시 송파구 중대로 135 IT벤처타워, 16층 <br/>호스팅 서비스 : 코사 클라우드 ㈜</span>
+                        사업장 소재지 : 서울특별시 송파구 중대로 135 IT벤처타워, 16층 <br />호스팅 서비스 : 코사 클라우드 ㈜</span>
                     <span class="d-none d-lg-block mt-3" style="font-size: 13px;">렛플(주)는 통신판매 중개자로서 통신판매의 당사자가 아닙니다. 본
                         상품은 개별판매자가 등록한 상품으로 상품, 상품정보,
-                        거래에 관한 의무와 책임은 각 판매자에게 있습니다. <br/>
+                        거래에 관한 의무와 책임은 각 판매자에게 있습니다. <br />
                         단, 이용약관 및 정책, 기타 거래 체결 과정에서 고지하는 내용 등에 따라 검수하고 보증하는 내용에 대한 책임은 렛플(주)에 있습니다.</span>
                 </div>
                 <div class="mt-4">

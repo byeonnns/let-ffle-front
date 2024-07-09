@@ -26,7 +26,6 @@ const createWriteForm = ref(null);
 // 신청하기를 클릭했을때 실행할 함수 
 function handleClick() {
     createWriteForm.value.createInquiry();
-    console.log("제대로 호출됨");
 }
 </script>
 

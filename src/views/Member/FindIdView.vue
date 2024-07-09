@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-    <RaffleModal ref="noMatchModal">
+    <Modal ref="noMatchModal">
         <template v-slot:modalHeader>
             <h3>알림</h3>
         </template>
@@ -28,13 +28,13 @@
             <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal"
                 style="background-color: #F37551; color: white;">닫기</button>
         </template>
-    </RaffleModal>
+    </Modal>
 </template>
 
 <script setup>
 import MemberAPI from '@/apis/MemberAPI';
 import { reactive, ref } from 'vue';
-import RaffleModal from '@/components/RaffleModal.vue';
+import Modal from '@/components/Modal.vue';
 
 const findIdView = ref(null);
 const ispass = ref(false);

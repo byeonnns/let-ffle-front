@@ -37,19 +37,17 @@
                         </template>
                     </Popper>
                 </div>
-
                 <RouterLink v-if="$store.state.mid === ''" to="/join" class="me-3"><span
                         class="d-inline-block">회원가입</span></RouterLink>
                 <RouterLink v-if="$store.state.mid === ''" to="/login" class="me-3"><span
                         class="d-inline-block">로그인</span></RouterLink>
-
                 <a v-if="$store.state.mid !== ''" class="d-inline-block me-3 logout" @click="handleLogout">로그아웃</a>
-
                 <RouterLink to="/Member/MyPage" class="me-3"><span class="d-inline-block">마이페이지</span></RouterLink>
                 <RouterLink to="/Notice" class="me-3"><span class="d-inline-block">고객센터</span></RouterLink>
-                <RouterLink v-if="$store.state.mrole === 'ROLE_ADMIN'" to="/Admin" class="me-3"><span class="d-inline-block">관리자</span></RouterLink>
+                <RouterLink v-if="$store.state.mrole === 'ROLE_ADMIN'" to="/Admin" class="me-3"><span
+                        class="d-inline-block">관리자</span>
+                </RouterLink>
             </div>
-
             <nav class="navbar navbar-expand-lg bg-body-white">
                 <div class="container-fluid">
                     <RouterLink to="/" class="fw-bold fst-italic non-this" style="font-size:40px">Let-<span
@@ -86,7 +84,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import RaffleSubMenu from './RaffleSubMenu.vue';
 import NoticeSubMenu from './NoticeSubMenu.vue';
@@ -115,7 +113,6 @@ function handleLogout() {
     store.dispatch("deleteAuth");
     router.push("/")
 }
-
 </script>
 
 <style scoped>
@@ -128,7 +125,7 @@ tr {
     text-align: center;
 }
 
-.logout:hover{
-    cursor: pointer; 
+.logout:hover {
+    cursor: pointer;
 }
 </style>

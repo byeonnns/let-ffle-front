@@ -51,7 +51,6 @@ const routes = [
             path: 'InquiryUpdate',
             component: () => import(/* webpackChunkName: "Member" */ '@/views/Member/MyPageView/InquiryUpdate.vue')
         },
-
         ]
     }
 ];

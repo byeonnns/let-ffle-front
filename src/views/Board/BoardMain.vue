@@ -6,24 +6,20 @@
                 <h3>자유 게시판</h3>
             </div>
             <div style="width: 100%; height:100%;">
-                <!--  border:1px solid black; -->
                 <div style="width: 100%; height:100%; ">
-                    <!-- border:1px solid black; -->
                     <div class="d-flex justify-content-between">
                         <div>
-                            <button class="btn me-2" style="background-color: white; color:black;" @click="categorySearch('자유')">자유</button>
-                            <button class="btn" style="background-color: white; color:black;" @click="categorySearch('당첨후기')">당첨 후기</button>
+                            <button class="btn me-2" style="background-color: white; color:black;"
+                                @click="categorySearch('자유')">자유</button>
+                            <button class="btn" style="background-color: white; color:black;"
+                                @click="categorySearch('당첨후기')">당첨 후기</button>
                         </div>
-
-                        <button class="btn btn-outline-light btn-sm ms-3 rounded-0"
-                            style="background-color: #F37551;">
+                        <button class="btn btn-outline-light btn-sm ms-3 rounded-0" style="background-color: #F37551;">
                             <RouterLink to="/Board/WriteBoard" style="color: white;">글쓰기</RouterLink>
                         </button>
                     </div>
-
                     <table class="table mt-2">
                         <thead style="border-bottom: 1px solid #ebebeb">
-                            <!-- class="text-center" -->
                             <th style="width:80px">글번호</th>
                             <th>제목</th>
                             <th style="width:170px">글쓴이</th>
@@ -31,7 +27,6 @@
                             <th style="width:80px">조회수</th>
                         </thead>
                         <tbody v-if="page.boards.length != 0">
-                            <!--class="text-center"  -->
                             <tr v-for="board in page.boards" :key="board.bno">
                                 <td>{{ board.bno }}</td>
                                 <RouterLink :to="`/Board/BoardDetail?bno=${board.bno}&pageNo=${pageNo}`"
@@ -42,11 +37,9 @@
                                 <td> {{ formatDate(board.bcreatedat) }} </td>
                                 <td> {{ board.bhitcount }} </td>
                             </tr>
-                            
                             <tr>
                                 <td colspan="5" class="text-center">
-                                    <button @click="changePageNo(1)"
-                                        class="btn pagerbtn">처음</button>
+                                    <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
                                     <button v-if="page.pager.groupNo > 1"
                                         @click="changePageNo(page.pager.startPageNo - 1)"
                                         class="btn pagerbtn">이전</button>
@@ -55,8 +48,7 @@
                                         :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-success'"
                                         class="btn pagerbtn">{{ pageNo }}</button>
                                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
-                                        @click="changePageNo(page.pager.endPageNo + 1)"
-                                        class="btn pagerbtn">다음</button>
+                                        @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
                                     <button @click="changePageNo(page.pager.totalPageNo)"
                                         class="btn pagerbtn">맨끝</button>
                                 </td>
@@ -67,11 +59,8 @@
                         <div>
                             등록된 게시글이 없습니다.
                         </div>
-                        
                     </div>
-
                     <div style="width: 32%; height:60px;" class="container">
-                        <!-- border:1px solid black; -->
                         <div class="input-group" style="align-content: center;">
                             <select id="selectOption" class="me-3" v-model="searchType">
                                 <option value="title" selected>제목</option>
@@ -80,7 +69,8 @@
                                 <option value="titleOrContet">제목 + 내용</option>
                             </select>
                             <input type="text" class="form-control" aria-label="Recipient's username"
-                                aria-describedby="button-addon2" v-model="searchWord" @keyup.enter="getBoardList(1, searchType, searchWord)">
+                                aria-describedby="button-addon2" v-model="searchWord"
+                                @keyup.enter="getBoardList(1, searchType, searchWord)">
                             <button class="btn btn-outline-light ms-2 rounded-0" type="button"
                                 @click="getBoardList(1, searchType, searchWord)">검색</button>
                         </div>
@@ -89,10 +79,7 @@
             </div>
         </div>
     </div>
-
-
 </template>
-
 
 <script setup>
 import { onMounted, ref, watch } from 'vue';
@@ -101,7 +88,6 @@ import BoardAPI from '@/apis/BoardAPI';
 
 const router = useRouter();
 const route = useRoute();
-
 const searchType = ref('title');
 const searchWord = ref();
 
@@ -116,13 +102,12 @@ async function categorySearch(type) {
 }
 
 const pageNo = ref(route.query.pageNo || 1);
-
 const page = ref({
     boards: [],
     pager: {}
 });
 
-async function getBoardList(pageNo, searchType='' ,word='') {
+async function getBoardList(pageNo, searchType = '', word = '') {
     try {
         const response = await BoardAPI.getBoardList(pageNo, searchType, word);
         page.value.boards = response.data.board;
@@ -143,11 +128,9 @@ function changePageNo(argPageNo) {
 watch(
     route, (newRoute, oldRoute) => {
         if (newRoute.query.pageNo) {
-            console.log(pageNo.value)
             getBoardList(newRoute.query.pageNo);
             pageNo.value = newRoute.query.pageNo;
         } else {
-            console.log()
             getBoardList(1);
             pageNo.value = 1;
         }
@@ -155,13 +138,14 @@ watch(
 );
 
 function formatDate(dateString) {
-      const date = new Date(dateString);
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      const hours = String(date.getHours()).padStart(2, '0');
-      const minutes = String(date.getMinutes()).padStart(2, '0');
-      return `${year}-${month}-${day} ${hours}:${minutes}`;
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
 }
 </script>
 

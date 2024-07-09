@@ -20,10 +20,8 @@
                         <label for="btitle" class="col-sm-2 col-form-label">제목</label>
                         <div class="col-sm-10">
                             <input id="btitle" type="text" class="form-control" v-model="board.btitle" />
-
                         </div>
                     </div>
-
                     <div class="form-group row mt-4">
                         <label for="bcontent" class="col-sm-2 col-form-label">내용</label>
                         <div class="col-sm-10">
@@ -31,14 +29,12 @@
                                 v-model="board.bcontent"></textarea>
                         </div>
                     </div>
-
                     <div class="form-group row mt-4">
                         <label for="battach" class="col-sm-2 col-form-label">첨부파일</label>
                         <div class="col-sm-10">
                             <input id="battach" type="file" class="form-control-file" ref="battach" />
                         </div>
                     </div>
-
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-12 d-flex justify-content-end">
@@ -48,33 +44,25 @@
                         </RouterLink>
                     </div>
                 </div>
-
             </form>
         </div>
         <RaffleToast ref="seeya" />
-
     </div>
 </template>
 
 <script setup>
-import WriteForm from "@/components/WriteForm.vue";
 import { ref } from "vue";
 import RaffleToast from "@/components/RaffleToast.vue";
 import BoardAPI from "@/apis/BoardAPI";
 import { useRouter } from "vue-router";
 
-const checkTitle = ref(null);
-const checkContent = ref(null);
-const writeFormRef = ref(null);
 const seeya = ref(null);
 const router = useRouter();
-
 const board = ref({
     bcategory: "자유",
     btitle: "",
     bcontent: "",
 });
-
 const battach = ref(null);
 
 async function handleSubmit() {
@@ -112,7 +100,7 @@ async function handleSubmit() {
 
         // 게시물 쓰기 요청
         try {
-            const response = await BoardAPI.writeBoard(formData);
+            await BoardAPI.writeBoard(formData);
             router.back();
         } catch (error) {
             console.log(error);

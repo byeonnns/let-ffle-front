@@ -46,24 +46,8 @@ const routes = [
             path: 'RaffleMonitorDetail',
             component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/RaffleMonitorDetail.vue')
         }
-        
-    ]
+        ]
     },
-    // {
-    //     path: '/Admin/Sidebar',
-    //     component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Sidebar')
-    // },
-    // {
-    //     path: '/Admin/Inquiry',
-    //     component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Inquiry')
-    // },
-    // {
-    // {
-    //     path: '/Admin/Inquiry/Reply',
-    //     component: () => import(/* webpackChunkName: "Admin" */ '@/views/Admin/Inquiry/Reply.vue')
-    // },
-   
-    
 ];
 
 export default routes;

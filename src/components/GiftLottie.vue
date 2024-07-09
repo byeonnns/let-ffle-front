@@ -10,7 +10,6 @@ import { ref, defineExpose } from 'vue';
 import { Vue3Lottie } from 'vue3-lottie';
 import winningAnimation from "@/assets/lottie/checkLottie.json";
 import defeatAnimation from "@/assets/lottie/lose.json"
-const isNone = ref(false);
 
 let lottieAnimation;
 const lottieStatus = ref(false);

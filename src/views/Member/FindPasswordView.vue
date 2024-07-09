@@ -19,7 +19,7 @@
         </div>
 
         <!-- 비밀번호 변경 모달 -->
-        <RaffleModal ref="findModal">
+        <Modal ref="findModal">
             <template v-slot:modalHeader>
                 <h3>새 비밀번호 찾기</h3>
             </template>
@@ -32,7 +32,6 @@
                         <span v-if="passwordResult == false" style="color: red;">{{ passwordSpan1 }}</span>
                         <span v-if="passwordResult == true" style="color: green;">{{ passwordSpan1 }}</span>
                     </div>
-
                     <div class="div_form row">
                         <label>비밀번호 확인</label>
                         <input v-model="RePassword" type="password" placeholder="" class="border-0 border-bottom"
@@ -49,9 +48,8 @@
                 <button style="background-color: #F37551; color:white; border-radius: 0px;" type="button"
                     class="btn btn-outline-light" data-bs-dismiss="modal" @click="updatePassword">완료</button>
             </template>
-        </RaffleModal>
-
-        <RaffleModal ref="noMatchModal">
+        </Modal>
+        <Modal ref="noMatchModal">
             <template v-slot:modalHeader>
                 <h3>알림</h3>
             </template>
@@ -62,21 +60,19 @@
                 <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal"
                     style="background-color: #F37551; color: white;">닫기</button>
             </template>
-        </RaffleModal>
+        </Modal>
     </div>
 </template>
 
 <script setup>
 import { reactive, ref } from 'vue';
-import RaffleModal from '@/components/RaffleModal.vue';
+import Modal from '@/components/Modal.vue';
 import MemberAPI from '@/apis/MemberAPI';
 import router from '@/router';
-
 
 // 휴대폰번호 와 이메일 유효성
 const mphoneCheck = ref(null);
 const midCheck = ref(null);
-
 const member = ref({
     mid: "",
     mphone: ""
@@ -118,7 +114,6 @@ const noMatchModal = ref("");
 
 async function findPassword() {
     const response = await MemberAPI.findPassword(member.value.mphone, member.value.mid);
-    console.log(response.data.result);
 
     if (response.data.result == 'success') {
         findModal.value.showModal();

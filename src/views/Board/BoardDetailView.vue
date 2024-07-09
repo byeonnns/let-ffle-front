@@ -1,48 +1,34 @@
 <template>
-
-
     <div class="container"
         style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px;margin-top: 30px">
         <h3>자유 게시판</h3>
     </div>
-
     <div class="container" style="width: 100%; height:100%; ">
-
-
         <div class="">
-
             <h2>[{{ board.bcategory }}] {{ board.btitle }}</h2>
             <div class="d-flex justify-content-between">
                 <div>
                     <span class="me-3">{{ board.mid }}</span><i class="bi bi-clock me-2">{{ board.bcreatedat }}</i><i
                         class="bi bi-eye">{{ board.bhitcount }}</i>
-
                 </div>
                 <div>
                     <input type="submit" class="btn btn-outline-light btn-sm me-2 rounded-0" value="수정"
                         @click="updateBoard" />
                     <input type="button" class="btn btn-outline-light btn-sm me-2 rounded-0" value="삭제"
                         @click="deleteBoard" />
-
                 </div>
             </div>
-
             <hr />
-
             <div class="mt-5">
                 {{ board.bcontent }}
             </div>
-
             <img v-if="battach != null" width="300" :src="battach">
-
             <div class="text-center" style="margin-top:100px ;">
                 <RouterLink to="/Board/BoardList">
                     <input type="button" class="btn btn-outline-light btn-sm rounded-0" value="목록" />
                 </RouterLink>
             </div>
         </div>
-
-
         <form @submit.prevent="createComment">
             <div class="form-group row mt-5">
                 <div style="margin-bottom: 30px">
@@ -54,32 +40,24 @@
                 <button class="btn btn-outline-light rounded-0">댓글작성</button>
             </div>
         </form>
-
         <div style="width: 100%;">
-            <!-- border:1px solid black -->
             <div class="mt-4" style="border-bottom:1px solid #ebebeb ;">
                 <p>댓글 [{{ commentList.length }}]</p>
             </div>
-
             <div v-for="com in commentList" :key="com.cno">
                 <div class="mt-3">
                     <p class="custom-title me-3"> {{ com.mid }}</p>
                     <p class="custom-text"> {{ com.ccreatedat }}</p>
                     <button class="my_btn btn-outline-light btn-sm m-2" @click="deleteComment(com.cno)"><i
                             class="bi bi-x-square"></i></button>
-
                 </div>
                 <div style=" background-color: #FAFAFA; height: 100px; padding: 5px">
                     <p class="mt-3"> {{ com.ccontent }} </p>
                 </div>
             </div>
-
         </div>
-
         <RaffleToast ref="look" />
-
     </div>
-
 </template>
 
 
@@ -90,16 +68,13 @@ import { useRoute, useRouter } from 'vue-router';
 import BoardAPI from '@/apis/BoardAPI';
 
 const look = ref(null);
-const chekcomment = ref(null);
-
 const board = ref({});
 const router = useRouter();
-// Query String으로 전달된 bno 얻기
 const route = useRoute();
+// Query String으로 전달된 bno 얻기
 const bno = route.query.bno;
 const pageNo = route.query.pageNo;
 const battach = ref(null);
-
 const boardComment = ref({
     bno: bno,
     ccontent: "",
@@ -116,10 +91,7 @@ async function boardCommentList(bno) {
         console.log(error);
     }
 }
-
 boardCommentList(bno);
-
-
 
 async function createComment() {
 
@@ -135,22 +107,18 @@ async function createComment() {
     }
 
     if (total) {
-
         const formData = new FormData();
 
         formData.append("bno", boardComment.value.bno);
         formData.append("ccontent", boardComment.value.ccontent);
 
-        console.log(boardComment.value);
         try {
-            const response = await BoardAPI.createComment(formData);
+            await BoardAPI.createComment(formData);
             router.go(`/Board/BoardDetail?bno=${bno}&pageNo=${pageNo}`);
         } catch (error) {
             console.log(error);
         }
-
     }
-
 }
 
 // 해당 bno 게시물 얻는 함수
@@ -165,6 +133,7 @@ async function getBoard(argBno) {
         console.log(error);
     }
 }
+getBoard(bno);
 
 // 첨부 다운로드
 async function getAttach(argBno) {
@@ -177,9 +146,6 @@ async function getAttach(argBno) {
     }
 }
 
-// bno에 해당하는 게시물 가져오기
-getBoard(bno);
-
 function updateBoard() {
     router.push(`/Board/BoardUpdate?bno=${board.value.bno}&pageNo=${pageNo}`);
 }
@@ -187,8 +153,6 @@ function updateBoard() {
 async function deleteBoard() {
     try {
         await BoardAPI.deleteBoard(bno);
-        // 삭제 후 게시물 목록으로 다시 이동
-        //router.push(`/Board/BoardList?pageNo=${pageNo}`);
         router.back();
     } catch (error) {
         console.log(error);
@@ -203,7 +167,6 @@ async function deleteComment(cno) {
         console.log(error);
     }
 }
-
 </script>
 
 <style scoped>

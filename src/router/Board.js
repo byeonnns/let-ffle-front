@@ -15,8 +15,6 @@ const routes = [
         path: '/Board/BoardUpdate',
         component: () => import(/* webpackChunkName: "Board" */ '@/views/Board/UpdateBoardView.vue')
     }
-
-
 ];
 
 export default routes;

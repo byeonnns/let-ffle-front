@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <RaffleModal ref="inputModal">
+        <Modal ref="inputModal">
             <template v-slot:modalHeader>
                 <div class="d-flex w-100">
                     <h4 class="m-0">배송지 입력</h4>
@@ -84,14 +84,14 @@
                 <button class="btn btn-sm btn-outline-dark" data-bs-dismiss="modal" form="receive">완료</button>
                 <button class="btn btn-sm btn-dark" data-bs-dismiss="modal">닫기</button>
             </template>
-        </RaffleModal>
+        </Modal>
     </div>
 </template>
 
 <script setup>
 import { ref, watch } from 'vue';
 import SearchPeriod from './Components/SearchPeriod.vue';
-import RaffleModal from '@/components/RaffleModal.vue';
+import Modal from '@/components/Modal.vue';
 import RaffleAPI from "@/apis/RaffleAPI";
 import { useRoute, useRouter } from 'vue-router';
 import MemberAPI from '@/apis/MemberAPI';
@@ -166,7 +166,7 @@ const handleSubmit = async () => {
     formData.append("wreceiveraddress", wreceiveraddress.value);
     formData.append("wreceiverphone", wreceiverphone.value);
     try {
-        const response = await MemberAPI.updateWinner(formData);
+        await MemberAPI.updateWinner(formData);
         wreceivername.value = null;
         wreceiverphone.value = null;
         wreceiveraddress.value = null;

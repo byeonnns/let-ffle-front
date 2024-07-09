@@ -8,6 +8,7 @@ const store = createStore({
     mrole: "",
     accessToken: ""
   },
+
   getters: {
     getMid(state, getters, rootState, rootGetters) {
       return state.mid;
@@ -19,8 +20,9 @@ const store = createStore({
       return state.accessToken;
     }
   },
+
   mutations: {
-    setMid(state, payload) { // payload : 변경할 값을 갖고 있는 객체
+    setMid(state, payload) {
       state.mid = payload;
     },
     setMrole(state, role) {
@@ -30,12 +32,10 @@ const store = createStore({
       state.accessToken = payload;
     }
   },
+
   actions: {
     loginAction(context, payload) {
       new Promise((resolve, reject) => {
-        // 서버와 통신 작업
-        // ... 3초 소요
-
         if (true) {
           // 로그인 성공
           resolve({ result: "success", mid: "summer" });
@@ -43,7 +43,6 @@ const store = createStore({
           // 로그인 실패
           reject({ result: "fail", reason: "password is not exist" });
         }
-
       })
         .then((data) => {
           // 작업이 성공 처리된 경우
@@ -52,7 +51,6 @@ const store = createStore({
           context.commit("setMid", data.mid); // Mutation을 사용해 상태 변경 (actions는 상태 직접 변경이 불가능하다)
           context.commit("seMrole", data.mrole);
         })
-
         .catch((data) => {
           // 작업이 실패 처리된 경우
           console.log("로그인 실패");

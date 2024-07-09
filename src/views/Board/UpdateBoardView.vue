@@ -22,7 +22,6 @@
                             <input id="btitle" type="text" class="form-control" v-model="board.btitle" />
                         </div>
                     </div>
-
                     <div class="form-group row mt-4">
                         <label for="bcontent" class="col-sm-2 col-form-label">내용</label>
                         <div class="col-sm-10">
@@ -30,18 +29,16 @@
                                 v-model="board.bcontent"></textarea>
                         </div>
                     </div>
-
                     <div class="form-group row mt-4">
                         <label for="battach" class="col-sm-2 col-form-label">첨부파일</label>
                         <div v-if="board.battachoname !== null">
-                        <img width="300"
-                            :src="`${axios.defaults.baseURL}/community/battach/${bno}?accessToken=${$store.state.accessToken}`">
+                            <img width="300"
+                                :src="`${axios.defaults.baseURL}/community/battach/${bno}?accessToken=${$store.state.accessToken}`">
                         </div>
                         <div class="col-sm-10">
                             <input id="battach" type="file" class="form-control-file" ref="battach" />
                         </div>
                     </div>
-
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-12 d-flex justify-content-end">
@@ -51,35 +48,25 @@
                         </RouterLink>
                     </div>
                 </div>
-
             </form>
         </div>
         <RaffleToast ref="seeya" />
-
     </div>
 </template>
 
 <script setup>
-import WriteForm from "@/components/WriteForm.vue";
 import { ref } from "vue";
 import RaffleToast from "@/components/RaffleToast.vue";
 import boardAPI from "@/apis/BoardAPI";
 import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 
-const checkTitle = ref(null);
-const checkContent = ref(null);
-const writeFormRef = ref(null);
 const seeya = ref(null);
-
 const board = ref({})
 const router = useRouter();
 const route = useRoute();
-const pageNo = route.query.pageNo;
 const battach = ref(null);
-
 const bno = route.query.bno;
-
 
 // 해당 bno 게시물 얻는 함수
 async function getBoard(argBno) {
@@ -89,11 +76,11 @@ async function getBoard(argBno) {
         if (board.value.battachoname != null) {
             getAttach(argBno);
         }
-        console.log(board.value);
     } catch (error) {
         console.log(error);
     }
 }
+
 // 첨부 다운로드
 async function getAttach(argBno) {
     try {
@@ -142,14 +129,13 @@ async function handleSubmit() {
 
         // 게시물 쓰기 요청
         try {
-            const response = await boardAPI.updateBoard(formData);
+            await boardAPI.updateBoard(formData);
             router.back();
         } catch (error) {
             console.log(error);
         }
     }
 }
-
 </script>
 
 <style scoped>

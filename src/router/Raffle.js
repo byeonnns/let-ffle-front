@@ -7,7 +7,6 @@ const routes = [
         path: '/Raffle/RaffleDetail',
         component: () => import(/* webpackChunkName: "Raffle" */ '@/views/Raffle/RaffleDetailView.vue')
     }
-    
 ];
 
 export default routes;

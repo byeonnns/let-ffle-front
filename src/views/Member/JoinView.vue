@@ -45,7 +45,7 @@
                         :class="ispass ? '' : 'disabled'" style="background-color: #F37551;">가입하기</button>
 
                 </div>
-                <RaffleModal ref="postcodeModal">
+                <Modal ref="postcodeModal">
                     <template v-slot:modalHeader>
                         주소 검색
                     </template>
@@ -57,7 +57,7 @@
                             outlineColor: "#FF5C35"
                         }' v-if="postcodeMount" @complete="addressSearched" />
                     </template>
-                </RaffleModal>
+                </Modal>
             </form>
         </div>
     </div>
@@ -65,12 +65,12 @@
 
 <script setup>
 import { reactive, ref } from 'vue';
-import RaffleModal from '@/components/RaffleModal.vue';
+import Modal from '@/components/Modal.vue';
 import { VueDaumPostcode } from 'vue-daum-postcode'
 import MemberAPI from '@/apis/MemberAPI';
 import router from '@/router';
 
-// 유효성 검사시에 값이 맞는지 안맞는지
+// 유효성 검사시에 값이 맞는지 안맞는지@/components/Modal.vue
 const checkMid = ref(null);
 const checkMpassword = ref(null);
 const checkMnick = ref(null);

@@ -1,29 +1,26 @@
 <template>
-  <div>
-      <div class="form-group row">
-        <label for="ititle" class="col-sm-2 col-form-label">제목</label>
-        <div class="col-sm-10">
-          <input id="ititle" type="text" class="form-control" v-model="inquiry.ititle" />
-
+    <div>
+        <div class="form-group row">
+            <label for="ititle" class="col-sm-2 col-form-label">제목</label>
+            <div class="col-sm-10">
+                <input id="ititle" type="text" class="form-control" v-model="inquiry.ititle" />
+            </div>
         </div>
-      </div>
-
-      <div class="form-group row mt-4">
-        <label for="icontent" class="col-sm-2 col-form-label">내용</label>
-        <div class="col-sm-10">
-          <textarea id="icontent" type="text" class="form-control" style="height:250px;"
-            v-model="inquiry.icontent"></textarea>
+        <div class="form-group row mt-4">
+            <label for="icontent" class="col-sm-2 col-form-label">내용</label>
+            <div class="col-sm-10">
+                <textarea id="icontent" type="text" class="form-control" style="height:250px;"
+                v-model="inquiry.icontent"></textarea>
+            </div>
         </div>
-      </div>
-
-      <div class="form-group row mt-4">
-        <label for="iattach" class="col-sm-2 col-form-label">첨부파일</label>
-        <div class="col-sm-10">
-          <input id="iattach" type="file" class="form-control-file" ref="iattach" />
+        <div class="form-group row mt-4">
+            <label for="iattach" class="col-sm-2 col-form-label">첨부파일</label>
+            <div class="col-sm-10">
+                <input id="iattach" type="file" class="form-control-file" ref="iattach" />
+            </div>
         </div>
-      </div>
-  </div>
-  <RaffleToast ref="seeya" />
+    </div>
+    <RaffleToast ref="seeya" />
 </template>
 
 <script setup>
@@ -33,8 +30,8 @@ import { useRouter } from 'vue-router';
 import RaffleToast from '@/components/RaffleToast.vue';
 
 const inquiry = ref({
-    ititle : "",
-    icontent : "",
+    ititle: "",
+    icontent: "",
 })
 
 const router = useRouter();
@@ -47,46 +44,39 @@ async function createInquiry() {
     const titlepattern = /^.{2,50}$/;
     const contentpattern = /^.{2,100}$/;
 
-    console.log("checking Title", inquiry.value.ititle);
-    console.log("checking content", inquiry.value.icontent);
-
-  if (!titlepattern.test(inquiry.value.ititle)) {
-    total = false;
-    seeya.value.showToast("제목을 입력 해주세요");
-    console.log(inquiry.value.ititle);
-  }
-
-  if (!contentpattern.test(inquiry.value.icontent)) {
-    total = false;
-    seeya.value.showToast("내용을 입력 해주세요");
-  }
-
-  if (total) {
-    console.log("ititle:", inquiry.value.ititle);
-    console.log("icontent:", inquiry.value.icontent);
-
-    const formData = new FormData();
-    formData.append("ititle", inquiry.value.ititle);
-    formData.append("icontent", inquiry.value.icontent);
-
-    const elIattach = iattach.value;
-    if (elIattach.files.length !== 0) {
-      formData.append("iattach", elIattach.files[0]);
+    if (!titlepattern.test(inquiry.value.ititle)) {
+        total = false;
+        seeya.value.showToast("제목을 입력 해주세요");
     }
 
-    try {
-      await MemberAPI.myInquirycreate(formData);
-      router.back();
-    } catch (error) {
-      console.error(error);
+    if (!contentpattern.test(inquiry.value.icontent)) {
+        total = false;
+        seeya.value.showToast("내용을 입력 해주세요");
     }
-  }
+
+    if (total) {
+        const formData = new FormData();
+        formData.append("ititle", inquiry.value.ititle);
+        formData.append("icontent", inquiry.value.icontent);
+
+        const elIattach = iattach.value;
+
+        if (elIattach.files.length !== 0) {
+            formData.append("iattach", elIattach.files[0]);
+        }
+
+        try {
+            await MemberAPI.myInquirycreate(formData);
+            router.back();
+        } catch (error) {
+            console.error(error);
+        }
+    }
 }
 
 defineExpose({
-  createInquiry
+    createInquiry
 });
-
 </script>
 
 <style scoped></style>

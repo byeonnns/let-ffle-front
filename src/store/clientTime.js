@@ -7,8 +7,6 @@ export default {
 
     getters: {
         getCurrentTime(state) {
-            // const ServerTime = state.currentTime(new Date().getTime() + (9 * 60 * 60 * 1000)).toISOString().split('T');
-            // const nowTime = ServerTime[0] + " " + ServerTime[1].slice(0, -5);
             const year = state.currentTime.getFullYear(); // 연
             const month = state.currentTime.getMonth() + 1; // 월
             const day = state.currentTime.getDate(); // 일

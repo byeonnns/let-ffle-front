@@ -14,9 +14,11 @@
                 <button class="month_link mx-1 bg-white" @click="dateButton(6)">6개월</button>
             </li>
             <div class="d-flex justify-content-center align-content-center ms-4">
-                    <input type="date" class="month_link" v-model="startDate">
-                    <input type="date" class="month_link ms-2" :max="maxdate" v-model="endDate">
-                    <button class="btn btn-sm ms-2" style="text-align: center;border-radius: 0px; background-color: #F37551; color: white;" @click="searchList()">조회</button>
+                <input type="date" class="month_link" v-model="startDate">
+                <input type="date" class="month_link ms-2" :max="maxdate" v-model="endDate">
+                <button class="btn btn-sm ms-2"
+                    style="text-align: center;border-radius: 0px; background-color: #F37551; color: white;"
+                    @click="searchList()">조회</button>
             </div>
         </div>
     </div>
@@ -45,24 +47,24 @@ function dateButton(period) {
     const tempDate = new Date(nowDate.value);
     const originalMonth = tempDate.getMonth();
     tempDate.setMonth(tempDate.getMonth() - period);
-    if(originalMonth < tempDate.getMonth)
+    if (originalMonth < tempDate.getMonth)
         tempDate.setFullYear(tempDate.getFullYear() - 1)
     const year = tempDate.getFullYear();
     const month = String(tempDate.getMonth() + 1).padStart(2, '0');
     const day = String(tempDate.getDate()).padStart(2, '0');
-    
+
     startDate.value = `${year}-${month}-${day}`;
 }
 
-function getStartDate(){
+function getStartDate() {
     return startDate.value;
 }
 
-function getEndDate(){
+function getEndDate() {
     return endDate.value;
 }
 
-function setNull(){
+function setNull() {
     startDate.value = null;
     endDate.value = null;
 }
@@ -72,11 +74,10 @@ function searchList() {
 }
 
 defineExpose({
- getStartDate,
- getEndDate,
- setNull
+    getStartDate,
+    getEndDate,
+    setNull
 });
-
 </script>
 
 <style scoped>

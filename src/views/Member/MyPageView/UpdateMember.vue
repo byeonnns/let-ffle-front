@@ -84,7 +84,7 @@
             </div>
         </div>
         <!-- 닉네임 변경 Modal -->
-        <RaffleModal ref="NickNameModal">
+        <Modal ref="NickNameModal">
             <template v-slot:modalHeader>
                 <h4>닉네임 수정</h4>
             </template>
@@ -106,10 +106,10 @@
                     @click="changeNickname" :class="{ 'disabled': NickResult == false }">수정 완료</button>
             </template>
 
-        </RaffleModal>
+        </Modal>
 
         <!-- 비밀번호 변경 Modal -->
-        <RaffleModal ref="passwordModal">
+        <Modal ref="passwordModal">
             <template v-slot:modalHeader>
                 <h4>비밀번호 수정</h4>
             </template>
@@ -148,10 +148,10 @@
                     :class="{ 'disabled': RepasswordResult !== true || passwordResult !== true || newPasswordResult !== true }">수정
                     완료</button>
             </template>
-        </RaffleModal>
+        </Modal>
 
         <!-- 휴대폰 번호 변경 Modal -->
-        <RaffleModal ref="phoneModal">
+        <Modal ref="phoneModal">
             <template v-slot:modalHeader>
                 <h4>휴대폰 번호 수정</h4>
             </template>
@@ -172,10 +172,10 @@
                     @click="changePhNum" :class="{ 'disabled': phoneResult !== true }">수정
                     완료</button>
             </template>
-        </RaffleModal>
+        </Modal>
 
         <!-- 주소 변경 Modal -->
-        <RaffleModal ref="addressModal">
+        <Modal ref="addressModal">
             <template v-slot:modalHeader>
                 우편번호 입력
             </template>
@@ -203,10 +203,10 @@
                 <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal" @click="updateMaddress"
                     :class="{ 'disabled': !(newMember.mzipcode !== '' && newMember.maddress1 !== '' && newMember.maddress2 !== '') }">변경</button>
             </template>
-        </RaffleModal>
-        
+        </Modal>
+
         <!-- 주소 API -->
-        <RaffleModal ref="postcodeModal">
+        <Modal ref="postcodeModal">
             <template v-slot:modalHeader>
                 주소 검색
             </template>
@@ -218,10 +218,10 @@
                     outlineColor: "#FF5C35"
                 }' v-if="postcodeMount" @complete="addressSearched" />
             </template>
-        </RaffleModal>
+        </Modal>
 
         <!-- 회원 탈퇴 Modal -->
-        <RaffleModal ref="Withdrawal">
+        <Modal ref="Withdrawal">
             <template v-slot:modalHeader>
                 <h4>알림</h4>
             </template>
@@ -235,12 +235,12 @@
                         @click="changeMenabled">확인</button>
                 </RouterLink>
             </template>
-        </RaffleModal>
+        </Modal>
     </div>
 </template>
 
 <script setup>
-import RaffleModal from '@/components/RaffleModal.vue';
+import Modal from '@/components/Modal.vue';
 import { ref } from 'vue'
 import { VueDaumPostcode } from 'vue-daum-postcode';
 import MemberAPI from '@/apis/MemberAPI';
@@ -324,8 +324,8 @@ const nickNameCheck = async (event) => {
 // 비밀번호 상태 정의
 let passwordResult = false;
 let newPasswordResult = false;
-const NewPassword = ref(''); 
-const RePassword = ref(''); 
+const NewPassword = ref('');
+const RePassword = ref('');
 const passwordModal = ref(null);
 const oldPasswordSpan = ref('');
 const newPasswordSpan = ref('');
