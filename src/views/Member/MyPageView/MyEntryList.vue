@@ -30,16 +30,12 @@
                     </button>
                 </div>
             </div>
-
             <hr class="mt-0" />
-
             <div>
                 <SearchPeriod ref="searchPeriod" @searchList="changeSearchPeriod()">
                 </SearchPeriod>
             </div>
-
             <hr />
-
             <div class="mb-2">
                 <table class="table text-center">
                     <thead>
@@ -60,7 +56,6 @@
                             <td>{{ formatDate(entryList.raffleDetail.rdtcreatedat) }} <br> {{
                                 formatTime(entryList.raffleDetail.rdtcreatedat) }}</td>
                             <td>
-
                                 <Popper :placement="'right'">
                                     <button class="btn btn-sm btn-design" @click="popper">상세</button>
                                     <template #content>
@@ -78,13 +73,11 @@
                                                         <td>{{ entryList.raffleDetail.rdtberryspend }}개</td>
                                                         <td>{{ entryList.probability }}%</td>
                                                     </tr>
-
                                                 </table>
                                                 <button class="btn btn-white btn-sm">
                                                     <RouterLink to="/Member/MyPage/MyBerryHistory">래플로 이동 ▶</RouterLink>
                                                 </button>
                                             </div>
-
                                         </div>
                                     </template>
                                 </Popper>
@@ -134,7 +127,6 @@ const myRaffleDetail = ref({
 });
 
 const searchPeriod = ref(null);
-
 const router = useRouter();
 const route = useRoute();
 const pageNo = ref(route.query.pageNo || 1);
@@ -159,7 +151,7 @@ function changePageOption(pageNo, status) {
     router.push(`/Member/MyPage/MyEntryList?pageNo=${pageNo}&status=${status}&start=${startDate.value}&end=${endDate.value}`);
 }
 
-function changeSearchPeriod(){
+function changeSearchPeriod() {
     startDate.value = searchPeriod.value.getStartDate();
     endDate.value = searchPeriod.value.getEndDate();
     changePageOption(1, status.value);
@@ -176,7 +168,6 @@ watch(route, (newRoute, oldRoute) => {
         status.value = "Total";
     }
 });
-
 getMyEntryList(pageNo.value, status.value, startDate.value, endDate.value);
 
 /* 시간 출력 포맷 */
@@ -256,6 +247,7 @@ function formatTime(dateStr) {
 td {
     align-content: center;
 }
+
 /* 작성된 게시글이 없을때 나오게끔 처리 */
 .non-center {
     text-align: center;

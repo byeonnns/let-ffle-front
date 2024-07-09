@@ -5,7 +5,7 @@
                 <h3>당첨 내역</h3>
             </div>
             <div>
-                <SearchPeriod ref="searchPeriod" @searchList="changeSearchPeriod()" class="mt-5 mb-5">
+                <SearchPeriod ref="searchPeriod" @searchList="changeSearchPeriod" class="mt-5 mb-5">
                 </SearchPeriod>
                 <table class="table text-center">
                     <thead>
@@ -35,7 +35,6 @@
                         </tr>
                     </tbody>
                 </table>
-
                 <div v-if="winningList.pager.totalPageNo > 0" class="d-flex justify-content-center">
                     <button @click="changePageOption(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
                     <button v-if="winningList.pager.groupNo > 1"
@@ -51,10 +50,8 @@
                     <button @click="changePageOption(winningList.pager.totalPageNo)"
                         class="btn btn-outline-light btn-sm">맨끝</button>
                 </div>
-                
             </div>
         </div>
-
         <RaffleModal ref="inputModal">
             <template v-slot:modalHeader>
                 <div class="d-flex w-100">
@@ -68,19 +65,17 @@
                 <form id="receive" class="container" @submit.prevent="handleSubmit">
                     <div class="div_form row mb-3">
                         <label style="font-size: 14px">이름</label>
-                        <input type="text" placeholder="신우호" class="input" style="border-bottom: 1px solid #ebebeb"
+                        <input type="text" class="input" style="border-bottom: 1px solid #ebebeb"
                             v-model="wreceivername">
                     </div>
-
                     <div class="div_form row mb-3">
                         <label style="font-size: 14px">전화번호</label>
-                        <input type="text" placeholder="010-1234-5678" class="input"
+                        <input type="text" class="input"
                             style="border-bottom: 1px solid #ebebeb" v-model="wreceiverphone">
                     </div>
-
                     <div class="div_form row">
                         <label style="font-size: 14px">주소</label>
-                        <input type="text" placeholder="송파구 IT타워" class="input" style="border-bottom: 1px solid #ebebeb"
+                        <input type="text" class="input" style="border-bottom: 1px solid #ebebeb"
                             v-model="wreceiveraddress">
                     </div>
                 </form>
@@ -112,7 +107,6 @@ const wreceivername = ref(null);
 const wreceiverphone = ref(null);
 const wreceiveraddress = ref(null);
 const targetRno = ref(null);
-
 
 function inputAddress(rno) {
     targetRno.value = rno;
@@ -154,7 +148,6 @@ async function getAccountAddress() {
         console.log(error);
     }
 }
-
 winnerList(pageNo.value, startDate.value, endDate.value);
 
 function formatDate(dateStr) {
@@ -192,13 +185,11 @@ watch(route, (newRoute, oldRoute) => {
         pageNo.value = 1;
     }
 });
-
 </script>
 
 <style scoped>
 .input {
     border-width: 0;
-    /* input 라인 없애기 */
     outline: none;
 }
 

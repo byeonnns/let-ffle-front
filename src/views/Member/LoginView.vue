@@ -5,14 +5,18 @@
             <form @submit.prevent="handleLogin" class="d-flex flex-column" :style="responsiveSize">
                 <p class="text-center fst-italic" style="font-size:50px; font-weight: 900">Let-<span
                         style="color:#FF5C35">FFle</span></p>
-                            <label for="memail">이메일 주소</label>
-                            <input v-model="member.mid" type="email" class="border-0 border-bottom input" @input="emailCheck(onBtn)">
-                            <p class="m-0" style="color:#FF5C35">{{ emailError }}</p>
-                            <label for="mpassword" class="mt-3">비밀번호</label>
-                            <input v-model="member.mpassword" type="password" class="border-0 border-bottom input" @input="passwordCheck(onBtn)">
-                            <p class="m-0" style="color: #FF5C35;">{{ passwordError }}</p>
-                            <button v-if="$store.state.mid !== ''" class="btn btn-success rounded-0 btn-lg mt-4" @click="handleLogout">로그아웃</button>
-                            <input v-else type="submit" value="로그인" class="btn text-white rounded-0 btn-lg mt-4" :class="isPass ? '' : 'disabled'" style="background-color: #F37551;">
+                <label for="memail">이메일 주소</label>
+                <input v-model="member.mid" type="email" class="border-0 border-bottom input"
+                    @input="emailCheck()">
+                <p class="m-0" style="color:#FF5C35">{{ emailError }}</p>
+                <label for="mpassword" class="mt-3">비밀번호</label>
+                <input v-model="member.mpassword" type="password" class="border-0 border-bottom input"
+                    @input="passwordCheck()">
+                <p class="m-0" style="color: #FF5C35;">{{ passwordError }}</p>
+                <button v-if="$store.state.mid !== ''" class="btn btn-success rounded-0 btn-lg mt-4"
+                    @click="handleLogout">로그아웃</button>
+                <input v-else type="submit" value="로그인" class="btn text-white rounded-0 btn-lg mt-4"
+                    :class="isPass ? '' : 'disabled'" style="background-color: #F37551;">
                 <div class="row mt-3 text-center">
                     <div class="col-4 border-end">
                         <RouterLink to="/join">이메일 가입</RouterLink>
@@ -36,25 +40,21 @@ import { useStore } from 'vuex';
 import router from '@/router';
 
 const store = useStore();
-
 const member = ref({
-    mid : "",
-    mpassword : ""
+    mid: "",
+    mpassword: ""
 });
 
 async function handleLogin() {
     try {
         const data = JSON.parse(JSON.stringify(member.value));
-
         const response = await memberAPI.login(data);
-
         if (response.data.result === 'success') {
             const payload = {
                 mid: response.data.mid,
                 mrole: response.data.mrole,
                 accessToken: response.data.accessToken
             };
-    
             store.dispatch("saveAuth", payload);
         }
         router.push("/")
@@ -67,12 +67,13 @@ async function handleLogin() {
 function handleLogout() {
     store.dispatch("deleteAuth");
 }
+
 const passwordError = ref('');
 const emailError = ref('');
 const isPass = ref(false);
 const idRegExp = new RegExp("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
 
-const emailCheck = (onBtn) => {
+const emailCheck = () => {
     if (!idRegExp.test(member.value.mid)) {
         emailError.value = "이메일 주소를 정확히 입력해주세요."
     } else {
@@ -81,7 +82,7 @@ const emailCheck = (onBtn) => {
     onBtn();
 }
 
-const passwordCheck = (onBtn) => {
+const passwordCheck = () => {
     if (member.value.mpassword.length == 0) {
         passwordError.value = '비밀번호를 입력해주세요.';
     } else {
@@ -102,6 +103,7 @@ function onBtn() {
 const responsiveSize = reactive({
     width: window.innerWidth >= 992 ? '400px' : '100%'
 });
+
 const handleResize = () => {
     if (window.innerWidth >= 992) {
         responsiveSize.width = '400px';
@@ -110,7 +112,6 @@ const handleResize = () => {
     }
 };
 window.addEventListener('resize', handleResize);
-
 </script>
 
 <style scoped>

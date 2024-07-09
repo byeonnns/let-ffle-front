@@ -204,7 +204,7 @@
                     :class="{ 'disabled': !(newMember.mzipcode !== '' && newMember.maddress1 !== '' && newMember.maddress2 !== '') }">변경</button>
             </template>
         </RaffleModal>
-
+        
         <!-- 주소 API -->
         <RaffleModal ref="postcodeModal">
             <template v-slot:modalHeader>
@@ -212,10 +212,10 @@
             </template>
             <template v-slot:modalBody>
                 <VueDaumPostcode :animation=true :max-suggest-items="3" :theme='{
-                    textColor: "#000000", //기본 글자색
-                    postcodeTextColor: "#000000", //우편번호 글자색
-                    emphTextColor: "#FF5C35", //강조 글자색
-                    outlineColor: "#FF5C35" //테두리
+                    textColor: "#000000",
+                    postcodeTextColor: "#000000",
+                    emphTextColor: "#FF5C35",
+                    outlineColor: "#FF5C35"
                 }' v-if="postcodeMount" @complete="addressSearched" />
             </template>
         </RaffleModal>
@@ -227,12 +227,12 @@
             </template>
             <template v-slot:modalBody>
                 탈퇴한 이후에는 복구되지 않으며, <br>동일한 아이디로 재가입이 불가능하니 신중하게 결정해주세요. <br><br>정말 탈퇴하시겠어요?
-            
             </template>
             <template v-slot:modalFooter>
                 <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
                 <RouterLink to="/login">
-                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal" @click="changeMenabled">확인</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal"
+                        @click="changeMenabled">확인</button>
                 </RouterLink>
             </template>
         </RaffleModal>
@@ -248,9 +248,9 @@ import RaffleToast from '@/components/RaffleToast.vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 
-const NickNameModal = ref(null); // 닉네임 모달창 상태 정의
-const nick = ref(''); // 닉네임 양방향 상태 정의
-const falseNickname = ref(''); // 닉네임이 잘못되었을 때 상태 정의
+const NickNameModal = ref(null);
+const nick = ref('');
+const falseNickname = ref('');
 
 /* 토스트 */
 const raffleToast = ref(null);
@@ -284,7 +284,6 @@ async function getMember() {
 
     // ,를 기준으로 기본 주소와 상세 주소 구분해서 바인딩하기
     var splitAddress = member.value.maddress.split(",", 2);
-    console.log(splitAddress);
 
     member.value.maddress1 = splitAddress[0];
     member.value.maddress2 = splitAddress[1];
@@ -325,12 +324,12 @@ const nickNameCheck = async (event) => {
 // 비밀번호 상태 정의
 let passwordResult = false;
 let newPasswordResult = false;
-const NewPassword = ref(''); // 새 비밀번호 모달창 (양방향)
-const RePassword = ref(''); // 비밀번호 확인 모달창 (양방향)
-const passwordModal = ref(null); // 비밀번호 변경 모달 상태 정의
+const NewPassword = ref(''); 
+const RePassword = ref(''); 
+const passwordModal = ref(null);
 const oldPasswordSpan = ref('');
-const newPasswordSpan = ref(''); // 새 비밀번호 span 태그 상태 정의
-const rePasswordSpan = ref(''); // 비밀번호 확인 span 태그 상태 정의
+const newPasswordSpan = ref('');
+const rePasswordSpan = ref('');
 const oldPassword = ref('');
 
 async function passwordMatchCheck(event) {
@@ -437,14 +436,11 @@ const addressSearched = (data) => {
 
 async function updateMaddress() {
     newMember.value.maddress = newMember.value.maddress1 + ", " + newMember.value.maddress2;
-
     await MemberAPI.updateMaddress(newMember.value.mzipcode, newMember.value.maddress);
-
     member.value.mzipcode = newMember.value.mzipcode;
     member.value.maddress = newMember.value.maddress;
     member.value.maddress1 = newMember.value.maddress1;
     member.value.maddress2 = newMember.value.maddress2;
-
     raffleToast.value.showToast("주소 변경이 완료되었습니다.");
 }
 

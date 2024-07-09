@@ -21,7 +21,7 @@
         <!-- 비밀번호 변경 모달 -->
         <RaffleModal ref="findModal">
             <template v-slot:modalHeader>
-                <h3>새비밀번호 찾기</h3>
+                <h3>새 비밀번호 찾기</h3>
             </template>
             <template v-slot:modalBody>
                 <div class="container">
@@ -177,7 +177,6 @@ async function updatePassword() {
     findModal.value.hideModal();
 }
 
-
 /* 반응형 UI */
 const responsiveSize = reactive({
     width: window.innerWidth >= 992 ? '400px' : '100%'
@@ -190,23 +189,6 @@ const handleResize = () => {
     }
 };
 window.addEventListener('resize', handleResize);
-
-/* 이메일 찾기 */
-// const findId = () => {
-//     findIdView.value.innerHTML = `
-//     <div class="d-flex flex-column text-center" :style="responsiveSize">
-//         <p class="text-center h3" style="font-weight: 700; margin-bottom:14px;">회원님의 비밀번호입니다.</p>
-//         <hr class="border-2 opacity-100 my-4"/>
-//         <div>
-//             <h6>비밀번호</h6>
-//         </div>
-//         <h4>letffle4nerd</h4>
-//         <div class="row mt-5">
-//             <button class="btn text-white rounded-0 btn-lg flex-grow-1 col ms-2" style="background-color: #F37551;">로그인</button>
-//         </div>
-//     </div>
-//     `;
-// }
 </script>
 
 <style scoped>

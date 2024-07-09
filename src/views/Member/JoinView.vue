@@ -6,34 +6,29 @@
                 <div class="d-flex flex-column" :style="responsiveSize">
                     <p class="text-center fw-bold fst-italic" style="font-size:50px">Let-<span
                             style="color:#FF5C35">FFle</span></p>
-
                     <label for="memail">이메일 주소*</label>
                     <div class="d-flex justify-content-between">
                         <input id="memail" type="email" class="border-0 border-bottom flex-grow-1 input"
-                            v-model="member.mid" @input="midCheck(onbtn)">
+                            v-model="member.mid" @input="midCheck()">
                     </div>
                     <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ checkMid }}</p>
-
                     <label for="mpassword">비밀번호*</label>
                     <input id="mpassword" type="password" class="border-0 border-bottom input"
-                        v-model="member.mpassword" @input="mpasswordCheck(onbtn)">
+                        v-model="member.mpassword" @input="mpasswordCheck()">
                     <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ checkMpassword }}</p>
-
                     <label for="mname">이름</label>
                     <input id="mname" type="text" class="border-0 border-bottom input" v-model="member.mname"
-                        @input="mnameCheck(onbtn)">
+                        @input="mnameCheck()">
                     <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ checkMname }}</p>
-
                     <label for="mnickname">닉네임</label>
                     <div class="d-flex justify-content-between">
                         <input id="mnickname" type="text" class="border-0 border-bottom flex-grow-1 input"
-                            v-model="member.mnickname" @input="mnickCheck(onbtn)">
+                            v-model="member.mnickname" @input="mnickCheck()">
                     </div>
                     <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ checkMnick }}</p>
-
                     <label for="mte">전화번호</label>
                     <input id="mphone" type="text" class="border-0 border-bottom input" v-model="member.mphone"
-                        @input="mphoneCheck(onbtn)">
+                        @input="mphoneCheck()">
                     <p style="font-size:12px; color:#FF5C35; min-height:20px;">{{ checkMphone }}</p>
 
                     <label for="maddress">주소</label>
@@ -56,10 +51,10 @@
                     </template>
                     <template v-slot:modalBody>
                         <VueDaumPostcode :animation=true :max-suggest-items="3" :theme='{
-                            textColor: "#000000", //기본 글자색
-                            postcodeTextColor: "#000000", //우편번호 글자색
-                            emphTextColor: "#FF5C35", //강조 글자색
-                            outlineColor: "#FF5C35" //테두리
+                            textColor: "#000000",
+                            postcodeTextColor: "#000000",
+                            emphTextColor: "#FF5C35",
+                            outlineColor: "#FF5C35"
                         }' v-if="postcodeMount" @complete="addressSearched" />
                     </template>
                 </RaffleModal>
@@ -118,7 +113,6 @@ const handleResize = () => {
 
 window.addEventListener('resize', handleResize);
 
-
 // 유효성 검사
 const member = ref({
     mid: "",
@@ -132,7 +126,6 @@ const member = ref({
     maddress2: ""
 });
 
-
 // 유효성 검사
 let userMid = false;
 let userPassword = false;
@@ -140,7 +133,7 @@ let userMname = false;
 let userPhone = false;
 let userMnickname = false;
 
-const midCheck = async (onbtn) => {
+const midCheck = async () => {
     var midPattern = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
     userMid = midPattern.test(member.value.mid);
     if (!userMid) {
@@ -156,7 +149,7 @@ const midCheck = async (onbtn) => {
     onbtn();
 }
 
-const mpasswordCheck = (onbtn) => {
+const mpasswordCheck = () => {
     var mpasswordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,12}$/;
     userPassword = mpasswordPattern.test(member.value.mpassword);
     if (!userPassword) {
@@ -167,7 +160,7 @@ const mpasswordCheck = (onbtn) => {
     onbtn();
 }
 
-const mnameCheck = (onbtn) => {
+const mnameCheck = () => {
     var mnamePattern = /^[가-힣]{2,4}$/;
     userMname = mnamePattern.test(member.value.mname);
     if (!userMname) {
@@ -178,7 +171,7 @@ const mnameCheck = (onbtn) => {
     onbtn();
 }
 
-const mphoneCheck = async (onbtn) => {
+const mphoneCheck = async () => {
     var mphonePattern = /^010\d{4}\d{4}$/;
     userPhone = mphonePattern.test(member.value.mphone);
     if (!userPhone) {
@@ -194,7 +187,7 @@ const mphoneCheck = async (onbtn) => {
     onbtn();
 }
 
-const mnickCheck = async (onbtn) => {
+const mnickCheck = async () => {
     var mnicknamePattern = /^[가-힣a-zA-Z0-9_-]{2,15}$/
     userMnickname = mnicknamePattern.test(member.value.mnickname);
     if (!userMnickname) {
@@ -211,7 +204,6 @@ const mnickCheck = async (onbtn) => {
 }
 
 function onbtn() {
-    // console.log(userMid, userPassword);
     if (userMid && userPassword && userMname && userPhone && userMnickname) {
         ispass.value = true
     } else {
@@ -221,23 +213,15 @@ function onbtn() {
 }
 
 async function handleSubmit() {
-    console.log(member.value.mid)
-    console.log(member.value.mpassword)
-    console.log(member.value.mname)
     member.value.maddress = member.value.maddress1 + ", " + member.value.maddress2;
-    console.log(member.value.maddress);
     try {
         const data = JSON.parse(JSON.stringify(member.value));
         const response = await MemberAPI.join(data);
-        console.log(response.data);
         router.push("/");
     } catch (error) {
         console.log(error)
     }
 }
-
-
-
 </script>
 
 <style scoped>
