@@ -57,10 +57,11 @@ async function handleLogin() {
             };
             store.dispatch("saveAuth", payload);
         }
-        router.push("/")
+        router.replace("/");
 
     } catch (error) {
         console.log(error);
+        
     }
 }
 
