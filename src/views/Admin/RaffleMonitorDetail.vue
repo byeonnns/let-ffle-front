@@ -2,12 +2,12 @@
     <div>
         <div class="d-flex flex-column">
             <hr class="border-3 opacity-100 m-0" style="border-color: #F37551;" />
-            <div class="text-center my-3">
+            <div class="my-3 text-center">
                 <h3>{{ monitor.raffle.rtitle }}</h3>
                 <h6 class="mb-0 text-secondary">{{ monitor.raffle.rsubtitle }}</h6>
             </div>
             <hr class="border-3 opacity-100 m-0" style="border-color: #F37551;" />
-            <table class="table text-center table-borderless mt-3">
+            <table class="table text-center table-borderless my-2">
                 <thead>
                     <tr class="h5">
                         <th class="col-1" scope="col">번호</th>
@@ -23,18 +23,22 @@
                 <tbody>
                     <tr>
                         <td>{{ monitor.raffle.rno }}</td>
-                        <td>{{ formatDate(monitor.raffle.rcreatedat) }}<br>{{ formatTime(monitor.raffle.rcreatedat) }}</td>
-                        <td>{{ formatDate(monitor.raffle.rstartedat) }}<br>{{ formatTime(monitor.raffle.rstartedat) }}</td>
-                        <td>{{ formatDate(monitor.raffle.rfinishedat) }}<br>{{ formatTime(monitor.raffle.rfinishedat) }}</td>
+                        <td>{{ formatDate(monitor.raffle.rcreatedat) }}<br>{{ formatTime(monitor.raffle.rcreatedat) }}
+                        </td>
+                        <td>{{ formatDate(monitor.raffle.rstartedat) }}<br>{{ formatTime(monitor.raffle.rstartedat) }}
+                        </td>
+                        <td>{{ formatDate(monitor.raffle.rfinishedat) }}<br>{{ formatTime(monitor.raffle.rfinishedat) }}
+                        </td>
                         <td>{{ monitor.raffle.rmissiontype }}</td>
                         <td>{{ monitor.raffle.rwinnercount }}</td>
-                        <td>{{ nowStatus(new Date(monitor.raffle.rstartedat).getTime(), new Date(monitor.raffle.rfinishedat).getTime()) }}</td>
+                        <td>{{ nowStatus(new Date(monitor.raffle.rstartedat).getTime(), new
+                            Date(monitor.raffle.rfinishedat).getTime()) }}</td>
                         <td>{{ monitor.raffleProcess }}</td>
                     </tr>
                 </tbody>
             </table>
             <hr class="border-3 opacity-100 mt-0" style="border-color: #F37551;" />
-            <h4 class="text-center my-3">참여자 리스트</h4>
+            <h4 class="text-center">참여자 리스트</h4>
             <table class="table text-center">
                 <thead>
                     <tr>
@@ -102,55 +106,76 @@
             <hr class="border-3 opacity-100" style="border-color: #F37551;" />
             <div class="d-flex justify-content-around mt-3">
                 <div class="flex-grow-1">
-                    <h4 class="text-center mb-4">당첨자 리스트</h4>
-                    <table class="table text-center">
-                        <thead>
-                            <tr>
-                                <th scope="col">이메일</th>
-                                <th scope="col">이름</th>
-                                <th scope="col">배송 정보</th>
-                                <th scope="col">배송 상태</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="winner in winner.list" :key="winner.rno">
-                                <td>{{ winner.mid }}</td>
-                                <td>{{ winner.rtitle }}</td>
-                                <td v-if="winner.wrecivername != null"><button class="btn btn-sm rounded-0">확인</button>
-                                </td>
-                                <td v-else><button class="btn btn-sm rounded-0" disabled>미입력</button></td>
-                                <td v-if="winner.wrecivername != null">배송 대기</td>
-                                <td v-else>미발송</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex flex-grow-1 justify-content-center">
-                            <div class="text-center" v-if="winner.list.length > 5">
-                                <button @click="changeWinnerPage(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
-                                <button v-if="winner.pager.groupNo > 1" @click="changeWinnerPage(winner.pager.startPageNo - 1)"
-                                    class="btn btn-outline-light btn-sm me-1">이전</button>
-                                <button v-for="pageNo in winner.pager.pageArray" :key="pageNo" @click="changeWinnerPage(pageNo)"
-                                    :class="(winner.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
-                                    class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
-                                <button v-if="winner.pager.groupNo < winner.pager.totalGroupNo" @click="changeWinnerPage(winner.pager.endPageNo + 1)"
-                                    class="btn btn-outline-light btn-sm me-1">다음</button>
-                                <button @click="changeWinnerPage(winner.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
+                    <div v-if="false">
+                        <h4 class="text-center mb-4">당첨자 리스트</h4>
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">이메일</th>
+                                    <th scope="col">이름</th>
+                                    <th scope="col">배송 정보</th>
+                                    <th scope="col">배송 상태</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="winner in winner.list" :key="winner.rno">
+                                    <td>{{ winner.mid }}</td>
+                                    <td>{{ winner.rtitle }}</td>
+                                    <td v-if="winner.wrecivername != null"><button
+                                            class="btn btn-sm rounded-0">확인</button>
+                                    </td>
+                                    <td v-else><button class="btn btn-sm rounded-0" disabled>미입력</button></td>
+                                    <td v-if="winner.wrecivername != null">배송 대기</td>
+                                    <td v-else>미발송</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex flex-grow-1 justify-content-center">
+                                <div class="text-center" v-if="winner.list.length > 5">
+                                    <button @click="changeWinnerPage(1)"
+                                        class="btn btn-outline-light btn-sm me-1">처음</button>
+                                    <button v-if="winner.pager.groupNo > 1"
+                                        @click="changeWinnerPage(winner.pager.startPageNo - 1)"
+                                        class="btn btn-outline-light btn-sm me-1">이전</button>
+                                    <button v-for="pageNo in winner.pager.pageArray" :key="pageNo"
+                                        @click="changeWinnerPage(pageNo)"
+                                        :class="(winner.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
+                                        class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
+                                    <button v-if="winner.pager.groupNo < winner.pager.totalGroupNo"
+                                        @click="changeWinnerPage(winner.pager.endPageNo + 1)"
+                                        class="btn btn-outline-light btn-sm me-1">다음</button>
+                                    <button @click="changeWinnerPage(winner.pager.totalPageNo)"
+                                        class="btn btn-outline-light btn-sm">맨끝</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column text-center align-content-end h-100">
+                        <div class="flex-grow-1 align-content-center">
+                            <h1 class="">당첨 인원 : 2명</h1>
+                        </div>
+                        <div class="card rounded-0 text-center">
+                            <h6 class="card-header">남은 시간</h6>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center">
+                                    <h1 class="dayCount">{{ remainTime.days }}</h1>
+                                    <h1 class="mx-4">:</h1>
+                                    <h1 class="hourCount">{{ remainTime.hours }}</h1>
+                                    <h1 class="mx-4">:</h1>
+                                    <h1 class="minutesCount">{{ remainTime.minutes }}</h1>
+                                    <h1 class="mx-4">:</h1>
+                                    <h1 class="secondsCount">{{ remainTime.seconds }}</h1>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card rounded-0 text-center mx-5">
-                    <h6 class="card-header">지급 상품</h6>
-                    <div class="card-body">
-                        <img src="@/assets/shoes.png" class="card-img-top" style="width:200px;" />
-                        <p class="card-text">나이키</p>
-                    </div>
-                </div>
-                <div class="card rounded-0 text-center">
-                    <h6 class="card-header">남은 시간</h6>
-                    <div class="card-body align-content-center">
-                        <h1>30:04:51</h1>
+                <div class="d-flex flex-column border border-3 border-opacity-100 mt-0" style="border-color: #F37551">
+                    <h6>지급 상품</h6>
+                    <div>
+                        <img v-if="giftImage != null" :src="giftImage" style="width:200px;" />
+                        <p class="card-text mt-2">{{ monitor.raffle.rgift }}</p>
                     </div>
                 </div>
             </div>
@@ -162,15 +187,18 @@
 
 <script setup>
 import RaffleAPI from '@/apis/RaffleAPI';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
 const route = useRoute();
 const router = useRouter();
+const store = useStore();
 
 const rno = ref(route.query.rno);
 const memberPage = ref(route.query.mPage || 1);
 const winnerPage = ref(route.query.wPage || 1);
+const giftImage = ref(null);
 
 const winner = ref({
     list: [],
@@ -180,6 +208,32 @@ const winner = ref({
 const monitor = ref({
     raffle: {},
     raffleProcess: null
+});
+
+const remainTime = computed(() => {
+    const nowTime = store.getters['clientTime/getTimeForCalculate'];
+    const diffMilliseconds = new Date(monitor.value.raffle.rfinishedat).getTime() - nowTime;
+    if (diffMilliseconds < 0) {
+        const remain = {
+            days: "00",
+            hours: "00",
+            minutes: "00",
+            seconds: "00"
+        }
+        return remain;
+    } else {
+        const seconds = Math.floor(diffMilliseconds / 1000) % 60;
+        const minutes = Math.floor(diffMilliseconds / (1000 * 60)) % 60;
+        const hours = Math.floor(diffMilliseconds / (1000 * 60 * 60)) % 24;
+        const days = Math.floor(diffMilliseconds / (1000 * 60 * 60 * 24));
+        const remain = {
+            days: days.toString().padStart(2, '0'),
+            hours: hours.toString().padStart(2, '0'),
+            minutes: minutes.toString().padStart(2, '0'),
+            seconds: seconds.toString().padStart(2, '0')
+        }
+        return remain;
+    }
 });
 
 async function getRaffleMonitor(rno) {
@@ -201,24 +255,34 @@ async function getWinnerList(rno, pageNo) {
     }
 }
 
-const nowStatus = (start, end) => {
-    const date = Date.now();
-    console.log(date + "/" + start);
-    if(date < start){
-        return "대기 중";
-    } else if(start < date && date < end) {
-        return "진행 중";
-    } else if(end < date) {
-        return "종료";
+async function getGiftImage(rno) {
+    try {
+        const response = await RaffleAPI.raffleGiftAttachDownload(rno);
+        const blob = response.data;
+        giftImage.value = URL.createObjectURL(blob);
+    } catch (error) {
+        console.log(error);
     }
 }
 
-function changeWinnerPage(pageNo){
+const nowStatus = (start, end) => {
+    const date = Date.now();
+    if (date < start) {
+        return "대기 중";
+    } else if (start < date && date < end) {
+        return "진행 중";
+    } else if (end < date) {
+        return "마감";
+    }
+}
+
+function changeWinnerPage(pageNo) {
     router.push(`/Admin/RaffleMonitorDetail?mPage=${memberPage.value}&wPage=${pageNo}`)
 }
 
 getRaffleMonitor(rno.value);
 getWinnerList(rno.value, winnerPage.value);
+getGiftImage(rno.value);
 
 function formatDate(dateStr) {
     const date = new Date(dateStr);
@@ -242,13 +306,47 @@ function formatTime(dateStr) {
 
 <style scoped>
 td {
-    padding-top: 0px;
     align-content: center;
 }
 
 .btn {
     background-color: #F37551;
     color: white;
+}
 
+h4 {
+    align-content: center;
+    margin-bottom: 0px;
+}
+
+.dayCount::after {
+    font-size: 16px;
+    content: "DAYS";
+    display: block;
+    text-align: center;
+}
+
+.hourCount::after {
+    font-size: 16px;
+    content: "HOURS";
+    color: black;
+    display: block;
+    text-align: center;
+}
+
+.minutesCount::after {
+    font-size: 16px;
+    content: "MINUTES";
+    color: black;
+    display: block;
+    text-align: center;
+}
+
+.secondsCount::after {
+    font-size: 16px;
+    content: "SECONDS";
+    color: black;
+    display: block;
+    text-align: center;
 }
 </style>
