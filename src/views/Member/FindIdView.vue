@@ -18,14 +18,28 @@
             </div>
         </div>
     </div>
+    <RaffleModal ref="noMatchModal">
+            <template v-slot:modalHeader>
+                <h3>알림</h3>
+            </template>
+            <template v-slot:modalBody>
+                <h5>일치하는 아이디가 존재하지 않습니다.</h5>
+            </template>
+            <template v-slot:modalFooter>
+                <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal" style="background-color: #F37551; color: white;">닫기</button>
+            </template>
+        </RaffleModal>
 </template>
 
 <script setup>
 import MemberAPI from '@/apis/MemberAPI';
 import { reactive, ref } from 'vue';
+import RaffleModal from '@/components/RaffleModal.vue';
+
 
 const findIdView = ref(null);
 const ispass = ref(false);
+const noMatchModal = ref('');
 const member = ref({
     mid : "",
     mphone : ""
@@ -59,6 +73,8 @@ async function findId() {
         console.log(response.data.result);
         member.value.mid = response.data.mid;
 
+    } else {
+        noMatchModal.value.showModal();
     }
     
 }
