@@ -7,7 +7,7 @@
     </div>
 
 
-    <div class="container " style="width: 100%;  height:500px;">
+    <div class="container " style="width: 100%;  height:100%;">
         <!-- border:1px solid black  -->
 
         <div style="width: 100%;">
@@ -15,11 +15,9 @@
             <div class="mt-4" style="border-bottom:1px solid #ebebeb ;">
                 <h2>{{ notice.ntitle }}</h2>
             </div>
-            <div style=" background-color: #FAFAFA;">
-                <p class="mt-3"> {{ notice.ncontent }} </p>
-                <p>휴무 | 2024년 6월 6일 (목)</p>
-                <p>*휴무 기간 남겨주신 문의는 익일부터 순차적으로 답변 드릴 예정입니다.*</p>
-                <p>감사합니다.</p>
+            <div style="background-color: #FAFAFA; white-space:pre;">
+                <p class="mt-3" style="height: 100%;"> {{ notice.ncontent }} </p>
+                
 
 
                 <div class="text-center">

@@ -9,9 +9,16 @@
                 <!--  border:1px solid black; -->
                 <div style="width: 100%; height:100%; ">
                     <!-- border:1px solid black; -->
-                    <div>
-                        <button class="btn me-2" style="background-color: white; color:black;" @click="categorySearch('자유')">자유</button>
-                        <button class="btn" style="background-color: white; color:black;" @click="categorySearch('당첨후기')">당첨 후기</button>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <button class="btn me-2" style="background-color: white; color:black;" @click="categorySearch('자유')">자유</button>
+                            <button class="btn" style="background-color: white; color:black;" @click="categorySearch('당첨후기')">당첨 후기</button>
+                        </div>
+
+                        <button class="btn btn-outline-light btn-sm ms-3 rounded-0"
+                            style="background-color: #F37551;">
+                            <RouterLink to="/Board/WriteBoard" style="color: white;">글쓰기</RouterLink>
+                        </button>
                     </div>
 
                     <table class="table mt-2">
@@ -19,11 +26,11 @@
                             <!-- class="text-center" -->
                             <th style="width:80px">글번호</th>
                             <th>제목</th>
-                            <th style="width:150px">글쓴이</th>
-                            <th style="width:120px">날짜</th>
-                            <th style="width:70px">조회수</th>
+                            <th style="width:170px">글쓴이</th>
+                            <th style="width:200px">날짜</th>
+                            <th style="width:80px">조회수</th>
                         </thead>
-                        <tbody>
+                        <tbody v-if="page.boards.length != 0">
                             <!--class="text-center"  -->
                             <tr v-for="board in page.boards" :key="board.bno">
                                 <td>{{ board.bno }}</td>
@@ -32,35 +39,36 @@
                                     <td>[{{ board.bcategory }}] {{ board.btitle }}</td>
                                 </RouterLink>
                                 <td> {{ board.mid }}</td>
-                                <td> {{ board.bcreatedat }} </td>
+                                <td> {{ formatDate(board.bcreatedat) }} </td>
                                 <td> {{ board.bhitcount }} </td>
                             </tr>
-
+                            
                             <tr>
                                 <td colspan="5" class="text-center">
                                     <button @click="changePageNo(1)"
-                                        class="btn btn-outline-primary btn-sm me-1">처음</button>
+                                        class="btn pagerbtn">처음</button>
                                     <button v-if="page.pager.groupNo > 1"
                                         @click="changePageNo(page.pager.startPageNo - 1)"
-                                        class="btn btn-outline-info btn-sm me-1">이전</button>
+                                        class="btn pagerbtn">이전</button>
                                     <button v-for="pageNo in page.pager.pageArray" :key="pageNo"
                                         @click="changePageNo(pageNo)"
                                         :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-success'"
-                                        class="btn btn-sm me-1">{{ pageNo }}</button>
+                                        class="btn pagerbtn">{{ pageNo }}</button>
                                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
                                         @click="changePageNo(page.pager.endPageNo + 1)"
-                                        class="btn btn-outline-info btn-sm me-1">다음</button>
+                                        class="btn pagerbtn">다음</button>
                                     <button @click="changePageNo(page.pager.totalPageNo)"
-                                        class="btn btn-outline-primary btn-sm">맨끝</button>
-
-                                    <button class="btn btn-outline-light btn-sm ms-3 rounded-0"
-                                        style="background-color: #F37551;">
-                                        <RouterLink to="/Board/WriteBoard" style="color: white;">글쓰기</RouterLink>
-                                    </button>
+                                        class="btn pagerbtn">맨끝</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <div v-if="page.boards.length == 0" class="text-center align-content-center" style="height: 400px;">
+                        <div>
+                            등록된 게시글이 없습니다.
+                        </div>
+                        
+                    </div>
 
                     <div style="width: 32%; height:60px;" class="container">
                         <!-- border:1px solid black; -->
@@ -119,7 +127,6 @@ async function getBoardList(pageNo, searchType='' ,word='') {
         const response = await BoardAPI.getBoardList(pageNo, searchType, word);
         page.value.boards = response.data.board;
         page.value.pager = response.data.pager;
-        console.log(page.value);
     } catch (error) {
         console.log(error);
     }
@@ -147,6 +154,15 @@ watch(
     }
 );
 
+function formatDate(dateString) {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      return `${year}-${month}-${day} ${hours}:${minutes}`;
+}
 </script>
 
 
@@ -161,9 +177,10 @@ watch(
     border: none;
 }
 
-.btn {
-    color: white;
+.pagerbtn {
+    color: black;
+    margin-left: 7px;
     border: none;
-    background-color: #F37551;
+    background-color: white;
 }
 </style>

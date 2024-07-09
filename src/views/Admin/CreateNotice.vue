@@ -19,10 +19,15 @@
                         <div class="form-group row">
                             <label for="nsubcategory" class="col-sm-2 col-form-label">소분류</label>
                             <div class="col-sm-10 align-content-center">
-                                <select v-model="notice.nsubcategory">
+                                <select v-if="notice.nmaincategory == '공지사항'" v-model="notice.nsubcategory">
                                     <option value="공지">공지</option>
                                     <option value="당첨자 발표">당첨자 발표</option>
                                     <option value="서비스">서비스</option>
+                                </select>
+                                <select v-if="notice.nmaincategory == '자주묻는질문'" v-model="notice.nsubcategory">
+                                    <option value="일반">일반</option>
+                                    <option value="이용정책">이용정책</option>
+                                    <option value="래플">래플</option>
                                 </select>
                             </div>
                         </div>
@@ -95,7 +100,8 @@ async function handleSubmit() {
         seeya.value.showToast("제목을 입력 해주세요");
     }
 
-    const contentpattern = /^.{2,100}$/;
+    console.log(notice.value.ncontent);
+    const contentpattern = /^[\s\S]{3,9999}$/;
     const yourcontent = contentpattern.test(notice.value.ncontent);
     if (!yourcontent) {
         total = false;
@@ -103,12 +109,6 @@ async function handleSubmit() {
     }
 
     if (total) {
-        // formData 추가 전 값 확인
-        console.log("ntitle:", notice.value.ntitle);
-        console.log("ncontent:", notice.value.ncontent);
-        console.log("nsubcategory", notice.value.nsubcategory);
-        console.log("nmaincategory:", notice.value.nmaincategory);
-
         const formData = new FormData();
         formData.append("ntitle", notice.value.ntitle);
         formData.append("ncontent", notice.value.ncontent);

@@ -37,7 +37,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div style="width: 100%; height:100%;">
+                <div style="height:100%;">
                     <div v-for="faq in page.faqs" :key="faq.nno" class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h3 class="accordion-header">
@@ -52,8 +52,8 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="container"
-                                        style="width: 100%;  height:500px; background-color: #FAFAFA; padding: 30px;">
-                                        <div style="width: 100%; ">
+                                        style="height:100%; background-color: #FAFAFA; padding: 30px;">
+                                        <div style="white-space:pre;">
                                             {{ faq.ncontent }}
                                         </div>
                                     </div>
@@ -63,20 +63,16 @@
                     </div>
                 </div>
                 <div v-if="page.faqs.length != 0" colspan="5" class="text-center">
-                    <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1"
-                        style="background-color: #F37551; color: white">처음</button>
+                    <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
                     <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
-                        class="btn btn-outline-light btn-sm me-1"
-                        style="background-color: #F37551; color: white">이전</button>
+                        class="btn pagerbtn">이전</button>
                     <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
                         :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
-                        class="btn btn-outline-light btn-sm me-1" style="background-color: #F37551; color: white">{{
-                            pageNo }}</button>
+                        class="btn pagerbtn">{{pageNo}}</button>
                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
                         @click="changePageNo(page.pager.endPageNo + 1)"
-                        class="btn btn-outline-light btn-sm me-1">다음</button>
-                    <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm"
-                        style="background-color: #F37551; color: white">맨끝</button>
+                        class="btn pagerbtn">다음</button>
+                    <button @click="changePageNo(page.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
                 </div>
             </div>
         </div>
@@ -175,6 +171,13 @@ function changeSubcategory(nsubcategory) {
 .custom-accordion-button:focus {
     box-shadow: none;
     /* 버튼 포커스 시 그림자 제거 */
+}
+
+.pagerbtn {
+    color: black;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
 }
 
 .custom-accordion-button .custom-title,
