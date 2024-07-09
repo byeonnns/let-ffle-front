@@ -76,8 +76,10 @@ async function getAdminRaffleDetailList(mid) {
     try {
         const response = await RaffleAPI.getAdminRaffleDetailList(mid);
         raffleDetailList.value = response.data;
+        console.log(raffleDetailList.value);
     } catch(error) {
         console.log(error);
+        console.log(raffleDetailList.value);
     }
 }
 getAdminRaffleDetailList(mid);
