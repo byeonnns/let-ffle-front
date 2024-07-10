@@ -23,13 +23,19 @@
                         <td>{{ formatDate(raffle.rfinishedat) }}<br>{{ formatTime(raffle.rfinishedat) }}</td>
                         <td v-if="serverTime > new Date(raffle.rfinishedat)">마감</td>
                         <td v-if="serverTime < new Date(raffle.rstartedat)">진행 예정</td>
-                        <td v-if="serverTime <= new Date(raffle.rfinishedat) && new Date(raffle.rstartedat) <= serverTime">진행 중</td>
+                        <td
+                            v-if="serverTime <= new Date(raffle.rfinishedat) && new Date(raffle.rstartedat) <= serverTime">
+                            진행 중</td>
                         <td>
-                            <RouterLink v-if="serverTime < new Date(raffle.rfinishedat)" class="btn btn-sm rounded-0 text-white me-1" :to= "`/Admin/UpdateRaffle?rno=${raffle.rno}`">수정
+                            <RouterLink v-if="serverTime < new Date(raffle.rfinishedat)"
+                                class="btn btn-sm rounded-0 text-white me-1" style="background-color: #F37551;"
+                                :to="`/Admin/UpdateRaffle?rno=${raffle.rno}`">수정
                                 <!-- `/Admin/UpdateRaffle?rno=${raffle.value.rno}` -->
                             </RouterLink>
                             <!-- 응모가 시작안되었으면 삭제가능 -->
-                            <button v-if="serverTime < new Date(raffle.rstartedat)" class="btn btn-sm rounded-0 ms-1" @click="deleteRaffle">삭제</button>
+                            <button v-if="serverTime < new Date(raffle.rstartedat)"
+                                class="btn btn-sm rounded-0 text-white ms-1" style="background-color: #F37551;"
+                                @click="deleteRaffle">삭제</button>
                         </td>
                     </tr>
                 </tbody>
@@ -43,15 +49,14 @@
                 </button>
             </div>
             <div class="text-center" v-if="page.raffles.length > 0">
-                <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
+                <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
                 <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
-                    class="btn btn-outline-light btn-sm me-1">이전</button>
+                    class="btn pagerbtn">이전</button>
                 <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
-                    :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
-                    class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
+                    :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{ pageNo }}</button>
                 <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
-                    @click="changePageNo(page.pager.endPageNo + 1)" class="btn btn-outline-light btn-sm me-1">다음</button>
-                <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
+                    @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
+                <button @click="changePageNo(page.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
             </div>
         </div>
         <RaffleModal ref="deleteModal">
@@ -69,7 +74,8 @@
             </template>
         </RaffleModal>
     </div>
-    <div class="d-flex justify-content-center align-items-center" style="height: 100%; font-size: 20px;" v-if="page.raffles === 0">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100%; font-size: 20px;"
+        v-if="page.raffles === 0">
         <span>래플 내역이 없습니다.</span>
     </div>
 </template>
@@ -87,7 +93,7 @@ const route = useRoute();
 const store = useStore();
 const serverTime = computed(() => {
     const diffMilliseconds = store.getters['clientTime/getTimeForCalculate'];
-   
+
     return new Date(diffMilliseconds);
 });
 
@@ -103,7 +109,7 @@ const page = ref({
 async function getRaffleList(pageNo) {
     try {
         const response = await RaffleAPI.getAdminRaffleList(pageNo);
-        
+
         page.value.raffles = response.data.Raffle;
         page.value.pager = response.data.pager;
 
@@ -165,8 +171,14 @@ td {
     align-content: center;
 }
 
-.btn {
-    background-color: #F37551;
-    color: white;
+.pagerbtn {
+    color: black;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 </style>
