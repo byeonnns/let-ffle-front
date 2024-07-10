@@ -50,8 +50,7 @@
                                 <td>{{ periodFormat(r.raffle.rstartedat) }} ~ {{ periodFormat(r.raffle.rfinishedat) }}</td>
                                 <td>{{ dateFormat(r.raffleDetail.rdtcreatedat) }}</td>
                                 <td>{{ r.raffleDetail.rdtberryspend }}</td>
-                                <!-- <td v-if="r.raffleDetail.mid == r.winner.mid">당첨</td>
-                                <td v-if="r.raffleDetail.mid != r.winner.mid">미당첨</td> -->
+                                <td>{{ r.nowStatus }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -76,10 +75,8 @@ async function getAdminRaffleDetailList(mid) {
     try {
         const response = await RaffleAPI.getAdminRaffleDetailList(mid);
         raffleDetailList.value = response.data;
-        console.log(raffleDetailList.value);
     } catch(error) {
         console.log(error);
-        console.log(raffleDetailList.value);
     }
 }
 getAdminRaffleDetailList(mid);
@@ -87,7 +84,6 @@ getAdminRaffleDetailList(mid);
 async function getMemberDetail(mid) {
     try {
         const response = await MemberAPI.AdminMemberDetail(mid);
-        console.log(member.value);
         member.value = response.data;
     } catch(error) {
         console.log(error);
@@ -98,24 +94,24 @@ getMemberDetail(mid);
 
 function periodFormat(dateString) {
     const date = new Date(dateString);
-    const year = date.getFullYear();
+    const year = date.getFullYear()%100;
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
 
-    return `${year}-${month}-${day}`;
+    return `${year}.${month}.${day} ${hours}:${minutes}`;
 }
 
 function dateFormat(dateString) {
     const date = new Date(dateString);
-    const year = date.getFullYear();
+    const year = date.getFullYear()%100;
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
 
-    return `${year}-${month}-${day} ${hours}:${minutes}`;
+    return `${year}.${month}.${day} ${hours}:${minutes}`;
 }
 </script>
 
