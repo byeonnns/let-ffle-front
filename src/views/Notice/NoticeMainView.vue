@@ -9,26 +9,18 @@
                 <div style="width: 100%; height:60px; margin-bottom: 10px; margin-top: 10px;">
                     <table class="table table-bordered">
                         <tbody>
-                            <tr>
-                                <td style="width: 25%;">
-                                    <button class="btn btn-outline-light" @click="changeSubcategory('전체')">
-                                        <span class="spanded">전체</span>
-                                    </button>
+                            <tr style="height: 55px;">
+                                <td class="col-3" @click="changeSubcategory('전체')">
+                                    <h6 :class="sortType === '전체' ? 'activeColor' : ''">전체</h6>
                                 </td>
-                                <td style="width: 25%;">
-                                    <button class="btn btn-outline-light" @click="changeSubcategory('공지')">
-                                        <span class="spanded">공지</span>
-                                    </button>
+                                <td class="col-3" @click="changeSubcategory('공지')">
+                                    <h6 :class="sortType === '공지' ? 'activeColor' : ''">공지</h6>
                                 </td>
-                                <td style="width: 25%;">
-                                    <button class="btn btn-outline-light" @click="changeSubcategory('당첨자 발표')">
-                                        <span class="spanded">당첨자 발표</span>
-                                    </button>
+                                <td class="col-3" @click="changeSubcategory('당첨자 발표')">
+                                    <h6 :class="sortType === '당첨자 발표' ? 'activeColor' : ''">당첨자 발표</h6>
                                 </td>
-                                <td style="width: 25%;">
-                                    <button class="btn btn-outline-light" @click="changeSubcategory('서비스')">
-                                        <span class="spanded">서비스</span>
-                                    </button>
+                                <td class="col-3" @click="changeSubcategory('서비스')">
+                                    <h6 :class="sortType === '서비스' ? 'activeColor' : ''">서비스</h6>
                                 </td>
                             </tr>
                         </tbody>
@@ -118,13 +110,17 @@ watch(
     route, (newRoute, oldRoute) => {
         if (newRoute.query.pageNo) {
             getNoticeList(newRoute.query.pageNo);
+            sortType.value = route.query.subcategory;
         } else {
             getNoticeList(1);
             pageNo.value = 1;
+            sortType.value = route.query.subcategory;
         }
 
     }
 );
+
+const sortType = ref(route.query.subcategory);
 
 </script>
 
@@ -166,5 +162,18 @@ watch(
     border: none;
     background-color: white;
 }
+td{
+    text-align: center;
+    align-content: center;
+}
 
+
+td:hover {
+    cursor: pointer;
+    color: #FF5C35;
+}
+
+.activeColor {
+    color: #FF5C35 !important
+}
 </style>
