@@ -353,7 +353,11 @@ getRaffleDetail(rno);
 
 async function apply(rno) {
     const response = await RaffleAPI.apply(rno);
-    raffleToast.value.showToast("응모가 완료되었습니다.");
+    if(response.data === "success"){
+        raffleToast.value.showToast("응모가 완료되었습니다.");
+    } else {
+        raffleToast.value.showToast("응모는 하루에 3번만 가능합니다.");
+    }
     getRaffleDetail(rno);
 }
 
