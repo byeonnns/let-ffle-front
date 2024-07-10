@@ -7,33 +7,33 @@
             <div style="border-bottom: 3px solid #F37551;">
                 <div class="purchase_list_tab mt-2">
                     <div class="tab_item total d-flex justify-content-lg-start">
-                        <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Total')">
+                        <!-- <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Total')"> -->
                             <dl class="tab_box m-0">
                                 <div class="mb-1">
                                     <button class="btn-span me-2" @click="changePageOption(1, 'Total')">전체</button>
                                     <button class="btn-span me-2" @click="changePageOption(1, 'Save')">적립</button>
-                                    <button class="btn-span" @click="changePageOption(1, 'Use')">사용</button>
+                                    <button class="btn-span" @click="changePageOption(1, 'Use')">사용</button> 
                                 </div>
-                                <!-- <dt class="title" style="height: 50px;">전체</dt> -->
-                                <!-- <dd class="count">{{ totalBH }}</dd> -->
+                                <!-- <dt class="title" style="height: 50px;">전체</dt>
+                                <dd class="count">{{ totalBH }}</dd> -->
                             </dl>
-                        </button>
+                        <!-- </button> -->
                     </div>
                     <div class="tab_item">
-                        <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Save')">
+                        <!-- <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Save')"> -->
                             <dl class="tab_box m-0">
-                                <!-- <dt class="title" style="height: 50px;">적립</dt> -->
-                                <!-- <dd class="count">{{ saveBH }}</dd> -->
+                                <!-- <dt class="title" style="height: 50px;">적립</dt>
+                                <dd class="count">{{ saveBH }}</dd> -->
                             </dl>
-                        </button>
+                        <!-- </button> -->
                     </div>
                     <div class="tab_item">
-                        <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Use')">
+                        <!-- <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Use')"> -->
                             <dl class="tab_box m-0">
-                                <!-- <dt class="title" style="height: 50px;">사용</dt> -->
-                                <!-- <dd class="count">{{ useBH }}</dd> -->
+                                <!-- <dt class="title" style="height: 50px;">사용</dt>
+                                <dd class="count">{{ useBH }}</dd> -->
                             </dl>
-                        </button>
+                        <!-- </button> -->
                     </div>
                 </div>  
             </div>
@@ -69,7 +69,7 @@
         <button v-if="pager.groupNo > 1" @click="changePageOption(pager.startPageNo - 1)"
             class="btn pagerbtn">이전</button>
         <button v-for="pageNo in pager.pageArray" :key="pageNo" @click="changePageOption(pageNo, option)"
-            :class="(pager.pageNo == pageNo) ? 'btn-outline-light' : 'btn-outline-light'" class="btn pagerbtn">{{
+            :class="(pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{
                 pageNo }}</button>
         <button v-if="pager.groupNo < pager.totalGroupNo" @click="changePageOption(pager.endPageNo + 1, option)"
             class="btn pagerbtn">다음</button>
@@ -165,11 +165,16 @@ td {
     align-content: center;
 }
 
-.btn {
+.pagerbtn {
     color: black;
+    margin-left: 7px;
     border: none;
+    background-color: white;
 }
 
+.thisPage {
+    color: #F37551;
+}
 .non-center {
     text-align: center;
     width: 100%;

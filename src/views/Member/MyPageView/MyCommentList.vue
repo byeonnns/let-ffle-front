@@ -39,7 +39,7 @@
                                         class="btn pagerbtn">이전</button>
                                     <button v-for="pageNo in page.pager.pageArray" :key="pageNo"
                                         @click="changePageNo(pageNo)"
-                                        :class="(page.pager.pageNo == pageNo) ? 'btn-outline-light' : 'btn-outline-light'"
+                                        :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''"
                                         class="btn pagerbtn">{{ pageNo }}</button>
                                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
                                         @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
@@ -102,9 +102,15 @@ watch(
     text-align: center;
 }
 
-.btn {
+.pagerbtn {
     color: black;
-    border-radius: 0px;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 
 /* 작성된 게시글이 없을때 나오게끔 처리 */

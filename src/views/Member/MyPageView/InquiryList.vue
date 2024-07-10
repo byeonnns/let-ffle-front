@@ -37,7 +37,7 @@
                 </tbody>
             </table>
             <div class="d-flex justify-content-end mt-3 me-3">
-                <RouterLink to="/Member/MyPage/WriteInquiry"><button type="button" class="btn btn-light">글쓰기</button>
+                <RouterLink to="/Member/MyPage/WriteInquiry"><button type="button" class="btn btn-light" style="background-color: #F37551; color: white; border-radius: 0px;">글쓰기</button>
                 </RouterLink>
             </div>
             <div v-if="page.pager.totalPageNo > 0" class="text-center">
@@ -45,7 +45,7 @@
                 <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
                     class="btn pagerbtn">이전</button>
                 <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
-                    :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'" class="btn pagerbtn">{{
+                    :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{
                     pageNo }}</button>
                 <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
                     @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
@@ -113,10 +113,15 @@ td {
     text-align: center;
 }
 
-.btn {
-    background-color: #F37551;
-    color: white;
-    border-radius: 0px;
+.pagerbtn {
+    color: black;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 
 /* 작성된 게시글이 없을때 나오게끔 처리 */

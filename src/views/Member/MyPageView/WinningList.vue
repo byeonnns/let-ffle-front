@@ -36,19 +36,19 @@
                     </tbody>
                 </table>
                 <div v-if="winningList.pager.totalPageNo > 0" class="d-flex justify-content-center">
-                    <button @click="changePageOption(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
+                    <button @click="changePageOption(1)" class="btn pagerbtn">처음</button>
                     <button v-if="winningList.pager.groupNo > 1"
                         @click="changePageOption(winningList.pager.startPageNo - 1)"
-                        class="btn btn-outline-light btn-sm me-1">이전</button>
+                        class="btn pagerbtn">이전</button>
                     <button v-for="pageNo in winningList.pager.pageArray" :key="pageNo"
                         @click="changePageOption(pageNo)"
-                        :class="(winningList.pager.pageNo == pageNo) ? 'btn-outline-light' : 'btn-outline-light'"
-                        class="btn btn-sm me-1">{{ pageNo }}</button>
+                        :class="(winningList.pager.pageNo == pageNo) ? 'thisPage' : ''"
+                        class="btn pagerbtn">{{ pageNo }}</button>
                     <button v-if="winningList.pager.groupNo < winningList.pager.totalGroupNo"
                         @click="changePageOption(winningList.pager.endPageNo + 1)"
-                        class="btn btn-outline-light btn-sm me-1">다음</button>
+                        class="btn pagerbtn">다음</button>
                     <button @click="changePageOption(winningList.pager.totalPageNo)"
-                        class="btn btn-outline-light btn-sm">맨끝</button>
+                        class="btn pagerbtn">맨끝</button>
                 </div>
             </div>
         </div>
@@ -197,9 +197,15 @@ td {
     align-content: center;
 }
 
-.btn {
+.pagerbtn {
     color: black;
+    margin-left: 7px;
     border: none;
+    background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 
 /* 작성된 게시글이 없을때 나오게끔 처리 */

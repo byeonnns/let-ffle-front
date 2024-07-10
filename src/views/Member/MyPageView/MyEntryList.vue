@@ -92,19 +92,19 @@
                 </table>
                 <div v-if="myRaffleDetail.pager.totalPageNo > 0" class=" d-flex justify-content-center ">
                     <button @click=" changePageOption(1, status)"
-                        class="btn btn-outline-light btn-sm me-1 btn-design ">처음</button>
+                        class="btn pagerbtn btn-design ">처음</button>
                     <button v-if="myRaffleDetail.pager.groupNo > 1"
                         @click="changePageOption(myRaffleDetail.pager.startPageNo - 1, status)"
-                        class="btn btn-outline-light btn-sm me-1 btn-design">이전</button>
+                        class="btn pagerbtn btn-design">이전</button>
                     <button v-for="pageNo in myRaffleDetail.pager.pageArray" :key="pageNo"
                         @click="changePageOption(pageNo, status)"
-                        :class="(myRaffleDetail.pager.pageNo == pageNo) ? 'btn-outline-light btn-design' : 'btn-outline-light btn-design'"
-                        class="btn btn-sm me-1 btn-design">{{ pageNo }}</button>
+                        :class="(myRaffleDetail.pager.pageNo == pageNo) ? 'thisPage' : ''"
+                        class="btn pagerbtn btn-design">{{ pageNo }}</button>
                     <button v-if="myRaffleDetail.pager.groupNo < myRaffleDetail.pager.totalGroupNo"
                         @click="changePageOption(myRaffleDetail.pager.endPageNo + 1, status)"
-                        class="btn btn-outline-light btn-sm me-1 btn-design">다음</button>
+                        class="btn pagerbtn btn-design">다음</button>
                     <button @click="changePageOption(myRaffleDetail.pager.totalPageNo, status)"
-                        class="btn btn-outline-light btn-sm btn-design">맨끝</button>
+                        class="btn pagerbtn btn-design">맨끝</button>
                 </div>
             </div>
         </div>
@@ -237,7 +237,17 @@ function formatTime(dateStr) {
     text-wrap: nowrap;
     text-align: center;
     border-radius: 0px;
+}
+
+.pagerbtn {
     color: black;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 
 .Status {

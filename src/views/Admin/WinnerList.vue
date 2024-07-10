@@ -39,16 +39,14 @@
                 </div>
             </div>
             <div class="text-center" v-if="page.winners.length > 0">
-                <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
+                <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
                 <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
-                    class="btn btn-outline-light btn-sm me-1">이전</button>
+                    class="btn pagerbtn">이전</button>
                 <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
-                    :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
-                    class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
+                    :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{ pageNo }}</button>
                 <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
-                    @click="changePageNo(page.pager.endPageNo + 1)"
-                    class="btn btn-outline-light btn-sm me-1">다음</button>
-                <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
+                    @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
+                <button @click="changePageNo(page.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
             </div>
         </div>
     </div>
@@ -64,11 +62,6 @@
 
         <template v-slot:modalBody>
             <div>
-                <div class="">
-                    <span>당첨자 이름 </span>
-                    <input v-model="winner.wreceivername" id=" text" type="text"
-                        class="border-0 border-bottom flex-grow-1 input same-width mt-2" placeholder="이름" readonly>
-                </div>
                 <div class="mt-3">
                     <span>수령자 이름 </span>
                     <input v-model="winner.wreceivername" id=" text" type="text"
@@ -86,12 +79,9 @@
                 </div>
                 <div class="mt-3">
                     <span>수령 주소</span>
-                    <input v-model="winner.wreceiveraddress1" type="text" placeholder="주소" class="input w-100" readonly>
+                    <input v-model="winner.wreceiveraddress" type="text" placeholder="주소" class="input w-100" readonly>
                     <hr class="p-0 m-0 w-100 mb-4">
                 </div>
-                <span>상세주소</span>
-                <input v-model="winner.wreceiveraddress2" type="text" placeholder="상세 주소" class="input w-100" readonly>
-                <hr class="p-0 m-0 w-100 mb-4">
             </div>
         </template>
 
@@ -132,6 +122,7 @@ async function getWinnerList(pageNo, searchType = '', searchWord = '') {
         const response = await MemberAPI.winnerList(pageNo, searchType, searchWord);
         page.value.winners = response.data.winner;
         page.value.pager = response.data.pager;
+        console.log(page.value.winners);
     } catch (error) {
         console.log(error);
     }
@@ -162,9 +153,7 @@ function addrModal(param) {
     winner.value.wreceivername = param.wreceivername;
     winner.value.wreceiverphone = param.wreceiverphone;
     winner.value.wreceiverzipcode = param.wreceiverzipcode;
-    let splitAddress = param.wreceiveraddress.split(",", 2);
-    winner.value.wreceiveraddress1 = splitAddress[0];
-    winner.value.wreceiveraddress2 = splitAddress[1];
+    winner.value.wreceiveraddress = param.wreceiveraddress;
     addressModal.value.showModal();
 }
 
@@ -172,8 +161,7 @@ function addrModal(param) {
 const winner = ref({
     wreceivername: "",
     wreceiverzipcode: "",
-    wreceiveraddress1: "",
-    wreceiveraddress2: "",
+    wreceiveraddress: "",
     wreceiverphone: "",
 });
 
@@ -182,9 +170,15 @@ const winner = ref({
 </script>
 
 <style scoped>
-.btn {
-    background-color: #F37551;
-    color: white;
+.pagerbtn {
+    color: black;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 
 .same-width {
