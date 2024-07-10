@@ -64,11 +64,6 @@
 
         <template v-slot:modalBody>
             <div>
-                <div class="">
-                    <span>당첨자 이름 </span>
-                    <input v-model="winner.wreceivername" id=" text" type="text"
-                        class="border-0 border-bottom flex-grow-1 input same-width mt-2" placeholder="이름" readonly>
-                </div>
                 <div class="mt-3">
                     <span>수령자 이름 </span>
                     <input v-model="winner.wreceivername" id=" text" type="text"
@@ -86,12 +81,9 @@
                 </div>
                 <div class="mt-3">
                     <span>수령 주소</span>
-                    <input v-model="winner.wreceiveraddress1" type="text" placeholder="주소" class="input w-100" readonly>
+                    <input v-model="winner.wreceiveraddress" type="text" placeholder="주소" class="input w-100" readonly>
                     <hr class="p-0 m-0 w-100 mb-4">
                 </div>
-                <span>상세주소</span>
-                <input v-model="winner.wreceiveraddress2" type="text" placeholder="상세 주소" class="input w-100" readonly>
-                <hr class="p-0 m-0 w-100 mb-4">
             </div>
         </template>
 
@@ -132,6 +124,7 @@ async function getWinnerList(pageNo, searchType = '', searchWord = '') {
         const response = await MemberAPI.winnerList(pageNo, searchType, searchWord);
         page.value.winners = response.data.winner;
         page.value.pager = response.data.pager;
+        console.log(page.value.winners);
     } catch (error) {
         console.log(error);
     }
@@ -162,9 +155,7 @@ function addrModal(param) {
     winner.value.wreceivername = param.wreceivername;
     winner.value.wreceiverphone = param.wreceiverphone;
     winner.value.wreceiverzipcode = param.wreceiverzipcode;
-    let splitAddress = param.wreceiveraddress.split(",", 2);
-    winner.value.wreceiveraddress1 = splitAddress[0];
-    winner.value.wreceiveraddress2 = splitAddress[1];
+    winner.value.wreceiveraddress = param.wreceiveraddress;
     addressModal.value.showModal();
 }
 
@@ -172,8 +163,7 @@ function addrModal(param) {
 const winner = ref({
     wreceivername: "",
     wreceiverzipcode: "",
-    wreceiveraddress1: "",
-    wreceiveraddress2: "",
+    wreceiveraddress: "",
     wreceiverphone: "",
 });
 
