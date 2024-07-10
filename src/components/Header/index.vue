@@ -75,7 +75,7 @@
                     </div>
                 </div>
             </nav>
-            <component :is="currentComponent" :nowPath="nowPath"></component>
+            <component :is="currentComponent"></component>
         </div>
     </div>
 </template>
@@ -101,7 +101,6 @@ async function getMember() {
     try {
         const response = await MemberAPI.getMember();
         members.value = response.data; 
-        console.log(members.value);
     } catch(error) {
         console.log(error);
     }
@@ -112,7 +111,6 @@ async function getBerryHistoryListForHome() {
     try {
         const response = await MemberAPI.getBerryHistoryListForHome();
         berry.value = response.data;
-        console.log(berry.value);
     } catch(error) {
         console.log(error);
     }

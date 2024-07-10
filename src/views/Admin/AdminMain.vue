@@ -39,9 +39,8 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn btn-sm rounded-0">
-                                <RouterLink to="/Raffle?rcategory=sports" class="text-white">바로가기</RouterLink>
-                            </button>
+                            <RouterLink to="/Raffle?rcategory=sports" class="text-white btn btn-sm rounded-0">바로가기
+                            </RouterLink>
                         </div>
                     </div>
                 </div>
@@ -63,9 +62,8 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn btn-sm rounded-0">
-                                <RouterLink to="/Raffle?rcategory=art" class="text-white">바로가기</RouterLink>
-                            </button>
+                            <RouterLink to="/Raffle?rcategory=art" class="text-white btn btn-sm rounded-0">바로가기
+                            </RouterLink>
                         </div>
                     </div>
                 </div>
@@ -87,9 +85,8 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn btn-sm rounded-0">
-                                <RouterLink to="/Raffle?rcategory=fashion" class="text-white">바로가기</RouterLink>
-                            </button>
+                            <RouterLink to="/Raffle?rcategory=fashion" class="text-white btn btn-sm rounded-0">바로가기
+                            </RouterLink>
                         </div>
                     </div>
                 </div>
@@ -121,26 +118,27 @@
                         <td class="bg-light">전체</td>
                         <td>{{ raffle.totalRaffle }}</td>
                         <td>{{ member.totalMember }}</td>
-                        <td><button class="btn btn-sm rounded-0">바로가기</button></td>
+                        <td><RouterLink to="/Raffle" class="text-white btn btn-sm rounded-0">바로가기
+                        </RouterLink></td>
                     </tr>
                     <tr>
                         <!-- 기존에 있는 현재 래플과 끝낫던 래플들의 총합계..? -->
                         <td class="bg-light">Sports</td>
                         <td>{{ raffle.totalSport }}</td>
                         <td>{{ member.totalSport }}</td>
-                        <td><button class="btn btn-sm rounded-0">바로가기</button></td>
+                        <td><RouterLink to="/Raffle?rcategory=sports" class="text-white btn btn-sm rounded-0">바로가기</RouterLink></td>
                     </tr>
                     <tr>
                         <td class="bg-light">Art</td>
                         <td>{{ raffle.totalArt }}</td>
                         <td>{{ member.totalArt }}</td>
-                        <td><button class="btn btn-sm rounded-0">바로가기</button></td>
+                        <td><RouterLink to="/Raffle?rcategory=art" class="text-white btn btn-sm rounded-0">바로가기</RouterLink></td>
                     </tr>
                     <tr>
                         <td class="bg-light">Fashion</td>
                         <td>{{ raffle.totalFashion }}</td>
                         <td>{{ member.totalFashion }}</td>
-                        <td><button class="btn btn-sm rounded-0">바로가기</button></td>
+                        <td><RouterLink to="/Raffle?rcategory=fashion" class="text-white btn btn-sm rounded-0">바로가기</RouterLink></td>
                     </tr>
                 </tbody>
             </table>
@@ -183,7 +181,7 @@ const member = ref({
 
 });
 
-async function getAdminDashboard(){
+async function getAdminDashboard() {
     const response = await RaffleAPI.getAdminDashboard();
     raffle.value.totalRaffle = response.data.totalRaffle;
     raffle.value.progressRaffle = response.data.ongoingRaffle;
