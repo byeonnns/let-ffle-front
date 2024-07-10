@@ -95,8 +95,7 @@
                             <h4>Hot Time</h4>
                             <p>지정된 시간동안 하단의 미션 참여 버튼을 눌러주세요.</p>
                             <button v-if="!passTime" class="btn mt-2 w-100 disabled">핫 타임이 아닙니다.</button>
-                            <button v-if="passTime" class="btn mt-2 w-100" @click="updateRdtMissionCleared(rno)">미션
-                                참여</button>
+                            <button v-if="passTime" class="btn mt-2 w-100" @click="updateRdtMissionCleared(rno)">미션 참여</button>
                         </div>
 
                         <div class="p-3 text-center" v-if="raffleDetail.raffleStatus === '미션 성공' && tab == '미션 참여'">
@@ -356,7 +355,7 @@ async function apply(rno) {
     if(response.data === "success"){
         raffleToast.value.showToast("응모가 완료되었습니다.");
     } else if(response.data === "berry") {
-        raffleToast.value.showToast("일일 3회 응모로 베리가 지급되었습니다!");
+        raffleToast.value.showToast("(베리 지급)일일 3회 응모 완료!");
     } else {
         raffleToast.value.showToast("응모는 하루에 3번만 가능합니다.");
     }
@@ -368,8 +367,15 @@ const manswer = ref(null);
 async function updateRdtMissionCleared(rno) {
     // 라디오 버튼이 클릭된게 뭔지를 받아와서 manswer를 유저의 제출 답으로 저장
     // 백엔드에 manswer를 넘겨줌
+    try {
     const response = await RaffleAPI.updateRdtMissionCleared(rno, manswer.value);
+    if(response.data === "berry"){
+        raffleToast.value.showToast("(베리 지급)일일 응모 미션 올 클리어!");
+    }
     getRaffleDetail(rno);
+    } catch(error){
+        console.log(error);
+    }
 }
 
 function selectGuide(param) {
