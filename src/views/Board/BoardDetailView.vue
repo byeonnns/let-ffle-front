@@ -66,6 +66,7 @@ import RaffleToast from '@/components/RaffleToast.vue';
 import { ref } from "vue";
 import { useRoute, useRouter } from 'vue-router';
 import BoardAPI from '@/apis/BoardAPI';
+import { useStore } from 'vuex';
 
 const look = ref(null);
 const board = ref({});
@@ -79,7 +80,7 @@ const boardComment = ref({
     bno: bno,
     ccontent: "",
 });
-
+const store = useStore();
 // 댓글
 const commentList = ref({});
 
@@ -94,11 +95,14 @@ async function boardCommentList(bno) {
 boardCommentList(bno);
 
 async function createComment() {
-
+    var login = store.state.mid;
+    if (!login) {
+        router.push("/login");
+    }
     var total = true;
 
     var commentPattern = /^.{2,100}$/;
-    var userComment = commentPattern.test(board.value.bcomment)
+    var userComment = commentPattern.test(boardComment.value.ccontent)
     if (!userComment) {
         look.value.showToast("댓글을 2자이상 100자 이내로 작성해주세요");
         total = false;
@@ -120,6 +124,7 @@ async function createComment() {
         }
     }
 }
+
 
 // 해당 bno 게시물 얻는 함수
 async function getBoard(argBno) {
