@@ -355,6 +355,8 @@ async function apply(rno) {
     const response = await RaffleAPI.apply(rno);
     if(response.data === "success"){
         raffleToast.value.showToast("응모가 완료되었습니다.");
+    } else if(response.data === "berry") {
+        raffleToast.value.showToast("일일 3회 응모로 베리가 지급되었습니다!");
     } else {
         raffleToast.value.showToast("응모는 하루에 3번만 가능합니다.");
     }
