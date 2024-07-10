@@ -76,7 +76,7 @@ async function handleSubmit() {
         seeya.value.showToast("제목을 2자 이상 작성 해주세요");
     }
 
-    var contentPattern = /^.{10,1000}$/;
+    const contentPattern = /^[\s\S]{10,9999}$/;
     var usercontent = contentPattern.test(board.value.bcontent);
     if (!usercontent) {
         total = false;
