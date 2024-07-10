@@ -9,14 +9,15 @@
                 <div style="width: 100%; height:100%; ">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex mt-1">
-                            <h6 class="me-3 freeHover" :class="sortType === '전체' ? 'activeColor' : ''"
-                                @click="getBoardList(1)">전체</h6>
+                            <h6 class="me-3 freeHover" :class="sortType === '' ? 'activeColor' : ''"
+                                @click="categorySearch('')">전체</h6>
                             <h6 class="me-3 freeHover" :class="sortType === '자유' ? 'activeColor' : ''"
                                 @click="categorySearch('자유')">자유</h6>
                             <h6 class="freeHover" :class="sortType === '당첨후기' ? 'activeColor' : ''"
                                 @click="categorySearch('당첨후기')">당첨 후기</h6>
                         </div>
-                        <button v-if="$store.state.mid !== ''" class="btn btn-outline-light btn-sm ms-3 rounded-0" style="background-color: #F37551;">
+                        <button v-if="$store.state.mid !== ''" class="btn btn-outline-light btn-sm ms-3 rounded-0"
+                            style="background-color: #F37551;">
                             <RouterLink to="/Board/WriteBoard" style="color: white;">글쓰기</RouterLink>
                         </button>
                     </div>
@@ -73,7 +74,7 @@
                             <input type="text" class="form-control" aria-label="Recipient's username"
                                 aria-describedby="button-addon2" v-model="searchWord"
                                 @keyup.enter="getBoardList(1, searchType, searchWord)">
-                            <button class="btn btn-outline-light ms-2 rounded-0" type="button"
+                            <button class="btn btn-outline-light ms-2 rounded-0" type="button" style="background-color: #F37551"
                                 @click="getBoardList(1, searchType, searchWord)">검색</button>
                         </div>
                     </div>
@@ -97,10 +98,16 @@ const store = useStore();
 
 async function categorySearch(type) {
     try {
-        const response = await BoardAPI.categorySearch(type);
-        page.value.boards = response.data.board;
-        page.value.pager = response.data.pager;
-        sortType.value = type;
+        if (type === '') {
+            sortType.value = type;
+            getBoardList(pageNo.value)
+        }
+        else {
+            const response = await BoardAPI.categorySearch(type);
+            page.value.boards = response.data.board;
+            page.value.pager = response.data.pager;
+            sortType.value = type;
+        }
     } catch (error) {
         console.log(error);
     }
@@ -117,7 +124,7 @@ async function getBoardList(pageNo, searchType = '', word = '') {
         const response = await BoardAPI.getBoardList(pageNo, searchType, word);
         page.value.boards = response.data.board;
         page.value.pager = response.data.pager;
-        
+
     } catch (error) {
         console.log(error);
     }
@@ -136,12 +143,12 @@ watch(
         if (newRoute.query.pageNo) {
             getBoardList(newRoute.query.pageNo);
             pageNo.value = newRoute.query.pageNo;
-            
+
         } else {
             getBoardList(1);
             pageNo.value = 1;
-            
-     
+
+
         }
     }
 );
@@ -184,6 +191,7 @@ const sortType = ref('')
     cursor: pointer;
     color: #FF5C35;
 }
+
 .activeColor {
     color: #FF5C35 !important
 }

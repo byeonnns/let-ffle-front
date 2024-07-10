@@ -17,7 +17,7 @@
                     <tr v-for="winner in page.winners" :key="winner.rno">
                         <td>{{ winner.raffle.rtitle }}</td>
                         <td>{{ winner.winner.mid }}</td>
-                        <td v-if="winner.winner.wreceiverphone"><button class="btn btn-sm"
+                        <td v-if="winner.winner.wreceiverphone"><button class="btn btn-sm clear rounded-0"
                                 @click="addrModal(winner.winner)">확인</button></td>
                         <td v-else>미입력</td>
                         <td v-if="winner.winner.wreceiveraddress">배송 중</td>
@@ -35,7 +35,8 @@
 
                     <input type="text" class="form-control" v-model="searchWord"
                         @keyup.enter="getWinnerList(1, searchType, searchWord)">
-                    <button class="btn btn-sm" @click="getWinnerList(1, searchType, searchWord)">검색</button>
+                    <button class="btn btn-sm" @click="getWinnerList(1, searchType, searchWord)"
+                        style="background-color: #F37551; color:white">검색</button>
                 </div>
             </div>
             <div class="text-center" v-if="page.winners.length > 0">
@@ -86,7 +87,7 @@
         </template>
 
         <template v-slot:modalFooter>
-            <button class="btn btn-outline-light btn-sm" data-bs-dismiss="modal">닫기</button>
+            <button class="btn btn-outline-light btn-sm clear rounded-0" data-bs-dismiss="modal">닫기</button>
         </template>
     </Modal>
 
@@ -184,5 +185,10 @@ const winner = ref({
 .same-width {
     width: 100%;
     /* 모든 입력 필드의 너비를 동일하게 설정 */
+}
+.clear{
+    background-color: #F37551;
+    color:white;
+    
 }
 </style>

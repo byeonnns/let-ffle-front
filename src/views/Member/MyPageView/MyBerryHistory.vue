@@ -48,7 +48,7 @@
                 <tbody>
                     <tr v-for="item in berry" :key="item.bhno">
                         <td>{{ formatDate(item.bhchangedat) }}</td>
-                        <td>{{ item.bhreason }}</td>
+                        <td class="text-nowrap">{{ item.bhreason }}</td>
                         <td>
                             <img v-if="item.bhchangevalue > 0" src="@/assets/berry-icon.png" class="me-1" height="20px">
                             <img v-else src="@/assets/berry-icon-bw.png" class="me-1" height="20px">
