@@ -200,7 +200,6 @@ const remainTime = computed(() => {
     const nowTime = store.getters['clientTime/getTimeForCalculate'];
     const diffMilliseconds = new Date(monitor.value.raffle.rfinishedat).getTime() - nowTime;
     nowStatus(new Date(monitor.value.raffle.rstartedat).getTime(), new Date(monitor.value.raffle.rfinishedat).getTime());
-    console.log(status.value);
     if (diffMilliseconds < 0) {
         const remain = {
             days: "00",

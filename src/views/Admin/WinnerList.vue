@@ -115,7 +115,6 @@ const route = useRoute();
 const store = useStore();
 const serverTime = computed(() => {
     const diffMilliseconds = store.getters['clientTime/getTimeForCalculate'];
-    console.log(diffMilliseconds);
     return new Date(diffMilliseconds);
 });
 
@@ -131,7 +130,6 @@ const page = ref({
 async function getWinnerList(pageNo, searchType = '', searchWord = '') {
     try {
         const response = await MemberAPI.winnerList(pageNo, searchType, searchWord);
-        console.log(response.data.winner);
         page.value.winners = response.data.winner;
         page.value.pager = response.data.pager;
     } catch (error) {
@@ -148,11 +146,9 @@ function changePageNo(argPageNo) {
 watch(
     route, (newRoute, oldRoute) => {
         if (newRoute.query.pageNo) {
-            console.log(pageNo.value)
             getWinnerList(newRoute.query.pageNo);
             pageNo.value = newRoute.query.pageNo;
         } else {
-            console.log()
             getWinnerList(1);
             pageNo.value = 1;
         }

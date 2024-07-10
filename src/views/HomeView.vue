@@ -87,14 +87,12 @@ const cutOffSoonRaffles = ref();
 async function getNewReleaseRaffles() {
     const response = await RaffleAPI.getNewReleaseRaffles();
     newReleaseRaffles.value = response.data;
-    console.log(newReleaseRaffles.value);
 }
 getNewReleaseRaffles();
 
 async function getCutOffSoonRaffles() {
     const response = await RaffleAPI.getCutOffSoonRaffles();
     cutOffSoonRaffles.value = response.data;
-    console.log(cutOffSoonRaffles.value);
 }
 getCutOffSoonRaffles();
 </script>

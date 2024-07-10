@@ -79,7 +79,6 @@ const route = useRoute();
 const store = useStore();
 const serverTime = computed(() => {
     const diffMilliseconds = store.getters['clientTime/getTimeForCalculate'];
-    console.log(diffMilliseconds);
     return new Date(diffMilliseconds);
 });
 
@@ -94,18 +93,13 @@ const page = ref({
 
 async function getRaffleMonitorList(pageNo) {
     try {
-        console.log(pageNo.value + '알려저');
         const response = await RaffleAPI.getAdminRaffleList(pageNo);
-        console.log(response + "나오나여?");
-
         page.value.raffles = response.data.Raffle;
         page.value.pager = response.data.pager;
-        console.log(page.value);
     } catch (error) {
         console.log(error);
     }
 }
-
 getRaffleMonitorList(pageNo.value);
 
 function changePageNo(argPageNo) {
@@ -115,18 +109,14 @@ function changePageNo(argPageNo) {
 watch(
     route, (newRoute, oldRoute) => {
         if (newRoute.query.pageNo) {
-            console.log(pageNo.value)
             getRaffleMonitorList(newRoute.query.pageNo);
             pageNo.value = newRoute.query.pageNo;
         } else {
-            console.log()
             getRaffleMonitorList(1);
             pageNo.value = 1;
         }
     }
 );
-
-
 
 function formatDate(dateStr) {
     const date = new Date(dateStr);

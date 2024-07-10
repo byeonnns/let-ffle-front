@@ -81,15 +81,11 @@ import MemberAPI from "@/apis/MemberAPI";
 import { useRouter, useRoute } from 'vue-router';
 import axios from "axios";
 
-
 const router = useRouter();
 const route = useRoute();
 const pageNo = ref(route.query.pageNo || 1);
 const adminReply = ref([]);
 const look = ref(null);
-const ino = route.query.ino;
-console.log("route.query: ", route.query);
-console.log("ino: " ,ino);
 
 const page = ref({
     Inquirys: [],

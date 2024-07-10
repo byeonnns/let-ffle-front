@@ -112,8 +112,6 @@ async function getRaffleList(pageNo) {
 
         page.value.raffles = response.data.Raffle;
         page.value.pager = response.data.pager;
-
-        console.log(page.value.raffles);
     } catch (error) {
         console.log(error);
     }
@@ -128,11 +126,9 @@ function changePageNo(argPageNo) {
 watch(
     route, (newRoute, oldRoute) => {
         if (newRoute.query.pageNo) {
-            console.log(pageNo.value)
             getRaffleList(newRoute.query.pageNo);
             pageNo.value = newRoute.query.pageNo;
         } else {
-            console.log()
             getRaffleList(1);
             pageNo.value = 1;
         }

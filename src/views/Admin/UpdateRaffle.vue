@@ -319,9 +319,7 @@ function GiftImageChange() {
 }
 
 async function createRaffle() {
-    console.log("시~작");
     const formData = new FormData();
-    console.log("폼 데이터 객체 생성 끝");
     // 문자 파트 넣기
     formData.append("raffle.rtitle", raffle.value.rtitle);
     formData.append("raffle.rsubtitle", raffle.value.rsubtitle);
@@ -332,7 +330,6 @@ async function createRaffle() {
     formData.append("raffle.rmissiontype", raffle.value.rmissiontype);
     formData.append("raffle.rgift", raffle.value.rgift);
     formData.append("raffle.rwinnercount", raffle.value.rwinnercount);
-    console.log("rstartedat :" , raffle.value.rstartedat);
 
     formData.append("quizMission.qcontent", quizmission.value.qcontent);
     formData.append("quizMission.qoption1", quizmission.value.qoption1);
@@ -342,8 +339,6 @@ async function createRaffle() {
 
     formData.append("timeMission.tstartedat", timemission.value.tstartedat);
     formData.append("timeMission.tfinishedat", timemission.value.tfinishedat);
-
-    console.log("폼 데이터 문자 부분 어펜드 끝");
 
     // 파일 파트 넣기
     const elBattach1 = prdimgrep1attach.value;
@@ -361,18 +356,14 @@ async function createRaffle() {
         formData.append("raffleImage.rgiftattach", elBattach3.files[0]);
     }
 
-    console.log("폼 데이터 파일 부분 어펜드 끝");
-
     // 래플 등록 요청
     try {      
         const response = await RaffleAPI.createRaffle(formData);
-        console.log(response.data);
         router.back();
     } catch (error) {
         console.log(error);
     }
 }
-
 
 function startFormatDate(dateStr) {
     const date = new Date(dateStr);
@@ -404,7 +395,6 @@ function finishFormatDate(dateStr) {
 async function getRaffle(argRno) {
     try {
         const response = await RaffleAPI.getRaffle(argRno);
-        console.log(response.data);
         raffle.value = response.data.raffle;
         if (response.data.quizMission != null) {
             quizmission.value = response.data.quizMission;
@@ -422,7 +412,6 @@ getRaffle(rno);
 async function getRaffleThumbnailImg(argRno) {
     try {
         const response = await RaffleAPI.raffleThumbnailAttachDownload(argRno);
-        console.log(response.data);
         const blob = response.data;
         headImgUrl.value = URL.createObjectURL(blob);
     } catch (error) {
@@ -435,7 +424,6 @@ getRaffleThumbnailImg(rno);
 async function getRaffleDetailImg(argRno) {
     try {
         const response = await RaffleAPI. raffleDetailAttachDownload(argRno);
-        console.log(response.data);
         const blob = response.data;
         DetailImgUrl.value = URL.createObjectURL(blob);
     } catch (error) {
@@ -449,7 +437,6 @@ getRaffleDetailImg(rno);
 async function getRaffleGiftImg(argRno) {
     try {
         const response = await RaffleAPI. raffleGiftAttachDownload(argRno);
-        console.log(response.data);
         const blob = response.data;
         GiftImgUrl.value = URL.createObjectURL(blob);
     } catch (error) {
