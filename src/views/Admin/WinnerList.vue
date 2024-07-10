@@ -39,16 +39,14 @@
                 </div>
             </div>
             <div class="text-center" v-if="page.winners.length > 0">
-                <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
+                <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
                 <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
-                    class="btn btn-outline-light btn-sm me-1">이전</button>
+                    class="btn pagerbtn">이전</button>
                 <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
-                    :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
-                    class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
+                    :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{ pageNo }}</button>
                 <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
-                    @click="changePageNo(page.pager.endPageNo + 1)"
-                    class="btn btn-outline-light btn-sm me-1">다음</button>
-                <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
+                    @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
+                <button @click="changePageNo(page.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
             </div>
         </div>
     </div>
@@ -172,9 +170,15 @@ const winner = ref({
 </script>
 
 <style scoped>
-.btn {
-    background-color: #F37551;
-    color: white;
+.pagerbtn {
+    color: black;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 
 .same-width {

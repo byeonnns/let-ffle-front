@@ -23,13 +23,12 @@
                                         style="color: black;"> {{ board.btitle }}
                                     </RouterLink>
                                 </td>
-                                <td> {{ board.bcreatedat }}</td>
+                                <td> {{ formatDate(board.bcreatedat) }}</td>
                                 <td>
                                     <RouterLink :to="`/Board/BoardUpdate?bno=${board.bno}&pageNo=${pageNo}`"><button
-                                            class="btn btn-outline-light btn-sm me-2">수정</button>
+                                            class="btn btn-outline-light btn-sm me-2" style="background-color: #F37551; color: white;">수정</button>
                                     </RouterLink>
-                                    <button class="btn btn-outline-light btn-sm"
-                                        @click="deleteBoard(pageNo, board.bno)">삭제</button>
+                                    <button class="btn btn-outline-light btn-sm" @click="deleteModal" style="color: black">삭제</button>
                                 </td>
                             </tr>
                             <tr v-if="page.boards.length === 0">
@@ -39,18 +38,16 @@
                             </tr>
                             <tr>
                                 <td v-if="page.pager.totalPageNo > 0" colspan="5" class="text-center">
-                                    <button @click="changePageNo(1)"
-                                        class="btn pagerbtn">처음</button>
+                                    <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
                                     <button v-if="page.pager.groupNo > 1"
                                         @click="changePageNo(page.pager.startPageNo - 1)"
                                         class="btn pagerbtn">이전</button>
                                     <button v-for="pageNo in page.pager.pageArray" :key="pageNo"
                                         @click="changePageNo(pageNo)"
-                                        :class="(page.pager.pageNo == pageNo) ? 'btn-outline-light' : 'btn-outline-light'"
+                                        :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''"
                                         class="btn pagerbtn">{{ pageNo }}</button>
                                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
-                                        @click="changePageNo(page.pager.endPageNo + 1)"
-                                        class="btn pagerbtn">다음</button>
+                                        @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
                                     <button @click="changePageNo(page.pager.totalPageNo)"
                                         class="btn pagerbtn">맨끝</button>
                                 </td>
@@ -61,6 +58,24 @@
             </div>
         </div>
     </div>
+    <!-- 삭제 모달 -->
+    <Modal ref="DeleteBoardModal">
+        <template v-slot:modalHeader>
+            <h3>알림</h3>
+        </template>
+
+        <template v-slot:modalBody>
+            정말 삭제하시겠습니까?
+        </template>
+
+        <template v-slot:modalFooter>
+            <div v-for="board in page.boards" :key="board.bno">
+                <button class="btn-modal btn btn-outline-light me-2" @click="deleteBoard(pageNo, board.bno)" data-bs-dismiss="modal">확인</button>
+                <button class="btn-modal btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </template>
+    </Modal>
+    <RaffleToast ref="raffleToast" />
 </template>
 
 <script setup>
@@ -68,7 +83,11 @@ import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import BoardAPI from '@/apis/BoardAPI';
 import MemberAPI from '@/apis/MemberAPI';
+import RaffleToast from '@/components/RaffleToast.vue';
+import Modal from '@/components/Modal.vue';
 
+const raffleToast = ref(null);
+const DeleteBoardModal = ref(null);
 const route = useRoute();
 const router = useRouter();
 const pageNo = ref(route.query.pageNo || 1);
@@ -76,6 +95,10 @@ const page = ref({
     boards: [],
     pager: {}
 });
+
+function deleteModal() {
+    DeleteBoardModal.value.showModal();
+}
 
 async function myBoardList(pageNo) {
     try {
@@ -93,6 +116,7 @@ async function deleteBoard(pageNo, bno) {
     try {
         await BoardAPI.deleteBoard(bno);
         myBoardList(pageNo);
+        raffleToast.value.showToast("게시글이 삭제되었습니다.");
     } catch (error) {
         console.log(error);
     }
@@ -115,6 +139,25 @@ watch(
         }
     }
 );
+
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
+
+function formatTime(dateStr) {
+    const date = new Date(dateStr);
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    return `${hours}:${minutes}:${seconds}`;
+}
+
 </script>
 
 <style scoped>
@@ -122,9 +165,15 @@ watch(
     text-align: center;
 }
 
-.btn {
+.pagerbtn {
     color: black;
-    border-radius: 0px;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 
 .table-cell {
@@ -148,5 +197,10 @@ watch(
     /* 높이를 100px로 설정 (필요에 따라 조정 가능) */
     vertical-align: middle;
     /* 텍스트를 수직으로 가운데 정렬 */
+}
+
+.btn-modal {
+    background-color: #f37551;
+    color: white;
 }
 </style>

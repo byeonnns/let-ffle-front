@@ -22,26 +22,27 @@
                     <div :id="'collapse' + Inquiry.ino" class="accordion-collapse collapse container"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <div class="container "
-                                style="width: 100%; background-color: #FAFAFA; padding: 30px;">
+                            <div class="container " style="width: 100%; background-color: #FAFAFA; padding: 30px;">
                                 <!-- border:1px solid black  -->
                                 <div style="width: 100%; ">
                                     <!-- border:1px solid black -->
                                     <div>
-                                        <img width="300px" :src="`${axios.defaults.baseURL}/member/iattach/${Inquiry.ino}`">
+                                        <img width="300px"
+                                            :src="`${axios.defaults.baseURL}/member/iattach/${Inquiry.ino}`">
                                     </div>
                                     <p>{{ Inquiry.icontent }}</p>
                                 </div>
                             </div>
                             <!-- 답변 등록 폼 -->
-                            <form @submit.prevent="updateInquiry(Inquiry.ino)"> 
+                            <form @submit.prevent="updateInquiry(Inquiry.ino)">
                                 <div class=" form-group row mt-3" v-if="Inquiry.ireply == null">
                                     <div style="margin-bottom: 30px">
-                                        <textarea id="bcontent" type="text" class="form-control" style="height:100px;" v-model="adminReply[Inquiry.ino]"></textarea>
+                                        <textarea id="bcontent" type="text" class="form-control" style="height:100px;"
+                                            v-model="adminReply[Inquiry.ino]"></textarea>
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button type="submit" class="btn btn-outline-light rounded-0">등록</button>
+                                    <button type="submit" class="btn btn-outline-light rounded-0 mt-1" style="background-color: #F37551; color: white;">등록</button>
                                 </div>
                             </form>
                             <div class=" form-group row mt-3" v-if="Inquiry.ireply != null">
@@ -55,21 +56,20 @@
                 </div>
             </div>
             <div class="text-center" v-if="page.Inquirys.length > 0">
-                <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
+                <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
                 <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
-                    class="btn btn-outline-light btn-sm me-1">이전</button>
+                    class="btn pagerbtn">이전</button>
                 <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
-                    :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
-                    class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
+                    :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{ pageNo }}</button>
                 <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
-                    @click="changePageNo(page.pager.endPageNo + 1)"
-                    class="btn btn-outline-light btn-sm me-1">다음</button>
-                <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
+                    @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
+                <button @click="changePageNo(page.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
             </div>
             <RaffleToast ref="look" />
         </div>
     </div>
-    <div class="d-flex justify-content-center align-items-center" style="height: 100%; font-size: 20px;" v-if="page.Inquirys.length == 0">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100%; font-size: 20px;"
+        v-if="page.Inquirys.length == 0">
         <span>문의 내역이 없습니다.</span>
     </div>
 </template>
@@ -103,7 +103,7 @@ async function myInquiryList(pageNo) {
 }
 myInquiryList(pageNo.value);
 
-async function updateInquiry(ino){
+async function updateInquiry(ino) {
     await MemberAPI.inquiryReply(ino, adminReply.value[ino]);
     myInquiryList(pageNo.value);
     look.value.showToast("답변이 등록되었습니다.");
@@ -181,8 +181,14 @@ watch(
     color: black;
 }
 
-.btn {
-    background-color: #F37551;
-    color: white;
+.pagerbtn {
+    color: black;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 </style>

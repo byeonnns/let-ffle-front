@@ -32,17 +32,15 @@
             </div>
             <div v-if="likeList.pager.totalPageNo > 0 && likeList.pager.totalPageNo.rno !== null"
                 class="d-flex justify-content-center">
-                <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
+                <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
                 <button v-if="likeList.pager.groupNo > 1" @click="changePageNo(likeList.pager.startPageNo - 1)"
-                    class="btn btn-outline-light btn-sm me-1">이전</button>
+                    class="btn pagerbtn">이전</button>
                 <button v-for="pageNo in likeList.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
-                    :class="(likeList.pager.pageNo == pageNo) ? 'btn-outline-light' : 'btn-outline-light'"
-                    class="btn btn-sm me-1">{{ pageNo }}</button>
+                    :class="(likeList.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{ pageNo
+                    }}</button>
                 <button v-if="likeList.pager.groupNo < likeList.pager.totalGroupNo"
-                    @click="changePageNo(likeList.pager.endPageNo + 1)"
-                    class="btn btn-outline-light btn-sm me-1">다음</button>
-                <button @click="changePageNo(likeList.pager.totalPageNo)"
-                    class="btn btn-outline-light btn-sm">맨끝</button>
+                    @click="changePageNo(likeList.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
+                <button @click="changePageNo(likeList.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
             </div>
         </div>
     </div>
@@ -111,10 +109,15 @@ async function deleteBtn(rno) {
     width: 70px;
 }
 
-.btn {
+.pagerbtn {
+    color: black;
+    margin-left: 7px;
     border: none;
-    background-color: #F37551;
-    color: white;
+    background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 
 /* 작성된 게시글이 없을때 나오게끔 처리 */
