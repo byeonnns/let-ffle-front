@@ -123,8 +123,6 @@ async function winnerList(pageNo, startDate, endDate) {
         const response = await RaffleAPI.myWinnerList(pageNo, startDate, endDate);
         winningList.value.list = response.data.list;
         winningList.value.pager = response.data.pager;
-        console.log("아아",winnerList.value.list);
-        console.log(response.data.list);
     } catch (error) {
         console.log(error);
     }

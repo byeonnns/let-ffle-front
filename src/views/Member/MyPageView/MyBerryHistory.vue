@@ -47,7 +47,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="item in berry" :key="item.bhno">
-                        <td>{{ formatDate(item.bhchangedat) }}<br>{{ formatTime(item.bhchangedat) }}</td>
+                        <td>{{ formatDate(item.bhchangedat) }}</td>
                         <td>{{ item.bhreason }}</td>
                         <td>
                             <img v-if="item.bhchangevalue > 0" src="@/assets/berry-icon.png" class="me-1" height="20px">
@@ -111,20 +111,14 @@ function changePageOption(pageNo, option) {
 
 function formatDate(dateStr) {
     const date = new Date(dateStr);
-    const year = date.getFullYear();
+    const year = date.getFullYear()%100;
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
-
-    return `${year}-${month}-${day}`;
-}
-
-function formatTime(dateStr) {
-    const date = new Date(dateStr);
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
     const seconds = String(date.getSeconds()).padStart(2, '0');
 
-    return `${hours}:${minutes}:${seconds}`;
+    return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
 }
 
 watch(route, (newRoute, oldRoute) => {
