@@ -11,9 +11,13 @@
                     <span class="me-3">{{ board.mid }}</span><i class="bi bi-clock me-2">{{ board.bcreatedat }}</i><i
                         class="bi bi-eye">{{ board.bhitcount }}</i>
                 </div>
-                <div>
+                <div v-if="$store.state.mid === board.mid">
                     <input type="submit" class="btn btn-outline-light btn-sm me-2 rounded-0" value="수정"
                         @click="updateBoard" />
+                    <input type="button" class="btn btn-outline-light btn-sm me-2 rounded-0" value="삭제"
+                        @click="deleteBoard" />
+                </div>
+                <div v-if="$store.state.mrole === 'ROLE_ADMIN'">
                     <input type="button" class="btn btn-outline-light btn-sm me-2 rounded-0" value="삭제"
                         @click="deleteBoard" />
                 </div>
