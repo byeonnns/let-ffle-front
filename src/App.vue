@@ -32,6 +32,7 @@ import FooterNav from "@/components/FooterNav.vue";
 
 #app a:hover {
   color: #FF5C35;
+  cursor: pointer;
   transition: all 0.15s;
 }
 

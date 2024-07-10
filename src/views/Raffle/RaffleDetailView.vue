@@ -1,20 +1,22 @@
 <template>
     <div>
-        <GiftLottie ref="lottie" />
+        <GiftLottie ref="lottie" class="pe-none"/>
         <RaffleToast ref="raffleToast" />
         <div v-if="raffleRequest.raffle" class="container">
             <div class="row">
                 <div class="col-6">
+                    <div class="position-relative">
+                        <img :src="`${axios.defaults.baseURL}/raffle/raffleGiftAttach/${rno}`" class="w-100">
+                        <div v-if="raffleDetail.raffleStatus === '당첨 발표' || raffleDetail.raffleStatus === '미참여 래플 종료'" class="position-absolute bg-white bg-opacity-75 w-100 h-100 top-0 start-0 text-center align-content-center" style="font-size: 100px;"><span class="text-dark fw-bold">CUT - OFF</span></div>
+                    </div>
                     <img :src="`${axios.defaults.baseURL}/raffle/raffleDetailAttach/${rno}`" class="w-100">
-                    <img :src="`${axios.defaults.baseURL}/raffle/raffleGiftAttach/${rno}`" class="w-100 mt-5">
                 </div>
                 <div class="col-6 d-flex flex-column position-sticky h-100" style="top:142px">
                     <p class="text-secondary">Raffle > {{ raffleRequest.raffle.rcategory }}</p>
                     <div class="d-flex justify-content-between">
                         <h1 class="align-content-center"> {{ raffleRequest.raffle.rtitle }} </h1>
                         <div @click="likeIt">
-                            <Vue3Lottie :animationData="HeartLottie" :loop="1" @on-animation-loaded="likeCheck"
-                                ref="likeAnimation" :autoPlay="false" />
+                            <Vue3Lottie :animationData="HeartLottie" :loop="1" :noMargin="true" @on-animation-loaded="likeCheck" ref="likeAnimation" :autoPlay="false" style="width:100px; height:100px"/>
                         </div>
                     </div>
                     <h5>{{ dateFormat(raffleRequest.raffle.rstartedat) }} 부터</h5>
@@ -56,7 +58,7 @@
                                 • 응모는 일일 최대 3회까지만 가능합니다. <br />
                                 • 미션 참여 및 베리 사용은 응모 마감 전까지만 가능합니다.
                             </p>
-                            <button class="btn mt-2 w-100" @click="apply(rno)">응모하기</button>
+                            <button class="btn mt-4 w-100" @click="apply(rno)">응모하기</button>
                         </div>
 
                         <div class="p-3 text-start"
@@ -97,14 +99,17 @@
                                 참여</button>
                         </div>
 
-                        <div class="p-3 text-start" v-if="raffleDetail.raffleStatus === '미션 성공' && tab == '미션 참여'">
-                            <h4>너 미션 이미 성공했잖아</h4>
-                            너 이뻐
+                        <div class="p-3 text-center" v-if="raffleDetail.raffleStatus === '미션 성공' && tab == '미션 참여'">
+                            <Vue3Lottie :animationData="correctLottie" :loop="1" @on-animation-loaded="likeCheck" ref="likeAnimation" style="width:300px"/>
+                            <h1>미션 성공!</h1>
+                            <h3>당첨 확률이 올라갔습니다</h3>
+                            베리를 사용해 당첨 확률을 더 올려보세요
                         </div>
 
-                        <div class="p-3 text-start" v-if="raffleDetail.raffleStatus === '미션 실패' && tab == '미션 참여'">
-                            <h4>너 미션 이미 실패했잖아</h4>
-                            풉
+                        <div class="p-3 text-center" v-if="raffleDetail.raffleStatus === '미션 실패' && tab == '미션 참여'">
+                            <Vue3Lottie :animationData="wrongLottie" :loop="1" @on-animation-loaded="likeCheck" ref="likeAnimation" style="width:300px"/>
+                            <h1>미션 실패...</h1>
+                            베리를 사용해 당첨 확률을 올려보세요
                         </div>
 
 
@@ -116,13 +121,14 @@
                                 <li>베리는 하나의 래플에 최대 10개까지 사용 가능합니다.</li>
                                 <li>사용한 베리는 사용 취소 및 환불이 불가능합니다.</li>
                                 <li>응모 기간 내에는 베리 추가 사용이 가능합니다.</li>
+                                <li>현재 베리를 {{ myBerry }}개 보유하고 있습니다.</li>
                                 <li>해당 래플에 현재 베리를 {{ raffleDetail.raffleDetail.rdtberryspend }}개 사용했습니다.</li>
                             </ul>
                             <div v-if="raffleDetail.raffleDetail.rdtberryspend < 10">
                                 <label class="me-2">몇 개나 사용할까요?</label>
                                 <select name="number" v-model="selectBerry">
-                                    <template v-for="n in 9" :key="n">
-                                        <option v-if="raffleDetail.raffleDetail.rdtberryspend <= 10 - n">{{ n }}
+                                    <template v-for="n in 10" :key="n">
+                                        <option v-if="raffleDetail.raffleDetail.rdtberryspend <= 10 - n && n <= myBerry">{{ n }}
                                         </option>
                                     </template>
                                 </select>개
@@ -195,9 +201,12 @@ import axios from 'axios';
 import { ref, watch } from 'vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+import wrongLottie from '@/assets/lottie/wrong.json'
+import correctLottie from '@/assets/lottie/correct.json'
 import RaffleToast from '@/components/RaffleToast.vue'
 import GiftLottie from '@/components/GiftLottie.vue'
 import HeartLottie from '@/assets/lottie/likeHeart.json'
+
 import { useRoute } from 'vue-router';
 import RaffleAPI from '@/apis/RaffleAPI';
 import MemberAPI from '@/apis/MemberAPI';
@@ -267,6 +276,7 @@ const raffleDetail = ref({
 });
 const tab = ref('미션 참여');
 const shift = ref('raffle');
+const myBerry = ref(null);
 
 /* 토스트 */
 const raffleToast = ref(null);
@@ -306,6 +316,7 @@ async function getRaffleDetail(rno) {
     const response = await RaffleAPI.getRaffleDetail(rno);
     raffleDetail.value.raffleDetail = response.data.raffleDetail;
     raffleDetail.value.raffleStatus = response.data.raffleStatus;
+    myBerry.value = response.data.mberry;
 }
 
 async function getRaffleRequest(argRno) {
@@ -319,7 +330,8 @@ async function getRaffleRequest(argRno) {
 }
 
 async function updateRdtBerrySpend(rno, rdtberryspend) {
-    await RaffleAPI.updateRdtBerrySpend(rno, rdtberryspend)
+    await RaffleAPI.updateRdtBerrySpend(rno, rdtberryspend);
+    raffleToast.value.showToast("베리를 " + rdtberryspend + "개 사용했습니다!");
     getRaffleDetail(rno);
 }
 
