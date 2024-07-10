@@ -38,20 +38,20 @@
                         <thead>
                             <tr class="d-none d-md-table-row text-center">
                                 <th class="d-none d-md-table-cell" style="width: 11em;"><span>래플명</span></th>
-                                <th class="d-none d-md-table-cell" style="width: 8em;"><span>응모 기간</span></th>
-                                <th class="d-none d-md-table-cell" style="width: 4em;"><span>참여 시간</span></th>
-                                <th class="d-none d-md-table-cell" style="width: 6em;"><span>사용한 베리 수</span></th>
+                                <th class="d-none d-md-table-cell" style="width: 10em;"><span>응모 기간</span></th>
+                                <th class="d-none d-md-table-cell" style="width: 8em;"><span>참여 시간</span></th>
+                                <th class="d-none d-md-table-cell" style="width: 3em;"><span>사용한 베리</span></th>
                                 <th class="d-none d-md-table-cell" style="width: 6em;"><span>당첨 여부</span></th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             <tr v-for="r in raffleDetailList" :key="r.raffle.rno">
                                 <td>{{ r.raffle.rtitle }}</td>
-                                <td>{{ r.raffle.rstartedat }} ~ {{ r.raffle.rfinishedat }}</td>
-                                <td>{{ r.raffleDetail.rdtcreatedat }} PM</td>
+                                <td>{{ periodFormat(r.raffle.rstartedat) }} ~ {{ periodFormat(r.raffle.rfinishedat) }}</td>
+                                <td>{{ dateFormat(r.raffleDetail.rdtcreatedat) }}</td>
                                 <td>{{ r.raffleDetail.rdtberryspend }}</td>
-                                <td v-if="r.raffleDetail.mid == r.winner.mid">당첨</td>
-                                <td v-if="r.raffleDetail.mid != r.winner.mid">미당첨</td>
+                                <!-- <td v-if="r.raffleDetail.mid == r.winner.mid">당첨</td>
+                                <td v-if="r.raffleDetail.mid != r.winner.mid">미당첨</td> -->
                             </tr>
                         </tbody>
                     </table>
@@ -69,7 +69,7 @@ import { useRoute } from 'vue-router';
 
 const member =ref({});
 const route = useRoute();
-const mid = route.query.mid
+const mid = route.query.mid;
 const raffleDetailList = ref([]);
 
 async function getAdminRaffleDetailList(mid) {
@@ -95,6 +95,28 @@ async function getMemberDetail(mid) {
     
 }
 getMemberDetail(mid);
+
+function periodFormat(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
+
+function dateFormat(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+}
 </script>
 
 <style scoped>
