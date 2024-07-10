@@ -1,16 +1,20 @@
 <template>
     <div>
         <div class="container-lg">
-            <div>
-                <button class="btn btn-sm" @click="changeSortType('popular')">인기순</button>
-                <button class="btn btn-sm" @click="changeSortType('new')">최신순</button>
-                <button class="btn btn-sm" @click="changeSortType('cutoffsoon')">응모마감순</button>
-            </div>
-            <div class="d-flex justify-content-end mb-3">
-                <div class="input-group input-group-sm w-auto">
-                    <input type="text" class="form-control" v-model="searchWord" @keyup.enter="search(searchWord)">
-                    <button class="btn btn-sm" style="background-color: #F37551; color:white;"
-                        @click="search">검색</button>
+            <div class="d-flex justify-content-between">
+                <nav class="navbar navbar-expand bg-body-white">
+                    <ul class="navbar-nav nav-underline">
+                            <li><a @click="changeSortType('popular')" class="nav-link" style="font-size:14px; padding: 8px;" :class="sortType === 'popular' ? 'active' : ''">인기순</a></li>
+                            <li><a @click="changeSortType('new')" class="nav-link" style="font-size:14px; padding: 8px;" :class="sortType === 'new' ? 'active' : ''">최신순</a></li>
+                            <li><a @click="changeSortType('cutoffsoon')" class="nav-link" :class="sortType === 'cutoffsoon' ? 'active' : ''" style="font-size:14px; padding: 8px;">응모마감순</a></li>
+                    </ul>
+                </nav>
+                <div class="d-flex justify-content-end mb-3">
+                    <div class="input-group input-group-sm w-auto">
+                        <input type="text" class="form-control" v-model="searchWord" @keyup.enter="search(searchWord)">
+                        <button class="btn btn-sm" style="background-color: #F37551; color:white;" @click="search">검색</button>
+                    </div>
+                    
                 </div>
             </div>
             <div class="row">
@@ -38,8 +42,8 @@ import { useRoute, useRouter } from "vue-router";
 const route = useRoute();
 const router = useRouter();
 const raffles = ref();
-var category = (route.query.category || "all");
-var sortType = (route.query.sortType || "popular");
+const category = ref(route.query.category || "all");
+const sortType = ref(route.query.sortType || "popular");
 const searchWord = ref();
 
 async function search() {
@@ -51,25 +55,23 @@ async function getRaffleList(argCategory, argSortType) {
     const response = await RaffleAPI.getRaffleList(argCategory, argSortType);
     raffles.value = response.data;
 }
-getRaffleList(category, sortType);
 
-function changeSortType(sortType) {
-    router.push(`/Raffle?category=${route.query.category}&sortType=${sortType}`);
-}
+getRaffleList(category.value, sortType.value);
 
 watch(
     route, (newRoute, oldRoute) => {
         if (newRoute.query.category || newRoute.query.sortType) {
+            sortType.value = newRoute.query.sortType;
+            category.value = newRoute.query.category;
             getRaffleList(newRoute.query.category, newRoute.query.sortType);
-        }
-    },
-
-    category, (newCategory, oldCategory) => {
-        if (newCategory.query.category) {
-            category = newCategory.query.category;
         }
     }
 );
+
+function changeSortType(sort) {
+    router.push(`/Raffle?category=${category.value}&sortType=${sort}`);
+}
+
 </script>
 
 <style scoped>
@@ -95,5 +97,9 @@ img {
     font-size: 13px;
     margin-bottom: 0;
     box-sizing: border-box;
+}
+
+.active {
+    color: #FF5C35 !important;
 }
 </style>

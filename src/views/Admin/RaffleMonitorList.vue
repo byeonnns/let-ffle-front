@@ -36,10 +36,14 @@
 
                         <td v-if="serverTime > new Date(raffle.rfinishedat)">마감</td>
                         <td v-if="serverTime < new Date(raffle.rstartedat)">진행 예정</td>
-                        <td v-if="serverTime <= new Date(raffle.rfinishedat) && new Date(raffle.rstartedat) <= serverTime">진행 중</td>
+                        <td
+                            v-if="serverTime <= new Date(raffle.rfinishedat) && new Date(raffle.rstartedat) <= serverTime">
+                            진행 중</td>
 
                         <td>
-                            <RouterLink :to="`/Admin/RaffleMonitorDetail?rno=${raffle.rno}`"><button class="btn btn-sm rounded-0">모니터링</button>
+                            <RouterLink :to="`/Admin/RaffleMonitorDetail?rno=${raffle.rno}`"><button
+                                    class="btn btn-sm text-white rounded-0"
+                                    style="background-color: #F37551;">모니터링</button>
                             </RouterLink>
                         </td>
                     </tr>
@@ -47,18 +51,18 @@
             </table>
         </div>
         <div class="text-center" v-if="page.raffles.length > 0">
-            <button @click="changePageNo(1)" class="btn btn-outline-light btn-sm me-1">처음</button>
-                <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
-                    class="btn btn-outline-light btn-sm me-1">이전</button>
-                <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
-                    :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
-                    class="btn btn-outline-light btn-sm me-1">{{ pageNo }}</button>
-                <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
-                    @click="changePageNo(page.pager.endPageNo + 1)" class="btn btn-outline-light btn-sm me-1">다음</button>
-                <button @click="changePageNo(page.pager.totalPageNo)" class="btn btn-outline-light btn-sm">맨끝</button>
+            <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
+            <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
+                class="btn pagerbtn">이전</button>
+            <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
+                :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{ pageNo }}</button>
+            <button v-if="page.pager.groupNo < page.pager.totalGroupNo" @click="changePageNo(page.pager.endPageNo + 1)"
+                class="btn pagerbtn">다음</button>
+            <button @click="changePageNo(page.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
         </div>
     </div>
-    <div class="d-flex justify-content-center align-items-center" style="height: 100%; font-size: 20px;" v-if="page.raffles === 0">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100%; font-size: 20px;"
+        v-if="page.raffles === 0">
         <span>래플 내역이 없습니다.</span>
     </div>
 </template>
@@ -149,8 +153,14 @@ td {
     align-content: center;
 }
 
-.btn {
-    background-color: #F37551;
-    color: white;
+.pagerbtn {
+    color: black;
+    margin-left: 7px;
+    border: none;
+    background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 </style>

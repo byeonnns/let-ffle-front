@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { ref, defineExpose } from 'vue';
+import { ref } from 'vue';
 import { Vue3Lottie } from 'vue3-lottie';
 import winningAnimation from "@/assets/lottie/checkLottie.json";
 import defeatAnimation from "@/assets/lottie/lose.json"

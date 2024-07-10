@@ -2,12 +2,12 @@
     <div class="container-lg">
         <div class="d-flex justify-content-center">
             <!--아이디(이메일), 비밀번호, 이름, 주민번호, 전화번호, 주소를 입력받는다.-->
-            <form @submit.prevent="handleLogin" class="d-flex flex-column" :style="responsiveSize">
+            <form v-if="$store.state.mid === ''" @submit.prevent="handleLogin" class="d-flex flex-column"
+                :style="responsiveSize">
                 <p class="text-center fst-italic" style="font-size:50px; font-weight: 900">Let-<span
                         style="color:#FF5C35">FFle</span></p>
                 <label for="memail">이메일 주소</label>
-                <input v-model="member.mid" type="email" class="border-0 border-bottom input"
-                    @input="emailCheck()">
+                <input v-model="member.mid" type="email" class="border-0 border-bottom input" @input="emailCheck()">
                 <p class="m-0" style="color:#FF5C35">{{ emailError }}</p>
                 <label for="mpassword" class="mt-3">비밀번호</label>
                 <input v-model="member.mpassword" type="password" class="border-0 border-bottom input"
@@ -29,6 +29,10 @@
                     </div>
                 </div>
             </form>
+            <div v-else class="notback" style="height: 400px;">
+                <h4>이미 로그인을 하셨습니다.</h4>
+            </div>
+
         </div>
     </div>
 </template>
@@ -61,7 +65,7 @@ async function handleLogin() {
 
     } catch (error) {
         console.log(error);
-        
+
     }
 }
 
@@ -127,5 +131,12 @@ p {
 
 label {
     font-size: 14px;
+}
+
+.notback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 </style>

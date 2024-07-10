@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { ref, defineExpose } from 'vue';
+import { ref } from 'vue';
 import { Vue3Lottie } from 'vue3-lottie';
 import LoadingAnimation from "@/assets/lottie/loading.json";
 

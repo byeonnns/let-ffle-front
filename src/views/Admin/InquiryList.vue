@@ -69,7 +69,7 @@
             <RaffleToast ref="look" />
         </div>
     </div>
-    <div class="d-flex justify-content-center align-items-center" style="height: 100%; font-size: 20px;" v-if="page.Inquirys === 0">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100%; font-size: 20px;" v-if="page.Inquirys.length == 0">
         <span>문의 내역이 없습니다.</span>
     </div>
 </template>
@@ -101,7 +101,6 @@ async function myInquiryList(pageNo) {
         const response = await MemberAPI.myInquiryList(pageNo)
         page.value.Inquirys = response.data.inquiry;
         page.value.pager = response.data.pager;
-        console.log(page.value);
     } catch (error) {
         console.log(error);
     }
@@ -111,6 +110,7 @@ myInquiryList(pageNo.value);
 async function updateInquiry(ino){
     await MemberAPI.inquiryReply(ino, adminReply.value[ino]);
     myInquiryList(pageNo.value);
+    look.value.showToast("답변이 등록되었습니다.");
 }
 
 function changePageNo(argPageNo) {

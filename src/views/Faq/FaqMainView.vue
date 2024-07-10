@@ -11,26 +11,21 @@
                         <thead>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style="width: 25%;">
-                                    <button class="btn btn-outline-light" @click="changeSubcategory('전체')">
-                                        <span class="spanded">전체</span>
-                                    </button>
+                            <tr style="height: 55px;">
+                                <td class="col-3" @click="changeSubcategory('전체')">
+                                    <h6 :class="sortType === '전체' ? 'activeColor' : ''"> 전체</h6>
                                 </td>
-                                <td style="width: 25%;">
-                                    <button class="btn btn-outline-light" @click="changeSubcategory('일반')">
-                                        <span class="spanded">일반</span>
-                                    </button>
+
+                                <td class="col-3" @click="changeSubcategory('일반')">
+                                    <h6 :class="sortType === '일반' ? 'activeColor' : ''">일반</h6>
                                 </td>
-                                <td style="width: 25%;">
-                                    <button class="btn btn-outline-light" @click="changeSubcategory('이용정책')">
-                                        <span class="spanded">이용정책</span>
-                                    </button>
+
+                                <td class="col-3" @click="changeSubcategory('이용정책')">
+                                    <h6 :class="sortType === '이용정책' ? 'activeColor' : ''">이용정책</h6>
                                 </td>
-                                <td style="width: 25%;">
-                                    <button class="btn btn-outline-light" @click="changeSubcategory('래플')">
-                                        <span class="spanded">래플</span>
-                                    </button>
+
+                                <td class="col-3" @click="changeSubcategory('래플')">
+                                    <h6 :class="sortType === '래플' ? 'activeColor' : ''">래플</h6>
                                 </td>
                             </tr>
                         </tbody>
@@ -118,13 +113,21 @@ watch(
     route, (newRoute, oldRoute) => {
         if (newRoute.query.pageNo) {
             getNoticeList(newRoute.query.pageNo);
+            sortType.value = route.query.subcategory
         } else {
             getNoticeList(1);
             pageNo.value = 1;
+            sortType.value = route.query.subcategory
         }
 
     }
 );
+
+const sortType = ref(route.query.subcategory);
+
+
+
+
 </script>
 
 <style scoped>
@@ -170,23 +173,30 @@ watch(
     border-bottom: 1px solid #ebebeb;
 }
 
-/* 위에 있는 전체 서비스 이벤트 공지 기타칸 정렬 */
-.table th,
-.table tr {
+td {
     text-align: center;
+    align-content: center;
+    
 
 }
 
 /* 전체, 이용정책 글자 색 */
-.spanded {
-    color: black;
-}
+
 
 .pagerbtn {
     color: black;
     margin-left: 7px;
     border: none;
     background-color: white;
+}
+
+td:hover {
+    cursor: pointer;
+    color: #FF5C35;
+}
+
+.activeColor {
+    color: #FF5C35 !important
 }
 
 </style>
