@@ -8,8 +8,8 @@
             <h2>[{{ board.bcategory }}] {{ board.btitle }}</h2>
             <div class="d-flex justify-content-between">
                 <div>
-                    <span class="me-3">{{ board.mid }}</span><i class="bi bi-clock me-2">{{ formatDate(board.bcreatedat) }}</i><i
-                        class="bi bi-eye">{{ board.bhitcount }}</i>
+                    <span class="me-3">{{ board.battachoname }}</span><i class="bi bi-clock me-2">{{ formatDate(board.bcreatedat)
+                        }}</i><i class="bi bi-eye">{{ board.bhitcount }}</i>
                 </div>
                 <div v-if="$store.state.mid === board.mid">
                     <input type="submit" class="btn btn-outline-light btn-sm me-2 rounded-0" value="수정"
