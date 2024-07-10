@@ -198,5 +198,8 @@ td:hover {
 .activeColor {
     color: #FF5C35 !important
 }
+h6 {
+    margin: 0px;
+}
 
 </style>
