@@ -9,10 +9,10 @@
                     <div class="tab_item total d-flex justify-content-lg-start">
                         <!-- <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Total')"> -->
                             <dl class="tab_box m-0">
-                                <div class="mb-1">
-                                    <button class="btn-span me-2" @click="changePageOption(1, 'Total')">전체</button>
-                                    <button class="btn-span me-2" @click="changePageOption(1, 'Save')">적립</button>
-                                    <button class="btn-span" @click="changePageOption(1, 'Use')">사용</button> 
+                                <div class="mb-1 d-flex">
+                                    <h6 class="berry_Category me-3 freeHover" :class="sortType === 'Total' ? 'activeColor' : ''" @click="changePageOption(1, 'Total')">전체</h6>
+                                    <h6 class="berry_Category me-3 freeHover" :class="sortType === 'Save' ? 'activeColor' : ''" @click="changePageOption(1, 'Save')">적립</h6>
+                                    <h6 class="berry_Category me-3 freeHover" :class="sortType === 'Use' ? 'activeColor' : ''" @click="changePageOption(1, 'Use')">사용</h6> 
                                 </div>
                                 <!-- <dt class="title" style="height: 50px;">전체</dt>
                                 <dd class="count">{{ totalBH }}</dd> -->
@@ -91,7 +91,7 @@ const router = useRouter();
 const route = useRoute();
 const pageNo = ref(route.query.pageNo || 1);
 const option = ref(route.query.option || "Total");
-
+const sortType = ref(route.query.option || "Total");
 async function getMyBerryHistory(pageNo, option) {
     try {
         const response = await MemberAPI.myBerryHistory(pageNo, option);
@@ -106,7 +106,8 @@ async function getMyBerryHistory(pageNo, option) {
 }
 
 function changePageOption(pageNo, option) {
-    router.push(`/Member/MyPage/MyBerryHistory?pageNo=${pageNo}&option=${option}`);
+    sortType.value = option;
+    router.push(`/Member/MyPage/MyBerryHistory?pageNo=${pageNo}&option=${option}&sortType=${option}`);
 }
 
 function formatDate(dateStr) {
@@ -126,10 +127,12 @@ watch(route, (newRoute, oldRoute) => {
         getMyBerryHistory(newRoute.query.pageNo, newRoute.query.option);
         pageNo.value = newRoute.query.pageNo;
         option.value = newRoute.query.option;
+        sortType.value = newRoute.query.option;
     } else {
         getMyBerryHistory(1, 'Total');
         pageNo.value = 1;
         option.value = 'Total';
+        sortType.value = 'Total';
     }
 });
 getMyBerryHistory(pageNo.value, option.value);
@@ -185,13 +188,20 @@ td {
     /* 텍스트를 수직으로 가운데 정렬 */
 }
 
-.btn-span {
-    background-color: white;
-    border-radius: 15px;
-    color: gray;
+.freeHover:hover {
+    cursor: pointer;
+    color: #FF5C35;
+}
+
+.activeColor {
+    color: #FF5C35 !important;
+    border: 1px solid #F37551;
+}
+
+.berry_Category {
     border: 1px solid gray;
+    width: 50px;
     height: 40px;
-    width: 60px;
-    
+    align-content: center;
 }
 </style>
