@@ -16,7 +16,7 @@
                             <h6 class="freeHover" :class="sortType === '당첨후기' ? 'activeColor' : ''"
                                 @click="categorySearch('당첨후기')">당첨 후기</h6>
                         </div>
-                        <button class="btn btn-outline-light btn-sm ms-3 rounded-0" style="background-color: #F37551;">
+                        <button v-if="$store.state.mid !== ''" class="btn btn-outline-light btn-sm ms-3 rounded-0" style="background-color: #F37551;">
                             <RouterLink to="/Board/WriteBoard" style="color: white;">글쓰기</RouterLink>
                         </button>
                     </div>
@@ -87,12 +87,13 @@
 import { onMounted, ref, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import BoardAPI from '@/apis/BoardAPI';
+import { useStore } from 'vuex';
 
 const router = useRouter();
 const route = useRoute();
 const searchType = ref('title');
 const searchWord = ref();
-
+const store = useStore();
 
 async function categorySearch(type) {
     try {
