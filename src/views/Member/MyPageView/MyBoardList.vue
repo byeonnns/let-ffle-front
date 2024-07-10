@@ -28,7 +28,7 @@
                                     <RouterLink :to="`/Board/BoardUpdate?bno=${board.bno}&pageNo=${pageNo}`"><button
                                             class="btn btn-outline-light btn-sm me-2" style="background-color: #F37551; color: white;">수정</button>
                                     </RouterLink>
-                                    <button class="btn btn-outline-light btn-sm" @click="deleteModal">삭제</button>
+                                    <button class="btn btn-outline-light btn-sm" @click="deleteModal" style="color: black">삭제</button>
                                 </td>
                             </tr>
                             <tr v-if="page.boards.length === 0">
