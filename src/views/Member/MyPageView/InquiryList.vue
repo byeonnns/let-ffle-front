@@ -25,7 +25,7 @@
                         <td>{{ formatDate(inquiry.icreatedat) }}</td>
                         <td v-if="inquiry.ireply == null">
                             <RouterLink :to="`/Member/Mypage/InquiryUpdate?ino=${inquiry.ino}`"><button
-                                    class="btn btn-outline-light btn-sm">수정하기</button></RouterLink>대기중
+                                    class="btn btn-outline-light btn-sm me-3 rounded-0" style="background-color: #F37551; color: white">수정하기</button></RouterLink>대기중
                         </td>
                         <td v-if="inquiry.ireply != null">답변완료</td>
                     </tr>
