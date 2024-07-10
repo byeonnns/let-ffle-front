@@ -156,6 +156,10 @@ function AdminMemberDetail(mid) {
     return axios.get("/member/getMemberDetail/" + mid)
 }
 
+function inquiryAttachDownload(ino) {
+    return axios.get("/member/iattach/" + ino, { responseType: "blob" });
+}
+
 export default {
     join,
     login,
@@ -192,5 +196,6 @@ export default {
     myCommentList,
     AdminMemberDetail,
     inquiryReply,
-    getBerryHistoryListForHome
+    getBerryHistoryListForHome,
+    inquiryAttachDownload
 }

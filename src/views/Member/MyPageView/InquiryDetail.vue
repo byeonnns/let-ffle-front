@@ -21,6 +21,9 @@
                         <hr />
                         <div class="inquiry-content p-3">
                             {{ inquiry.icontent }}
+                            <div>
+                               <img width="300px" :src="`${axios.defaults.baseURL}/member/iattach/${inquiry.ino}`">
+                            </div>
                         </div>
                         <div class="inquiry-answer mt-5">
                             <div>
@@ -47,6 +50,7 @@
 import { ref } from 'vue';
 import MemberAPI from '@/apis/MemberAPI';
 import { useRoute } from 'vue-router';
+import axios from 'axios';
 
 const route = useRoute();
 const inquiry = ref({});

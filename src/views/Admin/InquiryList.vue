@@ -23,10 +23,13 @@
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <div class="container "
-                                style="width: 100%;  height:300px; background-color: #FAFAFA; padding: 30px;">
+                                style="width: 100%; background-color: #FAFAFA; padding: 30px;">
                                 <!-- border:1px solid black  -->
                                 <div style="width: 100%; ">
                                     <!-- border:1px solid black -->
+                                    <div>
+                                        <img width="300px" :src="`${axios.defaults.baseURL}/member/iattach/${Inquiry.ino}`">
+                                    </div>
                                     <p>{{ Inquiry.icontent }}</p>
                                 </div>
                             </div>
@@ -76,13 +79,17 @@ import { ref, watch } from "vue"
 import RaffleToast from '@/components/RaffleToast.vue';
 import MemberAPI from "@/apis/MemberAPI";
 import { useRouter, useRoute } from 'vue-router';
+import axios from "axios";
+
 
 const router = useRouter();
 const route = useRoute();
 const pageNo = ref(route.query.pageNo || 1);
 const adminReply = ref([]);
-
 const look = ref(null);
+const ino = route.query.ino;
+console.log("route.query: ", route.query);
+console.log("ino: " ,ino);
 
 const page = ref({
     Inquirys: [],
@@ -121,8 +128,6 @@ watch(
         }
     }
 );
-
-
 </script>
 
 <style scoped>

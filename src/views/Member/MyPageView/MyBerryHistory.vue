@@ -6,31 +6,36 @@
             </div>
             <div style="border-bottom: 3px solid #F37551;">
                 <div class="purchase_list_tab mt-2">
-                    <div class="tab_item total">
+                    <div class="tab_item total d-flex justify-content-lg-start">
                         <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Total')">
                             <dl class="tab_box m-0">
-                                <dt class="title" style="height: 50px;">전체</dt>
-                                <dd class="count">{{ totalBH }}</dd>
+                                <div class="mb-1">
+                                    <button class="btn-span me-2" @click="changePageOption(1, 'Total')">전체</button>
+                                    <button class="btn-span me-2" @click="changePageOption(1, 'Save')">적립</button>
+                                    <button class="btn-span" @click="changePageOption(1, 'Use')">사용</button>
+                                </div>
+                                <!-- <dt class="title" style="height: 50px;">전체</dt> -->
+                                <!-- <dd class="count">{{ totalBH }}</dd> -->
                             </dl>
                         </button>
                     </div>
                     <div class="tab_item">
                         <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Save')">
                             <dl class="tab_box m-0">
-                                <dt class="title" style="height: 50px;">적립</dt>
-                                <dd class="count">{{ saveBH }}</dd>
+                                <!-- <dt class="title" style="height: 50px;">적립</dt> -->
+                                <!-- <dd class="count">{{ saveBH }}</dd> -->
                             </dl>
                         </button>
                     </div>
                     <div class="tab_item">
                         <button class="btn bg-transparent border-0 text-body" @click="changePageOption(1, 'Use')">
                             <dl class="tab_box m-0">
-                                <dt class="title" style="height: 50px;">사용</dt>
-                                <dd class="count">{{ useBH }}</dd>
+                                <!-- <dt class="title" style="height: 50px;">사용</dt> -->
+                                <!-- <dd class="count">{{ useBH }}</dd> -->
                             </dl>
                         </button>
                     </div>
-                </div>
+                </div>  
             </div>
             <table class="table text-center">
                 <thead>
@@ -179,5 +184,15 @@ td {
     /* 높이를 100px로 설정 (필요에 따라 조정 가능) */
     vertical-align: middle;
     /* 텍스트를 수직으로 가운데 정렬 */
+}
+
+.btn-span {
+    background-color: white;
+    border-radius: 15px;
+    color: gray;
+    border: 1px solid gray;
+    height: 40px;
+    width: 60px;
+    
 }
 </style>

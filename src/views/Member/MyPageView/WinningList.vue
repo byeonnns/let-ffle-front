@@ -10,10 +10,10 @@
                 <table class="table text-center">
                     <thead>
                         <tr>
-                            <th class="col-6">래플 이름</th>
+                            <th class="col-5">래플 이름</th>
                             <th class="col-2">당첨 일자</th>
                             <th class="col-3">상품</th>
-                            <th class="col-1">배송 상태</th>
+                            <th class="col-2">배송 상태</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,7 +26,7 @@
                                     style="text-wrap: nowrap; text-align: center; border-radius: 0px; background-color: #F37551; color: white;">배송지
                                     입력</button>
                             </td>
-                            <td v-if="win.rcontent != null">배송 중</td>
+                            <td v-if="win.rcontent != null">상품 준비중</td>
                         </tr>
                         <tr v-if="winningList.list.length === 0">
                             <td colspan="5" class="non-center">
@@ -123,6 +123,8 @@ async function winnerList(pageNo, startDate, endDate) {
         const response = await RaffleAPI.myWinnerList(pageNo, startDate, endDate);
         winningList.value.list = response.data.list;
         winningList.value.pager = response.data.pager;
+        console.log("아아",winnerList.value.list);
+        console.log(response.data.list);
     } catch (error) {
         console.log(error);
     }

@@ -12,7 +12,7 @@
                     </div>
                     <div class="td">
                         <div>
-                            <input type="text" readonly :placeholder="member.mid" v-model="member.mid">
+                            <input type="text" readonly :placeholder="member.mid" v-model="member.mid" style="color: gray;">
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                     </div>
                     <div class="td">
                         <div>
-                            <input v-model="nick" type="text" :placeholder="member.mnickname" readonly>
+                            <input v-model="nick" type="text" :placeholder="member.mnickname" readonly style="color: gray">
                         </div>
                     </div>
                     <div class="td">
@@ -35,7 +35,7 @@
                         <p>비밀번호</p>
                     </div>
                     <div class="td">
-                        <input type="password" placeholder="●●●●●●●●" readonly>
+                        <input type="password" placeholder="●●●●●●●●" readonly style="color: gray;">
                     </div>
                     <div class="td">
                         <button class="btn btn-ch btn-outline-light ms-4" style="width: 100px; font-size: 15px;"
@@ -48,7 +48,7 @@
                     </div>
                     <div class="td">
                         <div>
-                            <input v-model="member.mphone" type="text" readonly>
+                            <input v-model="member.mphone" type="text" readonly style="color: gray;">
                         </div>
                     </div>
                     <div class="td">
@@ -64,13 +64,13 @@
                         <div>
                             <div>
                                 <div class="mt-2">
-                                    <input style="width: 90px;" v-model="member.mzipcode" class="mb-2 me-2 text-center"
+                                    <input style="width: 90px; color: gray" v-model="member.mzipcode" class="mb-2 me-2 text-center"
                                         type="text" readonly>
-                                    <input style="width: 200px;" v-model="member.maddress1" type="text" readonly>
+                                    <input style="width: 200px; color: gray" v-model="member.maddress1" type="text" readonly>
                                     <button class="btn btn-outline-light ms-4" style="font-size: 15px; width: 100px;"
                                         @click="addrModal">변경</button> <br />
                                 </div>
-                                <input v-model="member.maddress2" style="width: 422px;" class="mb-2" type="text"
+                                <input v-model="member.maddress2" style="width: 422px; color: gray;" class="mb-2" type="text"
                                     placeholder="상세 주소" readonly>
                             </div>
                         </div>
