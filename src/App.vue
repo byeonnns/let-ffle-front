@@ -30,6 +30,12 @@ watch (route, (newRoute, oldRoute) => {
     }
   }
 
+  if (newRoute.path.startsWith('/Member/MyPage')) {
+      if (store.state.mid == '') {
+        eventBus.showToast('로그인이 필요합니다.');
+        router.push("/login");
+      }
+    }
 })
 </script>
 
