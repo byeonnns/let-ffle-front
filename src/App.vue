@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="d-flex flex-column min-vh-100">
     <RaffleToast />
     <Header class="sticky-top bg-white z-1" />
-    <router-view />
-    <Footer v-if="!$route.path.startsWith('/Admin')" />
+    <router-view class="mb-5"/>
+    <Footer v-if="!$route.path.startsWith('/Admin')" class="mt-auto"/>
     <FooterNav class="d-lg-none sticky-bottom container-fluid" />
   </div>
 </template>
@@ -37,6 +37,7 @@ watch (route, (newRoute, oldRoute) => {
       }
     }
 })
+
 </script>
 
 <style>
