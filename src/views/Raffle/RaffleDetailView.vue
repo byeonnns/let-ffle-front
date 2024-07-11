@@ -436,5 +436,6 @@ function selectGuide(param) {
     border: 0;
     background-color: #FF5C35;
     border-radius: 0%;
+    color:white;
 }
 </style>
