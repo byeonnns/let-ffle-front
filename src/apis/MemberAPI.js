@@ -160,6 +160,11 @@ function inquiryAttachDownload(ino) {
     return axios.get("/member/iattach/" + ino, { responseType: "blob" });
 }
 
+// 관리자 페이지 회원의 문의 목록 가져오기
+function getUserInquiryList(pageNo) {
+    return axios.get("/member/getUserInquiryList", { params: { pageNo:pageNo }})
+}
+
 export default {
     join,
     login,
@@ -197,5 +202,6 @@ export default {
     AdminMemberDetail,
     inquiryReply,
     getBerryHistoryListForHome,
-    inquiryAttachDownload
+    inquiryAttachDownload,
+    getUserInquiryList
 }

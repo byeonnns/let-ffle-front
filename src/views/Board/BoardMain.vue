@@ -48,7 +48,7 @@
                                         class="btn pagerbtn">이전</button>
                                     <button v-for="pageNo in page.pager.pageArray" :key="pageNo"
                                         @click="changePageNo(pageNo)"
-                                        :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-success'"
+                                        :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''"
                                         class="btn pagerbtn">{{ pageNo }}</button>
                                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
                                         @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
@@ -185,6 +185,10 @@ const sortType = ref('')
     margin-left: 7px;
     border: none;
     background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 
 .freeHover:hover {

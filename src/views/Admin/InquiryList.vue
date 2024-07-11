@@ -92,20 +92,20 @@ const page = ref({
     pager: {}
 });
 
-async function myInquiryList(pageNo) {
+async function getUserInquiryList(pageNo) {
     try {
-        const response = await MemberAPI.myInquiryList(pageNo)
+        const response = await MemberAPI.getUserInquiryList(pageNo)
         page.value.Inquirys = response.data.inquiry;
         page.value.pager = response.data.pager;
     } catch (error) {
         console.log(error);
     }
 }
-myInquiryList(pageNo.value);
+getUserInquiryList(pageNo.value);
 
 async function updateInquiry(ino) {
     await MemberAPI.inquiryReply(ino, adminReply.value[ino]);
-    myInquiryList(pageNo.value);
+    getUserInquiryList(pageNo.value);
     look.value.showToast("답변이 등록되었습니다.");
 }
 
@@ -116,10 +116,10 @@ function changePageNo(argPageNo) {
 watch(
     route, (newRoute, oldRoute) => {
         if (newRoute.query.pageNo) {
-            myInquiryList(newRoute.query.pageNo);
+            getUserInquiryList(newRoute.query.pageNo);
             pageNo.value = newRoute.query.pageNo;
         } else {
-            myInquiryList(1);
+            getUserInquiryList(1);
             pageNo.value = 1;
         }
     }
