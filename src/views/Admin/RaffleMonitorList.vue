@@ -4,6 +4,17 @@
             <div style="border-bottom: 3px solid #F37551;">
                 <h3>래플 모니터</h3>
             </div>
+            <div class="d-flex justify-content-end mt-4 mb-3">
+                <div class="input-group input-group-sm w-auto">
+                    <div class="me-3">
+                        래플 이름 :
+                    </div>
+                    <input type="text" class="form-control" v-model="searchWord"
+                        @keyup.enter="getRaffleList(1, searchWord)">
+                    <button class="btn btn-sm text-white" @click="getRaffleList(1, searchWord)"
+                        style="background-color: #F37551;">검색</button>
+                </div>
+            </div>
             <table class="table text-center">
                 <thead>
                     <tr>
@@ -47,17 +58,6 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="d-flex justify-content-end">
-                <div class="input-group input-group-sm w-auto">
-                    <div class="me-3">
-                        래플 이름 :
-                    </div>
-                    <input type="text" class="form-control" v-model="searchWord"
-                        @keyup.enter="getRaffleList(1, searchWord)">
-                    <button class="btn btn-sm text-white" @click="getRaffleList(1, searchWord)"
-                        style="background-color: #F37551;">검색</button>
-                </div>
-            </div>
         </div>
         <div class="text-center" v-if="page.raffles.length > 0">
             <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
