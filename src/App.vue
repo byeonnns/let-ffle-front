@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-column min-vh-100">
-    <RaffleToast />
+    <RaffleToast class="z-3" />
     <Header class="sticky-top bg-white z-1" />
     <router-view class="mb-5"/>
     <Footer v-if="!$route.path.startsWith('/Admin')" class="mt-auto"/>
