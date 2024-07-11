@@ -8,8 +8,8 @@
                 </div>
                 <WriteForm ref="createWriteForm" />
                 <div class="d-flex justify-content-end">
-                    <input value="신청하기" class="input btn btn-outline-light me-2" @click="handleClick()" />
-                    <RouterLink to="/Member/Mypage/InquiryList"><input value="취소" class="input btn btn-outline-light">
+                    <input value="신청하기" class="input btn btn-outline-light me-2" @click="handleClick()" style="background-color: #F37551; color: white;"/>
+                    <RouterLink to="/Member/Mypage/InquiryList"><input value="취소" class="input btn btn-outline-light" style="background-color: #F37551; color: white">
                     </RouterLink>
                 </div>
             </div>

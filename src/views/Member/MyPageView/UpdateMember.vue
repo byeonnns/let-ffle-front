@@ -29,7 +29,7 @@
                     </div>
                     <div class="td">
                         <button @click="NickChModal" class="btn btn-ch btn-outline-light ms-4"
-                            style="width: 100px; font-size: 15px;">변경</button>
+                            style="width: 100px; font-size: 15px; background-color: #F37551; color: white;">변경</button>
                     </div>
                 </div>
                 <div class="tr">
@@ -40,7 +40,7 @@
                         <input class="placeColor" type="password" placeholder="●●●●●●●●" readonly>
                     </div>
                     <div class="td">
-                        <button class="btn btn-ch btn-outline-light ms-4" style="width: 100px; font-size: 15px;"
+                        <button class="btn btn-ch btn-outline-light ms-4" style="width: 100px; font-size: 15px; background-color: #F37551; color: white;"
                             @click="seeModal">변경</button>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     <div class="td">
-                        <button class="btn btn-ch btn-outline-light ms-4" style="width: 100px; font-size: 15px;"
+                        <button class="btn btn-ch btn-outline-light ms-4" style="width: 100px; font-size: 15px; background-color: #F37551; color: white"
                             @click="lookModal">변경</button>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                                         class="mb-2 me-2 text-center placeColor" type="text" readonly>
                                     <input class="placeColor" style="width: 200px;" v-model="member.maddress1"
                                         type="text" readonly>
-                                    <button class="btn btn-outline-light ms-4" style="font-size: 15px; width: 100px;"
+                                    <button class="btn btn-outline-light ms-4" style="font-size: 15px; width: 100px; background-color: #F37551; color: white;"
                                         @click="addrModal">변경</button> <br />
                                 </div>
                                 <input v-model="member.maddress2" style="width: 422px; color: gray;" class="mb-2" type="text"
@@ -232,10 +232,10 @@
                 탈퇴한 이후에는 복구되지 않으며, <br>동일한 아이디로 재가입이 불가능하니 신중하게 결정해주세요. <br><br>정말 탈퇴하시겠어요?
             </template>
             <template v-slot:modalFooter>
-                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal" style="background-color: #F37551; color: white;">닫기</button>
                 <RouterLink to="/login">
                     <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal"
-                        @click="changeMenabled">확인</button>
+                        @click="changeMenabled" style="background-color: #F37551; color: white">확인</button>
                 </RouterLink>
             </template>
         </Modal>
@@ -511,9 +511,9 @@ input[type="password"] {
 .btn {
     width: 60px;
     height: 46px;
+    border-radius: 0px;
     background-color: #F37551;
     color: white;
-    border-radius: 0px;
 }
 
 .form_table {

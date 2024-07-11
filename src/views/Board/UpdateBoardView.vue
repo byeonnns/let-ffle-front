@@ -42,9 +42,9 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12 d-flex justify-content-end">
-                            <input type="submit" class="btn btn-outline-light btn-sm me-2 rounded-0" value="등록" />
+                            <input type="submit" class="btn btn-outline-light btn-sm me-2 rounded-0" value="등록" style="background-color: #F37551; color: white;"/>
                             <RouterLink to="/Board/BoardList">
-                                <input type="button" class="btn btn-outline-light btn-sm rounded-0" value="취소" />
+                                <input type="button" class="btn btn-outline-light btn-sm rounded-0" value="취소" style="background-color: #F37551; color: white"/>
                             </RouterLink>
                         </div>
                     </div>

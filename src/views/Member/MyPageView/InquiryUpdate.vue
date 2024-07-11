@@ -34,10 +34,10 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12 d-flex justify-content-end">
                                             <input type="submit" class="btn btn-outline-light btn-sm me-2 rounded-0"
-                                                value="수정하기" @click="updateInquiry" />
+                                                value="수정하기" @click="updateInquiry" style="color: white; background-color: #F37551;"/>
                                             <RouterLink to="/Member/Mypage/InquiryList">
                                                 <input type="button" class="btn btn-outline-light btn-sm rounded-0"
-                                                    value="취소" @click="deleteInquiry" />
+                                                    value="취소" @click="deleteInquiry" style="color: white; background-color: #F37551;"/>
                                             </RouterLink>
                                         </div>
                                     </div>

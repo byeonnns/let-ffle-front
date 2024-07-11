@@ -11,7 +11,7 @@
                                 member.todayEntryRaffle }} </span> 회 남았습니다.</strong>
                     </span>
                     <RouterLink class="btn btn-outline-light align-content-center text-white"
-                        to="/Member/MyPage/UpdateMember">회원 정보 수정</RouterLink>
+                        to="/Member/MyPage/UpdateMember" style="background-color: #F37551;">회원 정보 수정</RouterLink>
                 </div>
             </div>
             <div class="card flex-grow-1 mt-5">
