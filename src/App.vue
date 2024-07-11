@@ -2,8 +2,8 @@
   <div class="d-flex flex-column min-vh-100">
     <RaffleToast class="z-3" />
     <Header class="sticky-top bg-white z-1" />
-    <router-view class="mb-5"/>
-    <Footer v-if="!$route.path.startsWith('/Admin')" class="mt-auto"/>
+    <router-view class="mb-5" />
+    <Footer v-if="!$route.path.startsWith('/Admin')" class="mt-auto" />
     <FooterNav class="d-lg-none sticky-bottom container-fluid" />
   </div>
 </template>
@@ -22,7 +22,7 @@ const router = useRouter();
 const store = useStore();
 const eventBus = useEventBus();
 
-watch (route, (newRoute, oldRoute) => {
+watch(route, (newRoute, oldRoute) => {
   if (newRoute.path.startsWith('/Admin')) {
     if (store.state.mrole != 'ROLE_ADMIN') {
       eventBus.showToast("권한이 없습니다.");
@@ -31,11 +31,11 @@ watch (route, (newRoute, oldRoute) => {
   }
 
   if (newRoute.path.startsWith('/Member/MyPage')) {
-      if (store.state.mid === '') {
-        eventBus.showToast('로그인이 필요합니다.');
-        router.push("/login");
-      }
+    if (store.state.mid === '') {
+      eventBus.showToast('로그인이 필요합니다.');
+      router.replace("/login");
     }
+  }
 })
 
 </script>
@@ -89,11 +89,9 @@ body {
 }
 
 .pagerbtn {
-    color: black;
-    margin-left: 7px;
-    border: none;
-    background-color: white;
+  color: black;
+  margin-left: 7px;
+  border: none;
+  background-color: white;
 }
-
-
 </style>

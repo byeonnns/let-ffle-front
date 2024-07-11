@@ -74,7 +74,7 @@
                             <input type="text" class="form-control" aria-label="Recipient's username"
                                 aria-describedby="button-addon2" v-model="searchWord"
                                 @keyup.enter="getBoardList(1, searchType, searchWord)">
-                            <button class="btn btn-outline-light ms-2 rounded-0" type="button" style="background-color: #F37551"
+                            <button class="btn btn-outline-light ms-2 rounded-0" type="button" style="background-color: #F37551; color: white" 
                                 @click="getBoardList(1, searchType, searchWord)">검색</button>
                         </div>
                     </div>
