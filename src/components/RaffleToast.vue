@@ -2,7 +2,7 @@
     <div>
         <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3 z-2">
             <div ref="liveToast" class="toast rounded-pill border-0" role="alert" aria-live="assertive"
-                aria-atomic="true" data-bs-autohide="true" style="background-color: rgba(255,92,53, 0.85);">
+                aria-atomic="true" data-bs-autohide="true" style="background-color: rgba(255,92,53, 0.85);" data-bs-delay="2500">
                 <div class="toast-body text-white text-center align-content-center">
                     {{ message }}
                 </div>

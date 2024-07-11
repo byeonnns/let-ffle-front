@@ -38,12 +38,8 @@
                 <RouterLink v-if="$store.state.mid === ''" to="/login" class="me-3"><span
                         class="d-inline-block">로그인</span></RouterLink>
                 <a v-if="$store.state.mid !== ''" class="d-inline-block me-3 logout" @click="handleLogout">로그아웃</a>
-                <RouterLink v-if="$store.state.mrole !== ''" to="/Member/MyPage" class="me-3"
+                <RouterLink to="/Member/MyPage" class="me-3"
                     active-class="my-page-active">
-                    <span class="d-inline-block">마이페이지</span>
-                </RouterLink>
-                <!-- 로그인 링크 (비로그인 상태에서만 활성화됨) -->
-                <RouterLink v-if="$store.state.mrole === ''" to="/login" class="me-3" active-class="login-active">
                     <span class="d-inline-block">마이페이지</span>
                 </RouterLink>
                 <RouterLink to="/Notice" class="me-3"><span class="d-inline-block">고객센터</span></RouterLink>
