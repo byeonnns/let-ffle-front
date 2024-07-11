@@ -1,6 +1,5 @@
 import axios from "axios";
 import qs from 'qs';
-import { isReactive } from "vue";
 
 // 회원가입
 function join(member) {
@@ -23,8 +22,8 @@ function phoneDuplicationCheck(mphone) {
 }
 
 // 아이디 찾기
-function findId(mphone) {
-    return axios.post("/member/findId/" + mphone);
+function findId(mname, mphone) {
+    return axios.post("/member/findId/", {mname : mname, mphone : mphone});
 }
 
 // 비밀번호 찾기

@@ -59,7 +59,7 @@
             <hr class="border-3 opacity-100 opacity-100 mt-0" />
             <div class="row">
                 <div v-for="raffle in cutOffSoonRaffles" :key="raffle.rno" class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink :to="`/Raffle/RaffleDetail?rno=${raffle.rno}`">
+                    <RouterLink :to="`/Raffle/RaffleDetail?rno=${raffle.raffle.rno}`">
                         <img :src="`${axios.defaults.baseURL}/raffle/raffleThumbnailAttach/${raffle.raffle.rno}`" class="w-100 h-auto">
                         <div>
                             <p class="raffle-title mt-2">{{ raffle.raffle.rtitle }}</p>
