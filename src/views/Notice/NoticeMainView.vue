@@ -26,7 +26,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div style="width: 100%; height:100%;  ">
+                <div v-if="page.notices.length != 0" style="width: 100%; height:100%;  ">
                     <table class="table linebd">
                         <tbody>
                             <tr v-for="notice in page.notices" :key="notice.nno">
@@ -56,6 +56,9 @@
                         </tbody>
                     </table>
                 </div>
+                <div v-else class="d-flex justify-content-center align-content-center align-items-center" style="height: 300px; font-size: 20px;">
+                    <p>조회된 글이 없습니다.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -82,6 +85,7 @@ async function getNoticeList(pageNo) {
         const response = await NoticeAPI.noticeList(pageNo, category.value.mainCatagory, category.value.subcategory);
         page.value.notices = response.data.Notice;
         page.value.pager = response.data.Pager;
+        console.log("1111",page.value.notices);
     } catch (error) {
         console.log(error);
     }
