@@ -4,11 +4,11 @@ import axios from "axios";
 import qs from 'qs';
 
 function myEntryList(pageNo, status, start, end) {
-    return axios.get("/raffle/getRaffleDetailList", { params: { pageNo:pageNo, status:status, start:start, end:end } })
+    return axios.get("/raffle/getRaffleDetailList", { params: { pageNo: pageNo, status: status, start: start, end: end } })
 }
 
 function myWinnerList(pageNo, start, end) {
-    return axios.get("/raffle/getWinnerDetailList", { params: { pageNo:pageNo, start:start, end:end } });
+    return axios.get("/raffle/getWinnerDetailList", { params: { pageNo: pageNo, start: start, end: end } });
 }
 
 // 첨부 다운로드
@@ -28,12 +28,16 @@ function raffleDetailAttachDownload(rno) {
     return axios.get("/raffle/raffleDetailAttach/" + rno, { responseType: "blob" });
 }
 
-function getAdminRaffleList(pageNo,word) {
-    return axios.get("/raffle/getAdminRaffleList", { params: {  pageNo: pageNo, word:word  }});
+function getAdminRaffleList(pageNo, word) {
+    return axios.get("/raffle/getAdminRaffleList", { params: { pageNo: pageNo, word: word } });
 }
 
 function createRaffle(formData) {
     return axios.post("/raffle/createRaffle", formData);
+}
+
+function updateRaffle(formData) {
+    return axios.put("/raffle/updateRaffle", formData);
 }
 
 function getRaffle(rno) {
@@ -41,7 +45,7 @@ function getRaffle(rno) {
 }
 
 function getRaffleList(category, sortType) {
-    return axios.get("/raffle/getRaffleList", { params: { category : category, sortType : sortType } });
+    return axios.get("/raffle/getRaffleList", { params: { category: category, sortType: sortType } });
 }
 
 function searchRaffleList(word) {
@@ -53,7 +57,7 @@ function apply(rno) {
 }
 
 function updateRdtBerrySpend(rno, rdtBerrySpend) {
-    return axios.put("/raffle/updateRdtBerrySpend",  qs.stringify({rno: rno, rdtBerrySpend: rdtBerrySpend}));
+    return axios.put("/raffle/updateRdtBerrySpend", qs.stringify({ rno: rno, rdtBerrySpend: rdtBerrySpend }));
 }
 
 function updateRdtMissionCleared(rno, manswer) {
@@ -69,7 +73,7 @@ function getAdminRaffleDetailList(mid) {
 }
 
 function winnerCreate(rno) {
-    return axios.post("/raffle/createWinner", qs.stringify({rno}));
+    return axios.post("/raffle/createWinner", qs.stringify({ rno }));
 }
 function getAdminDashboard() {
     return axios.get("/raffle/getAdminDashboard");
@@ -84,15 +88,15 @@ function getCutOffSoonRaffles() {
 }
 
 function getMonitorMemberList(rno, pageNo) {
-    return axios.get("/raffle/getMemberMonitor", {params : {rno : rno, pageNo : pageNo}})
+    return axios.get("/raffle/getMemberMonitor", { params: { rno: rno, pageNo: pageNo } })
 }
 
 function getMonitorWinnerList(rno, pageNo) {
-    return axios.get("/raffle/readWinnerDetail", {params : {rno : rno, pageNo : pageNo}})
+    return axios.get("/raffle/readWinnerDetail", { params: { rno: rno, pageNo: pageNo } })
 }
 
 function getRaffleMonitor(rno, pageNo) {
-    return axios.get("/raffle/getRaffleMonitor", {params : {rno : rno, pageNo : pageNo}})
+    return axios.get("/raffle/getRaffleMonitor", { params: { rno: rno, pageNo: pageNo } })
 }
 
 export default {
@@ -103,6 +107,7 @@ export default {
     raffleDetailAttachDownload,
     getAdminRaffleList,
     createRaffle,
+    updateRaffle,
     getRaffle,
     getRaffleList,
     apply,

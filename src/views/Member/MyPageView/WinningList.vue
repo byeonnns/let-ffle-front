@@ -38,17 +38,14 @@
                 <div v-if="winningList.pager.totalPageNo > 0" class="d-flex justify-content-center">
                     <button @click="changePageOption(1)" class="btn pagerbtn">처음</button>
                     <button v-if="winningList.pager.groupNo > 1"
-                        @click="changePageOption(winningList.pager.startPageNo - 1)"
-                        class="btn pagerbtn">이전</button>
+                        @click="changePageOption(winningList.pager.startPageNo - 1)" class="btn pagerbtn">이전</button>
                     <button v-for="pageNo in winningList.pager.pageArray" :key="pageNo"
                         @click="changePageOption(pageNo)"
-                        :class="(winningList.pager.pageNo == pageNo) ? 'thisPage' : ''"
-                        class="btn pagerbtn">{{ pageNo }}</button>
+                        :class="(winningList.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{ pageNo
+                        }}</button>
                     <button v-if="winningList.pager.groupNo < winningList.pager.totalGroupNo"
-                        @click="changePageOption(winningList.pager.endPageNo + 1)"
-                        class="btn pagerbtn">다음</button>
-                    <button @click="changePageOption(winningList.pager.totalPageNo)"
-                        class="btn pagerbtn">맨끝</button>
+                        @click="changePageOption(winningList.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
+                    <button @click="changePageOption(winningList.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
                 </div>
             </div>
         </div>
@@ -65,24 +62,30 @@
                 <form id="receive" class="container" @submit.prevent="handleSubmit">
                     <div class="div_form row mb-3">
                         <label style="font-size: 14px">이름</label>
-                        <input type="text" class="input" style="border-bottom: 1px solid #ebebeb"
-                            v-model="wreceivername">
+                        <input @keyup="mnameCheck" type="text" class="input" style="border-bottom: 1px solid #ebebeb"
+                            v-model="wreceivername" @keydown.enter.prevent="preventSubmit">
+                        <p class="m-0" style="color:#FF5C35">{{ checkMname }}</p>
                     </div>
                     <div class="div_form row mb-3">
                         <label style="font-size: 14px">전화번호</label>
-                        <input type="text" class="input"
-                            style="border-bottom: 1px solid #ebebeb" v-model="wreceiverphone">
+                        <input @keyup="mphoneCheck" type="text" class="input" style="border-bottom: 1px solid #ebebeb"
+                            v-model="wreceiverphone" @keydown.enter.prevent="preventSubmit">
+                        <p class="m-0" style="color:#FF5C35">{{ checkMphone }}</p>
                     </div>
                     <div class="div_form row">
                         <label style="font-size: 14px">주소</label>
-                        <input type="text" class="input" style="border-bottom: 1px solid #ebebeb"
-                            v-model="wreceiveraddress">
+                        <input @keyup="addressCheck" type="text" class="input" style="border-bottom: 1px solid #ebebeb"
+                            v-model="wreceiveraddress" @keydown.enter.prevent="preventSubmit">
+                        <p class="m-0" style="color:#FF5C35">{{ checkMaddress }}</p>
                     </div>
                 </form>
             </template>
             <template v-slot:modalFooter>
-                <button class="btn btn-sm btn-outline-dark" data-bs-dismiss="modal" form="receive">완료</button>
-                <button class="btn btn-sm btn-dark" data-bs-dismiss="modal">닫기</button>
+                <button type="submit" class="btn btn-sm btn-outline-light"
+                    style="background-color: #F37551; color: white;" data-bs-dismiss="modal" form="receive"
+                    :class="ispass ? '' : 'disabled'">완료</button>
+                <button class="btn btn-sm btn-outline-light" style="background-color: #F37551; color: white;"
+                    data-bs-dismiss="modal">닫기</button>
             </template>
         </Modal>
     </div>
@@ -144,6 +147,9 @@ async function getAccountAddress() {
         wreceivername.value = response.data.mname;
         wreceiverphone.value = response.data.mphone;
         wreceiveraddress.value = response.data.maddress;
+        mnameCheck();
+        mphoneCheck();
+        addressCheck();
     } catch (error) {
         console.log(error);
     }
@@ -158,6 +164,68 @@ function formatDate(dateStr) {
 
     return `${year}-${month}-${day}`;
 }
+// 배송상태 유효성 검사
+const checkMname = ref(null);
+const checkMphone = ref(null);
+const checkMaddress = ref(null);
+const ispass = ref(false);
+
+
+let userMname = false;
+let userPhone = false;
+let userAddress = false;
+
+
+const mnameCheck = () => {
+    let mnamePattern = /^[가-힣]{2,4}$/;
+    userMname = mnamePattern.test(wreceivername.value);
+    if (!userMname) {
+        checkMname.value = "이름을 입력해주세요."
+    } else {
+        checkMname.value = ""
+    }
+    onbtn();
+}
+const mphoneCheck = () => {
+    let mphonePattern = /^010\d{4}\d{4}$/;
+    userPhone = mphonePattern.test(wreceiverphone.value);
+    if (!userPhone) {
+        checkMphone.value = "하이픈('-')을 제외한 숫자만 입력해주세요."
+    } else {
+        checkMphone.value = ''
+    }
+    onbtn();
+}
+const addressCheck = () => {
+    userAddress = wreceiveraddress.value != null ? true : false;
+    if (!userAddress) {
+        checkMaddress.value = '주소를 정확히 입력해주세요';
+    } else {
+        checkMaddress.value = ''
+    }
+    onbtn();
+
+}
+
+const preventSubmit = () => {
+    mnameCheck();
+    mphoneCheck();
+    addressCheck();
+    if (ispass.value === true) {
+        handleSubmit();
+    }
+}
+
+
+function onbtn() {
+    console.log(userMname + "/" + userPhone + "/" + userAddress)
+    if (userMname && userPhone && userAddress) {
+        ispass.value = true;
+    } else {
+        ispass.value = false;
+    }
+}
+
 
 const handleSubmit = async () => {
     const formData = new FormData();

@@ -4,7 +4,7 @@
             <div style="border-bottom: 3px solid #F37551;" class="mb-3">
                 <h3>래플 등록</h3>
             </div>
-            <form @submit.prevent="createRaffle">
+            <form @submit.prevent="updateRaffle">
                 <div class="form_table">
                     <div class="tr">
                         <div class="th">
@@ -153,9 +153,10 @@
                         <div class="td">
                             <div class="form_set">
                                 <div class="d-flex align-items-center">
-                                    <input type="date" v-model="raffle.rstartedat">
+                                    <input type="datetime-local" v-model="raffle.rstartedat">
+
                                     <span style="margin-right: 10px; margin-left: 10px;">~</span>
-                                    <input type="date" v-model="raffle.rfinishedat">
+                                    <input type="datetime-local" v-model="raffle.rfinishedat">
                                 </div>
                             </div>
                         </div>
@@ -178,9 +179,11 @@
                         <div class="td">
                             <div class="form_set">
                                 <div class="input_clear sm" style="display: flex; align-items: center;">
-                                    <input type="datetime-local" v-model="timemission.tstartedat" @change="startFormatDate(timemission.tstartedat)">
+                                    <input type="datetime-local" v-model="timemission.tstartedat"
+                                        @change="startFormatDate(timemission.tstartedat)">
                                     <span style="margin-right: 10px; margin-left: 10px;">~</span>
-                                    <input type="datetime-local" v-model="timemission.tfinishedat" @change="finishFormatDate(timemission.tfinishedat)">
+                                    <input type="datetime-local" v-model="timemission.tfinishedat"
+                                        @change="finishFormatDate(timemission.tfinishedat)">
                                 </div>
                             </div>
                         </div>
@@ -200,26 +203,14 @@
                                 <p class="form_label">퀴즈 보기 (정답 체크)</p>
                             </div>
                             <div class="td">
-                                <input type="radio" id="opt1" name="fav_language" value="HTML"
-                                    v-model="quizmission.qoption1">
-                                <label for="opt1" class="ms-1 me-3">
-                                    <input style="font-size: 14px;">
-                                </label>
-                                <input type="radio" id="opt2" name="fav_language" value="HTML"
-                                    v-model="quizmission.qoption2">
-                                <label for="opt2" class="ms-1 me-3">
-                                    <input style="font-size: 14px;">
-                                </label>
-                                <input type="radio" id="opt3" name="fav_language" value="HTML"
-                                    v-model="quizmission.qoption3">
-                                <label for="opt3" class="ms-1 me-3">
-                                    <input style="font-size: 14px;">
-                                </label>
-                                <input type="radio" id="opt4" name="fav_language" value="HTML"
-                                    v-model="quizmission.qoption4">
-                                <label for="opt4" class="ms-1 me-3">
-                                    <input style="font-size: 14px;">
-                                </label>
+                                <input type="radio" id="opt1" v-model="checkedAnswer" value="1" @change="changeAnswer">
+                                <input style="font-size: 14px;" v-model="quizmission.qoption1" @input="changeAnswer">
+                                <input type="radio" id="opt2" v-model="checkedAnswer" value="2" @change="changeAnswer">
+                                <input style="font-size: 14px;" v-model="quizmission.qoption2" @input="changeAnswer">
+                                <input type="radio" id="opt3" v-model="checkedAnswer" value="3" @change="changeAnswer">
+                                <input style="font-size: 14px;" v-model="quizmission.qoption3" @input="changeAnswer">
+                                <input type="radio" id="opt4" v-model="checkedAnswer" value="4" @change="changeAnswer">
+                                <input style="font-size: 14px;" v-model="quizmission.qoption4" @input="changeAnswer">
                             </div>
                         </div>
                     </div>
@@ -259,6 +250,7 @@ const rno = route.query.rno;
 const headImgUrl = ref(null);
 const prdimgrep1attach = ref(null);
 const defaultImage = null;
+const checkedAnswer = ref(null);
 
 function imgChange() {
     const head = prdimgrep1attach.value.files[0];
@@ -269,7 +261,20 @@ function imgChange() {
     }
 }
 
+function changeAnswer() {
+    if (checkedAnswer.value == 1)
+        quizmission.value.qanswer = quizmission.value.qoption1;
+    else if (checkedAnswer.value == 2)
+        quizmission.value.qanswer = quizmission.value.qoption2;
+    else if (checkedAnswer.value == 3)
+        quizmission.value.qanswer = quizmission.value.qoption3;
+    else
+        quizmission.value.qanswer = quizmission.value.qoption4;
+}
+
+
 const raffle = ref({
+    rno: "",
     rtitle: "",
     rsubtitle: "",
     rcontent: "",
@@ -318,27 +323,32 @@ function GiftImageChange() {
     }
 }
 
-async function createRaffle() {
+async function updateRaffle() {
     const formData = new FormData();
     // 문자 파트 넣기
+    formData.append("raffle.rno", raffle.value.rno);
     formData.append("raffle.rtitle", raffle.value.rtitle);
     formData.append("raffle.rsubtitle", raffle.value.rsubtitle);
     formData.append("raffle.rcontent", raffle.value.rcontent);
     formData.append("raffle.rcategory", raffle.value.rcategory);
-    formData.append("raffle.rstartedat", raffle.value.rstartedat);
-    formData.append("raffle.rfinishedat", raffle.value.rfinishedat);
+    formData.append("raffle.rstartedat", raffleTimestampForm(raffle.value.rstartedat));
+    formData.append("raffle.rfinishedat", raffleTimestampForm(raffle.value.rfinishedat));
     formData.append("raffle.rmissiontype", raffle.value.rmissiontype);
     formData.append("raffle.rgift", raffle.value.rgift);
     formData.append("raffle.rwinnercount", raffle.value.rwinnercount);
 
+    formData.append("quizMission.rno", raffle.value.rno);
     formData.append("quizMission.qcontent", quizmission.value.qcontent);
     formData.append("quizMission.qoption1", quizmission.value.qoption1);
     formData.append("quizMission.qoption2", quizmission.value.qoption2);
     formData.append("quizMission.qoption3", quizmission.value.qoption3);
     formData.append("quizMission.qoption4", quizmission.value.qoption4);
+    formData.append("quizMission.qanswer", quizmission.value.qanswer);
 
+    formData.append("timeMission.rno", raffle.value.rno);
     formData.append("timeMission.tstartedat", timemission.value.tstartedat);
     formData.append("timeMission.tfinishedat", timemission.value.tfinishedat);
+
 
     // 파일 파트 넣기
     const elBattach1 = prdimgrep1attach.value;
@@ -357,13 +367,15 @@ async function createRaffle() {
     }
 
     // 래플 등록 요청
-    try {      
-        const response = await RaffleAPI.createRaffle(formData);
+    try {
+        const response = await RaffleAPI.updateRaffle(formData);
         router.back();
     } catch (error) {
         console.log(error);
     }
 }
+
+
 
 function startFormatDate(dateStr) {
     const date = new Date(dateStr);
@@ -391,13 +403,35 @@ function finishFormatDate(dateStr) {
     timemission.value.tfinishedat = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
 
+function raffleTimestampForm(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
 // rno에 해당하는 래플 정보 가져오기
 async function getRaffle(argRno) {
     try {
         const response = await RaffleAPI.getRaffle(argRno);
         raffle.value = response.data.raffle;
+        raffle.value.rstartedat = response.data.raffle.rstartedat.substr(0, 16);
+        raffle.value.rfinishedat = response.data.raffle.rfinishedat.substr(0, 16);
         if (response.data.quizMission != null) {
             quizmission.value = response.data.quizMission;
+            for (let i = 0; i < 5; i++) {
+                if (quizmission.value.qanswer == quizmission.value[`qoption${i}`]) {
+                    checkedAnswer.value = i;
+                    break;
+                }
+            }
+            console.log(response.data.quizMission)
         } else {
             timemission.value = response.data.timeMission;
         }
@@ -423,7 +457,7 @@ getRaffleThumbnailImg(rno);
 // 해당 래플의 디테일 이미지 가져오기
 async function getRaffleDetailImg(argRno) {
     try {
-        const response = await RaffleAPI. raffleDetailAttachDownload(argRno);
+        const response = await RaffleAPI.raffleDetailAttachDownload(argRno);
         const blob = response.data;
         DetailImgUrl.value = URL.createObjectURL(blob);
     } catch (error) {
@@ -436,7 +470,7 @@ getRaffleDetailImg(rno);
 // 해당 래플의 경품 이미지 가져오기
 async function getRaffleGiftImg(argRno) {
     try {
-        const response = await RaffleAPI. raffleGiftAttachDownload(argRno);
+        const response = await RaffleAPI.raffleGiftAttachDownload(argRno);
         const blob = response.data;
         GiftImgUrl.value = URL.createObjectURL(blob);
     } catch (error) {
