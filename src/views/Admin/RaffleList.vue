@@ -4,6 +4,17 @@
             <div style="border-bottom: 3px solid #F37551;">
                 <h3>래플 리스트</h3>
             </div>
+            <div class="d-flex justify-content-end mt-4 mb-3">
+                <div class="input-group input-group-sm w-auto">
+                    <div class="me-3">
+                        래플 이름 :
+                    </div>
+                    <input type="text" class="form-control" v-model="searchWord"
+                        @keyup.enter="getRaffleList(1, searchWord)">
+                    <button class="btn btn-sm text-white" @click="getRaffleList(1, searchWord)"
+                        style="background-color: #F37551;">검색</button>
+                </div>
+            </div>
             <table class="table text-center">
                 <thead>
                     <tr>
@@ -18,7 +29,9 @@
                 <tbody>
                     <tr v-for="raffle in page.raffles" :key="raffle.rno">
                         <td>{{ raffle.rno }}</td>
-                        <td>{{ raffle.rtitle }}</td>
+                        <td>
+                            <RouterLink :to="`/raffle/raffleDetail?rno=${raffle.rno}`">{{ raffle.rtitle }}</RouterLink>
+                        </td>
                         <td>{{ formatDate(raffle.rstartedat) }}<br>{{ formatTime(raffle.rstartedat) }}</td>
                         <td>{{ formatDate(raffle.rfinishedat) }}<br>{{ formatTime(raffle.rfinishedat) }}</td>
                         <td v-if="serverTime > new Date(raffle.rfinishedat)">마감</td>
@@ -30,7 +43,6 @@
                             <RouterLink v-if="serverTime < new Date(raffle.rfinishedat)"
                                 class="btn btn-sm rounded-0 text-white me-1" style="background-color: #F37551;"
                                 :to="`/Admin/UpdateRaffle?rno=${raffle.rno}`">수정
-                                <!-- `/Admin/UpdateRaffle?rno=${raffle.value.rno}` -->
                             </RouterLink>
                             <!-- 응모가 시작안되었으면 삭제가능 -->
                             <button v-if="serverTime < new Date(raffle.rstartedat)"
@@ -40,19 +52,6 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="d-flex justify-content-end">
-                <div class="input-group input-group-sm w-auto">
-                    <div class="me-3">
-
-                        래플 이름 :
-                    </div>
-
-                    <input type="text" class="form-control" v-model="searchWord"
-                        @keyup.enter="getRaffleList(1, searchWord)">
-                    <button class="btn btn-sm text-white" @click="getRaffleList(1, searchWord)"
-                        style="background-color: #F37551;">검색</button>
-                </div>
-            </div>
             <div class="d-flex flex-column mt-3">
                 <div class="text-end">
                     <button class="btn btn-outline-ligh rounded-0" style="background-color: #F37551;">
@@ -65,7 +64,8 @@
                     <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
                         class="btn pagerbtn">이전</button>
                     <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
-                        :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{ pageNo }}</button>
+                        :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{ pageNo
+                        }}</button>
                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
                         @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
                     <button @click="changePageNo(page.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
@@ -102,34 +102,27 @@ import { useRouter, useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
 const router = useRouter();
 const route = useRoute();
-
 const store = useStore();
 const serverTime = computed(() => {
     const diffMilliseconds = store.getters['clientTime/getTimeForCalculate'];
 
     return new Date(diffMilliseconds);
 });
-
-
-
 const pageNo = ref(route.query.pageNo || 1);
-
 const page = ref({
     raffles: [],
     pager: {}
 });
 
-async function getRaffleList(pageNo, word='') {
+async function getRaffleList(pageNo, word = '') {
     try {
-        const response = await RaffleAPI.getAdminRaffleList(pageNo,word);
-
+        const response = await RaffleAPI.getAdminRaffleList(pageNo, word);
         page.value.raffles = response.data.Raffle;
         page.value.pager = response.data.pager;
     } catch (error) {
         console.log(error);
     }
 }
-
 getRaffleList(pageNo.value);
 
 function changePageNo(argPageNo) {
@@ -147,8 +140,6 @@ watch(
         }
     }
 );
-
-
 
 function formatDate(dateStr) {
     const date = new Date(dateStr);

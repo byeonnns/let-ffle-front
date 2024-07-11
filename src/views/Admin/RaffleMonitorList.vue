@@ -4,6 +4,17 @@
             <div style="border-bottom: 3px solid #F37551;">
                 <h3>래플 모니터</h3>
             </div>
+            <div class="d-flex justify-content-end mt-4 mb-3">
+                <div class="input-group input-group-sm w-auto">
+                    <div class="me-3">
+                        래플 이름 :
+                    </div>
+                    <input type="text" class="form-control" v-model="searchWord"
+                        @keyup.enter="getRaffleList(1, searchWord)">
+                    <button class="btn btn-sm text-white" @click="getRaffleList(1, searchWord)"
+                        style="background-color: #F37551;">검색</button>
+                </div>
+            </div>
             <table class="table text-center">
                 <thead>
                     <tr>
@@ -18,10 +29,10 @@
                 <tbody>
                     <tr v-for="raffle in page.raffles" :key="raffle.rno">
                         <td>
-                            <RouterLink to="/">{{ raffle.rno }}</RouterLink>
+                            {{ raffle.rno }}
                         </td>
                         <td>
-                            <RouterLink to="/">{{ raffle.rtitle }}</RouterLink>
+                            <RouterLink :to="`/raffle/raffleDetail?rno=${raffle.rno}`">{{ raffle.rtitle }}</RouterLink>
                         </td>
                         <td>
                             {{ formatDate(raffle.rstartedat) }}
@@ -33,13 +44,11 @@
                             <br>
                             {{ formatTime(raffle.rfinishedat) }}
                         </td>
-
                         <td v-if="serverTime > new Date(raffle.rfinishedat)">마감</td>
                         <td v-if="serverTime < new Date(raffle.rstartedat)">진행 예정</td>
                         <td
                             v-if="serverTime <= new Date(raffle.rfinishedat) && new Date(raffle.rstartedat) <= serverTime">
                             진행 중</td>
-
                         <td>
                             <RouterLink :to="`/Admin/RaffleMonitorDetail?rno=${raffle.rno}`"><button
                                     class="btn btn-sm text-white rounded-0"
@@ -49,19 +58,6 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="d-flex justify-content-end">
-                <div class="input-group input-group-sm w-auto">
-                    <div class="me-3">
-
-                        래플 이름 :
-                    </div>
-
-                    <input type="text" class="form-control" v-model="searchWord"
-                        @keyup.enter="getRaffleList(1, searchWord)">
-                    <button class="btn btn-sm text-white" @click="getRaffleList(1, searchWord)"
-                        style="background-color: #F37551;">검색</button>
-                </div>
-            </div>
         </div>
         <div class="text-center" v-if="page.raffles.length > 0">
             <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
@@ -95,9 +91,6 @@ const serverTime = computed(() => {
     return new Date(diffMilliseconds);
 });
 
-
-
-
 const pageNo = ref(route.query.pageNo || 1);
 
 const page = ref({
@@ -116,9 +109,9 @@ async function getRaffleMonitorList(pageNo) {
 }
 getRaffleMonitorList(pageNo.value);
 
-async function getRaffleList(pageNo, word='') {
+async function getRaffleList(pageNo, word = '') {
     try {
-        const response = await RaffleAPI.getAdminRaffleList(pageNo,word);
+        const response = await RaffleAPI.getAdminRaffleList(pageNo, word);
 
         page.value.raffles = response.data.Raffle;
         page.value.pager = response.data.pager;
@@ -160,7 +153,6 @@ function formatTime(dateStr) {
 
     return `${hours}:${minutes}:${seconds}`;
 }
-
 </script>
 
 <style scoped>

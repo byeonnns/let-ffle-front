@@ -4,30 +4,41 @@
             <div class="d-flex justify-content-between">
                 <nav class="navbar navbar-expand bg-body-white">
                     <ul class="navbar-nav nav-underline">
-                            <li><a @click="changeSortType('popular')" class="nav-link" style="font-size:14px; padding: 8px;" :class="sortType === 'popular' ? 'active' : ''">인기순</a></li>
-                            <li><a @click="changeSortType('new')" class="nav-link" style="font-size:14px; padding: 8px;" :class="sortType === 'new' ? 'active' : ''">최신순</a></li>
-                            <li><a @click="changeSortType('cutoffsoon')" class="nav-link" :class="sortType === 'cutoffsoon' ? 'active' : ''" style="font-size:14px; padding: 8px;">응모마감순</a></li>
+                        <li><a @click="changeSortType('popular')" class="nav-link" style="font-size:14px; padding: 8px;"
+                                :class="sortType === 'popular' ? 'active' : ''">인기순</a></li>
+                        <li><a @click="changeSortType('new')" class="nav-link" style="font-size:14px; padding: 8px;"
+                                :class="sortType === 'new' ? 'active' : ''">최신순</a></li>
+                        <li><a @click="changeSortType('cutoffsoon')" class="nav-link"
+                                :class="sortType === 'cutoffsoon' ? 'active' : ''"
+                                style="font-size:14px; padding: 8px;">응모마감순</a></li>
                     </ul>
                 </nav>
                 <div class="d-flex justify-content-end mb-3">
                     <div class="input-group input-group-sm w-auto">
                         <input type="text" class="form-control" v-model="searchWord" @keyup.enter="search(searchWord)">
-                        <button class="btn btn-sm" style="background-color: #F37551; color:white;" @click="search">검색</button>
+                        <button class="btn btn-sm" style="background-color: #F37551; color:white;"
+                            @click="search">검색</button>
                     </div>
-                    
+
                 </div>
             </div>
-            <div class="row">
-                <div v-for="request in raffles" :key="request" class="col-lg-4 col-md-6 col-12 mb-4">
-                    <RouterLink :to="`/Raffle/RaffleDetail?rno=${request.raffle.rno}`">
-                        <div class="img-container">
-                            <img :src="`${axios.defaults.baseURL}/raffle/raffleThumbnailAttach/${request.raffle.rno}`"
-                                class="w-100 h-100 object-fit-cover">
-                        </div>
-                        <p class="raffle-title mt-2">{{ request.raffle.rtitle }}</p>
-                        <p class="raffle-description"> {{ request.raffle.rsubtitle }}</p>
-                    </RouterLink>
+            <div v-if="raffles && raffles.length != 0">
+                <div class="row">
+                    <div v-for="request in raffles" :key="request" class="col-lg-4 col-md-6 col-12 mb-4">
+                        <RouterLink :to="`/Raffle/RaffleDetail?rno=${request.raffle.rno}`">
+                            <div class="img-container">
+                                <img :src="`${axios.defaults.baseURL}/raffle/raffleThumbnailAttach/${request.raffle.rno}`"
+                                    class="w-100 h-100 object-fit-cover">
+                            </div>
+                            <p class="raffle-title mt-2">{{ request.raffle.rtitle }}</p>
+                            <p class="raffle-description"> {{ request.raffle.rsubtitle }}</p>
+                        </RouterLink>
+                    </div>
                 </div>
+            </div>
+            <div v-else class="d-flex justify-content-center align-content-center align-items-center"
+                style="height: 300px; display: flex">
+                <p style="font-size: 20px;">조회된 래플이 없습니다.</p>
             </div>
         </div>
     </div>
@@ -47,8 +58,13 @@ const sortType = ref(route.query.sortType || "popular");
 const searchWord = ref();
 
 async function search() {
-    const response = await RaffleAPI.searchRaffleList(searchWord.value);
-    raffles.value = response.data;
+    try {
+        const response = await RaffleAPI.searchRaffleList(searchWord.value);
+        raffles.value = response.data;
+    } catch (error) {
+        console.log(error);
+    }
+
 }
 
 async function getRaffleList(argCategory, argSortType) {

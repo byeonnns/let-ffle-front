@@ -1,52 +1,53 @@
 <template>
-
-    <div class="container" style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; ">
-        <h3 style=" margin-top: 30px">게시글쓰기</h3>
-    </div>
-    <div class="container" style="width: 100%; height:500px;">
-        <div style="width: 100%; height:500px;">
-            <form @submit.prevent="handleSubmit">
-                <div class="form-group row">
-                    <label for="btitle" class="col-sm-2 col-form-label">유형</label>
-                    <div class="col-sm-10 text">
-                        <select v-model="board.bcategory">
-                            <option value="자유">자유</option>
-                            <option value="당첨후기">당첨후기</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <div class="form-group row">
-                        <label for="btitle" class="col-sm-2 col-form-label">제목</label>
-                        <div class="col-sm-10">
-                            <input id="btitle" type="text" class="form-control" v-model="board.btitle" />
-                        </div>
-                    </div>
-                    <div class="form-group row mt-4">
-                        <label for="bcontent" class="col-sm-2 col-form-label">내용</label>
-                        <div class="col-sm-10">
-                            <textarea id="bcontent" type="text" class="form-control" style="height:250px;"
-                                v-model="board.bcontent"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row mt-4">
-                        <label for="battach" class="col-sm-2 col-form-label">첨부파일</label>
-                        <div class="col-sm-10">
-                            <input id="battach" type="file" class="form-control-file" ref="battach" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-12 d-flex justify-content-end">
-                        <input type="submit" class="btn btn-outline-light btn-sm me-2 rounded-0" value="등록" />
-                        <RouterLink to="/Board/BoardList">
-                            <input type="button" class="btn btn-outline-light btn-sm rounded-0" value="취소" />
-                        </RouterLink>
-                    </div>
-                </div>
-            </form>
+    <div>
+        <div class="container" style="width: 100%; height:50px; border-bottom:3px solid #F37551; margin-bottom: 10px; ">
+            <h3 style=" margin-top: 30px">게시글쓰기</h3>
         </div>
-        <RaffleToast ref="seeya" />
+        <div class="container" style="width: 100%; height:500px;">
+            <div style="width: 100%; height:500px;">
+                <form @submit.prevent="handleSubmit">
+                    <div class="form-group row">
+                        <label for="btitle" class="col-sm-2 col-form-label">유형</label>
+                        <div class="col-sm-10 text">
+                            <select v-model="board.bcategory">
+                                <option value="자유">자유</option>
+                                <option value="당첨후기">당첨후기</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group row">
+                            <label for="btitle" class="col-sm-2 col-form-label">제목</label>
+                            <div class="col-sm-10">
+                                <input id="btitle" type="text" class="form-control" v-model="board.btitle" />
+                            </div>
+                        </div>
+                        <div class="form-group row mt-4">
+                            <label for="bcontent" class="col-sm-2 col-form-label">내용</label>
+                            <div class="col-sm-10">
+                                <textarea id="bcontent" type="text" class="form-control" style="height:250px;"
+                                    v-model="board.bcontent"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-4">
+                            <label for="battach" class="col-sm-2 col-form-label">첨부파일</label>
+                            <div class="col-sm-10">
+                                <input id="battach" type="file" class="form-control-file" ref="battach" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 d-flex justify-content-end">
+                            <input type="submit" class="btn btn-outline-light btn-sm me-2 rounded-0" value="등록" />
+                            <RouterLink to="/Board/BoardList">
+                                <input type="button" class="btn btn-outline-light btn-sm rounded-0" value="취소" />
+                            </RouterLink>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <RaffleToast ref="seeya" />
+        </div>
     </div>
 </template>
 

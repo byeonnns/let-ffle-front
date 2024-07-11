@@ -32,7 +32,7 @@
                                     <p class="fw-bold"> {{ member.todayEntryRaffle }}/3 완료</p>
                                 </div>
                                 <div class="col">
-                                    <h5 class="">일일 래플&미션 모두 완료하기</h5>
+                                    <h5 class="">하루 3회 래플&미션 참여로 베리 획득</h5>
                                     <p class="fw-bold">{{ member.todayClearedMission }}/3 완료</p>
                                 </div>
                             </div>

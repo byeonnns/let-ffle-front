@@ -107,7 +107,7 @@ async function getMyBerryHistory(pageNo, option) {
 
 function changePageOption(pageNo, option) {
     sortType.value = option;
-    router.push(`/Member/MyPage/MyBerryHistory?pageNo=${pageNo}&option=${option}&sortType=${option}`);
+    router.push(`/Member/MyPage/MyBerryHistory?pageNo=${pageNo}&option=${option}`);
 }
 
 function formatDate(dateStr) {
