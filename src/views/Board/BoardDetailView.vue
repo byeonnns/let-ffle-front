@@ -10,7 +10,7 @@
                 <div>
                     <span class="me-3">{{ board.battachoname }}</span><i class="bi bi-clock me-2">{{
                         formatDate(board.bcreatedat)
-                        }}</i><i class="bi bi-eye">{{ board.bhitcount }}</i>
+                    }}</i><i class="bi bi-eye">{{ board.bhitcount }}</i>
                 </div>
                 <div>
                     <input v-if="$store.state.mid === board.mid" type="submit"
@@ -20,10 +20,10 @@
                 </div>
             </div>
             <hr />
+            <img v-if="battach != null" width="25%" :src="battach">
             <div class="mt-5">
                 {{ board.bcontent }}
             </div>
-            <img v-if="battach != null" width="300" :src="battach">
             <div class="text-center" style="margin-top:100px ;">
                 <RouterLink to="/Board/BoardList">
                     <input type="button" class="btn btn-outline-light btn-sm rounded-0" value="목록" />
@@ -211,7 +211,8 @@ function formatDate(dateString) {
     background-color: #F37551;
     color: white;
 }
-.community{
+
+.community {
     margin-bottom: 100px
 }
 </style>

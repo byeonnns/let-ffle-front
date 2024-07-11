@@ -57,7 +57,8 @@
                                 formatTime(entryList.raffleDetail.rdtcreatedat) }}</td>
                             <td>
                                 <Popper :placement="'right'">
-                                    <button class="btn btn-sm btn-design" style="background-color: #F37551; color: white;" @click="popper">상세</button>
+                                    <button class="btn btn-sm btn-design"
+                                        style="background-color: #F37551; color: white;" @click="popper">상세</button>
                                     <template #content>
                                         <div class="d-flex flex-column bg-white border">
                                             <p class="text-center m-0" style="font-size: 16px;">래플 상세 내역</p>
@@ -74,9 +75,11 @@
                                                         <td>{{ entryList.probability }}%</td>
                                                     </tr>
                                                 </table>
-                                                <button class="btn btn-white btn-sm">
-                                                    <RouterLink :to="`/Raffle/RaffleDetail?rno=${entryList.raffle.rno}`">래플로 이동 ▶</RouterLink>
-                                                </button>
+                                                <RouterLink :to="`/Raffle/RaffleDetail?rno=${entryList.raffle.rno}`">
+                                                    <button class="btn btn-white btn-sm border-0">
+                                                        래플로 이동 ▶
+                                                    </button>
+                                                </RouterLink>
                                             </div>
                                         </div>
                                     </template>
@@ -91,8 +94,7 @@
                     </tbody>
                 </table>
                 <div v-if="myRaffleDetail.pager.totalPageNo > 0" class=" d-flex justify-content-center ">
-                    <button @click=" changePageOption(1, status)"
-                        class="btn pagerbtn btn-design ">처음</button>
+                    <button @click=" changePageOption(1, status)" class="btn pagerbtn btn-design ">처음</button>
                     <button v-if="myRaffleDetail.pager.groupNo > 1"
                         @click="changePageOption(myRaffleDetail.pager.startPageNo - 1, status)"
                         class="btn pagerbtn btn-design">이전</button>
