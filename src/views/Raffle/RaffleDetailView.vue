@@ -1,13 +1,14 @@
 <template>
     <div>
-        <GiftLottie ref="lottie" class="pe-none"/>
-        <RaffleToast ref="raffleToast" />
+        <GiftLottie ref="lottie" class="pe-none" />
         <div v-if="raffleRequest.raffle" class="container">
             <div class="row">
                 <div class="col-6">
                     <div class="position-relative">
                         <img :src="`${axios.defaults.baseURL}/raffle/raffleGiftAttach/${rno}`" class="w-100">
-                        <div v-if="raffleDetail.raffleStatus === '당첨 발표' || raffleDetail.raffleStatus === '미참여 래플 종료'" class="position-absolute bg-white bg-opacity-75 w-100 h-100 top-0 start-0 text-center align-content-center" style="font-size: 100px;"><span class="text-dark fw-bold">CUT - OFF</span></div>
+                        <div v-if="raffleDetail.raffleStatus === '당첨 발표' || raffleDetail.raffleStatus === '미참여 래플 종료'"
+                            class="position-absolute bg-white bg-opacity-75 w-100 h-100 top-0 start-0 text-center align-content-center"
+                            style="font-size: 100px;"><span class="text-dark fw-bold">CUT - OFF</span></div>
                     </div>
                     <img :src="`${axios.defaults.baseURL}/raffle/raffleDetailAttach/${rno}`" class="w-100">
                 </div>
@@ -16,7 +17,9 @@
                     <div class="d-flex justify-content-between">
                         <h1 class="align-content-center"> {{ raffleRequest.raffle.rtitle }} </h1>
                         <div @click="likeIt">
-                            <Vue3Lottie :animationData="HeartLottie" :loop="1" :noMargin="true" @on-animation-loaded="likeCheck" ref="likeAnimation" :autoPlay="false" style="width:100px; height:100px"/>
+                            <Vue3Lottie :animationData="HeartLottie" :loop="1" :noMargin="true"
+                                @on-animation-loaded="likeCheck" ref="likeAnimation" :autoPlay="false"
+                                style="width:100px; height:100px" />
                         </div>
                     </div>
                     <h5>{{ dateFormat(raffleRequest.raffle.rstartedat) }} 부터</h5>
@@ -95,18 +98,19 @@
                             <h4>Hot Time</h4>
                             <p>지정된 시간동안 하단의 미션 참여 버튼을 눌러주세요.</p>
                             <button v-if="!passTime" class="btn mt-2 w-100 disabled">핫 타임이 아닙니다.</button>
-                            <button v-if="passTime" class="btn mt-2 w-100" @click="updateRdtMissionCleared(rno)">미션 참여</button>
+                            <button v-if="passTime" class="btn mt-2 w-100" @click="updateRdtMissionCleared(rno)">미션
+                                참여</button>
                         </div>
 
                         <div class="p-3 text-center" v-if="raffleDetail.raffleStatus === '미션 성공' && tab == '미션 참여'">
-                            <Vue3Lottie :animationData="correctLottie" :loop="1" style="width:300px"/>
+                            <Vue3Lottie :animationData="correctLottie" :loop="1" style="width:300px" />
                             <h1>미션 성공!</h1>
                             <h3>당첨 확률이 올라갔습니다</h3>
                             베리를 사용해 당첨 확률을 더 올려보세요
                         </div>
 
                         <div class="p-3 text-center" v-if="raffleDetail.raffleStatus === '미션 실패' && tab == '미션 참여'">
-                            <Vue3Lottie :animationData="wrongLottie" :loop="1" style="width:300px"/>
+                            <Vue3Lottie :animationData="wrongLottie" :loop="1" style="width:300px" />
                             <h1>미션 실패...</h1>
                             베리를 사용해 당첨 확률을 올려보세요
                         </div>
@@ -127,7 +131,9 @@
                                 <label class="me-2">몇 개나 사용할까요?</label>
                                 <select name="number" v-model="selectBerry">
                                     <template v-for="n in 10" :key="n">
-                                        <option v-if="raffleDetail.raffleDetail.rdtberryspend <= 10 - n && n <= myBerry">{{ n }}
+                                        <option
+                                            v-if="raffleDetail.raffleDetail.rdtberryspend <= 10 - n && n <= myBerry">{{
+                                                n }}
                                         </option>
                                     </template>
                                 </select>개
@@ -202,22 +208,23 @@ import { computed } from 'vue';
 import { useStore } from 'vuex';
 import wrongLottie from '@/assets/lottie/wrong.json'
 import correctLottie from '@/assets/lottie/correct.json'
-import RaffleToast from '@/components/RaffleToast.vue'
 import GiftLottie from '@/components/GiftLottie.vue'
 import HeartLottie from '@/assets/lottie/likeHeart.json'
-
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import RaffleAPI from '@/apis/RaffleAPI';
 import MemberAPI from '@/apis/MemberAPI';
+import { useEventBus } from '@/utils/eventBus';
 
 const settingDate = ref(null);
 const passTime = ref(false);
 const startHotTime = ref(null);
 const endHotTime = ref(null);
 const selectBerry = ref(1);
+const eventBus = useEventBus();
 
 const lottie = ref(null);
 const route = useRoute();
+const router = useRouter();
 const store = useStore();
 
 function dateFormat(dateStr) {
@@ -271,14 +278,11 @@ watch(serverTime, (newVal, oldVal) => {
 /* 래플 프로세스 */
 const raffleDetail = ref({
     raffleDetail: {},
-    raffleStatus: null
+    raffleStatus: '래플 미참여'
 });
 const tab = ref('미션 참여');
 const shift = ref('raffle');
 const myBerry = ref(null);
-
-/* 토스트 */
-const raffleToast = ref(null);
 
 /* 좋아요 */
 const likeAnimation = ref(null);
@@ -300,12 +304,12 @@ async function getLikeStatus(rno) {
 async function likeIt() {
     if (like.value === false) {
         const response = await MemberAPI.like(rno);
-        raffleToast.value.showToast("좋아요를 눌렀습니다.");
+        eventBus.showToast("좋아요를 눌렀습니다.");
         likeAnimation.value.playSegments([0, 19], true);
         like.value = true;
     } else {
         const response = await MemberAPI.cancleLike(rno);
-        raffleToast.value.showToast("좋아요를 취소했습니다.");
+        eventBus.showToast("좋아요를 취소했습니다.");
         likeAnimation.value.playSegments([8, 0], true);
         like.value = false;
     }
@@ -330,37 +334,47 @@ async function getRaffleRequest(argRno) {
 
 async function updateRdtBerrySpend(rno, rdtberryspend) {
     await RaffleAPI.updateRdtBerrySpend(rno, rdtberryspend);
-    raffleToast.value.showToast("베리를 " + rdtberryspend + "개 사용했습니다!");
+    eventBus.showToast("베리를 " + rdtberryspend + "개 사용했습니다!");
     getRaffleDetail(rno);
 }
 
 async function winnerCreate(rno) {
     const response = await RaffleAPI.winnerCreate(rno);
     if (response.data == "당첨") {
-        raffleToast.value.showToast("래플에 당첨되셨습니다!");
+        eventBus.showToast("래플에 당첨되셨습니다!");
         lottie.value.winLottieOn();
     } else if (response.data == "낙첨") {
-        raffleToast.value.showToast("당첨에 실패했습니다...");
+        eventBus.showToast("당첨에 실패했습니다...");
         lottie.value.defeatLottieOn();
     }
     getRaffleRequest(rno);
 }
 
 getRaffleRequest(rno);
-getLikeStatus(rno);
-getRaffleDetail(rno);
-
-async function apply(rno) {
-    const response = await RaffleAPI.apply(rno);
-    if(response.data === "success"){
-        raffleToast.value.showToast("응모가 완료되었습니다.");
-    } else if(response.data === "berry") {
-        raffleToast.value.showToast("(베리 지급)일일 3회 응모 완료!");
-    } else {
-        raffleToast.value.showToast("응모는 하루에 3번만 가능합니다.");
-    }
+if (store.state.mid !== '') {
+    getLikeStatus(rno);
     getRaffleDetail(rno);
 }
+
+async function apply(rno) {
+    try {
+        const response = await RaffleAPI.apply(rno);
+        if (response.data === "success") {
+            eventBus.showToast("응모가 완료되었습니다.");
+        } else if (response.data === "berry") {
+            eventBus.showToast("(베리 지급)일일 3회 응모 완료!");
+        } else {
+            eventBus.showToast("응모는 하루에 3번만 가능합니다.");
+        }
+        getRaffleDetail(rno);
+    } catch(error) {
+        if(error.response.status === 403){
+            eventBus.showToast("응모에 참여하려면 로그인이 필요합니다.");
+            router.push('/login');
+        }
+    }
+}
+
 
 const manswer = ref(null);
 
@@ -368,12 +382,12 @@ async function updateRdtMissionCleared(rno) {
     // 라디오 버튼이 클릭된게 뭔지를 받아와서 manswer를 유저의 제출 답으로 저장
     // 백엔드에 manswer를 넘겨줌
     try {
-    const response = await RaffleAPI.updateRdtMissionCleared(rno, manswer.value);
-    if(response.data === "berry"){
-        raffleToast.value.showToast("(베리 지급)일일 응모 미션 올 클리어!");
-    }
-    getRaffleDetail(rno);
-    } catch(error){
+        const response = await RaffleAPI.updateRdtMissionCleared(rno, manswer.value);
+        if (response.data === "berry") {
+            eventBus.showToast("(베리 지급)일일 응모 미션 올 클리어!");
+        }
+        getRaffleDetail(rno);
+    } catch (error) {
         console.log(error);
     }
 }

@@ -9,7 +9,7 @@
                     <div class="modal-body">
                         <slot name="modalBody"></slot>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer border-0">
                         <slot name="modalFooter"></slot>
                     </div>
                 </div>
