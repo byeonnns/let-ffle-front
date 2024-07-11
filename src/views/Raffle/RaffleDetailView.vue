@@ -1,6 +1,6 @@
 <template>
     <div>
-        <GiftLottie ref="lottie" class="pe-none"/>
+        <GiftLottie ref="lottie" class="pe-none" />
         <div v-if="raffleRequest.raffle" class="container">
             <div class="row">
                 <div class="col-6">
@@ -16,7 +16,8 @@
                     <p class="text-secondary">Raffle > {{ raffleRequest.raffle.rcategory }}</p>
                     <div class="d-flex justify-content-between">
                         <h1 class="align-content-center"> {{ raffleRequest.raffle.rtitle }} </h1>
-                        <div v-if="$store.state.mid != ''" @click="likeIt">
+                        <div @click="likeIt">
+                            <!-- v-if="$store.state.mid != ''" -->
                             <Vue3Lottie :animationData="HeartLottie" :loop="1" :noMargin="true"
                                 @on-animation-loaded="likeCheck" ref="likeAnimation" :autoPlay="false"
                                 style="width:100px; height:100px" />
@@ -131,7 +132,9 @@
                                 <label class="me-2">몇 개나 사용할까요?</label>
                                 <select name="number" v-model="selectBerry">
                                     <template v-for="n in 10" :key="n">
-                                        <option v-if="raffleDetail.raffleDetail.rdtberryspend <= 10 - n && n <= myBerry"> {{ n }} </option>
+                                        <option
+                                            v-if="raffleDetail.raffleDetail.rdtberryspend <= 10 - n && n <= myBerry"> {{
+                                            n }} </option>
                                     </template>
                                 </select>개
                                 <button class="btn mt-2 w-100"
@@ -179,7 +182,7 @@
                                 해당 래플의 미션은 핫타임 미션입니다. <br /> 응모에 참여하신 뒤, 정해진 시간동안 미션참여 탭의 미션 참여 버튼을 클릭해주세요! <br />
                                 <br />
                                 핫 타임 : {{ raffleRequest.timeMission.tstartedat }} ~ {{
-                                    raffleRequest.timeMission.tfinishedat }} <br /> <br />
+                                raffleRequest.timeMission.tfinishedat }} <br /> <br />
                                 ※ 핫 타임 미션 주의사항 <br />
                                 • 미션 참여 버튼을 클릭하시면 자동으로 미션 성공 처리됩니다. <br />
                                 • 정해진 시간 외에는 버튼이 활성화되지 않습니다. <br />
@@ -301,17 +304,24 @@ async function getLikeStatus(rno) {
 }
 
 async function likeIt() {
-    if (like.value === false) {
-        const response = await MemberAPI.like(rno);
-        eventBus.showToast("좋아요를 눌렀습니다.");
-        likeAnimation.value.playSegments([0, 19], true);
-        like.value = true;
-    } else {
-        const response = await MemberAPI.cancleLike(rno);
-        eventBus.showToast("좋아요를 취소했습니다.");
-        likeAnimation.value.playSegments([8, 0], true);
-        like.value = false;
-    }
+    try {
+        if (like.value === false) {
+            const response = await MemberAPI.like(rno);
+            eventBus.showToast("좋아요를 눌렀습니다.");
+            likeAnimation.value.playSegments([0, 19], true);
+            like.value = true;
+        } else {
+            const response = await MemberAPI.cancleLike(rno);
+            eventBus.showToast("좋아요를 취소했습니다.");
+            likeAnimation.value.playSegments([8, 0], true);
+            like.value = false;
+        }
+    } catch (error) {
+            if (error.response.status === 500) {
+                eventBus.showToast("좋아요는 로그인후 가능합니다.");
+                router.push('/login');
+            }
+        }
 }
 
 async function getRaffleDetail(rno) {
