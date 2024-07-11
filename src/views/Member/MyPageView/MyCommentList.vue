@@ -19,7 +19,7 @@
                             <tr v-for="total in page.boards" :key="total.bno" class="center">
                                 <td>{{ total.bno }}</td>
                                 <td>{{ total.btitle }}</td>
-                                <td>{{ total.bcreatedat }}</td>
+                                <td>{{ formatDate(total.bcreatedat) }}</td>
                                 <td>
                                     <RouterLink :to="`/Board/BoardDetail?bno=${total.bno}&pageNo=${pageNo}`"><button
                                             class="btn btn-outline-light btn-sm" style="background-color: #F37551; color: white; border-radius: 0px;">이동하기</button>
@@ -95,6 +95,15 @@ watch(
         }
     }
 );
+
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
 </script>
 
 <style scoped>
