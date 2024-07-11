@@ -41,7 +41,7 @@
                                             v-model="adminReply[Inquiry.ino]"></textarea>
                                     </div>
                                 </div>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <div v-if="Inquiry.ireply == null" class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <button type="submit" class="btn btn-outline-light rounded-0 mt-1" style="background-color: #F37551; color: white;">등록</button>
                                 </div>
                             </form>
