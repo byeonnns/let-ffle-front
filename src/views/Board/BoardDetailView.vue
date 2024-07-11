@@ -41,14 +41,14 @@
                 <button class="btn btn-outline-light rounded-0">댓글작성</button>
             </div>
         </form>
-        <div style="width: 100%;">
+        <div class="community" style="width: 100%; height: 100%;">
             <div class="mt-4" style="border-bottom:1px solid #ebebeb ;">
                 <p>댓글 [{{ commentList.length }}]</p>
             </div>
             <div v-for="com in commentList" :key="com.cno">
                 <div class="mt-3">
                     <p class="custom-title me-3"> {{ com.mid }}</p>
-                    <p class="custom-text"> {{ com.ccreatedat }}</p>
+                    <p class="custom-text"> {{ formatDate(com.ccreatedat) }}</p>
                     <button class="my_btn btn-outline-light btn-sm m-2" @click="deleteComment(com.cno)"><i
                             class="bi bi-x-square"></i></button>
                 </div>
@@ -102,7 +102,7 @@ async function createComment() {
     }
     var total = true;
 
-    var commentPattern = /^.{2,100}$/;
+    var commentPattern = /^[\s\S]{2,9999}$/;
     var userComment = commentPattern.test(boardComment.value.ccontent)
     if (!userComment) {
         look.value.showToast("댓글을 2자이상 100자 이내로 작성해주세요");
@@ -210,5 +210,8 @@ function formatDate(dateString) {
 .btn {
     background-color: #F37551;
     color: white;
+}
+.community{
+    margin-bottom: 100px
 }
 </style>
