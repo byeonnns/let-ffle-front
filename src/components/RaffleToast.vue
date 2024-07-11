@@ -14,26 +14,19 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { Toast } from 'bootstrap';
+import { useEventBus } from '@/utils/eventBus';
 
 const liveToast = ref(null);
-const nowTime = ref(null);
 const message = ref(null);
+const eventBus = useEventBus();
 let toastBootstrap = null;
 
 onMounted(() => {
+    eventBus.showToast = showToast;
     toastBootstrap = Toast.getOrCreateInstance(liveToast.value);
 });
 
-function getCurrentTime() {
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, '0');     // 시간 (00-23)
-    const minutes = now.getMinutes().toString().padStart(2, '0'); // 분 (00-59)
-    const seconds = now.getSeconds().toString().padStart(2, '0'); // 초 (00-59)
-    nowTime.value = hours + ":" + minutes + ":" + seconds;
-}
-
 const showToast = (toastMessage) => {
-    getCurrentTime();
     message.value = toastMessage;
     toastBootstrap.show();
 };
@@ -41,6 +34,14 @@ const showToast = (toastMessage) => {
 defineExpose({
     showToast
 });
+
+/*function getCurrentTime() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');     // 시간 (00-23)
+    const minutes = now.getMinutes().toString().padStart(2, '0'); // 분 (00-59)
+    const seconds = now.getSeconds().toString().padStart(2, '0'); // 초 (00-59)
+    nowTime.value = hours + ":" + minutes + ":" + seconds;
+}*/
 </script>
 
 <style scoped></style>

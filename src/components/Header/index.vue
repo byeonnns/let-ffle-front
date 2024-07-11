@@ -111,7 +111,6 @@ async function getMember() {
         console.log(error);
     }
 }
-getMember();
 
 async function getBerryHistoryListForHome() {
     try {
@@ -121,16 +120,17 @@ async function getBerryHistoryListForHome() {
         console.log(error);
     }
 }
-getBerryHistoryListForHome();
+
+if (store.state.mid !== '') {
+    getBerryHistoryListForHome();
+    getMember();
+}
 
 watch(
     route, (newRoute, oldRoute) => {
-        if (newRoute.query.pageNo) {
-            getMember(newRoute.query.mberry);
-            getBerryHistoryListForHome(newRoute.query.berry);
-        } else {
-            getMember(1);
-            getBerryHistoryListForHome(1);
+        if (newRoute.query && store.state.mid !== '') {
+            getMember();
+            getBerryHistoryListForHome();
         }
     }
 );

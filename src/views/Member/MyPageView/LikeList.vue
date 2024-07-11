@@ -6,24 +6,19 @@
             </div>
             <div v-for="item in likeList.RaffleRequest" :key="item.raffle.rno">
                 <div class="d-flex justify-content-between mt-2">
-                    <div class="align-content-center">
+                    
+                    <div class="align-content-center" style="height: 154px; width:294px">
                         <img v-if="item.raffleImage.rthumbnailimgoname != null"
                             :src="`${axios.defaults.baseURL}/raffle/raffleThumbnailAttach/${item.raffle.rno}`"
-                            class="rounded" width="200px" height="130px;">
+                            class="rounded object-fit-cover w-100 h-100">
                     </div>
                     <div class="align-content-center">
+                        <RouterLink :to="`/Raffle/RaffleDetail?rno=${item.raffle.rno}`">
                         <h5>{{ item.raffle.rtitle }}</h5>
                         <p class="m-0">{{ item.raffle.rsubtitle }}</p>
-                    </div>
-                    <div class="d-flex flex-column" style="width:200px;">
-                        <RouterLink :to="`/Raffle/RaffleDetail?rno=${item.raffle.rno}`"
-                            class="btn btn-outline-light mt-3" style="background-color: #F37551; color: white;">
-                            응모
                         </RouterLink>
-                        <button class="btn btn-outline-light border mt-auto mb-3"
-                            style="background-color: white; color: black;"
-                            @click="deleteBtn(item.raffle.rno)">삭제</button>
                     </div>
+                    <button class="btn border-0" style="color: black;" @click="deleteBtn(item.raffle.rno)"><i class="bi bi-trash fs-2"></i></button>
                 </div>
                 <hr>
             </div>

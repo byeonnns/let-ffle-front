@@ -1,5 +1,6 @@
 <template>
   <div>
+    <RaffleToast />
     <Header class="sticky-top bg-white z-1" />
     <router-view />
     <Footer v-if="!$route.path.startsWith('/Admin')" />
@@ -11,6 +12,7 @@
 import Header from '@/components/Header';
 import Footer from "@/components/Footer.vue";
 import FooterNav from "@/components/FooterNav.vue";
+import RaffleToast from './components/RaffleToast.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { watch } from 'vue';
 import { useStore } from 'vuex';
