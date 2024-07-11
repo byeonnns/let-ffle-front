@@ -8,7 +8,7 @@
                         <RouterLink to="/Notice">
                             <li class="list-group-item">공지사항</li>
                         </RouterLink>
-                        <li>제휴제안</li>
+                        <li @click="toastTest">제휴제안</li>
                         <RouterLink to="/Member/MyPage/WriteInquiry">
                             <li class="list-group-item">문의하기</li>
                         </RouterLink>
@@ -32,6 +32,12 @@
 </template>
 
 <script setup>
+import { useEventBus } from '@/utils/eventBus';
+const eventBus = useEventBus();
+
+function toastTest() {
+  eventBus.showToast('This is a toast message!');
+}
 </script>
 
 <style scoped>

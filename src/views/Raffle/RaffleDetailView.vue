@@ -99,14 +99,14 @@
                         </div>
 
                         <div class="p-3 text-center" v-if="raffleDetail.raffleStatus === '미션 성공' && tab == '미션 참여'">
-                            <Vue3Lottie :animationData="correctLottie" :loop="1" @on-animation-loaded="likeCheck" ref="likeAnimation" style="width:300px"/>
+                            <Vue3Lottie :animationData="correctLottie" :loop="1" style="width:300px"/>
                             <h1>미션 성공!</h1>
                             <h3>당첨 확률이 올라갔습니다</h3>
                             베리를 사용해 당첨 확률을 더 올려보세요
                         </div>
 
                         <div class="p-3 text-center" v-if="raffleDetail.raffleStatus === '미션 실패' && tab == '미션 참여'">
-                            <Vue3Lottie :animationData="wrongLottie" :loop="1" @on-animation-loaded="likeCheck" ref="likeAnimation" style="width:300px"/>
+                            <Vue3Lottie :animationData="wrongLottie" :loop="1" style="width:300px"/>
                             <h1>미션 실패...</h1>
                             베리를 사용해 당첨 확률을 올려보세요
                         </div>

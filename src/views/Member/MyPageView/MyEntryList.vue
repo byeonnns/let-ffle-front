@@ -49,7 +49,7 @@
                     </thead>
 
                     <tbody>
-                        <tr v-for="entryList in myRaffleDetail.RaffleDetailRequest" :key="entryList">
+                        <tr v-for="entryList in myRaffleDetail.RaffleDetailRequest" :key="entryList.raffle.rno">
                             <td>{{ entryList.raffle.rtitle }}</td>
                             <td>{{ entryList.nowStatus }}</td>
                             <td>{{ formatDate(entryList.raffle.rfinishedat) }}</td>
@@ -75,7 +75,7 @@
                                                     </tr>
                                                 </table>
                                                 <button class="btn btn-white btn-sm">
-                                                    <RouterLink to="/Member/MyPage/MyBerryHistory">래플로 이동 ▶</RouterLink>
+                                                    <RouterLink :to="`/Raffle/RaffleDetail?rno=${entryList.raffle.rno}`">래플로 이동 ▶</RouterLink>
                                                 </button>
                                             </div>
                                         </div>

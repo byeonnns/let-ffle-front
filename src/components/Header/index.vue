@@ -38,8 +38,12 @@
                 <RouterLink v-if="$store.state.mid === ''" to="/login" class="me-3"><span
                         class="d-inline-block">로그인</span></RouterLink>
                 <a v-if="$store.state.mid !== ''" class="d-inline-block me-3 logout" @click="handleLogout">로그아웃</a>
-                <RouterLink v-if="$store.state.mid !== ''" to="/Member/MyPage" class="me-3"><span class="d-inline-block">마이페이지</span></RouterLink>
-                <RouterLink v-if="$store.state.mid === ''" to="/login" class="me-3"><span class="d-inline-block">마이페이지</span></RouterLink>
+                <RouterLink v-if="$store.state.mid !== ''" to="/Member/MyPage" class="me-3"><span
+                        class="d-inline-block">마이페이지</span>
+                </RouterLink>
+                <RouterLink v-if="$store.state.mid === ''" to="/login" class="me-3"><span
+                        class="d-inline-block">마이페이지</span>
+                </RouterLink>
                 <RouterLink to="/Notice" class="me-3"><span class="d-inline-block">고객센터</span></RouterLink>
                 <RouterLink v-if="$store.state.mrole === 'ROLE_ADMIN'" to="/Admin" class="me-3"><span
                         class="d-inline-block">관리자</span>
@@ -100,31 +104,31 @@ const members = ref([]);
 async function getMember() {
     try {
         const response = await MemberAPI.getMember();
-        members.value = response.data; 
-    } catch(error) {
+        members.value = response.data;
+    } catch (error) {
         console.log(error);
     }
 }
-getMember();
 
 async function getBerryHistoryListForHome() {
     try {
         const response = await MemberAPI.getBerryHistoryListForHome();
         berry.value = response.data;
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     }
 }
-getBerryHistoryListForHome();
+
+if (store.state.mid !== '') {
+    getBerryHistoryListForHome();
+    getMember();
+}
 
 watch(
     route, (newRoute, oldRoute) => {
-        if (newRoute.query.pageNo) {
-            getMember(newRoute.query.mberry);
-            getBerryHistoryListForHome(newRoute.query.berry);
-        } else {
-            getMember(1);
-            getBerryHistoryListForHome(1);
+        if (newRoute.query && store.state.mid !== '') {
+            getMember();
+            getBerryHistoryListForHome();
         }
     }
 );
@@ -149,7 +153,7 @@ function handleLogout() {
 
 function formatDate(dateStr) {
     const date = new Date(dateStr);
-    const year = date.getFullYear()%100;
+    const year = date.getFullYear() % 100;
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     const hours = String(date.getHours()).padStart(2, '0');
