@@ -22,7 +22,7 @@
                                 <td>{{ total.bcreatedat }}</td>
                                 <td>
                                     <RouterLink :to="`/Board/BoardDetail?bno=${total.bno}&pageNo=${pageNo}`"><button
-                                            class="btn btn-outline-light btn-sm">이동하기</button>
+                                            class="btn btn-outline-light btn-sm" style="background-color: #F37551; color: white; border-radius: 0px;">이동하기</button>
                                     </RouterLink>
                                 </td>
                             </tr>
