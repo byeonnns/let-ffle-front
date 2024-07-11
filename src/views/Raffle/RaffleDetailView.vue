@@ -16,7 +16,7 @@
                     <p class="text-secondary">Raffle > {{ raffleRequest.raffle.rcategory }}</p>
                     <div class="d-flex justify-content-between">
                         <h1 class="align-content-center"> {{ raffleRequest.raffle.rtitle }} </h1>
-                        <div @click="likeIt">
+                        <div v-if="$store.state.mid != ''" @click="likeIt">
                             <Vue3Lottie :animationData="HeartLottie" :loop="1" :noMargin="true"
                                 @on-animation-loaded="likeCheck" ref="likeAnimation" :autoPlay="false"
                                 style="width:100px; height:100px" />
