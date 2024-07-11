@@ -49,6 +49,19 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="d-flex justify-content-end">
+                <div class="input-group input-group-sm w-auto">
+                    <div class="me-3">
+
+                        래플 이름 :
+                    </div>
+
+                    <input type="text" class="form-control" v-model="searchWord"
+                        @keyup.enter="getRaffleList(1, searchWord)">
+                    <button class="btn btn-sm text-white" @click="getRaffleList(1, searchWord)"
+                        style="background-color: #F37551;">검색</button>
+                </div>
+            </div>
         </div>
         <div class="text-center" v-if="page.raffles.length > 0">
             <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
@@ -84,6 +97,7 @@ const serverTime = computed(() => {
 
 
 
+
 const pageNo = ref(route.query.pageNo || 1);
 
 const page = ref({
@@ -101,6 +115,17 @@ async function getRaffleMonitorList(pageNo) {
     }
 }
 getRaffleMonitorList(pageNo.value);
+
+async function getRaffleList(pageNo, word='') {
+    try {
+        const response = await RaffleAPI.getAdminRaffleList(pageNo,word);
+
+        page.value.raffles = response.data.Raffle;
+        page.value.pager = response.data.pager;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 function changePageNo(argPageNo) {
     router.push(`/Admin/RaffleMonitorList?pageNo=${argPageNo}`);

@@ -28,8 +28,8 @@ function raffleDetailAttachDownload(rno) {
     return axios.get("/raffle/raffleDetailAttach/" + rno, { responseType: "blob" });
 }
 
-function getAdminRaffleList(pageNo) {
-    return axios.get("/raffle/getAdminRaffleList", { params: {  pageNo: pageNo  }});
+function getAdminRaffleList(pageNo,word) {
+    return axios.get("/raffle/getAdminRaffleList", { params: {  pageNo: pageNo, word:word  }});
 }
 
 function createRaffle(formData) {

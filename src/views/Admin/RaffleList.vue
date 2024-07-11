@@ -40,23 +40,36 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="d-flex flex-column">
-            <div class="text-end">
-                <button class="btn btn-outline-ligh rounded-0" style="background-color: #F37551;">
-                    <RouterLink to="/Admin/CreateRaffle" style="color: white;">등록
-                    </RouterLink>
-                </button>
+            <div class="d-flex justify-content-end">
+                <div class="input-group input-group-sm w-auto">
+                    <div class="me-3">
+
+                        래플 이름 :
+                    </div>
+
+                    <input type="text" class="form-control" v-model="searchWord"
+                        @keyup.enter="getRaffleList(1, searchWord)">
+                    <button class="btn btn-sm text-white" @click="getRaffleList(1, searchWord)"
+                        style="background-color: #F37551;">검색</button>
+                </div>
             </div>
-            <div class="text-center" v-if="page.raffles.length > 0">
-                <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
-                <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
-                    class="btn pagerbtn">이전</button>
-                <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
-                    :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{ pageNo }}</button>
-                <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
-                    @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
-                <button @click="changePageNo(page.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
+            <div class="d-flex flex-column mt-3">
+                <div class="text-end">
+                    <button class="btn btn-outline-ligh rounded-0" style="background-color: #F37551;">
+                        <RouterLink to="/Admin/CreateRaffle" style="color: white;">등록
+                        </RouterLink>
+                    </button>
+                </div>
+                <div class="text-center" v-if="page.raffles.length > 0">
+                    <button @click="changePageNo(1)" class="btn pagerbtn">처음</button>
+                    <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
+                        class="btn pagerbtn">이전</button>
+                    <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
+                        :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{ pageNo }}</button>
+                    <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
+                        @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
+                    <button @click="changePageNo(page.pager.totalPageNo)" class="btn pagerbtn">맨끝</button>
+                </div>
             </div>
         </div>
         <RaffleModal ref="deleteModal">
@@ -106,9 +119,9 @@ const page = ref({
     pager: {}
 });
 
-async function getRaffleList(pageNo) {
+async function getRaffleList(pageNo, word='') {
     try {
-        const response = await RaffleAPI.getAdminRaffleList(pageNo);
+        const response = await RaffleAPI.getAdminRaffleList(pageNo,word);
 
         page.value.raffles = response.data.Raffle;
         page.value.pager = response.data.pager;
