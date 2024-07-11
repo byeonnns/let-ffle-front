@@ -1,6 +1,6 @@
 <template>
     <div>
-        <GiftLottie ref="lottie" class="pe-none" />
+        <GiftLottie ref="lottie" class="pe-none"/>
         <div v-if="raffleRequest.raffle" class="container">
             <div class="row">
                 <div class="col-6">
@@ -131,10 +131,7 @@
                                 <label class="me-2">몇 개나 사용할까요?</label>
                                 <select name="number" v-model="selectBerry">
                                     <template v-for="n in 10" :key="n">
-                                        <option
-                                            v-if="raffleDetail.raffleDetail.rdtberryspend <= 10 - n && n <= myBerry">{{
-                                                n }}
-                                        </option>
+                                        <option v-if="raffleDetail.raffleDetail.rdtberryspend <= 10 - n && n <= myBerry"> {{ n }} </option>
                                     </template>
                                 </select>개
                                 <button class="btn mt-2 w-100"
@@ -144,12 +141,14 @@
                                 베리를 최대로 사용했습니다!
                             </div>
                         </div>
-                        <div class="p-3 text-start" v-if="raffleDetail.raffleStatus === '당첨 발표'">
+                        <div class="p-3 text-center" v-if="raffleDetail.raffleStatus === '당첨 발표'">
+                            <h1>이미 종료된 래플입니다.</h1>
+                            <h4>당첨 확인을 해주세요.</h4>
                             <button class="btn mt-2 w-100" @click="winnerCreate(rno)">당첨 확인</button>
                         </div>
-                        <div class="p-3 text-start" v-if="raffleDetail.raffleStatus === '미참여 래플 종료'">
-                            <h1>너 참여 안했잖아</h1>
-                            돌아가 인마
+                        <div class="p-3 text-center" v-if="raffleDetail.raffleStatus === '미참여 래플 종료'">
+                            <h1>이미 종료된 래플입니다.</h1>
+                            <h4>다른 래플에 응모해보세요.</h4>
                         </div>
                     </div>
                     <br>
@@ -341,11 +340,15 @@ async function updateRdtBerrySpend(rno, rdtberryspend) {
 async function winnerCreate(rno) {
     const response = await RaffleAPI.winnerCreate(rno);
     if (response.data == "당첨") {
-        eventBus.showToast("래플에 당첨되셨습니다!");
         lottie.value.winLottieOn();
+        setTimeout(function(){
+            eventBus.showToast("래플에 당첨되셨습니다!");
+        }, 2900);
     } else if (response.data == "낙첨") {
-        eventBus.showToast("당첨에 실패했습니다...");
         lottie.value.defeatLottieOn();
+        setTimeout(function(){
+            eventBus.showToast("아쉽게도 당첨 되지않았습니다...");
+        }, 1000);
     }
     getRaffleRequest(rno);
 }
