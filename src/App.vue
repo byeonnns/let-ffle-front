@@ -16,15 +16,16 @@ import RaffleToast from './components/RaffleToast.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { watch } from 'vue';
 import { useStore } from 'vuex';
-
+import { useEventBus } from './utils/eventBus';
 const route = useRoute();
 const router = useRouter();
 const store = useStore();
+const eventBus = useEventBus();
 
 watch (route, (newRoute, oldRoute) => {
   if (newRoute.path.startsWith('/Admin')) {
     if (store.state.mrole != 'ROLE_ADMIN') {
-      
+      eventBus.showToast("권한이 없습니다.");
       router.push("/");
     }
   }
