@@ -102,7 +102,7 @@ async function createComment() {
     }
     var total = true;
 
-    var commentPattern = /^[\s\S]{2,9999}$/;
+    var commentPattern = /^[\s\S]{2,100}$/;
     var userComment = commentPattern.test(boardComment.value.ccontent)
     if (!userComment) {
         look.value.showToast("댓글을 2자이상 100자 이내로 작성해주세요");
