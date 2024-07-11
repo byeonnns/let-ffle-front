@@ -13,8 +13,13 @@ function noticeDetail(nno) {
     return axios.get("/notice/readNotice/" + nno);
 }
 
+function deleteNotice(nno) {
+    return axios.delete("/notice/deleteNotice/" + nno);
+}
+
 export default {
     createNotice,
     noticeList,
-    noticeDetail
+    noticeDetail,
+    deleteNotice
 }

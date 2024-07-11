@@ -8,6 +8,9 @@
             <div class="mt-4" style="border-bottom:1px solid #ebebeb ;">
                 <h2>{{ notice.ntitle }}</h2>
             </div>
+            <div v-if="$store.state.mrole == 'ROLE_ADMIN'" class="text-end mt-2">
+                <button class="btn btn-sm" @click="deleteNotice(notice.nno)">삭제</button>
+            </div>
             <div style="background-color: #FAFAFA; white-space:pre;">
                 <p class="mt-3" style="height: 100%;"> {{ notice.ncontent }} </p>
                 <div class="text-center">
@@ -38,8 +41,18 @@ async function getNoticeDetail(nno) {
     }
 }
 getNoticeDetail(nno);
+
 function AnnouncementHandle() {
     router.push("/Notice");
+}
+
+async function deleteNotice(nno) {
+    try {
+        await NoticeAPI.deleteNotice(nno);
+        router.push("/Notice");
+    } catch (error) {
+        console.log(error);
+    }
 }
 </script>
 
