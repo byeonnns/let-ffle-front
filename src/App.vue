@@ -11,6 +11,23 @@
 import Header from '@/components/Header';
 import Footer from "@/components/Footer.vue";
 import FooterNav from "@/components/FooterNav.vue";
+import { useRoute, useRouter } from 'vue-router';
+import { watch } from 'vue';
+import { useStore } from 'vuex';
+
+const route = useRoute();
+const router = useRouter();
+const store = useStore();
+
+watch (route, (newRoute, oldRoute) => {
+  if (newRoute.path.startsWith('/Admin')) {
+    if (store.state.mrole != 'ROLE_ADMIN') {
+      
+      router.push("/");
+    }
+  }
+
+})
 </script>
 
 <style>
@@ -40,7 +57,15 @@ import FooterNav from "@/components/FooterNav.vue";
   color: initial;
 }
 
-#app .router-link-exact-active {
+#app .router-link-active {
+  color: #FF5C35;
+}
+
+#app .login-active-router-link-exact-active {
+  color: #FF5C35;
+}
+
+#app .my-page-active.router-link-exact-active {
   color: #FF5C35;
 }
 

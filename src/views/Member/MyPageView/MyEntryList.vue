@@ -98,7 +98,7 @@
                         class="btn pagerbtn btn-design">이전</button>
                     <button v-for="pageNo in myRaffleDetail.pager.pageArray" :key="pageNo"
                         @click="changePageOption(pageNo, status)"
-                        :class="(myRaffleDetail.pager.pageNo == pageNo) ? 'thisPage' : ''"
+                        :class="(myRaffleDetail.pager.pageNo == pageNo) ? 'thisPage' : 'btn-outline-light btn-design'"
                         class="btn pagerbtn btn-design">{{ pageNo }}</button>
                     <button v-if="myRaffleDetail.pager.groupNo < myRaffleDetail.pager.totalGroupNo"
                         @click="changePageOption(myRaffleDetail.pager.endPageNo + 1, status)"
