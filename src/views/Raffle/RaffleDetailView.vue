@@ -16,8 +16,7 @@
                     <p class="text-secondary">Raffle > {{ raffleRequest.raffle.rcategory }}</p>
                     <div class="d-flex justify-content-between">
                         <h1 class="align-content-center"> {{ raffleRequest.raffle.rtitle }} </h1>
-                        <div @click="likeIt">
-                            <!-- v-if="$store.state.mid != ''" -->
+                        <div v-if="$store.state.mid != ''"  @click="likeIt">
                             <Vue3Lottie :animationData="HeartLottie" :loop="1" :noMargin="true"
                                 @on-animation-loaded="likeCheck" ref="likeAnimation" :autoPlay="false"
                                 style="width:100px; height:100px" />
@@ -304,7 +303,7 @@ async function getLikeStatus(rno) {
 }
 
 async function likeIt() {
-    try {
+
         if (like.value === false) {
             const response = await MemberAPI.like(rno);
             eventBus.showToast("좋아요를 눌렀습니다.");
@@ -316,13 +315,9 @@ async function likeIt() {
             likeAnimation.value.playSegments([8, 0], true);
             like.value = false;
         }
-    } catch (error) {
-            if (error.response.status === 500) {
-                eventBus.showToast("좋아요는 로그인후 가능합니다.");
-                router.push('/login');
-            }
+
         }
-}
+
 
 async function getRaffleDetail(rno) {
     const response = await RaffleAPI.getRaffleDetail(rno);
