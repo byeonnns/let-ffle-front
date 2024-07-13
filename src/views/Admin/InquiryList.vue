@@ -11,7 +11,7 @@
                         <button class="accordion-button custom-accordion-button" type="button" data-bs-toggle="collapse"
                             :data-bs-target="'#collapse' + Inquiry.ino" aria-expanded="true"
                             :aria-controls="'collapse' + Inquiry.ino">
-                            <p class="custom-title me-5">{{ Inquiry.ino }}</p>
+                            <p class="custom-title me-5" style="width: 30px;">{{ Inquiry.ino }}</p>
                             <p class="custom-title me-5" style="width: 80px; color: #F37551"
                                 v-if="Inquiry.ireply == null">답변 대기중</p>
                             <p class="custom-title me-5" style="width: 80px; color: #F37551"
@@ -26,9 +26,9 @@
                                 <!-- border:1px solid black  -->
                                 <div style="width: 100%; ">
                                     <!-- border:1px solid black -->
-                                    <div>
-                                        <img width="300px"
-                                            :src="`${axios.defaults.baseURL}/member/iattach/${Inquiry.ino}`">
+                                    <div v-if="Inquiry.iattachoname != null" >
+                                        <img width=" 300px"
+                                        :src="`${axios.defaults.baseURL}/member/iattach/${Inquiry.ino}`">
                                     </div>
                                     <p>{{ Inquiry.icontent }}</p>
                                 </div>
@@ -41,8 +41,10 @@
                                             v-model="adminReply[Inquiry.ino]"></textarea>
                                     </div>
                                 </div>
-                                <div v-if="Inquiry.ireply == null" class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button type="submit" class="btn btn-outline-light rounded-0 mt-1" style="background-color: #F37551; color: white;">등록</button>
+                                <div v-if="Inquiry.ireply == null"
+                                    class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="submit" class="btn btn-outline-light rounded-0 mt-1"
+                                        style="background-color: #F37551; color: white;">등록</button>
                                 </div>
                             </form>
                             <div class=" form-group row mt-3" v-if="Inquiry.ireply != null">
@@ -97,6 +99,7 @@ async function getUserInquiryList(pageNo) {
         const response = await MemberAPI.getUserInquiryList(pageNo)
         page.value.Inquirys = response.data.inquiry;
         page.value.pager = response.data.pager;
+        console.log(page.value)
     } catch (error) {
         console.log(error);
     }
