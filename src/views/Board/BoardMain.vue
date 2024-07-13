@@ -128,7 +128,7 @@ async function getBoardList(pageNo, searchType = '', word = '') {
     } catch (error) {
         console.log(error);
     }
-}
+}                            
 
 onMounted(() => {
     getBoardList(pageNo.value);

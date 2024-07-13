@@ -62,7 +62,7 @@
                     <button v-if="page.pager.groupNo > 1" @click="changePageNo(page.pager.startPageNo - 1)"
                         class="btn pagerbtn">이전</button>
                     <button v-for="pageNo in page.pager.pageArray" :key="pageNo" @click="changePageNo(pageNo)"
-                        :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
+                        :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''"
                         class="btn pagerbtn">{{ pageNo }}</button>
                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
                         @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
@@ -182,12 +182,15 @@ td {
 
 /* 전체, 이용정책 글자 색 */
 
-
 .pagerbtn {
     color: black;
     margin-left: 7px;
     border: none;
     background-color: white;
+}
+
+.thisPage {
+    color: #F37551;
 }
 
 td:hover {
@@ -198,6 +201,7 @@ td:hover {
 .activeColor {
     color: #FF5C35 !important
 }
+
 h6 {
     margin: 0px;
 }

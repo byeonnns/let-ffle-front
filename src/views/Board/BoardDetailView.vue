@@ -47,13 +47,15 @@
             </div>
             <div v-for="com in commentList" :key="com.cno">
                 <div class="mt-3">
-                    <p class="custom-title me-3"> {{ com.mid }}</p>
-                    <p class="custom-text"> {{ formatDate(com.ccreatedat) }}</p>
-                    <button class="my_btn btn-outline-light btn-sm m-2" @click="deleteComment(com.cno)"><i
+                    <p class="custom-title me-3"> {{ com.mnickname }}</p>
+                    <p class="custom-text"> {{ formatDate(com.boardComment.ccreatedat) }}</p>
+                    <button v-if="$store.state.mid === com.boardComment.mid" class="my_btn btn-outline-light btn-sm m-2" @click="deleteComment(com.boardComment.cno)"><i
                             class="bi bi-x-square"></i></button>
+                    <button v-else-if="$store.state.mrole === 'ROLE_ADMIN'" class="my_btn btn-outline-light btn-sm m-2" @click="deleteComment(com.boardComment.cno)"><i
+                        class="bi bi-x-square"></i></button>
                 </div>
                 <div style=" background-color: #FAFAFA; height: 100px; padding: 5px">
-                    <p class="mt-3"> {{ com.ccontent }} </p>
+                    <p class="mt-3"> {{ com.boardComment.ccontent }} </p>
                 </div>
             </div>
         </div>
@@ -80,11 +82,14 @@ const battach = ref(null);
 const boardComment = ref({
     bno: bno,
     ccontent: "",
+    mnickname:""
 });
 const store = useStore();
 // 댓글
 const commentList = ref({});
 
+console.log(boardComment.value.bno);
+console.log("제발", boardComment.value.mid);
 async function boardCommentList(bno) {
     try {
         const response = await BoardAPI.getCommentList(bno);

@@ -30,12 +30,12 @@
                     <table class="table linebd">
                         <tbody>
                             <tr v-for="notice in page.notices" :key="notice.nno">
-                                <td class="table_category text-cr">{{ notice.nsubcategory }}</td>
+                                <td class="table_category text-cr" style="width: 160px;">{{ notice.nsubcategory }}</td>
                                 <td class="table_title">
                                     <RouterLink :to="`/Notice/NoticeDetail?nno=${notice.nno}`"
                                         style="text-decoration: none; color: black">{{ notice.ntitle }}</RouterLink>
                                 </td>
-                                <td>{{ formatDate(notice.ncreatedat) }}</td>
+                                <td style="width: 315px;">{{ formatDate(notice.ncreatedat) }}</td>
                             </tr>
                             <tr>
                                 <td v-if="page.notices.length != 0" colspan="5" class="text-center">
@@ -45,8 +45,9 @@
                                         class="btn pagerbtn">이전</button>
                                     <button v-for="pageNo in page.pager.pageArray" :key="pageNo"
                                         @click="changePageNo(pageNo)"
-                                        :class="(page.pager.pageNo == pageNo) ? 'btn-danger' : 'btn-outline-light'"
-                                        class="btn pagerbtn">{{ pageNo }}</button>
+                                        :class="(page.pager.pageNo == pageNo) ? 'thisPage' : ''" class="btn pagerbtn">{{
+                                        pageNo
+                                        }}</button>
                                     <button v-if="page.pager.groupNo < page.pager.totalGroupNo"
                                         @click="changePageNo(page.pager.endPageNo + 1)" class="btn pagerbtn">다음</button>
                                     <button @click="changePageNo(page.pager.totalPageNo)"
@@ -56,7 +57,8 @@
                         </tbody>
                     </table>
                 </div>
-                <div v-else class="d-flex justify-content-center align-content-center align-items-center" style="height: 300px; font-size: 20px;">
+                <div v-else class="d-flex justify-content-center align-content-center align-items-center"
+                    style="height: 300px; font-size: 20px;">
                     <p>조회된 글이 없습니다.</p>
                 </div>
             </div>
@@ -85,7 +87,6 @@ async function getNoticeList(pageNo) {
         const response = await NoticeAPI.noticeList(pageNo, category.value.mainCatagory, category.value.subcategory);
         page.value.notices = response.data.Notice;
         page.value.pager = response.data.Pager;
-        console.log("1111",page.value.notices);
     } catch (error) {
         console.log(error);
     }
@@ -166,7 +167,12 @@ const sortType = ref(route.query.subcategory);
     border: none;
     background-color: white;
 }
-td{
+
+.thisPage {
+    color: #F37551;
+}
+
+td {
     text-align: center;
     align-content: center;
 }
@@ -180,7 +186,8 @@ td:hover {
 .activeColor {
     color: #FF5C35 !important
 }
-h6{
+
+h6 {
     margin: 0px;
 }
 </style>
