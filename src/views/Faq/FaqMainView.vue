@@ -123,7 +123,7 @@ watch(
     }
 );
 
-const sortType = ref(route.query.subcategory);
+const sortType = ref(route.query.subcategory || '전체');
 
 
 
