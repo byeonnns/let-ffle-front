@@ -127,7 +127,7 @@
                                 <li>현재 베리를 {{ myBerry }}개 보유하고 있습니다.</li>
                                 <li>해당 래플에 현재 베리를 {{ raffleDetail.raffleDetail.rdtberryspend }}개 사용했습니다.</li>
                             </ul>
-                            <div v-if="raffleDetail.raffleDetail.rdtberryspend < 10">
+                            <div v-if="raffleDetail.raffleDetail.rdtberryspend < 10 && myBerry !== 0">
                                 <label class="me-2">몇 개나 사용할까요?</label>
                                 <select name="number" v-model="selectBerry">
                                     <template v-for="n in 10" :key="n">
@@ -140,7 +140,7 @@
                                     @click="updateRdtBerrySpend(rno, selectBerry)">사용하기</button>
                             </div>
                             <div v-else>
-                                베리를 최대로 사용했습니다!
+                                베리를 최대로 사용했거나 보유한 베리가 부족합니다.
                             </div>
                         </div>
                         <div class="p-3 text-center" v-if="raffleDetail.raffleStatus === '당첨 발표'">
@@ -337,7 +337,8 @@ async function getRaffleRequest(argRno) {
 }
 
 async function updateRdtBerrySpend(rno, rdtberryspend) {
-    await RaffleAPI.updateRdtBerrySpend(rno, rdtberryspend);
+    const response = await RaffleAPI.updateRdtBerrySpend(rno, rdtberryspend);
+    console.log(response.data.result);
     eventBus.showToast("베리를 " + rdtberryspend + "개 사용했습니다!");
     getRaffleDetail(rno);
 }
