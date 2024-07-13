@@ -160,7 +160,8 @@
                 </div>
             </div>
             <hr class="border-3 opacity-100 mt-4" style="border-color: #F37551;" />
-            <button class="btn mb-5 rounded-0">{{ rno }}래플 바로가기</button>
+            <RouterLink :to="`/Raffle/RaffleDetail?rno=${monitor.raffle.rno}`" class="btn mb-5 rounded-0" style="background-color: #F37551; color: white;">{{ rno }}래플
+                바로가기</RouterLink>
         </div>
     </div>
 </template>
