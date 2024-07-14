@@ -88,8 +88,6 @@ const store = useStore();
 // 댓글
 const commentList = ref({});
 
-console.log(boardComment.value.bno);
-console.log("제발", boardComment.value.mid);
 async function boardCommentList(bno) {
     try {
         const response = await BoardAPI.getCommentList(bno);
@@ -151,7 +149,8 @@ async function getAttach(argBno) {
     try {
         const response = await BoardAPI.boardAttachDownload(argBno);
         const blob = response.data;
-        battach.value = URL.createObjectURL(blob);
+        if(blob.size != 0)
+            battach.value = URL.createObjectURL(blob);
     } catch (error) {
         console.log(error);
     }

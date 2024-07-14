@@ -2,7 +2,7 @@
   <div class="d-flex flex-column min-vh-100">
     <RaffleToast class="z-3" />
     <Header class="sticky-top bg-white z-1" />
-    <router-view class="mb-5" />
+    <router-view/>
     <Footer v-if="!$route.path.startsWith('/Admin')" class="mt-auto" />
     <FooterNav class="d-lg-none sticky-bottom container-fluid" />
   </div>
