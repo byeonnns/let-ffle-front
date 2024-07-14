@@ -46,7 +46,6 @@ function mypage() {
 }
 
 function inquiryReply(ino, ireply) {
-    console.log(ino, ireply);
     return axios.put("/member/inquiryReply", qs.stringify({ ino:ino, ireply:ireply}));
 }
 

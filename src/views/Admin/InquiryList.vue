@@ -99,7 +99,6 @@ async function getUserInquiryList(pageNo) {
         const response = await MemberAPI.getUserInquiryList(pageNo)
         page.value.Inquirys = response.data.inquiry;
         page.value.pager = response.data.pager;
-        console.log(page.value)
     } catch (error) {
         console.log(error);
     }

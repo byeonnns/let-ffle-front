@@ -218,7 +218,6 @@ const preventSubmit = () => {
 
 
 function onbtn() {
-    console.log(userMname + "/" + userPhone + "/" + userAddress)
     if (userMname && userPhone && userAddress) {
         ispass.value = true;
     } else {

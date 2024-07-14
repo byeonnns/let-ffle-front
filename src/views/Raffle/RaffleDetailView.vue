@@ -338,7 +338,6 @@ async function getRaffleRequest(argRno) {
 
 async function updateRdtBerrySpend(rno, rdtberryspend) {
     const response = await RaffleAPI.updateRdtBerrySpend(rno, rdtberryspend);
-    console.log(response.data.result);
     eventBus.showToast("베리를 " + rdtberryspend + "개 사용했습니다!");
     getRaffleDetail(rno);
 }

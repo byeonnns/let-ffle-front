@@ -431,7 +431,6 @@ async function getRaffle(argRno) {
                     break;
                 }
             }
-            console.log(response.data.quizMission)
         } else {
             timemission.value = response.data.timeMission;
         }

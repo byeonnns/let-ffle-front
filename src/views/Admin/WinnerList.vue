@@ -124,7 +124,6 @@ async function getWinnerList(pageNo, searchType = '', searchWord = '') {
         const response = await MemberAPI.winnerList(pageNo, searchType, searchWord);
         page.value.winners = response.data.winner;
         page.value.pager = response.data.pager;
-        console.log(page.value.winners);
     } catch (error) {
         console.log(error);
     }

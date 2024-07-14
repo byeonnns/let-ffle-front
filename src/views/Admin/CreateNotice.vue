@@ -100,7 +100,6 @@ async function handleSubmit() {
         seeya.value.showToast("제목을 입력 해주세요");
     }
 
-    console.log(notice.value.ncontent);
     const contentpattern = /^[\s\S]{3,9999}$/;
     const yourcontent = contentpattern.test(notice.value.ncontent);
     if (!yourcontent) {

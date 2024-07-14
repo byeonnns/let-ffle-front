@@ -1,5 +1,3 @@
-// Raffle 컨트롤러에 요청을 보낼 때 사용하는 메소드들이 들어있을 파일
-
 import axios from "axios";
 import qs from 'qs';
 
@@ -14,17 +12,14 @@ function myWinnerList(pageNo, start, end) {
 // 첨부 다운로드
 //썸네일 이미지
 function raffleThumbnailAttachDownload(rno) {
-    // Path Variable로 데이터 전송, JSON 타입을 받는 것이 아니므로 타입을 추가로 지정
     return axios.get("/raffle/raffleThumbnailAttach/" + rno, { responseType: "blob" });
 }
 //경품 이미지
 function raffleGiftAttachDownload(rno) {
-    // Path Variable로 데이터 전송, JSON 타입을 받는 것이 아니므로 타입을 추가로 지정
     return axios.get("/raffle/raffleGiftAttach/" + rno, { responseType: "blob" });
 }
 //디테일 이미지
 function raffleDetailAttachDownload(rno) {
-    // Path Variable로 데이터 전송, JSON 타입을 받는 것이 아니므로 타입을 추가로 지정
     return axios.get("/raffle/raffleDetailAttach/" + rno, { responseType: "blob" });
 }
 

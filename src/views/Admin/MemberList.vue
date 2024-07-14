@@ -73,7 +73,6 @@ const route = useRoute();
 const store = useStore();
 const serverTime = computed(() => {
     const diffMilliseconds = store.getters['clientTime/getTimeForCalculate'];
-    console.log(diffMilliseconds);
     return new Date(diffMilliseconds);
 });
 
@@ -105,11 +104,9 @@ function changePageNo(argPageNo) {
 watch(
     route, (newRoute, oldRoute) => {
         if (newRoute.query.pageNo) {
-            console.log(pageNo.value)
             getMemberList(newRoute.query.pageNo);
             pageNo.value = newRoute.query.pageNo;
         } else {
-            console.log()
             getMemberList(1);
             pageNo.value = 1;
         }

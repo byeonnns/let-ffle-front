@@ -209,7 +209,6 @@ function onbtn() {
     } else {
         ispass.value = false
     }
-    console.log(ispass.value);
 }
 
 async function handleSubmit() {
