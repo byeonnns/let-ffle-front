@@ -33,7 +33,7 @@
                                 <td class="table_category text-cr" style="width: 160px;">{{ notice.nsubcategory }}</td>
                                 <td class="table_title">
                                     <RouterLink :to="`/Notice/NoticeDetail?nno=${notice.nno}`"
-                                        style="text-decoration: none; color: black">{{ notice.ntitle }}</RouterLink>
+                                        style="text-decoration: none; color: black" class="td-title">{{ notice.ntitle }}</RouterLink>
                                 </td>
                                 <td style="width: 315px;">{{ formatDate(notice.ncreatedat) }}</td>
                             </tr>
@@ -161,6 +161,11 @@ const sortType = ref(route.query.subcategory || '전체');
     text-align: start;
 }
 
+.td-title:hover{
+    cursor: pointer !important;
+    color: #F37551 !important
+}
+
 .pagerbtn {
     color: black;
     margin-left: 7px;
@@ -175,12 +180,6 @@ const sortType = ref(route.query.subcategory || '전체');
 td {
     text-align: center;
     align-content: center;
-}
-
-
-td:hover {
-    cursor: pointer;
-    color: #FF5C35;
 }
 
 .activeColor {
