@@ -78,6 +78,7 @@ const serverTime = computed(() => {
 });
 
 const searchType = ref("mid");
+const searchWord = ref(null);
 const pageNo = ref(route.query.pageNo || 1);
 
 const page = ref({

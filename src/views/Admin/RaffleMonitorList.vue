@@ -85,6 +85,7 @@ import { ref, watch } from 'vue';
 const router = useRouter();
 const route = useRoute();
 
+const searchWord = ref(null);
 const store = useStore();
 const serverTime = computed(() => {
     const diffMilliseconds = store.getters['clientTime/getTimeForCalculate'];

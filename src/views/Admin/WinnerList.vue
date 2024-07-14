@@ -109,6 +109,7 @@ const serverTime = computed(() => {
     return new Date(diffMilliseconds);
 });
 
+const searchWord = ref(null);
 const searchType = ref("mid");
 const pageNo = ref(route.query.pageNo || 1);
 
