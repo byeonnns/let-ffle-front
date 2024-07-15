@@ -66,7 +66,7 @@
                             </li>
                             <li class="nav-item">
                                 <RouterLink to="/Notice" class="nav-link"
-                                    :class="{ 'active': nowPath === '/Notice' || nowPath === '/Faq', 'router-link-exact-active': nowPath === '/Faq' }">
+                                    :class="{ 'active': nowPath === '/Notice' || nowPath === '/Faq', 'router-link-active': nowPath === '/Faq' }">
                                     NOTICE</RouterLink>
                             </li>
                             <li class="nav-item">

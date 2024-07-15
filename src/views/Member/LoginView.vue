@@ -42,8 +42,10 @@ import { reactive, ref } from 'vue';
 import memberAPI from '@/apis/MemberAPI';
 import { useStore } from 'vuex';
 import router from '@/router';
+import { useEventBus } from '@/utils/eventBus';
 
 const store = useStore();
+const eventBus = useEventBus();
 const member = ref({
     mid: "",
     mpassword: ""
@@ -60,6 +62,9 @@ async function handleLogin() {
                 accessToken: response.data.accessToken
             };
             store.dispatch("saveAuth", payload);
+            if(response.data.berry === 'berry') {
+                eventBus.showToast("매일 최초 로그인 베리가 지급되었습니다.");
+            }
         }
         router.replace("/");
 

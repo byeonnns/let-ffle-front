@@ -1,16 +1,16 @@
 <template>
     <footer>
-        <div class="footer-margin" style="background-color: #F37551">
+        <div class="footer-margin" style="background-color: #F37551; color:white">
             <div class="d-lg-flex justify-content-between footer-div2">
                 <div class="mt-4">
                     <ul class="d-flex gap-3 list-unstyled">
                         <li>이용약관</li>
                         <RouterLink to="/Notice">
-                            <li class="list-group-item">공지사항</li>
+                            <li class="list-group-item text-white">공지사항</li>
                         </RouterLink>
                         <li @click="toastTest">제휴제안</li>
                         <RouterLink to="/Member/MyPage/WriteInquiry">
-                            <li class="list-group-item">문의하기</li>
+                            <li class="list-group-item text-white">문의하기</li>
                         </RouterLink>
                     </ul>
                     <span class="d-none d-lg-block" style="font-size: 13px;">주식회사 렛플 대표 : 변성준 사업자등록번호 : 123-45-67890
