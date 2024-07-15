@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <div>
+        <div class="footer-margin" style="background-color: #F37551">
             <div class="d-lg-flex justify-content-between footer-div2">
                 <div class="mt-4">
                     <ul class="d-flex gap-3 list-unstyled">
@@ -79,14 +79,8 @@ function toastTest() {
     box-sizing: border-box;
 }
 
-footer {
-    background-color: #F37551;
-    margin-top: 80px;
-}
-
-footer * {
-    background-color: #F37551;
-    color: #FFFFFF;
+.footer-margin {
+    margin-top: 50px;
 }
 
 .list-group {
