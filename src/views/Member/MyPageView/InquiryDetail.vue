@@ -21,10 +21,10 @@
                         </div>
                         <hr />
                         <div class="inquiry-content p-3">
-                            {{ inquiry.icontent }}
-                            <div>
+                            <div v-if="inquiry.iattachoname != null">
                                <img width="300px" :src="`${axios.defaults.baseURL}/member/iattach/${inquiry.ino}`">
                             </div>
+                            {{ inquiry.icontent }}
                         </div>
                         <div class="inquiry-answer mt-5">
                             <div>
