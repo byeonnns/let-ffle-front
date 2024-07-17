@@ -82,8 +82,8 @@
                 </div>
             </template>
             <template v-slot:modalFooter>
-                <button type="button" class="btn" data-bs-dismiss="modal" @click="deleteRaffle">예</button>
-                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">아니오</button>
+                <button type="button" class="btn" style="background-color: #F37551; color: white; width: 70px;" data-bs-dismiss="modal" @click="deleteRaffle">예</button>
+                <button type="button" class="btn" style="background-color: #F37551; color: white;" data-bs-dismiss="modal" aria-label="Close">아니오</button>
             </template>
         </RaffleModal>
     </div>
