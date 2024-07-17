@@ -35,6 +35,10 @@ function updateRaffle(formData) {
     return axios.put("/raffle/updateRaffle", formData);
 }
 
+function deleteRaffle(rno) {
+    return axios.delete("/raffle/deleteRaffle/" + rno );
+}
+
 function getRaffle(rno) {
     return axios.get("/raffle/readRaffle/" + rno);
 }
@@ -103,6 +107,7 @@ export default {
     getAdminRaffleList,
     createRaffle,
     updateRaffle,
+    deleteRaffle,
     getRaffle,
     getRaffleList,
     apply,

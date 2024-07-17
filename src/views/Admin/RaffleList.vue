@@ -47,7 +47,7 @@
                             <!-- 응모가 시작안되었으면 삭제가능 -->
                             <button v-if="serverTime < new Date(raffle.rstartedat)"
                                 class="btn btn-sm rounded-0 text-white ms-1" style="background-color: #F37551;"
-                                @click="deleteRaffle">삭제</button>
+                                @click="deleteModalOn(raffle.rno)">삭제</button>
                         </td>
                     </tr>
                 </tbody>
@@ -82,7 +82,7 @@
                 </div>
             </template>
             <template v-slot:modalFooter>
-                <button type="button" class="btn" data-bs-dismiss="modal">예</button>
+                <button type="button" class="btn" data-bs-dismiss="modal" @click="deleteRaffle">예</button>
                 <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">아니오</button>
             </template>
         </RaffleModal>
@@ -104,6 +104,7 @@ const router = useRouter();
 const route = useRoute();
 const store = useStore();
 const searchWord = ref(null);
+const rno = ref(null);
 const serverTime = computed(() => {
     const diffMilliseconds = store.getters['clientTime/getTimeForCalculate'];
 
@@ -162,8 +163,18 @@ function formatTime(dateStr) {
 
 const deleteModal = ref(null);
 
-function deleteRaffle() {
+function deleteModalOn(param) {
     deleteModal.value.showModal();
+    rno.value = param;
+}
+
+async function deleteRaffle() {
+    try{
+        await RaffleAPI.deleteRaffle(rno.value);
+        getRaffleList(pageNo.value);
+    } catch(error) {
+        console.log(error);
+    }
 }
 </script>
 
